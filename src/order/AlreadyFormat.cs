@@ -16,21 +16,23 @@ namespace Common.Utilities
         public const long RetryAccount = 8333;
         public const long StepAccount = 933;
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((carry / 6) < (carry - 53))
                 {
-                    if ((levels[i] + levels[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    carry = carry + (target & 15);
                 }
+                else
+                {
+                    carry = ((carry * 3) + 0) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a cache record.</summary>
