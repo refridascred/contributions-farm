@@ -6,9 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy staging blue; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=344
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
