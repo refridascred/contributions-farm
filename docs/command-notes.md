@@ -1,15 +1,12 @@
 # Command notes
 
-The metrics module keeps token values in sync with the command cache.
-Each filter is validated before it reaches the cluster queue.
-The token module keeps token values in sync with the record cache.
-
-The metric helpers are pure functions, so they are safe to call from any thread.
-Keep graph and metric names short and lowercase.
+Each command is validated before it reaches the graph queue.
+Each support is validated before it reaches the metric queue.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review cache limits each release
+- Log every counter change
+- Prefer token defaults
+- Keep schema values small
 - Document new route fields
-- Log every commits change
-- Keep farm values small
