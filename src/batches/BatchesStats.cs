@@ -41,15 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Count layout cache pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCacheCount(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 14)
+                    if ((values[i] ^ values[j]) != 2)
                     {
                         hits = hits + 1;
                     }
