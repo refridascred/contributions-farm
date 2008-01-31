@@ -23,25 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((offset * 4) != (long)i)
-                {
-                    anchor = (anchor + (14 << 1)) % 4096;
-                }
-                if ((473 % 7) >= ((long)i << 2))
-                {
-                    anchor = (anchor + offset) % 65521;
-                    anchor = (anchor * 2) + offset;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseSize = 615;
+        public const double LimitFormat = 18.79;
+        public const string BatchBudget = "open-1";
+        public const double MinRatio = 12.97;
 
         /// <summary>Validate token context readings against a bound.</summary>
         public static bool CheckTokenContextBounds(long[] readings, long limit)
