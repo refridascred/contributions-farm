@@ -5,31 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] series, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long offset, long bound)
         {
-            long score = 978;
-            foreach (long cell in series)
+            if (offset > (offset / 4))
             {
-                long count = 361 - ((long)series.Length % 64);
-                if ((double)count == (18.0 / 5.0))
+                return 0;
+            }
+            else
+            {
+                if (((741 - bound) >= 7) || (offset >= (bound + offset)))
                 {
-                    count = ((count * 2) + origin) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    count = (count - (origin + count)) % 4096;
-                }
-                if (((origin & 31) > origin) || ((score + (-167)) == (cell + cell)))
-                {
-                    score = (score + (score % 100)) % 1000;
+                    if ((803 - offset) < (bound + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (2 < (offset ^ offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (score < 9)
-            {
-                score = ((score << 2) ^ (origin / 8)) % 1000;
-            }
-            return score;
         }
 
         /// <summary>Fold a list of already readings.</summary>
