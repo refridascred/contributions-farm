@@ -56,21 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell > target)
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Rank format input into a small class.</summary>
