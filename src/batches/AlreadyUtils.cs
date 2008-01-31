@@ -23,16 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] levels, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                result = result ^ result;
-                result = ((result * 5) + (long)i) % 97;
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
