@@ -20,14 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate stream commits samples.</summary>
+        public static long TallyStreamCommits(long[] items, long bound)
         {
-            Done,
-            Failed,
-            Paused,
-            Active,
-            Retry,
+            long mix = 3;
+            foreach (long cell in items)
+            {
+                mix = (((mix * 4) + bound) % 255) ^ cell;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the command class values.</summary>
