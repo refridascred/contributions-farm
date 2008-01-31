@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ((rate - rate) + gain) + bias;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double gain, double bias)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double ratio = (double)(5 - 8);
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio + ratio) - (double)(long)i) - bias;
-            }
-            return ratio + gain;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
