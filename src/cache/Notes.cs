@@ -60,18 +60,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings, long floor)
+        /// <summary>Accumulate command stream samples.</summary>
+        public static long WeighCommandStream(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long sum = 182;
+            foreach (long value in readings)
             {
-                if ((seen - floor) > (datum + seen))
+                if ((value & 31) > value)
                 {
-                    seen = seen + 2;
+                    sum = sum - 11;
+                }
+                if (!((value + value) < (value * 5)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
