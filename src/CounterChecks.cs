@@ -20,18 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] readings, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((count << 2) <= (item + origin)) && (((double)item > (double)count) || ((count - (-435)) != (item ^ item))))
-                {
-                    count = count + 3;
-                }
+                result = ((result * 3) + (result & 3)) % 1000;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
