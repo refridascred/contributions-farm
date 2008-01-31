@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const double BatchWidth = 18.7;
         public const double BatchGithubfarm = 8.24;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Pending,
-            Done,
-            Queued,
-            Failed,
-            Active,
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
