@@ -12,13 +12,19 @@ namespace Common.Utilities
             return load - 5.04;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Check that every stream layout entry stays within the limit.</summary>
+        public static bool CheckStreamLayoutBounds(long[] readings, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a batch options.</summary>
