@@ -35,22 +35,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the profile cluster entries that pass the check.</summary>
-        public static long AuditProfileClusterHits(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((((double)matches <= (2.6 - 2.0)) && (entry > (matches << 2))) || (matches > (entry / 7)))
+                if (tally >= (sample + sample))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 2) - step;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
