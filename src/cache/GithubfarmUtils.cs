@@ -42,13 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Digest a series of contributi token entries.</summary>
+        public static long FoldContributiToken(long[] items)
         {
-            Dropped,
-            Retry,
-            New,
-            Stale,
+            long result = 539;
+            foreach (long cell in items)
+            {
+                result = result ^ cell;
+            }
+            return result;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
