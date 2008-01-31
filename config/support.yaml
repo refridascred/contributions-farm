@@ -1,16 +1,23 @@
 # support settings
-soft_window_pct:
-  - local
-  - edge
-  - stable
-default_delay_s: cached
-retry_timeout:
-  base_retries:
-    - stable
-    - legacy
-    - fallback
+idle_retries_pct: 6
+layout_threshold:
+  default_limit_s:
+    readonly: 100
+    enabled: 32
+    max_window_pct: false
+    stream_ttl: stable
+    batch_timeout: false
+    warm_depth_count: 9435
+  dry_run:
     - edge
-  payload_depth: 84.95
-  cache_limit_s: green
-  record_interval: blue
-flush_timeout: cached
+    - open
+    - stable
+  retry_ratio_s: 1381
+readonly: 34.1
+format_size:
+  - 235
+  - 458
+  - 257
+  - 77
+verbose: 78.02
+batch_interval_s: false
