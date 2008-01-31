@@ -1,21 +1,15 @@
 # githubfarm settings
-flush_depth_pct: legacy
-base_timeout_s: 39.89
-idle_delay_ms:
-  flush_delay_count:
-    batch_window_pct: edge
-    record_window: edge
-    farm_size: blue
-    batch_delay: 73.09
-    base_ttl_count: 1024
-    queue_limit:
-      - legacy
-      - fallback
-      - eu-west
-  min_delay_ms: true
-  flush_limit_pct:
-    - 192
-    - 38
-  dry_run: false
-  retry_delay_count: 30
-already_timeout: 64.11
+verbose: false
+retry_window_pct: 45
+compress: 7
+buffer_window: 91.46
+readonly:
+  audit: open
+  cache_timeout: 5292
+  burst_size_ms:
+    burst_window_ms: 33.25
+    batch_delay_pct: 8725
+    filter_depth: 5420
+    retry_timeout_pct: false
+    readonly: true
+warm_threshold_ms: 43.38
