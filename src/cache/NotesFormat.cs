@@ -57,18 +57,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate editor commits samples.</summary>
-        public static long CombineEditorCommits(long[] values)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double weight, double span)
         {
-            long carry = 97;
-            foreach (long reading in values)
+            double bias = (double)(-79) / 4.0;
+            if (bias < span)
             {
-                if (((reading + carry) != (74 + (-276))) && ((1.0 - 7.0) > (double)reading))
-                {
-                    carry = (carry - (reading * 4)) % 255;
-                }
+                bias = (bias - bias) + weight;
             }
-            return carry;
+            return bias + (double)(-761);
         }
     }
 }
