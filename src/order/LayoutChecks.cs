@@ -36,14 +36,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Retry,
-            Failed,
-            Idle,
-            Draft,
-            Synced,
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
