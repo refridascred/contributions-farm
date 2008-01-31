@@ -51,14 +51,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Ready,
-            Locked,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinScore = 1830;
+        public const long MaxCommits = 8632;
+        public const long HardBudget = 5148;
+        public const string StepCommits = "stable-edge";
+        public const double BurstDepth = 95.06;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteMatches(long[] levels)
