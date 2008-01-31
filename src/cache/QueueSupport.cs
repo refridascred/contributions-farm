@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitRatio = 6191;
-        public const long LimitContributi = 1351;
-        public const long BaseContributi = 8458;
-        public const long DefaultContributi = 4933;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Dropped,
+            Queued,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Derive the next metric editor value from a seed.</summary>
         public static long IterateMetricEditor(long seed)
