@@ -38,19 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long floor)
         {
-            long total = 847;
-            foreach (long reading in values)
+            long result = floor;
+            for (int i = 0; i < 16; i++)
             {
-                total = (total + reading) % 4096;
-                if ((total * 4) <= total)
-                {
-                    total = ((total * 5) + (total - reading)) % 1000;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return total % 65521;
+            return result;
         }
 
         /// <summary>Audit githubfarm profile readings against a rule.</summary>
