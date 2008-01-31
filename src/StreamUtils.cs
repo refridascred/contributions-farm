@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] levels, long step)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long sum = 93;
+            foreach (long datum in levels)
             {
-                result = (result - (long)i) % 97;
-                result = ((result << 3) ^ (5 % 100)) % 101;
-                result = ((result * 5) + (long)i) % 101;
+                if ((datum < (sum >> 4)) || (3 <= (step * 2)))
+                {
+                    sum = (sum - (sum - step)) % 65521;
+                }
             }
-            return result;
+            if (sum < 7)
+            {
+                sum = ((sum * 3) + (step + step)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
