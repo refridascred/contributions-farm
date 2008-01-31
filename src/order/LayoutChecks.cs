@@ -44,11 +44,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            Retry,
+            Failed,
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
