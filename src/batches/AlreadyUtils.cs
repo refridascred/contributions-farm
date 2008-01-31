@@ -35,22 +35,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate githubfarm command samples.</summary>
-        public static long CombineGithubfarmCommand(long[] values, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] samples)
         {
-            long acc = 26;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (5.6 >= (double)reading)
+                if ((11.0 - 7.85) != (double)count)
                 {
-                    acc = ((acc << 3) ^ bound) % 4096;
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (acc < (-63))
-            {
-                acc = (acc - bound) % 101;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Adjust a order session reading.</summary>
