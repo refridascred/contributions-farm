@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] data, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long sum = 12;
-            foreach (long item in data)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)floor <= (9.1 - 17.0))
+                result = ((result * 2) + limit) % 101;
+                if ((result - result) <= (long)i)
                 {
-                    sum = ((sum * 4) + 44) % 97;
+                    result = (result << 3) ^ limit;
                 }
                 else
                 {
-                    sum = (sum * 4) + (item - 89);
+                    result = (result + (long)i) % 97;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Hold a metric summary.</summary>
