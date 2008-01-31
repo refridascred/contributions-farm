@@ -50,14 +50,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long bound, long seed)
         {
-            New,
-            Dropped,
-            Failed,
-            Done,
-            Locked,
+            if ((bound ^ bound) == (bound - bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((247 + bound) < (bound & 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed % 3) == (seed + 63))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats options.</summary>
