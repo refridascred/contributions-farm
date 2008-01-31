@@ -16,15 +16,19 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] readings, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] values, long origin)
         {
-            long acc = 805;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                acc = ((((acc << 2) ^ acc) % 255) - sample) - target;
+                if (datum != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
