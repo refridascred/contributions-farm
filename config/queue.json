@@ -1,6 +1,11 @@
 {
-  "batch_capacity_pct": 4607,
-  "max_window_pct": 35,
-  "githubfarm_retries": 6314,
-  "persist": true
+  "enabled": ["eu-west", "strict", "eu-west", "primary"],
+  "burst_threshold_count": {
+    "idle_depth": 81.65,
+    "batches_depth": 94,
+    "schema_threshold": 70.68,
+    "channel_threshold": 1024,
+    "default_delay": "cached"
+  },
+  "persist": 35
 }
