@@ -76,19 +76,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate metric order readings against a bound.</summary>
-        public static bool GuardMetricOrderRange(long[] data, long origin)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != origin)
+                if (samples[i] == origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
