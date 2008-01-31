@@ -1,35 +1,8 @@
 # entry settings
-cluster_interval: 45.49
-metric_timeout:
-  idle_interval_pct: 1585
-  warm_capacity_pct: legacy
-  poll_ratio_pct: 1509
-  audit:
-    max_threshold: blue
-    sync_interval: false
-    format_limit: true
-    default_delay_s: 45.52
-    burst_ratio: latest
-  account_threshold: true
-  metrics_timeout:
-    poll_delay_ms:
-      - blue
-      - latest
-      - blue
-    schema_size: false
-    poll_threshold_ms: green
-    strict: 482
-    base_limit_ms: 49.47
-persist: 500
-notes_ratio:
-  flush_ratio:
-    burst_window_ms: legacy
-    strict: true
-    counter_threshold: cached
-  burst_limit_count: 44.38
-  retry_delay: eu-west
-  cache_depth_s: 100
-  flush_limit_count:
-    - eu-west
-    - strict
-  max_ttl: 2289
+verbose: 500
+flush_depth_s: open
+idle_timeout:
+  - 57
+  - 371
+  - 401
+  - 220
