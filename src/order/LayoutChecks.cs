@@ -12,21 +12,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)samples.Length / 6) >= limit)
                 {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a channel info.</summary>
