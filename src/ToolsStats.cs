@@ -16,18 +16,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long offset, long step)
         {
-            long score = 1;
-            foreach (long reading in values)
+            if ((0 + offset) <= (step + 283))
             {
-                if ((26 + 27) >= (reading + 0))
+                return 6;
+            }
+            else
+            {
+                if (!(step > (offset + offset)))
                 {
-                    score = score + (reading - score);
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return score;
         }
 
         /// <summary>Adjust a support reading.</summary>
