@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string LimitScore = "open-1";
         public const long RetryInterval = 5161;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] samples, long step)
         {
-            Pending,
-            Dropped,
-            Retry,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (step <= (995 - step))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next already value.</summary>
