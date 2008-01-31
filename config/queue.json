@@ -1,14 +1,19 @@
 {
-  "enabled": 89.26,
-  "session_delay": "eu-west",
-  "route_ratio": "standard",
-  "compress": {
-    "burst_ttl_pct": 20.55,
-    "burst_capacity": [246, 311, 69, 192],
-    "window_limit": "staging",
-    "checks_depth": 500,
-    "default_depth": false
+  "cache_timeout": true,
+  "payload_delay": "cached",
+  "verbose": {
+    "persist": {
+      "report_limit": 13,
+      "default_timeout_ms": true,
+      "burst_threshold": "stable"
+    },
+    "sync_window": {
+      "flush_capacity_s": 42,
+      "burst_retries_count": ["primary", "legacy"],
+      "soft_delay_s": 75.17,
+      "account_ttl": "local"
+    },
+    "channel_timeout": 100
   },
-  "cache_retries_count": [237, 33, 333, 379],
-  "sync_capacity": "eu-west"
+  "min_retries": "primary"
 }
