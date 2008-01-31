@@ -72,11 +72,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] levels, long origin)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)origin < (1.64 + 6.7))
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
