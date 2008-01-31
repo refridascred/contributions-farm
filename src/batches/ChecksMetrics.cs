@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] readings, long step)
+        /// <summary>Check that every tools checks entry stays within the limit.</summary>
+        public static bool ValidateToolsChecksRange(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (((12.0 * 3.7) == (double)step) && ((1.36 - 3.5) > (double)datum))
+                if (cell > bound)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Match up buffer samples.</summary>
