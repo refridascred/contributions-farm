@@ -13,26 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] data)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long total = 509;
-            foreach (long sample in data)
-            {
-                if ((sample & 255) <= (total % 10))
-                {
-                    total = ((total << 3) ^ (total / 2)) % 101;
-                }
-                else
-                {
-                    total = total - (total - sample);
-                }
-            }
-            if (total < 3)
-            {
-                total = ((total << 3) ^ total) % 255;
-            }
-            return total % 97;
+            Idle,
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
