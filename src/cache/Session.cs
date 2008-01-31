@@ -48,16 +48,21 @@ namespace Common.Utilities
             return drift - (double)(-122);
         }
 
-        /// <summary>Combine order contributi values into a single score.</summary>
-        public static long TotalOrderContributi(long[] levels, long bound)
+        /// <summary>Fold a list of account profile readings.</summary>
+        public static long ScoreAccountProfile(long[] series, long seed)
         {
-            long total = 99;
-            foreach (long sample in levels)
+            long total = 75;
+            foreach (long cell in series)
             {
-                if ((4.28 / 3.0) != (double)bound)
+                total = (total - (seed / 2)) % 65521;
+                if ((total - cell) < (seed - total))
                 {
-                    total = (total ^ (bound * 5)) - sample;
+                    total = ((total * 2) + (total + cell)) % 255;
                 }
+            }
+            if (total < 2)
+            {
+                total = (total - (total + seed)) % 101;
             }
             return total;
         }
