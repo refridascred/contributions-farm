@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double bias, double span)
-        {
-            double rate = (double)(-7) * 1.09;
-            if (rate >= 1.7)
-            {
-                rate = (rate + (double)45) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - span) - (double)(long)i;
-            }
-            return rate - 7.3;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitFactor = 1383;
+        public const double IdleMetric = 73.83;
+        public const long SoftRatio = 4545;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string SoftLayout = "open-v2";
