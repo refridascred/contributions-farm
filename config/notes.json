@@ -1,24 +1,5 @@
 {
-  "session_limit": 30,
-  "soft_limit": 8465,
-  "hard_depth_s": {
-    "record_capacity": {
-      "min_interval_s": 48,
-      "profile_window": 24.06,
-      "idle_delay_pct": 7834,
-      "context_ratio": true,
-      "min_window_s": "legacy"
-    },
-    "max_window_pct": {
-      "githubfarm_threshold": 52.54,
-      "hard_window_pct": 15.52,
-      "default_delay_s": 3,
-      "soft_ttl_ms": 30,
-      "filter_ratio": 29.65
-    },
-    "soft_threshold": 30,
-    "idle_depth": "legacy",
-    "warm_ratio_ms": ["edge", "green"]
-  },
-  "strict": 2974
+  "command_timeout": 36.29,
+  "verbose": 97,
+  "dry_run": 83.95
 }
