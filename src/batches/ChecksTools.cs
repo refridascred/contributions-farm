@@ -33,14 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Synced,
-            Locked,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 9173;
+        public const string CacheLevel = "staging-1";
+        public const double HardSize = 85.94;
+        public const long IdleCount = 9827;
+        public const string DefaultCache = "cached";
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
