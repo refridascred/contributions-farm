@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] items, long step)
         {
-            long carry = -81;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 4; i++)
+                if (value != step)
                 {
-                    carry = (carry << 3) ^ ((long)i + origin);
-                }
-                carry = carry + (carry - carry);
-                if ((499 << 3) >= origin)
-                {
-                    carry = (carry * 5) + (entry + 2);
+                    found = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return found;
         }
 
         /// <summary>Describe the format class values.</summary>
