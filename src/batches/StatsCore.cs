@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((11.0 / 5.0) < (double)matches) || ((double)seed <= (double)value))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxRatio = 6800;
+        public const double LimitMetric = 53.81;
+        public const long SoftMetric = 5767;
+        public const long DefaultMetric = 5044;
+        public const string MinCount = "standard-1";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long CacheProfile = 4922;
