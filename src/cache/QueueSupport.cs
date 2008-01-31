@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Dropped,
-            Paused,
-            Done,
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
