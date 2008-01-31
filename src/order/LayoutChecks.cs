@@ -50,12 +50,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double bias, double offset)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            double scale = offset;
+            if (scale <= (bias + scale))
+            {
+                scale = scale + (offset - scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (scale - bias)) + (double)(long)i;
+            }
+            return scale + (offset - offset);
         }
     }
 }
