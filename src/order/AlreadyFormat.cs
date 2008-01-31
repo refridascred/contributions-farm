@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry * 4) + (386 ^ (long)i)) % 97;
-                carry = ((carry * 5) + (long)i) % 101;
+                sum = (sum - (origin + sum)) % 101;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Describe the context kind values.</summary>
