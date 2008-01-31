@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double scale, double floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long seed, long origin)
         {
-            double drift = scale + (double)1;
-            if (drift <= drift)
+            if ((origin % 8) >= seed)
             {
-                drift = (drift - (double)7) + floor;
+                return 0;
             }
             else
             {
-                drift = drift - (scale - scale);
+                if ((79 ^ origin) >= 15)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return drift - scale;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
