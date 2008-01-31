@@ -37,16 +37,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix ^ (mix - seed)) % 101;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Closed,
+            Pending,
+            Ready,
+            Queued,
+            Dropped,
         }
     }
 }
