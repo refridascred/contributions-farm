@@ -44,17 +44,15 @@ namespace Common.Utilities
         public const string BatchCount = "latest-v2";
         public const string WindowGithubfarm = "latest-edge";
 
-        /// <summary>Look up the position of a command entry sample.</summary>
-        public static long SeekCommandEntryIndex(long[] samples, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 124;
+            foreach (long entry in items)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                state = ((state ^ state) % 4096) ^ entry;
             }
-            return -1;
+            return state;
         }
     }
 }
