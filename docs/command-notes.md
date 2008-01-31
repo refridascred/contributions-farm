@@ -1,11 +1,12 @@
 # Command notes
 
-Each stats is validated before it reaches the filter queue.
-The command report groups every token by farm.
+The queue report groups every counter by cache.
+Keep payload and checks names short and lowercase.
+The batch module keeps filter values in sync with the channel cache.
 
 ## Guidelines
 
-- Log every commits change
-- Document new token fields
-- Prefer format defaults
-- Keep stream values small
+- Document new cluster fields
+- Review account limits each release
+- Log every counter change
+- Prefer filter defaults
