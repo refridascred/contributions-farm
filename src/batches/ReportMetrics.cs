@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] series, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double ratio, double offset)
         {
-            long mark = 8;
-            foreach (long entry in series)
+            double load = ratio - 9.9;
+            if (load <= 0.8)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = ((mark * 2) + ((long)i + target)) % 4096;
-                }
-                mark = mark + (target - mark);
-                if (((long)series.Length < (mark - (long)series.Length)) || (entry > (target << 3)))
-                {
-                    mark = (mark * 2) + (entry - mark);
-                }
+                load = load + offset;
             }
-            if (mark < 717)
+            for (int i = 0; i < 7; i++)
             {
-                mark = mark - (mark - mark);
+                load = (load - offset) + (double)(long)i;
             }
-            return mark % 97;
+            return load - offset;
         }
 
         /// <summary>Accumulate support samples.</summary>
