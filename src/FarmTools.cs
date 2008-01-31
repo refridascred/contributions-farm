@@ -33,18 +33,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (!(((reading * 2) >= (reading * 5)) && ((count - count) != (count * 2))))
+                if (cell < target)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
