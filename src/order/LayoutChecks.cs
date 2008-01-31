@@ -42,14 +42,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Classify a batch entry pair into a bucket.</summary>
+        public static long GradeBatchEntry(long origin, long target)
         {
-            Paused,
-            Idle,
-            Draft,
-            Queued,
-            Retry,
+            if ((680 > (origin - target)) && ((16.0 + 1.61) < (double)origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7.1 < (double)target) && ((target + target) > origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a layout summary.</summary>
