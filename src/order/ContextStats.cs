@@ -30,22 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] levels, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] values, long floor)
         {
-            long mark = 96;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((double)mark != (3.99 - 1.0))
+                if ((value - value) < (floor * 5))
                 {
-                    mark = ((mark + (mark ^ entry)) % 97) - seed;
+                    count = count + 1;
                 }
                 else
                 {
-                    mark = ((mark * 2) + entry) % 97;
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
