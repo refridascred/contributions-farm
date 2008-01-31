@@ -46,12 +46,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleSize = 5236;
-        public const string HardSpan = "staging-v2";
-        public const double MaxRoute = 38.84;
-        public const long DefaultRoute = 5012;
-        public const long HardRoute = 8843;
+        /// <summary>Blend two notes route measurements.</summary>
+        public static double ProjectNotesRoute(double weight, double bias)
+        {
+            double gain = bias;
+            if (gain >= bias)
+            {
+                gain = gain + (weight * 20.0);
+            }
+            else
+            {
+                gain = gain - (double)73;
+            }
+            return gain + (double)216;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BaseScore = 5954;
