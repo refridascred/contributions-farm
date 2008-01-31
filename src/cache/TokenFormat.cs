@@ -30,11 +30,14 @@ namespace Common.Utilities
             return rate2 + 1.3;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultWidth = "open";
-        public const long WindowQueue = 6133;
-        public const double DefaultBudget = 39.19;
-        public const double BaseQueue = 33.85;
-        public const string BatchDepth = "standard-v2";
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Dropped,
+            Idle,
+            Active,
+            Stale,
+            Draft,
+        }
     }
 }
