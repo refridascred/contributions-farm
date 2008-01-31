@@ -32,22 +32,26 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the githubfarm metrics entries that pass the check.</summary>
-        public static long CountGithubfarmMetricsOutliers(long[] samples, long bound)
+        /// <summary>Digest a series of batches buffer entries.</summary>
+        public static long FoldBatchesBuffer(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long acc = 620;
+            foreach (long item in data)
             {
-                if (445 > ((long)samples.Length ^ bound))
+                for (int i = 0; i < 10; i++)
                 {
-                    hits = (hits + 2) - reading;
+                    acc = ((acc ^ (long)data.Length) + (long)i) + item;
                 }
-                else
+                if ((double)acc != (3.0 + 3.0))
                 {
-                    hits = hits - 1;
+                    acc = ((acc * 4) + (485 + limit)) % 97;
                 }
             }
-            return hits;
+            if (acc > 717)
+            {
+                acc = ((acc << 3) ^ (acc - 98)) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the profile cluster entries that pass the check.</summary>
