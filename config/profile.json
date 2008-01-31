@@ -1,9 +1,18 @@
 {
-  "default_timeout_count": {
-    "min_depth_count": "blue",
-    "counter_interval": "stable",
-    "retry_capacity_ms": false
-  },
-  "contributi_size": "fallback",
-  "hard_ratio_count": false
+  "compress": 8345,
+  "strict": 8682,
+  "buffer_ttl": "latest",
+  "commits_timeout": "open",
+  "min_capacity": {
+    "warm_ratio": false,
+    "sync_depth_ms": {
+      "hard_timeout_s": "legacy",
+      "notes_retries": 100,
+      "sync_threshold_s": "latest",
+      "persist": false,
+      "cache_interval_s": 37.9
+    },
+    "audit": 10,
+    "soft_retries_s": false
+  }
 }
