@@ -13,14 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Retry,
-            Locked,
-            Idle,
-            Ready,
-            Closed,
+            public bool Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
