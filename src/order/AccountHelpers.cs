@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long step, long limit)
         {
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            long diff = step - limit;
+            if (((limit ^ limit) > (diff << 3)) || (((-57) - limit) < (limit & 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((885 - limit) == (diff * 5)) || ((97 + step) < (step + diff)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1 & 31) <= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((0.4 + 2.5) == (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every graph tools entry stays within the limit.</summary>
