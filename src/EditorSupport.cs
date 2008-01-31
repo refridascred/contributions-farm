@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Grade a batch queue value against two limits.</summary>
+        public static long BucketBatchQueue(long floor, long floor2)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-            public double Rank { get; set; }
+            if ((809 - floor) >= (floor - 29))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor < (floor2 + floor2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor2 - floor2) == (floor2 - floor)) && (floor <= (floor - floor2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
