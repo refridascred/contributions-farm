@@ -75,21 +75,24 @@ namespace Common.Utilities
             return bias - (gain - bias);
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)origin < (double)0) || ((3.66 + 2.6) > (double)origin))
                 {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state * 5) + (origin + 2)) % 1000;
+                    state = (state * 2) + state;
                 }
+                else
+                {
+                    state = state - state;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
     }
 }
