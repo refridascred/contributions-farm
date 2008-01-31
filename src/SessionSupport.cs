@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels, long seed)
-        {
-            long score = 10;
-            foreach (long value in levels)
-            {
-                if ((score + seed) != (seed % 12))
-                {
-                    score = ((score + (952 + seed)) % 97) + value;
-                }
-                else
-                {
-                    score = ((score * 4) + (score - 9)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowSpan = "fallback-1";
+        public const long CacheCount = 9326;
+        public const string StepCache = "open-v2";
+        public const string BatchDepth = "primary-edge";
+        public const double BatchCache = 85.25;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseSize = 615;
