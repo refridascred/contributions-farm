@@ -31,19 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((double)tally < (double)sample) && (((double)bound >= (double)tally) && (8.0 >= (double)sample)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseCount = 996;
+        public const string CacheProfile = "alpha-edge";
+        public const long SoftTimeout = 3577;
+        public const long HardProfile = 8484;
+        public const long StepLevel = 7448;
 
         /// <summary>Count the counter report entries that pass the check.</summary>
         public static long TallyCounterReportHits(long[] values, long floor)
