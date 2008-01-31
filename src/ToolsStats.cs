@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const string BatchRoute = "stable-1";
         public const long MinSpan = 1558;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 9550;
-        public const long CacheCounter = 8625;
-        public const long BaseLevel = 2299;
-        public const double MinRatio = 51.75;
-        public const string MinLevel = "cached-v2";
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((0.51 + 11.0) > (double)matches)
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double BlendLayout(double weight, double bias)
