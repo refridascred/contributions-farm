@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "latest-v2";
-        public const string MaxReport = "stable-v2";
-        public const string SoftReport = "primary-edge";
-        public const long HardDepth = 5478;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleWidth = 5001;
