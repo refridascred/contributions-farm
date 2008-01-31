@@ -30,17 +30,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a batch cluster sample.</summary>
-        public static long LocateBatchClusterIndex(long[] samples, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Synced,
+            Closed,
         }
     }
 }
