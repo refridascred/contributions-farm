@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] series, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] samples, long origin)
         {
             bool ready = true;
-            foreach (long sample in series)
+            foreach (long reading in samples)
             {
-                if (sample != seed)
+                if (reading != origin)
                 {
                     ready = false;
                     break;
