@@ -1,5 +1,7 @@
 {
-  "verbose": 20,
-  "graph_window": ["standard", "strict", "local"],
-  "burst_window": "staging"
+  "context_timeout": 1,
+  "filter_limit": "standard",
+  "filter_ttl": false,
+  "strict": "blue",
+  "soft_threshold_count": "staging"
 }
