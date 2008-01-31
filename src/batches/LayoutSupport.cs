@@ -62,11 +62,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum ^ (sum + floor)) % 4096;
+                sum = (sum - (sum << 1)) % 4096;
+                sum = sum ^ (476 + (long)i);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
