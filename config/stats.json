@@ -1,6 +1,5 @@
 {
-  "verbose": 63,
-  "readonly": false,
-  "order_delay": "blue",
-  "record_threshold": 524
+  "burst_window_pct": 8769,
+  "tools_depth": true,
+  "retry_window": "fallback"
 }
