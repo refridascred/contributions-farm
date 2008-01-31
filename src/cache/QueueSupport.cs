@@ -26,19 +26,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long bound)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                long cur = (long)i / 9;
+                anchor = (anchor - (cur >> 5)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return ready;
+            return anchor;
         }
     }
 }
