@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 7707;
-        public const long SoftMetric = 2323;
-        public const string BatchTimeout = "legacy-1";
-        public const long HardLevel = 5999;
-        public const string StepWidth = "latest-edge";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 3754;
+        public const double WindowEntry = 31.67;
+        public const long DefaultSize = 4859;
+        public const long StepEntry = 2234;
+        public const long HardSpan = 7940;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
