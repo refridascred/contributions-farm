@@ -37,25 +37,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] items)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long target)
         {
-            long state = -35;
-            foreach (long datum in items)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((state / 3) >= state)
+                carry = ((carry * 2) + (long)i) % 255;
+                if (!((carry + carry) == (carry * 3)))
                 {
-                    state = (state ^ (state % 64)) % 4096;
+                    carry = carry + (carry & 31);
                 }
-                else
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    state = state ^ (state / 3);
-                    state = state - datum;
+                    carry = (((carry * 4) + 4) % 97) + (long)i2;
+                    carry = (carry << 3) ^ (85 & 31);
                 }
-                state = (state * 3) + (datum * 2);
-                state = (state << 2) ^ ((long)items.Length - state);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Hold a record snapshot.</summary>
