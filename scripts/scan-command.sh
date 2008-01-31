@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest standard staging; do
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in cached green; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
+mode="${1:-local}"
 case "${mode}" in
-    edge)
+    legacy)
         log "fast path"
         ;;
     *)
