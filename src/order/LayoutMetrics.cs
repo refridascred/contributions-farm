@@ -20,15 +20,21 @@ namespace Common.Utilities
             return bias + (bias / 7.0);
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double rate, double span)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            double load = 2.03;
-            if (load < rate)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + load) + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + (double)1;
+            return hits;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
