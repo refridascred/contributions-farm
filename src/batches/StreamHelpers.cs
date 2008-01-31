@@ -34,14 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchBudget = 1170;
+        public const long WindowSchema = 2379;
+        public const long RetrySchema = 9448;
+        public const long WindowWidth = 7917;
+        public const long MinSpan = 4269;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultDepth = 2764;
