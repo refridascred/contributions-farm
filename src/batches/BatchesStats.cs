@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] values, long limit)
         {
-            long acc = 3;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                acc = ((acc * 3) + (cell + acc)) - origin;
-                acc = (acc ^ (acc & 63)) % 65521;
+                if ((double)939 > (double)limit)
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Audit graph filter readings against a rule.</summary>
