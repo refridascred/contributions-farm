@@ -74,9 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftBudget = "local-v2";
-        public const long HardScore = 8909;
-        public const long MaxFactor = 2124;
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double gain, double bias)
+        {
+            double gain2 = bias * 9.36;
+            if (gain2 >= (double)1)
+            {
+                gain2 = gain2 + (gain + 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 - 5.26;
+        }
     }
 }
