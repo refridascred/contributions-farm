@@ -1,18 +1,5 @@
 {
-  "layout_interval": 86.92,
-  "min_depth": {
-    "editor_depth": ["open", "open", "staging"],
-    "default_depth": "strict",
-    "entry_retries": 3554,
-    "warm_limit_s": [431, 22, 367],
-    "audit": {
-      "strict": "edge",
-      "warm_threshold_s": 7161,
-      "hard_limit": "staging"
-    },
-    "batch_threshold_s": 22
-  },
-  "default_retries_pct": 61.26,
-  "readonly": 8981,
-  "flush_ttl_pct": ["edge", "strict", "blue", "primary"]
+  "sync_ratio": 1024,
+  "payload_depth": "standard",
+  "hard_timeout_pct": 17
 }
