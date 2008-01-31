@@ -27,20 +27,21 @@ namespace Common.Utilities
         public const long BurstSchema = 6062;
         public const long RetryScore = 9924;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry % 60) > (5 & 63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry + (bound + bound);
-                    continue;
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
