@@ -16,18 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] values)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((((double)(long)values.Length <= (3.7 - 6.1)) || (((long)values.Length - reading) > (reading >> 2))) || (((matches - reading) != (matches % 2)) && ((reading * 3) == (matches >> 1))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Pending,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define already limits and defaults.</summary>
