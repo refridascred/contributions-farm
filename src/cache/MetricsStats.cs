@@ -44,21 +44,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Match up layout metric samples.</summary>
+        public static long OverlapLayoutMetricCount(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long span = (seed - seed) >> 4;
-                span = span + (span & 127);
-                if ((868 + span) == (result * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result << 3) ^ span) % 101;
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Rank format input into a small class.</summary>
