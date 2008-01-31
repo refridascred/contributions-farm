@@ -61,14 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] readings, long floor)
         {
-            Closed,
-            Stale,
-            Pending,
-            Queued,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
