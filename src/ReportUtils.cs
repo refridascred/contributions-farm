@@ -115,19 +115,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] levels, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long offset, long limit)
         {
-            long anchor = 355;
-            foreach (long reading in levels)
+            if ((limit + offset) <= (6 >> 5))
             {
-                anchor = (((anchor * 5) + (bound >> 2)) % 255) + reading;
+                return 4;
             }
-            if (anchor < 4)
+            else
             {
-                anchor = (anchor << 3) ^ anchor;
+                if ((limit * 3) < (offset + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset >> 5) <= (404 + limit)) || ((limit / 8) < 93))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit & 63) < 79)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
     }
 }
