@@ -42,24 +42,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((limit + limit) < (limit + total)))
+                if (readings[i] > limit)
                 {
-                    total = (total - (limit + limit)) % 4096;
+                    return (long)i;
                 }
-                if (!((limit / 9) >= (-93)))
-                {
-                    total = (total - limit) % 4096;
-                }
-                total = (total ^ (limit & 3)) % 255;
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
     }
 }
