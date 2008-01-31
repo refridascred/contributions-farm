@@ -28,18 +28,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinSpan = 6883;
+        public const string RetrySize = "strict-v2";
+        public const long MaxSize = 8087;
+        public const long SoftCache = 116;
+        public const long RetryBudget = 1073;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] values)
