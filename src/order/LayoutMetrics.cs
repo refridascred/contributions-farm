@@ -20,32 +20,12 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Rank filter route input into a small class.</summary>
-        public static long BucketFilterRoute(long limit, long step)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long bound = limit - step;
-            if ((step >> 1) <= (step << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((6 & 15) <= (bound - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.0 / 4.0) >= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
