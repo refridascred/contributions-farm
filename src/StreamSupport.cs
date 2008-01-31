@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count order report pairs that satisfy a relation.</summary>
-        public static long MatchOrderReportCount(long[] values)
+        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
+        public static bool VerifyQueueGithubfarmRange(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item > origin)
                 {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Accumulate graph samples.</summary>
