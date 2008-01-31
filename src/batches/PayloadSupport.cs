@@ -20,11 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double bias, double floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double gain = bias;
-            return (gain - (double)805) + floor;
+            Stale,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
