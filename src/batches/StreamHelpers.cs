@@ -34,14 +34,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Active,
-            Paused,
-            Retry,
-            Done,
-            Synced,
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
