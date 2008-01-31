@@ -50,19 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile payload entries.</summary>
-        public static long CombineProfilePayload(long[] items)
+        /// <summary>Digest a series of context order entries.</summary>
+        public static long TotalContextOrder(long[] series, long limit)
         {
-            long carry = 121;
-            foreach (long entry in items)
+            long mark = 6;
+            foreach (long reading in series)
             {
-                carry = (((carry << 3) ^ (44 << 1)) % 65521) - entry;
+                if (!((mark ^ limit) < (limit + limit)))
+                {
+                    mark = ((mark * 3) + (reading + limit)) % 65521;
+                }
             }
-            if (carry < 20)
-            {
-                carry = carry ^ (carry % 8);
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Hold a metric entry.</summary>
