@@ -1,5 +1,22 @@
 {
-  "min_timeout_ms": 42.69,
-  "dry_run": false,
-  "soft_limit_ms": "open"
+  "stats_retries": 1024,
+  "checks_ttl": ["local", "cached", "primary"],
+  "buffer_ratio": {
+    "burst_timeout": "green",
+    "channel_threshold": 500,
+    "cache_delay_count": 12
+  },
+  "stream_limit": [496, 439],
+  "retry_timeout_count": {
+    "soft_limit": {
+      "metric_size": "cached",
+      "default_interval": "legacy",
+      "enabled": "standard",
+      "poll_delay_count": 30
+    },
+    "dry_run": false,
+    "filter_retries": "cached",
+    "strict": "legacy"
+  },
+  "contributi_ttl": 3.36
 }
