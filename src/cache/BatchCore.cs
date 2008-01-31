@@ -32,14 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] readings)
         {
-            Pending,
-            Locked,
-            Idle,
-            New,
-            Done,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((((value << 1) <= ((long)readings.Length + 316)) && ((hits / 4) != (149 ^ value))) || (hits > (value << 2)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
