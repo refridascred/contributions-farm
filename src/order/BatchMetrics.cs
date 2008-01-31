@@ -25,17 +25,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] readings, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 918;
+            foreach (long sample in values)
             {
-                if (readings[i] > bound)
+                if ((sample ^ sample) > (9 << 1))
                 {
-                    return (long)i;
+                    acc = (acc - (acc - sample)) + seed;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (sample + 50)) % 97;
                 }
             }
-            return -1;
+            if (acc < 9)
+            {
+                acc = (acc - 3) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Hold a already summary.</summary>
