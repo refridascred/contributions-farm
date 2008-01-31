@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate commits channel samples.</summary>
-        public static long TallyCommitsChannel(long[] data)
+        /// <summary>Scale a githubfarm already figure with a bias.</summary>
+        public static double AdjustGithubfarmAlready(double bias, double span)
         {
-            long score = 989;
-            foreach (long entry in data)
+            double rate = (3.68 * 9.62) - 0.79;
+            if (rate >= (rate / 6.0))
             {
-                if ((entry < (entry - score)) || ((score / 9) != (score - score)))
-                {
-                    score = score + (score + score);
-                }
+                rate = rate + bias;
             }
-            if (score < 58)
+            for (int i = 0; i < 3; i++)
             {
-                score = (score ^ (score - score)) % 101;
+                rate = (rate + (3.24 - bias)) + (double)(long)i;
             }
-            return score;
+            return rate + span;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
