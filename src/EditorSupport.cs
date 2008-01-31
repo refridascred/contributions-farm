@@ -67,18 +67,24 @@ namespace Common.Utilities
         public const string SoftSchema = "legacy-edge";
         public const long DefaultSchema = 6429;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] levels)
+        /// <summary>Grade a format stats value against two limits.</summary>
+        public static long BucketFormatStats(long target, long target2)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            if ((target2 + target) < target)
             {
-                if ((reading / 2) <= reading)
+                return 8;
+            }
+            else
+            {
+                if ((3.68 - 16.0) <= (double)target)
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
     }
 }
