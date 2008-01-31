@@ -1,14 +1,12 @@
 {
-  "compress": 7.26,
-  "warm_ratio": [279, 244, 157, 270],
-  "poll_interval": false,
-  "already_delay": 5390,
-  "enabled": {
-    "retry_threshold_count": ["latest", "primary"],
-    "order_threshold": 96.68,
-    "base_depth_count": "standard",
-    "warm_delay_ms": ["standard", "legacy", "cached"],
-    "default_capacity_count": "local"
+  "queue_timeout": 79.04,
+  "cache_interval_ms": true,
+  "verbose": {
+    "base_delay_pct": 6,
+    "githubfarm_interval": 43.24,
+    "poll_window_ms": "blue",
+    "flush_size": "latest"
   },
-  "entry_delay": ["legacy", "cached", "green"]
+  "warm_ratio_pct": ["staging", "primary", "standard", "primary"],
+  "warm_threshold": true
 }
