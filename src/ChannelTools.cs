@@ -12,13 +12,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long bound)
         {
-            Failed,
-            Ready,
-            Queued,
-            Pending,
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((anchor << 2) <= (anchor + bound))
+                {
+                    anchor = (anchor * 2) + (913 & 3);
+                    anchor = anchor + (21 + anchor);
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
