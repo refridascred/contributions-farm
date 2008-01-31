@@ -41,11 +41,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public bool Limit { get; set; }
             public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
