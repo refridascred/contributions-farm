@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = span;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + gain) + (double)(long)i;
             }
-            return seen;
+            return drift + drift;
         }
 
         /// <summary>Describe the metric class values.</summary>
