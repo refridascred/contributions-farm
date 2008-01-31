@@ -30,24 +30,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] series, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long anchor = -74;
-            foreach (long item in series)
-            {
-                if ((82 << 1) > bound)
-                {
-                    anchor = anchor + item;
-                }
-                anchor = (anchor << 3) ^ item;
-                anchor = anchor + item;
-            }
-            if (anchor < 84)
-            {
-                anchor = (anchor - bound) % 255;
-            }
-            return anchor;
+            Pending,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count the cache account entries that pass the check.</summary>
