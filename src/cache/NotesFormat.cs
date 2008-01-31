@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] data, long step)
         {
-            Idle,
-            Done,
-            Stale,
+            long total = 66;
+            foreach (long reading in data)
+            {
+                if ((double)step != (2.4 - 3.8))
+                {
+                    total = ((total ^ (step + total)) % 1000) ^ reading;
+                }
+                else
+                {
+                    total = (total - (long)data.Length) % 255;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the report kind values.</summary>
