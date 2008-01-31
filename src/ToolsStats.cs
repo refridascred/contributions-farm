@@ -92,11 +92,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Classify a route channel pair into a bucket.</summary>
+        public static long BucketRouteChannel(long bound, long limit)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            if (((double)limit != (double)bound) || ((2.6 / 4.0) < (double)limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound / 7) <= 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
