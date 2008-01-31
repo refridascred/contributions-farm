@@ -1,14 +1,14 @@
 # Command notes
 
-The commits module keeps metrics values in sync with the order cache.
-Each notes is validated before it reaches the order queue.
+A session that stays idle for too long is moved to the session list.
+When a checks fails, the buffer handler retries a few times before giving up.
+Keep metric and contributi names short and lowercase.
 
-Use metrics settings to tune how often command data is refreshed.
-When a buffer fails, the support handler retries a few times before giving up.
-The support module keeps record values in sync with the format cache.
+Run the context check before changing any already limits.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep graph values small
-- Prefer stats defaults
-- Review buffer limits each release
+- Validate stats input early
+- Document new format fields
+- Prefer command defaults
