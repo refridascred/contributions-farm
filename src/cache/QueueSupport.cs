@@ -26,13 +26,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
+            Dropped,
             Locked,
-            Done,
-            Draft,
-            Idle,
+            Stale,
         }
     }
 }
