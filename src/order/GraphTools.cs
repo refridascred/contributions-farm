@@ -40,15 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] readings, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if (entry < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
