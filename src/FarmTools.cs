@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 2815;
-        public const string CacheWidth = "open-v2";
-        public const long StepMetric = 6019;
-        public const double HardMetric = 7.66;
-        public const long SoftSize = 7526;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long origin, long limit)
