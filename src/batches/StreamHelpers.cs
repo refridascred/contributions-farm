@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] items, long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Pending,
+            Failed,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
