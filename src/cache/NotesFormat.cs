@@ -16,14 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] samples)
         {
-            Ready,
-            Queued,
-            Idle,
-            Done,
-            Failed,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((-9) < count) && ((count + 37) == (109 + count)))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the counter state values.</summary>
