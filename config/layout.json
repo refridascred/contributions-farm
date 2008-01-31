@@ -1,6 +1,13 @@
 {
-  "min_limit": "local",
-  "batch_limit": "staging",
-  "burst_size_s": 79.7,
-  "token_threshold": 14.19
+  "verbose": false,
+  "min_capacity_pct": "eu-west",
+  "batch_delay": 1024,
+  "enabled": 8492,
+  "readonly": {
+    "soft_depth": 60.54,
+    "strict": 500,
+    "hard_retries_s": [116, 443, 174, 296],
+    "queue_depth": "primary",
+    "cache_ratio_ms": "fallback"
+  }
 }
