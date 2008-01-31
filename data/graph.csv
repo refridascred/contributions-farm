@@ -1,7 +1,7 @@
-id,ratio,label,count
-1,733,73.2,75.57
-2,319,standard,open
-3,57.88,540,333
-4,98.11,latest,69.87
-5,primary,554,edge
-6,60,32.52,14.48
+id,score,weight
+1,248,16.81
+2,edge,840
+3,11.89,49.5
+4,legacy,blue
+5,17.22,staging
+6,490,58.38
