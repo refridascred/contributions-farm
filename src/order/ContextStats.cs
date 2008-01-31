@@ -14,12 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 6131;
-        public const long MinCount = 3582;
-        public const long BaseScore = 8602;
-        public const string DefaultEditor = "strict-v2";
-        public const string HardEditor = "local";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + 87) < sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long ScoreMetric(long[] levels, long seed)
