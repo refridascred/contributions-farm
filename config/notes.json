@@ -1,20 +1,7 @@
 {
-  "record_ttl": ["edge", "latest"],
-  "command_threshold": {
-    "graph_capacity": 51.18,
-    "retry_ttl_pct": false,
-    "burst_retries_ms": ["open", "green"],
-    "audit": {
-      "entry_delay": 33,
-      "strict": "cached",
-      "min_retries": true,
-      "audit": 5343,
-      "verbose": 8082,
-      "retry_window_count": 15.28
-    },
-    "metrics_depth": 1638,
-    "batch_capacity_pct": 12.41
-  },
-  "strict": ["eu-west", "fallback", "green", "latest"],
-  "cache_timeout": "strict"
+  "hard_timeout": 65.71,
+  "buffer_threshold": "cached",
+  "strict": "cached",
+  "batch_size": 8623,
+  "warm_limit_pct": false
 }
