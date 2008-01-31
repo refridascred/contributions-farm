@@ -50,19 +50,16 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] data, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc << 2) ^ (757 / 7)) % 101;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Describe the batch phase values.</summary>
