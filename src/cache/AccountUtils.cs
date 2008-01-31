@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
+            long result = 84;
+            foreach (long cell in levels)
+            {
+                result = ((result << 3) ^ (result & 127)) + cell;
+            }
+            return result;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
