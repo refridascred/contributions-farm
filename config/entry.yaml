@@ -1,9 +1,24 @@
 # entry settings
-sync_window:
-  - local
-  - standard
-idle_capacity: 44.01
-order_size:
-  - eu-west
-  - fallback
-  - strict
+cluster_window: 4635
+soft_limit_s: 7005
+cache_window_count: 21.0
+route_delay:
+  max_window_s:
+    - 87
+    - 199
+    - 59
+  hard_delay_ms: 98
+  soft_limit_ms:
+    - 83
+    - 255
+    - 235
+  metrics_delay:
+    enabled: 4781
+    readonly: 1024
+    already_window: legacy
+  enabled: 1024
+  soft_threshold:
+    retry_ttl_count: 2091
+    stream_ratio: 88.6
+    strict: local
+    burst_capacity_ms: strict
