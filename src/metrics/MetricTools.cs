@@ -51,15 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next already batch value from a seed.</summary>
-        public static long SeriesAlreadyBatch(long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if ((double)reading == (7.0 * 2.4))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
