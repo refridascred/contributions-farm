@@ -21,18 +21,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "fallback";
+        public const long HardCluster = 3038;
+        public const long MaxCluster = 4823;
+        public const double CacheDepth = 92.58;
+        public const long MinCluster = 452;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchInterval = 9713;
