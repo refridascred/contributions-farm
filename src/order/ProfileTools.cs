@@ -32,17 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] readings, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (readings[i] > origin)
+                if (reading < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
