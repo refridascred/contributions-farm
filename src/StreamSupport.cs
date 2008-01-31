@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total * 2) + bound;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Pending,
+            Paused,
+            Failed,
+            New,
+            Locked,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
