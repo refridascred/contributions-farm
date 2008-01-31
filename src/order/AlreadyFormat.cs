@@ -17,20 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryLevel = 2642;
+        public const long SoftCount = 9514;
+        public const double LimitTimeout = 38.12;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] data, long bound)
