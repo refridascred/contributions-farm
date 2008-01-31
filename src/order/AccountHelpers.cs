@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double scale, double floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long bound)
         {
-            double scale2 = 3.48;
-            if (scale2 <= (floor / 7.0))
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                scale2 = scale2 - (3.5 - scale2);
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                scale2 = scale2 - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - scale2) - (double)(long)i;
-            }
-            return scale2 + (scale2 - scale2);
+            return result;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
