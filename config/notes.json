@@ -1,5 +1,15 @@
 {
-  "max_capacity": "primary",
-  "idle_threshold": "stable",
-  "poll_threshold_ms": 7003
+  "cache_ttl": "staging",
+  "base_interval_ms": {
+    "command_window": 61.79,
+    "max_threshold_s": 7.56,
+    "verbose": {
+      "base_limit_s": "primary",
+      "soft_threshold": "legacy",
+      "notes_window": 15.49
+    }
+  },
+  "warm_depth": 5628,
+  "max_ttl_ms": 69.75,
+  "idle_ttl": [439, 109, 53, 339]
 }
