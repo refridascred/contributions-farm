@@ -42,19 +42,18 @@ namespace Common.Utilities
         public const string LimitLevel = "cached-edge";
         public const double StepContributi = 76.62;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] readings, long offset)
+        /// <summary>Count the cache account entries that pass the check.</summary>
+        public static long MeasureCacheAccountHits(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (datum <= offset)
+                if ((double)seen < (0.71 + 15.0))
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 1) ^ sample) - seed;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
