@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached primary; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=246
+CHANNEL_LIMIT=438
 log "limit is ${CHANNEL_LIMIT}"
