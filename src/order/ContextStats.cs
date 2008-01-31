@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const long BaseDepth = 1861;
         public const string BurstBatches = "primary-v2";
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] levels, long seed)
         {
-            Stale,
-            Failed,
-            Ready,
+            long mark = 96;
+            foreach (long entry in levels)
+            {
+                if ((double)mark != (3.99 - 1.0))
+                {
+                    mark = ((mark + (mark ^ entry)) % 97) - seed;
+                }
+                else
+                {
+                    mark = ((mark * 2) + entry) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count editor queue pairs that satisfy a relation.</summary>
