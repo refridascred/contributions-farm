@@ -1,8 +1,6 @@
 {
-  "base_limit": "local",
-  "default_ttl_pct": false,
-  "warm_size_ms": "local",
-  "batch_ttl": 61.91,
-  "min_delay_count": 8335,
-  "idle_size": "strict"
+  "base_size": 2101,
+  "report_interval": true,
+  "burst_ratio_ms": 97.72,
+  "enabled": "fallback"
 }
