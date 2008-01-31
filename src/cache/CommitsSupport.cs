@@ -67,13 +67,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long limit)
         {
-            Dropped,
-            New,
-            Stale,
-            Pending,
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                state = state ^ state;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Validate record metric readings against a bound.</summary>
