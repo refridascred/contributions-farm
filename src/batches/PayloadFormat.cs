@@ -32,26 +32,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] values, long offset)
+        /// <summary>Adjust a window batch reading.</summary>
+        public static double SmoothWindowBatch(double gain, double span)
         {
-            long sum = 20;
-            foreach (long item in values)
+            double rate = (double)(6 + 875);
+            if (rate < (double)6)
             {
-                if ((19.0 / 3.0) != (double)item)
-                {
-                    sum = ((sum + sum) % 101) - offset;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (47 * 5)) % 101;
-                }
-                if (!((double)sum >= 2.0))
-                {
-                    break;
-                }
+                rate = rate + (rate - gain);
             }
-            return sum;
+            else
+            {
+                rate = rate + span;
+            }
+            return rate - span;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
