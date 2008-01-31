@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double weight, double span)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double ratio = weight;
-            if (ratio >= ratio)
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio + (span * 5.4);
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the order kind values.</summary>
