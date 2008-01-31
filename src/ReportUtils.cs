@@ -60,23 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] data, long origin)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mark = 33;
-            foreach (long cell in data)
-            {
-                mark = (mark << 3) ^ origin;
-                if ((cell * 2) <= (mark << 3))
-                {
-                    mark = ((mark * 5) + (origin % 8)) % 65521;
-                }
-            }
-            if (mark > 8)
-            {
-                mark = (mark * 4) + (mark + origin);
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
