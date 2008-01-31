@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleSize = 6298;
-        public const long MaxRecord = 7161;
-        public const long WindowSize = 1889;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepInterval = "staging";
+        public const long WindowRatio = 4011;
+        public const long DefaultTimeout = 6893;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsBounds(long[] readings, long floor)
