@@ -19,23 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] series, long floor)
+        /// <summary>Digest a series of notes contributi entries.</summary>
+        public static long ScoreNotesContributi(long[] levels)
         {
-            long result = 532;
-            foreach (long cell in series)
+            long acc = 289;
+            foreach (long item in levels)
             {
-                result = result - cell;
-                if (floor <= (result - result))
+                for (int i = 0; i < 10; i++)
                 {
-                    result = ((result << 3) ^ (21 / 2)) % 255;
+                    acc = (((acc * 3) + (acc % 3)) % 4096) + (long)i;
                 }
-                else
-                {
-                    result = result - (cell + 87);
-                }
+                acc = ((acc << 2) ^ (item << 2)) % 255;
+                acc = acc + (item ^ acc);
             }
-            return result % 65521;
+            return acc;
         }
 
         /// <summary>Iterate the filter stream series from a seed.</summary>
