@@ -20,14 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            Active,
-            Paused,
-            Queued,
-            Locked,
-            Ready,
+            long carry = target;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = carry + (carry - carry);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = ((carry << 3) ^ (carry ^ (long)i2)) % 1000;
+                    carry = (carry - carry) % 1000;
+                }
+                carry = carry - (carry + target);
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
