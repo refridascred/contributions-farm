@@ -24,17 +24,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (data[i] < offset)
+                if ((4.07 / 8.0) >= (double)entry)
                 {
-                    return (long)i;
+                    count = (count + 2) - floor;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
