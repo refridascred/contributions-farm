@@ -55,11 +55,24 @@ namespace Common.Utilities
             return drift - (drift * 17.0);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstFactor = 9025;
-        public const double RetryWidth = 53.09;
-        public const long StepSpan = 7973;
-        public const double DefaultAlready = 62.2;
+        /// <summary>Iterate the tools token series from a seed.</summary>
+        public static long SeriesToolsToken(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((carry + carry) < floor) || ((double)floor < (4.24 + 8.2)))
+                {
+                    carry = ((carry * 5) + carry) % 65521;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = ((carry ^ (carry ^ floor)) % 65521) - (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] readings)
