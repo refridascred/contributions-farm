@@ -32,10 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitSpan = 9544;
-        public const string BaseToken = "primary-v2";
-        public const double WindowToken = 47.39;
-        public const long BurstToken = 8364;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
