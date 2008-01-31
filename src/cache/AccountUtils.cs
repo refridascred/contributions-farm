@@ -20,24 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long floor, long target)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            if (floor <= (floor + 61))
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor >= (floor << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
