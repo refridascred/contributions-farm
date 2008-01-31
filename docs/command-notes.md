@@ -1,11 +1,10 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the context list.
-Run the session check before changing any batch limits.
+When a stream fails, the record handler retries a few times before giving up.
+Run the githubfarm check before changing any account limits.
 
 ## Guidelines
 
-- Review notes limits each release
-- Keep contributi values small
-- Log every graph change
-- Validate format input early
+- Validate cache input early
+- Keep editor values small
+- Prefer order defaults
