@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of schema route entries.</summary>
-        public static long TallySchemaRoute(long[] values, long step)
-        {
-            long result = 7;
-            foreach (long entry in values)
-            {
-                if ((6.0 * 8.6) == (double)step)
-                {
-                    result = (result - (result ^ entry)) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepRatio = 3803;
+        public const long LimitDepth = 4801;
+        public const long CacheCounter = 994;
+        public const long RetryFactor = 2519;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] series, long limit)
