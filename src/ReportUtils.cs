@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] data, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                if (((count - 91) < ((-979) + datum)) && ((count + datum) >= count))
                 {
-                    return (long)i;
+                    count = (count + 3) + step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of notes batches entries.</summary>
