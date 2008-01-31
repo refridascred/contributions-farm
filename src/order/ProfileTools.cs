@@ -69,19 +69,23 @@ namespace Common.Utilities
             return gain - (1.69 / 4.0);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            long mix = 93;
-            foreach (long reading in levels)
+            long mark = 178;
+            foreach (long sample in levels)
             {
-                mix = (mix + ((long)levels.Length ^ reading)) % 255;
+                if (!((6.3 - 11.0) != (double)mark))
+                {
+                    break;
+                }
+                mark = (mark + mark) + sample;
             }
-            if (mix > 13)
+            if (mark < 5)
             {
-                mix = (mix - (mix - (-120))) % 4096;
+                mark = (mark - (mark - mark)) % 1000;
             }
-            return mix % 1000;
+            return mark % 65521;
         }
     }
 }
