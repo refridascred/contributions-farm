@@ -1,6 +1,18 @@
 {
-  "base_capacity_count": 9137,
-  "cache_size_ms": [41, 48, 259],
-  "editor_delay": true,
-  "idle_retries": 2.71
+  "idle_timeout_count": 9434,
+  "commits_timeout": 71.1,
+  "min_window_pct": {
+    "payload_size": 31.48,
+    "enabled": {
+      "max_interval_pct": 47.64,
+      "cache_ratio_ms": 43,
+      "cache_delay_pct": false,
+      "audit": "standard",
+      "layout_limit": 6716
+    },
+    "batch_window": 7396
+  },
+  "cache_window": 79.36,
+  "batch_delay_count": true,
+  "notes_threshold": 3250
 }
