@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the entry batch entries that pass the check.</summary>
-        public static long MeasureEntryBatchOutliers(long[] items, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((6.0 + 0.54) > (double)limit)
+                if (((double)180 < (double)floor) && ((8 - seen) != (sample ^ seen)))
                 {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a channel reading.</summary>
