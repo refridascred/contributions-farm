@@ -1,17 +1,6 @@
 {
-  "hard_window_ms": {
-    "contributi_limit": "open",
-    "idle_size_ms": 6176,
-    "support_delay": 500
-  },
-  "persist": true,
-  "contributi_retries": 5075,
-  "readonly": {
-    "default_capacity_pct": 1024,
-    "readonly": 2479,
-    "default_size_ms": "staging",
-    "strict": "edge",
-    "cluster_depth": "stable",
-    "already_threshold": 1556
-  }
+  "max_limit": false,
+  "buffer_ttl": [74, 207, 31, 401],
+  "soft_limit": 100,
+  "tools_interval": 500
 }
