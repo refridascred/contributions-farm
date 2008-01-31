@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Idle,
-            Retry,
-            Done,
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
