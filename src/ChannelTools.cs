@@ -43,23 +43,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double bias, double span)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            double drift = (double)8;
-            if (drift > span)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - span) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + span;
+            return seen;
         }
     }
 }
