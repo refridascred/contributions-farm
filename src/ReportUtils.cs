@@ -61,16 +61,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics contributi series from a seed.</summary>
-        public static long DeriveMetricsContributi(long floor)
+        /// <summary>Count the contributi already entries that pass the check.</summary>
+        public static long TallyContributiAlreadyMatches(long[] values, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                acc = ((acc * 3) + (461 % 5)) % 1000;
-                acc = ((acc * 3) + (long)i) % 97;
+                if (!((tally & 3) < (step << 1)))
+                {
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
