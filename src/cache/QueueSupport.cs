@@ -12,11 +12,39 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "local-edge";
-        public const long BatchBudget = 5854;
-        public const double RetryLevel = 61.99;
-        public const double HardSize = 79.22;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long seed, long step)
+        {
+            if (seed >= (step + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.7 - 3.5) > (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step << 3) > (seed - step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(seed > (52 & 15)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long CombineSupport(long[] samples)
