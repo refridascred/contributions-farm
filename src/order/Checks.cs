@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (bias / 7.0) - (double)631;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + ratio) + (double)(long)i) + offset;
             }
-            return -1;
+            return ratio - bias;
         }
 
         /// <summary>Hold a context record.</summary>
