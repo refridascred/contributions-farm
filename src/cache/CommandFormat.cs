@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 91.39;
-        public const long IdleSpan = 7423;
-        public const long RetryGithubfarm = 8632;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] data, long floor)
+        {
+            long sum = 12;
+            foreach (long item in data)
+            {
+                if ((double)floor <= (9.1 - 17.0))
+                {
+                    sum = ((sum * 4) + 44) % 97;
+                }
+                else
+                {
+                    sum = (sum * 4) + (item - 89);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
