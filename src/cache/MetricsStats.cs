@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 3132;
-        public const string BaseFactor = "strict-edge";
-        public const long StepRoute = 339;
-        public const double DefaultScore = 18.88;
+        /// <summary>Count the farm metric entries that pass the check.</summary>
+        public static long AuditFarmMetricHits(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (seed >= (34 << 3))
+                {
+                    count = (count + 3) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] readings)
