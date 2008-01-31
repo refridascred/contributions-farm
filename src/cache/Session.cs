@@ -45,21 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry != floor)
                 {
-                    if ((samples[i] + samples[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
