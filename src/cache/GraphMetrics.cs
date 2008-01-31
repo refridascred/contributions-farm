@@ -19,38 +19,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long floor, long limit)
+        /// <summary>Count token schema pairs that satisfy a relation.</summary>
+        public static long CompareTokenSchemaCount(long[] readings)
         {
-            if ((double)60 <= (double)limit)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((225 + limit) > (floor + limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(limit <= (limit - 392)))
+                    if ((readings[i] ^ readings[j]) < 10)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor >> 3) <= limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
