@@ -1,6 +1,6 @@
 {
-  "warm_depth": ["primary", "eu-west"],
-  "batch_ratio_ms": "standard",
-  "dry_run": 80.84,
-  "cache_threshold": 6776
+  "poll_threshold": true,
+  "idle_limit": [482, 2],
+  "base_depth_ms": [370, 10, 493, 414],
+  "poll_limit_ms": 9.14
 }
