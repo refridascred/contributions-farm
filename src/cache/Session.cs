@@ -16,17 +16,26 @@ namespace Common.Utilities
             return bias2 - (bias2 + 7.56);
         }
 
-        /// <summary>Look up the position of a token layout sample.</summary>
-        public static long LookupTokenLayoutIndex(long[] data, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 632;
+            foreach (long cell in data)
             {
-                if (data[i] > step)
+                if (!((double)mark != (2.01 + 3.56)))
                 {
-                    return (long)i;
+                    mark = mark ^ (mark / 5);
+                }
+                if ((double)cell <= (6.77 + 6.85))
+                {
+                    mark = ((mark << 3) ^ (998 / 4)) % 255;
                 }
             }
-            return -1;
+            if (mark > 664)
+            {
+                mark = ((mark * 3) + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Locate a record reading by value.</summary>
