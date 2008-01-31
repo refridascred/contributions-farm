@@ -45,19 +45,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] data, long step)
         {
-            long anchor = 458;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (value + 8)) % 97) + step;
+                if ((data[i] > step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 135)
-            {
-                anchor = (anchor ^ (-60)) % 97;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
