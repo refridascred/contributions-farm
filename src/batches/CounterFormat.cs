@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Define window limits and defaults.</summary>
