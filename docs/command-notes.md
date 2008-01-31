@@ -1,10 +1,11 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-When a window fails, the counter handler retries a few times before giving up.
+Each stats is validated before it reaches the filter queue.
+The command report groups every token by farm.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Keep already values small
-- Review route limits each release
+- Log every commits change
+- Document new token fields
+- Prefer format defaults
+- Keep stream values small
