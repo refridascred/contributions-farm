@@ -45,22 +45,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen << 2) == ((-28) + seen))
-                {
-                    seen = ((seen + 3) + cell) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowTimeout = 3.74;
+        public const long CacheMetrics = 1999;
+        public const long DefaultSpan = 244;
+        public const string BaseMetrics = "standard-1";
+        public const long IdleSpan = 6002;
     }
 }
