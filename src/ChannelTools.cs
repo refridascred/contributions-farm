@@ -29,15 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] data, long bound)
         {
-            long acc = 28;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                acc = ((((acc * 2) + (acc / 4)) % 1000) ^ reading) + target;
+                if ((-3) > (tally + value))
+                {
+                    tally = (tally + 1) + bound;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
