@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long DefaultScore = 6332;
         public const double WindowTools = 87.61;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] samples, long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
