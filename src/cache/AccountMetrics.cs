@@ -67,15 +67,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer contributi series from a seed.</summary>
-        public static long IterateBufferContributi(long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] values, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            long score = 75;
+            foreach (long cell in values)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                score = ((score + (score / 7)) % 97) + cell;
+                score = (score * 2) + (572 / 7);
             }
-            return carry;
+            if (score > 127)
+            {
+                score = (score - (seed & 15)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Validate metric order readings against a bound.</summary>
