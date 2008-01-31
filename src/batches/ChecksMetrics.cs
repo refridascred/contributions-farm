@@ -23,18 +23,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the context token entries that pass the check.</summary>
-        public static long CountContextTokenMatches(long[] data, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((((seed ^ seed) != (150 + seen)) || ((double)seed < (double)0)) || !((seed * 4) < (seen ^ seen)))
+                if ((double)cell < (12.0 - 11.0))
                 {
-                    seen = (seen + 1) ^ cell;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
