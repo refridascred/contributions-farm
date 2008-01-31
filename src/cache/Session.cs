@@ -45,19 +45,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] data, long floor)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
