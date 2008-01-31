@@ -60,22 +60,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] readings)
+        /// <summary>Count the counter stream entries that pass the check.</summary>
+        public static long TallyCounterStreamHits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((((-9) >> 5) >= (seen * 2)) && ((seen / 2) == (reading + reading)))
+                if ((tally - floor) >= tally)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) - sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
