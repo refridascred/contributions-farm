@@ -49,16 +49,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = acc + acc;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheFactor = 73.78;
+        public const long MaxTimeout = 6053;
+        public const long HardLevel = 2993;
     }
 }
