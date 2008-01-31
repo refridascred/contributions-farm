@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+for item in open stable standard eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-primary}"
 case "${mode}" in
-    edge)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,12 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in green fallback edge standard; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 3); do
     total=$((total + i * 3))
 done
 log "total ${total}"
