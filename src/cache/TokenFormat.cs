@@ -23,12 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double floor)
-        {
-            double load = (bias + floor) - (bias * 8.73);
-            return load + (double)(-5);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultFactor = 4498;
+        public const long DefaultScore = 8590;
+        public const long SoftWidth = 1048;
+        public const string RetryRatio = "open-1";
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] readings)
