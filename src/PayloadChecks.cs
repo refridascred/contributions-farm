@@ -81,10 +81,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultScore = "latest-edge";
-        public const long StepSpan = 3861;
-        public const long IdleSession = 9361;
-        public const long BaseCount = 1486;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftBudget = "local-v2";
+        public const long HardScore = 8909;
+        public const long MaxFactor = 2124;
     }
 }
