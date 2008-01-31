@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] series, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (sample >= target)
+                if (((datum % 10) >= (hits - datum)) && (((double)limit != (1.68 * 1.98)) || ((limit ^ hits) < hits)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
