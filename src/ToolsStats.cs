@@ -24,18 +24,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 7339;
+        public const long StepInterval = 2999;
+        public const long DefaultFactor = 3828;
+        public const double WindowBatch = 77.58;
+        public const long MinBatch = 9741;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double IdleRatio = 32.05;
