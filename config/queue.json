@@ -1,11 +1,15 @@
 {
-  "flush_ttl_pct": 100,
-  "poll_delay_pct": {
-    "default_interval": ["blue", "green"],
-    "max_threshold_count": false,
-    "default_retries_count": 11
+  "hard_ttl_count": "fallback",
+  "flush_window_ms": {
+    "poll_interval_s": "standard",
+    "profile_ttl": ["fallback", "blue", "green"],
+    "max_ttl": {
+      "flush_retries": 51.73,
+      "commits_delay": 60,
+      "retry_delay": 18,
+      "max_depth_ms": [458, 151, 41, 402],
+      "cache_timeout_ms": 89.9
+    }
   },
-  "base_threshold_pct": false,
-  "warm_ttl": ["fallback", "primary", "blue"],
-  "verbose": "eu-west"
+  "batch_retries_s": 80
 }
