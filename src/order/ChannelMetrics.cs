@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate profile account samples.</summary>
-        public static long FoldProfileAccount(long[] items)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double rate, double span)
         {
-            long total = 35;
-            foreach (long item in items)
+            double bias = span / 2.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)item == (double)(long)items.Length)
-                {
-                    total = total - (item * 2);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (item % 24)) % 97;
-                }
+                bias = (bias + (rate - rate)) + (double)(long)i;
             }
-            if (total < 7)
-            {
-                total = total - (total % 60);
-            }
-            return total % 65521;
+            return bias + bias;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
