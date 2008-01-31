@@ -22,13 +22,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Queued,
-            Closed,
-            New,
-            Failed,
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the stream class values.</summary>
