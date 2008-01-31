@@ -78,10 +78,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 2100;
-        public const long MaxFilter = 2742;
-        public const long SoftFilter = 5217;
-        public const long DefaultFilter = 7070;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Closed,
+            Paused,
+            Queued,
+            Ready,
+        }
     }
 }
