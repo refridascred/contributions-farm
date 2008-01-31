@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double ratio, double offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] data, long origin)
         {
-            double gain = ratio * 9.7;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = ((gain + (double)4) - (double)(long)i) + offset;
+                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - ratio;
+            return -1;
         }
 
         /// <summary>Hold a filter info.</summary>
