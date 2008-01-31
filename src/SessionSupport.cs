@@ -43,12 +43,15 @@ namespace Common.Utilities
             return weight - (weight + 2.55);
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            Pending,
-            Draft,
-            Paused,
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
