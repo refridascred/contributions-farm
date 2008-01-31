@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double bias, double bias2)
+        /// <summary>Classify a batches format pair into a bucket.</summary>
+        public static long ClassifyBatchesFormat(long seed, long floor)
         {
-            double gain = 0.4;
-            if (gain <= (double)108)
+            long delta = seed ^ floor;
+            if (((seed << 1) < (delta - seed)) && ((8.0 / 2.0) >= (double)seed))
             {
-                gain = gain - bias2;
+                return 8;
             }
-            return gain - bias;
+            else
+            {
+                if ((double)94 == (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((596 ^ 8) <= delta)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed < (seed >> 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
