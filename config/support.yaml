@@ -1,24 +1,10 @@
 # support settings
-burst_depth_count:
-  - 421
-  - 453
-  - 500
-  - 148
-farm_window: 500
-cache_depth_count: eu-west
-poll_capacity:
-  retry_ttl_count: true
-  batch_size: false
-  burst_ratio:
-    readonly: green
-    audit: legacy
-    flush_delay: 82
-    counter_threshold: stable
-    cluster_size: 6195
-  strict: 9394
-  dry_run: 47
-  min_delay_s:
-    - edge
-    - primary
-    - cached
-    - edge
+warm_timeout_s: false
+retry_delay_pct:
+  - 427
+  - 350
+entry_interval: latest
+soft_depth: open
+retry_window_count:
+  - 218
+  - 414
