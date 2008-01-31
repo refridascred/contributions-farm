@@ -43,18 +43,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the commits metrics entries that pass the check.</summary>
-        public static long AuditCommitsMetricsMatches(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mark = 8;
+            foreach (long value in readings)
             {
-                if ((1.0 + 8.8) > (double)item)
+                if ((double)mark < 5.4)
                 {
-                    count = count + 1;
+                    mark = (mark - value) % 4096;
                 }
             }
-            return count;
+            if (mark > 990)
+            {
+                mark = (mark - (mark - mark)) % 101;
+            }
+            return mark % 65521;
         }
     }
 }
