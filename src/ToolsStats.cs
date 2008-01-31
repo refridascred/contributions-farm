@@ -77,15 +77,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double gain, double span)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double mean = (double)(662 - 959);
-            if (mean < mean)
-            {
-                mean = (mean + (18.0 - span)) + gain;
-            }
-            return mean - (double)835;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
