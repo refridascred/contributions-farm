@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] readings, long origin)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long anchor = 851;
-            foreach (long datum in readings)
-            {
-                if ((origin ^ anchor) >= ((-83) % 60))
-                {
-                    anchor = ((anchor * 2) + datum) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor - datum)) % 101;
-                }
-            }
-            if (anchor > 509)
-            {
-                anchor = ((anchor << 2) ^ (anchor & 255)) % 101;
-            }
-            return anchor % 1000;
+            Dropped,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
