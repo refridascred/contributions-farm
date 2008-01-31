@@ -46,17 +46,32 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long origin, long origin2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = origin + origin2;
+            if (((5.0 + 9.9) > (double)origin) || (slot < ((-56) - 3)))
             {
-                if (samples[i] > floor)
+                return 8;
+            }
+            else
+            {
+                if (!((301 + slot) > origin2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin < (origin + 75)) && ((origin2 + slot) < (origin / 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
