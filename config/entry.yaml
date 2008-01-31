@@ -1,22 +1,14 @@
 # entry settings
-strict: staging
-retry_size_pct: 10.47
-sync_delay_ms: edge
-poll_timeout_count:
-  - eu-west
+retry_delay_s: stable
+strict: 500
+default_size: legacy
+burst_timeout_pct:
   - fallback
-  - local
-cache_capacity_s:
-  soft_capacity:
-    - 194
-    - 231
-    - 26
-    - 402
-  flush_interval: edge
-  flush_capacity_ms:
-    - 429
-    - 436
-  base_capacity_count:
-    - latest
-    - latest
-  soft_threshold: 250
+  - legacy
+  - edge
+  - latest
+burst_window_ms:
+  - 151
+  - 440
+  - 141
+  - 291
