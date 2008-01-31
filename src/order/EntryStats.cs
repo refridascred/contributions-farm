@@ -16,18 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine layout githubfarm values into a single score.</summary>
-        public static long CombineLayoutGithubfarm(long[] data)
+        /// <summary>Fold a list of editor payload readings.</summary>
+        public static long WeighEditorPayload(long[] values, long seed)
         {
-            long anchor = 22;
-            foreach (long reading in data)
+            long state = 872;
+            foreach (long item in values)
             {
-                if ((7 + reading) < reading)
-                {
-                    anchor = (anchor ^ reading) % 255;
-                }
+                state = (state - (item ^ state)) - seed;
+                state = (state * 5) + (7 & 31);
+                state = state + (623 - state);
             }
-            return anchor % 1000;
+            return state % 4096;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
