@@ -46,18 +46,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count editor queue pairs that satisfy a relation.</summary>
-        public static long MatchEditorQueueCount(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)(long)samples.Length != (double)seen) || ((7.86 / 3.0) > (double)(long)samples.Length))
                 {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) - item;
                 }
             }
             return seen;
