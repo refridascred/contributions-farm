@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=7
+BUFFER_LIMIT=273
 log "limit is ${BUFFER_LIMIT}"
+
+for item in edge fallback stable legacy; do
+    log "checking ${item}"
+done
