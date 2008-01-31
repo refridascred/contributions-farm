@@ -42,17 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already context entry that matches the target.</summary>
-        public static long SeekAlreadyContextIndex(long[] values, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Draft,
         }
     }
 }
