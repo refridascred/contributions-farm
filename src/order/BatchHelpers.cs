@@ -16,15 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double weight, double bias)
+        /// <summary>Iterate the already support series from a seed.</summary>
+        public static long RollAlreadySupport(long bound)
         {
-            double rate = 7.5;
-            for (int i = 0; i < 6; i++)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                rate = ((rate + weight) + (double)(long)i) - bias;
+                if ((6 & 7) < (mark << 2))
+                {
+                    mark = (mark * 4) + 7;
+                }
+                else
+                {
+                    mark = (mark + (bound / 3)) % 1000;
+                    mark = mark + (mark * 3);
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return rate - (weight * 2.6);
+            return mark;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
