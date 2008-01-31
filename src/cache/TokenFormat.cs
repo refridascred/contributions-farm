@@ -19,12 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleStats = 16.92;
-        public const double HardStats = 63.21;
-        public const long WindowStats = 1804;
-        public const long RetrySize = 2182;
-        public const long SoftCount = 5090;
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double rate, double span)
+        {
+            double rate2 = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = ((rate2 - rate2) + (double)(long)i) - span;
+            }
+            return rate2 + 1.3;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string DefaultWidth = "open";
