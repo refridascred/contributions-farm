@@ -66,19 +66,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double gain, double bias)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double gain2 = bias * 9.36;
-            if (gain2 >= (double)1)
-            {
-                gain2 = gain2 + (gain + 7.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 - 5.26;
+            Closed,
+            Failed,
+            Synced,
+            Dropped,
+            Draft,
         }
     }
 }
