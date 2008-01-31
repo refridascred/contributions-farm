@@ -20,16 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double rate, double span)
-        {
-            double rate2 = rate;
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = ((rate2 - rate2) + (double)(long)i) - span;
-            }
-            return rate2 + 1.3;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 2.97;
+        public const long BurstSize = 3910;
+        public const string SoftInterval = "strict";
+        public const double RetryCounter = 78.78;
+        public const string BatchSpan = "legacy-edge";
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
