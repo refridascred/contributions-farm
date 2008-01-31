@@ -20,12 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCounter = 2.97;
-        public const long BurstSize = 3910;
-        public const string SoftInterval = "strict";
-        public const double RetryCounter = 78.78;
-        public const string BatchSpan = "legacy-edge";
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Stale,
+            Draft,
+            Dropped,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
