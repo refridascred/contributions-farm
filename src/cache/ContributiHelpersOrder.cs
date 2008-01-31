@@ -26,16 +26,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum - (long)i) % 101;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardWidth = "stable-edge";
+        public const string SoftMetrics = "standard-1";
+        public const long MaxMetrics = 8437;
+        public const double MinMetrics = 10.14;
     }
 }
