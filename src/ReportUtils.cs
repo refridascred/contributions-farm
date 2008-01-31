@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a window buffer counter forward.</summary>
-        public static long DeriveWindowBuffer(long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double ratio, double offset)
         {
-            long mix = floor;
+            double gain = ratio * 9.7;
             for (int i = 0; i < 9; i++)
             {
-                if (!((double)mix <= (19.0 - 2.6)))
-                {
-                    mix = (mix + (floor + floor)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                gain = ((gain + (double)4) - (double)(long)i) + offset;
             }
-            return mix;
+            return gain - ratio;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
