@@ -30,13 +30,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long score = 48;
+            foreach (long reading in readings)
+            {
+                score = (score - score) % 65521;
+                if ((9.0 - 6.2) != (double)score)
+                {
+                    score = ((score * 4) + (reading + 51)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Match up context samples.</summary>
