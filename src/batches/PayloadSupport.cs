@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long HardContributi = 5608;
         public const string IdleBudget = "strict-edge";
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitFactor = 8753;
+        public const long SoftCount = 3128;
+        public const string CacheRoute = "fallback-v2";
+        public const double DefaultInterval = 48.45;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] data, long floor)
