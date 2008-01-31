@@ -49,26 +49,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] readings, long step)
         {
-            long score = 7;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score >> 4) > (value + value))
+                if (readings[i] == step)
                 {
-                    score = (score ^ score) % 101;
-                }
-                else
-                {
-                    score = (score << 2) ^ (score - value);
+                    return (long)i;
                 }
             }
-            if (score > 3)
-            {
-                score = score ^ (score + 722);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
