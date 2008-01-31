@@ -1,11 +1,11 @@
 {
-  "burst_retries_s": {
-    "layout_size": false,
-    "strict": 250,
-    "base_capacity": 57.88,
-    "batch_timeout_count": 5032,
-    "dry_run": ["eu-west", "cached"]
+  "idle_threshold_count": {
+    "metrics_limit": [314, 219],
+    "poll_window": "latest",
+    "batch_timeout": 5685
   },
-  "batch_ratio": "fallback",
-  "token_size": false
+  "farm_capacity": "staging",
+  "sync_threshold": "open",
+  "sync_window_pct": "green",
+  "sync_depth": [390, 353, 230]
 }
