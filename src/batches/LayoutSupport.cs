@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Compare every pair of batches githubfarm readings.</summary>
+        public static long CompareBatchesGithubfarmCount(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
