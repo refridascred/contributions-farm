@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of batches metrics entries.</summary>
+        public static long CombineBatchesMetrics(long[] series, long limit)
         {
-            Stale,
-            Ready,
-            Synced,
-            New,
-            Pending,
+            long anchor = 33;
+            foreach (long sample in series)
+            {
+                if ((6 - anchor) <= (sample - sample))
+                {
+                    anchor = (anchor << 2) ^ (limit & 31);
+                }
+                if ((3 / 7) <= ((-9) - anchor))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
