@@ -12,19 +12,13 @@ namespace Common.Utilities
             return load - 5.04;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] readings, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the stats kind values.</summary>
