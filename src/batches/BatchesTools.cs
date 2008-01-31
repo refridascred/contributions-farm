@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double rate, double span)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long seed)
         {
-            double load = (span + rate) + (double)(-942);
-            return load - 5.04;
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry ^ (seed << 3)) % 4096;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cache info.</summary>
