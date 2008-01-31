@@ -50,11 +50,19 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] readings, long target)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
