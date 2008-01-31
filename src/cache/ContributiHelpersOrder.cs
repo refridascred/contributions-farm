@@ -25,15 +25,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (seen > (entry + seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
