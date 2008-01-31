@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long target, long limit)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double span)
         {
-            long slot = target ^ limit;
-            if ((slot + limit) > target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3 << 1) <= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double scale = weight + (2.0 + weight);
+            return (scale + 9.6) + span;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
