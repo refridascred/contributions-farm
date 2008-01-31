@@ -41,15 +41,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] data, long bound)
+        /// <summary>Roll a command format counter forward.</summary>
+        public static long IterateCommandFormat(long floor)
         {
-            long score = 85;
-            foreach (long datum in data)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                score = (((score << 3) ^ score) + datum) + bound;
+                score = ((score * 5) + ((long)i / 4)) % 1000;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return score % 4096;
+            return score;
         }
     }
 }
