@@ -34,21 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record profile series from a seed.</summary>
-        public static long SeriesRecordProfile(long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                carry = (carry << 3) ^ (920 + seed);
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((hits * 2) <= (55 >> 2)) && ((hits >> 3) < value))
                 {
-                    carry = ((carry + (9 << 1)) % 65521) + (long)i2;
-                    carry = (carry << 2) ^ carry;
+                    hits = hits + 2;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
     }
 }
