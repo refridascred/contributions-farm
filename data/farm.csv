@@ -1,7 +1,6 @@
-id,count,active,weight,region
-1,12.57,508,local,400
-2,blue,692,318,646
-3,88.96,green,12.94,35.4
-4,eu-west,legacy,63.38,staging
-5,1.66,14.27,26.74,staging
-6,cached,689,616,86.95
+id,score
+1,82
+2,961
+3,84.48
+4,260
+5,open
