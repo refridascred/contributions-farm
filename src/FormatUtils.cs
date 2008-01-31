@@ -38,12 +38,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Locked,
-            Pending,
-            Done,
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of route entries.</summary>
