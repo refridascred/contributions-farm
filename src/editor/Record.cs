@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const long RetryProfile = 9620;
         public const double HardLevel = 40.13;
 
-        /// <summary>Audit graph editor readings against a rule.</summary>
-        public static long CountGraphEditorMatches(long[] readings, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long score = 575;
+            foreach (long datum in series)
             {
-                if ((reading - origin) >= reading)
+                score = score + (datum - datum);
+                score = (score ^ (score - 0)) % 65521;
+                if (!((8.68 + 3.25) == (double)datum))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
