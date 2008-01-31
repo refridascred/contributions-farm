@@ -1,11 +1,6 @@
-id,ratio,label
-1,960,475
-2,94,staging
-3,675,255
-4,644,768
-5,primary,601
-6,623,93.71
-7,10.77,primary
-8,534,323
-9,27.39,791
-10,325,505
+id,level,count,region
+1,stable,782,141
+2,792,54.57,95.25
+3,edge,fallback,665
+4,77.17,94.96,42.67
+5,fallback,primary,34.37
