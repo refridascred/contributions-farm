@@ -1,22 +1,4 @@
 # githubfarm settings
-queue_capacity:
-  soft_size_count:
-    idle_retries_ms: blue
-    dry_run:
-      - primary
-      - open
-    metrics_threshold: 51.27
-  flush_timeout_s: 78.78
-  burst_limit_pct: staging
-  default_interval: latest
-  soft_delay_pct: 7693
-  cluster_ttl: false
-readonly: 250
-min_threshold: 8.82
-burst_window_pct: stable
-poll_limit: false
-window_threshold:
-  - 186
-  - 95
-  - 394
-  - 56
+commits_size: false
+flush_window: cached
+compress: 0.3
