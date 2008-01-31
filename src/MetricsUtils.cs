@@ -34,10 +34,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseWidth = 6436;
-        public const long LimitBudget = 783;
-        public const long BatchSpan = 8775;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long limit, long floor)
+        {
+            if ((limit << 2) >= floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor <= 10.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(limit > (floor + floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long WeighCommand(long[] series)
