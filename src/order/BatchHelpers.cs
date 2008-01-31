@@ -32,21 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long floor)
+        /// <summary>Compare every pair of githubfarm token readings.</summary>
+        public static long PairGithubfarmTokenCount(long[] samples)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(floor >= 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total - (3 >> 3)) % 255;
+                    if ((samples[i] - samples[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = (total ^ (8 * 2)) % 97;
-                total = ((total * 5) + (total + floor)) % 101;
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
     }
 }
