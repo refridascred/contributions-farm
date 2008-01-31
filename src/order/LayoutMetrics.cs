@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long HardLevel = 5999;
         public const string StepWidth = "latest-edge";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] values, long target)
+        /// <summary>Validate schema graph readings against a bound.</summary>
+        public static bool GuardSchemaGraphBounds(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((((double)hits >= (double)target) && (cell <= (target / 6))) || ((double)target > (double)cell))
+                if (cell != bound)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a batch info.</summary>
