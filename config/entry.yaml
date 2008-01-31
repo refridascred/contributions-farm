@@ -1,7 +1,10 @@
 # entry settings
-soft_ttl_ms: 62
-persist: open
-poll_size_pct: 18.46
-batch_ratio: latest
-enabled: 93.62
-graph_window: 3439
+githubfarm_capacity: stable
+persist:
+  audit: true
+  counter_capacity: 1024
+  flush_limit_pct: 100
+record_interval: green
+soft_interval_s: 21.8
+record_retries: 74
+max_threshold_ms: cached
