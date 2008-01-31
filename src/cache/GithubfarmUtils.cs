@@ -16,17 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 6;
+            foreach (long value in values)
             {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
+                carry = (((carry * 3) + (546 - carry)) % 101) ^ value;
             }
-            return -1;
+            if (carry > 7)
+            {
+                carry = carry ^ 75;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
