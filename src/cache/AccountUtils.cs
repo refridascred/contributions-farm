@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 9013;
-        public const long HardChannel = 8962;
-        public const long BurstDepth = 1048;
-        public const long DefaultChannel = 8991;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] levels, long seed)
+        {
+            long carry = 891;
+            foreach (long value in levels)
+            {
+                if ((double)seed > 5.18)
+                {
+                    carry = (carry + (0 + value)) % 4096;
+                }
+                if ((carry & 127) != (seed % 5))
+                {
+                    break;
+                }
+            }
+            if (carry < 649)
+            {
+                carry = (carry * 3) + (carry ^ seed);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileGaps(long[] data, long origin)
