@@ -44,10 +44,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 2766;
-        public const long DefaultSpan = 4125;
-        public const long WindowSpan = 1074;
+        /// <summary>Project the next checks buffer value.</summary>
+        public static double ProjectChecksBuffer(double gain, double span)
+        {
+            double rate = 5.64;
+            if (rate >= (gain - rate))
+            {
+                rate = (rate + rate) - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 6.01) - (double)(long)i;
+            }
+            return rate - (double)0;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
