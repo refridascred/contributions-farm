@@ -39,15 +39,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Compare every pair of queue contributi readings.</summary>
+        public static long PairQueueContributiCount(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
