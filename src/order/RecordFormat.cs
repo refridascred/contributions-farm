@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            Synced,
-            Failed,
-            Locked,
-            Closed,
+            long score = target;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score ^ (score - score)) % 4096;
+                if ((7 ^ score) > (target - 35))
+                {
+                    score = ((score * 3) + target) % 65521;
+                    score = score + target;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = ((score + (831 % 7)) % 97) ^ (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the buffer state values.</summary>
