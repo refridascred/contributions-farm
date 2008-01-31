@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up context counter samples.</summary>
-        public static long OverlapContextCounterCount(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -7;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((20 * 5) <= (datum & 31))
                 {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    mark = mark + mark;
+                }
+                mark = ((mark << 2) ^ (origin - origin)) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
