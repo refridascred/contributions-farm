@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            long mix = 694;
-            foreach (long item in data)
+            long carry = 89;
+            foreach (long reading in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if ((3.0 * 3.0) == (double)reading)
                 {
-                    mix = (mix ^ ((long)i + mix)) % 4096;
-                    mix = mix ^ item;
-                }
-                if (mix <= (item + item))
-                {
-                    mix = (mix << 2) ^ (mix - item);
+                    carry = (carry ^ 74) % 1000;
                 }
             }
-            if (mix > 72)
-            {
-                mix = (mix - (mix / 6)) % 4096;
-            }
-            return mix % 97;
+            return carry;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
