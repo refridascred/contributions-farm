@@ -38,13 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Draft,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchDepth = 2169;
+        public const long DefaultGithubfarm = 8241;
+        public const long BatchGithubfarm = 9924;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long seed)
