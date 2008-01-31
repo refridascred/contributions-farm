@@ -54,25 +54,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long offset, long limit)
+        /// <summary>Iterate the metrics contributi series from a seed.</summary>
+        public static long DeriveMetricsContributi(long floor)
         {
-            long edge = offset + limit;
-            if (((offset << 3) <= limit) || (16 < (edge << 1)))
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                acc = ((acc * 3) + (461 % 5)) % 1000;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (offset > (offset % 10))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
     }
 }
