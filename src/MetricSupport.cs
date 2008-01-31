@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
         {
-            Pending,
-            Closed,
-            Dropped,
-            New,
-            Ready,
+            long carry = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((carry - target) >= carry) && ((55 ^ (long)i) < 358))
+                {
+                    carry = ((carry << 3) ^ (target / 3)) % 97;
+                    carry = (carry << 3) ^ (long)i;
+                    break;
+                }
+                else
+                {
+                    carry = (carry - (target / 8)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of token session entries.</summary>
