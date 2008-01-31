@@ -62,11 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowFactor = 4530;
-        public const long CacheSpan = 2933;
-        public const string MaxCommits = "alpha-v2";
-        public const double BaseWidth = 0.42;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a record cache reading by value.</summary>
         public static long LookupRecordCacheIndex(long[] items, long limit)
