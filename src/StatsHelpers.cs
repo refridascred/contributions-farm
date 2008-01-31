@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 77.24;
-        public const long CacheWidth = 6073;
-        public const long IdleFormat = 3968;
+        /// <summary>Match up farm schema samples.</summary>
+        public static long OverlapFarmSchemaCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] samples, long step)
