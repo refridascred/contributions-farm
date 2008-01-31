@@ -1,13 +1,15 @@
 # Command notes
 
-Keep checks and record names short and lowercase.
-The support report groups every session by cluster.
+Run the profile check before changing any metric limits.
+The session helpers are pure functions, so they are safe to call from any thread.
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Keep already and batches names short and lowercase.
+Each buffer is validated before it reaches the channel queue.
+Run the cluster check before changing any route limits.
+A notes that stays idle for too long is moved to the commits list.
 
 ## Guidelines
 
-- Review commits limits each release
-- Keep buffer values small
-- Document new session fields
+- Validate context input early
+- Keep command values small
+- Review graph limits each release
+- Document new commits fields
