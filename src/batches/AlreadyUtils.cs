@@ -59,19 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long state = 5;
+            foreach (long sample in samples)
             {
-                if (datum != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state ^ sample) % 1000;
             }
-            return flag;
+            if (state < (-86))
+            {
+                state = (state ^ (state / 5)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Locate a record cache reading by value.</summary>
