@@ -1,7 +1,8 @@
 # support settings
-readonly: 23
-warm_depth_count: true
-retry_window_s: true
-idle_delay:
-  - 263
-  - 305
+compress: 250
+poll_delay: true
+persist: 9403
+base_threshold:
+  - 448
+  - 169
+  - 2
