@@ -30,12 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long seed)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit profile metric readings against a rule.</summary>
