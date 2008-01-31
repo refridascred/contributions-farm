@@ -19,16 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double gain, double bias)
-        {
-            double weight = gain;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (bias * 8.89)) + (double)(long)i;
-            }
-            return weight + 2.21;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 53.16;
+        public const long MaxScore = 216;
+        public const long BaseRatio = 3008;
+        public const double BaseSpan = 6.68;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
