@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Locate a already layout reading by value.</summary>
+        public static long SeekAlreadyLayoutIndex(long[] levels, long offset)
         {
-            New,
-            Idle,
-            Closed,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
