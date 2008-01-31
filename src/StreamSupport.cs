@@ -19,21 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long limit, long target)
         {
-            long anchor = 38;
-            foreach (long value in samples)
+            long offset = limit ^ target;
+            if (((double)target > (12.0 * 6.0)) && (target <= (limit + limit)))
             {
-                anchor = (anchor - (value + (-52))) % 1000;
-                anchor = (anchor + (473 ^ anchor)) % 65521;
-                anchor = ((anchor << 2) ^ (value - anchor)) % 4096;
+                return 8;
             }
-            if (anchor < 302)
+            else
             {
-                anchor = anchor + (anchor + (-789));
+                if ((double)target <= (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((9.3 + 3.47) > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset & 255) > target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return anchor % 97;
         }
 
         /// <summary>Describe the tools status values.</summary>
