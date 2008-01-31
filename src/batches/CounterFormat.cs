@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 22;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (((anchor * 4) + (anchor * 3)) % 1000) ^ entry;
             }
-            return matches;
+            if (anchor > 549)
+            {
+                anchor = ((anchor * 5) + (anchor - anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
