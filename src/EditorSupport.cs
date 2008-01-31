@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of githubfarm stats entries.</summary>
-        public static long TotalGithubfarmStats(long[] values)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] items)
         {
-            long result = 9;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)result > 3.9)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (((result * 5) + 654) % 101) + entry;
+                    if ((items[i] - items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Describe the profile level values.</summary>
