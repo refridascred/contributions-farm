@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] items, long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] items)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mix = 3;
+            foreach (long value in items)
             {
-                if ((offset ^ item) < (40 - 41))
+                if ((mix % 8) == (value - 1))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = (mix * 4) + value;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Audit graph filter readings against a rule.</summary>
