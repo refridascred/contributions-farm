@@ -41,12 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitDepth = 3315;
-        public const long DefaultBuffer = 2311;
-        public const string MinBuffer = "stable";
-        public const double LimitBuffer = 22.9;
-        public const long StepFactor = 496;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long CombineRecord(long[] levels)
