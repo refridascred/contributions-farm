@@ -18,20 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Project the next already farm value.</summary>
+        public static double ProjectAlreadyFarm(double scale, double span)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            double load = 16.0;
+            if (load > (load + load))
             {
-                if (!(((long)i >> 3) <= 419))
-                {
-                    carry = carry ^ 19;
-                }
-                carry = ((carry * 5) + (origin + (long)i)) % 101;
-                carry = ((carry * 5) + (long)i) % 97;
+                load = load + (double)544;
             }
-            return carry;
+            else
+            {
+                load = load + (double)196;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (span / 3.0)) + (double)(long)i;
+            }
+            return load - (scale / 7.0);
         }
 
         /// <summary>Hold a tools info.</summary>
