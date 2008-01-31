@@ -1,11 +1,5 @@
 {
-  "base_retries_ms": 93,
-  "retry_ttl_ms": true,
-  "base_ttl_count": 29,
-  "sync_ratio": 28,
-  "burst_retries_pct": {
-    "entry_interval": 74,
-    "compress": ["local", "staging", "local"],
-    "batch_depth_count": "edge"
-  }
+  "soft_capacity": ["edge", "eu-west", "open", "local"],
+  "verbose": "open",
+  "poll_size": true
 }
