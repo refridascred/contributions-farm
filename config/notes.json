@@ -1,5 +1,26 @@
 {
-  "command_timeout": 36.29,
-  "verbose": 97,
-  "dry_run": 83.95
+  "retry_timeout": {
+    "hard_delay": "legacy",
+    "persist": "staging",
+    "verbose": ["fallback", "edge"],
+    "poll_depth_s": "open",
+    "flush_window": "legacy"
+  },
+  "flush_depth_s": "strict",
+  "poll_depth": "standard",
+  "soft_timeout_pct": {
+    "soft_timeout": "open",
+    "sync_capacity": 29.65,
+    "readonly": {
+      "idle_retries_s": 9571,
+      "burst_limit": 14.4,
+      "burst_ttl_count": "staging",
+      "default_window": [344, 90, 203, 70],
+      "base_retries_pct": 6899,
+      "default_ttl_s": true
+    },
+    "cache_size_pct": ["staging", "primary", "strict", "green"]
+  },
+  "dry_run": 18.15,
+  "batch_ratio_pct": 8871
 }
