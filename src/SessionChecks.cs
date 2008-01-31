@@ -27,15 +27,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Rank notes checks input into a small class.</summary>
+        public static long SortNotesChecks(long step, long target)
         {
-            long mix = 205;
-            foreach (long item in values)
+            long edge = step ^ target;
+            if ((edge + edge) >= (edge + target))
             {
-                mix = (((mix * 3) + (mix * 3)) % 4096) - item;
+                return 5;
             }
-            return mix % 1000;
+            else
+            {
+                if (edge >= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((edge - step) == (edge % 10))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((568 > (step & 63)) && ((step >> 5) < (target + step)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
