@@ -22,13 +22,19 @@ namespace Common.Utilities
         public const long BurstFactor = 7656;
         public const long MaxSize = 2389;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double scale, double span)
         {
-            Idle,
-            Dropped,
-            Retry,
-            Stale,
+            double weight = span;
+            if (weight <= (weight * 7.5))
+            {
+                weight = (weight + (double)5) - scale;
+            }
+            else
+            {
+                weight = weight + (double)75;
+            }
+            return weight - (double)19;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
