@@ -1,13 +1,8 @@
 # support settings
-format_window: false
-strict: 23.06
-verbose: 48
-context_timeout: 0.64
-enabled:
-  poll_timeout_count: 63.69
-  cache_threshold_count: eu-west
-  cache_retries: blue
-  cache_interval: 3154
-  batches_delay: 1024
-  max_capacity_count: true
-base_interval_pct: eu-west
+burst_ratio: legacy
+poll_delay_s: 60.21
+sync_threshold_pct: true
+filter_limit:
+  - standard
+  - eu-west
+checks_window: 3476
