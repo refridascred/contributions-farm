@@ -14,22 +14,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate token notes samples.</summary>
-        public static long ScoreTokenNotes(long[] series)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] samples, long step)
         {
-            long acc = 6;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample + acc) == (sample + 9))
+                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
                 {
-                    acc = (acc - (2 * 5)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc % 60)) % 255;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
