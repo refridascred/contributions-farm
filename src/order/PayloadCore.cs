@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheBudget = 6163;
-        public const long MinWindow = 4241;
-        public const double MaxLevel = 70.76;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowLimits(long[] series, long offset)
