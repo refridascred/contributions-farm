@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] items, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (8 < (reading / 9))
+                if (datum != origin)
                 {
-                    matches = (matches + 3) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
