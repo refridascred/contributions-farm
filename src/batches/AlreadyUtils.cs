@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double ratio, double span)
         {
-            Locked,
-            Stale,
-            Idle,
-            Synced,
-            Paused,
+            double scale = ratio;
+            if (scale < scale)
+            {
+                scale = scale + (span / 3.0);
+            }
+            else
+            {
+                scale = scale + (double)562;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (span * 16.0)) - (double)(long)i;
+            }
+            return scale - (double)45;
         }
 
         /// <summary>Blend two profile contributi measurements.</summary>
