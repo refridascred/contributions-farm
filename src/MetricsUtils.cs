@@ -35,17 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] readings, long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Done,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a farm entry.</summary>
