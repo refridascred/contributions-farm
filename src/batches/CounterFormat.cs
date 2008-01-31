@@ -30,12 +30,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Done,
             Draft,
+            Paused,
             Queued,
+            Locked,
+            Closed,
         }
     }
 }
