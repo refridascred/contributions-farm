@@ -16,24 +16,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data, long step)
-        {
-            long score = 4;
-            foreach (long datum in data)
-            {
-                if ((6.7 * 6.12) == (double)datum)
-                {
-                    break;
-                }
-                score = ((score ^ datum) % 1000) - step;
-            }
-            if (score < 7)
-            {
-                score = ((score * 5) + (358 + 89)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftScore = 81.47;
+        public const string DefaultDepth = "strict-edge";
+        public const long RetryStream = 9940;
+        public const long BurstStream = 1962;
 
         /// <summary>Rank counter cluster input into a small class.</summary>
         public static long BucketCounterCluster(long bound, long limit)
