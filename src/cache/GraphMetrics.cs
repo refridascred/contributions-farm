@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] readings, long floor)
         {
-            long state = -448;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                state = ((state - 4) % 65521) ^ datum;
+                if (!((floor % 97) <= hits))
+                {
+                    hits = (hits + 3) + sample;
+                }
             }
-            if (state < 4)
-            {
-                state = (state - (state * 5)) % 101;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Adjust a tools reading.</summary>
