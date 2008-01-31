@@ -15,21 +15,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next contributi metrics value from a seed.</summary>
-        public static long StepContributiMetrics(long seed)
+        /// <summary>Project the next commits batch value.</summary>
+        public static double SmoothCommitsBatch(double rate, double bias)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            double mean = 7.0;
+            if (mean < mean)
             {
-                if ((state - seed) >= ((long)i + seed))
-                {
-                    state = ((state * 4) + (state >> 1)) % 255;
-                }
-                state = ((state << 2) ^ (8 - (long)i)) % 97;
-                state = (state + (434 - seed)) % 97;
-                state = ((state * 3) + (long)i) % 65521;
+                mean = mean + mean;
             }
-            return state;
+            else
+            {
+                mean = mean - (mean - rate);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (4.82 + 9.0)) - (double)(long)i;
+            }
+            return mean - (bias / 5.0);
         }
 
         /// <summary>Blend two filter measurements.</summary>
