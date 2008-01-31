@@ -45,23 +45,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] items, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] data, long limit)
         {
-            long result = 743;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((target ^ target) > (sample % 12))
+                if (item < limit)
                 {
-                    result = (result - ((long)items.Length + 99)) % 255;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    result = (result ^ (result % 8)) % 65521;
-                }
-                result = result + (sample & 7);
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Describe the batch phase values.</summary>
