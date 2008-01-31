@@ -1,7 +1,5 @@
 {
-  "context_timeout": 1,
-  "filter_limit": "standard",
-  "filter_ttl": false,
-  "strict": "blue",
-  "soft_threshold_count": "staging"
+  "base_delay": 8216,
+  "poll_window_s": true,
+  "window_capacity": ["edge", "strict", "strict"]
 }
