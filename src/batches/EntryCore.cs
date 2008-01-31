@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a filter report pair into a bucket.</summary>
-        public static long BucketFilterReport(long limit, long origin)
-        {
-            if (((-651) ^ 7) <= origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((origin - origin) > limit) && ((limit + (-252)) <= limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.3 + 9.0) >= (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 7777;
+        public const long StepCache = 5871;
+        public const string BurstRatio = "primary-1";
+        public const long BaseCache = 7960;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] levels)
