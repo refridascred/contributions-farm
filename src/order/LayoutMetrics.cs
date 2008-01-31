@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long seed, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] items, long floor)
         {
-            if ((820 >> 4) >= seed)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (seed - 453))
+                if (sample >= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
