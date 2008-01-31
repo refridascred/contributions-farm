@@ -1,7 +1,35 @@
 # support settings
-commits_limit: cached
-warm_window: 6452
-sync_threshold: open
-soft_ttl_pct: blue
-poll_limit_count: latest
-warm_timeout: staging
+soft_depth_count: true
+audit: false
+channel_capacity: fallback
+strict:
+  sync_size_pct: true
+  warm_ratio: 90.72
+  poll_interval_ms: false
+  readonly: 2600
+  max_window: 84
+report_ttl:
+  persist: 95
+  schema_timeout: cached
+  already_size:
+    - 55
+    - 268
+    - 356
+  readonly:
+    - cached
+    - stable
+    - blue
+    - open
+  enabled:
+    burst_ratio_ms: eu-west
+    idle_ratio_ms: false
+    idle_timeout: 7.98
+  checks_retries:
+    soft_interval:
+      - 235
+      - 363
+      - 102
+    enabled: primary
+    batch_interval_count: false
+    hard_timeout_s: legacy
+batch_timeout: 7177
