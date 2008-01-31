@@ -35,12 +35,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 7094;
-        public const double WindowScore = 1.94;
-        public const double BurstScore = 89.72;
-        public const string DefaultLevel = "latest-v2";
-        public const long MaxEntry = 8328;
+        /// <summary>Grade a account window value against two limits.</summary>
+        public static long RankAccountWindow(long step, long step2)
+        {
+            if (((double)step != (5.8 + 0.3)) && ((step2 - step) > (step2 << 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (5.5 >= (double)step2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6.7 + 1.41) == (double)step2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((20 + step) < (step2 >> 5)) || ((step2 % 7) != ((-5) - 69)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
