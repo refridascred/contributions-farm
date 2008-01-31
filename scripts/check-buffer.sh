@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=299
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-mode="${1:-open}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in cached blue; do
+for item in primary fallback; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
