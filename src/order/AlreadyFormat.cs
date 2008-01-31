@@ -27,21 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
