@@ -49,9 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheFactor = 73.78;
-        public const long MaxTimeout = 6053;
-        public const long HardLevel = 2993;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
