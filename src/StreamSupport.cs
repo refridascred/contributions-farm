@@ -39,32 +39,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long offset, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            long cur = offset - origin;
-            if ((4.66 - 1.11) == (double)offset)
+            long carry = 128;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin < 2.0) || ((origin + cur) < (origin ^ origin)))
+                if ((0 + 9) <= (carry & 63))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((98 - 4) < (cur & 31)) && ((origin / 4) > (15 % 97)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = (carry * 5) + (carry + datum);
                 }
             }
+            return carry;
         }
     }
 }
