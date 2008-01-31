@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFactor = 9204;
-        public const double CacheInterval = 44.34;
-        public const string LimitScore = "open-1";
-        public const long RetryInterval = 5161;
+        /// <summary>Classify a token counter pair into a bucket.</summary>
+        public static long BucketTokenCounter(long limit, long target)
+        {
+            long offset = limit - target;
+            if (((double)offset != (0.91 / 8.0)) && ((4.0 / 6.0) < (double)limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset > (target - limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] samples, long step)
