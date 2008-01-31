@@ -23,18 +23,19 @@ namespace Common.Utilities
         public const long MinTimeout = 7220;
         public const long LimitLevel = 1625;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] series)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((count + count) < (datum - 33))
+                if (item != target)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
