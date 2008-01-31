@@ -42,12 +42,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double rate, double floor)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            double weight = (rate - floor) - (double)65;
+            if (weight < rate)
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Hold a already info.</summary>
