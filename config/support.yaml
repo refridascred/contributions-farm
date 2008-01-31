@@ -1,4 +1,10 @@
 # support settings
-session_limit: local
-burst_delay: false
-soft_limit: 4109
+warm_capacity: 67.75
+retry_timeout_count: 8369
+account_window:
+  - green
+  - legacy
+  - strict
+  - eu-west
+enabled: 42
+default_delay_pct: 100
