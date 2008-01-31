@@ -38,19 +38,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long step)
         {
-            long sum = 292;
-            foreach (long cell in samples)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                sum = ((sum * 5) + (cell / 5)) % 255;
+                if (((-920) % 60) >= ((long)i >> 3))
+                {
+                    mark = (mark ^ step) % 101;
+                }
+                mark = (mark * 3) + ((long)i + mark);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            if (sum > (-8))
-            {
-                sum = sum ^ (sum - sum);
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Hold a order record.</summary>
