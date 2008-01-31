@@ -1,8 +1,4 @@
 # entry settings
-verbose: 500
-flush_depth_s: open
-idle_timeout:
-  - 57
-  - 371
-  - 401
-  - 220
+graph_delay: standard
+enabled: 95.16
+token_window: 48.87
