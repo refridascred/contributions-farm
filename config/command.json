@@ -1,18 +1,12 @@
 {
-  "compress": {
-    "dry_run": "fallback",
-    "counter_window": {
-      "stats_timeout": 7,
-      "min_capacity": "blue",
-      "support_depth": "fallback",
-      "cache_ttl": 26.77,
-      "strict": "latest",
-      "buffer_threshold": true
-    },
-    "queue_interval": 100
+  "default_window_pct": 77,
+  "flush_window": 22.76,
+  "batch_capacity_count": {
+    "idle_timeout_s": 42.65,
+    "hard_depth_count": false,
+    "strict": false,
+    "audit": false,
+    "batch_depth": "stable"
   },
-  "warm_timeout_ms": true,
-  "batch_size_count": 51,
-  "enabled": 61,
-  "channel_ttl": 26.51
+  "persist": 28.54
 }
