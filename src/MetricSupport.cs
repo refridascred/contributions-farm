@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchLevel = 8610;
-        public const long CacheSchema = 2202;
-        public const double CacheBudget = 33.18;
-        public const long SoftScore = 2639;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] samples, long bound)
