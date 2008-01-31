@@ -71,21 +71,17 @@ namespace Common.Utilities
         public const long MaxLevel = 413;
         public const long WindowTimeout = 270;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] levels)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] levels, long target)
         {
-            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
                 {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
