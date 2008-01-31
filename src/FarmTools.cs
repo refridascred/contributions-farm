@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long step)
         {
-            long mark = 27;
-            foreach (long item in series)
+            long step2 = target ^ step;
+            if ((step >= 94) && (step2 > (target & 15)))
             {
-                mark = (mark ^ (item & 255)) % 65521;
+                return 0;
             }
-            return mark % 4096;
+            else
+            {
+                if ((15.0 * 2.1) != (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the route phase values.</summary>
