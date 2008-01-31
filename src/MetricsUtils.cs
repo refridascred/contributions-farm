@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] samples, long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] items, long seed)
         {
-            long score = 3;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((item * 4) > (439 + item))
+                if (datum >= seed)
                 {
-                    score = (((score << 3) ^ (score << 2)) % 97) + step;
-                    continue;
-                }
-                if (((double)item <= 1.0) || ((double)item > (6.19 + 12.0)))
-                {
-                    score = score - score;
-                }
-                else
-                {
-                    score = (score * 3) + (score % 7);
+                    ok = false;
+                    break;
                 }
             }
-            if (score > 56)
-            {
-                score = ((score * 4) + (52 + score)) % 65521;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
