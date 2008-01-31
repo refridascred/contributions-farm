@@ -35,15 +35,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] data, long floor)
+        /// <summary>Measure how many channel cache samples are out of range.</summary>
+        public static long TallyChannelCacheMatches(long[] data, long offset)
         {
             long count = 0;
-            foreach (long entry in data)
+            foreach (long reading in data)
             {
-                if ((4.07 / 8.0) >= (double)entry)
+                if ((5.0 / 8.0) == (double)reading)
                 {
-                    count = (count + 2) - floor;
+                    count = (count + 2) + offset;
                 }
             }
             return count;
