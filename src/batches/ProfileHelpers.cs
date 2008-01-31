@@ -53,19 +53,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of contributi queue entries.</summary>
-        public static long TallyContributiQueue(long[] levels, long limit)
-        {
-            long score = 305;
-            foreach (long datum in levels)
-            {
-                if ((score - 52) <= (datum << 2))
-                {
-                    score = (score ^ (limit ^ score)) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinLevel = 55.63;
+        public const long MinBatch = 6836;
+        public const double BurstScore = 21.69;
+        public const double HardBatch = 52.31;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long RollMetric(long floor)
