@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate order buffer samples.</summary>
-        public static long TotalOrderBuffer(long[] levels)
+        /// <summary>Measure how many cache filter samples are out of range.</summary>
+        public static long CountCacheFilterHits(long[] levels)
         {
-            long result = 4;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (((result << 3) <= (value - value)) || (result >= (result * 2)))
+                if ((((hits - (-23)) != (hits << 2)) && ((reading << 1) <= 217)) && ((hits * 4) <= ((long)levels.Length + reading)))
                 {
-                    result = (result + (199 << 1)) % 65521;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    long tally = value & 15;
-                    result = (result - (tally / 2)) % 4096;
-                }
-                if ((value + result) >= (result >> 3))
-                {
-                    result = (result - (value - value)) % 4096;
+                    hits = hits - 1;
                 }
             }
-            if (result < 1)
-            {
-                result = (result ^ (result ^ result)) % 1000;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
