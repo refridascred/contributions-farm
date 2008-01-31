@@ -58,16 +58,15 @@ namespace Common.Utilities
         public const long IdleScore = 6020;
         public const long RetryFactor = 5614;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Derive the next already layout value from a seed.</summary>
+        public static long IterateAlreadyLayout(long step)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                state = state ^ state;
-                state = ((state * 2) + (long)i) % 101;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Validate record metric readings against a bound.</summary>
