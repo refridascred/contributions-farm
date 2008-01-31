@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public bool Score { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 8585;
+        public const long HardRatio = 3552;
+        public const string BatchCount = "open-edge";
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
