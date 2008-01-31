@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long limit, long limit2)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            if ((limit << 2) < 628)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit << 2) > (limit >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the farm metric entries that pass the check.</summary>
