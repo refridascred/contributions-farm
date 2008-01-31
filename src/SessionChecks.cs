@@ -35,18 +35,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many channel cache samples are out of range.</summary>
-        public static long TallyChannelCacheMatches(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((5.0 / 8.0) == (double)reading)
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinLevel = "local";
+        public const long BurstBudget = 8371;
+        public const long LimitCluster = 7727;
+        public const long LimitFactor = 7873;
+        public const double CacheTimeout = 65.48;
     }
 }
