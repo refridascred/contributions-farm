@@ -2,8 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    level INTEGER,
-    created_at TIMESTAMP
+    token TEXT,
+    ratio REAL,
+    level INTEGER
 );
 
 CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
+
+INSERT INTO commits_records (score, token, ratio, level) VALUES (16.29, 'fallback', 74.15, 57);
