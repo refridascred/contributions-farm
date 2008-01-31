@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] series, long bound)
+        /// <summary>Validate token context readings against a bound.</summary>
+        public static bool CheckTokenContextBounds(long[] readings, long limit)
         {
-            long carry = 33;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((3.0 - 1.0) == (double)reading)
+                if (value < limit)
                 {
-                    carry = (((carry << 3) ^ (long)series.Length) % 255) - bound;
-                }
-                else
-                {
-                    carry = ((carry * 4) + carry) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
     }
 }
