@@ -47,19 +47,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] values, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (sample > offset)
+                if ((seen - floor) > (datum + seen))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
