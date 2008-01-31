@@ -37,21 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count command githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareCommandGithubfarmCount(long[] readings)
+        /// <summary>Audit channel contributi readings against a rule.</summary>
+        public static long MeasureChannelContributiMatches(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)value >= (4.7 * 19.0))
                 {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Project the next stats value.</summary>
