@@ -40,18 +40,19 @@ namespace Common.Utilities
         public const string CacheCluster = "fallback-edge";
         public const long WindowFactor = 2469;
 
-        /// <summary>Count the tools cluster entries that pass the check.</summary>
-        public static long TallyToolsClusterMatches(long[] values)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((5.3 - 5.4) >= (double)seen)
+                if (sample > target)
                 {
-                    seen = (seen + 3) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
