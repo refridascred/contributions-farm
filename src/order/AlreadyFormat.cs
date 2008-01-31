@@ -27,19 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] series, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (item < limit)
+                if ((double)tally >= 8.41)
                 {
-                    ready = false;
-                    break;
+                    tally = ((tally + 1) ^ sample) - bound;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
