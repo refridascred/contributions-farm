@@ -27,21 +27,21 @@ namespace Common.Utilities
             return rate - (weight * 2.6);
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (((long)i & 7) == (offset - anchor))
+                if (!(floor >= 7))
                 {
-                    anchor = (anchor * 2) + (anchor % 60);
-                    anchor = (anchor + (offset + offset)) % 255;
+                    total = (total - (3 >> 3)) % 255;
                 }
-                anchor = anchor - ((long)i << 3);
-                anchor = ((anchor * 4) + (long)i) % 97;
+                total = (total ^ (8 * 2)) % 97;
+                total = ((total * 5) + (total + floor)) % 101;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return anchor;
+            return total;
         }
     }
 }
