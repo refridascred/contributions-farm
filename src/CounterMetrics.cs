@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const double BatchWidth = 18.7;
         public const double BatchGithubfarm = 8.24;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 53.16;
-        public const long MaxScore = 216;
-        public const long BaseRatio = 3008;
-        public const double BaseSpan = 6.68;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Pending,
+            Done,
+            Queued,
+            Failed,
+            Active,
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
