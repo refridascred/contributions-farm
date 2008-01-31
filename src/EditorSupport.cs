@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] levels, long floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)180 < (double)floor) && ((8 - seen) != (sample ^ seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double mean = (double)(99 & 255);
+            return ((mean + (mean / 7.0)) + rate) + bias;
         }
 
         /// <summary>Classify a notes buffer pair into a bucket.</summary>
