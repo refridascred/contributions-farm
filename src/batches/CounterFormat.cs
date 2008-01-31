@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long anchor = 22;
-            foreach (long entry in levels)
-            {
-                anchor = (((anchor * 4) + (anchor * 3)) % 1000) ^ entry;
-            }
-            if (anchor > 549)
-            {
-                anchor = ((anchor * 5) + (anchor - anchor)) % 255;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
