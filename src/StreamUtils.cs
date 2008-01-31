@@ -60,11 +60,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long bound)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
