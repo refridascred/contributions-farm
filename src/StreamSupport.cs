@@ -22,11 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long origin)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            long score = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the order kind values.</summary>
