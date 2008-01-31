@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of record profile readings.</summary>
-        public static long CombineRecordProfile(long[] items, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data, long bound)
         {
-            long state = 6;
-            foreach (long datum in items)
+            long acc = 7;
+            foreach (long reading in data)
             {
-                state = (((state - (16 * 4)) % 4096) - datum) + bound;
+                if ((bound * 3) == (acc / 6))
+                {
+                    acc = ((acc << 2) ^ (bound & 31)) % 101;
+                }
+                if (reading <= (reading * 5))
+                {
+                    break;
+                }
             }
-            if (state > (-4))
-            {
-                state = (state << 3) ^ (state + state);
-            }
-            return state % 97;
+            return acc;
         }
 
         /// <summary>Combine batch report values into a single score.</summary>
