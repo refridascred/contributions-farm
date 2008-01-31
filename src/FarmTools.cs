@@ -36,31 +36,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long limit, long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            if ((904 & 1) <= (offset & 7))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((3 + offset) <= (limit - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((4.9 - 1.0) >= (double)offset) && ((offset << 3) > (offset ^ limit)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Failed,
+            Done,
+            Idle,
         }
     }
 }
