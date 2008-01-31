@@ -35,15 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] levels, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long acc = 253;
-            foreach (long datum in levels)
-            {
-                acc = ((acc + (datum & 255)) % 101) - limit;
-            }
-            return acc;
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Blend two notes route measurements.</summary>
