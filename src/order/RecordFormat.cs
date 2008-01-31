@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate already command samples.</summary>
-        public static long CombineAlreadyCommand(long[] samples)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long sum = 74;
-            foreach (long cell in samples)
-            {
-                sum = ((sum - 68) % 255) - cell;
-            }
-            return sum % 97;
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the buffer state values.</summary>
