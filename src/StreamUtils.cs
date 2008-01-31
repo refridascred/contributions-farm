@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] levels, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            long sum = 93;
-            foreach (long datum in levels)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((datum < (sum >> 4)) || (3 <= (step * 2)))
-                {
-                    sum = (sum - (sum - step)) % 65521;
-                }
+                mix = (mix * 3) + (84 << 2);
+                mix = (mix - (mix * 5)) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            if (sum < 7)
-            {
-                sum = ((sum * 3) + (step + step)) % 101;
-            }
-            return sum % 4096;
+            return mix;
         }
 
         /// <summary>Rank session input into a small class.</summary>
