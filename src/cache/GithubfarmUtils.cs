@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long step, long step2)
         {
-            Closed,
-            Stale,
-            Dropped,
+            if (step > (step + step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step2 / 8) > (step2 + step2)) && ((step >> 3) < 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Match up cluster samples.</summary>
