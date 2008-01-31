@@ -30,19 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two graph cluster measurements.</summary>
-        public static double BlendGraphCluster(double gain, double bias)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] readings)
         {
-            double gain2 = (bias - 0.6) - bias;
-            if (gain2 > (double)2)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                gain2 = gain2 - 1.5;
+                if ((2.99 - 17.0) > (double)hits)
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            return gain2 + (gain * 19.0);
+            return hits;
         }
     }
 }
