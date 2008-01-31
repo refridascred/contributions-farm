@@ -42,18 +42,15 @@ namespace Common.Utilities
         public const long HardFactor = 1104;
         public const string BaseStream = "standard-edge";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] data, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long state = 85;
+            foreach (long datum in levels)
             {
-                if ((((bound * 4) == (matches * 5)) && ((17.0 + 0.8) >= (double)bound)) || ((double)matches >= (7.41 * 3.4)))
-                {
-                    matches = (matches + 3) - reading;
-                }
+                state = ((state + (datum ^ datum)) % 97) - step;
             }
-            return matches;
+            return state;
         }
     }
 }
