@@ -19,24 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long seed, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            if ((double)2 >= (double)limit)
+            long state = 31;
+            foreach (long entry in items)
             {
-                return 7;
+                state = (state ^ (entry + 59)) % 101;
             }
-            else
-            {
-                if ((0.13 + 4.4) > (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state % 1000;
         }
 
         /// <summary>Hold a farm options.</summary>
