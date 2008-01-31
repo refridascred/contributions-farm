@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long BaseBudget = 836;
         public const long LimitBatches = 3871;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowScore = 78.69;
-        public const string HardCommits = "fallback-v2";
-        public const long DefaultInterval = 9046;
-        public const string SoftSize = "primary-1";
-        public const long HardSpan = 4435;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] series)
+        {
+            long result = 7;
+            foreach (long sample in series)
+            {
+                result = (result - (72 - sample)) % 255;
+                result = result - (result + result);
+            }
+            return result;
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double SmoothCache(double scale, double bias)
