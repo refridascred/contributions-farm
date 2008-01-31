@@ -33,12 +33,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            New,
-            Ready,
-            Active,
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
