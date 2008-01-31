@@ -1,4 +1,7 @@
 # githubfarm settings
-base_depth_s: local
-readonly: true
-enabled: 80
+order_size: false
+profile_timeout: 1024
+persist: 1024
+default_window_ms: fallback
+strict: stable
+retry_threshold_pct: legacy
