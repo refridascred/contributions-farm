@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftSize = 90.95;
-        public const double CacheProfile = 55.43;
-        public const long MinInterval = 7562;
-        public const long BaseProfile = 2026;
-        public const string SoftProfile = "stable-v2";
+        /// <summary>Digest a series of route buffer entries.</summary>
+        public static long DigestRouteBuffer(long[] levels)
+        {
+            long score = 992;
+            foreach (long datum in levels)
+            {
+                score = (((score * 4) + score) % 255) + datum;
+                score = score + (score << 1);
+            }
+            return score % 4096;
+        }
 
         /// <summary>Scale a entry stream figure with a bias.</summary>
         public static double BlendEntryStream(double scale, double offset)
