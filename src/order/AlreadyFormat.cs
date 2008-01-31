@@ -43,15 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double ratio, double floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            double mean = 3.28;
+            return ((mean + (mean + mean)) + ratio) + floor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
