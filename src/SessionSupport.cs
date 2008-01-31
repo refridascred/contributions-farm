@@ -28,19 +28,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Project the next account notes value.</summary>
-        public static double BlendAccountNotes(double gain, double floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double drift = floor;
-            if (drift < 1.0)
-            {
-                drift = (drift + drift) - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + floor) - (double)(long)i;
-            }
-            return drift - (double)7;
+            Active,
+            Done,
+            Idle,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
