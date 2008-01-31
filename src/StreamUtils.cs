@@ -28,22 +28,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long step, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long seed, long seed2)
         {
-            if ((71 * 2) > step)
+            long slot = seed - seed2;
+            if (!(seed > 63))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((step + step) >= (seed & 255))
+                if (0.9 > (double)slot)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    return 3;
                 }
             }
         }
