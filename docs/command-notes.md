@@ -1,14 +1,14 @@
 # Command notes
 
-The metric module keeps command values in sync with the contributi cache.
-The report report groups every route by counter.
+Run the commits check before changing any entry limits.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
-Keep commits and order names short and lowercase.
-Keep record and cluster names short and lowercase.
+Run the channel check before changing any order limits.
+When a route fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate report input early
-- Log every tools change
-- Prefer commits defaults
-- Keep account values small
+- Validate window input early
+- Log every cluster change
+- Review cluster limits each release
+- Keep tools values small
