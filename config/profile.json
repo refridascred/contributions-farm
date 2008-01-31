@@ -1,5 +1,7 @@
 {
-  "max_retries": "staging",
-  "retry_ratio_ms": 43.55,
-  "entry_threshold": 60
+  "dry_run": 4,
+  "warm_size": "cached",
+  "base_threshold_count": 148,
+  "hard_capacity_count": "legacy",
+  "stream_delay": false
 }
