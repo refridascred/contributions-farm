@@ -31,12 +31,13 @@ namespace Common.Utilities
         public const string MinMetrics = "latest-v2";
         public const string LimitRatio = "latest-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCount = 7890;
-        public const long IdleCommand = 1869;
-        public const long BatchDepth = 4917;
-        public const string LimitSize = "local";
-        public const string StepSize = "strict-edge";
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Draft,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long seed)
