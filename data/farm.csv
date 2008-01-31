@@ -1,11 +1,6 @@
-id,state,level,token
-1,green,862,stable
-2,fallback,497,cached
-3,52.2,cached,local
-4,eu-west,open,64.18
-5,staging,92.91,507
-6,fallback,3.06,fallback
-7,87.25,781,28.66
-8,156,30.74,967
-9,standard,legacy,standard
-10,44.25,4.28,958
+id,state,active,level,weight
+1,edge,edge,608,85.11
+2,827,76.8,553,46.08
+3,422,175,922,412
+4,open,558,368,541
+5,985,980,385,546
