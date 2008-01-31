@@ -45,16 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics profile series from a seed.</summary>
-        public static long DeriveMetricsProfile(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseWidth = 6436;
+        public const long LimitBudget = 783;
+        public const long BatchSpan = 8775;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
