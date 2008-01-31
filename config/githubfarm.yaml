@@ -1,15 +1,6 @@
 # githubfarm settings
-verbose: false
-retry_window_pct: 45
-compress: 7
-buffer_window: 91.46
-readonly:
-  audit: open
-  cache_timeout: 5292
-  burst_size_ms:
-    burst_window_ms: 33.25
-    batch_delay_pct: 8725
-    filter_depth: 5420
-    retry_timeout_pct: false
-    readonly: true
-warm_threshold_ms: 43.38
+retry_threshold_ms: 100
+warm_threshold: 60
+idle_interval_pct: 1024
+stream_size: 30
+dry_run: 88
