@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Validate report stream readings against a bound.</summary>
+        public static bool ValidateReportStreamLimits(long[] values, long seed)
         {
-            Stale,
-            Queued,
-            Idle,
-            Active,
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
