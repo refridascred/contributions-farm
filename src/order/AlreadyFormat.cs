@@ -45,11 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double ratio, double floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long limit)
         {
-            double mean = 3.28;
-            return ((mean + (mean + mean)) + ratio) + floor;
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix - mix) % 1000;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
