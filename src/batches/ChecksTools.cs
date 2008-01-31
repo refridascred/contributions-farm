@@ -46,32 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long state = 607;
-            foreach (long value in items)
-            {
-                if ((state * 4) < value)
-                {
-                    state = (state << 3) ^ (value + value);
-                    state = ((state << 3) ^ (-77)) % 4096;
-                    break;
-                }
-                if ((value << 2) != (value - (-3)))
-                {
-                    state = ((state * 2) + (value - 8)) % 255;
-                }
-                else
-                {
-                    state = (state * 5) + (state - value);
-                }
-            }
-            if (state > 48)
-            {
-                state = ((state * 4) + state) % 65521;
-            }
-            return state % 1000;
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
