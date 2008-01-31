@@ -28,19 +28,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] samples, long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Dropped,
+            Done,
+            Retry,
+            Ready,
         }
     }
 }
