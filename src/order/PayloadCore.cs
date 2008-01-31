@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long bound, long bound2)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long bound3 = bound - bound2;
-            if ((bound2 >= bound) || (1.0 > (double)bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound3 <= 3.53)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound3 / 7) >= bound) && (4 >= (bound2 << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Combine channel checks values into a single score.</summary>
