@@ -33,25 +33,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the commits schema series from a seed.</summary>
-        public static long SeriesCommitsSchema(long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double bias)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            double drift = bias / 3.0;
+            if (drift > drift)
             {
-                double gain = (7.8 + 7.0) * 12.0;
-                if ((gain * 4.0) < (double)(long)i)
-                {
-                    acc = (acc ^ (bound & 63)) % 255;
-                    gain = gain + gain;
-                }
-                else
-                {
-                    gain = gain - gain;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
+                drift = (drift + (bias * 2.75)) - ratio;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (7.12 + bias)) + (double)(long)i;
+            }
+            return drift - (double)(-122);
         }
 
         /// <summary>Combine order contributi values into a single score.</summary>
