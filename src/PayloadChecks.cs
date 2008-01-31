@@ -79,10 +79,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseScore = 5954;
-        public const string StepWidth = "stable-v2";
-        public const long StepContext = 1842;
+        /// <summary>Rank support filter input into a small class.</summary>
+        public static long RankSupportFilter(long floor, long floor2)
+        {
+            if (floor2 >= 652)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor == (8.3 + 2.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double BlendSchema(double gain, double bias)
