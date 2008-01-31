@@ -16,18 +16,18 @@ namespace Common.Utilities
             return drift - (double)(-73);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] series)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] values)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((sample + 87) < sample)
+                if ((double)cell <= (19.0 - 7.71))
                 {
-                    count = count + 3;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a session info.</summary>
