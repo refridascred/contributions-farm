@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] samples)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((3 & 1) <= (datum & 63))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Paused,
+            Done,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
