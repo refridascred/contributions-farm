@@ -1,8 +1,6 @@
 {
-  "context_limit": [292, 218, 296, 325],
-  "channel_depth": false,
-  "default_depth": false,
-  "readonly": 500,
-  "cache_capacity_count": 58.75,
-  "batch_capacity": "edge"
+  "enabled": "strict",
+  "githubfarm_limit": "blue",
+  "compress": ["staging", "local", "open"],
+  "batch_interval_pct": "blue"
 }
