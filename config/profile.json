@@ -1,6 +1,6 @@
 {
-  "queue_timeout": 28.19,
-  "idle_ttl": "legacy",
-  "format_timeout": 74.05,
-  "strict": true
+  "enabled": 1024,
+  "batch_size_ms": 43.15,
+  "order_threshold": "green",
+  "readonly": "local"
 }
