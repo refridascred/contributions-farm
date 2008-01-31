@@ -22,18 +22,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] data)
+        /// <summary>Find the first commits batch entry that matches the target.</summary>
+        public static long LocateCommitsBatchIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample >= (8.72 + 6.1))
+                if ((items[i] >= step) && ((items[i] % 3) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
