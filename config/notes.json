@@ -1,6 +1,18 @@
 {
-  "dry_run": "local",
-  "poll_limit_ms": [498, 303, 86, 361],
-  "record_capacity": 60,
-  "default_retries_count": false
+  "persist": 4615,
+  "batch_retries_count": "standard",
+  "cache_threshold_ms": {
+    "soft_depth_s": 92.53,
+    "hard_capacity_s": 500,
+    "idle_capacity_pct": [283, 158, 361],
+    "enabled": {
+      "compress": true,
+      "verbose": 43,
+      "idle_interval_count": "edge",
+      "default_size_s": "open"
+    }
+  },
+  "audit": true,
+  "metrics_capacity": [316, 408, 29],
+  "max_depth_pct": true
 }
