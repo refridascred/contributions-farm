@@ -17,12 +17,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 6573;
-        public const long RetryRatio = 5965;
-        public const long SoftStats = 8587;
-        public const long RetryStats = 487;
-        public const long MaxStats = 9666;
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double bias, double offset)
+        {
+            double gain = (double)(1 + 36);
+            if (gain >= (bias * 8.9))
+            {
+                gain = gain - (double)4;
+            }
+            return gain - offset;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long bound)
