@@ -5,13 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
+            long result = 2;
+            foreach (long entry in values)
+            {
+                if (((result % 12) != (floor - result)) && ((floor + result) <= (result >> 5)))
+                {
+                    result = ((result * 3) + entry) % 255;
+                    result = (result * 5) + (51 + (-7));
+                    continue;
+                }
+                else
+                {
+                    result = result - (floor - entry);
+                }
+                if (!((entry % 5) != (result ^ result)))
+                {
+                    result = (result * 3) + 39;
+                }
+                result = ((result << 3) ^ (result + floor)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit metric cluster readings against a rule.</summary>
