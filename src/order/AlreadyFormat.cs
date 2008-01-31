@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter githubfarm reading by value.</summary>
-        public static long LookupCounterGithubfarmIndex(long[] items, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((items[i] > origin) && ((items[i] % 2) == 0))
+                if (item < limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
