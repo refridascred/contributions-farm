@@ -42,19 +42,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile notes readings against a rule.</summary>
-        public static long MeasureProfileNotesHits(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((tally + tally) == (reading + floor))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 8525;
+        public const double LimitFilter = 76.67;
+        public const long BatchScore = 1513;
 
         /// <summary>Combine stream context values into a single score.</summary>
         public static long FoldStreamContext(long[] items, long seed)
