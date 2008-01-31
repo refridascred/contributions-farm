@@ -37,15 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double load = (rate / 7.0) * 8.9;
-            if (load > (rate / 6.0))
-            {
-                load = (load + load) - bias;
-            }
-            return load + rate;
+            Idle,
+            Stale,
+            Paused,
+            Ready,
         }
     }
 }
