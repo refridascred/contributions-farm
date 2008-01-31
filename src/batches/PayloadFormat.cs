@@ -49,13 +49,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long origin)
         {
-            public double Rank { get; set; }
-            public double Total { get; set; }
-            public double Size { get; set; }
-            public double Flag { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                long tally = carry + (carry + (-698));
+                if ((carry + tally) < (origin + 67))
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
