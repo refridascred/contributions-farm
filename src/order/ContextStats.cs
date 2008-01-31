@@ -46,22 +46,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] samples, long floor)
         {
-            long total = -224;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.5 * 7.74) == (double)total)
+                if (samples[i] > floor)
                 {
-                    total = (((total * 3) + 631) % 101) - value;
+                    return (long)i;
                 }
             }
-            if (total > 0)
-            {
-                total = ((total << 3) ^ total) % 97;
-            }
-            return total;
+            return -1;
         }
     }
 }
