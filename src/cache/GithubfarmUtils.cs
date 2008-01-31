@@ -13,24 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long floor, long seed)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] data)
         {
-            if ((double)seed != (8.9 * 5.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((109 + seed) > (floor & 127))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
