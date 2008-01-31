@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] data)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long sum = 663;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = ((sum << 2) ^ 888) ^ (long)i;
-                    sum = sum ^ (datum >> 1);
-                }
-                if (sum > (datum * 4))
-                {
-                    sum = (sum << 2) ^ (sum * 2);
-                }
-                else
-                {
-                    sum = (sum - (datum << 2)) % 255;
-                }
-            }
-            return sum;
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a session record.</summary>
