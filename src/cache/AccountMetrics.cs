@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            Retry,
-            Active,
-            Locked,
-            Draft,
-            Pending,
+            long mix = 8;
+            foreach (long datum in samples)
+            {
+                mix = (mix * 4) + (mix % 8);
+                mix = mix ^ datum;
+            }
+            return mix;
         }
 
         /// <summary>Hold a farm record.</summary>
