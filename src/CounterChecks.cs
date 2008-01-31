@@ -61,27 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] items)
-        {
-            long mix = 5;
-            foreach (long datum in items)
-            {
-                if ((datum * 4) == (datum ^ mix))
-                {
-                    mix = (mix - (datum + datum)) % 4096;
-                }
-                if (((long)items.Length * 5) <= mix)
-                {
-                    break;
-                }
-            }
-            if (mix < 30)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 3015;
+        public const long BatchChecks = 7488;
+        public const string DefaultCount = "open-edge";
+        public const long BaseChecks = 6692;
+        public const string BurstSpan = "open-v2";
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferRange(long[] data, long seed)
