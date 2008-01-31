@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] values, long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double rate, double span)
         {
-            long score = 7;
-            foreach (long value in values)
-            {
-                score = (score ^ seed) - value;
-            }
-            return score;
+            double load = (span + rate) + (double)(-942);
+            return load - 5.04;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
