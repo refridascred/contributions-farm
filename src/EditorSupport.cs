@@ -45,19 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] items, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (item > origin)
+                if ((item >> 4) > count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + seed;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
