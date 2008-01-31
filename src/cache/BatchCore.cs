@@ -18,27 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] values)
-        {
-            long state = 7;
-            foreach (long entry in values)
-            {
-                if ((entry ^ state) > (entry + state))
-                {
-                    state = ((state << 3) ^ (39 ^ entry)) % 65521;
-                }
-                else
-                {
-                    state = ((state * 2) + state) % 65521;
-                }
-            }
-            if (state > 9)
-            {
-                state = (state + (state + state)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 54.06;
+        public const long MinTimeout = 7220;
+        public const long LimitLevel = 1625;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long DigestCounter(long[] samples)
