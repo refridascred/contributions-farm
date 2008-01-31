@@ -47,17 +47,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] data, long step)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
