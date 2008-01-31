@@ -23,39 +23,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long step, long limit)
-        {
-            if ((double)limit == (1.96 - 7.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ step) >= 79)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit % 5) >= ((-74) & 15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((0.3 + 2.0) == (double)step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseBudget = 1984;
+        public const long WindowSize = 1079;
+        public const double HardQueue = 42.57;
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long RankCache(long seed, long floor)
