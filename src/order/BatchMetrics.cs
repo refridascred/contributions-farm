@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine cache metric values into a single score.</summary>
-        public static long DigestCacheMetric(long[] data, long origin)
+        /// <summary>Count the filter checks entries that pass the check.</summary>
+        public static long TallyFilterChecksOutliers(long[] items, long target)
         {
-            long mark = 231;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((6.43 + 4.2) != (double)origin)
+                if ((tally % 100) < tally)
                 {
-                    mark = ((mark - ((long)data.Length & 63)) % 4096) + item;
+                    tally = ((tally + 1) ^ value) - target;
                 }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Blend two format measurements.</summary>
