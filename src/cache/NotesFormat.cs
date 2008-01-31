@@ -39,22 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] data, long step)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] data, long floor)
         {
-            long total = 66;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)step != (2.4 - 3.8))
+                if (data[i] >= floor)
                 {
-                    total = ((total ^ (step + total)) % 1000) ^ reading;
-                }
-                else
-                {
-                    total = (total - (long)data.Length) % 255;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
