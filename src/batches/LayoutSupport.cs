@@ -49,18 +49,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] values, long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)reading <= (9.73 + 18.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) + step;
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
