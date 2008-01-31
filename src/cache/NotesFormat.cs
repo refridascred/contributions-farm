@@ -49,31 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long limit, long target)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            if (!((limit / 2) < (748 - 30)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (8.26 * 7.2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit <= (2.8 + 4.79))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
