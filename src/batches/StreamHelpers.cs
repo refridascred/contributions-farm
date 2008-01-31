@@ -30,24 +30,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long seed, long floor)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if ((519 - 9) >= (seed - seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed + floor) < (seed / 6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Done,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
