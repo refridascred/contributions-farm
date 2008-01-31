@@ -1,6 +1,8 @@
-id,level,ratio
-1,35.73,9.21
-2,green,588
-3,47,fallback
-4,16.23,635
-5,546,977
+id,active,level,weight
+1,green,76,94.58
+2,eu-west,423,917
+3,53.72,101,blue
+4,947,eu-west,182
+5,stable,16.96,221
+6,72.18,110,stable
+7,strict,cached,eu-west
