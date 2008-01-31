@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] readings, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((133 + value) > value)
+                if (((long)values.Length * 3) >= (value % 100))
                 {
-                    tally = (tally + 1) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) + target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
