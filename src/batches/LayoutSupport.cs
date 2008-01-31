@@ -48,39 +48,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long limit, long step)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long offset = limit ^ step;
-            if ((29 & 1) <= step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((offset & 31) > step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit % 12) == (step - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((25 >> 4) >= (limit / 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
