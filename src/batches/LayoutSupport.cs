@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] series, long seed)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            long mix = 871;
+            foreach (long entry in series)
+            {
+                mix = (((mix << 2) ^ seed) % 4096) - entry;
+            }
+            return mix;
         }
 
         /// <summary>Describe the notes state values.</summary>
