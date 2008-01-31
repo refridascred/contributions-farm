@@ -39,23 +39,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double scale, double offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
         {
-            double gain = scale;
-            if (gain <= (double)4)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                gain = (gain + 8.56) - offset;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (1.69 / 4.0);
+            return mark;
         }
 
         /// <summary>Accumulate record samples.</summary>
