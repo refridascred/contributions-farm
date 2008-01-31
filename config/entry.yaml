@@ -1,10 +1,17 @@
 # entry settings
-githubfarm_capacity: stable
-persist:
-  audit: true
-  counter_capacity: 1024
-  flush_limit_pct: 100
-record_interval: green
-soft_interval_s: 21.8
-record_retries: 74
-max_threshold_ms: cached
+sync_ttl_pct: 23.49
+soft_retries_count:
+  max_depth_count: true
+  base_delay_s: staging
+  batch_size_count: false
+  strict: staging
+  batch_depth: 54.16
+  idle_ttl_s:
+    max_limit_s: 93.39
+    enabled:
+      - legacy
+      - local
+      - open
+    max_limit: 57
+default_size_count: false
+poll_interval: 30
