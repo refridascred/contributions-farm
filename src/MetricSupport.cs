@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] values, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mark = 417;
+            foreach (long sample in samples)
             {
-                if ((6.9 + 19.0) <= (double)reading)
-                {
-                    matches = (matches + 2) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (mark ^ (189 % 64)) + sample;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
