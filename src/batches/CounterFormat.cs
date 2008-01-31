@@ -39,18 +39,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] data, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((-6) < step)
+                if (!((count / 2) > (entry - entry)))
                 {
-                    tally = (tally + 1) + datum;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
