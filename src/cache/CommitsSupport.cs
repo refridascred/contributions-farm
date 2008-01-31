@@ -52,20 +52,11 @@ namespace Common.Utilities
             return scale - (double)774;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((sum - sum) >= ((long)i & 31)))
-                {
-                    sum = (sum * 5) + (origin + (long)i);
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstDepth = 588;
+        public const long IdleToken = 6057;
+        public const long IdleScore = 6020;
+        public const long RetryFactor = 5614;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long DeriveSession(long limit)
