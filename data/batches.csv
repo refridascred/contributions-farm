@@ -1,6 +1,10 @@
-id,weight,token,ratio,label
-1,51.86,primary,86.84,cached
-2,390,edge,stable,296
-3,stable,fallback,eu-west,standard
-4,6.49,edge,450,fallback
-5,67.6,23.45,eu-west,93.31
+id,rank,owner,level
+1,staging,27.82,91.65
+2,4.94,standard,168
+3,13.97,standard,84.89
+4,green,67.09,421
+5,90.1,34.85,65.98
+6,12.94,329,staging
+7,664,fallback,681
+8,92.92,standard,fallback
+9,fallback,standard,405
