@@ -19,13 +19,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
