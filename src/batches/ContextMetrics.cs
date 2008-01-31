@@ -27,18 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] values, long origin)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long sum = 792;
-            foreach (long item in values)
-            {
-                if (origin <= (97 - origin))
-                {
-                    sum = (((sum * 3) + (origin * 4)) % 255) - item;
-                }
-            }
-            return sum % 1000;
+            Closed,
+            Failed,
+            Queued,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
