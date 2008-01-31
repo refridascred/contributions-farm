@@ -51,10 +51,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 2560;
-        public const long DefaultContext = 5918;
-        public const long BaseContext = 6818;
+        /// <summary>Classify a cache account pair into a bucket.</summary>
+        public static long GradeCacheAccount(long origin, long limit)
+        {
+            if ((limit / 4) < (8 << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit < 0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)917 == (double)origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
