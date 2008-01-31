@@ -1,7 +1,6 @@
 # githubfarm settings
-cache_capacity_count: blue
-min_ttl: 30.83
-hard_retries: 32.45
-max_window_count: 68.41
-default_window_pct: false
-base_depth: 500
+context_ttl: 69.73
+sync_limit_count: 250
+buffer_capacity: fallback
+flush_ttl_ms: 500
+compress: 78
