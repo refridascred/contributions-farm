@@ -19,12 +19,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long floor, long limit)
         {
-            Active,
-            Stale,
-            Ready,
+            if ((double)60 <= (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((225 + limit) > (floor + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(limit <= (limit - 392)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor >> 3) <= limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine already values into a single score.</summary>
