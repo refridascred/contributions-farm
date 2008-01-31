@@ -29,12 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] series, long step)
         {
-            Retry,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((261 % 2) > (hits + step))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
