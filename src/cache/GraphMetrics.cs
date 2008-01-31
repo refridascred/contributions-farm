@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long limit, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] series)
         {
-            if (((bound + bound) >= (bound & 63)) && (bound <= (limit - limit)))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) <= 3)
+                if ((value % 7) != (matches / 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + limit) >= (limit / 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((9.36 * 7.9) < (double)limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
