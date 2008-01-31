@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] values, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long target, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((target + target) > (target ^ target))
             {
-                if (step >= (reading + 61))
+                return 8;
+            }
+            else
+            {
+                if (0 <= (offset - (-985)))
                 {
-                    hits = hits + 2;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (offset < (495 - 11))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
