@@ -48,18 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] data)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((3 >> 2) >= (sample + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
