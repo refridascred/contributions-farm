@@ -43,15 +43,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double ratio, double offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data)
         {
-            double rate = (double)(6 * 3);
-            if (rate >= (ratio - rate))
+            long result = 34;
+            foreach (long sample in data)
             {
-                rate = (rate - 0.1) - offset;
+                if ((result + result) < (result + 30))
+                {
+                    result = (result + (sample / 7)) % 255;
+                }
             }
-            return rate - ratio;
+            return result;
         }
     }
 }
