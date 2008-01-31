@@ -1,8 +1,5 @@
 {
-  "schema_limit": "legacy",
-  "tools_size": 1024,
-  "already_retries": 49.0,
-  "max_capacity_ms": 1024,
-  "enabled": 5749,
-  "soft_capacity_count": "staging"
+  "base_limit_ms": 500,
+  "cluster_ttl": false,
+  "hard_interval_pct": true
 }
