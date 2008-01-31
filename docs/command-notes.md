@@ -1,16 +1,14 @@
 # Command notes
 
-Each entry is validated before it reaches the metrics queue.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Run the command check before changing any counter limits.
+Keep cache and session names short and lowercase.
+A filter that stays idle for too long is moved to the batches list.
 
-Keep window and queue names short and lowercase.
-Use queue settings to tune how often commits data is refreshed.
-When a support fails, the entry handler retries a few times before giving up.
+The order module keeps batch values in sync with the stream cache.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review profile limits each release
-- Prefer cache defaults
-- Validate already input early
-- Log every buffer change
+- Document new githubfarm fields
+- Prefer queue defaults
+- Log every route change
+- Keep farm values small
