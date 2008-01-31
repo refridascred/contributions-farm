@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many stats payload samples are out of range.</summary>
-        public static long MeasureStatsPayloadGaps(long[] readings, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((tally - 5) <= (99 % 60))
-                {
-                    tally = ((tally + 3) + entry) + origin;
-                }
-            }
-            return tally;
+            Idle,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a entry header.</summary>
