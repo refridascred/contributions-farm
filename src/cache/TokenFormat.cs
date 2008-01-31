@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] values, long origin)
         {
-            Failed,
-            Idle,
-            Stale,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next farm value.</summary>
