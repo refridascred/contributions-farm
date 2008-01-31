@@ -1,7 +1,9 @@
-id,count,active
-1,31.35,724
-2,743,standard
-3,288,439
-4,792,80.7
-5,fallback,57
-6,850,staging
+id,count,weight,ratio
+1,stable,143,38.29
+2,12.72,109,3.29
+3,513,26.99,54.92
+4,primary,blue,33.38
+5,737,651,45.27
+6,91,542,865
+7,722,latest,strict
+8,112,legacy,73.61
