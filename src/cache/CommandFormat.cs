@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Measure how many route queue samples are out of range.</summary>
+        public static long MeasureRouteQueueHits(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count & 3) >= (count & 1))
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metric summary.</summary>
