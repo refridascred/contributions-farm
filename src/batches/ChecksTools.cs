@@ -20,24 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] data, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] data, long step)
         {
-            long mix = 222;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + 7) % 65521;
-                mix = (mix + (value + (long)data.Length)) % 97;
-                if ((mix * 3) <= (value + value))
+                if (data[i] <= step)
                 {
-                    mix = mix ^ mix;
-                }
-                if (((limit ^ (-631)) > (value - value)) && ((double)mix >= (double)value))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a profile notes counter forward.</summary>
