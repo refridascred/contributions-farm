@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Iterate the order payload series from a seed.</summary>
+        public static long RollOrderPayload(long step)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (mix << 3) ^ (long)i2;
-                }
-                if (((long)i / 3) > step)
-                {
-                    mix = (mix * 5) + (step * 2);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
