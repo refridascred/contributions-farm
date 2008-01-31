@@ -1,8 +1,11 @@
 {
-  "max_capacity_count": 6497,
-  "sync_delay_ms": [328, 410, 172],
-  "batch_size_s": 1764,
-  "hard_threshold": 30,
-  "githubfarm_ratio": 38.77,
-  "flush_interval_count": 18.64
+  "soft_ratio_s": 60,
+  "burst_ratio": 1024,
+  "window_retries": "stable",
+  "sync_size": {
+    "strict": "staging",
+    "batch_timeout_count": 70,
+    "warm_size_s": 90,
+    "flush_depth": [296, 486, 262, 96]
+  }
 }
