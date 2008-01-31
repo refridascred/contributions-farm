@@ -19,16 +19,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long offset)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long step, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            if ((double)limit == (1.96 - 7.0))
             {
-                score = score ^ (460 ^ 32);
-                score = ((score * 4) + (long)i) % 4093;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((step ^ step) >= 79)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit % 5) >= ((-74) & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((0.3 + 2.0) == (double)step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
