@@ -83,11 +83,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double scale, double bias)
+        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
+        public static long CountFarmGithubfarmHits(long[] items)
         {
-            double scale2 = bias;
-            return (scale2 + (scale2 * 2.8)) + scale;
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (cell <= (cell - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a queue info.</summary>
