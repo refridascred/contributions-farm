@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a context account reading.</summary>
-        public static double BlendContextAccount(double ratio, double offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double ratio2 = (double)816;
-            if (ratio2 >= offset)
-            {
-                ratio2 = ratio2 - (7.39 * 1.65);
-            }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            return ratio2 - (ratio2 + offset);
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
