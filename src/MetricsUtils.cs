@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long seed, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] readings, long origin)
         {
-            long span = seed + target;
-            if ((24 + span) < (seed ^ seed))
+            bool ok = true;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)span > (7.9 - 19.0))
+                if (value != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
