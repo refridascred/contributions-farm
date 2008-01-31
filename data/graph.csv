@@ -1,6 +1,11 @@
-id,owner,state,score
-1,eu-west,legacy,30.51
-2,open,39.59,78
-3,57,586,green
-4,563,816,64.53
-5,85.29,eu-west,51.74
+id,rank,level,score
+1,stable,stable,55.33
+2,93.89,49.19,fallback
+3,816,45.68,legacy
+4,28.86,blue,strict
+5,116,583,fallback
+6,677,90.98,233
+7,standard,blue,64.32
+8,strict,strict,blue
+9,49.03,75.68,175
+10,43.25,72.46,236
