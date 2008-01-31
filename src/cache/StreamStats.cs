@@ -28,11 +28,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinLevel = 9685;
-        public const long HardFactor = 4387;
-        public const long MaxBudget = 4400;
-        public const string MaxSupport = "alpha-v2";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 1697;
+        public const long DefaultScore = 4592;
+        public const long RetrySpan = 1170;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
