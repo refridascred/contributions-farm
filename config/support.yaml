@@ -1,32 +1,11 @@
 # support settings
-enabled: 34.0
-flush_ttl_s: 45
-notes_capacity: 64.76
-retry_capacity_ms: latest
-soft_capacity_s:
-  min_window:
-    base_threshold_s:
-      - primary
-      - eu-west
-      - primary
-      - legacy
-    record_capacity: 19
-    default_interval_pct:
-      - 229
-      - 350
-      - 432
-      - 303
-    sync_interval:
-      - latest
-      - standard
-      - strict
-      - staging
-    soft_ttl_pct: 883
-  enabled:
-    context_timeout: blue
-    base_delay: 60
-    session_ratio:
-      - primary
-      - cached
-    queue_retries: 60
-  max_limit_ms: 250
+audit: stable
+max_delay_pct: standard
+max_size:
+  session_interval: 46.86
+  soft_limit_count: 40
+  warm_capacity_ms: latest
+  token_retries: cached
+flush_capacity_pct: cached
+cache_size_count: false
+contributi_limit: 42.93
