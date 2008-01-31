@@ -52,19 +52,21 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] data, long step)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
