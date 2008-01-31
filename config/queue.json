@@ -1,6 +1,17 @@
 {
-  "base_capacity_s": "fallback",
-  "verbose": 30,
-  "context_size": 64.83,
-  "readonly": 23.7
+  "burst_ratio_ms": "green",
+  "readonly": {
+    "layout_ttl": {
+      "flush_retries": 9840,
+      "soft_capacity": false,
+      "poll_depth_ms": 250,
+      "metrics_depth": false,
+      "base_threshold_ms": "primary",
+      "default_delay_s": "eu-west"
+    },
+    "queue_delay": 30,
+    "batch_depth_s": "standard"
+  },
+  "order_retries": "local",
+  "burst_limit_pct": "eu-west"
 }
