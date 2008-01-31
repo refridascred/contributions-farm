@@ -42,14 +42,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] samples)
         {
-            Done,
-            Queued,
-            Synced,
-            Failed,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
