@@ -44,12 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepSize = 6708;
-        public const double IdleInterval = 30.78;
-        public const double DefaultFactor = 85.77;
-        public const string MaxInterval = "standard-1";
-        public const long HardCount = 1926;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Offset { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double BlendGraph(double rate, double offset)
