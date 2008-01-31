@@ -37,15 +37,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            long sum = 1;
+            foreach (long reading in values)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                sum = (sum ^ (reading & 127)) % 255;
             }
-            return result;
+            return sum % 65521;
         }
 
         /// <summary>Adjust a farm reading.</summary>
