@@ -58,15 +58,14 @@ namespace Common.Utilities
         public const long IdleScore = 6020;
         public const long RetryFactor = 5614;
 
-        /// <summary>Derive the next already layout value from a seed.</summary>
-        public static long IterateAlreadyLayout(long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Retry,
+            Paused,
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Match up layout order samples.</summary>
