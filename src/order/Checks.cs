@@ -37,18 +37,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Count command githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareCommandGithubfarmCount(long[] readings)
         {
-            long result = 593;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((5.2 / 7.0) != (double)result))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result + result) ^ datum;
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
