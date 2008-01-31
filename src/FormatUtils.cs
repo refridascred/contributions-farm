@@ -48,22 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile metric readings against a rule.</summary>
-        public static long CountProfileMetricHits(long[] items)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (hits > sample)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Digest a series of route entries.</summary>
