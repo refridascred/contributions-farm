@@ -67,20 +67,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 12.13;
+        public const long MinQueue = 720;
+        public const string RetryQueue = "fallback-v2";
+        public const long MaxInterval = 8745;
+        public const long BurstWidth = 7785;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] levels, long origin)
