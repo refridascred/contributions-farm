@@ -43,22 +43,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] levels)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)(long)levels.Length <= (2.86 / 7.0))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
