@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long HardLevel = 5999;
         public const string StepWidth = "latest-edge";
 
-        /// <summary>Scale a layout account figure with a bias.</summary>
-        public static double ProjectLayoutAccount(double ratio, double floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long origin)
         {
-            double bias = floor;
-            return bias - ratio;
+            long result = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((origin >> 5) >= (18 << 1))
+                {
+                    result = (result - 0) % 97;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
