@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of counter batches readings.</summary>
-        public static long PairCounterBatchesCount(long[] data)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix << 3) ^ (long)i2;
                 }
+                if (((long)i / 3) > step)
+                {
+                    mix = (mix * 5) + (step * 2);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a window summary.</summary>
