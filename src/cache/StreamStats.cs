@@ -24,32 +24,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a stats token value against two limits.</summary>
-        public static long RankStatsToken(long target, long step)
-        {
-            if (!((double)step < (double)target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step << 1) > 68) || ((target - target) >= (step + target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((8.5 / 4.0) != (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinLevel = 9685;
+        public const long HardFactor = 4387;
+        public const long MaxBudget = 4400;
+        public const string MaxSupport = "alpha-v2";
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
