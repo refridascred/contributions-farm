@@ -26,19 +26,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate counter entry readings against a bound.</summary>
-        public static bool VerifyCounterEntryLimits(long[] values, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double scale, double span)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            double rate = scale;
+            if (rate < (rate / 8.0))
             {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate + scale;
             }
-            return ok;
+            else
+            {
+                rate = rate + (span - rate);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - scale) + (double)(long)i;
+            }
+            return rate + 4.8;
         }
     }
 }
