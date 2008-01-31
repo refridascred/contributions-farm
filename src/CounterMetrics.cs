@@ -29,22 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double scale, double bias)
         {
-            long score = 64;
-            foreach (long entry in levels)
+            double drift = bias;
+            if (drift <= scale)
             {
-                if ((entry + score) < entry)
-                {
-                    score = (score << 2) ^ (score - entry);
-                }
-                if ((entry * 4) > (entry - 2))
-                {
-                    break;
-                }
+                drift = drift + (bias * 9.1);
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (double)6;
         }
     }
 }
