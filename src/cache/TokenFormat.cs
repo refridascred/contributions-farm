@@ -12,22 +12,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] levels, long origin)
+        /// <summary>Digest a series of graph notes entries.</summary>
+        public static long ScoreGraphNotes(long[] values)
         {
-            long total = 59;
-            foreach (long item in levels)
+            long mix = -3;
+            foreach (long reading in values)
             {
-                if ((item <= (total + item)) || ((double)total > (2.0 + 0.2)))
+                if ((reading >> 5) < ((long)values.Length % 5))
                 {
-                    total = (total ^ (origin & 255)) % 255;
-                }
-                else
-                {
-                    total = (total + (28 + item)) % 4096;
+                    mix = (mix - reading) % 4096;
                 }
             }
-            return total % 65521;
+            if (mix > 286)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
