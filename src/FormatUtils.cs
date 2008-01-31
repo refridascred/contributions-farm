@@ -48,11 +48,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Audit window account readings against a rule.</summary>
+        public static long TallyWindowAccountOutliers(long[] levels)
         {
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading != (9.6 * 19.0))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
