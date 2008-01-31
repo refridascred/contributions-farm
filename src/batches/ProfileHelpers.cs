@@ -65,14 +65,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long bound, long limit)
         {
-            Active,
-            Idle,
-            Queued,
-            Done,
-            Retry,
+            long delta = bound - limit;
+            if (((double)limit == (14.0 * 1.2)) && ((delta % 100) <= delta))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound > (2.5 + 17.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
