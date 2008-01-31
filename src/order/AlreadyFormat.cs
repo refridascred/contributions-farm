@@ -23,23 +23,12 @@ namespace Common.Utilities
         public const long RetryAccount = 8333;
         public const long StepAccount = 933;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((carry / 6) < (carry - 53))
-                {
-                    carry = carry + (target & 15);
-                }
-                else
-                {
-                    carry = ((carry * 3) + 0) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a cache record.</summary>
