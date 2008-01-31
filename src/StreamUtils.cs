@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate channel format samples.</summary>
-        public static long DigestChannelFormat(long[] data)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long acc = 1;
-            foreach (long sample in data)
-            {
-                long edge = (acc + acc) >> 5;
-                if ((edge / 5) == (edge % 24))
-                {
-                    acc = (acc + (sample - acc)) % 1000;
-                }
-                if (((sample - sample) > 3) && ((double)acc <= (10.0 / 8.0)))
-                {
-                    acc = (acc ^ acc) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (acc + sample)) % 255;
-                }
-            }
-            return acc;
+            Idle,
+            Locked,
+            Retry,
+            Ready,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
