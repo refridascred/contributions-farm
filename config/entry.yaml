@@ -1,4 +1,12 @@
 # entry settings
-graph_delay: standard
-enabled: 95.16
-token_window: 48.87
+verbose:
+  enabled:
+    strict: staging
+    queue_threshold: edge
+    persist: 68.24
+    audit: fallback
+    sync_interval_count: edge
+  poll_window_pct: 6989
+  filter_delay: 8273
+warm_retries: 3.18
+max_retries: false
