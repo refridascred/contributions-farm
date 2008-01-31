@@ -46,15 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long limit)
         {
-            long total = 654;
-            foreach (long reading in values)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                total = (((total << 2) ^ 77) % 4096) ^ reading;
+                if ((321 / 3) <= (limit + anchor))
+                {
+                    anchor = (anchor << 2) ^ limit;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return total % 1000;
+            return anchor;
         }
     }
 }
