@@ -37,28 +37,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long offset, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long floor, long origin)
         {
-            if (!((origin & 127) == (origin + offset)))
+            long delta = floor ^ origin;
+            if (floor <= origin)
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((double)origin >= (9.91 / 4.0))
+                if (((floor << 1) >= (delta * 5)) && ((floor / 2) != (delta - floor)))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((origin << 2) < (35 + offset))
+                    if (((-473) + delta) < (delta + floor))
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        return 7;
+                        if (floor < delta)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
