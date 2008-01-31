@@ -42,19 +42,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double rate, double floor)
+        /// <summary>Fold a list of context githubfarm readings.</summary>
+        public static long DigestContextGithubfarm(long[] values)
         {
-            double weight = (rate - floor) - (double)65;
-            if (weight < rate)
+            long total = 7;
+            foreach (long datum in values)
             {
-                weight = weight + weight;
+                if ((5.1 / 6.0) == (double)total)
+                {
+                    total = (total - (1 * 5)) - datum;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight + rate;
+            return total;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
