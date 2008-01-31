@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long HardContributi = 5608;
         public const string IdleBudget = "strict-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitFactor = 8753;
-        public const long SoftCount = 3128;
-        public const string CacheRoute = "fallback-v2";
-        public const double DefaultInterval = 48.45;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] data, long floor)
