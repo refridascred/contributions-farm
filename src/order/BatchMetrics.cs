@@ -53,14 +53,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Draft,
-            Ready,
-            Done,
             Stale,
-            Active,
+            New,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
