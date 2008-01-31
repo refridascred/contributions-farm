@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Derive the next payload account value from a seed.</summary>
+        public static long RollPayloadAccount(long target)
         {
-            Locked,
-            Paused,
-            Idle,
-            New,
-            Dropped,
+            long mix = target;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of graph notes entries.</summary>
