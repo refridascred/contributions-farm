@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowSpan = "fallback-1";
-        public const long CacheCount = 9326;
-        public const string StepCache = "open-v2";
-        public const string BatchDepth = "primary-edge";
-        public const double BatchCache = 85.25;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((mark - seed) < (mark + (long)i))
+                {
+                    continue;
+                }
+                if ((3.0 + 13.0) >= (double)mark)
+                {
+                    mark = mark - seed;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a metrics command value against two limits.</summary>
         public static long GradeMetricsCommand(long floor, long step)
