@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] data, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((double)tally >= (double)entry)
+                if ((3 & 1) <= (datum & 63))
                 {
-                    tally = (tally + 1) + bound;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
