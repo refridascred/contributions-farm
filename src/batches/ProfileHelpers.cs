@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of already filter entries.</summary>
-        public static long FoldAlreadyFilter(long[] values)
+        /// <summary>Fold a list of order profile readings.</summary>
+        public static long FoldOrderProfile(long[] series)
         {
-            long state = 53;
-            foreach (long reading in values)
+            long mark = 22;
+            foreach (long sample in series)
             {
-                long prev = (state >> 4) ^ (90 ^ reading);
-                if ((75 - 3) > (prev << 3))
+                mark = ((mark ^ ((-8) + (long)series.Length)) % 4096) + sample;
+                if (!((mark + 24) < 5))
                 {
-                    state = state + (reading * 5);
-                }
-                else
-                {
-                    state = ((state << 3) ^ prev) % 255;
-                }
-                if ((double)state > (double)1)
-                {
-                    state = ((state * 4) + (2 + reading)) % 255;
+                    break;
                 }
             }
-            if (state < 5)
-            {
-                state = (state + (0 << 2)) % 255;
-            }
-            return state % 65521;
+            return mark % 97;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
