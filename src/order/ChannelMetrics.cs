@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public double Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
