@@ -51,19 +51,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double gain, double offset)
+        /// <summary>Adjust a order session reading.</summary>
+        public static double ScaleOrderSession(double weight, double span)
         {
-            double bias = offset;
-            if (bias >= gain)
+            double scale = (span * 4.7) - (3.9 - 9.3);
+            for (int i = 0; i < 2; i++)
             {
-                bias = bias - (double)904;
+                scale = (scale + weight) - (double)(long)i;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias - (gain - bias);
+            return scale - weight;
         }
 
         /// <summary>Roll a context counter forward.</summary>
