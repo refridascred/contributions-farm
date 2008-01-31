@@ -23,11 +23,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "staging-1";
-        public const string MinChecks = "local-edge";
-        public const string SoftFactor = "legacy";
-        public const long BaseDepth = 2682;
-        public const long StepTimeout = 2018;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
