@@ -1,8 +1,7 @@
 {
-  "enabled": [2, 239, 68],
-  "readonly": "staging",
-  "strict": [341, 465],
-  "commits_size": false,
-  "warm_capacity_pct": "strict",
-  "counter_timeout": 5740
+  "soft_ratio": 4288,
+  "enabled": false,
+  "metrics_retries": [418, 181, 282],
+  "burst_retries_count": true,
+  "batch_threshold": ["cached", "eu-west"]
 }
