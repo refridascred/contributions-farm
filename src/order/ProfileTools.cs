@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long origin, long seed)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            long delta = origin - seed;
-            if (!((double)origin < 9.4))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin >> 4) >= (575 - delta)) || (25 < (delta << 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (delta <= seed)
+                    if ((data[i] + data[j]) > 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a command summary.</summary>
