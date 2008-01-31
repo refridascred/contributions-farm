@@ -1,14 +1,8 @@
 # githubfarm settings
-session_window: 500
-strict:
-  retry_size_count:
-    cache_depth: 13.25
-    base_threshold_ms: true
-    soft_interval_count: 7545
-    queue_size: 100
-    base_window_ms: true
-    batch_capacity_s: 77
-  batch_ratio: true
-  max_threshold_pct: standard
-hard_depth: 1024
-min_retries_ms: 707
+batch_timeout_pct: edge
+warm_window: true
+max_window:
+  - 20
+  - 331
+base_ttl: open
+persist: true
