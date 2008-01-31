@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!(((tally * 2) <= (3 >> 4)) && ((entry & 63) != (tally % 97))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
