@@ -23,25 +23,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] readings, long floor)
-        {
-            long anchor = 341;
-            foreach (long value in readings)
-            {
-                anchor = ((anchor << 2) ^ 6) % 1000;
-                anchor = (anchor + (value << 2)) % 101;
-                if ((value >> 3) == (floor % 8))
-                {
-                    break;
-                }
-            }
-            if (anchor < 52)
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 4883;
+        public const double CacheRatio = 14.09;
+        public const long BurstChannel = 1975;
+        public const long LimitInterval = 6860;
+        public const string BatchSize = "staging-1";
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long OverlapStatsCount(long[] series)
