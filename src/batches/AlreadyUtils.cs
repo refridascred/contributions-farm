@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] data, long limit)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long step)
         {
-            long total = 90;
-            foreach (long item in data)
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total ^ limit) % 65521) - item;
-                total = (total ^ total) % 65521;
-                total = (total * 5) + (total - limit);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (total > 893)
-            {
-                total = total + (limit + limit);
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Hold a session options.</summary>
