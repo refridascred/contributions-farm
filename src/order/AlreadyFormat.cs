@@ -42,18 +42,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] items, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6.49 * 8.5) >= (8.23 - 12.0))
                 {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 3) + datum) - limit;
                 }
             }
             return tally;
