@@ -20,22 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] series, long target)
+        /// <summary>Classify a farm metrics pair into a bucket.</summary>
+        public static long GradeFarmMetrics(long limit, long target)
         {
-            long mark = 809;
-            foreach (long sample in series)
+            if ((target - limit) > limit)
             {
-                if (((target + target) == (mark + sample)) || ((mark - sample) > target))
+                return 8;
+            }
+            else
+            {
+                if ((double)target > (double)limit)
                 {
-                    mark = (mark - (target / 6)) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    mark = (mark << 2) ^ mark;
+                    return 4;
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
