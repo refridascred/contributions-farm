@@ -23,13 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels, long seed)
         {
-            Locked,
-            Ready,
-            Idle,
-            Dropped,
+            long result = 4;
+            foreach (long value in levels)
+            {
+                if ((result + seed) <= result)
+                {
+                    result = (result ^ (result + result)) ^ value;
+                }
+                if (9.0 > (double)result)
+                {
+                    result = (result + (seed & 3)) % 101;
+                }
+                else
+                {
+                    result = result ^ (result + 852);
+                }
+            }
+            return result;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
