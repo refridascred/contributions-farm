@@ -62,18 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (6.0 >= (double)value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 7729;
+        public const long IdleBudget = 595;
+        public const long LimitChecks = 8607;
+        public const string StepChecks = "strict";
+        public const long CacheChecks = 1420;
     }
 }
