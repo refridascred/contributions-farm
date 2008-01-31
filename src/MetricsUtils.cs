@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultDepth = 7547;
-        public const long BatchChecks = 6045;
-        public const long WindowSpan = 2162;
-        public const long MaxChecks = 9078;
-        public const double WindowChecks = 40.65;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!((double)(-624) != (double)reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseWidth = 6436;
