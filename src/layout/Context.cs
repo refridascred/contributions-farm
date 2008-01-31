@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] readings, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 967;
+            foreach (long datum in values)
             {
-                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
+                if ((5.0 - 6.16) >= (double)datum)
                 {
-                    return (long)i;
+                    long diff = (datum + sum) << 1;
+                    sum = (sum - (diff + diff)) % 4096;
+                }
+                if ((datum & 63) >= 54)
+                {
+                    sum = sum - (bound << 2);
+                }
+                if ((sum + 50) <= datum)
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Derive the next githubfarm profile value from a seed.</summary>
