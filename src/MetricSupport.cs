@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Digest a series of token session entries.</summary>
+        public static long TallyTokenSession(long[] samples, long bound)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            long result = -2;
+            foreach (long datum in samples)
+            {
+                result = (result - (datum + 37)) - bound;
+            }
+            if (result < 81)
+            {
+                result = ((result * 4) + (result - result)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Match up metric checks samples.</summary>
