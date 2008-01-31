@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the commits stream entries that pass the check.</summary>
-        public static long TallyCommitsStreamHits(long[] levels, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (((double)bound < (4.3 / 3.0)) || ((double)bound == (5.27 * 8.91)))
+                if (!!(917 > (item / 5)))
                 {
-                    tally = (tally + 2) - reading;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
