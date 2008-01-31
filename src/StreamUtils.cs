@@ -48,20 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long target)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (((-920) % 60) >= ((long)i >> 3))
-                {
-                    mark = (mark ^ step) % 101;
-                }
-                mark = (mark * 3) + ((long)i + mark);
-                mark = ((mark * 3) + (long)i) % 101;
+                anchor = (anchor - (target / 3)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Hold a order record.</summary>
