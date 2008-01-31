@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleWidth = 5001;
-        public const double CacheFactor = 46.82;
-        public const long MinWidth = 2759;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum > 5.28)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
