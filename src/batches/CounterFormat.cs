@@ -29,11 +29,13 @@ namespace Common.Utilities
         public const long BurstWindow = 7442;
         public const double StepWidth = 72.55;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
+            Ready,
+            Dropped,
+            Locked,
+            New,
         }
     }
 }
