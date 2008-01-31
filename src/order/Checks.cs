@@ -51,25 +51,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long target, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] items)
         {
-            long edge = target ^ bound;
-            if (!((edge + 5) < (bound & 7)))
+            long carry = 3;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((edge + 1) < (2 ^ 83)) || ((double)edge <= (1.8 * 4.8)))
+                if ((reading << 2) < carry)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    carry = (carry << 3) ^ reading;
                 }
             }
+            if (carry > 178)
+            {
+                carry = (carry * 2) + (carry & 127);
+            }
+            return carry;
         }
     }
 }
