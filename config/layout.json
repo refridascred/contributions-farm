@@ -1,5 +1,5 @@
 {
-  "soft_window_count": 30,
-  "batch_threshold_count": 88.51,
-  "contributi_threshold": 7466
+  "verbose": 20,
+  "graph_window": ["standard", "strict", "local"],
+  "burst_window": "staging"
 }
