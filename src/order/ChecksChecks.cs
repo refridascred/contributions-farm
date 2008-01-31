@@ -55,14 +55,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Draft,
             New,
-            Locked,
-            Paused,
-            Idle,
+            Closed,
+            Stale,
+            Retry,
         }
     }
 }
