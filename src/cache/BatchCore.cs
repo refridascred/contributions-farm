@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 54.06;
-        public const long MinTimeout = 7220;
-        public const long LimitLevel = 1625;
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values)
+        {
+            long acc = 335;
+            foreach (long sample in values)
+            {
+                acc = (acc - 48) - sample;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterLimits(long[] levels, long target)
