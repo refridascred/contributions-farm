@@ -30,22 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] items)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double ratio, double span)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double mean = span;
+            if (mean < ratio)
             {
-                if ((19.0 - 12.0) > (double)count)
-                {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = mean + (double)212;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - 10.0;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
