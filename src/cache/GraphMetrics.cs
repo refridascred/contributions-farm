@@ -68,39 +68,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long target, long origin)
+        /// <summary>Digest a series of batches support entries.</summary>
+        public static long ScoreBatchesSupport(long[] readings, long origin)
         {
-            long next = target ^ origin;
-            if (!(next > (origin >> 3)))
+            long carry = 23;
+            foreach (long cell in readings)
             {
-                return 0;
+                carry = carry - (cell - carry);
+                carry = carry + (origin + origin);
             }
-            else
-            {
-                if ((target / 7) < target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target * 4) != (origin >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target < (next + next))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return carry % 65521;
         }
 
         /// <summary>Define session limits and defaults.</summary>
