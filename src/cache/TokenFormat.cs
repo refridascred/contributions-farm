@@ -30,14 +30,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] values, long floor)
         {
-            Done,
-            Ready,
-            Queued,
-            Paused,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
