@@ -47,17 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema queue sample.</summary>
-        public static long LocateSchemaQueueIndex(long[] readings, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (readings[i] > floor)
+                if ((double)floor <= (2.7 - 2.8))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
