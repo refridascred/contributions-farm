@@ -41,11 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long origin)
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry << 2) ^ (origin % 100)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate record samples.</summary>
