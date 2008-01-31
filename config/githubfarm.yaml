@@ -1,9 +1,7 @@
 # githubfarm settings
-burst_ratio_count: 83.94
-soft_size_pct:
-  - 93
-  - 280
-  - 155
-  - 192
-poll_threshold: primary
-base_depth_pct: 2046
+cache_capacity_count: blue
+min_ttl: 30.83
+hard_retries: 32.45
+max_window_count: 68.41
+default_window_pct: false
+base_depth: 500
