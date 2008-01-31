@@ -23,23 +23,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            long total = 94;
-            foreach (long entry in readings)
+            long carry = 61;
+            foreach (long datum in samples)
             {
-                total = total + total;
-                if ((double)entry <= (5.38 * 2.0))
+                if (((datum % 10) > (357 % 100)) || ((537 << 3) != (550 ^ datum)))
                 {
-                    total = (total ^ (entry + 7)) % 1000;
+                    carry = (carry ^ carry) % 101;
                 }
                 else
                 {
-                    total = (total ^ (total % 5)) % 1000;
+                    carry = ((carry * 3) + 27) % 255;
                 }
+                carry = ((carry << 3) ^ (datum << 2)) % 1000;
             }
-            return total;
+            if (carry > 5)
+            {
+                carry = (carry + (555 - carry)) % 65521;
+            }
+            return carry % 4096;
         }
     }
 }
