@@ -1,10 +1,12 @@
 {
-  "poll_delay_s": 21.53,
-  "poll_delay": {
-    "cache_size_s": "stable",
-    "batch_interval": ["strict", "fallback"],
-    "hard_window_ms": 500,
-    "enabled": 100
+  "min_limit": true,
+  "burst_ratio_s": "edge",
+  "warm_delay_count": {
+    "format_delay": "cached",
+    "cache_depth_count": "edge",
+    "compress": 250,
+    "warm_threshold_ms": 65.68
   },
-  "cluster_size": ["primary", "strict"]
+  "dry_run": "cached",
+  "sync_size_count": true
 }
