@@ -1,8 +1,8 @@
 # support settings
-burst_ratio: legacy
-poll_delay_s: 60.21
-sync_threshold_pct: true
-filter_limit:
-  - standard
-  - eu-west
-checks_window: 3476
+cache_limit: cached
+githubfarm_window: cached
+batch_retries_ms: latest
+hard_threshold_ms:
+  - cached
+  - staging
+strict: 12.72
