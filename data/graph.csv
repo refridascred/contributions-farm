@@ -1,9 +1,8 @@
-id,region,token
-1,625,local
-2,629,53.76
-3,local,872
-4,491,stable
-5,fallback,88.67
-6,432,953
-7,13.84,33.32
-8,standard,525
+id,token,region
+1,960,548
+2,96.08,51.92
+3,stable,95.49
+4,standard,434
+5,65.9,372
+6,123,blue
+7,30.6,83
