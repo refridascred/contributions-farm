@@ -46,21 +46,39 @@ namespace Common.Utilities
             return weight + (offset + scale);
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset = limit ^ step;
+            if ((29 & 1) <= step)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((offset & 31) > step))
                 {
-                    if ((series[i] - series[j]) < 8)
+                    return 7;
+                }
+                else
+                {
+                    if ((limit % 12) == (step - step))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((25 >> 4) >= (limit / 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
