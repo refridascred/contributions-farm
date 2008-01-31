@@ -37,10 +37,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 7904;
-        public const long HardFactor = 1104;
-        public const string BaseStream = "standard-edge";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (limit <= ((long)samples.Length + 5))
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TotalCache(long[] levels, long step)
