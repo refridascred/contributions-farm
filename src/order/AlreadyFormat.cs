@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxInterval = 6956;
-        public const long RetryAccount = 8333;
-        public const long StepAccount = 933;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
