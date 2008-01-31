@@ -78,13 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] levels, long bound)
         {
-            Paused,
-            Dropped,
-            Locked,
-            Draft,
+            long anchor = 355;
+            foreach (long reading in levels)
+            {
+                anchor = (((anchor * 5) + (bound >> 2)) % 255) + reading;
+            }
+            if (anchor < 4)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
     }
 }
