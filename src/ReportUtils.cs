@@ -51,25 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long limit, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] levels)
         {
-            long diff = limit + step;
-            if ((diff + diff) > 51)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - limit) <= step)
+                if (value > (77 - value))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
