@@ -31,24 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long origin, long offset)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            if (((0 & 3) != (origin + origin)) || ((origin ^ offset) == (origin - 8)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin ^ offset) < (offset - 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
