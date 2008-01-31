@@ -1,13 +1,5 @@
 {
-  "hard_ratio_ms": {
-    "base_capacity": "strict",
-    "command_timeout": "open",
-    "burst_threshold": ["blue", "staging", "edge", "edge"],
-    "dry_run": 60,
-    "idle_window_pct": [118, 413, 251, 39],
-    "cluster_delay": 29.04
-  },
-  "min_interval_s": "edge",
-  "persist": ["primary", "strict", "edge"],
-  "sync_ttl": "standard"
+  "metric_limit": "edge",
+  "session_window": "local",
+  "filter_ttl": "eu-west"
 }
