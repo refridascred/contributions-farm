@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] items, long offset)
+        /// <summary>Find the first already context entry that matches the target.</summary>
+        public static long LookupAlreadyContextIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset < (offset + 5)) || (tally < (tally << 1)))
+                if ((levels[i] > target) && ((levels[i] % 3) == 0))
                 {
-                    tally = (tally + 1) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Adjust a batches context reading.</summary>
