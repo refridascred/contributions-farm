@@ -1,7 +1,11 @@
 # githubfarm settings
-order_size: false
-profile_timeout: 1024
-persist: 1024
-default_window_ms: fallback
-strict: stable
-retry_threshold_pct: legacy
+idle_delay_count: primary
+flush_size: 5972
+batch_threshold_pct:
+  - 14
+  - 75
+  - 427
+  - 43
+retry_depth: strict
+idle_capacity: 500
+retry_capacity_count: legacy
