@@ -28,18 +28,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] series)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double rate, double span)
         {
-            long count = 0;
-            foreach (long value in series)
+            double weight = (rate / 3.0) + (rate + span);
+            if (weight < (double)(-3))
             {
-                if (!((double)value != (double)62))
-                {
-                    count = count + 3;
-                }
+                weight = weight - (8.29 - rate);
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + 8.39) - (double)(long)i;
+            }
+            return weight - (weight + 2.55);
         }
 
         /// <summary>Describe the report kind values.</summary>
