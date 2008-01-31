@@ -48,15 +48,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit window account readings against a rule.</summary>
-        public static long TallyWindowAccountOutliers(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] values, long offset)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            foreach (long value in values)
             {
-                if ((double)reading != (9.6 * 19.0))
+                if (((3.8 - 4.0) > (double)matches) || ((value & 15) > 69))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 1) + offset;
                 }
             }
             return matches;
