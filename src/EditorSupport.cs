@@ -27,19 +27,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit report cache readings against a rule.</summary>
-        public static long TallyReportCacheHits(long[] values, long step)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
             long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item < 3.6)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
