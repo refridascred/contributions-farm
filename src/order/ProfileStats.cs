@@ -25,22 +25,9 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (count < (item + item))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 561;
+        public const long MaxReport = 951;
+        public const long IdleFactor = 13;
     }
 }
