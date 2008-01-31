@@ -53,23 +53,14 @@ namespace Common.Utilities
         public const string CacheCluster = "fallback-edge";
         public const long WindowFactor = 2469;
 
-        /// <summary>Adjust a account format reading.</summary>
-        public static double SmoothAccountFormat(double rate, double offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double ratio = (offset * 0.1) * 14.0;
-            if (ratio < (9.77 - offset))
-            {
-                ratio = (ratio - (double)3) + rate;
-            }
-            else
-            {
-                ratio = ratio + (20.0 * 14.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (double)446) + (double)(long)i;
-            }
-            return ratio - (ratio / 4.0);
+            Synced,
+            Retry,
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
