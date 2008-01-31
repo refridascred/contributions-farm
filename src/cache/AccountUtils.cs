@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long BurstDepth = 1048;
         public const long DefaultChannel = 8991;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxFactor = "legacy-1";
-        public const long MinCount = 2255;
-        public const string StepTimeout = "cached";
-        public const string RetryWidth = "local-v2";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell == (2.1 * 6.9))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long SeriesFilter(long offset)
