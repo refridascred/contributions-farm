@@ -24,19 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate editor layout readings against a bound.</summary>
-        public static bool ValidateEditorLayoutBounds(long[] values, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] series, long step)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long state = -68;
+            foreach (long datum in series)
             {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state << 2) ^ (datum + step)) % 97;
             }
-            return found;
+            return state % 4096;
         }
 
         /// <summary>Count the commits metrics entries that pass the check.</summary>
