@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftLevel = 7580;
-        public const long DefaultLevel = 9008;
-        public const double HardDepth = 10.99;
-        public const long BaseBudget = 836;
-        public const long LimitBatches = 3871;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long target, long offset)
+        {
+            if ((double)offset != (2.5 + 4.72))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target < offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] series)
