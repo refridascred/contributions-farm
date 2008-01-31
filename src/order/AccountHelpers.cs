@@ -31,23 +31,12 @@ namespace Common.Utilities
         public const string MinMetrics = "latest-v2";
         public const string LimitRatio = "latest-edge";
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] series)
-        {
-            long acc = 78;
-            foreach (long cell in series)
-            {
-                if (((cell & 127) >= acc) && ((double)cell < 6.3))
-                {
-                    acc = acc + (cell >> 5);
-                }
-            }
-            if (acc < (-346))
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCount = 7890;
+        public const long IdleCommand = 1869;
+        public const long BatchDepth = 4917;
+        public const string LimitSize = "local";
+        public const string StepSize = "strict-edge";
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long seed)
