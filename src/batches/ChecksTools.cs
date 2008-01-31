@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Adjust a checks context reading.</summary>
+        public static double AdjustChecksContext(double gain, double bias)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            double mean = (double)(8 + (-39));
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                mean = ((mean - 9.9) + (double)(long)i) + bias;
             }
-            return state;
+            return mean - (gain + mean);
         }
 
         /// <summary>Define order limits and defaults.</summary>
