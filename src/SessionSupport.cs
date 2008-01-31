@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
