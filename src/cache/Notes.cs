@@ -13,18 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] data, long seed)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((double)(long)data.Length != (5.69 + 6.5))
-                {
-                    count = ((count + 3) - item) - seed;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
