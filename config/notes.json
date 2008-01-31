@@ -1,5 +1,5 @@
 {
-  "stream_size": "local",
-  "warm_depth_ms": false,
-  "idle_depth": true
+  "soft_depth_ms": "eu-west",
+  "compress": ["stable", "legacy"],
+  "notes_capacity": [353, 323]
 }
