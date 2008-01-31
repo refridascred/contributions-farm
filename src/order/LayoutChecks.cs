@@ -32,18 +32,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] series, long limit)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!(count > value))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
