@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double span)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] samples)
         {
-            double scale = weight + (2.0 + weight);
-            return (scale + 9.6) + span;
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((tally - tally) < (tally & 127)) && ((double)tally >= 5.59))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stats level values.</summary>
