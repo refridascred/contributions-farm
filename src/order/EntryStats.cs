@@ -61,10 +61,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleSpan = "stable";
-        public const long RetryBatch = 6716;
-        public const double BurstLevel = 64.44;
-        public const double HardBatch = 52.97;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long seed, long target)
+        {
+            long lane = seed + target;
+            if ((double)lane <= (double)90)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((lane / 3) != (lane - lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
