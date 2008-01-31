@@ -48,22 +48,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit githubfarm profile readings against a rule.</summary>
-        public static long TallyGithubfarmProfileGaps(long[] items, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double mean = (double)206 + (double)7;
+            if (mean < (4.0 - weight))
             {
-                if (!(bound > (bound + (-94))))
-                {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean - (mean - mean)) + span;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean + (double)8;
         }
     }
 }
