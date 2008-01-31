@@ -22,18 +22,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] series, long target)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading != (double)seen)
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
+            Active,
+            Pending,
+            Idle,
+            Ready,
+            Locked,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
