@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            New,
-            Pending,
+            Paused,
+            Dropped,
+            Synced,
             Closed,
-            Idle,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
