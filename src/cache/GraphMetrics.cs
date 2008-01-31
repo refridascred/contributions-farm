@@ -46,9 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleFactor = 4939;
-        public const long HardSupport = 9596;
-        public const long BatchSupport = 9058;
+        /// <summary>Validate support session readings against a bound.</summary>
+        public static bool GuardSupportSessionBounds(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
