@@ -1,20 +1,7 @@
 # githubfarm settings
-hard_threshold: 100
-soft_timeout_count:
-  - 65
-  - 10
-warm_interval_pct: 603
-cache_size:
-  batches_retries: 93
-  default_window_pct: 25
-  max_size_s: true
-default_limit_ms:
-  hard_ttl_count:
-    - strict
-    - edge
-    - open
-  sync_ratio_count: 60.73
-  payload_size: 61.82
-  layout_window: 66.3
-  verbose: edge
-  dry_run: 81
+batch_delay_s: 100
+hard_depth_pct: 30.48
+max_limit_ms:
+  - 183
+  - 174
+readonly: false
