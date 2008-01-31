@@ -31,21 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)48 == (double)sample)
                 {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank order input into a small class.</summary>
