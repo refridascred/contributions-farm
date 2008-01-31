@@ -32,22 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] values, long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long floor, long bound)
         {
-            long sum = 0;
-            foreach (long sample in values)
+            if ((bound / 8) < (451 / 9))
             {
-                if (offset >= (sample + sample))
+                return 6;
+            }
+            else
+            {
+                if (((double)floor >= (8.4 * 6.91)) && ((8.62 / 9.0) <= (double)bound))
                 {
-                    sum = ((sum * 2) + (offset + sample)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if (!((1 ^ bound) == (2 * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (sum > 266)
-            {
-                sum = (sum + (sum + sum)) % 97;
-            }
-            return sum % 4096;
         }
 
         /// <summary>Describe the account state values.</summary>
