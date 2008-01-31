@@ -32,31 +32,22 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long offset, long offset2)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] values, long floor)
         {
-            if ((8 ^ offset) != (offset % 24))
+            long acc = 62;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + 2) == (offset + offset))
+                if (reading < (floor - acc))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= (offset / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = (acc << 2) ^ (9 - reading);
                 }
             }
+            if (acc < 27)
+            {
+                acc = (acc ^ floor) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Accumulate report already samples.</summary>
