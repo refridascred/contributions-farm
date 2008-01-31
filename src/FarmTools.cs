@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] levels, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 100;
+            foreach (long entry in readings)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (40 << 2)) - entry;
             }
-            return -1;
+            if (sum > 723)
+            {
+                sum = (sum - (86 + sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
