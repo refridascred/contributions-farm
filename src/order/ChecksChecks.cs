@@ -31,25 +31,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((step ^ acc) < (382 + 71)))
-                {
-                    acc = ((acc * 2) + 81) % 65521;
-                    acc = (acc - ((long)i >> 5)) % 97;
-                }
-                if (!((step + 896) <= (-57)))
-                {
-                    acc = acc - (acc << 3);
-                    acc = ((acc << 3) ^ ((long)i >> 5)) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowWidth = "strict-edge";
+        public const long StepCount = 2358;
+        public const long SoftFactor = 9409;
     }
 }
