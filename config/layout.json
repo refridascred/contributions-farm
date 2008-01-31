@@ -1,6 +1,13 @@
 {
-  "max_limit": false,
-  "buffer_ttl": [74, 207, 31, 401],
-  "soft_limit": 100,
-  "tools_interval": 500
+  "readonly": 73.39,
+  "strict": {
+    "readonly": 93.43,
+    "stats_interval": {
+      "batch_threshold": true,
+      "base_ratio": [337, 117],
+      "max_window_count": "open"
+    },
+    "schema_depth": 38
+  },
+  "default_window_pct": "edge"
 }
