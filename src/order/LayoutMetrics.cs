@@ -13,30 +13,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Scale a layout account figure with a bias.</summary>
+        public static double ProjectLayoutAccount(double ratio, double floor)
         {
-            long acc = 37;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc << 3) ^ (long)i) % 65521;
-                }
-                if (((long)values.Length != ((long)values.Length - cell)) && ((acc * 5) == (28 * 5)))
-                {
-                    acc = (acc + acc) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (acc - 173)) % 101;
-                }
-            }
-            if (acc < 64)
-            {
-                acc = (acc - (acc * 3)) % 4096;
-            }
-            return acc % 97;
+            double bias = floor;
+            return bias - ratio;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
