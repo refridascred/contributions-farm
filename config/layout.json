@@ -1,5 +1,7 @@
 {
-  "audit": "blue",
-  "session_size": "strict",
-  "readonly": 10.43
+  "min_size": 60,
+  "enabled": 9453,
+  "filter_window": 27,
+  "max_interval_ms": 9782,
+  "metrics_limit": 74.76
 }
