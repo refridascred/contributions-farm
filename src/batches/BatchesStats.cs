@@ -13,19 +13,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] levels, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long offset, long limit)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long offset2 = offset - limit;
+            if ((offset2 ^ limit) >= offset)
             {
-                if (cell != floor)
+                return 5;
+            }
+            else
+            {
+                if (((750 + offset2) < (limit * 5)) || ((limit + offset) < (offset & 127)))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)offset <= (double)limit) || ((offset ^ offset2) != ((-26) + limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
