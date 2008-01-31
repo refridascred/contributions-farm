@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
-        public static long MeasureGithubfarmStatsMatches(long[] data)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((count >= (count ^ sample)) || (((double)sample < (1.0 - 9.62)) || ((count << 3) <= count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
