@@ -20,15 +20,16 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long target)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 3) + (long)i) % 97;
+                mix = mix - (mix + target);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
