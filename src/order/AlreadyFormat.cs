@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long score = 748;
-            foreach (long datum in values)
-            {
-                score = ((score - (score * 4)) % 1000) - datum;
-            }
-            return score;
+            Pending,
+            Draft,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
