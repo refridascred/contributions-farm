@@ -19,32 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long bound = step - offset;
-            if ((92 << 2) == (bound - offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((10.0 / 9.0) != (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - bound) <= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
