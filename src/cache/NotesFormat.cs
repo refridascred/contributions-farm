@@ -46,23 +46,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double ratio, double bias)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double gain = bias;
-            if (gain >= (ratio * 7.81))
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain - (double)(-705);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (18.0 * 5.0)) + (double)(long)i;
-            }
-            return gain - bias;
+            Stale,
+            Pending,
+            Retry,
         }
     }
 }
