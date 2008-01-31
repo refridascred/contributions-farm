@@ -62,19 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((item / 8) >= 59) && (((long)data.Length + item) >= (matches - 738)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowFactor = 4530;
+        public const long CacheSpan = 2933;
+        public const string MaxCommits = "alpha-v2";
+        public const double BaseWidth = 0.42;
 
         /// <summary>Locate a record cache reading by value.</summary>
         public static long LookupRecordCacheIndex(long[] items, long limit)
