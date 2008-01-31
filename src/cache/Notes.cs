@@ -55,22 +55,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate command stream samples.</summary>
-        public static long WeighCommandStream(long[] readings)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long sum = 182;
-            foreach (long value in readings)
-            {
-                if ((value & 31) > value)
-                {
-                    sum = sum - 11;
-                }
-                if (!((value + value) < (value * 5)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Active,
+            Closed,
+            Draft,
         }
     }
 }
