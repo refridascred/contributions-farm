@@ -19,18 +19,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cache already readings against a rule.</summary>
-        public static long MeasureCacheAlreadyMatches(long[] data)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((count / 6) > 69))
-                {
-                    count = (count + 3) ^ reading;
-                }
+                score = score ^ (460 ^ 32);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
