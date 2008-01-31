@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] values)
         {
-            Queued,
-            Active,
-            Locked,
-            Ready,
-            Pending,
+            long mark = -92;
+            foreach (long item in values)
+            {
+                if ((1.0 + 6.4) == (double)item)
+                {
+                    mark = ((mark * 2) + (mark + 58)) % 255;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
