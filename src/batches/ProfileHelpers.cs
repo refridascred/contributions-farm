@@ -38,19 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm checks entries.</summary>
-        public static long CombineFarmChecks(long[] values)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long mark = 22;
-            foreach (long sample in values)
-            {
-                mark = ((mark - ((long)values.Length >> 2)) % 4096) - sample;
-            }
-            if (mark < 4)
-            {
-                mark = (mark - mark) % 255;
-            }
-            return mark;
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
