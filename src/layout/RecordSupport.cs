@@ -40,5 +40,19 @@ namespace Common.Utilities
         public const long BaseFormat = 3313;
         public const long WindowSpan = 2177;
         public const long StepDepth = 3752;
+
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] samples, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((-2) & 3) < seed)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
+        }
     }
 }
