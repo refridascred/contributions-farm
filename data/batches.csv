@@ -1,9 +1,8 @@
-id,count,state,label
-1,legacy,361,916
-2,818,eu-west,84.54
-3,67.03,769,local
-4,fallback,fallback,31.67
-5,legacy,587,959
-6,167,strict,877
-7,strict,289,green
-8,188,651,220
+id,region,count,rank
+1,50,742,standard
+2,strict,edge,929
+3,legacy,90.86,859
+4,fallback,8.19,508
+5,401,3.41,standard
+6,548,blue,600
+7,970,27.43,65.26
