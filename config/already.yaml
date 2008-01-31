@@ -1,8 +1,16 @@
 # already settings
-max_timeout_ms: 211
-flush_size_s: legacy
-base_size:
-  window_ttl: open
-  idle_delay: 84.96
-  account_ttl: 100
-soft_capacity_s: false
+batch_depth_ms: false
+batch_limit_ms:
+  - latest
+  - latest
+  - stable
+strict:
+  base_depth: 60
+  hard_timeout: 6451
+  min_retries: legacy
+  counter_retries: 6.22
+base_depth_pct: blue
+default_depth_pct:
+  - legacy
+  - stable
+buffer_ratio: 31.19
