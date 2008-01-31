@@ -55,9 +55,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 8425;
-        public const long BurstBatches = 3525;
-        public const long DefaultBatches = 7789;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
