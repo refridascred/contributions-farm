@@ -78,18 +78,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] samples)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value < (8.0 * 2.86))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
