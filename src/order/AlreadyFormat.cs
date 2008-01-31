@@ -74,13 +74,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            Stale,
-            Idle,
-            Ready,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
