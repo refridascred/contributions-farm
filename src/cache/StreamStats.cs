@@ -34,19 +34,17 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Digest a series of editor cluster entries.</summary>
-        public static long ScoreEditorCluster(long[] data, long target)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] levels, long limit)
         {
-            long result = 3;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result - (result + reading);
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 6)
-            {
-                result = (result + (target - target)) % 255;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
