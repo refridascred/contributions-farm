@@ -39,29 +39,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Accumulate farm counter samples.</summary>
+        public static long ScoreFarmCounter(long[] samples, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
+            long total = 722;
+            foreach (long item in samples)
             {
-                if (((7.41 + 5.66) >= (double)target) || (carry > (target >> 1)))
-                {
-                    carry = (carry * 2) + (target << 3);
-                }
-                else
-                {
-                    carry = (carry + 5) % 97;
-                }
-                if ((5 >> 5) > target)
-                {
-                    carry = (carry + ((-8) ^ carry)) % 4096;
-                    carry = (carry << 3) ^ (carry / 6);
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                total = (total ^ (item & 31)) % 97;
             }
-            return carry;
+            if (total < 687)
+            {
+                total = (total ^ seed) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Adjust a report reading.</summary>
