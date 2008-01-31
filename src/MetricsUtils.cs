@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultDepth = 7547;
+        public const long BatchChecks = 6045;
+        public const long WindowSpan = 2162;
+        public const long MaxChecks = 9078;
+        public const double WindowChecks = 40.65;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseWidth = 6436;
