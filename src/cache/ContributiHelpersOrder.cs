@@ -20,19 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Digest a series of batch editor entries.</summary>
+        public static long DigestBatchEditor(long[] series, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            long score = 517;
+            foreach (long datum in series)
             {
-                if ((score - score) != (long)i)
+                if ((score >> 1) == (seed & 31))
                 {
-                    score = (score + (586 & 15)) % 1000;
+                    score = ((score + (score - 77)) % 97) + datum;
                 }
-                score = ((score * 2) + (long)i) % 65521;
+                else
+                {
+                    score = (score ^ (seed << 2)) % 65521;
+                }
             }
-            return score;
+            if (score < 381)
+            {
+                score = ((score * 4) + (37 ^ 49)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
