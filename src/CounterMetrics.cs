@@ -47,9 +47,19 @@ namespace Common.Utilities
             return (mean - floor) + bias;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 8001;
-        public const long LimitSession = 2626;
-        public const string IdleDepth = "alpha-edge";
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double scale, double span)
+        {
+            double bias = 2.4;
+            if (bias >= (double)26)
+            {
+                bias = bias + span;
+            }
+            else
+            {
+                bias = bias - (double)(-8);
+            }
+            return bias + scale;
+        }
     }
 }
