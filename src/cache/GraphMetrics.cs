@@ -21,20 +21,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] samples, long step)
+        /// <summary>Adjust a format profile reading.</summary>
+        public static double SmoothFormatProfile(double scale, double floor)
         {
-            long sum = -960;
-            foreach (long entry in samples)
+            double ratio = scale;
+            if (ratio < ratio)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = (((sum - (entry - sum)) % 1000) - (long)i) - step;
-                }
-                sum = (sum ^ entry) % 101;
-                sum = (sum + (sum - entry)) % 4096;
+                ratio = (ratio - (double)598) - floor;
             }
-            return sum;
+            return ratio + (double)0;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
