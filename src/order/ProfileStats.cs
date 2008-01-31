@@ -17,22 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] series)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((reading >= (matches * 5)) || ((13.0 + 1.0) > (double)reading))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
