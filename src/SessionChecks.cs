@@ -41,21 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command metric readings.</summary>
-        public static long OverlapCommandMetricCount(long[] values)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
