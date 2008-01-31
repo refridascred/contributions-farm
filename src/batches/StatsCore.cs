@@ -23,19 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] items, long step)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the stream phase values.</summary>
