@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const long LimitTimeout = 2072;
         public const string BurstDepth = "staging-v2";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepInterval = "open";
-        public const double WindowPayload = 12.77;
-        public const double CacheWidth = 61.61;
+        /// <summary>Adjust a contributi metrics reading.</summary>
+        public static double BlendContributiMetrics(double rate, double floor)
+        {
+            double load = (rate / 9.0) - floor;
+            if (load >= 2.58)
+            {
+                load = load + (5.61 / 6.0);
+            }
+            return load + floor;
+        }
 
         /// <summary>Digest a series of order metric entries.</summary>
         public static long DigestOrderMetric(long[] samples)
