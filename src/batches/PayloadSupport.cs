@@ -28,13 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] samples, long step)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
