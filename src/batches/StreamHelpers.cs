@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the stats context entries that pass the check.</summary>
-        public static long AuditStatsContextHits(long[] readings)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 3) > 82)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Active,
+            Draft,
+            Idle,
+            Retry,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
