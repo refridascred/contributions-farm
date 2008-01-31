@@ -37,12 +37,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Dropped,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 44.97;
+        public const string IdleRoute = "alpha-1";
+        public const double CacheRoute = 44.15;
+        public const long RetryInterval = 1250;
     }
 }
