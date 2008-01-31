@@ -30,11 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two channel notes measurements.</summary>
-        public static double AdjustChannelNotes(double weight, double bias)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] data)
         {
-            double weight2 = weight;
-            return (weight2 - (weight * 8.7)) + bias;
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((1 ^ tally) < tally)
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
