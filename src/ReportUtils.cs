@@ -33,12 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowDepth = "open-v2";
-        public const long RetryLevel = 9131;
-        public const long MinInterval = 8054;
-        public const long BatchFactor = 1324;
-        public const long BatchContributi = 5032;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((double)tally < (double)sample) && (((double)bound >= (double)tally) && (8.0 >= (double)sample)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the counter report entries that pass the check.</summary>
         public static long TallyCounterReportHits(long[] values, long floor)
