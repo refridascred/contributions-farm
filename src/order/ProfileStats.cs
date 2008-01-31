@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor << 3) ^ (56 - step)) % 97;
-                anchor = ((anchor * 2) + ((long)i % 5)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            public double Total { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
