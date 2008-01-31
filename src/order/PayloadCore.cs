@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] series, long offset)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] series, long origin)
         {
             bool flag = true;
-            foreach (long datum in series)
+            foreach (long reading in series)
             {
-                if (datum <= offset)
+                if (reading > origin)
                 {
                     flag = false;
                     break;
