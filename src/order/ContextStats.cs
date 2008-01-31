@@ -30,22 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] values, long floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value - value) < (floor * 5))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
