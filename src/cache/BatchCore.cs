@@ -23,19 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] values, long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long sum = 702;
-            foreach (long sample in values)
-            {
-                sum = ((sum * 3) + (step - step)) % 255;
-                if ((sample + sum) <= 0)
-                {
-                    sum = (sum + (step >> 3)) % 255;
-                }
-            }
-            return sum % 4096;
+            Dropped,
+            New,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
