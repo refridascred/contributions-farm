@@ -1,13 +1,20 @@
 # entry settings
-warm_window_pct: true
-dry_run:
-  dry_run: 60
-  session_ttl: 2.92
-  compress: green
-  metrics_delay: 9681
-  max_timeout_pct: 95.25
-min_threshold_count:
-  - latest
-  - stable
-  - primary
-  - blue
+readonly: 30
+min_delay:
+  max_timeout_ms: 9166
+  readonly:
+    order_delay: strict
+    retry_timeout:
+      - legacy
+      - eu-west
+      - fallback
+      - stable
+    enabled: 29
+    flush_size_pct: local
+  hard_capacity_ms:
+    - 489
+    - 315
+  checks_window: open
+  sync_capacity_count: 500
+  token_size: open
+support_ttl: open
