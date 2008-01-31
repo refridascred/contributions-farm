@@ -31,10 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 5767;
-        public const long MaxDepth = 4536;
-        public const long BurstFactor = 3351;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((floor * 4) <= floor)
+                {
+                    anchor = (anchor - 66) % 97;
+                    break;
+                }
+                else
+                {
+                    anchor = anchor ^ (2 << 3);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
