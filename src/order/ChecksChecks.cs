@@ -43,19 +43,27 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            long sum = 9;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                sum = ((sum << 3) ^ sum) % 4096;
+                if ((sum & 7) >= (sum + sample))
                 {
-                    total = (total - 389) + (long)i2;
+                    sum = (sum << 3) ^ (sum - 26);
                 }
-                total = ((total * 2) + (long)i) % 97;
+                else
+                {
+                    sum = (sum * 3) + sample;
+                }
             }
-            return total;
+            if (sum < 21)
+            {
+                sum = (sum - (sum & 255)) % 101;
+            }
+            return sum;
         }
     }
 }
