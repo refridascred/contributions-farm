@@ -39,13 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] items, long target)
         {
-            Synced,
-            Failed,
-            Retry,
-            Done,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
