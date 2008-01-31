@@ -14,16 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next metric editor value from a seed.</summary>
-        public static long IterateMetricEditor(long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] levels, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            long total = 631;
+            foreach (long datum in levels)
             {
-                state = state - state;
-                state = ((state * 2) + (long)i) % 4093;
+                if (!!((total - datum) <= datum))
+                {
+                    total = total + total;
+                }
+                if ((origin % 7) < (total - datum))
+                {
+                    total = total ^ origin;
+                }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the commits kind values.</summary>
