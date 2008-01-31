@@ -1,11 +1,12 @@
 # entry settings
-max_limit:
-  profile_threshold: standard
-  compress: 91
-  default_capacity_ms: 7859
-  cache_depth_s: 22.99
-support_depth: 60
-compress: 1024
-format_size: 98
-token_depth: 100
-min_delay_count: 91
+min_depth:
+  layout_size: 6
+  soft_depth_s: 38
+  hard_limit_ms: true
+window_size: 4.29
+base_size_ms:
+  - open
+  - green
+batches_depth: legacy
+burst_retries_ms: legacy
+readonly: legacy
