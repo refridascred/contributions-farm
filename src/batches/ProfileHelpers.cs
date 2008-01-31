@@ -13,17 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] items, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (items[i] <= step)
+                if (!((double)hits != (8.07 - 5.28)) && ((hits / 5) != (hits >> 2)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a session header.</summary>
