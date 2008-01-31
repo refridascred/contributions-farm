@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public double Total { get; set; }
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
