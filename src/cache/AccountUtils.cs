@@ -34,19 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] levels, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double weight, double bias)
         {
-            bool found = true;
-            foreach (long value in levels)
+            double load = weight;
+            if (load > load)
             {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load + (double)1) - bias;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + 1.0) + (double)(long)i;
+            }
+            return load + (load - load);
         }
     }
 }
