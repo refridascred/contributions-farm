@@ -19,25 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long origin, long floor)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long offset = origin ^ floor;
-            if ((double)916 >= (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((origin << 2) > 3) || (origin <= (floor - offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
