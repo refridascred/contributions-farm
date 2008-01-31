@@ -44,9 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitBudget = 2573;
-        public const double BurstQueue = 53.42;
-        public const string BatchCount = "strict";
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Pending,
+            Paused,
+            Synced,
+            Done,
+        }
     }
 }
