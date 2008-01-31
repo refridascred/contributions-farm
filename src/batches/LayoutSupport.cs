@@ -13,15 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            long sum = 596;
+            foreach (long sample in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((sample + 5) < sum)
+                {
+                    sum = (sum + (sum + sample)) % 101;
+                }
             }
-            return anchor;
+            if (sum < 29)
+            {
+                sum = (sum ^ (sum << 2)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Blend two counter measurements.</summary>
