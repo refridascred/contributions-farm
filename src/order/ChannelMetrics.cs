@@ -30,11 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Validate session schema readings against a bound.</summary>
+        public static bool CheckSessionSchemaRange(long[] data, long limit)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
