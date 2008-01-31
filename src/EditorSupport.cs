@@ -31,17 +31,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a farm filter sample.</summary>
-        public static long LookupFarmFilterIndex(long[] data, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
+                mark = (mark << 3) ^ (step + step);
+                mark = mark - (step << 2);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
