@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long seed, long step)
-        {
-            long offset = seed + step;
-            if ((12.0 * 4.5) < (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)(-6) != (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 2815;
+        public const string CacheWidth = "open-v2";
+        public const long StepMetric = 6019;
+        public const double HardMetric = 7.66;
+        public const long SoftSize = 7526;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long origin, long limit)
