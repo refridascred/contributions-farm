@@ -21,12 +21,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "fallback";
-        public const long HardCluster = 3038;
-        public const long MaxCluster = 4823;
-        public const double CacheDepth = 92.58;
-        public const long MinCluster = 452;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public double Score { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchInterval = 9713;
