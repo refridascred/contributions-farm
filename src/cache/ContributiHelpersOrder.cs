@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a batches record reading.</summary>
-        public static double SmoothBatchesRecord(double ratio, double bias)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long step)
         {
-            double rate = (double)255 - (double)9;
-            if (rate > rate)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                rate = rate + (bias * 1.26);
+                if (sample < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (rate * 0.6)) + (double)(long)i;
-            }
-            return rate + (ratio + bias);
+            return flag;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
