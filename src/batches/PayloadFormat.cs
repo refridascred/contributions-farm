@@ -22,15 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double gain, double floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] values, long limit)
         {
-            double ratio = gain;
-            if (ratio <= (floor * 1.47))
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + (floor / 5.0);
+                if ((values[i] == limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (floor * 7.18);
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
