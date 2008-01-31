@@ -1,5 +1,42 @@
 {
-  "base_delay": 8216,
-  "poll_window_s": true,
-  "window_capacity": ["edge", "strict", "strict"]
+  "burst_interval": "latest",
+  "farm_limit": true,
+  "notes_capacity": {
+    "batch_timeout_s": 677,
+    "farm_interval": "standard",
+    "cache_threshold_pct": 250,
+    "dry_run": {
+      "poll_retries_count": ["local", "open", "legacy"],
+      "notes_retries": 500,
+      "idle_limit": 84,
+      "enabled": ["blue", "local", "fallback", "standard"],
+      "soft_timeout_pct": 1449,
+      "hard_window": [204, 277, 100, 480]
+    },
+    "cache_timeout_s": "edge"
+  },
+  "report_capacity": {
+    "compress": 500,
+    "soft_retries": "latest",
+    "batch_ratio": 60,
+    "soft_limit_s": {
+      "editor_capacity": [321, 267, 78, 93],
+      "batch_delay": 500,
+      "order_window": 91.32,
+      "hard_window_ms": [256, 224],
+      "default_ttl_ms": 1557,
+      "enabled": false
+    },
+    "default_size_pct": "fallback",
+    "command_ttl": "edge"
+  },
+  "compress": {
+    "sync_limit": "cached",
+    "base_ratio_count": [70, 285, 64, 181],
+    "cache_capacity_count": false,
+    "queue_size": "green",
+    "dry_run": "primary",
+    "default_size": 89.32
+  },
+  "schema_timeout": false
 }
