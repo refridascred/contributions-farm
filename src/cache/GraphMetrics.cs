@@ -77,19 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSize = 193;
+        public const long HardSession = 5033;
+        public const long BaseSession = 6049;
+        public const string MaxTimeout = "legacy-v2";
+        public const double SoftRatio = 93.92;
     }
 }
