@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double weight, double bias)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double mean = bias;
-            if (mean >= (weight - 5.63))
-            {
-                mean = mean - (mean - weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + mean;
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the metrics status values.</summary>
