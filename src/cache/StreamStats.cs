@@ -49,23 +49,37 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long limit, long limit2)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long step, long limit)
         {
-            long offset = limit ^ limit2;
-            if ((double)offset < 8.6)
+            long cur = step ^ limit;
+            if ((2.0 - 7.6) <= (double)cur)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((limit - offset) > (offset / 7))
+                if ((36 + limit) > (cur % 2))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    return 3;
+                    if (14.0 <= (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step ^ limit) < limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
