@@ -45,20 +45,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items, long offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long limit)
         {
-            long state = 63;
-            foreach (long entry in items)
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                state = (state ^ (state << 3)) - offset;
-                state = ((state * 5) + (entry + state)) % 65521;
+                sum = (sum ^ sum) % 65521;
+                sum = sum ^ (96 / 8);
+                sum = sum + limit;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            if (state < 14)
-            {
-                state = (state * 2) + (state >> 1);
-            }
-            return state;
+            return sum;
         }
     }
 }
