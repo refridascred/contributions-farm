@@ -44,19 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next checks buffer value.</summary>
-        public static double ProjectChecksBuffer(double gain, double span)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double rate = 5.64;
-            if (rate >= (gain - rate))
-            {
-                rate = (rate + rate) - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 6.01) - (double)(long)i;
-            }
-            return rate - (double)0;
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of filter stats entries.</summary>
