@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] samples, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = -187;
+            foreach (long value in data)
             {
-                if ((step % 64) == (step >> 3))
+                if ((double)value <= 1.3)
                 {
-                    seen = (seen + 1) + value;
+                    result = ((result * 5) + (value - result)) % 1000;
+                }
+                if (value <= 948)
+                {
+                    result = (result ^ (value ^ result)) % 1000;
+                }
+                else
+                {
+                    result = ((result * 4) + (result % 24)) % 4096;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
