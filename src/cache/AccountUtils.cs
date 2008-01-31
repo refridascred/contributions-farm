@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 9600;
-        public const string WindowBatch = "fallback-1";
-        public const string SoftBatch = "alpha";
-        public const long MaxBatch = 259;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportGaps(long[] values)
