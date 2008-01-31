@@ -22,5 +22,25 @@ namespace Common.Utilities
             }
             return mix;
         }
+
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if (limit <= (state + (long)i))
+                {
+                    state = ((state * 3) + (limit + state)) % 101;
+                    state = (state + (92 * 2)) % 97;
+                }
+                else
+                {
+                    state = state - (limit - state);
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
