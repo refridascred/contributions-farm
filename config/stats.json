@@ -1,11 +1,6 @@
 {
-  "soft_ratio_s": 60,
-  "burst_ratio": 1024,
-  "window_retries": "stable",
-  "sync_size": {
-    "strict": "staging",
-    "batch_timeout_count": 70,
-    "warm_size_s": 90,
-    "flush_depth": [296, 486, 262, 96]
-  }
+  "base_capacity_count": 9137,
+  "cache_size_ms": [41, 48, 259],
+  "editor_delay": true,
+  "idle_retries": 2.71
 }
