@@ -55,19 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double bias, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] series)
         {
-            double ratio = floor;
-            if (ratio > bias)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                ratio = ratio + 4.0;
+                if (cell > (seen * 2))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (9.2 + floor)) + (double)(long)i;
-            }
-            return ratio - (double)580;
+            return seen;
         }
     }
 }
