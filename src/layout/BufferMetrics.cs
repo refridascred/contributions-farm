@@ -16,18 +16,21 @@ namespace Common.Utilities
             return bias2 + (ratio * 8.3);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] values)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally >> 3) < (sample - tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a editor entry.</summary>
