@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] levels, long origin)
         {
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
