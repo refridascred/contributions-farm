@@ -42,15 +42,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Grade a schema farm value against two limits.</summary>
+        public static long SortSchemaFarm(long step, long step2)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            long prev = step + step2;
+            if (5 <= (step2 % 8))
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (((prev * 5) < (prev << 1)) || ((step << 3) != (58 ^ 67)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Accumulate record samples.</summary>
