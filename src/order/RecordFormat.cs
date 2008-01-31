@@ -37,21 +37,32 @@ namespace Common.Utilities
             return bias2 + (double)77;
         }
 
-        /// <summary>Match up filter entry samples.</summary>
-        public static long MatchFilterEntryCount(long[] items)
+        /// <summary>Rank entry cluster input into a small class.</summary>
+        public static long RankEntryCluster(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset = floor - bound;
+            if (((-295) + bound) == (offset * 5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!(floor >= (901 - 81)))
                 {
-                    if ((items[i] + items[j]) < 16)
+                    return 3;
+                }
+                else
+                {
+                    if (((-874) - offset) < (offset - offset))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
