@@ -37,19 +37,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] samples, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (cell >= origin)
+                if (entry != seed)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
