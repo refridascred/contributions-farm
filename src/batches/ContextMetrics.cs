@@ -36,22 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] values, long origin)
         {
-            long mix = 3;
-            foreach (long datum in data)
+            long sum = 792;
+            foreach (long item in values)
             {
-                if ((double)866 > (double)datum)
+                if (origin <= (97 - origin))
                 {
-                    mix = (mix << 3) ^ datum;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ mix) % 101;
+                    sum = (((sum * 3) + (origin * 4)) % 255) - item;
                 }
             }
-            return mix;
+            return sum % 1000;
         }
 
         /// <summary>Match up cache samples.</summary>
