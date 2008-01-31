@@ -1,7 +1,17 @@
 {
-  "payload_threshold": ["green", "edge"],
-  "already_ratio": "legacy",
-  "enabled": 88.73,
-  "poll_ttl_count": 1024,
-  "dry_run": 41.84
+  "command_capacity": ["staging", "stable", "eu-west", "standard"],
+  "warm_interval_ms": 3940,
+  "notes_ratio": {
+    "verbose": {
+      "sync_threshold_ms": "primary",
+      "burst_capacity_s": "legacy",
+      "stream_retries": "primary",
+      "contributi_timeout": false,
+      "cache_size": ["blue", "stable", "green"]
+    },
+    "persist": 4397,
+    "batch_size": ["strict", "blue", "fallback"]
+  },
+  "schema_ttl": 64,
+  "flush_size_count": 30
 }
