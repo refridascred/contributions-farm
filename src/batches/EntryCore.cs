@@ -45,15 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long result = -50;
+            foreach (long entry in levels)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((result < (entry * 4)) && (((long)levels.Length - result) == (bound << 1)))
+                {
+                    result = (result + (bound - bound)) % 4096;
+                }
             }
-            return sum;
+            if (result < 2)
+            {
+                result = (result << 2) ^ ((long)levels.Length << 1);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the stats status values.</summary>
