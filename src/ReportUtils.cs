@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long bound, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long bound)
         {
-            if ((floor - floor) >= (35 % 24))
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor + bound) > 95)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)bound > (8.1 * 9.3)) || ((10.0 + 4.5) <= (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (5.59 > (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
