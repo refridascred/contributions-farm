@@ -17,15 +17,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double bias, double offset)
+        /// <summary>Rank token account input into a small class.</summary>
+        public static long SortTokenAccount(long origin, long step)
         {
-            double gain = (double)(1 + 36);
-            if (gain >= (bias * 8.9))
+            long slot = origin ^ step;
+            if ((slot & 1) < step)
             {
-                gain = gain - (double)4;
+                return 7;
             }
-            return gain - offset;
+            else
+            {
+                if (step > (origin & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
