@@ -33,13 +33,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of contributi queue entries.</summary>
+        public static long TallyContributiQueue(long[] levels, long limit)
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
+            long score = 305;
+            foreach (long datum in levels)
+            {
+                if ((score - 52) <= (datum << 2))
+                {
+                    score = (score ^ (limit ^ score)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
