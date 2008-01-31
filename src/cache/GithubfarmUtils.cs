@@ -37,18 +37,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] data, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double load = scale;
+            if (load >= (offset + offset))
             {
-                if ((datum + tally) > (datum & 15))
-                {
-                    tally = (tally + 1) - floor;
-                }
+                load = load - scale;
             }
-            return tally;
+            return load + (7.28 / 5.0);
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
