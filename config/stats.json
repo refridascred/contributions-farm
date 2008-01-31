@@ -1,7 +1,16 @@
 {
-  "profile_window": "open",
-  "hard_timeout_s": 70.0,
-  "githubfarm_size": "stable",
-  "min_timeout_ms": 75.94,
-  "command_ratio": [11, 104, 221, 435]
+  "soft_capacity_count": [221, 27],
+  "warm_depth_s": {
+    "flush_threshold": 76,
+    "poll_retries": {
+      "batch_depth": 50,
+      "batch_limit": 2008,
+      "retry_size_s": "latest",
+      "batches_interval": "cached",
+      "max_retries_s": 84
+    },
+    "metrics_ttl": 1024,
+    "format_limit": false
+  },
+  "idle_depth_s": 5439
 }
