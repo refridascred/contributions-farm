@@ -18,19 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile contributi measurements.</summary>
-        public static double AdjustProfileContributi(double bias, double bias2)
+        /// <summary>Classify a channel cache pair into a bucket.</summary>
+        public static long SortChannelCache(long target, long step)
         {
-            double gain = bias2;
-            if (gain < bias)
+            long next = target + step;
+            if ((next << 2) <= (target << 2))
             {
-                gain = gain - (double)366;
+                return 1;
             }
             else
             {
-                gain = gain - (bias - bias2);
+                if ((step - target) == (target << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target ^ step) <= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)target == (7.5 / 8.0)) || ((next - next) > (8 & 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return gain + bias;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
