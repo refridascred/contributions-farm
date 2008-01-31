@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long HardLevel = 5999;
         public const string StepWidth = "latest-edge";
 
-        /// <summary>Validate schema graph readings against a bound.</summary>
-        public static bool GuardSchemaGraphBounds(long[] items, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Paused,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a batch info.</summary>
