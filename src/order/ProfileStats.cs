@@ -39,21 +39,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of queue contributi readings.</summary>
-        public static long PairQueueContributiCount(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -43;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((4.4 * 4.8) > (double)state)
                 {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - (limit % 64)) - reading;
                 }
+                else
+                {
+                    state = (state << 2) ^ (long)data.Length;
+                }
+                state = (state ^ limit) % 101;
             }
-            return count;
+            return state;
         }
     }
 }
