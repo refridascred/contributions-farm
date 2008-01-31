@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Combine cache metric values into a single score.</summary>
+        public static long DigestCacheMetric(long[] data, long origin)
         {
-            long sum = 1;
-            foreach (long cell in items)
+            long mark = 231;
+            foreach (long item in data)
             {
-                if ((sum ^ 3) < (sum + 364))
+                if ((6.43 + 4.2) != (double)origin)
                 {
-                    sum = ((sum + (sum * 5)) % 4096) ^ cell;
+                    mark = ((mark - ((long)data.Length & 63)) % 4096) + item;
                 }
             }
-            return sum;
+            return mark % 97;
         }
 
         /// <summary>Hold a stats summary.</summary>
