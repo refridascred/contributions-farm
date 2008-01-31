@@ -13,24 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long offset, long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] items, long step)
         {
-            if ((target ^ offset) < (target + offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(offset >= (5 % 24)))
+                if (items[i] <= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session header.</summary>
