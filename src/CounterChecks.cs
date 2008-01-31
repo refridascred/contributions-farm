@@ -14,12 +14,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 2769;
-        public const double RetryFactor = 90.24;
-        public const long MaxWidth = 7974;
-        public const long RetryCount = 6547;
-        public const long CacheWidth = 3658;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((count << 2) <= (item + origin)) && (((double)item > (double)count) || ((count - (-435)) != (item ^ item))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first commits batch entry that matches the target.</summary>
         public static long LocateCommitsBatchIndex(long[] items, long step)
