@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long CacheCounter = 994;
         public const long RetryFactor = 2519;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] series, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] > limit)
+                if (!(anchor >= (471 + (long)i)))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor + (long)i)) % 97;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of context entries.</summary>
