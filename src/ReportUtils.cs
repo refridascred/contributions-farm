@@ -27,15 +27,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long score = -977;
-            foreach (long reading in levels)
-            {
-                score = (score ^ 0) ^ reading;
-            }
-            return score;
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
