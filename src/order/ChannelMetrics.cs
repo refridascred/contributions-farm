@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 5588;
+        public const long MaxInterval = 4176;
+        public const double StepCounter = 67.61;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
