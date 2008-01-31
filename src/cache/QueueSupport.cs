@@ -13,21 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 12)
+                    if ((samples[i] ^ samples[j]) > 8)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Blend two graph cluster measurements.</summary>
