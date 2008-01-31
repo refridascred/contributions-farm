@@ -1,6 +1,8 @@
-id,level,count,region
-1,stable,782,141
-2,792,54.57,95.25
-3,edge,fallback,665
-4,77.17,94.96,42.67
-5,fallback,primary,34.37
+id,region,level
+1,43.78,49.32
+2,774,2.22
+3,837,edge
+4,782,654
+5,standard,1
+6,225,latest
+7,925,875
