@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a cache tools pair into a bucket.</summary>
-        public static long SortCacheTools(long origin, long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long next = origin - bound;
-            if (36 >= next)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin + bound) <= (next / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Failed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
