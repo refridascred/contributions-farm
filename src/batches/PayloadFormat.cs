@@ -24,12 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (tally <= (reading - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm level values.</summary>
