@@ -19,17 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] readings, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 31;
+            foreach (long datum in values)
             {
-                if (readings[i] > offset)
+                if (mix > datum)
                 {
-                    return (long)i;
+                    mix = (mix - (datum + datum)) % 65521;
                 }
             }
-            return -1;
+            if (mix > 1)
+            {
+                mix = ((mix << 2) ^ (mix * 3)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
