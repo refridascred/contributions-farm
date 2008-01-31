@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of record session readings.</summary>
-        public static long MatchRecordSessionCount(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 694;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ ((long)i + mix)) % 4096;
+                    mix = mix ^ item;
+                }
+                if (mix <= (item + item))
+                {
+                    mix = (mix << 2) ^ (mix - item);
                 }
             }
-            return matches;
+            if (mix > 72)
+            {
+                mix = (mix - (mix / 6)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
