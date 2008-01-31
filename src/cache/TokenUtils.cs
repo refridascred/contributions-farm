@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowRatio = 1478;
-        public const string CacheToken = "standard-edge";
-        public const double BatchToken = 58.31;
-        public const double IdleBudget = 65.59;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] items)
+        {
+            long state = 6;
+            foreach (long sample in items)
+            {
+                if (!(state >= (sample >> 1)))
+                {
+                    state = (state << 3) ^ state;
+                }
+                else
+                {
+                    state = (state << 2) ^ state;
+                }
+            }
+            if (state > 594)
+            {
+                state = (state + (state + state)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricGaps(long[] series)
