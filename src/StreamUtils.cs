@@ -40,17 +40,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long limit)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
