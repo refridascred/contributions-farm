@@ -70,18 +70,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] data)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if ((7 * 2) > offset)
             {
-                if (((double)entry > (6.4 - 7.0)) && ((matches + matches) >= ((long)data.Length << 2)))
+                return 7;
+            }
+            else
+            {
+                if (floor < (floor << 3))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor & 63) >= (76 * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
