@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            double drift = offset / 8.0;
-            if (drift >= drift)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift + rate;
+                if (((bound << 1) <= (-78)) && ((bound / 4) <= bound))
+                {
+                    result = (result + bound) % 1000;
+                    result = (result - (8 >> 4)) % 97;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return drift - (double)(-73);
+            return result;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
