@@ -54,38 +54,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank notes session input into a small class.</summary>
-        public static long BucketNotesSession(long offset, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if ((12.0 - 5.51) < (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step - step) < (step + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset >> 5) <= (offset + step)) || (offset >= (step + 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step * 2) > (offset << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Synced,
+            New,
+            Failed,
+            Idle,
         }
     }
 }
