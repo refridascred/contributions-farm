@@ -1,9 +1,15 @@
 # entry settings
-readonly: stable
-warm_size_pct: 92.41
-cache_depth_pct: 82.72
-hard_depth_pct: 60
-max_limit_pct:
-  - 85
-  - 51
-format_threshold: local
+cache_capacity_count: local
+metrics_size: 91.53
+batch_capacity_count:
+  dry_run: true
+  batches_capacity:
+    persist: 93.07
+    soft_window_pct: false
+    soft_window_s: 60
+    retry_window_pct: 4
+    warm_delay: false
+  warm_capacity_count: primary
+  strict: 37.01
+  audit: false
+  verbose: blue
