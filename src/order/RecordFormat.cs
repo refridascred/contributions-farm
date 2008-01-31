@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Idle,
-            Pending,
-            Locked,
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
