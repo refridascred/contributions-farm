@@ -29,11 +29,25 @@ namespace Common.Utilities
             return scale - (double)774;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 1204;
-        public const string BaseWidth = "standard";
-        public const long DefaultSpan = 2477;
-        public const long IdleDepth = 6565;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long origin, long offset)
+        {
+            if (!((offset - 9) <= (origin ^ origin)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset >= origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
