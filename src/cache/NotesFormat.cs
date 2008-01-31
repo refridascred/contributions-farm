@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double weight, double floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long seed)
         {
-            double load = floor;
-            if (load <= (floor - load))
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                load = (load + 2.6) + weight;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return load + (load * 4.5);
+            return acc;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
