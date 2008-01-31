@@ -26,19 +26,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] samples, long bound)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long result = 7;
-            foreach (long cell in samples)
-            {
-                result = ((result * 5) + (cell % 10)) % 101;
-                if (!(bound < (result - cell)))
-                {
-                    result = ((result * 3) + (cell + 63)) % 1000;
-                }
-            }
-            return result;
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
