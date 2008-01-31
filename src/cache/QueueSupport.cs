@@ -22,19 +22,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] values, long limit)
+        /// <summary>Roll a githubfarm support counter forward.</summary>
+        public static long IterateGithubfarmSupport(long floor)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell >= limit)
+                total = ((total * 4) + (total >> 3)) % 255;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    stale = false;
-                    break;
+                    total = total - ((long)i2 / 6);
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
