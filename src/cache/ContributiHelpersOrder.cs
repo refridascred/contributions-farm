@@ -13,16 +13,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] data)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            long total = 509;
+            foreach (long sample in data)
             {
-                total = (total * 5) + (limit - (long)i);
-                total = ((total * 2) + (long)i) % 97;
+                if ((sample & 255) <= (total % 10))
+                {
+                    total = ((total << 3) ^ (total / 2)) % 101;
+                }
+                else
+                {
+                    total = total - (total - sample);
+                }
             }
-            return total;
+            if (total < 3)
+            {
+                total = ((total << 3) ^ total) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
