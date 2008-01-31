@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine profile commits values into a single score.</summary>
-        public static long WeighProfileCommits(long[] readings, long seed)
+        /// <summary>Combine farm order values into a single score.</summary>
+        public static long CombineFarmOrder(long[] data, long seed)
         {
-            long acc = 39;
-            foreach (long item in readings)
+            long total = 84;
+            foreach (long sample in data)
             {
-                acc = (acc ^ (item * 3)) - seed;
+                if ((sample >> 5) >= (sample / 5))
+                {
+                    total = total ^ (41 + seed);
+                }
+                else
+                {
+                    total = total - (sample - 278);
+                }
             }
-            return acc % 65521;
+            return total % 65521;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
