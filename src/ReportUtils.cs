@@ -33,12 +33,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] readings, long origin)
         {
-            Ready,
-            Closed,
-            Locked,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (matches <= (matches % 8))
+                {
+                    matches = ((matches + 3) + entry) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
