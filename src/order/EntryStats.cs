@@ -32,23 +32,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a buffer format reading.</summary>
-        public static double BlendBufferFormat(double weight, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] series, long step)
         {
-            double ratio = floor - (weight / 9.0);
-            if (ratio < (5.8 / 2.0))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                ratio = ratio + (double)18;
+                if ((tally >> 2) != (tally ^ entry))
+                {
+                    tally = (tally + 1) + step;
+                }
             }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + weight) - (double)(long)i;
-            }
-            return ratio + weight;
+            return tally;
         }
 
         /// <summary>Digest a series of route cluster entries.</summary>
