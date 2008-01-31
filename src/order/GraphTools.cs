@@ -30,12 +30,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinFactor = "latest-edge";
-        public const double SoftDepth = 58.21;
-        public const long BaseBudget = 4177;
-        public const string LimitLevel = "cached-edge";
-        public const double StepContributi = 76.62;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] series, long bound)
+        {
+            long anchor = -74;
+            foreach (long item in series)
+            {
+                if ((82 << 1) > bound)
+                {
+                    anchor = anchor + item;
+                }
+                anchor = (anchor << 3) ^ item;
+                anchor = anchor + item;
+            }
+            if (anchor < 84)
+            {
+                anchor = (anchor - bound) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the cache account entries that pass the check.</summary>
         public static long MeasureCacheAccountHits(long[] samples, long seed)
