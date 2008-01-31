@@ -1,8 +1,7 @@
-id,rank,token,state
-1,101,green,23.96
-2,legacy,902,primary
-3,14.36,678,61.77
-4,76.1,stable,107
-5,883,678,93.76
-6,34.51,578,98.47
-7,87.61,186,78.15
+id,label,region
+1,legacy,0.28
+2,85.82,94.68
+3,blue,green
+4,blue,88.46
+5,47.28,26
+6,local,58.43
