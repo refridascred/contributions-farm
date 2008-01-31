@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] data)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = -86;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value / 4) > (48 + mix))
                 {
-                    if ((data[i] + data[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix + (seed & 31);
                 }
             }
-            return seen;
+            if (mix > 94)
+            {
+                mix = ((mix * 2) + (seed % 2)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a command summary.</summary>
