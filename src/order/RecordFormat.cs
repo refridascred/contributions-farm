@@ -37,31 +37,21 @@ namespace Common.Utilities
             return bias2 + (double)77;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long target, long step)
+        /// <summary>Match up filter entry samples.</summary>
+        public static long MatchFilterEntryCount(long[] items)
         {
-            if ((59 - step) != (target & 63))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step << 2) >= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - step) == (target >> 4))
+                    if ((items[i] + items[j]) < 16)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
