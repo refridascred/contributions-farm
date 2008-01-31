@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] samples, long limit)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (7 <= (tally % 16))
-                {
-                    tally = ((tally + 1) + value) - limit;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the buffer state values.</summary>
