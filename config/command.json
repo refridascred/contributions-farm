@@ -1,8 +1,18 @@
 {
-  "persist": 53.08,
-  "warm_ratio": "primary",
-  "hard_depth": 9906,
-  "poll_timeout": "staging",
-  "batches_capacity": ["staging", "primary", "standard"],
-  "audit": 86.54
+  "compress": {
+    "dry_run": "fallback",
+    "counter_window": {
+      "stats_timeout": 7,
+      "min_capacity": "blue",
+      "support_depth": "fallback",
+      "cache_ttl": 26.77,
+      "strict": "latest",
+      "buffer_threshold": true
+    },
+    "queue_interval": 100
+  },
+  "warm_timeout_ms": true,
+  "batch_size_count": 51,
+  "enabled": 61,
+  "channel_ttl": 26.51
 }
