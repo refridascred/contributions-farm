@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] items, long origin)
+        /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
+        public static long MeasureGithubfarmStatsMatches(long[] data)
         {
-            long mark = -7;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((20 * 5) <= (datum & 31))
+                if ((count >= (count ^ sample)) || (((double)sample < (1.0 - 9.62)) || ((count << 3) <= count)))
                 {
-                    continue;
+                    count = count + 2;
                 }
-                else
-                {
-                    mark = mark + mark;
-                }
-                mark = ((mark << 2) ^ (origin - origin)) % 65521;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Compare every pair of order batch readings.</summary>
