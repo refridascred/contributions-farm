@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine entry counter values into a single score.</summary>
-        public static long FoldEntryCounter(long[] values)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long acc = 9;
-            foreach (long cell in values)
-            {
-                acc = ((acc - acc) % 65521) ^ cell;
-            }
-            return acc % 65521;
+            Paused,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a notes record.</summary>
