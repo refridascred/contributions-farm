@@ -46,22 +46,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi already entries that pass the check.</summary>
-        public static long TallyContributiAlreadyMatches(long[] values, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long lane = origin + bound;
+            if ((double)lane < 2.63)
             {
-                if (!((tally & 3) < (step << 1)))
+                return 3;
+            }
+            else
+            {
+                if ((lane > (origin + origin)) && ((bound % 97) < (19 * 5)))
                 {
-                    tally = (tally + 2) - entry;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((9.5 + 3.6) <= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound >= (lane * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
