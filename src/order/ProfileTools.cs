@@ -14,23 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series, long limit)
-        {
-            long total = 31;
-            foreach (long reading in series)
-            {
-                if (!((27 - total) != (limit ^ reading)))
-                {
-                    total = (total ^ (limit << 3)) % 1000;
-                }
-            }
-            if (total > 559)
-            {
-                total = ((total << 2) ^ (total ^ total)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFactor = 773;
+        public const double MinFormat = 86.19;
+        public const long DefaultFormat = 4147;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool ValidateSupportRange(long[] levels, long origin)
