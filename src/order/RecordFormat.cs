@@ -56,19 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] series, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((321 / 3) <= (limit + anchor))
+                if (step < (step - datum))
                 {
-                    anchor = (anchor << 2) ^ limit;
+                    count = count + 1;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
     }
 }
