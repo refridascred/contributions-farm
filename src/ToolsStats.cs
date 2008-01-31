@@ -58,15 +58,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double weight, double bias)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            double drift = 10.0;
-            if (drift < weight)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                drift = (drift + (1.07 + 0.14)) + bias;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return drift - (double)1;
+            return carry;
         }
     }
 }
