@@ -1,10 +1,6 @@
-id,owner,rank,level,weight
-1,309,650,blue,272
-2,384,223,29,legacy
-3,28.89,15.99,open,legacy
-4,600,804,485,168
-5,13.56,primary,256,standard
-6,718,87.92,74.29,80
-7,open,663,641,legacy
-8,open,cached,legacy,27.08
-9,70.05,574,233,fallback
+id,state,score,owner
+1,33.83,492,legacy
+2,589,0.95,13.83
+3,26.89,259,421
+4,47.07,721,700
+5,602,primary,1.18
