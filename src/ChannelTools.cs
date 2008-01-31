@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark * 3) + ((-512) ^ 269);
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 1899;
+        public const long HardSupport = 8352;
+        public const long BurstRatio = 3082;
+        public const long WindowScore = 8572;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorGaps(long[] levels)
