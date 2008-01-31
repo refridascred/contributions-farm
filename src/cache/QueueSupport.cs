@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] data, long floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
