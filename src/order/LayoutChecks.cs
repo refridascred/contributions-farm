@@ -50,21 +50,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)(long)levels.Length <= (2.86 / 7.0))
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
