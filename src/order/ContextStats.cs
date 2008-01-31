@@ -26,10 +26,18 @@ namespace Common.Utilities
         public const double WindowPayload = 12.77;
         public const double CacheWidth = 61.61;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitFactor = "legacy-edge";
-        public const long WindowContext = 2829;
-        public const long RetryDepth = 9069;
+        /// <summary>Locate a channel order reading by value.</summary>
+        public static long FindChannelOrderIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryFormat = 2956;
