@@ -47,19 +47,21 @@ namespace Common.Utilities
             return (mean - floor) + bias;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double scale, double span)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            double bias = 2.4;
-            if (bias >= (double)26)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (double)(-8);
-            }
-            return bias + scale;
+            return count;
         }
     }
 }
