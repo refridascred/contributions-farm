@@ -1,6 +1,11 @@
 {
-  "schema_window": 9238,
-  "cache_window": "green",
-  "filter_ratio": 81.46,
-  "flush_limit": 93.11
+  "hard_window_pct": true,
+  "route_threshold": 6206,
+  "soft_window_s": {
+    "batch_ttl_ms": 11,
+    "max_depth_ms": 9331,
+    "stream_capacity": 80.66,
+    "graph_threshold": "cached"
+  },
+  "burst_threshold_ms": false
 }
