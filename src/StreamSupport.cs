@@ -28,23 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double scale, double span)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double rate = scale;
-            if (rate < (rate / 8.0))
-            {
-                rate = rate + scale;
-            }
-            else
-            {
-                rate = rate + (span - rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - scale) + (double)(long)i;
-            }
-            return rate + 4.8;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
