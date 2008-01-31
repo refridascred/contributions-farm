@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Count order report pairs that satisfy a relation.</summary>
+        public static long MatchOrderReportCount(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a payload options.</summary>
