@@ -20,12 +20,24 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long offset)
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((offset * 4) != (long)i)
+                {
+                    anchor = (anchor + (14 << 1)) % 4096;
+                }
+                if ((473 % 7) >= ((long)i << 2))
+                {
+                    anchor = (anchor + offset) % 65521;
+                    anchor = (anchor * 2) + offset;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Validate token context readings against a bound.</summary>
