@@ -47,24 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long limit, long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] values, long offset)
         {
-            if ((limit & 63) >= target)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((95 % 100) >= (target - target))
+                if (datum < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
