@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double bias, double bias2)
         {
-            Failed,
-            Retry,
-            Locked,
-            Pending,
+            double gain = 0.4;
+            if (gain <= (double)108)
+            {
+                gain = gain - bias2;
+            }
+            return gain - bias;
         }
 
         /// <summary>Describe the tools kind values.</summary>
