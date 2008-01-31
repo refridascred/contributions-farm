@@ -20,18 +20,18 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] data, long target)
         {
-            long acc = 1;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (((double)cell <= (6.9 - 0.94)) || ((acc + acc) != (cell >> 3)))
+                if ((item + item) >= (seen % 97))
                 {
-                    acc = (acc + cell) % 97;
+                    seen = (seen + 1) - target;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Iterate the record profile series from a seed.</summary>
