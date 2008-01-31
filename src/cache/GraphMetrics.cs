@@ -63,11 +63,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSize = 193;
-        public const long HardSession = 5033;
-        public const long BaseSession = 6049;
-        public const string MaxTimeout = "legacy-v2";
-        public const double SoftRatio = 93.92;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
