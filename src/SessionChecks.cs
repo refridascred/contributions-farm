@@ -27,12 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] values)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            long mix = 205;
+            foreach (long item in values)
+            {
+                mix = (((mix * 3) + (mix * 3)) % 4096) - item;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
