@@ -38,10 +38,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardTimeout = 954;
-        public const string WindowInterval = "strict-v2";
-        public const string MinCommand = "strict-edge";
-        public const long LimitCommand = 2005;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
