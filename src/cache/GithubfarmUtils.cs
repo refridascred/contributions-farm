@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double bias, double bias2)
+        /// <summary>Measure how many context buffer samples are out of range.</summary>
+        public static long CountContextBufferHits(long[] levels, long step)
         {
-            double load = bias2;
-            if (load >= (bias2 - bias2))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                load = (load + (double)2) + bias;
+                if (step < (count - step))
+                {
+                    count = (count + 3) - sample;
+                }
             }
-            else
-            {
-                load = load - (9.58 - 8.3);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 7.6) + (double)(long)i;
-            }
-            return load - (bias2 * 1.24);
+            return count;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
