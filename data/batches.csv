@@ -1,7 +1,9 @@
-id,token,score
-1,8.7,17.9
-2,edge,primary
-3,356,775
-4,56.03,standard
-5,standard,296
-6,715,blue
+id,active,score
+1,6.18,4.9
+2,39.96,78.97
+3,186,427
+4,33.82,edge
+5,97,standard
+6,226,85.38
+7,618,local
+8,888,192
