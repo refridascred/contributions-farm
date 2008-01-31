@@ -14,23 +14,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] series)
         {
-            long result = 9;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                result = (result << 3) ^ (datum << 1);
-                if (5 > (datum ^ result))
+                if ((double)reading != (4.8 / 5.0))
                 {
-                    result = (result + (datum + result)) % 1000;
+                    seen = seen + 3;
                 }
-                if ((870 + result) >= (475 << 1))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
