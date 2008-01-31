@@ -36,19 +36,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] levels, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long step)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long sum = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry != floor)
+                if (!(((long)i + (long)i) < step))
                 {
-                    ok = false;
-                    break;
+                    sum = sum - ((long)i % 3);
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
