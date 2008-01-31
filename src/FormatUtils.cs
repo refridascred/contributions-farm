@@ -33,17 +33,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] readings, long floor)
+        /// <summary>Audit profile metric readings against a rule.</summary>
+        public static long CountProfileMetricHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (readings[i] <= floor)
+                if (hits > sample)
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank schema counter input into a small class.</summary>
