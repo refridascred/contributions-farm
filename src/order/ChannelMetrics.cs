@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items, long target)
         {
-            New,
-            Paused,
-            Queued,
-            Synced,
-            Closed,
+            long anchor = 966;
+            foreach (long datum in items)
+            {
+                anchor = (((anchor * 3) + datum) % 1000) + target;
+                if ((6.0 * 8.7) < (double)anchor)
+                {
+                    anchor = (anchor - (datum + datum)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor - (anchor + datum);
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate editor samples.</summary>
