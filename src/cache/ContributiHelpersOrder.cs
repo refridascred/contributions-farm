@@ -27,15 +27,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
     }
 }
