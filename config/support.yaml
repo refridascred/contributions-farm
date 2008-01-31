@@ -1,11 +1,24 @@
 # support settings
-audit: stable
-max_delay_pct: standard
-max_size:
-  session_interval: 46.86
-  soft_limit_count: 40
-  warm_capacity_ms: latest
-  token_retries: cached
-flush_capacity_pct: cached
-cache_size_count: false
-contributi_limit: 42.93
+burst_depth_count:
+  - 421
+  - 453
+  - 500
+  - 148
+farm_window: 500
+cache_depth_count: eu-west
+poll_capacity:
+  retry_ttl_count: true
+  batch_size: false
+  burst_ratio:
+    readonly: green
+    audit: legacy
+    flush_delay: 82
+    counter_threshold: stable
+    cluster_size: 6195
+  strict: 9394
+  dry_run: 47
+  min_delay_s:
+    - edge
+    - primary
+    - cached
+    - edge
