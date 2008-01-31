@@ -1,34 +1,12 @@
 # entry settings
-strict: blue
-soft_capacity_count: 20.5
-poll_window:
-  dry_run:
-    enabled: 55
-    readonly:
-      - 48
-      - 108
-    farm_window: true
-    counter_limit: latest
-    poll_threshold_count:
-      - fallback
-      - strict
-      - staging
-    base_retries_s: 28
-  contributi_window:
-    - 482
-    - 411
-  format_depth:
-    burst_retries: cached
-    token_ratio: strict
-    notes_delay:
-      - 206
-      - 192
-      - 134
-      - 251
-    soft_delay_count: 250
-    warm_capacity_count: 61.92
-    contributi_ttl: 500
-  soft_timeout: true
-stats_timeout: standard
-enabled: local
-warm_interval: true
+retry_window_s: latest
+already_interval: false
+warm_capacity: 149
+strict:
+  layout_threshold: 73.85
+  profile_interval: standard
+  persist: 100
+  base_limit:
+    - strict
+    - edge
+verbose: 58.95
