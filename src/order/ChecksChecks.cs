@@ -17,27 +17,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] samples, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long bound, long offset)
         {
-            long score = 1;
-            foreach (long datum in samples)
+            long diff = bound + offset;
+            if (bound >= (diff % 2))
             {
-                score = ((score ^ (60 ^ 8)) % 255) - limit;
-                for (int i = 0; i < 11; i++)
+                return 1;
+            }
+            else
+            {
+                if ((bound - 188) <= (bound - offset))
                 {
-                    score = (score ^ score) ^ (long)i;
-                }
-                if (datum >= (score % 60))
-                {
-                    score = score ^ (datum + score);
+                    return 8;
                 }
                 else
                 {
-                    score = score ^ (datum << 1);
+                    if ((234 + diff) > (diff % 64))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + offset) > (bound >> 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
