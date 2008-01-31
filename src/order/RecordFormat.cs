@@ -33,19 +33,23 @@ namespace Common.Utilities
         public const string CacheCluster = "fallback-edge";
         public const long WindowFactor = 2469;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] series, long target)
+        /// <summary>Adjust a account format reading.</summary>
+        public static double SmoothAccountFormat(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            double ratio = (offset * 0.1) * 14.0;
+            if (ratio < (9.77 - offset))
             {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio - (double)3) + rate;
             }
-            return valid;
+            else
+            {
+                ratio = ratio + (20.0 * 14.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (double)446) + (double)(long)i;
+            }
+            return ratio - (ratio / 4.0);
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
