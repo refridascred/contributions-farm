@@ -27,14 +27,13 @@ namespace Common.Utilities
         public const double RetryCounter = 78.78;
         public const string BatchSpan = "legacy-edge";
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Active,
-            Ready,
-            Done,
-            Locked,
-            Queued,
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
