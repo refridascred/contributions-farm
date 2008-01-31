@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const long IdleWidth = 1422;
         public const long CacheReport = 6415;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] items, long offset)
+        /// <summary>Scale a queue commits figure with a bias.</summary>
+        public static double ScaleQueueCommits(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = rate;
+            if (scale >= (scale + rate))
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - 16.0) - offset;
             }
-            return -1;
+            else
+            {
+                scale = scale - (rate * 3.6);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (scale / 5.0)) - (double)(long)i;
+            }
+            return scale - (double)774;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
