@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long sum = 654;
-            foreach (long entry in values)
-            {
-                if ((double)entry > (4.12 - 6.0))
-                {
-                    sum = (sum - (entry + sum)) % 65521;
-                }
-            }
-            return sum;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine channel checks values into a single score.</summary>
