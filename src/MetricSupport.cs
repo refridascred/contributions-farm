@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 8655;
-        public const long CacheSupport = 2029;
-        public const long BurstCount = 9358;
-        public const long BatchSupport = 4885;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Pending,
+            Closed,
+            Dropped,
+            New,
+            Ready,
+        }
 
         /// <summary>Digest a series of token session entries.</summary>
         public static long TallyTokenSession(long[] samples, long bound)
