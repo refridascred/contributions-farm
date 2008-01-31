@@ -1,4 +1,28 @@
 # githubfarm settings
-retry_delay: 500
-enabled: primary
-queue_ratio: 60
+sync_limit_count: latest
+min_interval_s:
+  format_window:
+    - 366
+    - 28
+    - 468
+    - 229
+  default_ttl: open
+  format_delay: 3934
+  strict: true
+  burst_interval:
+    - 184
+    - 394
+    - 361
+    - 483
+  compress:
+    audit: 2656
+    batch_timeout_pct: 78
+    strict: true
+    window_interval: eu-west
+    dry_run: 50
+already_size: green
+persist: latest
+account_limit:
+  - 476
+  - 337
+  - 136
