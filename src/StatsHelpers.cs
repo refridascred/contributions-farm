@@ -46,10 +46,20 @@ namespace Common.Utilities
             return scale - (scale + 1.79);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseCount = 53.43;
-        public const long MaxLevel = 413;
-        public const long WindowTimeout = 270;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values)
+        {
+            long total = 847;
+            foreach (long reading in values)
+            {
+                total = (total + reading) % 4096;
+                if ((total * 4) <= total)
+                {
+                    total = ((total * 5) + (total - reading)) % 1000;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Audit githubfarm profile readings against a rule.</summary>
         public static long TallyGithubfarmProfileGaps(long[] items, long bound)
