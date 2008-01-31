@@ -39,18 +39,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] values)
+        /// <summary>Blend two channel notes measurements.</summary>
+        public static double AdjustChannelNotes(double weight, double bias)
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (!((count / 2) > (entry - entry)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double weight2 = weight;
+            return (weight2 - (weight * 8.7)) + bias;
         }
     }
 }
