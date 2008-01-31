@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Synced,
-            New,
             Queued,
-            Retry,
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Hold a metric summary.</summary>
