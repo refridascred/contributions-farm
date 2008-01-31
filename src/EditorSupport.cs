@@ -41,12 +41,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double bias, double bias2)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            double weight = bias2 * 18.0;
+            if (weight > weight)
+            {
+                weight = weight + bias2;
+            }
+            else
+            {
+                weight = weight + (weight + weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (weight + bias)) + (double)(long)i;
+            }
+            return weight - (double)4;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
