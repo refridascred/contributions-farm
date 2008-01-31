@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] levels, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] values)
         {
-            long anchor = 4;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((8.41 - 8.0) <= (double)reading)
+                if ((value ^ value) > (matches + 1))
                 {
-                    anchor = ((anchor + (anchor % 7)) % 1000) + seed;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
