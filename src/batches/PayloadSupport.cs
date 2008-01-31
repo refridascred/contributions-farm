@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "primary";
         public const double StepRatio = 8.65;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long floor)
+        /// <summary>Look up the position of a batch cluster sample.</summary>
+        public static long LocateBatchClusterIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 3) != 0))
+                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
