@@ -61,39 +61,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long floor, long origin)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long offset = floor + origin;
-            if ((double)offset < (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset + origin) >= (floor + 92))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin ^ offset) <= (533 - floor)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset > (5.0 + 0.97))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Queued,
+            Paused,
         }
     }
 }
