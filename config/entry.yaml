@@ -1,25 +1,24 @@
 # entry settings
-cache_window_ms: eu-west
-verbose:
-  account_depth: 695
-  min_timeout_ms: true
-  strict: 9190
-  route_window: strict
-  order_timeout: 59.94
-soft_retries_ms:
-  base_depth:
-    - 189
-    - 176
-    - 46
-  warm_size_s: staging
-  flush_delay_count:
-    retry_timeout:
-      - 283
-      - 440
-    soft_limit: latest
-    default_depth_pct: local
-    sync_depth_pct: edge
-    report_interval: primary
-    hard_depth: 60
-  batch_capacity: 8138
-strict: 5641
+soft_timeout_pct: standard
+base_timeout_pct:
+  - staging
+  - staging
+  - primary
+flush_ratio_count: 1515
+burst_size_s: 60
+metrics_ttl:
+  - cached
+  - edge
+  - standard
+  - blue
+max_window:
+  batch_window_ms:
+    base_delay_count: 67.76
+    burst_threshold: eu-west
+    contributi_capacity: staging
+    hard_threshold_pct:
+      - latest
+      - blue
+    cache_window: 3082
+  poll_capacity_count: 7238
+  audit: 79.3
