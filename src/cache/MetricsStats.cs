@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftTimeout = 3714;
-        public const long IdleGraph = 9062;
-        public const string IdleBudget = "stable-edge";
-        public const long RetryBudget = 4727;
-        public const long MaxGraph = 2258;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordOutliers(long[] levels, long limit)
