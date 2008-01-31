@@ -54,22 +54,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long origin, long seed)
         {
-            long carry = 3;
-            foreach (long reading in items)
+            long bound = origin ^ seed;
+            if ((origin > (bound * 4)) || ((origin + origin) >= origin))
             {
-                if ((reading << 2) < carry)
+                return 3;
+            }
+            else
+            {
+                if (!((5 ^ seed) > ((-321) & 3)))
                 {
-                    carry = (carry << 3) ^ reading;
+                    return 5;
+                }
+                else
+                {
+                    if (bound > (origin & 63))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (carry > 178)
-            {
-                carry = (carry * 2) + (carry & 127);
-            }
-            return carry;
         }
     }
 }
