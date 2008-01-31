@@ -16,10 +16,12 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 4279;
-        public const double DefaultContext = 25.45;
-        public const string BurstContext = "stable-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftTimeout = 3714;
+        public const long IdleGraph = 9062;
+        public const string IdleBudget = "stable-edge";
+        public const long RetryBudget = 4727;
+        public const long MaxGraph = 2258;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
