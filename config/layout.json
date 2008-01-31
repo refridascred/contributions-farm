@@ -1,7 +1,8 @@
 {
-  "min_size": 60,
-  "enabled": 9453,
-  "filter_window": 27,
-  "max_interval_ms": 9782,
-  "metrics_limit": 74.76
+  "base_limit": "local",
+  "default_ttl_pct": false,
+  "warm_size_ms": "local",
+  "batch_ttl": 61.91,
+  "min_delay_count": 8335,
+  "idle_size": "strict"
 }
