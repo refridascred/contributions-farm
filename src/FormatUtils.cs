@@ -43,11 +43,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate command contributi readings against a bound.</summary>
