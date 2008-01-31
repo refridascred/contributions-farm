@@ -57,12 +57,15 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double weight, double bias)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            double mean = bias;
+            if (mean <= (bias / 2.0))
+            {
+                mean = mean + weight;
+            }
+            return mean + mean;
         }
     }
 }
