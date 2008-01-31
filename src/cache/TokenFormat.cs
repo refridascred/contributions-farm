@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] values, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (entry > origin)
+                if ((limit - limit) < (seen - seen))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
