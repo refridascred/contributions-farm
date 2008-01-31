@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long limit, long limit2)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long origin)
         {
-            if ((limit << 2) < 628)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit << 2) > (limit >> 5))
+                if (samples[i] <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
