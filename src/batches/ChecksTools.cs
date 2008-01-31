@@ -22,19 +22,24 @@ namespace Common.Utilities
         public const long BurstFactor = 7656;
         public const long MaxSize = 2389;
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double scale, double span)
+        /// <summary>Roll a profile notes counter forward.</summary>
+        public static long IterateProfileNotes(long origin)
         {
-            double weight = span;
-            if (weight <= (weight * 7.5))
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                weight = (weight + (double)5) - scale;
+                if (1.0 >= (double)(long)i)
+                {
+                    continue;
+                }
+                if (((long)i - 632) < (total << 3))
+                {
+                    total = (total - 55) % 255;
+                    total = (total - ((long)i + (long)i)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight + (double)75;
-            }
-            return weight - (double)19;
+            return total;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
