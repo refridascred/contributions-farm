@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the filter checks entries that pass the check.</summary>
-        public static long TallyFilterChecksOutliers(long[] items, long target)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally % 100) < tally)
-                {
-                    tally = ((tally + 1) ^ value) - target;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
