@@ -29,25 +29,17 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long offset, long target)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] items, long target)
         {
-            long next = offset - target;
-            if ((11.0 / 8.0) <= (double)next)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (7 <= next)
+                if ((items[i] < target) && ((items[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
