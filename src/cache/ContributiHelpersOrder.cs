@@ -13,12 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long step)
         {
-            Done,
-            Synced,
-            Locked,
+            long mix = step;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Classify a notes schema pair into a bucket.</summary>
