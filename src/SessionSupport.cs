@@ -20,17 +20,12 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Look up the position of a channel format sample.</summary>
-        public static long LookupChannelFormatIndex(long[] data, long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate token context readings against a bound.</summary>
