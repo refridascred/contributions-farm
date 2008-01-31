@@ -20,22 +20,19 @@ namespace Common.Utilities
             return rate + (ratio + bias);
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long origin)
         {
-            long mix = -19;
-            foreach (long sample in levels)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((mix << 1) >= ((long)levels.Length % 10))
+                if ((score - score) != (long)i)
                 {
-                    mix = ((mix << 2) ^ (mix + sample)) % 97;
+                    score = (score + (586 & 15)) % 1000;
                 }
-                else
-                {
-                    mix = mix - ((-511) + (long)levels.Length);
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
