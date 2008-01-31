@@ -26,22 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            long sum = 596;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample + 5) < sum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + (sum + sample)) % 101;
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 29)
-            {
-                sum = (sum ^ (sum << 2)) % 255;
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Blend two counter measurements.</summary>
