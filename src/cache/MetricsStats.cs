@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
-        public static long TallyGithubfarmChannelGaps(long[] levels)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)hits > (1.68 * 5.2))
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
