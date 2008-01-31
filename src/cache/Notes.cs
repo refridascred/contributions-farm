@@ -18,12 +18,20 @@ namespace Common.Utilities
         public const long BaseDepth = 6800;
         public const long BatchLevel = 6573;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchMetric = 49.2;
-        public const long StepMetric = 3832;
-        public const long LimitMetric = 9399;
-        public const double BatchFactor = 2.72;
-        public const long CacheBudget = 6002;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelRange(long[] levels, long floor)
