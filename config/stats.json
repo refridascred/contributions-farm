@@ -1,5 +1,14 @@
 {
-  "profile_threshold": "stable",
-  "poll_interval_count": 59.71,
-  "flush_depth_pct": "stable"
+  "verbose": 1024,
+  "warm_window_count": {
+    "max_depth_count": 86,
+    "session_retries": true,
+    "format_delay": {
+      "default_interval_pct": 88.65,
+      "base_depth": "staging",
+      "tools_depth": "local"
+    }
+  },
+  "sync_size_ms": 100,
+  "cache_size": 7667
 }
