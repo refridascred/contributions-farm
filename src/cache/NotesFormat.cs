@@ -31,23 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] items, long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long anchor = 526;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor << 2) ^ (anchor - sample)) % 101;
-                if ((limit - 931) < ((-53) - limit))
-                {
-                    break;
-                }
-            }
-            if (anchor < 800)
-            {
-                anchor = ((anchor * 4) + (anchor >> 3)) % 101;
-            }
-            return anchor;
+            Ready,
+            Queued,
+            Idle,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the counter state values.</summary>
