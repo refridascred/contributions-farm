@@ -34,11 +34,12 @@ namespace Common.Utilities
         public const long MaxBudget = 4400;
         public const string MaxSupport = "alpha-v2";
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
+            Active,
+            Ready,
+            Draft,
         }
     }
 }
