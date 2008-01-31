@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the order payload series from a seed.</summary>
-        public static long RollOrderPayload(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "alpha-v2";
+        public const long BatchCount = 7995;
+        public const long RetryMetric = 9306;
+        public const long RetryScore = 7003;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long SortCommits(long target, long limit)
