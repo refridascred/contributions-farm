@@ -49,11 +49,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepDepth = 4142;
+        public const long WindowContext = 2502;
+        public const string SoftFactor = "latest-edge";
+        public const string DefaultInterval = "stable";
+        public const long SoftRatio = 9480;
     }
 }
