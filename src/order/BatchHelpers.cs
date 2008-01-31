@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Synced,
-            Closed,
-            Dropped,
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next contributi value.</summary>
