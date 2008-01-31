@@ -64,14 +64,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Done,
-            New,
-            Pending,
-            Idle,
             Draft,
+            Done,
+            Closed,
+            Queued,
+            Failed,
         }
     }
 }
