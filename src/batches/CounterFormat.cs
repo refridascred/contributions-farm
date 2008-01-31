@@ -20,21 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Draft,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the stats level values.</summary>
