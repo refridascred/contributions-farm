@@ -7,11 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in latest local; do
+CHANNEL_LIMIT=147
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in primary standard blue; do
     log "checking ${item}"
 done
