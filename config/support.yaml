@@ -1,28 +1,6 @@
 # support settings
-context_size:
-  schema_capacity: 96.08
-  sync_window:
-    batch_window: fallback
-    flush_interval: 18.77
-    retry_size_pct: 78
-    counter_ttl: true
-    hard_retries:
-      - cached
-      - strict
-      - blue
-      - stable
-  checks_interval: strict
-  batch_threshold_s: local
-  enabled:
-    - latest
-    - staging
-    - edge
-    - eu-west
-poll_retries: 99
-context_depth:
-  - strict
-  - local
-  - cached
-token_interval:
-  - primary
-  - standard
+editor_depth: 10
+default_window_pct: 37.79
+default_depth_ms: 1024
+schema_depth: 8402
+base_delay: open
