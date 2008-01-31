@@ -13,12 +13,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long target, long offset)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            if ((offset + target) >= (offset % 97))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target - target) == (target + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the graph level values.</summary>
