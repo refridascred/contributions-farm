@@ -85,22 +85,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] items)
+        /// <summary>Fold a list of graph checks readings.</summary>
+        public static long TotalGraphChecks(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long carry = 9;
+            foreach (long item in readings)
             {
-                if ((243 + entry) != (22 - 795))
+                if ((carry + carry) > (carry % 64))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = carry ^ (item % 7);
                 }
             }
-            return count;
+            if (carry < 4)
+            {
+                carry = ((carry << 3) ^ (origin + carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
