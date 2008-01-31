@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] levels)
         {
-            long total = 991;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + (entry >> 3)) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Digest a series of account entries.</summary>
