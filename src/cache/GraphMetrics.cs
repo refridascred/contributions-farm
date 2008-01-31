@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] readings, long seed)
-        {
-            long score = 1;
-            foreach (long sample in readings)
-            {
-                if ((score - seed) > (sample - sample))
-                {
-                    score = (score - (sample / 8)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitInterval = 2.68;
+        public const long MinBudget = 2108;
+        public const long BaseSpan = 7398;
+        public const string DefaultAlready = "standard-1";
+        public const string SoftAlready = "open";
 
         /// <summary>Count token schema pairs that satisfy a relation.</summary>
         public static long CompareTokenSchemaCount(long[] readings)
