@@ -19,38 +19,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a route batch pair into a bucket.</summary>
-        public static long GradeRouteBatch(long seed, long target)
+        /// <summary>Check that every record queue entry stays within the limit.</summary>
+        public static bool GuardRecordQueueLimits(long[] readings, long offset)
         {
-            if ((double)seed == (1.0 * 20.0))
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((8.24 - 5.9) != (double)target) && ((target ^ target) > (target * 3)))
+                if (sample < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)878 != (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed <= (329 * 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
