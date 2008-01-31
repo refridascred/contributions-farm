@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] samples, long step)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a route counter forward.</summary>
