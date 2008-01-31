@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 7777;
-        public const long StepCache = 5871;
-        public const string BurstRatio = "primary-1";
-        public const long BaseCache = 7960;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings, long origin)
+        {
+            long carry = 38;
+            foreach (long cell in readings)
+            {
+                carry = ((carry - (origin << 1)) % 101) ^ cell;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] levels)
