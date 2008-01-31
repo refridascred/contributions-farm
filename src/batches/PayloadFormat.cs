@@ -43,39 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long seed, long target)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long cur = seed - target;
-            if (((target / 7) >= (cur & 31)) || ((double)cur >= (9.54 + 3.37)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + target) < (seed % 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur / 8) < seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + cur) < (cur - target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public double Total { get; set; }
+            public double Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
