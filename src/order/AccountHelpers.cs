@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long step, long limit)
-        {
-            long diff = step - limit;
-            if (((limit ^ limit) > (diff << 3)) || (((-57) - limit) < (limit & 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((885 - limit) == (diff * 5)) || ((97 + step) < (step + diff)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1 & 31) <= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((0.4 + 2.5) == (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBatches = "staging-1";
+        public const double IdleCount = 88.03;
+        public const string RetryInterval = "latest-v2";
+        public const long SoftLevel = 2921;
 
         /// <summary>Check that every graph tools entry stays within the limit.</summary>
         public static bool CheckGraphToolsLimits(long[] values, long seed)
