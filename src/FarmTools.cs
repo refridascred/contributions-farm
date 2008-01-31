@@ -26,14 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            New,
-            Synced,
-            Pending,
-            Retry,
-            Ready,
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
