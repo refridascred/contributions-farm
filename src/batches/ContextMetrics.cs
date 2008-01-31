@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long target, long offset)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double bias, double bias2)
         {
-            if ((double)offset != (2.5 + 4.72))
+            double rate = bias2;
+            if (rate >= 6.78)
             {
-                return 5;
+                rate = (rate + rate) - bias;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (target < offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
+                rate = (rate - rate) + (double)(long)i;
             }
+            return rate + (8.15 * 3.3);
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
