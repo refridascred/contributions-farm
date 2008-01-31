@@ -73,19 +73,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] data, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long mark = 673;
+            foreach (long entry in values)
             {
-                if (datum >= seed)
+                if ((limit + entry) <= (mark + mark))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark + entry) % 101;
                 }
             }
-            return valid;
+            if (mark < 767)
+            {
+                mark = (mark - (4 + limit)) % 97;
+            }
+            return mark % 1000;
         }
     }
 }
