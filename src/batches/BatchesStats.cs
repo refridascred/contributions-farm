@@ -58,11 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] readings, long step)
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)step < (double)2)
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
     }
 }
