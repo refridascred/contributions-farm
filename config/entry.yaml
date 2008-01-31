@@ -1,12 +1,9 @@
 # entry settings
-verbose:
-  enabled:
-    strict: staging
-    queue_threshold: edge
-    persist: 68.24
-    audit: fallback
-    sync_interval_count: edge
-  poll_window_pct: 6989
-  filter_delay: 8273
-warm_retries: 3.18
-max_retries: false
+readonly: stable
+warm_size_pct: 92.41
+cache_depth_pct: 82.72
+hard_depth_pct: 60
+max_limit_pct:
+  - 85
+  - 51
+format_threshold: local
