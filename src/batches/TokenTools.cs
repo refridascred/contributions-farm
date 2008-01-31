@@ -29,22 +29,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate account format samples.</summary>
-        public static long TotalAccountFormat(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] values)
         {
-            long acc = 8;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((978 + acc) > (acc + 373))
+                if (((double)seen != (10.0 * 5.99)) && ((double)seen >= (double)value))
                 {
-                    acc = (acc + (4 + sample)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            if (acc < 61)
-            {
-                acc = ((acc * 4) + (acc << 2)) % 97;
-            }
-            return acc % 4096;
+            return seen;
         }
     }
 }
