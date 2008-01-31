@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many context buffer samples are out of range.</summary>
-        public static long CountContextBufferHits(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (step < (count - step))
-                {
-                    count = (count + 3) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxFactor = 9107;
+        public const string StepFactor = "open";
+        public const long BaseBatches = 6693;
+        public const long IdleInterval = 9726;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
