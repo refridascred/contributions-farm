@@ -35,19 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the filter stream series from a seed.</summary>
-        public static long StepFilterStream(long floor)
+        /// <summary>Combine metrics layout values into a single score.</summary>
+        public static long FoldMetricsLayout(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            long score = 8;
+            foreach (long sample in readings)
             {
-                if (floor <= 730)
-                {
-                    acc = (acc ^ floor) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                score = (score * 5) + sample;
             }
-            return acc;
+            if (score < (-67))
+            {
+                score = (score - 1) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
