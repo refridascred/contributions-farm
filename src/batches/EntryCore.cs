@@ -57,19 +57,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] readings, long bound)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
