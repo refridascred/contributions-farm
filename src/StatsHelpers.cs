@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long step, long limit)
-        {
-            if ((double)limit != (18.0 / 7.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((48 + 16) <= (step >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step % 5) < (limit + step)) && ((step ^ limit) >= (limit - 562)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((4.9 + 2.3) != (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFactor = 9204;
+        public const double CacheInterval = 44.34;
+        public const string LimitScore = "open-1";
+        public const long RetryInterval = 5161;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
