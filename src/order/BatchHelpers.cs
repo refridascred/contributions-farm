@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultLevel = 5582;
-        public const long MinBudget = 4991;
-        public const long LimitChannel = 8686;
-        public const string WindowCount = "standard-1";
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Dropped,
+            Stale,
+            New,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderOutliers(long[] levels, long target)
