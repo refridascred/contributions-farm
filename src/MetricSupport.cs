@@ -41,21 +41,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up metric checks samples.</summary>
-        public static long CompareMetricChecksCount(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading < bound)
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
