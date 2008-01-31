@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long limit)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            long result = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                result = (result + result) % 97;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
