@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const string WindowLayout = "open";
         public const long CacheLevel = 4602;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double gain, double bias)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double rate = (double)(82 - 439);
-            return ((rate - rate) + gain) + bias;
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a stream record.</summary>
