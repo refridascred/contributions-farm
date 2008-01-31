@@ -26,17 +26,22 @@ namespace Common.Utilities
         public const double WindowPayload = 12.77;
         public const double CacheWidth = 61.61;
 
-        /// <summary>Locate a channel order reading by value.</summary>
-        public static long FindChannelOrderIndex(long[] readings, long target)
+        /// <summary>Digest a series of order metric entries.</summary>
+        public static long DigestOrderMetric(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 41;
+            foreach (long sample in samples)
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
+                if ((sum - sample) != (399 & 1))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sample + sum)) % 255;
+                }
+                else
+                {
+                    sum = (sum - (long)samples.Length) % 4096;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
