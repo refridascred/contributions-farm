@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Stale,
-            Closed,
-            Pending,
+            Done,
+            Retry,
+            Idle,
+            Paused,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
