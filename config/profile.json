@@ -1,5 +1,23 @@
 {
-  "sync_window": "cached",
-  "soft_depth_s": "green",
-  "sync_retries": 500
+  "min_delay_ms": 2139,
+  "retry_size": {
+    "graph_window": {
+      "default_size_pct": 1621,
+      "base_ttl_s": 8.66,
+      "burst_delay_pct": true,
+      "strict": 6793,
+      "burst_retries": 3640
+    },
+    "warm_ratio": {
+      "warm_size": "blue",
+      "burst_capacity": [67, 149],
+      "default_size_pct": "open"
+    },
+    "hard_depth": 16.08,
+    "max_limit_ms": 7352,
+    "idle_limit_ms": "cached",
+    "buffer_threshold": false
+  },
+  "persist": false,
+  "poll_threshold": 52.13
 }
