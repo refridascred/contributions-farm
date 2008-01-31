@@ -1,22 +1,8 @@
 {
-  "retry_timeout_pct": "fallback",
-  "dry_run": 3740,
-  "default_ttl": 30,
-  "strict": {
-    "batches_window": 21,
-    "base_capacity": {
-      "warm_delay_pct": 63,
-      "min_delay": 6153,
-      "entry_retries": "latest"
-    },
-    "strict": false,
-    "poll_depth": false,
-    "soft_size": {
-      "retry_retries_count": 64.66,
-      "base_retries_s": ["cached", "primary", "open"],
-      "burst_interval_count": "open",
-      "persist": "primary"
-    },
-    "idle_delay": 100
-  }
+  "batch_interval": "edge",
+  "readonly": 83.29,
+  "min_limit_pct": "staging",
+  "compress": 10.53,
+  "metrics_ttl": 582,
+  "burst_size_count": [75, 16, 259]
 }
