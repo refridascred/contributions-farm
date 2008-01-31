@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            Retry,
+            Idle,
+            Paused,
+            Closed,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
