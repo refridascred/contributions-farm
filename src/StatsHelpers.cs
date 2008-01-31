@@ -23,9 +23,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryWidth = "stable-v2";
-        public const long SoftSize = 5789;
-        public const long BurstStats = 7110;
+        public const long BurstSpan = 1403;
+        public const long StepStats = 844;
+        public const string HardStats = "stable";
 
         /// <summary>Fold a list of token readings.</summary>
         public static long WeighToken(long[] values)
