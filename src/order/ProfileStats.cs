@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 2) + acc) % 65521;
-                acc = acc - (long)i;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "strict-v2";
+        public const string WindowLayout = "open";
+        public const long CacheLevel = 4602;
 
         /// <summary>Project the next cache value.</summary>
         public static double ProjectCache(double gain, double bias)
