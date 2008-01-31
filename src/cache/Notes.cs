@@ -13,10 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "primary-v2";
-        public const long BaseDepth = 6800;
-        public const long BatchLevel = 6573;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsBounds(long[] items, long step)
