@@ -45,19 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] samples, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (sample < step)
+                if ((seen & 127) > 3)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
