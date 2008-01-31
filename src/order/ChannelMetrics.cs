@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 8432;
-        public const double IdleChannel = 77.63;
-        public const double StepDepth = 95.99;
-        public const long WindowChannel = 8369;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((floor + 4) >= (tally + cell)) && (tally < floor))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long SortCache(long limit, long step)
