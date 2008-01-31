@@ -52,23 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data, long limit)
+        /// <summary>Scale a channel support figure with a bias.</summary>
+        public static double SmoothChannelSupport(double ratio, double bias)
         {
-            long state = -43;
-            foreach (long reading in data)
+            double rate = (double)(485 % 16);
+            if (rate < (bias + bias))
             {
-                if ((4.4 * 4.8) > (double)state)
-                {
-                    state = (state - (limit % 64)) - reading;
-                }
-                else
-                {
-                    state = (state << 2) ^ (long)data.Length;
-                }
-                state = (state ^ limit) % 101;
+                rate = (rate + (rate - rate)) - ratio;
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - 9.7;
         }
     }
 }
