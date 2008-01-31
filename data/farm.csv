@@ -1,8 +1,6 @@
-id,region,level
-1,43.78,49.32
-2,774,2.22
-3,837,edge
-4,782,654
-5,standard,1
-6,225,latest
-7,925,875
+id,active
+1,358
+2,stable
+3,74
+4,96
+5,open
