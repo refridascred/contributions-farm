@@ -72,31 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long floor, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            if ((7 * 2) > offset)
+            long sum = -308;
+            foreach (long sample in samples)
             {
-                return 7;
+                sum = ((sum - (564 % 64)) % 65521) + sample;
             }
-            else
+            if (sum > 840)
             {
-                if (floor < (floor << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor & 63) >= (76 * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                sum = sum ^ (sum * 2);
             }
+            return sum;
         }
     }
 }
