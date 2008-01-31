@@ -37,11 +37,22 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "legacy-v2";
-        public const long MinGithubfarm = 7165;
-        public const double SoftSize = 6.18;
-        public const double HardGithubfarm = 25.07;
-        public const long BaseTimeout = 2029;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (count < (item + item))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
