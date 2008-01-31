@@ -36,18 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order payload samples are out of range.</summary>
-        public static long CountOrderPayloadOutliers(long[] data, long target)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)188 != (double)reading)
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
+            Done,
+            Pending,
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
