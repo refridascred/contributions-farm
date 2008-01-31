@@ -1,6 +1,5 @@
 {
-  "enabled": "strict",
-  "githubfarm_limit": "blue",
-  "compress": ["staging", "local", "open"],
-  "batch_interval_pct": "blue"
+  "max_capacity": "primary",
+  "idle_threshold": "stable",
+  "poll_threshold_ms": 7003
 }
