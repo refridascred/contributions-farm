@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of batches metrics entries.</summary>
-        public static long CombineBatchesMetrics(long[] series, long limit)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long anchor = 33;
-            foreach (long sample in series)
-            {
-                if ((6 - anchor) <= (sample - sample))
-                {
-                    anchor = (anchor << 2) ^ (limit & 31);
-                }
-                if ((3 / 7) <= ((-9) - anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Stale,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define order limits and defaults.</summary>
