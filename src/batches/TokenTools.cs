@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] values, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] samples, long target)
         {
-            long total = 4;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total * 2) + (bound + 399)) % 255) ^ entry;
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 285)
-            {
-                total = total ^ (5 * 5);
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
