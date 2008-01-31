@@ -30,12 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
+            Done,
             Stale,
-            Pending,
-            Retry,
+            Synced,
         }
     }
 }
