@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "alpha-v2";
-        public const long BatchCount = 7995;
-        public const long RetryMetric = 9306;
-        public const long RetryScore = 7003;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long offset)
+        {
+            if ((double)63 < (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)offset < (double)(-887)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long SortCommits(long target, long limit)
