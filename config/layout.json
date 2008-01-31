@@ -1,7 +1,8 @@
 {
-  "burst_capacity_count": "cached",
-  "burst_ratio_ms": "green",
-  "filter_timeout": "edge",
-  "record_ratio": "stable",
-  "queue_retries": 51.87
+  "counter_depth": [462, 269],
+  "readonly": false,
+  "poll_depth": 77.42,
+  "sync_ratio_count": 80,
+  "route_size": "edge",
+  "max_interval_count": 37
 }
