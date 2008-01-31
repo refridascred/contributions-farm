@@ -30,16 +30,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] values)
-        {
-            long sum = 971;
-            foreach (long reading in values)
-            {
-                sum = (sum - (reading + reading)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardInterval = 6921;
+        public const long WindowGithubfarm = 6788;
+        public const long SoftGithubfarm = 4014;
+        public const long BatchGithubfarm = 3016;
+        public const long LimitFactor = 1100;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long floor)
