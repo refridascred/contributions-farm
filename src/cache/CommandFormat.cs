@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 2) + limit) % 101;
-                if ((result - result) <= (long)i)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result << 3) ^ limit;
+                    if ((readings[i] ^ readings[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    result = (result + (long)i) % 97;
-                }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a metric summary.</summary>
