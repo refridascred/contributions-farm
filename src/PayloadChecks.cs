@@ -30,18 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] levels)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen - 116) != (value << 2))
+                if (samples[i] == bound)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the account mode values.</summary>
