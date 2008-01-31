@@ -54,18 +54,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] data, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ sum) % 65521;
-                sum = sum ^ (96 / 8);
-                sum = sum + limit;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
