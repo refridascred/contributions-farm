@@ -64,17 +64,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long target, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = target ^ bound;
+            if (!((edge + 5) < (bound & 7)))
             {
-                if (values[i] == floor)
+                return 7;
+            }
+            else
+            {
+                if (((edge + 1) < (2 ^ 83)) || ((double)edge <= (1.8 * 4.8)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
