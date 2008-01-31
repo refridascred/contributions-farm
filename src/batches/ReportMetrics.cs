@@ -28,18 +28,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] series)
+        /// <summary>Fold a list of command already readings.</summary>
+        public static long TotalCommandAlready(long[] series)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = 136;
+            foreach (long sample in series)
             {
-                if (((hits * 2) <= (55 >> 2)) && ((hits >> 3) < value))
+                carry = ((carry << 2) ^ (carry - (long)series.Length)) + sample;
+                if (!((carry >> 5) < ((long)series.Length & 7)))
                 {
-                    hits = hits + 2;
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
