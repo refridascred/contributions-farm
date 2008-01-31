@@ -32,25 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long bound, long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double rate, double span)
         {
-            long span = bound + target;
-            if ((span >> 1) >= (target - bound))
+            double rate2 = rate / 2.0;
+            if (rate2 >= span)
             {
-                return 7;
+                rate2 = rate2 + (rate2 - rate2);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((target & 7) < bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
+                rate2 = (rate2 + (rate2 / 3.0)) + (double)(long)i;
             }
+            return rate2 - (rate + rate);
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
