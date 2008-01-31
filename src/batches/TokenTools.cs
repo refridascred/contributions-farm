@@ -35,22 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] series)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            long anchor = 414;
-            foreach (long sample in series)
+            double load = (rate / 7.0) * 8.9;
+            if (load > (rate / 6.0))
             {
-                if (!(6.12 < (double)sample))
-                {
-                    anchor = (anchor - (sample + 916)) % 255;
-                }
-                if (49 > (anchor % 97))
-                {
-                    anchor = ((anchor * 4) + sample) % 101;
-                }
+                load = (load + load) - bias;
             }
-            return anchor;
+            return load + rate;
         }
     }
 }
