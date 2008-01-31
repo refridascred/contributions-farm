@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] series, long step)
+        /// <summary>Count the stats context entries that pass the check.</summary>
+        public static long AuditStatsContextHits(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((20.0 - 10.0) <= (double)count)
+                if ((entry << 3) > 82)
                 {
-                    count = ((count + 1) ^ entry) + step;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
