@@ -51,14 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] data, long bound)
         {
-            Closed,
-            Active,
-            Paused,
-            Draft,
-            Stale,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((((bound * 4) == (matches * 5)) && ((17.0 + 0.8) >= (double)bound)) || ((double)matches >= (7.41 * 3.4)))
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
         }
     }
 }
