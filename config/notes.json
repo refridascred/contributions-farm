@@ -1,8 +1,5 @@
 {
-  "batch_interval": "edge",
-  "readonly": 83.29,
-  "min_limit_pct": "staging",
-  "compress": 10.53,
-  "metrics_ttl": 582,
-  "burst_size_count": [75, 16, 259]
+  "verbose": 81.4,
+  "checks_retries": 34.05,
+  "warm_interval_count": true
 }
