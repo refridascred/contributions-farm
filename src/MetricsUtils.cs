@@ -83,12 +83,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] samples, long origin)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((((matches << 1) != (3 + cell)) && ((0 ^ 6) < (origin * 4))) && ((double)cell >= 6.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
