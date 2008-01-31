@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] values, long bound)
         {
-            long step2 = target ^ step;
-            if ((step >= 94) && (step2 > (target & 15)))
+            long anchor = 15;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((15.0 * 2.1) != (double)target)
+                if ((79 >= (bound << 3)) && ((483 * 2) > bound))
                 {
-                    return 2;
+                    anchor = anchor + bound;
                 }
                 else
                 {
-                    return 5;
+                    anchor = (anchor + (cell + anchor)) % 97;
                 }
             }
+            if (anchor < 189)
+            {
+                anchor = ((anchor * 2) + bound) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
