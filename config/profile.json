@@ -1,8 +1,13 @@
 {
-  "warm_timeout_ms": false,
-  "soft_timeout_s": [12, 34, 101],
-  "strict": [90, 80, 410, 263],
-  "max_interval_ms": true,
-  "default_size_pct": "standard",
-  "min_capacity_count": 52.94
+  "hard_ratio_ms": {
+    "base_capacity": "strict",
+    "command_timeout": "open",
+    "burst_threshold": ["blue", "staging", "edge", "edge"],
+    "dry_run": 60,
+    "idle_window_pct": [118, 413, 251, 39],
+    "cluster_delay": 29.04
+  },
+  "min_interval_s": "edge",
+  "persist": ["primary", "strict", "edge"],
+  "sync_ttl": "standard"
 }
