@@ -46,14 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Idle,
-            Synced,
-            Ready,
-            Draft,
-            Failed,
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
