@@ -19,11 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double gain, double bias)
+        /// <summary>Classify a notes buffer pair into a bucket.</summary>
+        public static long RankNotesBuffer(long floor, long origin)
         {
-            double ratio = (double)(1 * 3);
-            return ((ratio - (double)96) + gain) + bias;
+            if (1.0 < (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(71 <= (origin << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Look up the position of a farm filter sample.</summary>
