@@ -61,22 +61,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph checks readings.</summary>
-        public static long TotalGraphChecks(long[] readings, long origin)
+        /// <summary>Count contributi farm pairs that satisfy a relation.</summary>
+        public static long MatchContributiFarmCount(long[] data)
         {
-            long carry = 9;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry + carry) > (carry % 64))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry ^ (item % 7);
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry < 4)
-            {
-                carry = ((carry << 3) ^ (origin + carry)) % 4096;
-            }
-            return carry;
+            return count;
         }
     }
 }
