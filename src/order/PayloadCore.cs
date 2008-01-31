@@ -79,12 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] data, long step)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
+            long state = 29;
+            foreach (long cell in data)
+            {
+                if (state > (cell ^ step))
+                {
+                    state = state + step;
+                }
+                if ((((-4) & 3) > state) && (state < (cell % 5)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
