@@ -64,14 +64,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
             Active,
-            Closed,
+            Idle,
+            Queued,
+            Done,
             Retry,
-            Dropped,
-            New,
         }
     }
 }
