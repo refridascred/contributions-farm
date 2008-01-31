@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the account already series from a seed.</summary>
-        public static long DeriveAccountAlready(long seed)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry << 2) ^ (seed ^ (long)i)) % 4096;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
