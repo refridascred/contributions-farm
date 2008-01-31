@@ -1,5 +1,5 @@
 {
-  "sync_ratio": 1024,
-  "payload_depth": "standard",
-  "hard_timeout_pct": 17
+  "enabled": false,
+  "batch_depth": "fallback",
+  "format_ratio": 30
 }
