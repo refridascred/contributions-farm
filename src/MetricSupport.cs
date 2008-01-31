@@ -41,22 +41,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading * 4) <= (14 - 234))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinRoute = 37.65;
+        public const string WindowRoute = "local-1";
+        public const long BurstFactor = 2821;
+        public const long IdleTimeout = 2070;
+        public const long BurstRoute = 6821;
     }
 }
