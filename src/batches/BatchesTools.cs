@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the stats tools series from a seed.</summary>
-        public static long RollStatsTools(long origin)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = carry - ((long)i + carry);
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
