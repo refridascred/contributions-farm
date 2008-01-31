@@ -21,15 +21,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
     }
 }
