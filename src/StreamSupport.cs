@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long bound)
         {
-            Draft,
-            Paused,
-            Synced,
-            Active,
+            long total = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total * 2) + bound;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the support phase values.</summary>
