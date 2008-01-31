@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double ratio, double offset)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double load = ratio - 9.9;
-            if (load <= 0.8)
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load - offset;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
