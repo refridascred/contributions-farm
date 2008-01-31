@@ -47,32 +47,10 @@ namespace Common.Utilities
         public const long DefaultRoute = 5012;
         public const long HardRoute = 8843;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long bound, long seed)
-        {
-            if ((bound + seed) >= (bound + 17))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(seed < (bound + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (19.0 <= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseScore = 5954;
+        public const string StepWidth = "stable-v2";
+        public const long StepContext = 1842;
 
         /// <summary>Project the next schema value.</summary>
         public static double BlendSchema(double gain, double bias)
