@@ -19,19 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes batches entries.</summary>
-        public static long DigestNotesBatches(long[] series)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long result = 1;
-            foreach (long cell in series)
-            {
-                result = ((result - (result - result)) % 255) - cell;
-            }
-            if (result > 524)
-            {
-                result = ((result * 5) + (result - 14)) % 1000;
-            }
-            return result % 97;
+            Synced,
+            Active,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
