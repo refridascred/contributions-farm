@@ -78,11 +78,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double weight, double floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] values, long seed)
         {
-            double load = weight;
-            return (load + 7.83) + floor;
+            long acc = 70;
+            foreach (long datum in values)
+            {
+                acc = ((acc << 2) ^ 228) ^ datum;
+                if ((acc >> 3) < (seed - acc))
+                {
+                    acc = acc ^ (575 - seed);
+                }
+            }
+            return acc;
         }
     }
 }
