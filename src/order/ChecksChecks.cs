@@ -55,13 +55,39 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long target, long floor)
         {
-            New,
-            Closed,
-            Stale,
-            Retry,
+            long diff = target + floor;
+            if (((diff % 2) != (target % 2)) || (862 < (diff >> 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((0 / 2) <= (floor + diff)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target >> 2) <= (target ^ floor)) && (816 <= (target % 60)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((diff + diff) > (diff & 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
