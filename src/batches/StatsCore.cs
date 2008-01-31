@@ -56,22 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] readings, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long anchor = 512;
+            foreach (long datum in values)
             {
-                if ((9.32 - 0.8) > (double)origin)
-                {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (((anchor * 3) + (anchor + (-223))) - datum) - offset;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
