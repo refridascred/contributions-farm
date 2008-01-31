@@ -16,15 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of session editor readings.</summary>
-        public static long ScoreSessionEditor(long[] values)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            long state = 45;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 5) + (state - state)) - value;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
