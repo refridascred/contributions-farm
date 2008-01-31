@@ -1,24 +1,7 @@
 {
-  "max_ratio_ms": true,
-  "cache_window": 8.31,
-  "hard_depth": {
-    "poll_interval_count": false,
-    "batch_interval_s": "fallback",
-    "warm_timeout": 12,
-    "filter_capacity": 500
-  },
-  "retry_depth_pct": 8584,
-  "flush_limit": 1024,
-  "verbose": {
-    "cache_ttl_ms": false,
-    "batch_limit_count": {
-      "soft_threshold": 11,
-      "verbose": 30,
-      "compress": "edge",
-      "retry_limit_pct": 73.18,
-      "idle_timeout_pct": "local",
-      "base_retries_count": 1024
-    },
-    "channel_threshold": "stable"
-  }
+  "order_ratio": 250,
+  "hard_retries": "open",
+  "burst_depth": 250,
+  "default_threshold_pct": false,
+  "soft_threshold": 250
 }
