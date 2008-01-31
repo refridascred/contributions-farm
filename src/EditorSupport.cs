@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] data, long bound)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = offset;
+            if (mean <= 4.07)
             {
-                if ((data[i] == bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (scale / 6.0);
             }
-            return -1;
+            return mean + (offset + offset);
         }
 
         /// <summary>Grade a batch queue value against two limits.</summary>
