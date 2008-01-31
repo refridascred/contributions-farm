@@ -32,39 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank notes checks input into a small class.</summary>
-        public static long SortNotesChecks(long step, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] items)
         {
-            long edge = step ^ target;
-            if ((edge + edge) >= (edge + target))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (edge >= target)
+                if ((cell / 9) >= (count >> 1))
                 {
-                    return 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((edge - step) == (edge % 10))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((568 > (step & 63)) && ((step >> 5) < (target + step)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of command metric readings.</summary>
