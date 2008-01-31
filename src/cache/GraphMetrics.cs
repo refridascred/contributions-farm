@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long limit, long bound)
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            if (((bound + bound) >= (bound & 63)) && (bound <= (limit - limit)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) <= 3)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + limit) >= (limit / 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((9.36 * 7.9) < (double)limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi mode values.</summary>
