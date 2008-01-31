@@ -1,20 +1,7 @@
 {
-  "sync_interval": "open",
-  "audit": 1024,
-  "notes_retries": true,
-  "compress": {
-    "soft_retries_count": 36,
-    "readonly": {
-      "sync_timeout_pct": 50.91,
-      "layout_limit": 72.22,
-      "profile_window": [431, 123],
-      "readonly": 1.41
-    },
-    "stream_delay": true,
-    "retry_retries_count": 65,
-    "context_limit": 82,
-    "burst_depth_ms": "staging"
-  },
-  "account_retries": 250,
-  "base_capacity_count": 100
+  "strict": "cached",
+  "compress": 19,
+  "max_ratio_count": "strict",
+  "cache_threshold": 97,
+  "burst_ttl_s": 1024
 }
