@@ -20,14 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Stale,
-            Paused,
-            Ready,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchStream = 88.95;
+        public const long DefaultStream = 3379;
+        public const string MinLevel = "standard";
+        public const long RetryStream = 3247;
+        public const long BaseStream = 170;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long OverlapStatsCount(long[] data)
