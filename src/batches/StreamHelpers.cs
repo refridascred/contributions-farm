@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] readings, long offset)
         {
-            Dropped,
-            Active,
-            Draft,
-            Idle,
-            Retry,
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
