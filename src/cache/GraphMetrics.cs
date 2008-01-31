@@ -85,18 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] levels)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((8.0 > (double)tally) || ((849 ^ 3) >= tally))
+                if (sample <= limit)
                 {
-                    tally = (tally + 1) ^ item;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
