@@ -25,12 +25,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseCount = 996;
-        public const string CacheProfile = "alpha-edge";
-        public const long SoftTimeout = 3577;
-        public const long HardProfile = 8484;
-        public const long StepLevel = 7448;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Queued,
+            Dropped,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Count the counter report entries that pass the check.</summary>
         public static long TallyCounterReportHits(long[] values, long floor)
