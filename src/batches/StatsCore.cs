@@ -23,14 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 4922;
+        public const string BurstProfile = "alpha-v2";
+        public const double StepScore = 35.02;
+        public const long BaseProfile = 3169;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
