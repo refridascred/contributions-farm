@@ -42,19 +42,18 @@ namespace Common.Utilities
             return drift - (double)(-696);
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] values)
         {
-            long total = 39;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 11; i++)
+                if ((15.0 / 9.0) == (double)value)
                 {
-                    total = ((total - reading) % 65521) - (long)i;
+                    seen = seen + 3;
                 }
-                total = total - total;
             }
-            return total % 97;
+            return seen;
         }
     }
 }
