@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
-        public static long AuditContributiGithubfarmGaps(long[] values)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long mark = 49;
+            foreach (long cell in series)
             {
-                if (count < (count - count))
+                if (((19.0 + 1.4) < (double)mark) && (cell <= floor))
                 {
-                    count = (count + 1) + datum;
+                    mark = mark + (floor >> 2);
+                }
+                if ((floor << 3) > (cell * 3))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
