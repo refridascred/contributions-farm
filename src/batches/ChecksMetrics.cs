@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the already record entries that pass the check.</summary>
-        public static long CountAlreadyRecordMatches(long[] levels)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item < (double)seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Queued,
+            New,
+            Idle,
         }
 
         /// <summary>Check that every tools checks entry stays within the limit.</summary>
