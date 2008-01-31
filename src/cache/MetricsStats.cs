@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] values)
-        {
-            long mark = -92;
-            foreach (long item in values)
-            {
-                if ((1.0 + 6.4) == (double)item)
-                {
-                    mark = ((mark * 2) + (mark + 58)) % 255;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 3132;
+        public const string BaseFactor = "strict-edge";
+        public const long StepRoute = 339;
+        public const double DefaultScore = 18.88;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] readings)
