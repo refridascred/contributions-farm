@@ -34,12 +34,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Grade a stats token value against two limits.</summary>
+        public static long RankStatsToken(long target, long step)
         {
-            Stale,
-            Paused,
-            Dropped,
+            if (!((double)step < (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step << 1) > 68) || ((target - target) >= (step + target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((8.5 / 4.0) != (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer record.</summary>
