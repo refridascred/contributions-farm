@@ -17,13 +17,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Closed,
-            Pending,
-            Active,
+            Ready,
+            Paused,
             Draft,
+            Active,
+            Synced,
         }
 
         /// <summary>Project the next cache value.</summary>
