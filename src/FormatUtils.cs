@@ -84,14 +84,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] readings, long bound)
         {
-            Done,
-            Ready,
-            Queued,
-            Pending,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
