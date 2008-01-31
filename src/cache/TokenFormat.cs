@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseTimeout = 5182;
-        public const string SoftCount = "primary-edge";
-        public const long BatchScore = 1644;
-        public const string MinWindow = "open";
-        public const long IdleInterval = 7860;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleStats = 16.92;
+        public const double HardStats = 63.21;
+        public const long WindowStats = 1804;
+        public const long RetrySize = 2182;
+        public const long SoftCount = 5090;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string DefaultWidth = "open";
