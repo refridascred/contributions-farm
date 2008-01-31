@@ -1,8 +1,13 @@
 # githubfarm settings
-batch_timeout_pct: edge
-warm_window: true
-max_window:
-  - 20
-  - 331
-base_ttl: open
-persist: true
+compress:
+  - open
+  - stable
+  - strict
+retry_size_count:
+  - legacy
+  - open
+  - primary
+flush_limit: 96.3
+layout_depth: 21
+readonly: latest
+min_ratio: true
