@@ -58,18 +58,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] readings, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long limit, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((double)limit > (double)limit)
             {
-                if ((double)step < (double)2)
+                return 1;
+            }
+            else
+            {
+                if ((limit << 3) > limit)
                 {
-                    seen = (seen + 3) + value;
+                    return 3;
+                }
+                else
+                {
+                    if (((1.15 - 2.15) <= (double)target) && ((5.8 / 2.0) <= (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
