@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinCount = 5748;
-        public const long DefaultFilter = 4913;
-        public const string WindowRatio = "strict-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchLevel = 8610;
+        public const long CacheSchema = 2202;
+        public const double CacheBudget = 33.18;
+        public const long SoftScore = 2639;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseBudget = 1984;
