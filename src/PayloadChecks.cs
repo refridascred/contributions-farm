@@ -22,16 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] data, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total ^ total;
-                total = ((total * 5) + (long)i) % 1000;
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
