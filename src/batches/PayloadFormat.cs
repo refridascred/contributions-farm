@@ -32,19 +32,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a window batch reading.</summary>
-        public static double SmoothWindowBatch(double gain, double span)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double rate = (double)(6 + 875);
-            if (rate < (double)6)
-            {
-                rate = rate + (rate - gain);
-            }
-            else
-            {
-                rate = rate + span;
-            }
-            return rate - span;
+            Closed,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
