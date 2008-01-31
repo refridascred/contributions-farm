@@ -23,11 +23,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 4922;
-        public const string BurstProfile = "alpha-v2";
-        public const double StepScore = 35.02;
-        public const long BaseProfile = 3169;
+        /// <summary>Digest a series of session route entries.</summary>
+        public static long FoldSessionRoute(long[] levels)
+        {
+            long sum = 24;
+            foreach (long entry in levels)
+            {
+                sum = (sum ^ (sum - sum)) % 255;
+                sum = sum ^ entry;
+            }
+            if (sum < 201)
+            {
+                sum = (sum - (sum - sum)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long SortOrder(long bound, long target)
