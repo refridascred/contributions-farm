@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict open; do
+mode="${1:-blue}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in standard strict local; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=67
-log "limit is ${RECORD_LIMIT}"
