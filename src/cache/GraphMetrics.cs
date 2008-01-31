@@ -21,20 +21,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] samples, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long sum = -960;
+            foreach (long entry in samples)
             {
-                long slot = seed;
-                if (((result + 97) > (slot << 1)) || ((double)slot >= (3.5 / 7.0)))
+                for (int i = 0; i < 8; i++)
                 {
-                    result = (result << 3) ^ (slot / 2);
+                    sum = (((sum - (entry - sum)) % 1000) - (long)i) - step;
                 }
-                result = ((result * 2) + (long)i) % 1000;
+                sum = (sum ^ entry) % 101;
+                sum = (sum + (sum - entry)) % 4096;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
