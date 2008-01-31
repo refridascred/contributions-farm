@@ -1,11 +1,13 @@
 # entry settings
-idle_ttl_s: 9
-warm_ttl: false
-batch_window_ms: legacy
-warm_threshold_pct: 1376
-flush_retries_pct:
-  - 2
-  - 452
-  - 419
-  - 87
-strict: blue
+enabled:
+  burst_ttl_s: cached
+  account_limit: false
+  soft_limit_ms:
+    - legacy
+    - stable
+  already_delay: true
+  batch_limit_pct: 30
+  buffer_limit: false
+idle_ttl_count: 19.15
+audit: true
+soft_delay_s: 90.89
