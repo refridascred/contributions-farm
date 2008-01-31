@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 4408;
-        public const long IdleWidth = 1422;
-        public const long CacheReport = 6415;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((datum - matches) <= datum) && (((seed % 12) <= seed) && ((double)seed > (11.0 * 6.0))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a queue commits figure with a bias.</summary>
         public static double ScaleQueueCommits(double rate, double offset)
