@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] items)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)value <= (double)matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Synced,
+            Done,
+            Retry,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
