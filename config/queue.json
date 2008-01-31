@@ -1,14 +1,14 @@
 {
-  "cache_retries": {
-    "audit": "fallback",
-    "idle_depth_s": false,
-    "compress": 1624,
-    "filter_ratio": 45.55,
-    "enabled": 60,
-    "flush_interval": "strict"
+  "enabled": 89.26,
+  "session_delay": "eu-west",
+  "route_ratio": "standard",
+  "compress": {
+    "burst_ttl_pct": 20.55,
+    "burst_capacity": [246, 311, 69, 192],
+    "window_limit": "staging",
+    "checks_depth": 500,
+    "default_depth": false
   },
-  "sync_delay": "eu-west",
-  "burst_delay_ms": 85.2,
-  "idle_limit_count": true,
-  "cache_ttl_ms": ["open", "legacy"]
+  "cache_retries_count": [237, 33, 333, 379],
+  "sync_capacity": "eu-west"
 }
