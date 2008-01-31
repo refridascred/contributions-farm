@@ -1,11 +1,7 @@
 # support settings
-idle_ttl_s:
-  - fallback
-  - primary
-sync_threshold_pct: edge
-warm_delay_ms:
-  - 55
-  - 383
-  - 459
-  - 124
-cache_limit: 30.63
+flush_delay: 82.39
+idle_timeout_pct: 1024
+audit: 30
+record_limit: primary
+max_size_s: stable
+order_window: 11.04
