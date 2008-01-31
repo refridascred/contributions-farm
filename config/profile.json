@@ -1,6 +1,22 @@
 {
-  "compress": "stable",
-  "strict": false,
-  "cache_capacity": 7696,
-  "base_depth_ms": 100
+  "min_timeout_ms": ["primary", "open", "cached", "latest"],
+  "min_limit": "latest",
+  "burst_capacity_s": "green",
+  "profile_threshold": false,
+  "idle_threshold": {
+    "report_retries": {
+      "min_interval_count": 30,
+      "audit": true,
+      "retry_threshold": 60,
+      "burst_size": false
+    },
+    "sync_interval": {
+      "compress": "blue",
+      "flush_size_pct": "blue",
+      "cache_delay": "eu-west",
+      "cache_delay_pct": [454, 199],
+      "cache_ttl_count": "staging"
+    },
+    "readonly": "standard"
+  }
 }
