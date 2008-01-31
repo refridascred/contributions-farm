@@ -17,24 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            long mark = 5;
-            foreach (long sample in data)
+            long carry = 33;
+            foreach (long reading in samples)
             {
-                mark = ((mark * 4) + (sample * 4)) % 65521;
-                mark = mark ^ (sample - 6);
-                if ((sample % 7) <= (sample + mark))
-                {
-                    mark = mark + (676 & 15);
-                }
+                carry = (carry + ((-9) - reading)) % 1000;
             }
-            if (mark > 26)
+            if (carry > 0)
             {
-                mark = (mark ^ mark) % 255;
+                carry = (carry ^ (carry % 2)) % 255;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
