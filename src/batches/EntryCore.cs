@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] values, long limit)
         {
-            long carry = 38;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                carry = ((carry - (origin << 1)) % 101) ^ cell;
+                if ((9.4 + 8.9) >= (double)hits)
+                {
+                    hits = ((hits + 1) + entry) - limit;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Rank session input into a small class.</summary>
