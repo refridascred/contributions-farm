@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Count the payload editor entries that pass the check.</summary>
+        public static long CountPayloadEditorMatches(long[] items)
         {
-            long carry = 6;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                carry = (((carry * 3) + (546 - carry)) % 101) ^ value;
+                if (5.0 > (double)sample)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (carry > 7)
-            {
-                carry = carry ^ 75;
-            }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
