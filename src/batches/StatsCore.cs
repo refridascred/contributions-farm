@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] readings, long seed)
         {
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((11.0 / 5.0) < (double)matches) || ((double)seed <= (double)value))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the channel order series from a seed.</summary>
