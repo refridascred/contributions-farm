@@ -15,19 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] series, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] levels, long floor)
         {
-            long score = 5;
-            foreach (long value in series)
+            long mix = 34;
+            foreach (long reading in levels)
             {
-                score = (score - 9) ^ value;
+                mix = (mix ^ 5) + floor;
+                mix = ((mix << 2) ^ (reading * 2)) % 1000;
+                mix = (mix - 40) % 65521;
             }
-            if (score < (-6))
-            {
-                score = (score ^ origin) % 65521;
-            }
-            return score;
+            return mix % 65521;
         }
 
         /// <summary>Validate session schema readings against a bound.</summary>
