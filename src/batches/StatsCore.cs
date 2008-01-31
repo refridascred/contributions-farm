@@ -30,15 +30,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a channel stream figure with a bias.</summary>
-        public static double AdjustChannelStream(double rate, double span)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] readings, long origin)
         {
-            double drift = (double)(-736) - (rate * 7.98);
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                drift = (drift - (double)(long)i) + span;
+                if ((9.32 - 0.8) > (double)origin)
+                {
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift - (drift * 17.0);
+            return matches;
         }
 
         /// <summary>Count the profile token entries that pass the check.</summary>
