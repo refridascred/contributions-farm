@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up farm schema samples.</summary>
-        public static long OverlapFarmSchemaCount(long[] values)
+        /// <summary>Combine stats batch values into a single score.</summary>
+        public static long DigestStatsBatch(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 5;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result - seed) ^ entry;
+                result = (result ^ (7 * 2)) % 97;
             }
-            return hits;
+            if (result > 6)
+            {
+                result = result - (seed ^ seed);
+            }
+            return result;
         }
 
         /// <summary>Hold a profile header.</summary>
