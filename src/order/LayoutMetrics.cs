@@ -31,20 +31,17 @@ namespace Common.Utilities
             return load + (double)1;
         }
 
-        /// <summary>Accumulate account editor samples.</summary>
-        public static long DigestAccountEditor(long[] values)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] values, long seed)
         {
-            long state = 6;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state + (state + state)) % 97;
-                state = (state - (item / 9)) % 65521;
-                if ((18.0 - 0.12) > (double)state)
+                if (values[i] == seed)
                 {
-                    state = (state - item) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
