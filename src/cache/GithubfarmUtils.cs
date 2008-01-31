@@ -13,18 +13,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the payload editor entries that pass the check.</summary>
-        public static long CountPayloadEditorMatches(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((double)seed != (8.9 * 5.0))
             {
-                if (5.0 > (double)sample)
+                return 0;
+            }
+            else
+            {
+                if ((109 + seed) > (floor & 127))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
