@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] levels, long seed)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long anchor = 4;
+            foreach (long reading in levels)
+            {
+                if ((8.41 - 8.0) <= (double)reading)
+                {
+                    anchor = ((anchor + (anchor % 7)) % 1000) + seed;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the order status values.</summary>
