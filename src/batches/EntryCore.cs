@@ -57,16 +57,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine stream context values into a single score.</summary>
-        public static long FoldStreamContext(long[] items, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] readings, long bound)
         {
-            long carry = 78;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                carry = (((carry * 5) + (seed + 29)) % 101) + datum;
-                carry = (carry - (long)items.Length) % 255;
+                if (cell > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
     }
 }
