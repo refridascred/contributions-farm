@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] data, long step)
+        /// <summary>Project the next session cluster value.</summary>
+        public static double AdjustSessionCluster(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double weight = bias + (bias - ratio);
+            if (weight <= bias)
             {
-                if ((hits / 9) >= (hits * 4))
-                {
-                    hits = ((hits + 2) ^ item) - step;
-                }
+                weight = weight + (11.0 - weight);
             }
-            return hits;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + bias;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
