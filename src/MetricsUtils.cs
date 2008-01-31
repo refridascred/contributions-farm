@@ -45,39 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long floor, long bound)
+        /// <summary>Iterate the metrics profile series from a seed.</summary>
+        public static long DeriveMetricsProfile(long seed)
         {
-            long next = floor ^ bound;
-            if (!((bound + floor) > floor))
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((next + floor) >= next)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (85 < (bound ^ bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound << 3) <= bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Digest a series of context entries.</summary>
