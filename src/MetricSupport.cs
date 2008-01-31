@@ -26,19 +26,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of token session entries.</summary>
-        public static long TallyTokenSession(long[] samples, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] samples, long seed)
         {
-            long result = -2;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - (datum + 37)) - bound;
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 81)
-            {
-                result = ((result * 4) + (result - result)) % 101;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
