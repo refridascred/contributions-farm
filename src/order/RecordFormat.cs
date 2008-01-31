@@ -49,12 +49,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
+            long total = 654;
+            foreach (long reading in values)
+            {
+                total = (((total << 2) ^ 77) % 4096) ^ reading;
+            }
+            return total % 1000;
         }
     }
 }
