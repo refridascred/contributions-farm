@@ -1,14 +1,16 @@
 {
-  "verbose": 1024,
-  "warm_window_count": {
-    "max_depth_count": 86,
-    "session_retries": true,
-    "format_delay": {
-      "default_interval_pct": 88.65,
-      "base_depth": "staging",
-      "tools_depth": "local"
-    }
-  },
-  "sync_size_ms": 100,
-  "cache_size": 7667
+  "base_capacity_ms": true,
+  "notes_ttl": "latest",
+  "cache_size": {
+    "default_retries_s": 4528,
+    "warm_depth_pct": {
+      "already_window": 878,
+      "warm_depth": 31.24,
+      "warm_capacity_s": "blue",
+      "cache_capacity_s": [492, 363, 114, 316]
+    },
+    "warm_capacity": 1024,
+    "audit": "standard",
+    "compress": [125, 467, 209, 269]
+  }
 }
