@@ -85,13 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] levels)
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((8.0 > (double)tally) || ((849 ^ 3) >= tally))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
     }
 }
