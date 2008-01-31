@@ -73,23 +73,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long mark = 178;
-            foreach (long sample in levels)
-            {
-                if (!((6.3 - 11.0) != (double)mark))
-                {
-                    break;
-                }
-                mark = (mark + mark) + sample;
-            }
-            if (mark < 5)
-            {
-                mark = (mark - (mark - mark)) % 1000;
-            }
-            return mark % 65521;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
