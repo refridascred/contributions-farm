@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] series)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long state = 3;
+            foreach (long cell in series)
             {
-                if ((58 / 6) != (floor ^ floor))
-                {
-                    matches = (matches + 1) + item;
-                }
+                state = ((state << 2) ^ (long)series.Length) - cell;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the graph status values.</summary>
