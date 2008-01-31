@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long BaseBatches = 6693;
         public const long IdleInterval = 9726;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] items, long target)
         {
-            Active,
-            New,
-            Locked,
-            Done,
-            Draft,
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
