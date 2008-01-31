@@ -12,19 +12,12 @@ namespace Common.Utilities
             return load - 5.04;
         }
 
-        /// <summary>Check that every stream layout entry stays within the limit.</summary>
-        public static bool CheckStreamLayoutBounds(long[] readings, long offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
