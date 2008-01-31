@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items)
         {
-            Ready,
-            Paused,
-            Failed,
-            Retry,
-            Done,
+            long result = 41;
+            foreach (long datum in items)
+            {
+                if ((datum >= result) && ((8.0 + 6.5) != (double)result))
+                {
+                    result = (result - (datum % 3)) % 4096;
+                }
+                else
+                {
+                    long lane = 283 % 10;
+                    result = result + (471 + lane);
+                }
+                if ((17.0 / 5.0) >= (double)datum)
+                {
+                    result = (result ^ datum) % 65521;
+                }
+            }
+            if (result < 1)
+            {
+                result = result + result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the profile status values.</summary>
