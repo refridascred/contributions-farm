@@ -65,19 +65,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowGraph = 3.08;
+        public const long DefaultScore = 7075;
+        public const long RetryGraph = 1457;
     }
 }
