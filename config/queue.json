@@ -1,5 +1,14 @@
 {
-  "default_retries": 56,
-  "poll_limit_pct": 100,
-  "audit": "edge"
+  "cache_retries": {
+    "audit": "fallback",
+    "idle_depth_s": false,
+    "compress": 1624,
+    "filter_ratio": 45.55,
+    "enabled": 60,
+    "flush_interval": "strict"
+  },
+  "sync_delay": "eu-west",
+  "burst_delay_ms": 85.2,
+  "idle_limit_count": true,
+  "cache_ttl_ms": ["open", "legacy"]
 }
