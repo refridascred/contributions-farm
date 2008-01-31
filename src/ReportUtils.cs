@@ -73,21 +73,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Locate a schema buffer reading by value.</summary>
+        public static long SeekSchemaBufferIndex(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] > step)
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a cache account pair into a bucket.</summary>
