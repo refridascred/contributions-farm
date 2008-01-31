@@ -38,24 +38,19 @@ namespace Common.Utilities
             return scale - (double)774;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long origin, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long origin)
         {
-            if (!((offset - 9) <= (origin ^ origin)))
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset >= origin)
+                if (!((sum - sum) >= ((long)i & 31)))
                 {
-                    return 0;
+                    sum = (sum * 5) + (origin + (long)i);
                 }
-                else
-                {
-                    return 5;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Describe the entry mode values.</summary>
