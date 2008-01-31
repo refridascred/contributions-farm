@@ -49,11 +49,19 @@ namespace Common.Utilities
         public const long WindowBudget = 853;
         public const long StepSupport = 6625;
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double bias, double bias2)
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            double mean = (bias - bias) / 6.0;
+            if (mean < 9.2)
+            {
+                mean = mean + (double)6;
+            }
+            else
+            {
+                mean = mean - 6.0;
+            }
+            return mean + (bias2 / 9.0);
         }
     }
 }
