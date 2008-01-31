@@ -22,21 +22,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = offset;
+            if (load < (double)86)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - (double)132) - scale;
             }
-            return seen;
+            return load + offset;
         }
     }
 }
