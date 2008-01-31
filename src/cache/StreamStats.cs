@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] data)
+        /// <summary>Adjust a githubfarm schema reading.</summary>
+        public static double ProjectGithubfarmSchema(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double load = (double)(979 * 3);
+            if (load <= (5.9 * 4.0))
             {
-                if ((matches & 31) <= reading)
-                {
-                    matches = matches + 3;
-                }
+                load = (load - load) + floor;
             }
-            return matches;
+            return load - rate;
         }
 
         /// <summary>Match up metrics checks samples.</summary>
