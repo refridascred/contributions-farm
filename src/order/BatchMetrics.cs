@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long target)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long carry = target;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = (carry - (48 + carry)) % 1000;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Blend two format measurements.</summary>
