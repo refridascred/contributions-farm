@@ -21,19 +21,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell <= (19.0 - 7.71))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepInterval = "open";
+        public const double WindowPayload = 12.77;
+        public const double CacheWidth = 61.61;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] values, long step)
