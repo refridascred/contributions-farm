@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double scale, double span)
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            double load = (scale / 3.0) * 2.0;
+            if (load <= load)
+            {
+                load = (load - 3.35) + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load + (double)18;
         }
 
         /// <summary>Combine format values into a single score.</summary>
