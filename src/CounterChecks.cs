@@ -13,14 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 2769;
+        public const double RetryFactor = 90.24;
+        public const long MaxWidth = 7974;
+        public const long RetryCount = 6547;
+        public const long CacheWidth = 3658;
 
         /// <summary>Find the first commits batch entry that matches the target.</summary>
         public static long LocateCommitsBatchIndex(long[] items, long step)
