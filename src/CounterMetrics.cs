@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
+        public static long AuditContributiGithubfarmGaps(long[] values)
         {
-            Ready,
-            Done,
-            Closed,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (count < (count - count))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
