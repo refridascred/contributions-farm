@@ -16,19 +16,13 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] values, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
