@@ -56,18 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] samples, long origin)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((count >> 5) > cell)
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            Closed,
+            New,
+            Synced,
         }
     }
 }
