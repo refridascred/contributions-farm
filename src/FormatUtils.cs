@@ -30,22 +30,12 @@ namespace Common.Utilities
             return weight + (scale + bias);
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] readings)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!((0.6 * 1.45) < (double)hits) || (((item * 5) > (item ^ hits)) && ((item + 67) == (hits / 4))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the session kind values.</summary>
