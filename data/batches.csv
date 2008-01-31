@@ -1,6 +1,8 @@
-id,rank,ratio,active
-1,997,91.29,primary
-2,edge,853,standard
-3,441,252,478
-4,20,green,206
-5,524,13.12,580
+id,rank,token,state
+1,101,green,23.96
+2,legacy,902,primary
+3,14.36,678,61.77
+4,76.1,stable,107
+5,883,678,93.76
+6,34.51,578,98.47
+7,87.61,186,78.15
