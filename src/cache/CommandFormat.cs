@@ -23,15 +23,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] levels)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long state = 2;
-            foreach (long item in levels)
-            {
-                state = ((state + (state & 7)) % 4096) - item;
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a tools token pair into a bucket.</summary>
