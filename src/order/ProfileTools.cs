@@ -16,12 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double ratio, double floor)
         {
-            Done,
-            Failed,
-            Locked,
+            double scale = floor;
+            if (scale <= scale)
+            {
+                scale = scale + (double)3;
+            }
+            return scale + (scale + ratio);
         }
 
         /// <summary>Combine metrics layout values into a single score.</summary>
