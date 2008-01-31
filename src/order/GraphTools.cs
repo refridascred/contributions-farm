@@ -47,19 +47,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] readings, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (entry < floor)
+                if ((count >> 5) > cell)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) - origin;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
