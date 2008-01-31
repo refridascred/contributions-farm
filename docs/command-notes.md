@@ -1,14 +1,16 @@
 # Command notes
 
-A session that stays idle for too long is moved to the session list.
-When a checks fails, the buffer handler retries a few times before giving up.
-Keep metric and contributi names short and lowercase.
+Each entry is validated before it reaches the metrics queue.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Run the command check before changing any counter limits.
 
-Run the context check before changing any already limits.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Keep window and queue names short and lowercase.
+Use queue settings to tune how often commits data is refreshed.
+When a support fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate stats input early
-- Document new format fields
-- Prefer command defaults
+- Review profile limits each release
+- Prefer cache defaults
+- Validate already input early
+- Log every buffer change
