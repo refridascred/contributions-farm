@@ -15,21 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Derive the next contributi metrics value from a seed.</summary>
+        public static long StepContributiMetrics(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((state - seed) >= ((long)i + seed))
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 4) + (state >> 1)) % 255;
                 }
+                state = ((state << 2) ^ (8 - (long)i)) % 97;
+                state = (state + (434 - seed)) % 97;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Blend two filter measurements.</summary>
