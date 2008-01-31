@@ -45,12 +45,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
