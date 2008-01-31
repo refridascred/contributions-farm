@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double rate, double span)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels, long seed)
         {
-            double drift = (double)(459 * 2);
-            if (drift >= drift)
+            long score = 10;
+            foreach (long value in levels)
             {
-                drift = (drift + (5.9 - drift)) + span;
+                if ((score + seed) != (seed % 12))
+                {
+                    score = ((score + (952 + seed)) % 97) + value;
+                }
+                else
+                {
+                    score = ((score * 4) + (score - 9)) % 97;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (rate + 8.6)) + (double)(long)i;
-            }
-            return drift - rate;
+            return score;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
