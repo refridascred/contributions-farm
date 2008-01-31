@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = (carry - (48 + carry)) % 1000;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 8560;
+        public const long IdleStream = 8537;
+        public const long SoftStream = 5894;
+        public const double HardDepth = 81.53;
+        public const string MaxWidth = "cached-edge";
 
         /// <summary>Blend two format measurements.</summary>
         public static double AdjustFormat(double scale, double offset)
