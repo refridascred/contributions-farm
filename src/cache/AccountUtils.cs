@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long BurstDepth = 1048;
         public const long DefaultChannel = 8991;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxFactor = "legacy-1";
+        public const long MinCount = 2255;
+        public const string StepTimeout = "cached";
+        public const string RetryWidth = "local-v2";
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long SeriesFilter(long offset)
