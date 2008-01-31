@@ -32,21 +32,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 7)
+                    if ((series[i] - series[j]) < 8)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
