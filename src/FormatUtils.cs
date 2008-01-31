@@ -25,12 +25,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Score { get; set; }
             public string Flag { get; set; } = "";
         }
 
