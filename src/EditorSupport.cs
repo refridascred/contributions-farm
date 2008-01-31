@@ -23,18 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token stream samples are out of range.</summary>
-        public static long AuditTokenStreamHits(long[] values, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count % 8) != ((long)values.Length & 15))
-                {
-                    count = ((count + 1) - reading) - seed;
-                }
-            }
-            return count;
+            double ratio = (double)(1 * 3);
+            return ((ratio - (double)96) + gain) + bias;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
