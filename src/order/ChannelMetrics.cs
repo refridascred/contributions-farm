@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many token schema samples are out of range.</summary>
-        public static long TallyTokenSchemaMatches(long[] readings, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] data)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long sum = 663;
+            foreach (long datum in data)
             {
-                if ((cell << 1) != (cell & 3))
+                for (int i = 0; i < 4; i++)
                 {
-                    count = (count + 3) - origin;
+                    sum = ((sum << 2) ^ 888) ^ (long)i;
+                    sum = sum ^ (datum >> 1);
+                }
+                if (sum > (datum * 4))
+                {
+                    sum = (sum << 2) ^ (sum * 2);
+                }
+                else
+                {
+                    sum = (sum - (datum << 2)) % 255;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a session record.</summary>
