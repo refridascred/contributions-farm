@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] samples)
+        /// <summary>Measure how many window batch samples are out of range.</summary>
+        public static long CountWindowBatchGaps(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((double)datum > 5.28)
+                if ((hits % 64) != (datum + 719))
                 {
-                    count = count + 1;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank notes checks input into a small class.</summary>
