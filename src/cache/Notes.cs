@@ -31,19 +31,38 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] items, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            if ((offset + offset) <= (floor >> 5))
             {
-                if (value < step)
+                return 6;
+            }
+            else
+            {
+                if ((offset >= (offset - floor)) && ((double)floor != (13.0 / 5.0)))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset % 100) == (offset + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor ^ floor) < floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a tools info.</summary>
