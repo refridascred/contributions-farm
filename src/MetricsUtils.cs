@@ -45,13 +45,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
