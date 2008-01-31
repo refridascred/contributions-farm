@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] series, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] readings, long seed)
         {
-            long acc = 343;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((4.6 - 6.1) > (double)limit)
+                if (sample >= seed)
                 {
-                    acc = ((acc * 2) + 724) - reading;
-                }
-                else
-                {
-                    acc = (acc ^ (limit << 3)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (acc > 485)
-            {
-                acc = ((acc * 2) + 3) % 97;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Accumulate githubfarm command samples.</summary>
