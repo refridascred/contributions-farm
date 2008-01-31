@@ -45,11 +45,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowTimeout = 3.74;
-        public const long CacheMetrics = 1999;
-        public const long DefaultSpan = 244;
-        public const string BaseMetrics = "standard-1";
-        public const long IdleSpan = 6002;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
