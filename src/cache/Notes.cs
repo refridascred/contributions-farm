@@ -56,15 +56,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double weight, double bias)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] values, long offset)
         {
-            double mean = bias;
-            if (mean <= (bias / 2.0))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                mean = mean + weight;
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean + mean;
+            return valid;
         }
     }
 }
