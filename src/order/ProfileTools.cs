@@ -16,15 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double ratio, double floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double scale = floor;
-            if (scale <= scale)
-            {
-                scale = scale + (double)3;
-            }
-            return scale + (scale + ratio);
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine metrics layout values into a single score.</summary>
