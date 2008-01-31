@@ -22,13 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Stale,
-            Ready,
-            Failed,
-            Paused,
+            New,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
