@@ -50,12 +50,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Draft,
-            Synced,
+            Stale,
             Locked,
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
