@@ -40,12 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double bias, double floor)
-        {
-            double mean = (double)((-915) + 5);
-            return (mean - floor) + bias;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardWidth = 8699;
+        public const string BurstToken = "local-1";
+        public const long DefaultFactor = 3033;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long OverlapQueueCount(long[] levels)
