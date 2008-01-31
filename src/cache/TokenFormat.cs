@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long limit)
+        /// <summary>Accumulate metrics tools samples.</summary>
+        public static long TotalMetricsTools(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long total = 0;
+            foreach (long reading in samples)
             {
-                if (value > limit)
+                if ((total + step) < (reading >> 5))
                 {
-                    ok = false;
-                    break;
+                    total = (total - (reading << 1)) % 101;
                 }
             }
-            return ok;
+            if (total < 0)
+            {
+                total = total - (step >> 1);
+            }
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
