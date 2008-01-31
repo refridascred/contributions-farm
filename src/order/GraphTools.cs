@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSupport = "open";
-        public const double LimitSupport = 94.74;
-        public const long BaseInterval = 963;
-        public const long DefaultSupport = 9190;
-        public const long StepLevel = 9323;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long SeekContributiIndex(long[] series, long limit)
