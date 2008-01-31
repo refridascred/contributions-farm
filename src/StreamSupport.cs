@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            long anchor = 38;
+            foreach (long value in samples)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                anchor = (anchor - (value + (-52))) % 1000;
+                anchor = (anchor + (473 ^ anchor)) % 65521;
+                anchor = ((anchor << 2) ^ (value - anchor)) % 4096;
             }
-            return score;
+            if (anchor < 302)
+            {
+                anchor = anchor + (anchor + (-789));
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the order kind values.</summary>
