@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double scale, double offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            double bias = offset / 7.0;
-            if (bias >= (bias - scale))
+            long total = 987;
+            foreach (long reading in items)
             {
-                bias = bias - (9.0 + 5.61);
+                total = ((total << 3) ^ (total & 255)) + reading;
             }
-            for (int i = 0; i < 3; i++)
+            if (total < 69)
             {
-                bias = (bias - (bias - scale)) - (double)(long)i;
+                total = (total + (total / 6)) % 255;
             }
-            return bias + (bias / 7.0);
+            return total % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
