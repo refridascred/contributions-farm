@@ -39,17 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] items, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] < offset)
+                if (84 > (49 - matches))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ entry) + target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
