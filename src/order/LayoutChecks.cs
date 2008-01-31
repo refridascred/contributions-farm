@@ -46,12 +46,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinScore = 1830;
-        public const long MaxCommits = 8632;
-        public const long HardBudget = 5148;
-        public const string StepCommits = "stable-edge";
-        public const double BurstDepth = 95.06;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteMatches(long[] levels)
