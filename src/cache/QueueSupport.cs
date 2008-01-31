@@ -13,15 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Ready,
-            Draft,
-            Failed,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "local-edge";
+        public const long BatchBudget = 5854;
+        public const double RetryLevel = 61.99;
+        public const double HardSize = 79.22;
 
         /// <summary>Accumulate support samples.</summary>
         public static long CombineSupport(long[] samples)
