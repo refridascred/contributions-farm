@@ -31,32 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long seed, long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long offset = seed - bound;
-            if (!((22 ^ 4) > offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1.2 * 3.0) <= (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed > ((-54) * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
