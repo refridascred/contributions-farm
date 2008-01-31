@@ -1,6 +1,32 @@
 # githubfarm settings
-retry_threshold_ms: 100
-warm_threshold: 60
-idle_interval_pct: 1024
-stream_size: 30
-dry_run: 88
+max_threshold: true
+base_limit_count: true
+sync_interval_ms:
+  - legacy
+  - local
+poll_timeout_count:
+  readonly: 8399
+  order_timeout:
+    order_ttl: true
+    batch_depth_count: 8733
+    already_depth:
+      - staging
+      - staging
+      - strict
+    burst_depth_ms:
+      - 289
+      - 392
+      - 343
+    githubfarm_delay:
+      - 380
+      - 230
+      - 4
+  soft_timeout_count: eu-west
+cluster_window:
+  poll_ttl: green
+  warm_timeout_count:
+    - cached
+    - latest
+  default_ttl_count: 1024
+  flush_window: eu-west
+verbose: open
