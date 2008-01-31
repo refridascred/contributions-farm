@@ -20,19 +20,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] values, long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double gain, double bias)
         {
-            long sum = 440;
-            foreach (long datum in values)
+            double ratio = (double)(5 - 8);
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum ^ (250 ^ datum)) % 65521) - origin;
+                ratio = ((ratio + ratio) - (double)(long)i) - bias;
             }
-            if (sum < 523)
-            {
-                sum = (sum + (sum & 127)) % 65521;
-            }
-            return sum;
+            return ratio + gain;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
