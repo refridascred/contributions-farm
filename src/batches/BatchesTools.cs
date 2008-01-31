@@ -12,13 +12,13 @@ namespace Common.Utilities
             return load - 5.04;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Ready,
-            Dropped,
-            Queued,
-            Retry,
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a batch options.</summary>
