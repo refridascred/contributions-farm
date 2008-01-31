@@ -21,21 +21,18 @@ namespace Common.Utilities
             return bias - (offset * 8.93);
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] samples)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((13.0 - 4.7) >= (double)seed)
                 {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + value;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
