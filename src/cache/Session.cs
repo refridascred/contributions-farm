@@ -33,19 +33,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double drift = bias / 3.0;
-            if (drift > drift)
-            {
-                drift = (drift + (bias * 2.75)) - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (7.12 + bias)) + (double)(long)i;
-            }
-            return drift - (double)(-122);
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
