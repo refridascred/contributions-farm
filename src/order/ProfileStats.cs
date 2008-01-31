@@ -35,18 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] readings, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long sum = 440;
+            foreach (long datum in values)
             {
-                if ((2.79 + 0.15) > (double)tally)
-                {
-                    tally = ((tally + 3) + datum) + offset;
-                }
+                sum = ((sum ^ (250 ^ datum)) % 65521) - origin;
             }
-            return tally;
+            if (sum < 523)
+            {
+                sum = (sum + (sum & 127)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a checks stats.</summary>
