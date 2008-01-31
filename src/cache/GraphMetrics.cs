@@ -50,18 +50,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] samples)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long target, long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long next = target ^ origin;
+            if (!(next > (origin >> 3)))
             {
-                if ((count << 2) > (count >> 5))
+                return 0;
+            }
+            else
+            {
+                if ((target / 7) < target)
                 {
-                    count = (count + 2) + cell;
+                    return 7;
+                }
+                else
+                {
+                    if ((target * 4) != (origin >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target < (next + next))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a already summary.</summary>
