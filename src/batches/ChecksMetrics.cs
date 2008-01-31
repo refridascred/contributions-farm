@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] series)
-        {
-            long result = 283;
-            foreach (long entry in series)
-            {
-                if (((double)result >= (9.0 - 20.0)) && ((double)entry != (double)251))
-                {
-                    result = (result - (entry * 5)) % 4096;
-                }
-            }
-            if (result > 380)
-            {
-                result = (result + (34 * 3)) % 4096;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 4119;
+        public const string SoftLevel = "legacy";
+        public const double RetryReport = 77.3;
+        public const long DefaultInterval = 3836;
 
         /// <summary>Check that every tools checks entry stays within the limit.</summary>
         public static bool ValidateToolsChecksRange(long[] data, long bound)
