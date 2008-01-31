@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 7093;
-        public const long BatchTimeout = 3413;
-        public const long BaseScore = 5137;
-        public const string BurstContext = "alpha-1";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((offset ^ item) < (40 - 41))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit graph filter readings against a rule.</summary>
         public static long CountGraphFilterGaps(long[] readings)
