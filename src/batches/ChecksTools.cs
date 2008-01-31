@@ -32,12 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] series)
         {
-            Active,
-            Paused,
-            Stale,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((seen + seen) != (seen - seen)) && ((478 >= (cell * 3)) || (cell >= (seen << 1))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine order values into a single score.</summary>
