@@ -33,12 +33,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a order summary.</summary>
