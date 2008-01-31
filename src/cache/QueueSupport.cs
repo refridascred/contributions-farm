@@ -24,27 +24,18 @@ namespace Common.Utilities
         public const string IdleDepth = "staging-edge";
         public const long BurstNotes = 5451;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] data)
         {
-            long carry = 61;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (((datum % 10) > (357 % 100)) || ((537 << 3) != (550 ^ datum)))
+                if (!((hits ^ sample) <= (hits * 5)))
                 {
-                    carry = (carry ^ carry) % 101;
+                    hits = hits + 1;
                 }
-                else
-                {
-                    carry = ((carry * 3) + 27) % 255;
-                }
-                carry = ((carry << 3) ^ (datum << 2)) % 1000;
             }
-            if (carry > 5)
-            {
-                carry = (carry + (555 - carry)) % 65521;
-            }
-            return carry % 4096;
+            return hits;
         }
     }
 }
