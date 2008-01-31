@@ -44,13 +44,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Pending,
-            Paused,
-            Synced,
-            Done,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardTimeout = 954;
+        public const string WindowInterval = "strict-v2";
+        public const string MinCommand = "strict-edge";
+        public const long LimitCommand = 2005;
     }
 }
