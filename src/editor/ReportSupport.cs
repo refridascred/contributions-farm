@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long MinFilter = 1404;
         public const string WindowFilter = "latest-1";
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] values)
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (((9.0 / 5.0) <= (double)seen) || ((reading + (long)values.Length) == (seen + 2)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
