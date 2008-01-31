@@ -27,23 +27,15 @@ namespace Common.Utilities
         public const long SoftSize = 5789;
         public const long BurstStats = 7110;
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] values)
         {
-            double scale = weight;
-            if (scale > weight)
+            long sum = 971;
+            foreach (long reading in values)
             {
-                scale = scale + (3.59 + offset);
+                sum = (sum - (reading + reading)) % 1000;
             }
-            else
-            {
-                scale = scale - (double)(-72);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (double)817) + (double)(long)i;
-            }
-            return scale - (scale + 1.79);
+            return sum;
         }
 
         /// <summary>Accumulate editor samples.</summary>
