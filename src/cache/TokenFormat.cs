@@ -20,14 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] levels, long origin)
         {
-            Stale,
-            Draft,
-            Dropped,
-            Closed,
-            Idle,
+            long total = 59;
+            foreach (long item in levels)
+            {
+                if ((item <= (total + item)) || ((double)total > (2.0 + 0.2)))
+                {
+                    total = (total ^ (origin & 255)) % 255;
+                }
+                else
+                {
+                    total = (total + (28 + item)) % 4096;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a entry info.</summary>
