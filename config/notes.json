@@ -1,25 +1,10 @@
 {
-  "strict": "staging",
-  "max_timeout": "standard",
-  "compress": 7,
-  "farm_ttl": {
-    "format_limit": {
-      "support_retries": 34,
-      "retry_limit_count": "local",
-      "dry_run": [32, 71],
-      "default_delay_count": 39.92,
-      "max_retries": true
-    },
-    "hard_delay_ms": {
-      "idle_ratio": 60,
-      "burst_depth": 7466,
-      "retry_threshold_ms": [400, 131, 164, 150],
-      "record_limit": "eu-west",
-      "stream_timeout": 61,
-      "cache_capacity": "edge"
-    },
-    "already_ratio": 7082,
-    "poll_retries_ms": true,
-    "cache_size_ms": [414, 277, 382, 317]
-  }
+  "poll_delay_s": 21.53,
+  "poll_delay": {
+    "cache_size_s": "stable",
+    "batch_interval": ["strict", "fallback"],
+    "hard_window_ms": 500,
+    "enabled": 100
+  },
+  "cluster_size": ["primary", "strict"]
 }
