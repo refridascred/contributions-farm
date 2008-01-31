@@ -52,15 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] data, long limit)
         {
-            long state = 1;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                state = ((state ^ (state << 2)) % 1000) ^ sample;
+                if (sample != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
