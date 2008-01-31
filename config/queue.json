@@ -1,19 +1,11 @@
 {
-  "default_capacity": {
-    "min_window_pct": 34,
-    "retry_size_pct": "legacy",
-    "max_delay_s": "strict",
-    "warm_ttl": ["primary", "green"],
-    "tools_depth": "latest",
-    "window_limit": 30
+  "flush_ttl_pct": 100,
+  "poll_delay_pct": {
+    "default_interval": ["blue", "green"],
+    "max_threshold_count": false,
+    "default_retries_count": 11
   },
-  "batch_window": 250,
-  "editor_interval": 63.25,
-  "default_delay_count": {
-    "payload_size": 44,
-    "max_delay": 79,
-    "compress": ["open", "primary", "cached", "latest"],
-    "base_window_pct": "staging",
-    "strict": "stable"
-  }
+  "base_threshold_pct": false,
+  "warm_ttl": ["fallback", "primary", "blue"],
+  "verbose": "eu-west"
 }
