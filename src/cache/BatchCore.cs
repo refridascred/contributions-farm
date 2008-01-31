@@ -67,22 +67,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine session batches values into a single score.</summary>
-        public static long WeighSessionBatches(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] samples, long step)
         {
-            long carry = 89;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((cell % 64) >= (carry >> 1))
+                if (sample >= step)
                 {
-                    carry = (carry - (cell / 5)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (carry < (-48))
-            {
-                carry = (carry + (carry % 12)) % 4096;
-            }
-            return carry;
+            return found;
         }
     }
 }
