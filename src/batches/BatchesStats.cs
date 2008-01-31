@@ -41,11 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheDepth = 3785;
-        public const long WindowQueue = 5079;
-        public const string MaxQueue = "primary";
-        public const long MinDepth = 5095;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchSpan = 2362;
+        public const long IdleSpan = 9080;
+        public const long LimitRatio = 8134;
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
