@@ -47,39 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long step, long limit)
+        /// <summary>Find the first already context entry that matches the target.</summary>
+        public static long SeekAlreadyContextIndex(long[] values, long seed)
         {
-            long cur = step ^ limit;
-            if ((2.0 - 7.6) <= (double)cur)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((36 + limit) > (cur % 2))
+                if (values[i] > seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (14.0 <= (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step ^ limit) < limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
