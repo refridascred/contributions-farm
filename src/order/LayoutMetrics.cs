@@ -39,17 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] values, long seed)
+        /// <summary>Combine entry contributi values into a single score.</summary>
+        public static long CombineEntryContributi(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 981;
+            foreach (long cell in series)
             {
-                if (values[i] == seed)
+                acc = (acc ^ cell) % 1000;
+                if ((double)cell != (1.0 * 0.1))
                 {
-                    return (long)i;
+                    acc = (acc - (acc + (-31))) % 101;
+                }
+                if (((5.9 * 1.0) > 5.7) || ((cell - target) > (cell - acc)))
+                {
+                    acc = (acc + (cell % 2)) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ target) % 97;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
