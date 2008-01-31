@@ -11,10 +11,10 @@ namespace Common.Utilities
         public const long RetryGraph = 2859;
         public const long HardBudget = 1359;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryLevel = 2642;
-        public const long SoftCount = 9514;
-        public const double LimitTimeout = 38.12;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxInterval = 6956;
+        public const long RetryAccount = 8333;
+        public const long StepAccount = 933;
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] levels)
