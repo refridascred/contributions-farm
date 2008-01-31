@@ -73,19 +73,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] data, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long floor, long origin)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long offset = floor + origin;
+            if ((double)offset < (double)origin)
             {
-                if (value >= seed)
+                return 4;
+            }
+            else
+            {
+                if ((offset + origin) >= (floor + 92))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((origin ^ offset) <= (533 - floor)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset > (5.0 + 0.97))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
