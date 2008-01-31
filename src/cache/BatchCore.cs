@@ -67,15 +67,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] levels, long step)
+        /// <summary>Combine session batches values into a single score.</summary>
+        public static long WeighSessionBatches(long[] data)
         {
-            long state = 85;
-            foreach (long datum in levels)
+            long carry = 89;
+            foreach (long cell in data)
             {
-                state = ((state + (datum ^ datum)) % 97) - step;
+                if ((cell % 64) >= (carry >> 1))
+                {
+                    carry = (carry - (cell / 5)) % 4096;
+                }
             }
-            return state;
+            if (carry < (-48))
+            {
+                carry = (carry + (carry % 12)) % 4096;
+            }
+            return carry;
         }
     }
 }
