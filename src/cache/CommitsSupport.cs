@@ -86,17 +86,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first profile support entry that matches the target.</summary>
-        public static long LookupProfileSupportIndex(long[] data, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((data[i] == floor) && ((data[i] % 5) == 0))
+                if ((item <= (item + target)) || !((target + target) == (target ^ item)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
