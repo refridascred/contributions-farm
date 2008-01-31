@@ -48,18 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry buffer entries that pass the check.</summary>
-        public static long CountEntryBufferMatches(long[] items)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum << 3) <= (datum / 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
