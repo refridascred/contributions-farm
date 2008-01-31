@@ -1,12 +1,13 @@
 # support settings
-retry_interval_ms: 28.71
-metric_ratio:
-  - 416
-  - 341
-  - 360
-  - 239
-flush_limit: 2921
-batch_window: 25.78
-audit:
-  - 134
-  - 360
+enabled:
+  - cached
+  - cached
+  - strict
+  - latest
+notes_capacity: 5111
+already_ratio: primary
+cache_threshold:
+  - local
+  - local
+  - eu-west
+batch_ttl: local
