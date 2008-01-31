@@ -11,17 +11,31 @@ namespace Common.Utilities
         public const double StepDepth = 95.99;
         public const long WindowChannel = 8369;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] items, long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long limit, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((18 <= (step << 2)) || (limit >= (72 + 9)))
             {
-                if ((items[i] < target) && ((items[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit != (9.0 / 4.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit >= step) || (17.0 < (double)step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate session schema readings against a bound.</summary>
