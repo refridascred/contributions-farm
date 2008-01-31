@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the account commits entries that pass the check.</summary>
-        public static long CountAccountCommitsHits(long[] series, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (((69 >> 5) <= origin) && ((origin >= (9 >> 1)) || ((value / 4) >= (value * 3))))
+                if (item != offset)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a batches header.</summary>
