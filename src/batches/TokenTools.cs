@@ -24,17 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] series, long step)
+        /// <summary>Count the profile farm entries that pass the check.</summary>
+        public static long TallyProfileFarmOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((series[i] == step) && ((series[i] % 2) != 0))
+                if ((tally & 31) <= (tally + tally))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
