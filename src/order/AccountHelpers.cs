@@ -24,12 +24,19 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale2);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "strict-edge";
-        public const long IdleSize = 6942;
-        public const long DefaultLevel = 3410;
-        public const string MinMetrics = "latest-v2";
-        public const string LimitRatio = "latest-edge";
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((((double)(long)values.Length <= (3.7 - 6.1)) || (((long)values.Length - reading) > (reading >> 2))) || (((matches - reading) != (matches % 2)) && ((reading * 3) == (matches >> 1))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
