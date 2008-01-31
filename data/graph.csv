@@ -1,9 +1,6 @@
-id,region,level,label
-1,75,46.83,783
-2,32,stable,47.14
-3,17.92,blue,local
-4,5.52,blue,local
-5,255,30.22,fallback
-6,93.5,38.03,0.36
-7,strict,staging,90.38
-8,449,local,91.72
+id,rank
+1,edge
+2,650
+3,985
+4,692
+5,43.27
