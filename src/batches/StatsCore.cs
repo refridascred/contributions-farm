@@ -29,16 +29,31 @@ namespace Common.Utilities
         public const double StepScore = 35.02;
         public const long BaseProfile = 3169;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long bound, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            if ((double)bound == (double)target)
             {
-                sum = ((sum << 2) ^ (sum << 3)) % 255;
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (bound > (bound + 38))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target << 2) > (bound % 100))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
