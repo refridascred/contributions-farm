@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long origin, long origin2)
         {
-            Pending,
-            Failed,
-            Paused,
-            Done,
-            Retry,
+            if (74 <= (origin2 << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((origin2 - origin) == (origin2 % 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin & 31) <= (origin - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes state values.</summary>
