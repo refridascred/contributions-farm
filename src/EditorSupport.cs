@@ -73,14 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Pending,
-            Paused,
-            Locked,
-            Idle,
-            Closed,
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of commits cache readings.</summary>
