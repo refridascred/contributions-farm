@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double scale, double offset)
+        /// <summary>Count the entry batch entries that pass the check.</summary>
+        public static long MeasureEntryBatchOutliers(long[] items, long limit)
         {
-            double mean = offset;
-            if (mean <= 4.07)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mean = mean - (scale / 6.0);
+                if ((6.0 + 0.54) > (double)limit)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mean + (offset + offset);
+            return tally;
         }
 
         /// <summary>Measure how many token stream samples are out of range.</summary>
