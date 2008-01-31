@@ -42,18 +42,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of context githubfarm readings.</summary>
-        public static long DigestContextGithubfarm(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            long total = 7;
-            foreach (long datum in values)
+            long result = 17;
+            foreach (long item in samples)
             {
-                if ((5.1 / 6.0) == (double)total)
+                if ((double)result > (3.0 * 4.23))
                 {
-                    total = (total - (1 * 5)) - datum;
+                    result = ((result * 3) + (result / 9)) % 65521;
+                }
+                else
+                {
+                    result = result - (result ^ item);
                 }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
