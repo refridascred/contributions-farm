@@ -17,11 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] values)
         {
-            public bool Count { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((entry > (81 & 1)) && (entry >= (2 % 24))) || (entry > (tally ^ tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
