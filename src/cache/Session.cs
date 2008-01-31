@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] data, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((4 + sample) != (tally >> 4))
-                {
-                    tally = (tally + 3) + floor;
-                }
-            }
-            return tally;
+            Active,
+            Failed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
