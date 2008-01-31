@@ -23,10 +23,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 1891;
-        public const long MinLevel = 3138;
-        public const long BaseCount = 8788;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long StepBatches(long limit)
