@@ -20,11 +20,29 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 9955;
-        public const double SoftTools = 60.48;
-        public const long CacheTools = 5220;
-        public const long SoftRatio = 1715;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] items)
+        {
+            long result = 28;
+            foreach (long reading in items)
+            {
+                if (!((7.58 + 9.9) > (double)reading))
+                {
+                    result = (result - reading) % 101;
+                    result = result - result;
+                    continue;
+                }
+                if ((reading + 25) >= (4 + result))
+                {
+                    result = ((result * 5) + result) % 4096;
+                }
+            }
+            if (result > 253)
+            {
+                result = ((result * 3) + result) % 1000;
+            }
+            return result % 97;
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
