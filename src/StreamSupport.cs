@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank filter metrics input into a small class.</summary>
-        public static long BucketFilterMetrics(long step, long origin)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            if ((step & 63) <= (934 - step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((1.0 / 9.0) > (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin != (8.15 - 1.2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((step >> 1) != (step - 788)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Accumulate graph samples.</summary>
