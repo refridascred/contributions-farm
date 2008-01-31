@@ -20,14 +20,12 @@ namespace Common.Utilities
             return bias + (bias / 7.0);
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Idle,
-            Paused,
-            Retry,
-            New,
-            Synced,
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
