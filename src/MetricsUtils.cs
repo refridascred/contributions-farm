@@ -56,19 +56,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] items, long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long acc = 374;
-            foreach (long datum in items)
-            {
-                acc = (((acc + acc) % 97) ^ datum) - offset;
-            }
-            if (acc < 9)
-            {
-                acc = acc + 618;
-            }
-            return acc % 4096;
+            Active,
+            Stale,
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
