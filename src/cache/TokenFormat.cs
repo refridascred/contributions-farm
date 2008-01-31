@@ -30,19 +30,15 @@ namespace Common.Utilities
             return load + (double)(-5);
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] values, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] readings)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long sample in readings)
             {
-                if ((sample ^ sample) <= (sample - sample))
+                if (!(((980 + 67) != (sample * 5)) && ((2.8 / 4.0) == (double)sample)))
                 {
-                    seen = (seen + 3) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
