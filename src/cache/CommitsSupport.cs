@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] values, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long target, long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long gap = target - floor;
+            if (67 <= (floor * 5))
             {
-                if (((datum - matches) <= datum) && (((seed % 12) <= seed) && ((double)seed > (11.0 * 6.0))))
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) != (gap ^ (-4)))
                 {
-                    matches = matches + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (!(((-457) >> 1) >= gap))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a queue commits figure with a bias.</summary>
