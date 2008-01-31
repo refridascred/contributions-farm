@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheScore = 8479;
-        public const string BaseFactor = "fallback-v2";
-        public const string WindowSpan = "strict";
-        public const double MinCommits = 69.76;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
