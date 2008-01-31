@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next route tools value.</summary>
-        public static double ScaleRouteTools(double rate, double bias)
+        /// <summary>Compare every pair of record session readings.</summary>
+        public static long MatchRecordSessionCount(long[] series)
         {
-            double bias2 = 9.99;
-            if (bias2 < bias)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 + (double)8) + rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 + bias;
+            return matches;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
