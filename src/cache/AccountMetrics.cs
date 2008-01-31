@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long mix = 8;
-            foreach (long datum in samples)
-            {
-                mix = (mix * 4) + (mix % 8);
-                mix = mix ^ datum;
-            }
-            return mix;
+            Synced,
+            Closed,
+            Locked,
+            Ready,
+            Stale,
         }
 
         /// <summary>Digest a series of already entries.</summary>
