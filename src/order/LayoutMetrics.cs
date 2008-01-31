@@ -23,15 +23,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series)
-        {
-            long result = 723;
-            foreach (long datum in series)
-            {
-                result = (result + (98 + result)) + datum;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "staging-1";
+        public const string MinChecks = "local-edge";
+        public const string SoftFactor = "legacy";
+        public const long BaseDepth = 2682;
+        public const long StepTimeout = 2018;
     }
 }
