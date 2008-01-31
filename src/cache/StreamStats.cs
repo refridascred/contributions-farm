@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] items, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                carry = (carry * 3) + (carry << 1);
-                carry = (carry + (carry & 127)) % 255;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((offset < (offset + 5)) || (tally < (tally << 1)))
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Adjust a batches context reading.</summary>
