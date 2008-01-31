@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            Done,
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a filter header.</summary>
