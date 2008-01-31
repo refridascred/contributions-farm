@@ -87,18 +87,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue counter readings against a rule.</summary>
-        public static long AuditQueueCounterGaps(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (count < (920 + 218))
-                {
-                    count = ((count + 1) ^ item) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleScore = 6727;
+        public const long BurstBuffer = 4804;
+        public const long WindowRatio = 4022;
     }
 }
