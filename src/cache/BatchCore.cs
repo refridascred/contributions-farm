@@ -23,26 +23,18 @@ namespace Common.Utilities
         public const long MinTimeout = 7220;
         public const long LimitLevel = 1625;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] series)
         {
-            long sum = 66;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((3.14 / 3.0) < (double)cell)
+                if ((count + count) < (datum - 33))
                 {
-                    sum = ((sum * 5) + (sum << 3)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - (sum << 2)) % 255;
+                    count = count + 3;
                 }
             }
-            if (sum < 2)
-            {
-                sum = (sum << 2) ^ (sum << 2);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
