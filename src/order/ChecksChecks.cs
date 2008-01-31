@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 5127;
+        public const string LimitCounter = "alpha";
+        public const long BurstCounter = 8280;
+        public const long MinCounter = 103;
+        public const long BurstBudget = 5490;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long CombineTools(long[] levels, long step)
