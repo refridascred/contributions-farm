@@ -30,12 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Done,
-            Stale,
-            Synced,
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
