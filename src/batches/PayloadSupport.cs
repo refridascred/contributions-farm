@@ -27,14 +27,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] data, long floor)
         {
-            Locked,
-            Dropped,
-            Done,
-            Retry,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
