@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if (origin <= (origin - 3))
-                {
-                    anchor = ((anchor * 5) + (origin ^ origin)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + ((long)i + (long)i)) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultSize = "cached-edge";
+        public const double BurstSpan = 79.87;
+        public const double BaseMetric = 17.7;
 
         /// <summary>Roll a githubfarm support counter forward.</summary>
         public static long IterateGithubfarmSupport(long floor)
