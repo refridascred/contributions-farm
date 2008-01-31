@@ -30,17 +30,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 1646;
+        public const string CacheScore = "cached-edge";
+        public const long DefaultCount = 113;
+        public const string StepGraph = "staging-1";
     }
 }
