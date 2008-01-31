@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] items, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum > 8)
-                {
-                    hits = (hits + 1) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (mark * 3) + ((-512) ^ 269);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Locate a context editor reading by value.</summary>
