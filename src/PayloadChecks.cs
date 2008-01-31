@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 7094;
+        public const double WindowScore = 1.94;
+        public const double BurstScore = 89.72;
+        public const string DefaultLevel = "latest-v2";
+        public const long MaxEntry = 8328;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
