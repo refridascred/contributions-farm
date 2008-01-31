@@ -1,13 +1,28 @@
 # support settings
-enabled:
-  - cached
-  - cached
+context_size:
+  schema_capacity: 96.08
+  sync_window:
+    batch_window: fallback
+    flush_interval: 18.77
+    retry_size_pct: 78
+    counter_ttl: true
+    hard_retries:
+      - cached
+      - strict
+      - blue
+      - stable
+  checks_interval: strict
+  batch_threshold_s: local
+  enabled:
+    - latest
+    - staging
+    - edge
+    - eu-west
+poll_retries: 99
+context_depth:
   - strict
-  - latest
-notes_capacity: 5111
-already_ratio: primary
-cache_threshold:
   - local
-  - local
-  - eu-west
-batch_ttl: local
+  - cached
+token_interval:
+  - primary
+  - standard
