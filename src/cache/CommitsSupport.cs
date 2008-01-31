@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long IdleWidth = 1422;
         public const long CacheReport = 6415;
 
-        /// <summary>Scale a entry stream figure with a bias.</summary>
-        public static double BlendEntryStream(double scale, double offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] items, long offset)
         {
-            double bias = (double)(611 >> 5);
-            if (bias < (offset + bias))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - scale;
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - (offset * 8.93);
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
