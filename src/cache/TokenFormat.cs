@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long SoftWidth = 1048;
         public const string RetryRatio = "open-1";
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((980 + 67) != (sample * 5)) && ((2.8 / 4.0) == (double)sample)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultWidth = "open";
+        public const long WindowQueue = 6133;
+        public const double DefaultBudget = 39.19;
+        public const double BaseQueue = 33.85;
+        public const string BatchDepth = "standard-v2";
     }
 }
