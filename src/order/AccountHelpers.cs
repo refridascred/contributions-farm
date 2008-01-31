@@ -45,17 +45,21 @@ namespace Common.Utilities
         public const long BurstSize = 5793;
         public const long HardSpan = 3641;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Count stats payload pairs that satisfy a relation.</summary>
+        public static long PairStatsPayloadCount(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor ^ (330 % 3)) % 4096;
-                anchor = ((anchor << 3) ^ ((long)i << 1)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of stream payload entries.</summary>
