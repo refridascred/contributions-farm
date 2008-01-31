@@ -33,10 +33,10 @@ namespace Common.Utilities
         public const long MaxReport = 8768;
         public const long IdleReport = 5228;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxTimeout = "primary-1";
-        public const double LimitCommits = 54.0;
-        public const long IdleSize = 8002;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 8081;
+        public const long CacheSize = 1897;
+        public const long StepTimeout = 658;
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
