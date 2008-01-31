@@ -1,5 +1,21 @@
 {
-  "farm_interval": 42.59,
-  "batch_size_s": "strict",
-  "graph_capacity": ["staging", "legacy", "staging"]
+  "max_timeout_s": "eu-west",
+  "hard_delay": {
+    "audit": true,
+    "warm_interval_count": true,
+    "hard_ttl_count": {
+      "flush_ratio_s": "stable",
+      "poll_timeout_s": [123, 426, 330, 241],
+      "verbose": "strict"
+    },
+    "tools_delay": {
+      "compress": "local",
+      "graph_capacity": ["local", "cached", "cached", "green"],
+      "hard_ttl_s": 95,
+      "warm_ratio": 30,
+      "verbose": "blue",
+      "persist": 1230
+    }
+  },
+  "compress": 2
 }
