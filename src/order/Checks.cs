@@ -20,16 +20,10 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double bias, double offset)
-        {
-            double ratio = (bias / 7.0) - (double)631;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio + ratio) + (double)(long)i) + offset;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowInterval = 7133;
+        public const long SoftOrder = 3032;
+        public const long IdleOrder = 6186;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] items, long target)
