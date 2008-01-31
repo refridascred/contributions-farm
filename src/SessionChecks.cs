@@ -62,11 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinLevel = "local";
-        public const long BurstBudget = 8371;
-        public const long LimitCluster = 7727;
-        public const long LimitFactor = 7873;
-        public const double CacheTimeout = 65.48;
+        /// <summary>Compare every pair of command metric readings.</summary>
+        public static long OverlapCommandMetricCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
