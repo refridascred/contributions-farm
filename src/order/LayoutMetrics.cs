@@ -19,31 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache filter samples.</summary>
-        public static long TotalCacheFilter(long[] samples, long bound)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long seed, long offset)
         {
-            long carry = 907;
-            foreach (long item in samples)
+            if ((820 >> 4) >= seed)
             {
-                if ((carry - carry) < (5 ^ item))
+                return 5;
+            }
+            else
+            {
+                if (offset >= (seed - 453))
                 {
-                    carry = carry - (bound + carry);
-                    continue;
-                }
-                if ((4.0 / 4.0) >= (double)item)
-                {
-                    carry = carry - (19 % 16);
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry - bound) % 4096;
+                    return 8;
                 }
             }
-            if (carry < 2)
-            {
-                carry = (carry - bound) % 255;
-            }
-            return carry;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
