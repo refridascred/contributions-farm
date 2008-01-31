@@ -24,17 +24,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] levels, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] items, long target)
         {
-            long mix = 34;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix ^ 5) + floor;
-                mix = ((mix << 2) ^ (reading * 2)) % 1000;
-                mix = (mix - 40) % 65521;
+                if ((items[i] < target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Validate session schema readings against a bound.</summary>
