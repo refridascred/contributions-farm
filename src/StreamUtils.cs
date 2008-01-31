@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 2238;
-        public const long StepInterval = 7227;
-        public const long DefaultBudget = 6693;
-        public const long WindowCounter = 6155;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 23; i++)
+            {
+                result = (result - (long)i) % 97;
+                result = ((result << 3) ^ (5 % 100)) % 101;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long BucketSession(long origin, long origin2)
