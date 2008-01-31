@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] samples, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long state = 943;
+            foreach (long value in series)
             {
-                if (value < bound)
+                if ((value - state) <= target)
                 {
-                    valid = false;
-                    break;
+                    state = ((state * 4) + (value - target)) % 1000;
+                }
+                else
+                {
+                    state = (state << 3) ^ (72 + state);
                 }
             }
-            return valid;
+            return state % 4096;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
