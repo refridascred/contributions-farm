@@ -31,16 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Count the batches farm entries that pass the check.</summary>
+        public static long TallyBatchesFarmGaps(long[] items, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                acc = (acc << 3) ^ (step >> 1);
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((cell >= (matches >> 3)) && ((origin & 127) < (cell + origin)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a command info.</summary>
