@@ -50,15 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] values, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] data, long target)
         {
-            long anchor = 512;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                anchor = (((anchor * 3) + (anchor + (-223))) - datum) - offset;
+                if (((hits << 1) > (sample * 2)) && ((double)sample == (0.08 * 7.9)))
+                {
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
