@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long DefaultSupport = 9190;
         public const long StepLevel = 9323;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 2293;
-        public const long CacheRoute = 9494;
-        public const string BaseRoute = "legacy-v2";
-        public const long LimitRoute = 1542;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string MinFactor = "latest-edge";
