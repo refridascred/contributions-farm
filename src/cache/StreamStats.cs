@@ -20,19 +20,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Adjust a batches context reading.</summary>
-        public static double SmoothBatchesContext(double scale, double bias)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double mean = bias;
-            if (mean <= mean)
-            {
-                mean = (mean + (double)891) + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (double)8;
+            Stale,
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
