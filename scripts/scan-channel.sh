@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+mode="${1:-legacy}"
 case "${mode}" in
     edge)
         log "fast path"
@@ -16,11 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=189
-log "limit is ${CHANNEL_LIMIT}"
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in green fallback edge standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
