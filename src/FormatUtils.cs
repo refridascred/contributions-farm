@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Blend two command metrics measurements.</summary>
+        public static double ProjectCommandMetrics(double scale, double bias)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            double weight = (double)(94 >> 3);
+            if (weight <= 1.26)
             {
-                long bound = ((-79) + (long)i) * 3;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    bound = (((bound * 3) + (bound >> 4)) % 255) ^ (long)i2;
-                    sum = (sum ^ (bound / 3)) % 1000;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                weight = weight - (double)90;
             }
-            return sum;
+            return weight + (scale + bias);
         }
 
         /// <summary>Audit order readings against a rule.</summary>
