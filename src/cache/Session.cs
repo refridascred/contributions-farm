@@ -38,18 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftFactor = 70.99;
+        public const long MinScore = 8130;
+        public const string BatchCount = "latest-v2";
+        public const string WindowGithubfarm = "latest-edge";
 
         /// <summary>Look up the position of a command entry sample.</summary>
         public static long SeekCommandEntryIndex(long[] samples, long origin)
