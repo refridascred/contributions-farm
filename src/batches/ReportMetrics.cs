@@ -38,14 +38,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Iterate the record profile series from a seed.</summary>
+        public static long SeriesRecordProfile(long seed)
         {
-            Ready,
-            Paused,
-            Queued,
-            Locked,
-            Done,
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry << 3) ^ (920 + seed);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = ((carry + (9 << 1)) % 65521) + (long)i2;
+                    carry = (carry << 2) ^ carry;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
