@@ -32,17 +32,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 5) + limit) % 97;
-                sum = (sum << 3) ^ (sum ^ sum);
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count the profile cluster entries that pass the check.</summary>
