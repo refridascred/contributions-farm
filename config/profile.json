@@ -1,7 +1,6 @@
 {
-  "dry_run": 4,
-  "warm_size": "cached",
-  "base_threshold_count": 148,
-  "hard_capacity_count": "legacy",
-  "stream_delay": false
+  "queue_timeout": 28.19,
+  "idle_ttl": "legacy",
+  "format_timeout": 74.05,
+  "strict": true
 }
