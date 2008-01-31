@@ -13,22 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] levels, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen + seen) >= origin)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Blend two graph cluster measurements.</summary>
