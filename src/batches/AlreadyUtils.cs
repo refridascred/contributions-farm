@@ -53,10 +53,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 17.29;
-        public const long MaxDepth = 9151;
-        public const long MaxLevel = 683;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long seed, long offset)
+        {
+            if ((offset / 5) < seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((7.5 + 6.25) <= (double)offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelHits(long[] data)
