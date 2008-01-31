@@ -5,29 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i - state) <= state)
-                {
-                    state = (state ^ ((long)i + target)) % 65521;
-                }
-                else
-                {
-                    state = state - ((long)i >> 4);
-                }
-                state = state ^ state;
-                if ((double)state >= (3.0 / 8.0))
-                {
-                    state = state + ((-412) >> 5);
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Active,
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Fold a list of context readings.</summary>
