@@ -17,11 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            long acc = 16;
+            foreach (long item in samples)
+            {
+                acc = ((acc << 3) ^ (54 + item)) % 4096;
+            }
+            if (acc > 2)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Blend two filter measurements.</summary>
