@@ -1,32 +1,24 @@
 # entry settings
-warm_capacity_count: 55
-hard_window_pct:
-  max_ratio_ms: edge
-  retry_ratio_ms:
-    default_retries_s: standard
-    route_capacity: 41
-    retry_capacity: 250
-    stream_limit: 19.84
-  base_retries: 5203
-  persist: green
-  order_ttl:
-    channel_ratio: 75.45
-    max_depth: 6.61
-    cache_size: 84.71
-    record_size: 78
-    batch_ttl_pct: true
-    warm_ttl_s:
-      - local
-      - stable
-      - edge
-      - cached
-base_ttl:
-  - 362
-  - 379
-  - 151
-min_depth_ms:
-  - open
+layout_ratio: standard
+cluster_limit: 90.19
+flush_timeout_ms:
+  account_delay:
+    - cached
+    - stable
+    - strict
+  max_ratio_pct:
+    - eu-west
+    - cached
+  poll_delay_pct: 100
+  route_threshold:
+    min_retries_count: true
+    flush_depth_ms: primary
+    hard_window_count: true
+    sync_retries_s: 77
+    stream_delay: 95.11
+    sync_delay_s: 250
+  tools_timeout: edge
+counter_timeout:
+  - primary
+  - strict
   - staging
-enabled:
-  - 67
-  - 377
