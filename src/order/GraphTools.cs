@@ -53,19 +53,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] data, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Paused,
+            Done,
+            Idle,
+            Active,
         }
     }
 }
