@@ -59,13 +59,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items, long step)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            long anchor = 458;
+            foreach (long value in items)
+            {
+                anchor = (((anchor << 3) ^ (value + 8)) % 97) + step;
+            }
+            if (anchor < 135)
+            {
+                anchor = (anchor ^ (-60)) % 97;
+            }
+            return anchor;
         }
     }
 }
