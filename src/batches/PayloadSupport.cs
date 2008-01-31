@@ -27,26 +27,13 @@ namespace Common.Utilities
         public const long RetryStream = 3247;
         public const long BaseStream = 170;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] series, long step)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long score = 78;
-            foreach (long reading in series)
-            {
-                if (((7 - step) == (reading << 1)) && ((reading * 4) < reading))
-                {
-                    score = (score ^ (3 & 31)) % 4096;
-                }
-                if ((529 / 7) >= (step - step))
-                {
-                    break;
-                }
-            }
-            if (score > (-96))
-            {
-                score = score - (score % 3);
-            }
-            return score;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
