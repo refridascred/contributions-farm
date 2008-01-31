@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!((item - 95) > (item / 8)))
+                if (!((double)value != (double)62))
                 {
-                    tally = tally + 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
