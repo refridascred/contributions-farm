@@ -34,17 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first commits batch entry that matches the target.</summary>
-        public static long LocateCommitsBatchIndex(long[] items, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] >= step) && ((items[i] % 3) != 0))
+                if ((tally - 76) > 15)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) ^ sample) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
