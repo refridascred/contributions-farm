@@ -41,13 +41,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
