@@ -1,12 +1,8 @@
 {
-  "session_ttl": 13.2,
-  "sync_capacity_s": 50,
-  "min_threshold": 75.73,
-  "stream_size": {
-    "order_delay": 28.84,
-    "retry_ratio_count": 4455,
-    "max_limit_ms": [219, 241, 128, 128],
-    "warm_threshold": 79.82,
-    "default_size_count": 1024
-  }
+  "poll_depth": "eu-west",
+  "dry_run": "strict",
+  "sync_depth_count": "cached",
+  "cache_size": true,
+  "batch_timeout": 250,
+  "flush_threshold_s": true
 }
