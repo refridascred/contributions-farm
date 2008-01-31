@@ -10,20 +10,19 @@ namespace Common.Utilities
         public const long MaxRecord = 7161;
         public const long WindowSize = 1889;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] readings, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((anchor << 2) <= (anchor + bound))
+                if (datum > floor)
                 {
-                    anchor = (anchor * 2) + (913 & 3);
-                    anchor = anchor + (21 + anchor);
+                    found = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
