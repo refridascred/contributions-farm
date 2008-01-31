@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
+        public static long ClassifyGraphGithubfarm(long offset, long step)
         {
-            Failed,
-            Queued,
-            New,
-            Idle,
+            long prev = offset ^ step;
+            if (prev > (offset + step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + prev) <= (138 + prev))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset + prev) == (offset + 814)) && ((prev << 1) == (893 + step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every tools checks entry stays within the limit.</summary>
