@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the cluster schema entries that pass the check.</summary>
-        public static long AuditClusterSchemaGaps(long[] data)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long anchor = 851;
+            foreach (long datum in readings)
             {
-                if ((cell / 8) <= cell)
+                if ((origin ^ anchor) >= ((-83) % 60))
                 {
-                    count = count + 1;
+                    anchor = ((anchor * 2) + datum) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    anchor = ((anchor << 2) ^ (anchor - datum)) % 101;
                 }
             }
-            return count;
+            if (anchor > 509)
+            {
+                anchor = ((anchor << 2) ^ (anchor & 255)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
