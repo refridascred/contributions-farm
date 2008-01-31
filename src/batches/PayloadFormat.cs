@@ -22,31 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long target, long limit)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double gain, double floor)
         {
-            if ((target / 8) == (target + target))
+            double ratio = gain;
+            if (ratio <= (floor * 1.47))
             {
-                return 6;
+                ratio = ratio + (floor / 5.0);
             }
-            else
-            {
-                if (!((target - limit) >= (target + limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.0 / 3.0) == (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return ratio - (floor * 7.18);
         }
 
         /// <summary>Roll a already counter forward.</summary>
