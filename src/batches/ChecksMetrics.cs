@@ -26,26 +26,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of cache queue readings.</summary>
-        public static long DigestCacheQueue(long[] series)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] series, long seed)
         {
-            long result = 34;
+            long acc = 2;
             foreach (long value in series)
             {
-                if ((double)result <= (16.0 - 7.5))
+                if ((acc * 3) > acc)
                 {
-                    result = (result + ((long)series.Length & 63)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (value << 2)) % 65521;
+                    acc = (((acc - (acc & 3)) % 101) ^ value) + seed;
                 }
             }
-            if (result > 60)
-            {
-                result = (result << 2) ^ (result >> 1);
-            }
-            return result;
+            return acc;
         }
 
         /// <summary>Describe the cache state values.</summary>
