@@ -75,19 +75,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate contributi commits readings against a bound.</summary>
-        public static bool VerifyContributiCommitsLimits(long[] levels, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (datum != floor)
+                if (datum >= seed)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
