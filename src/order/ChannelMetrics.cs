@@ -46,19 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session schema readings against a bound.</summary>
-        public static bool CheckSessionSchemaRange(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheScore = 8479;
+        public const string BaseFactor = "fallback-v2";
+        public const string WindowSpan = "strict";
+        public const double MinCommits = 69.76;
     }
 }
