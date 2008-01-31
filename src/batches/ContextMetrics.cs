@@ -25,16 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            long result = 7;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result - (72 - sample)) % 255;
-                result = result - (result + result);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Adjust a cache reading.</summary>
