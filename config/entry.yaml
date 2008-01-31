@@ -1,4 +1,7 @@
 # entry settings
-report_threshold: staging
-dry_run: standard
-payload_interval: cached
+base_timeout_pct: open
+verbose: local
+editor_retries:
+  - 172
+  - 125
+contributi_ratio: true
