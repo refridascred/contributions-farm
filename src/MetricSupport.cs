@@ -25,25 +25,22 @@ namespace Common.Utilities
         public const long WindowSize = 1079;
         public const double HardQueue = 42.57;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long seed, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values, long floor)
         {
-            long next = seed - floor;
-            if ((4.16 / 5.0) > (double)floor)
+            long acc = 58;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((134 / 8) >= next)
+                if ((floor % 64) == (acc + reading))
                 {
-                    return 6;
+                    acc = acc + (acc - 24);
                 }
                 else
                 {
-                    return 5;
+                    acc = acc + (long)values.Length;
                 }
             }
+            return acc;
         }
     }
 }
