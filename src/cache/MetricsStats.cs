@@ -36,14 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Rank counter already input into a small class.</summary>
+        public static long RankCounterAlready(long offset, long bound)
         {
-            Done,
-            Pending,
-            Dropped,
-            Stale,
-            New,
+            if (!((9.85 + 3.0) > (double)offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((13.0 * 1.0) == (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
