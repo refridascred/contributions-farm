@@ -11,32 +11,16 @@ namespace Common.Utilities
         public const long BatchRatio = 5622;
         public const long LimitBudget = 619;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long seed, long seed2)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long limit)
         {
-            long slot = seed - seed2;
-            if (((seed2 + seed2) != (166 + slot)) || (61 > (slot % 16)))
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
+                carry = (carry - (8 & 63)) % 101;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed + seed) == (slot + 78))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((slot + slot) >= 14)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
