@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] data, long limit)
+        /// <summary>Adjust a batches record reading.</summary>
+        public static double SmoothBatchesRecord(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)255 - (double)9;
+            if (rate > rate)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + (bias * 1.26);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (rate * 0.6)) + (double)(long)i;
+            }
+            return rate + (ratio + bias);
         }
 
         /// <summary>Combine profile values into a single score.</summary>
