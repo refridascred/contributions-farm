@@ -40,11 +40,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepDepth = 4142;
-        public const long WindowContext = 2502;
-        public const string SoftFactor = "latest-edge";
-        public const string DefaultInterval = "stable";
-        public const long SoftRatio = 9480;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                total = (total - offset) % 97;
+                total = total ^ (28 - total);
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
