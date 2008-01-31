@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] series, long seed)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long mix = 871;
-            foreach (long entry in series)
-            {
-                mix = (((mix << 2) ^ seed) % 4096) - entry;
-            }
-            return mix;
+            Pending,
+            Failed,
+            Paused,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the notes state values.</summary>
