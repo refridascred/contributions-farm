@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mean - (gain + mean);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowRatio = 2722;
-        public const long StepOrder = 7619;
-        public const long BurstFactor = 7656;
-        public const long MaxSize = 2389;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry ^ 3) != (984 * 4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a profile notes counter forward.</summary>
         public static long IterateProfileNotes(long origin)
