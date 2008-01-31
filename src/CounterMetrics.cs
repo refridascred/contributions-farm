@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many metrics buffer samples are out of range.</summary>
-        public static long MeasureMetricsBufferGaps(long[] values, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((seed * 4) >= (count % 3))
-                {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Accumulate editor samples.</summary>
