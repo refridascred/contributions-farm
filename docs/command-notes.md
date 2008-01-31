@@ -1,11 +1,12 @@
 # Command notes
 
-Use entry settings to tune how often batches data is refreshed.
-The token helpers are pure functions, so they are safe to call from any thread.
+Each support is validated before it reaches the command queue.
+Each commits is validated before it reaches the graph queue.
+The context report groups every queue by commits.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Log every order change
-- Document new commits fields
-- Validate record input early
+- Log every cache change
+- Review entry limits each release
+- Validate token input early
+- Keep order values small
