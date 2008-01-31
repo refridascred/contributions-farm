@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] items, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((count - 91) < ((-979) + datum)) && ((count + datum) >= count))
+                if ((sample * 3) >= (sample * 2))
                 {
-                    count = (count + 3) + step;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the record phase values.</summary>
