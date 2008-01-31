@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long target, long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double floor)
         {
-            long gap = target + origin;
-            if ((32 ^ (-756)) <= (origin << 2))
+            double ratio = (floor / 4.0) - gain;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                ratio = (ratio - ratio) + (double)(long)i;
             }
-            else
-            {
-                if (3.3 <= (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((target + 11) >= origin) && ((gap % 16) >= origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((1 > origin) && ((origin + origin) != (target + gap)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return ratio - floor;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
