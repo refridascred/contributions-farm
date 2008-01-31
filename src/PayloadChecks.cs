@@ -85,18 +85,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] samples, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long floor, long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long delta = floor + limit;
+            if (((limit - limit) >= delta) && ((4 - 6) != (limit % 100)))
             {
-                if ((value + value) >= (2 << 1))
+                return 6;
+            }
+            else
+            {
+                if (2.0 > (double)floor)
                 {
-                    count = (count + 1) - bound;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit << 1) <= (limit % 100))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
     }
 }
