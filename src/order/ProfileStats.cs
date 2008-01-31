@@ -52,18 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi editor readings against a rule.</summary>
-        public static long CountContributiEditorGaps(long[] levels)
+        /// <summary>Find the first order record entry that matches the target.</summary>
+        public static long FindOrderRecordIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((7 ^ (-417)) == (reading + reading)))
+                if (items[i] > step)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
