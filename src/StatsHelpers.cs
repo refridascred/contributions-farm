@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long step, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            if ((double)limit != (18.0 / 7.0))
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((48 + 16) <= (step >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step % 5) < (limit + step)) && ((step ^ limit) >= (limit - 562)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((4.9 + 2.3) != (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
