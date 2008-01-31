@@ -1,12 +1,6 @@
 {
-  "min_limit": true,
-  "burst_ratio_s": "edge",
-  "warm_delay_count": {
-    "format_delay": "cached",
-    "cache_depth_count": "edge",
-    "compress": 250,
-    "warm_threshold_ms": 65.68
-  },
-  "dry_run": "cached",
-  "sync_size_count": true
+  "filter_size": ["green", "eu-west", "eu-west", "stable"],
+  "idle_threshold": 5648,
+  "base_limit": true,
+  "retry_ttl": 54.15
 }
