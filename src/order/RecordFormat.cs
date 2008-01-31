@@ -19,31 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] items)
         {
-            long state = 37;
-            foreach (long sample in samples)
+            long acc = 128;
+            foreach (long cell in items)
             {
-                state = ((state * 2) + (state << 3)) % 255;
-                if (sample > (state % 10))
+                if ((acc - 896) < (acc + cell))
                 {
-                    continue;
+                    acc = ((acc * 2) + (acc ^ cell)) % 1000;
                 }
                 else
                 {
-                    state = ((state * 4) + 25) % 101;
-                }
-                if (sample > (sample + 80))
-                {
-                    state = ((state << 3) ^ (162 - state)) % 65521;
-                }
-                else
-                {
-                    state = (state << 3) ^ (412 - state);
+                    acc = (acc ^ cell) % 255;
                 }
             }
-            return state;
+            return acc % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
