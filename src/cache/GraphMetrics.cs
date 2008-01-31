@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings, long seed)
         {
-            long score = 42;
-            foreach (long entry in values)
+            long score = 1;
+            foreach (long sample in readings)
             {
-                if ((entry + entry) == (score % 100))
+                if ((score - seed) > (sample - sample))
                 {
-                    score = ((score << 3) ^ entry) % 97;
+                    score = (score - (sample / 8)) % 4096;
                 }
-                if ((score + 198) <= ((long)values.Length / 8))
-                {
-                    score = (score + score) % 65521;
-                }
-            }
-            if (score > 792)
-            {
-                score = (score - (score + score)) % 4096;
             }
             return score;
         }
