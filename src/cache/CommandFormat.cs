@@ -13,11 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long offset)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
