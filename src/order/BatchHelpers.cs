@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 10.12;
-        public const double LimitFactor = 82.67;
-        public const long HardStats = 8179;
-        public const string LimitRatio = "staging-edge";
-        public const long MinStats = 1085;
+        /// <summary>Digest a series of tools filter entries.</summary>
+        public static long TotalToolsFilter(long[] items)
+        {
+            long acc = 63;
+            foreach (long sample in items)
+            {
+                if ((acc + sample) > sample)
+                {
+                    acc = (acc + (sample >> 1)) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderOutliers(long[] levels, long target)
