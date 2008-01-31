@@ -1,5 +1,7 @@
 {
-  "idle_ratio_s": "stable",
-  "max_interval_count": 36.01,
-  "metric_ttl": 2577
+  "min_capacity": 70.08,
+  "retry_delay": 100,
+  "commits_window": 1024,
+  "base_size_pct": ["latest", "green", "blue", "latest"],
+  "poll_delay_pct": true
 }
