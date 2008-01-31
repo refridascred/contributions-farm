@@ -33,19 +33,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] items, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] data)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (sample > bound)
+                if (!(((reading * 2) >= (reading * 5)) && ((count - count) != (count * 2))))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
