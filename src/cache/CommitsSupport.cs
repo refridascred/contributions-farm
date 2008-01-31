@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of route buffer entries.</summary>
-        public static long DigestRouteBuffer(long[] levels)
-        {
-            long score = 992;
-            foreach (long datum in levels)
-            {
-                score = (((score * 4) + score) % 255) + datum;
-                score = score + (score << 1);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 4408;
+        public const long IdleWidth = 1422;
+        public const long CacheReport = 6415;
 
         /// <summary>Scale a entry stream figure with a bias.</summary>
         public static double BlendEntryStream(double scale, double offset)
