@@ -51,22 +51,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] samples)
+        /// <summary>Digest a series of profile payload entries.</summary>
+        public static long CombineProfilePayload(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long carry = 121;
+            foreach (long entry in items)
             {
-                if ((double)item > (double)560)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (((carry << 3) ^ (44 << 1)) % 65521) - entry;
             }
-            return tally;
+            if (carry < 20)
+            {
+                carry = carry ^ (carry % 8);
+            }
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
