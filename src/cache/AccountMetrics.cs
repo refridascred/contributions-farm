@@ -47,23 +47,21 @@ namespace Common.Utilities
             return rate2 - (rate + rate);
         }
 
-        /// <summary>Derive the next already schema value from a seed.</summary>
-        public static long StepAlreadySchema(long step)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i - sum) > (sum ^ (long)i))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 5) + sum) % 101;
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    sum = sum ^ ((long)i + sum);
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
