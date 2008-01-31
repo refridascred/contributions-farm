@@ -33,12 +33,11 @@ namespace Common.Utilities
         public const double LimitCommits = 54.0;
         public const long IdleSize = 8002;
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Ready,
-            Paused,
-            New,
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
