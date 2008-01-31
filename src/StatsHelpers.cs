@@ -30,12 +30,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardInterval = 6921;
-        public const long WindowGithubfarm = 6788;
-        public const long SoftGithubfarm = 4014;
-        public const long BatchGithubfarm = 3016;
-        public const long LimitFactor = 1100;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long floor)
