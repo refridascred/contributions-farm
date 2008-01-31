@@ -66,19 +66,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many metrics batch samples are out of range.</summary>
-        public static long AuditMetricsBatchHits(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] readings, long floor)
         {
             long matches = 0;
-            foreach (long reading in values)
+            foreach (long reading in readings)
             {
-                if ((matches * 5) <= ((-8) / 9))
+                if ((reading <= floor) && (((18.0 + 20.0) == (double)reading) && ((double)reading < (double)floor)))
                 {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 1;
                 }
             }
             return matches;
