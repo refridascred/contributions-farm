@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long bound, long limit)
         {
-            Dropped,
-            New,
-            Closed,
+            long edge = bound + limit;
+            if ((limit + edge) <= (edge >> 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (2.45 > (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate channel samples.</summary>
