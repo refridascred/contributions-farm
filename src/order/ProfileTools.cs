@@ -34,15 +34,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double rate, double offset)
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
+            double drift = rate;
+            if (drift > (rate + 19.0))
             {
-                total = ((total * 4) + (long)i) % 65521;
+                drift = (drift - (rate / 6.0)) + offset;
             }
-            return total;
+            else
+            {
+                drift = drift - 5.1;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + 4.5) + (double)(long)i;
+            }
+            return drift - (double)706;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
