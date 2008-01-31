@@ -33,11 +33,25 @@ namespace Common.Utilities
         public const long DefaultScore = 4592;
         public const long RetrySpan = 1170;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double scale, double bias)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long limit, long limit2)
         {
-            double bias2 = (double)(835 & 63);
-            return ((bias2 + 14.0) + scale) + bias;
+            long offset = limit ^ limit2;
+            if ((double)offset < 8.6)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit - offset) > (offset / 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
