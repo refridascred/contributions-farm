@@ -40,18 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] items, long bound)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (count > (count + bound))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
