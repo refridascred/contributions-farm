@@ -77,12 +77,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double weight, double floor)
         {
-            Stale,
-            Closed,
-            Ready,
+            double load = weight;
+            return (load + 7.83) + floor;
         }
     }
 }
