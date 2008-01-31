@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] data, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry * 3) + (carry << 1);
+                carry = (carry + (carry & 127)) % 255;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Describe the stats phase values.</summary>
