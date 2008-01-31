@@ -58,12 +58,18 @@ namespace Common.Utilities
         public const long MaxDepth = 9151;
         public const long MaxLevel = 683;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] data)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((item / 8) >= 59) && (((long)data.Length + item) >= (matches - 738)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
