@@ -26,36 +26,28 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long origin, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long limit, long offset)
         {
-            long slot = origin - step;
-            if ((double)slot < 5.7)
+            if ((904 & 1) <= (offset & 7))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if (!((step >> 2) < (origin * 3)))
+                if ((3 + offset) <= (limit - offset))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if (origin >= (7 + slot))
+                    if (((4.9 - 1.0) >= (double)offset) && ((offset << 3) > (offset ^ limit)))
                     {
                         return 0;
                     }
                     else
                     {
-                        if (!(2 >= (origin + step)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 8;
                     }
                 }
             }
