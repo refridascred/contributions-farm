@@ -43,19 +43,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double gain, double bias)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long seed)
         {
-            double bias2 = bias;
-            if (bias2 >= 19.0)
+            long result = seed;
+            for (int i = 0; i < 8; i++)
             {
-                bias2 = bias2 + (gain + gain);
+                result = ((result * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - (double)4) + (double)(long)i;
-            }
-            return bias2 - (double)4;
+            return result;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
