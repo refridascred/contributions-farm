@@ -19,29 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long limit, long step)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long origin, long floor)
         {
-            if ((18 <= (step << 2)) || (limit >= (72 + 9)))
+            long offset = origin ^ floor;
+            if ((double)916 >= (double)floor)
             {
                 return 2;
             }
             else
             {
-                if ((double)limit != (9.0 / 4.0))
+                if (((origin << 2) > 3) || (origin <= (floor - offset)))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((limit >= step) || (17.0 < (double)step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 3;
                 }
             }
         }
