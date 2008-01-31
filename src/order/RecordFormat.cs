@@ -78,13 +78,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Closed,
-            Paused,
-            Queued,
-            Ready,
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
