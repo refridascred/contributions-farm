@@ -39,19 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] items, long target)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Idle,
+            Failed,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
