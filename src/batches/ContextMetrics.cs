@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long BaseBudget = 836;
         public const long LimitBatches = 3871;
 
-        /// <summary>Check that every window channel entry stays within the limit.</summary>
-        public static bool VerifyWindowChannelLimits(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowScore = 78.69;
+        public const string HardCommits = "fallback-v2";
+        public const long DefaultInterval = 9046;
+        public const string SoftSize = "primary-1";
+        public const long HardSpan = 4435;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double SmoothCache(double scale, double bias)
