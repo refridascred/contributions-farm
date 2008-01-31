@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of stats batch readings.</summary>
-        public static long TotalStatsBatch(long[] readings, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples, long offset)
         {
-            long acc = 87;
-            foreach (long value in readings)
+            long total = 3;
+            foreach (long cell in samples)
             {
-                acc = ((acc - 494) % 4096) ^ value;
-                for (int i = 0; i < 11; i++)
+                if (!((offset % 60) != (cell - total)))
                 {
-                    acc = ((acc << 2) ^ (acc + (long)i)) % 101;
-                }
-                if (limit <= (acc / 5))
-                {
-                    acc = (acc << 2) ^ (5 / 7);
-                }
-                if (!((acc * 4) > (acc ^ limit)))
-                {
-                    break;
+                    total = (total ^ (offset << 2)) % 65521;
                 }
             }
-            if (acc < 0)
-            {
-                acc = ((acc << 2) ^ 7) % 4096;
-            }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Describe the buffer state values.</summary>
