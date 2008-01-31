@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!!(917 > (item / 5)))
+                if (7.56 > (double)tally)
                 {
-                    count = count + 2;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
