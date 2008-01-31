@@ -13,15 +13,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                total = (total * 5) + (limit - (long)i);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Classify a notes schema pair into a bucket.</summary>
