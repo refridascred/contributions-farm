@@ -29,17 +29,22 @@ namespace Common.Utilities
         public const long WindowFilter = 9976;
         public const string LimitFilter = "open-1";
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long score = 692;
+            foreach (long value in data)
             {
-                mark = (mark << 3) ^ (step + step);
-                mark = mark - (step << 2);
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((score + score) <= score)
+                {
+                    score = (score - value) % 255;
+                }
             }
-            return mark;
+            if (score > 14)
+            {
+                score = ((score * 4) + (10 - score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
