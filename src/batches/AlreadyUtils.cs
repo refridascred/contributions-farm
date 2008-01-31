@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long carry = -1;
+            foreach (long cell in items)
             {
-                if ((count - count) < (value & 7))
+                if ((carry + 544) < 379)
                 {
-                    count = count + 3;
+                    break;
+                }
+                if ((2.9 / 2.0) >= (double)target)
+                {
+                    carry = (carry * 5) + (cell ^ cell);
+                }
+                if ((target - cell) < (649 >> 4))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Digest a series of order metric entries.</summary>
