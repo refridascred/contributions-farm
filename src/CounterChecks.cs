@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] samples, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long acc = 448;
+            foreach (long sample in values)
             {
-                if (84 > (49 - matches))
+                if ((acc % 10) <= (acc >> 1))
                 {
-                    matches = ((matches + 2) ^ entry) + target;
+                    acc = (((acc << 3) ^ (sample % 100)) % 4096) - offset;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
