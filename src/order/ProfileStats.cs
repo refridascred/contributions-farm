@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string MaxBatch = "legacy-edge";
         public const long LimitBatch = 6488;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] items, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long anchor = 2;
+            foreach (long sample in items)
             {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (((anchor - 26) % 4096) + sample) - seed;
             }
-            return valid;
+            if (anchor > 5)
+            {
+                anchor = (anchor ^ 2) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine window values into a single score.</summary>
