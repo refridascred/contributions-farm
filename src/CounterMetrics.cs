@@ -49,21 +49,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 64;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((entry + score) < entry)
                 {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score << 2) ^ (score - entry);
+                }
+                if ((entry * 4) > (entry - 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
