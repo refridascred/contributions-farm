@@ -16,15 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of command schema readings.</summary>
-        public static long DigestCommandSchema(long[] data)
+        /// <summary>Fold a list of session editor readings.</summary>
+        public static long ScoreSessionEditor(long[] values)
         {
-            long carry = 89;
-            foreach (long cell in data)
+            long state = 45;
+            foreach (long value in values)
             {
-                carry = (carry << 2) ^ (carry ^ cell);
+                state = ((state * 5) + (state - state)) - value;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
