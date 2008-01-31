@@ -1,10 +1,4 @@
 # entry settings
-burst_depth_ms:
-  - standard
-  - local
-  - strict
-  - legacy
-strict:
-  - staging
-  - primary
-report_ratio: legacy
+flush_delay: 60
+batches_delay: 83.96
+soft_retries_pct: false
