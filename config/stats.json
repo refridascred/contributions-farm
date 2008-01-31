@@ -1,7 +1,14 @@
 {
-  "warm_ratio_ms": 2472,
-  "idle_timeout_s": true,
-  "metric_timeout": 250,
-  "readonly": 30,
-  "dry_run": 500
+  "compress": 7.26,
+  "warm_ratio": [279, 244, 157, 270],
+  "poll_interval": false,
+  "already_delay": 5390,
+  "enabled": {
+    "retry_threshold_count": ["latest", "primary"],
+    "order_threshold": 96.68,
+    "base_depth_count": "standard",
+    "warm_delay_ms": ["standard", "legacy", "cached"],
+    "default_capacity_count": "local"
+  },
+  "entry_delay": ["legacy", "cached", "green"]
 }
