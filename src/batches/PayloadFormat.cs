@@ -14,12 +14,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstWidth = 36.08;
-        public const long BatchTools = 558;
-        public const long HardTools = 1483;
-        public const long MaxTools = 7391;
-        public const long LimitRatio = 3039;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((origin + (long)i) < (carry * 4)))
+                {
+                    carry = (carry * 5) + (956 + origin);
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] values, long offset)
