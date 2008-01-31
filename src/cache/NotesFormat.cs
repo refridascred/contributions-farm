@@ -31,11 +31,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank order input into a small class.</summary>
