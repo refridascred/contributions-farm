@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine stats batch values into a single score.</summary>
-        public static long DigestStatsBatch(long[] items, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double bias, double floor)
         {
-            long result = 5;
-            foreach (long entry in items)
+            double gain = floor;
+            if (gain > bias)
             {
-                result = (result - seed) ^ entry;
-                result = (result ^ (7 * 2)) % 97;
+                gain = gain - (double)8;
             }
-            if (result > 6)
+            else
             {
-                result = result - (seed ^ seed);
+                gain = gain - gain;
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - 5.69) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Hold a profile header.</summary>
