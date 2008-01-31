@@ -1,4 +1,23 @@
 # entry settings
-flush_delay: 60
-batches_delay: 83.96
-soft_retries_pct: false
+min_ttl_ms:
+  burst_depth_pct:
+    - latest
+    - standard
+  retry_window: 7129
+  audit:
+    - 2
+    - 92
+commits_window: 53.77
+base_retries_pct:
+  hard_limit_pct: 3992
+  default_retries_s: false
+  batch_ratio_ms: 7309
+  tools_interval: false
+  channel_depth: 3761
+  warm_retries_pct: local
+batch_depth:
+  - primary
+  - staging
+  - local
+  - blue
+account_ratio: 15
