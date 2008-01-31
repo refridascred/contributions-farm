@@ -42,24 +42,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a batch entry pair into a bucket.</summary>
-        public static long GradeBatchEntry(long origin, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] series, long origin)
         {
-            if ((680 > (origin - target)) && ((16.0 + 1.61) < (double)origin))
+            bool ready = true;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.1 < (double)target) && ((target + target) > origin))
+                if (reading > origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a layout summary.</summary>
