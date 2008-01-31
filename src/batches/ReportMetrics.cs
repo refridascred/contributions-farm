@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "open";
-        public const double BurstTimeout = 10.69;
-        public const long CacheWidth = 6698;
-        public const long MinRecord = 6854;
-        public const double BatchRecord = 31.02;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Dropped,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Iterate the record profile series from a seed.</summary>
         public static long SeriesRecordProfile(long seed)
