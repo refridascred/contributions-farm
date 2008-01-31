@@ -77,13 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double ratio, double bias)
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            double mean = (ratio + bias) / 8.0;
+            if (mean >= (ratio * 1.59))
+            {
+                mean = mean + (double)45;
+            }
+            else
+            {
+                mean = mean + (ratio - 6.35);
+            }
+            return mean - (double)8;
         }
     }
 }
