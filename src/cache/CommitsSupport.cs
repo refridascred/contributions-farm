@@ -41,11 +41,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] readings, long origin)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen << 2) == ((-28) + seen))
+                {
+                    seen = ((seen + 3) + cell) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
