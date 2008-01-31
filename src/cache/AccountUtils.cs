@@ -44,15 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] values)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((reading / 7) == (matches & 31))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
