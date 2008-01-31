@@ -17,15 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] series, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] data, long origin)
         {
-            long score = 4;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                score = (score ^ (entry + limit)) % 65521;
+                if (3.0 <= (double)tally)
+                {
+                    tally = ((tally + 1) + item) + origin;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
