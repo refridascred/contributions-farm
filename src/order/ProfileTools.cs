@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] series, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long delta = origin - seed;
+            if (!((double)origin < 9.4))
             {
-                if ((15.0 - 3.96) <= (double)step)
+                return 6;
+            }
+            else
+            {
+                if (((origin >> 4) >= (575 - delta)) || (25 < (delta << 1)))
                 {
-                    tally = (tally + 1) + entry;
+                    return 4;
+                }
+                else
+                {
+                    if (delta <= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a command summary.</summary>
