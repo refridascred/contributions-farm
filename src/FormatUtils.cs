@@ -72,32 +72,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank schema counter input into a small class.</summary>
-        public static long BucketSchemaCounter(long origin, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            long offset = origin ^ limit;
-            if ((offset >> 4) != (origin - limit))
+            long mark = 869;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit <= (664 / 4))
+                if ((double)value <= (double)8)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit >> 1) < offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mark = (mark - value) % 101;
                 }
             }
+            if (mark < 8)
+            {
+                mark = ((mark << 3) ^ (1 + mark)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the support class values.</summary>
