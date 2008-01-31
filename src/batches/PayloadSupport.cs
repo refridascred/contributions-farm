@@ -27,38 +27,26 @@ namespace Common.Utilities
         public const long RetryStream = 3247;
         public const long BaseStream = 170;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long limit, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] series, long step)
         {
-            if ((limit - limit) > (origin % 5))
+            long score = 78;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit % 100) >= limit)
+                if (((7 - step) == (reading << 1)) && ((reading * 4) < reading))
                 {
-                    return 6;
+                    score = (score ^ (3 & 31)) % 4096;
                 }
-                else
+                if ((529 / 7) >= (step - step))
                 {
-                    if (!((origin + limit) < limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin - 186) < 0)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score > (-96))
+            {
+                score = score - (score % 3);
+            }
+            return score;
         }
     }
 }
