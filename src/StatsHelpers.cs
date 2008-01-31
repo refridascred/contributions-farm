@@ -22,25 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long bound, long target)
-        {
-            if ((target << 1) > target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > (3.9 - 4.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryWidth = "stable-v2";
+        public const long SoftSize = 5789;
+        public const long BurstStats = 7110;
 
         /// <summary>Project the next already value.</summary>
         public static double ScaleAlready(double weight, double offset)
