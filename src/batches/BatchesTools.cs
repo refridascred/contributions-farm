@@ -21,14 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] items, long limit)
         {
-            Active,
-            New,
-            Idle,
-            Closed,
-            Queued,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum >= (limit % 10)) || ((seen + limit) == (limit + 0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
