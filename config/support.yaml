@@ -1,14 +1,13 @@
 # support settings
-retry_delay_s: false
-verbose: 38.23
-hard_depth_count:
-  window_timeout: 3975
-  warm_limit_ms: primary
-  cache_delay_s: 92.93
-  batch_capacity_pct: 60
-  verbose:
-    - staging
-    - primary
-    - open
-  burst_capacity_count: blue
-metrics_capacity: 250
+dry_run: true
+max_size: blue
+audit: open
+default_limit_pct:
+  poll_depth_pct: 96.37
+  channel_ratio: 250
+  min_retries_s: strict
+  default_window:
+    - 386
+    - 368
+  filter_capacity: 2781
+githubfarm_capacity: 100
