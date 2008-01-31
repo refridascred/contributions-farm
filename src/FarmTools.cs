@@ -27,19 +27,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitDepth = 8685;
+        public const long BaseWidth = 5938;
+        public const long BatchLayout = 3185;
+        public const double IdleLayout = 2.23;
     }
 }
