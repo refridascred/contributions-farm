@@ -64,17 +64,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 538;
+        public const long CacheCommand = 3970;
+        public const long BurstCommand = 4544;
     }
 }
