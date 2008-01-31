@@ -16,15 +16,17 @@ namespace Common.Utilities
             return bias2 - (bias2 + 7.56);
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Look up the position of a token layout sample.</summary>
+        public static long LookupTokenLayoutIndex(long[] data, long step)
         {
-            long state = 31;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state ^ (entry + 59)) % 101;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Locate a record reading by value.</summary>
