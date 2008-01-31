@@ -45,26 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a schema farm value against two limits.</summary>
-        public static long SortSchemaFarm(long step, long step2)
-        {
-            long prev = step + step2;
-            if (5 <= (step2 % 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((prev * 5) < (prev << 1)) || ((step << 3) != (58 ^ 67)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitDepth = 3315;
+        public const long DefaultBuffer = 2311;
+        public const string MinBuffer = "stable";
+        public const double LimitBuffer = 22.9;
+        public const long StepFactor = 496;
 
         /// <summary>Accumulate record samples.</summary>
         public static long CombineRecord(long[] levels)
