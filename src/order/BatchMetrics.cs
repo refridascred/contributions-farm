@@ -19,13 +19,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double scale, double offset)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            double rate = 4.54;
+            return (rate + offset) + scale;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
