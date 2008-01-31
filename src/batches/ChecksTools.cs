@@ -53,21 +53,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 7;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((9.9 + 4.2) > (double)acc)
                 {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc ^ acc) + cell;
+                }
+                else
+                {
+                    acc = acc ^ (acc + 9);
                 }
             }
-            return seen;
+            if (acc > 26)
+            {
+                acc = (acc - (acc ^ acc)) % 65521;
+            }
+            return acc;
         }
     }
 }
