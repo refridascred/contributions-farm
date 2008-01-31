@@ -20,21 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 809;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((target + target) == (mark + sample)) || ((mark - sample) > target))
                 {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark - (target / 6)) % 1000;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ mark;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
