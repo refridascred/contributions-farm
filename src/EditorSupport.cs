@@ -87,18 +87,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] readings, long origin)
+        /// <summary>Compare every pair of commits cache readings.</summary>
+        public static long OverlapCommitsCacheCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((double)value <= (0.61 * 9.24)) || (value < seen)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) + origin;
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
