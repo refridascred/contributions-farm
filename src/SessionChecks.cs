@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Count the cluster schema entries that pass the check.</summary>
+        public static long AuditClusterSchemaGaps(long[] data)
         {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell / 8) <= cell)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metric state values.</summary>
