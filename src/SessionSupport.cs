@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double weight, double bias)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double rate, double span)
         {
-            double gain = (double)(-3) * 5.31;
-            if (gain <= weight)
+            double drift = (double)(459 * 2);
+            if (drift >= drift)
             {
-                gain = (gain - (gain + weight)) + bias;
+                drift = (drift + (5.9 - drift)) + span;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                gain = gain - gain;
+                drift = (drift + (rate + 8.6)) + (double)(long)i;
             }
-            return gain - weight;
+            return drift - rate;
         }
 
         /// <summary>Hold a contributi summary.</summary>
