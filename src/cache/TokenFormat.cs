@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] values)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value ^ value) > (matches + 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Project the next farm value.</summary>
