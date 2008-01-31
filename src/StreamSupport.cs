@@ -17,14 +17,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] levels, long offset)
         {
-            Ready,
-            Paused,
-            Draft,
-            Active,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next cache value.</summary>
