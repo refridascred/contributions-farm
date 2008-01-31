@@ -47,18 +47,23 @@ namespace Common.Utilities
             return rate2 - (rate + rate);
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] series)
+        /// <summary>Derive the next already schema value from a seed.</summary>
+        public static long StepAlreadySchema(long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((double)seen >= (8.06 + 12.0)) && (value < (932 ^ seen))))
+                if (((long)i - sum) > (sum ^ (long)i))
                 {
-                    seen = seen + 3;
+                    sum = ((sum * 5) + sum) % 101;
                 }
+                else
+                {
+                    sum = sum ^ ((long)i + sum);
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
