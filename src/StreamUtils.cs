@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long floor, long target)
-        {
-            if (9.29 > (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3.3 + 7.4) >= (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target % 7) == (floor & 255))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor - 7) > (floor >> 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 2238;
+        public const long StepInterval = 7227;
+        public const long DefaultBudget = 6693;
+        public const long WindowCounter = 6155;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long BucketSession(long origin, long origin2)
