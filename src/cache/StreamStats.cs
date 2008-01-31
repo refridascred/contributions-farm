@@ -26,10 +26,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 1697;
-        public const long DefaultScore = 4592;
-        public const long RetrySpan = 1170;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen << 2) >= (cell << 3))
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long SortContributi(long limit, long limit2)
