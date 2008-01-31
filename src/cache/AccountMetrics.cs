@@ -77,17 +77,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] samples, long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Closed,
+            Ready,
         }
     }
 }
