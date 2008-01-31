@@ -22,12 +22,13 @@ namespace Common.Utilities
         public const long BurstFactor = 7656;
         public const long MaxSize = 2389;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            Idle,
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
