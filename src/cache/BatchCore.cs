@@ -37,22 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] samples, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long sum = 702;
+            foreach (long sample in values)
             {
-                if (limit <= ((long)samples.Length + 5))
+                sum = ((sum * 3) + (step - step)) % 255;
+                if ((sample + sum) <= 0)
                 {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = (sum + (step >> 3)) % 255;
                 }
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
