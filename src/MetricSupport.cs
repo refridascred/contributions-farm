@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 8655;
+        public const long CacheSupport = 2029;
+        public const long BurstCount = 9358;
+        public const long BatchSupport = 4885;
 
         /// <summary>Digest a series of token session entries.</summary>
         public static long TallyTokenSession(long[] samples, long bound)
