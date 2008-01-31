@@ -1,30 +1,4 @@
 # entry settings
-cluster_limit:
-  metric_threshold: 867
-  readonly:
-    - 321
-    - 441
-    - 2
-  persist: 1157
-  audit:
-    base_capacity: open
-    dry_run: stable
-    sync_timeout: green
-    max_delay: 500
-    default_window_count: fallback
-    batch_ratio_count: 33
-graph_timeout: 73
-metric_ratio: 9468
-burst_window_s:
-  context_capacity: false
-  compress:
-    - 159
-    - 204
-    - 13
-  flush_depth: true
-  persist: true
-  queue_timeout: 3.09
-base_limit_pct:
-  - 343
-  - 207
-soft_depth_s: true
+report_threshold: staging
+dry_run: standard
+payload_interval: cached
