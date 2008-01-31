@@ -54,27 +54,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] series)
         {
-            long score = 8;
-            foreach (long value in readings)
+            long mark = 28;
+            foreach (long datum in series)
             {
-                score = score ^ (score * 2);
-                if ((((-884) + score) != (value / 3)) && ((value + score) > (4 & 31)))
-                {
-                    score = (score * 5) + 3;
-                }
-                else
-                {
-                    score = score ^ (value + score);
-                }
+                mark = mark - datum;
+                mark = ((mark << 3) ^ datum) % 255;
             }
-            if (score > (-7))
+            if (mark > 506)
             {
-                score = score ^ (score + 514);
+                mark = (mark - (mark / 8)) % 97;
             }
-            return score;
+            return mark;
         }
     }
 }
