@@ -1,7 +1,6 @@
 {
-  "hard_timeout": 65.71,
-  "buffer_threshold": "cached",
-  "strict": "cached",
-  "batch_size": 8623,
-  "warm_limit_pct": false
+  "cache_threshold": ["primary", "open", "strict", "strict"],
+  "queue_limit": true,
+  "dry_run": false,
+  "retry_depth_s": 70.41
 }
