@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (7.56 > (double)tally)
+                if (item >= bound)
                 {
-                    tally = (tally + 1) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
