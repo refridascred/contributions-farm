@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine session githubfarm values into a single score.</summary>
-        public static long TallySessionGithubfarm(long[] readings)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long limit)
         {
-            long carry = 828;
-            foreach (long datum in readings)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = (carry - 0) - (long)i;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = (((carry << 2) ^ carry) % 4096) - (long)i2;
-                }
-                if ((datum ^ datum) > (datum >> 1))
-                {
-                    carry = carry ^ (carry ^ carry);
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (carry > 603)
-            {
-                carry = (carry << 3) ^ (carry + 349);
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Describe the counter level values.</summary>
