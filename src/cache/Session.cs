@@ -26,12 +26,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] series, long origin)
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up record buffer samples.</summary>
