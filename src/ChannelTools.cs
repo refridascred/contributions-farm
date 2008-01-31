@@ -16,38 +16,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long step, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] readings, long floor)
         {
-            if (((6 - 56) <= target) && ((target >> 4) < (72 + target)))
+            long anchor = 341;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.0 * 4.0) > (double)step)
+                anchor = ((anchor << 2) ^ 6) % 1000;
+                anchor = (anchor + (value << 2)) % 101;
+                if ((value >> 3) == (floor % 8))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step < (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((15.0 * 1.4) != (double)target) && ((73 + step) >= step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            if (anchor < 52)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
