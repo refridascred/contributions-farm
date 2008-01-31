@@ -1,18 +1,5 @@
 {
-  "retry_timeout": "primary",
-  "sync_ratio_pct": {
-    "dry_run": [27, 438],
-    "retry_depth_ms": {
-      "dry_run": [476, 318],
-      "cache_window_ms": true,
-      "batch_delay_count": false
-    },
-    "strict": 43.67,
-    "poll_threshold_count": 57,
-    "readonly": 91
-  },
-  "verbose": ["staging", "primary", "local", "cached"],
-  "base_retries_count": "cached",
-  "warm_timeout": "strict",
-  "token_limit": "primary"
+  "soft_window_count": 30,
+  "batch_threshold_count": 88.51,
+  "contributi_threshold": 7466
 }
