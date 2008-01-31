@@ -50,13 +50,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Locate a session report reading by value.</summary>
+        public static long LocateSessionReportIndex(long[] items, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
