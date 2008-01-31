@@ -26,18 +26,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] levels, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long result = 846;
+            foreach (long sample in values)
             {
-                if ((seen << 2) >= (cell << 3))
+                result = result - (975 - result);
+                result = (result + 1) % 65521;
+                if (((double)sample >= 9.17) && ((double)sample < (8.5 / 2.0)))
                 {
-                    seen = (seen + 3) + seed;
+                    result = (result + result) % 255;
+                }
+                else
+                {
+                    result = result ^ (result >> 2);
                 }
             }
-            return seen;
+            if (result < 510)
+            {
+                result = ((result << 2) ^ (result << 2)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
