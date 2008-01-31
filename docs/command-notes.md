@@ -1,15 +1,15 @@
 # Command notes
 
-Run the window check before changing any stats limits.
-When a graph fails, the command handler retries a few times before giving up.
-Keep contributi and filter names short and lowercase.
+Each profile is validated before it reaches the checks queue.
+Use context settings to tune how often stream data is refreshed.
+Run the account check before changing any account limits.
 
-A stream that stays idle for too long is moved to the buffer list.
-The channel module keeps metrics values in sync with the channel cache.
+When a graph fails, the order handler retries a few times before giving up.
+Defaults for metric live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Log every editor change
-- Review contributi limits each release
-- Keep order values small
-- Prefer window defaults
+- Document new batch fields
+- Keep contributi values small
+- Validate notes input early
