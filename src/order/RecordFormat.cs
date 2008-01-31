@@ -35,20 +35,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Rank counter cluster input into a small class.</summary>
+        public static long BucketCounterCluster(long bound, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long next = bound + limit;
+            if (next <= (next + bound))
             {
-                if ((4.72 + 3.0) < (double)seed)
-                {
-                    sum = ((sum * 3) + (sum * 2)) % 65521;
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((double)next >= 2.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit >= (13.0 + 2.93))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of profile payload entries.</summary>
