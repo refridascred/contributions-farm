@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitInterval = 2.68;
-        public const long MinBudget = 2108;
-        public const long BaseSpan = 7398;
-        public const string DefaultAlready = "standard-1";
-        public const string SoftAlready = "open";
+        /// <summary>Look up the position of a contributi format sample.</summary>
+        public static long SeekContributiFormatIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count token schema pairs that satisfy a relation.</summary>
         public static long CompareTokenSchemaCount(long[] readings)
