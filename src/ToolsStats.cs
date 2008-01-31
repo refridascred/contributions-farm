@@ -83,17 +83,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] readings, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double scale, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale2 = bias;
+            return (scale2 + (scale2 * 2.8)) + scale;
         }
 
         /// <summary>Hold a queue info.</summary>
