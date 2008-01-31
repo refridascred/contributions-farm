@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] samples, long target)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double bias, double bias2)
         {
-            long result = 5;
-            foreach (long sample in samples)
+            double mean = 3.1 - (bias * 20.0);
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)target <= 17.0)
-                {
-                    result = ((result ^ (target % 24)) % 1000) - sample;
-                }
+                mean = ((mean - 7.6) + (double)(long)i) + bias2;
             }
-            return result % 97;
+            return mean + (mean * 12.0);
         }
 
         /// <summary>Check that every record queue entry stays within the limit.</summary>
