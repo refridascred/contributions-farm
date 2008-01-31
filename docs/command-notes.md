@@ -1,10 +1,12 @@
 # Command notes
 
-The batches report groups every session by batch.
-A profile that stays idle for too long is moved to the support list.
+The account report groups every command by report.
+The format module keeps payload values in sync with the filter cache.
+Each notes is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Prefer context defaults
-- Document new farm fields
-- Review checks limits each release
+- Document new cluster fields
+- Log every editor change
+- Review support limits each release
+- Validate buffer input early
