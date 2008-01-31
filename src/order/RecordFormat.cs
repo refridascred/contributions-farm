@@ -34,18 +34,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a payload metric sample.</summary>
-        public static long LocatePayloadMetricIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstFactor = 7322;
+        public const long DefaultBudget = 9663;
+        public const string CacheCluster = "fallback-edge";
+        public const long WindowFactor = 2469;
 
         /// <summary>Count the tools cluster entries that pass the check.</summary>
         public static long TallyToolsClusterMatches(long[] values)
