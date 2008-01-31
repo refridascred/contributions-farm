@@ -15,23 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next commits batch value.</summary>
-        public static double SmoothCommitsBatch(double rate, double bias)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double mean = 7.0;
-            if (mean < mean)
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean - (mean - rate);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (4.82 + 9.0)) - (double)(long)i;
-            }
-            return mean - (bias / 5.0);
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Blend two filter measurements.</summary>
