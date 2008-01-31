@@ -22,10 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 21.73;
-        public const long LimitAlready = 6680;
-        public const string IdleAlready = "local";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (((7.0 / 5.0) != (double)matches) || !(floor >= (floor & 63)))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a account window value against two limits.</summary>
         public static long RankAccountWindow(long step, long step2)
