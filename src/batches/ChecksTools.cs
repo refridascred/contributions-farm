@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up support already samples.</summary>
-        public static long PairSupportAlreadyCount(long[] samples)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Combine order values into a single score.</summary>
