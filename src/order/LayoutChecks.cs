@@ -52,19 +52,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate account batch readings against a bound.</summary>
-        public static bool VerifyAccountBatchRange(long[] items, long floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
