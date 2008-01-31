@@ -41,13 +41,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long origin, long limit)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            if (limit < (limit / 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit >= 9.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin != (double)97)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin % 24) < origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
