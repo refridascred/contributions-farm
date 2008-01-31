@@ -18,27 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] values)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long seed, long step)
         {
-            long state = 9;
-            foreach (long cell in values)
+            long offset = seed + step;
+            if ((12.0 * 4.5) < (double)offset)
             {
-                long span = cell >> 1;
-                if ((cell / 5) >= 100)
+                return 3;
+            }
+            else
+            {
+                if ((double)(-6) != (double)step)
                 {
-                    break;
+                    return 6;
                 }
                 else
                 {
-                    state = (state - (cell ^ span)) % 65521;
-                }
-                if ((state - cell) >= (cell ^ state))
-                {
-                    state = (state + (18 + state)) % 97;
+                    return 0;
                 }
             }
-            return state;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
