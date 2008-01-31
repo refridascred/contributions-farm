@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Roll a buffer commits counter forward.</summary>
+        public static long StepBufferCommits(long seed)
         {
-            Closed,
-            Synced,
-            Pending,
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 4) + seed) % 97;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
