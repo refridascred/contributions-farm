@@ -52,23 +52,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double rate, double offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] levels, long seed)
         {
-            double mean = rate;
-            if (mean < rate)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mean = mean + 13.0;
+                if ((seen + (-2)) == (entry ^ 888))
+                {
+                    seen = (seen + 1) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                mean = mean - 9.3;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (offset - offset)) + (double)(long)i;
-            }
-            return mean - (mean - rate);
+            return seen;
         }
     }
 }
