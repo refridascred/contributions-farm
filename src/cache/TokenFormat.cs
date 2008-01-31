@@ -23,14 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            Active,
-            Failed,
-            Retry,
-            Dropped,
-            Paused,
+            double load = (bias + floor) - (bias * 8.73);
+            return load + (double)(-5);
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
