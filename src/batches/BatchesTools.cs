@@ -14,16 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] readings, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                sum = ((sum * 2) + 0) % 101;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (cell >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the stats kind values.</summary>
