@@ -33,12 +33,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 9173;
-        public const string CacheLevel = "staging-1";
-        public const double HardSize = 85.94;
-        public const long IdleCount = 9827;
-        public const string DefaultCache = "cached";
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] items)
+        {
+            long state = 607;
+            foreach (long value in items)
+            {
+                if ((state * 4) < value)
+                {
+                    state = (state << 3) ^ (value + value);
+                    state = ((state << 3) ^ (-77)) % 4096;
+                    break;
+                }
+                if ((value << 2) != (value - (-3)))
+                {
+                    state = ((state * 2) + (value - 8)) % 255;
+                }
+                else
+                {
+                    state = (state * 5) + (state - value);
+                }
+            }
+            if (state > 48)
+            {
+                state = ((state * 4) + state) % 65521;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheRoute = 4482;
