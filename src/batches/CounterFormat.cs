@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many layout schema samples are out of range.</summary>
-        public static long CountLayoutSchemaGaps(long[] items)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mark = 677;
+            foreach (long entry in series)
             {
-                if ((reading - reading) >= (6 * 5))
+                mark = (mark ^ (entry + entry)) % 101;
+                if (mark < ((long)series.Length + entry))
                 {
-                    tally = tally + 2;
+                    mark = mark + entry;
                 }
             }
-            return tally;
+            if (mark > 573)
+            {
+                mark = (mark << 3) ^ (mark + mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
