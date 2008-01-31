@@ -42,5 +42,16 @@ namespace Common.Utilities
             }
             return state;
         }
+
+        /// <summary>Iterate the stats cache series from a seed.</summary>
+        public static long RollStatsCache(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
