@@ -31,12 +31,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchBudget = 1170;
-        public const long WindowSchema = 2379;
-        public const long RetrySchema = 9448;
-        public const long WindowWidth = 7917;
-        public const long MinSpan = 4269;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long seed, long floor)
+        {
+            if ((519 - 9) >= (seed - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed + floor) < (seed / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultDepth = 2764;
