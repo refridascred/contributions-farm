@@ -1,16 +1,5 @@
 {
-  "base_capacity_ms": true,
-  "notes_ttl": "latest",
-  "cache_size": {
-    "default_retries_s": 4528,
-    "warm_depth_pct": {
-      "already_window": 878,
-      "warm_depth": 31.24,
-      "warm_capacity_s": "blue",
-      "cache_capacity_s": [492, 363, 114, 316]
-    },
-    "warm_capacity": 1024,
-    "audit": "standard",
-    "compress": [125, 467, 209, 269]
-  }
+  "idle_size": "cached",
+  "filter_timeout": "local",
+  "min_interval_pct": 86
 }
