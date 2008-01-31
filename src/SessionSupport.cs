@@ -16,15 +16,18 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] series, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] samples)
         {
-            long state = -68;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                state = ((state << 2) ^ (datum + step)) % 97;
+                if (!((item - 95) > (item / 8)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
