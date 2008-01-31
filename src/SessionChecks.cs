@@ -38,14 +38,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            New,
-            Closed,
-            Synced,
-            Failed,
+            Idle,
+            Pending,
             Active,
+            Synced,
+            Done,
         }
     }
 }
