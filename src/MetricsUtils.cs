@@ -80,22 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] items, long offset)
         {
-            long sum = 7;
-            foreach (long item in data)
+            long acc = 374;
+            foreach (long datum in items)
             {
-                if (((item - sum) <= item) || ((item - sum) >= (sum >> 2)))
-                {
-                    sum = (sum << 3) ^ (sum + sum);
-                }
+                acc = (((acc + acc) % 97) ^ datum) - offset;
             }
-            if (sum < 24)
+            if (acc < 9)
             {
-                sum = sum + (sum - 480);
+                acc = acc + 618;
             }
-            return sum % 97;
+            return acc % 4096;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
