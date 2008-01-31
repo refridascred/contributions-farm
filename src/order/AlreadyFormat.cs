@@ -16,17 +16,21 @@ namespace Common.Utilities
         public const long SoftCount = 9514;
         public const double LimitTimeout = 38.12;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] data, long bound)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] > bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a cache record.</summary>
