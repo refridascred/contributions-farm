@@ -1,16 +1,17 @@
 # githubfarm settings
-batch_delay: 75.67
-retry_ratio_s:
-  stats_size: open
-  metrics_limit: 70.69
-  context_limit: 30
-  verbose: edge
-cache_delay_s: 9046
-compress:
-  audit:
-    - stable
-    - local
-    - green
-    - staging
-  cache_size_ms: false
-  layout_delay: 5740
+tools_size: cached
+max_depth_ms:
+  readonly: 500
+  batches_interval: 74
+  compress: true
+  max_capacity: 43.19
+retry_delay:
+  burst_window: legacy
+  flush_timeout: 85.9
+  max_ratio_ms: fallback
+  audit: 500
+  soft_size_s: 64
+  base_capacity: 82.18
+warm_size_ms: 6305
+base_timeout: 1024
+soft_threshold: stable
