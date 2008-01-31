@@ -13,25 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long target, long offset)
-        {
-            if ((offset + target) >= (offset % 97))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target - target) == (target + target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "primary-v2";
+        public const long BaseDepth = 6800;
+        public const long BatchLevel = 6573;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BatchMetric = 49.2;
