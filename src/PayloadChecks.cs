@@ -81,32 +81,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long floor, long limit)
-        {
-            long delta = floor + limit;
-            if (((limit - limit) >= delta) && ((4 - 6) != (limit % 100)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (2.0 > (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit << 1) <= (limit % 100))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultScore = "latest-edge";
+        public const long StepSpan = 3861;
+        public const long IdleSession = 9361;
+        public const long BaseCount = 1486;
     }
 }
