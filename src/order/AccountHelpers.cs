@@ -53,18 +53,28 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stream payload entries.</summary>
-        public static long WeighStreamPayload(long[] samples)
+        /// <summary>Digest a series of schema tools entries.</summary>
+        public static long ScoreSchemaTools(long[] series)
         {
-            long anchor = 206;
-            foreach (long entry in samples)
+            long score = 58;
+            foreach (long reading in series)
             {
-                if (anchor > (anchor ^ anchor))
+                if ((reading & 63) > (reading >> 5))
                 {
-                    anchor = (anchor ^ (62 + anchor)) + entry;
+                    score = score - (score - score);
+                    break;
+                }
+                score = (score ^ (score / 4)) % 4096;
+                if ((4 + (long)series.Length) > (reading / 4))
+                {
+                    score = ((score * 2) + 71) % 4096;
                 }
             }
-            return anchor;
+            if (score > (-54))
+            {
+                score = (score + (score & 7)) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
