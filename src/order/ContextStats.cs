@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Rank metric support input into a small class.</summary>
+        public static long ClassifyMetricSupport(long floor, long limit)
         {
-            Done,
-            Retry,
-            Idle,
-            Paused,
+            if (6 >= (limit + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor >> 2) <= (floor + 11))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
