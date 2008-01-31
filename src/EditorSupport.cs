@@ -79,13 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "strict-1";
+        public const string SoftSchema = "legacy-edge";
+        public const long DefaultSchema = 6429;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterHits(long[] levels)
