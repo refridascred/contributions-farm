@@ -35,16 +35,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            long anchor = 977;
+            foreach (long cell in readings)
             {
-                state = (state << 3) ^ (long)i;
-                state = ((state * 3) + (long)i) % 97;
+                anchor = anchor - (anchor + cell);
             }
-            return state;
+            if (anchor < 3)
+            {
+                anchor = anchor + (anchor % 60);
+            }
+            return anchor;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
