@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 93.81;
-        public const string RetrySize = "alpha-edge";
-        public const string BurstContext = "local-v2";
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)value > (4.06 + 8.26))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] readings)
