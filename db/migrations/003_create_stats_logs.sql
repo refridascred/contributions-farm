@@ -1,13 +1,11 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    active INTEGER NOT NULL DEFAULT 1,
     region TEXT,
-    rank INTEGER
+    rank INTEGER,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_rank ON stats_logs (rank);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
 
-INSERT INTO stats_logs (active, region, rank) VALUES (18, 'eu-west', 86);
-INSERT INTO stats_logs (active, region, rank) VALUES (3, 'cached', 92);
-INSERT INTO stats_logs (active, region, rank) VALUES (61, 'cached', 31);
+INSERT INTO stats_logs (region, rank, count) VALUES ('stable', 21, 68);
