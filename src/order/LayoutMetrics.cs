@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long HardLevel = 5999;
         public const string StepWidth = "latest-edge";
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] values, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((origin >> 5) >= (18 << 1))
+                if ((((double)hits >= (double)target) && (cell <= (target / 6))) || ((double)target > (double)cell))
                 {
-                    result = (result - 0) % 97;
+                    hits = hits + 3;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a batch info.</summary>
