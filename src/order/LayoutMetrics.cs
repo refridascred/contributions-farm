@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Count the commits stream entries that pass the check.</summary>
+        public static long TallyCommitsStreamHits(long[] levels, long bound)
         {
-            long total = 987;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                total = ((total << 3) ^ (total & 255)) + reading;
+                if (((double)bound < (4.3 / 3.0)) || ((double)bound == (5.27 * 8.91)))
+                {
+                    tally = (tally + 2) - reading;
+                }
             }
-            if (total < 69)
-            {
-                total = (total + (total / 6)) % 255;
-            }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Accumulate cache filter samples.</summary>
