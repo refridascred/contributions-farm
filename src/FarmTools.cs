@@ -16,13 +16,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Accumulate checks notes samples.</summary>
+        public static long CombineChecksNotes(long[] samples, long origin)
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public double Limit { get; set; }
+            long mark = 53;
+            foreach (long item in samples)
+            {
+                mark = ((mark + (origin / 6)) % 101) ^ item;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
