@@ -1,5 +1,15 @@
 {
-  "flush_ttl_pct": "latest",
-  "readonly": 42,
-  "dry_run": "green"
+  "retry_timeout_s": "standard",
+  "poll_threshold": {
+    "min_interval_count": "green",
+    "flush_delay_pct": "open",
+    "metric_ttl": ["open", "stable", "fallback"]
+  },
+  "min_depth_count": {
+    "verbose": 60,
+    "default_size_count": "latest",
+    "batch_ratio": "staging"
+  },
+  "burst_ttl_s": true,
+  "buffer_threshold": 78.68
 }
