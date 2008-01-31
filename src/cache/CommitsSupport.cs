@@ -23,22 +23,10 @@ namespace Common.Utilities
             return bias - (offset * 8.93);
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 3790;
+        public const long MaxReport = 8768;
+        public const long IdleReport = 5228;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string MaxTimeout = "primary-1";
