@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] samples, long origin)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            long state = 1;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 4) + (state + item)) % 4096;
-                if (((item << 3) > (946 % 10)) || ((double)origin >= (double)state))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state ^ (item * 2)) % 101;
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Describe the payload phase values.</summary>
