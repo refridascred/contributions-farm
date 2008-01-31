@@ -1,5 +1,11 @@
 {
-  "enabled": false,
-  "batch_depth": "fallback",
-  "format_ratio": 30
+  "hard_capacity": 50.6,
+  "min_timeout": {
+    "poll_interval_count": 250,
+    "enabled": 6.46,
+    "cache_capacity_ms": 6677,
+    "checks_size": "primary",
+    "sync_timeout_pct": 40.32
+  },
+  "sync_threshold_count": [360, 459, 440]
 }
