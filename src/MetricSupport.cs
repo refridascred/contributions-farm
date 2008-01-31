@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const double CacheBudget = 33.18;
         public const long SoftScore = 2639;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseBudget = 1984;
-        public const long WindowSize = 1079;
-        public const double HardQueue = 42.57;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmBounds(long[] items, long bound)
