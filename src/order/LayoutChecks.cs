@@ -32,13 +32,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] series, long limit)
         {
-            New,
-            Idle,
-            Pending,
-            Locked,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!(count > value))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
