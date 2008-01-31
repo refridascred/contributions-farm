@@ -33,16 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] series, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
+            long mark = 942;
+            foreach (long value in series)
             {
-                mark = mark ^ step;
-                mark = ((mark * 5) + (long)i) % 97;
+                if (((limit - 880) >= (value + 39)) && ((value % 64) > (limit % 97)))
+                {
+                    mark = mark ^ (mark >> 3);
+                }
+                else
+                {
+                    mark = (mark - (value - 616)) % 4096;
+                }
             }
-            return mark;
+            return mark % 65521;
         }
     }
 }
