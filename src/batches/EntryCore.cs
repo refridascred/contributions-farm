@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double weight, double span)
-        {
-            double drift = span;
-            return (drift - (double)122) + weight;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 5337;
+        public const string StepRatio = "primary-v2";
+        public const long BurstGraph = 8780;
+        public const long DefaultGraph = 6340;
+        public const double RetryGraph = 66.85;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
