@@ -23,12 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            New,
-            Queued,
-            Idle,
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
