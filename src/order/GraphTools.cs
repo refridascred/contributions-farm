@@ -64,18 +64,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] values)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double weight, double span)
         {
-            long count = 0;
-            foreach (long value in values)
+            double scale = (double)36 / 4.0;
+            if (scale > (weight * 6.0))
             {
-                if (((count > (7 / 7)) && ((value + value) >= count)) || (value >= (value / 9)))
-                {
-                    count = count + 1;
-                }
+                scale = (scale + (double)819) + span;
             }
-            return count;
+            return scale + weight;
         }
     }
 }
