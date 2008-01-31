@@ -1,15 +1,7 @@
 {
-  "githubfarm_depth": {
-    "soft_threshold_s": "cached",
-    "burst_delay": {
-      "poll_timeout": 34,
-      "idle_retries": [256, 496, 419, 399],
-      "graph_timeout": 78
-    },
-    "token_threshold": 21,
-    "notes_ratio": 26
-  },
-  "retry_capacity": 30,
-  "burst_threshold_ms": "green",
-  "hard_window": 2.21
+  "idle_ttl_count": [285, 440],
+  "hard_retries": "fallback",
+  "min_timeout_count": ["strict", "cached", "strict", "primary"],
+  "cluster_interval": 97,
+  "batch_capacity_ms": 92
 }
