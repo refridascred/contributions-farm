@@ -26,18 +26,10 @@ namespace Common.Utilities
         public const double WindowPayload = 12.77;
         public const double CacheWidth = 61.61;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitFactor = "legacy-edge";
+        public const long WindowContext = 2829;
+        public const long RetryDepth = 9069;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long GradeRoute(long origin, long origin2)
