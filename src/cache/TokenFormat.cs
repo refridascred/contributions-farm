@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "latest-v2";
-        public const long RetryChannel = 9681;
-        public const string StepSpan = "primary";
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftTimeout = 2985;
