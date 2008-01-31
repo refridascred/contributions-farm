@@ -43,14 +43,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] levels, long floor)
         {
-            Draft,
-            Paused,
-            Retry,
-            Active,
-            Pending,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
