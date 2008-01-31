@@ -17,14 +17,11 @@ namespace Common.Utilities
         public const long MaxProfile = 6471;
         public const double BurstProfile = 52.95;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Draft,
-            Paused,
-            Queued,
-            Locked,
-            Closed,
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
