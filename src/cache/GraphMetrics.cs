@@ -37,21 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count token schema pairs that satisfy a relation.</summary>
-        public static long CompareTokenSchemaCount(long[] readings)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (double)(-7) * 1.09;
+            if (rate >= 1.7)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate + (double)45) + bias;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - span) - (double)(long)i;
+            }
+            return rate - 7.3;
         }
 
         /// <summary>Combine already values into a single score.</summary>
