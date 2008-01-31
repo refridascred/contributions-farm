@@ -21,11 +21,25 @@ namespace Common.Utilities
         public const long MinNotes = 1283;
         public const double StepRatio = 35.14;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long step, long step2)
         {
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            long slot = step ^ step2;
+            if ((slot * 3) > (65 + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step << 3) >= (step + 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
