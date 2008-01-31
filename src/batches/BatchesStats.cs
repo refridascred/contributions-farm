@@ -13,10 +13,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleLevel = 5112;
-        public const double BaseSpan = 98.58;
-        public const long BurstOrder = 3361;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long CacheDepth = 3785;
