@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Pending,
-            Paused,
-            Failed,
-            New,
-            Locked,
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
