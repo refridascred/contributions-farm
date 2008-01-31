@@ -58,19 +58,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long step, long target)
         {
-            long mark = 5;
-            foreach (long sample in readings)
+            if ((8.58 + 4.47) > (double)target)
             {
-                mark = (mark - (sample << 1)) % 1000;
+                return 6;
             }
-            if (mark < 58)
+            else
             {
-                mark = (mark ^ (mark % 60)) % 65521;
+                if (41 < (step + step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target / 3) != (step - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mark % 65521;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
