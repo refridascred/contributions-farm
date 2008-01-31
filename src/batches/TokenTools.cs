@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long origin)
+        /// <summary>Digest a series of schema route entries.</summary>
+        public static long TallySchemaRoute(long[] values, long step)
         {
-            if ((origin % 8) >= seed)
+            long result = 7;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((79 ^ origin) >= 15)
+                if ((6.0 * 8.6) == (double)step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    result = (result - (result ^ entry)) % 65521;
                 }
             }
+            return result;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
