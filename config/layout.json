@@ -1,15 +1,7 @@
 {
-  "metrics_capacity": {
-    "warm_limit_pct": "legacy",
-    "soft_timeout_count": 100,
-    "batch_timeout_count": [346, 90, 365, 477],
-    "enabled": 9840,
-    "idle_interval_ms": "open",
-    "command_threshold": ["local", "cached", "primary"]
-  },
-  "audit": 1024,
-  "burst_retries": [55, 274, 85],
-  "soft_limit_pct": 13,
-  "flush_threshold": 86.07,
-  "poll_threshold_ms": "latest"
+  "burst_capacity_count": "cached",
+  "burst_ratio_ms": "green",
+  "filter_timeout": "edge",
+  "record_ratio": "stable",
+  "queue_retries": 51.87
 }
