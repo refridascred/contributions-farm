@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile format pair into a bucket.</summary>
-        public static long GradeProfileFormat(long step, long target)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long offset, long target)
         {
-            if ((step << 2) <= target)
+            if ((target ^ offset) < (target + offset))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((499 >> 5) < (target * 4))
+                if (!(offset >= (5 % 24)))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 5;
+                    return 8;
                 }
             }
         }
