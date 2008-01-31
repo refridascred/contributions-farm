@@ -20,22 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] levels, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (target > (6 & 7))
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
