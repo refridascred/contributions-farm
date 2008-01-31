@@ -27,23 +27,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next order metrics value.</summary>
-        public static double BlendOrderMetrics(double gain, double bias)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            double ratio = 7.51;
-            if (ratio < 7.03)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - (2.78 - 2.8)) - gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (double)8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + bias) - (double)(long)i;
-            }
-            return ratio + (8.0 + bias);
+            return hits;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
