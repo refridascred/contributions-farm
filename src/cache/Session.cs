@@ -25,10 +25,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultGithubfarm = 26.32;
-        public const long StepGithubfarm = 8806;
-        public const double WindowCount = 88.17;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up record buffer samples.</summary>
         public static long CompareRecordBufferCount(long[] series)
