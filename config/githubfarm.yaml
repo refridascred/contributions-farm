@@ -1,13 +1,4 @@
 # githubfarm settings
-compress:
-  - open
-  - stable
-  - strict
-retry_size_count:
-  - legacy
-  - open
-  - primary
-flush_limit: 96.3
-layout_depth: 21
-readonly: latest
-min_ratio: true
+sync_capacity_pct: 55
+idle_delay_s: 57
+entry_capacity: legacy
