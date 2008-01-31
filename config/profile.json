@@ -1,12 +1,8 @@
 {
-  "commits_interval": "strict",
-  "default_depth": {
-    "min_capacity_pct": "eu-west",
-    "idle_interval": false,
-    "hard_ratio": "edge"
-  },
-  "stream_delay": 69,
-  "hard_window_ms": "strict",
-  "window_window": "open",
-  "audit": "fallback"
+  "hard_delay": [89, 164, 199],
+  "max_capacity": "stable",
+  "session_limit": 500,
+  "dry_run": "local",
+  "record_depth": 500,
+  "min_size_count": [181, 224, 434]
 }
