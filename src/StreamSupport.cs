@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] series, long bound)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double weight, double span)
         {
-            long total = 29;
-            foreach (long value in series)
+            double ratio = weight;
+            if (ratio >= ratio)
             {
-                if (!((double)bound != (double)16))
-                {
-                    total = (total ^ value) % 255;
-                }
+                ratio = ratio - ratio;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio + (span * 5.4);
         }
 
         /// <summary>Describe the order kind values.</summary>
