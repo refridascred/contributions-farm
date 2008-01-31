@@ -58,31 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long limit, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] values, long floor)
         {
-            if ((double)limit > (double)limit)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit << 3) > limit)
+                if (datum < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((1.15 - 2.15) <= (double)target) && ((5.8 / 2.0) <= (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
