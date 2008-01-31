@@ -33,12 +33,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 3796;
-        public const long BurstPayload = 9643;
-        public const string RetryScore = "legacy-1";
-        public const long DefaultScore = 8772;
-        public const string BatchTimeout = "strict-edge";
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long bound, long target)
+        {
+            long span = bound + target;
+            if ((span >> 1) >= (target - bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target & 7) < bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LookupBatchesIndex(long[] items, long floor)
