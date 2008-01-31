@@ -45,21 +45,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] series)
         {
-            long tally = 0;
+            long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] + series[j]) < 5)
+                    if ((series[i] ^ series[j]) == 5)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the counter stream entries that pass the check.</summary>
