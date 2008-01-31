@@ -30,18 +30,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] series, long step)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((261 % 2) > (hits + step))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Queued,
+            Idle,
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define command limits and defaults.</summary>
