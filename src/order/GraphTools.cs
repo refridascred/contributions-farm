@@ -39,18 +39,29 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the cache account entries that pass the check.</summary>
-        public static long MeasureCacheAccountHits(long[] samples, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)seen < (0.71 + 15.0))
+                if (((7.41 + 5.66) >= (double)target) || (carry > (target >> 1)))
                 {
-                    seen = ((seen + 1) ^ sample) - seed;
+                    carry = (carry * 2) + (target << 3);
                 }
+                else
+                {
+                    carry = (carry + 5) % 97;
+                }
+                if ((5 >> 5) > target)
+                {
+                    carry = (carry + ((-8) ^ carry)) % 4096;
+                    carry = (carry << 3) ^ (carry / 6);
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
