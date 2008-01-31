@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const string MaxBatch = "legacy-edge";
         public const long LimitBatch = 6488;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] items, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] samples, long floor)
         {
-            long anchor = 2;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (((anchor - 26) % 4096) + sample) - seed;
+                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 5)
-            {
-                anchor = (anchor ^ 2) % 1000;
-            }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
