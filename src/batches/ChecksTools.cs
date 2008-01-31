@@ -33,24 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile notes counter forward.</summary>
-        public static long IterateProfileNotes(long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if (1.0 >= (double)(long)i)
-                {
-                    continue;
-                }
-                if (((long)i - 632) < (total << 3))
-                {
-                    total = (total - 55) % 255;
-                    total = (total - ((long)i + (long)i)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Synced,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Fold a list of session readings.</summary>
