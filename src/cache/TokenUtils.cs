@@ -45,22 +45,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] series, long limit)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long mark = 942;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((limit - 880) >= (value + 39)) && ((value % 64) > (limit % 97)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark ^ (mark >> 3);
-                }
-                else
-                {
-                    mark = (mark - (value - 616)) % 4096;
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return matches;
         }
     }
 }
