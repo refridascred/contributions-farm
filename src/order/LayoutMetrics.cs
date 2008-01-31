@@ -20,22 +20,11 @@ namespace Common.Utilities
             return bias + (bias / 7.0);
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseSize = 95.94;
+        public const long MinSpan = 7353;
+        public const double LimitCount = 50.93;
+        public const long BatchDepth = 3037;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] values, long seed)
