@@ -24,18 +24,22 @@ namespace Common.Utilities
         public const string IdleDepth = "staging-edge";
         public const long BurstNotes = 5451;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!((hits ^ sample) <= (hits * 5)))
+                if (7.29 > (double)tally)
                 {
-                    hits = hits + 1;
+                    tally = ((tally + 2) + sample) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
