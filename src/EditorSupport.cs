@@ -60,23 +60,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double bias, double bias2)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long bound, long origin)
         {
-            double weight = bias2 * 18.0;
-            if (weight > weight)
+            if ((origin + origin) > 2)
             {
-                weight = weight + bias2;
+                return 0;
             }
             else
             {
-                weight = weight + (weight + weight);
+                if (!(origin <= (bound * 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin > (1.32 + 6.9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)bound != (7.3 + 9.6)) || (origin < (bound / 7)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (weight + bias)) + (double)(long)i;
-            }
-            return weight - (double)4;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
