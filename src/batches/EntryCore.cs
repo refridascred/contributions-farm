@@ -21,21 +21,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 47;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor ^ (anchor & 15)) ^ sample) + limit;
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate token samples.</summary>
