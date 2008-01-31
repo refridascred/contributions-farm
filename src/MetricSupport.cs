@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (((carry - target) >= carry) && ((55 ^ (long)i) < 358))
-                {
-                    carry = ((carry << 3) ^ (target / 3)) % 97;
-                    carry = (carry << 3) ^ (long)i;
-                    break;
-                }
-                else
-                {
-                    carry = (carry - (target / 8)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
