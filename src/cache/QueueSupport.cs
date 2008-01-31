@@ -13,21 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Draft,
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
