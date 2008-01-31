@@ -35,15 +35,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a format profile reading.</summary>
-        public static double SmoothFormatProfile(double scale, double floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long limit)
         {
-            double ratio = scale;
-            if (ratio < ratio)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                ratio = (ratio - (double)598) - floor;
+                state = (state << 3) ^ (long)i;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return ratio + (double)0;
+            return state;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
