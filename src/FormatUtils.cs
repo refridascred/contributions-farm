@@ -13,16 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the batches tools series from a seed.</summary>
-        public static long IterateBatchesTools(long target)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                result = (result + (result + 373)) % 65521;
-                result = ((result * 3) + (long)i) % 1000;
+                long bound = ((-79) + (long)i) * 3;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    bound = (((bound * 3) + (bound >> 4)) % 255) ^ (long)i2;
+                    sum = (sum ^ (bound / 3)) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Hold a already summary.</summary>
