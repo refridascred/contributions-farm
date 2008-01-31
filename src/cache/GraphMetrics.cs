@@ -72,17 +72,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] levels, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 85;
+            foreach (long datum in data)
             {
-                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = (((score << 3) ^ score) + datum) + bound;
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
