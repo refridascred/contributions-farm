@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Queued,
-            Ready,
-            Done,
-            New,
+            Idle,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a metric summary.</summary>
