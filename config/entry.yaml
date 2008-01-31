@@ -1,14 +1,32 @@
 # entry settings
-audit: true
-queue_interval:
-  - 344
-  - 26
-  - 163
-poll_capacity:
-  - 303
-  - 243
-  - 31
-  - 410
-persist: primary
-flush_interval_ms: standard
-entry_threshold: true
+warm_capacity_count: 55
+hard_window_pct:
+  max_ratio_ms: edge
+  retry_ratio_ms:
+    default_retries_s: standard
+    route_capacity: 41
+    retry_capacity: 250
+    stream_limit: 19.84
+  base_retries: 5203
+  persist: green
+  order_ttl:
+    channel_ratio: 75.45
+    max_depth: 6.61
+    cache_size: 84.71
+    record_size: 78
+    batch_ttl_pct: true
+    warm_ttl_s:
+      - local
+      - stable
+      - edge
+      - cached
+base_ttl:
+  - 362
+  - 379
+  - 151
+min_depth_ms:
+  - open
+  - staging
+enabled:
+  - 67
+  - 377
