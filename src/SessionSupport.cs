@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                acc = acc - (4 + 749);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
