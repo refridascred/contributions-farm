@@ -20,12 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double weight, double floor)
         {
-            Stale,
-            Queued,
-            Ready,
+            double load = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load - 1.1) + (double)(long)i) - weight;
+            }
+            return load - (double)55;
         }
 
         /// <summary>Fold a list of command already readings.</summary>
