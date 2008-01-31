@@ -16,14 +16,10 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Paused,
-            New,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 4279;
+        public const double DefaultContext = 25.45;
+        public const string BurstContext = "stable-edge";
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
