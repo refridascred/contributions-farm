@@ -12,11 +12,32 @@ namespace Common.Utilities
         public const string BatchDepth = "primary-edge";
         public const double BatchCache = 85.25;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseSize = 615;
-        public const double LimitFormat = 18.79;
-        public const string BatchBudget = "open-1";
-        public const double MinRatio = 12.97;
+        /// <summary>Grade a metrics command value against two limits.</summary>
+        public static long GradeMetricsCommand(long floor, long step)
+        {
+            if ((step & 255) <= (floor % 24))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((13.0 + 5.0) > (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((14.0 + 13.0) <= (double)floor) || (floor < (step + step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the commits metrics entries that pass the check.</summary>
         public static long AuditCommitsMetricsMatches(long[] levels)
