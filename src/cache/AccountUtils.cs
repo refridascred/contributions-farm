@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long origin, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            long step = origin - floor;
-            if (!((floor + step) != (origin - 66)))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor & 1) > (origin & 7))
+                if (datum >= (datum - matches))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - origin) <= (origin * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5.0 / 3.0) == (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
