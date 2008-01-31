@@ -47,17 +47,18 @@ namespace Common.Utilities
             return rate2 - (rate + rate);
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] items, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                if (!(((double)seen >= (8.06 + 12.0)) && (value < (932 ^ seen))))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
