@@ -1,9 +1,6 @@
-id,count,score
-1,758,8.56
-2,latest,eu-west
-3,local,57.92
-4,75.09,260
-5,16.31,407
-6,strict,primary
-7,634,57.04
-8,94.97,427
+id,token,state,owner,rank
+1,273,15.46,cached,fallback
+2,701,504,primary,453
+3,968,343,38.79,80.96
+4,110,546,194,fallback
+5,692,26.96,601,89.17
