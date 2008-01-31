@@ -1,5 +1,5 @@
 {
-  "enabled": false,
-  "order_timeout": "edge",
-  "persist": ["cached", "edge", "primary"]
+  "flush_ttl_pct": "latest",
+  "readonly": 42,
+  "dry_run": "green"
 }
