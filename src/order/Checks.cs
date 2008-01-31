@@ -54,32 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long origin, long seed)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double bias, double floor)
         {
-            long bound = origin ^ seed;
-            if ((origin > (bound * 4)) || ((origin + origin) >= origin))
+            double ratio = floor;
+            if (ratio > bias)
             {
-                return 3;
+                ratio = ratio + 4.0;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (!((5 ^ seed) > ((-321) & 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound > (origin & 63))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                ratio = (ratio + (9.2 + floor)) + (double)(long)i;
             }
+            return ratio - (double)580;
         }
     }
 }
