@@ -33,15 +33,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema context counter forward.</summary>
-        public static long SeriesSchemaContext(long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long seed, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            long next = seed - floor;
+            if ((4.16 / 5.0) > (double)floor)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((134 / 8) >= next)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
