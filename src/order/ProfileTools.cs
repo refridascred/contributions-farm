@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] levels, long seed)
-        {
-            long mix = -86;
-            foreach (long value in levels)
-            {
-                if ((value / 4) > (48 + mix))
-                {
-                    mix = mix + (seed & 31);
-                }
-            }
-            if (mix > 94)
-            {
-                mix = ((mix * 2) + (seed % 2)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxSize = 40.87;
+        public const string SoftMetrics = "strict";
+        public const long BaseDepth = 1812;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] series, long limit)
