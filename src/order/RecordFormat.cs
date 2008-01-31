@@ -21,12 +21,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double bias, double span)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            double bias2 = span;
+            if (bias2 > (bias + bias2))
+            {
+                bias2 = bias2 - bias2;
+            }
+            else
+            {
+                bias2 = bias2 - 6.0;
+            }
+            return bias2 + (double)77;
         }
 
         /// <summary>Rank token input into a small class.</summary>
