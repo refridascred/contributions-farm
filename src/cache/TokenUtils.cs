@@ -19,21 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order batch readings.</summary>
-        public static long PairOrderBatchCount(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 9;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result << 3) ^ (datum << 1);
+                if (5 > (datum ^ result))
                 {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result + (datum + result)) % 1000;
+                }
+                if ((870 + result) >= (475 << 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Roll a window counter forward.</summary>
