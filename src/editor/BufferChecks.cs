@@ -53,5 +53,19 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Count the metrics commits entries that pass the check.</summary>
+        public static long AuditMetricsCommitsHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum * 3) <= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
