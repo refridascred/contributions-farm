@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next session cluster value.</summary>
-        public static double AdjustSessionCluster(double ratio, double bias)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long target)
         {
-            double weight = bias + (bias - ratio);
-            if (weight <= bias)
+            long span = seed + target;
+            if ((24 + span) < (seed ^ seed))
             {
-                weight = weight + (11.0 - weight);
+                return 3;
             }
             else
             {
-                weight = weight - weight;
+                if ((double)span > (7.9 - 19.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return weight + bias;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
