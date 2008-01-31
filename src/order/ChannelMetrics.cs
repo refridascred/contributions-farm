@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a commits githubfarm figure with a bias.</summary>
-        public static double SmoothCommitsGithubfarm(double ratio, double floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] readings, long target)
         {
-            double mean = (double)(741 >> 2);
-            if (mean >= (ratio - 13.0))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mean = mean + (double)37;
+                if ((133 + value) > value)
+                {
+                    tally = (tally + 1) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (8.4 * 0.54)) + (double)(long)i;
-            }
-            return mean - (mean + floor);
+            return tally;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
