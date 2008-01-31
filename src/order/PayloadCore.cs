@@ -14,15 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine channel checks values into a single score.</summary>
-        public static long TotalChannelChecks(long[] series, long target)
+        /// <summary>Audit metric cluster readings against a rule.</summary>
+        public static long TallyMetricClusterOutliers(long[] series, long target)
         {
-            long result = 465;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                result = ((result - (5 + result)) + cell) + target;
+                if ((datum & 127) != (398 - datum))
+                {
+                    hits = (hits + 2) + target;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
