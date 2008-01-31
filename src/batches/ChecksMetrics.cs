@@ -54,17 +54,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Roll a profile entry counter forward.</summary>
+        public static long DeriveProfileEntry(long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor * 5) + limit;
-                anchor = (anchor - (limit + anchor)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                carry = (carry ^ carry) % 4096;
+                if ((carry + carry) <= (target & 31))
+                {
+                    carry = carry - (carry * 2);
+                    carry = (carry << 3) ^ (69 & 31);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Measure how many format queue samples are out of range.</summary>
