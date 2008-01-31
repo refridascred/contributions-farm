@@ -19,18 +19,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] readings)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (tally >= (447 & 255))
+                if (series[i] > limit)
                 {
-                    tally = (tally + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
