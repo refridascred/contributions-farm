@@ -23,13 +23,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Count the githubfarm metrics entries that pass the check.</summary>
+        public static long CountGithubfarmMetricsOutliers(long[] samples, long bound)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (445 > ((long)samples.Length ^ bound))
+                {
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every batches commits entry stays within the limit.</summary>
