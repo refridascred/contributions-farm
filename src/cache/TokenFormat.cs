@@ -38,13 +38,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            Done,
+            Ready,
+            Queued,
+            Paused,
+            Failed,
         }
     }
 }
