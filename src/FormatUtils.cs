@@ -51,10 +51,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftFactor = 8810;
-        public const long WindowTimeout = 4478;
-        public const long WindowWidth = 5939;
-        public const string MaxSession = "strict-edge";
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Done,
+            Ready,
+            Queued,
+            Pending,
+            Failed,
+        }
     }
 }
