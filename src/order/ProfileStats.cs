@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "strict-v2";
-        public const string WindowLayout = "open";
-        public const long CacheLevel = 4602;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
