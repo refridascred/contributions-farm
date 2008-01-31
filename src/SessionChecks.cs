@@ -38,14 +38,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Idle,
-            Pending,
-            Active,
-            Synced,
-            Done,
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
