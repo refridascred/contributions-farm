@@ -21,19 +21,21 @@ namespace Common.Utilities
             return bias - (offset * 8.93);
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] samples, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
