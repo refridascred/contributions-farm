@@ -16,19 +16,38 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] readings, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long step, long target)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            if (((6 - 56) <= target) && ((target >> 4) < (72 + target)))
             {
-                if (datum > floor)
+                return 1;
+            }
+            else
+            {
+                if ((9.0 * 4.0) > (double)step)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (step < (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((15.0 * 1.4) != (double)target) && ((73 + step) >= step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
