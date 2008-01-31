@@ -94,10 +94,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 91.5;
-        public const double SoftLevel = 88.98;
-        public const double LimitTimeout = 67.47;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (reading >= (matches - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double AdjustBuffer(double bias, double bias2)
