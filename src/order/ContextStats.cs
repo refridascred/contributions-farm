@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank metric support input into a small class.</summary>
-        public static long ClassifyMetricSupport(long floor, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double rate, double offset)
         {
-            if (6 >= (limit + floor))
+            double drift = offset / 8.0;
+            if (drift >= drift)
             {
-                return 6;
+                drift = drift + rate;
             }
-            else
-            {
-                if ((floor >> 2) <= (floor + 11))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return drift - (double)(-73);
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
