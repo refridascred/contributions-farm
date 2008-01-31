@@ -45,11 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] samples, long step)
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
