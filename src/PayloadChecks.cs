@@ -16,18 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] samples, long floor)
+        /// <summary>Validate batch commits readings against a bound.</summary>
+        public static bool GuardBatchCommitsBounds(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (((7.0 / 5.0) != (double)matches) || !(floor >= (floor & 63)))
+                if (sample > target)
                 {
-                    matches = (matches + 1) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
