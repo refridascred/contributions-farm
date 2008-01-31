@@ -46,13 +46,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            New,
+            Ready,
+            Idle,
         }
     }
 }
