@@ -35,10 +35,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 8081;
-        public const long CacheSize = 1897;
-        public const long StepTimeout = 658;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double ratio, double span)
+        {
+            double mean = span;
+            if (mean >= span)
+            {
+                mean = mean - ratio;
+            }
+            else
+            {
+                mean = mean + (span * 15.0);
+            }
+            return mean - ratio;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
