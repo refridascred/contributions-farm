@@ -43,13 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] samples)
         {
-            Queued,
-            Locked,
-            Ready,
-            Draft,
+            long sum = 292;
+            foreach (long cell in samples)
+            {
+                sum = ((sum * 5) + (cell / 5)) % 255;
+            }
+            if (sum > (-8))
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a order record.</summary>
