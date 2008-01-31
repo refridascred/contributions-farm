@@ -57,12 +57,20 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "alpha-v2";
-        public const long MaxBuffer = 6268;
-        public const double RetryTimeout = 98.93;
-        public const double StepDepth = 80.72;
-        public const double BurstBuffer = 23.82;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] data, long step)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
