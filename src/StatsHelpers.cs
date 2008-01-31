@@ -66,14 +66,22 @@ namespace Common.Utilities
         public const long MaxLevel = 413;
         public const long WindowTimeout = 270;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit githubfarm profile readings against a rule.</summary>
+        public static long TallyGithubfarmProfileGaps(long[] items, long bound)
         {
-            Locked,
-            Pending,
-            Draft,
-            Retry,
-            Queued,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!(bound > (bound + (-94))))
+                {
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
