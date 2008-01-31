@@ -23,12 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Look up the position of a metrics channel sample.</summary>
+        public static long LookupMetricsChannelIndex(long[] levels, long bound)
         {
-            Pending,
-            Queued,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the token level values.</summary>
