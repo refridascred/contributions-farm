@@ -18,14 +18,16 @@ namespace Common.Utilities
         public const double BaseSpan = 98.58;
         public const long BurstOrder = 3361;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long seed)
         {
-            Idle,
-            Pending,
-            Draft,
-            Ready,
-            Active,
+            long total = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                total = (total + ((long)i << 1)) % 255;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a context entry.</summary>
