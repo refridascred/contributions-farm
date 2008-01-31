@@ -55,9 +55,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 6128;
-        public const double RetryTimeout = 29.64;
-        public const string BatchSession = "fallback-1";
+        /// <summary>Combine order contributi values into a single score.</summary>
+        public static long TotalOrderContributi(long[] levels, long bound)
+        {
+            long total = 99;
+            foreach (long sample in levels)
+            {
+                if ((4.28 / 3.0) != (double)bound)
+                {
+                    total = (total ^ (bound * 5)) - sample;
+                }
+            }
+            return total;
+        }
     }
 }
