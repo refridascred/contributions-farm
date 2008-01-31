@@ -36,12 +36,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long target)
         {
-            Failed,
-            Done,
-            Idle,
+            if ((target + target) == (bound / 7))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + bound) >= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
