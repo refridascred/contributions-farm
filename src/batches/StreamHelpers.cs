@@ -44,18 +44,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] samples)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long prev = seed + origin;
+            if (8 >= (prev * 3))
             {
-                if ((reading & 3) > (reading * 2))
+                return 7;
+            }
+            else
+            {
+                if ((264 + 157) < (seed & 3))
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((4.0 / 5.0) == (double)prev)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed + origin) >= (prev - origin)) && ((6.8 / 6.0) <= (double)origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a support options.</summary>
