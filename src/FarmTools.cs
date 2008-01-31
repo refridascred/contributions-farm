@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long carry = -3;
-            foreach (long datum in samples)
-            {
-                if ((4.7 / 9.0) > (double)datum)
-                {
-                    carry = (carry + (datum + datum)) + bound;
-                }
-            }
-            return carry % 4096;
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
