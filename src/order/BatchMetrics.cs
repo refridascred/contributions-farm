@@ -47,12 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
