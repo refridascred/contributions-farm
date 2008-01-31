@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] samples, long target)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double scale, double span)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double scale2 = (span * 6.7) - scale;
+            if (scale2 >= (scale + scale))
             {
-                if (((seen + seen) <= (seen * 3)) && ((double)sample > (7.58 / 2.0)))
-                {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale2 = scale2 - 9.18;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + scale) - (double)(long)i;
+            }
+            return scale2 - (span - scale2);
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
