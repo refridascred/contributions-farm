@@ -32,19 +32,18 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] data)
+        /// <summary>Count stats account pairs that satisfy a relation.</summary>
+        public static long MatchStatsAccountCount(long[] items)
         {
             long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((14 & 127) >= (reading & 255))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
