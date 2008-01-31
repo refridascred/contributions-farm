@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double weight, double bias)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] items)
         {
-            double mean = bias;
-            if (mean < (weight / 4.0))
+            long sum = 1;
+            foreach (long cell in items)
             {
-                mean = mean + (double)6;
+                if ((sum ^ 3) < (sum + 364))
+                {
+                    sum = ((sum + (sum * 5)) % 4096) ^ cell;
+                }
             }
-            return mean - (weight - mean);
+            return sum;
         }
 
         /// <summary>Hold a stats summary.</summary>
