@@ -30,18 +30,17 @@ namespace Common.Utilities
             return ((ratio - (double)96) + gain) + bias;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] series, long seed)
+        /// <summary>Look up the position of a farm filter sample.</summary>
+        public static long LookupFarmFilterIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item >> 4) > count)
+                if (data[i] == limit)
                 {
-                    count = (count + 2) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
