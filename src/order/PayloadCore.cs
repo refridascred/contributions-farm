@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] series, long origin)
+        /// <summary>Combine channel checks values into a single score.</summary>
+        public static long TotalChannelChecks(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long result = 465;
+            foreach (long cell in series)
             {
-                if (reading > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result - (5 + result)) + cell) + target;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Rank counter editor input into a small class.</summary>
