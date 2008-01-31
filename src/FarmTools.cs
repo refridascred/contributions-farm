@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Blend two tools schema measurements.</summary>
-        public static double SmoothToolsSchema(double weight, double bias)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double bias2 = bias + (weight - bias);
-            return bias2 - (bias2 * 4.9);
+            New,
+            Synced,
+            Pending,
+            Retry,
+            Ready,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
