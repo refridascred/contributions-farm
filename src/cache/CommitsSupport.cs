@@ -50,12 +50,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public long Total { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxTimeout = "primary-1";
+        public const double LimitCommits = 54.0;
+        public const long IdleSize = 8002;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
