@@ -5,10 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxSize = 40.87;
-        public const string SoftMetrics = "strict";
-        public const long BaseDepth = 1812;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((long)i - state) <= state)
+                {
+                    state = (state ^ ((long)i + target)) % 65521;
+                }
+                else
+                {
+                    state = state - ((long)i >> 4);
+                }
+                state = state ^ state;
+                if ((double)state >= (3.0 / 8.0))
+                {
+                    state = state + ((-412) >> 5);
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] series, long limit)
