@@ -37,15 +37,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Closed,
-            Draft,
-            Queued,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 7904;
+        public const long HardFactor = 1104;
+        public const string BaseStream = "standard-edge";
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksGaps(long[] data, long bound)
