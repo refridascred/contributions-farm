@@ -70,22 +70,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseCount = 53.43;
+        public const long MaxLevel = 413;
+        public const long WindowTimeout = 270;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long DigestCluster(long[] series, long target)
