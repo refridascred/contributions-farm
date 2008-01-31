@@ -19,16 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] readings)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mix = mix - (mix + target);
-                mix = ((mix * 5) + (long)i) % 97;
+                if (tally >= (447 & 255))
+                {
+                    tally = (tally + 2) ^ value;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
