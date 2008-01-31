@@ -67,12 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Check that every record stream entry stays within the limit.</summary>
+        public static bool CheckRecordStreamRange(long[] items, long offset)
         {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
