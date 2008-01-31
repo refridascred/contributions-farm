@@ -30,10 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultRatio = 9274;
-        public const long StepRatio = 7852;
-        public const long WindowRatio = 28;
-        public const string DefaultInterval = "alpha";
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Pending,
+            Draft,
+            Paused,
+        }
     }
 }
