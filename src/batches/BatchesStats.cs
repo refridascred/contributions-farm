@@ -37,17 +37,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 4703;
+        public const long StepAlready = 4486;
+        public const long BurstLevel = 9061;
+        public const string CacheRatio = "staging-edge";
     }
 }
