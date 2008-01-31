@@ -46,5 +46,16 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double ratio, double offset)
+        {
+            double load = ratio;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load - (double)(-877)) + (double)(long)i) + offset;
+            }
+            return load + (ratio / 8.0);
+        }
     }
 }
