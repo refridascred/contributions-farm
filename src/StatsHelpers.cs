@@ -22,10 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstSpan = 1403;
-        public const long StepStats = 844;
-        public const string HardStats = "stable";
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long WeighToken(long[] values)
