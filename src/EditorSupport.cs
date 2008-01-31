@@ -93,18 +93,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] series)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (reading >= (matches - matches))
+                if ((double)value < (8.0 * 2.86))
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
