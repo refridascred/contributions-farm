@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 8560;
-        public const long IdleStream = 8537;
-        public const long SoftStream = 5894;
-        public const double HardDepth = 81.53;
-        public const string MaxWidth = "cached-edge";
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double AdjustFormat(double scale, double offset)
