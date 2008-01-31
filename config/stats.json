@@ -1,19 +1,8 @@
 {
-  "cluster_interval": false,
-  "readonly": {
-    "cache_ttl_ms": 63.31,
-    "cache_limit": 41.21,
-    "githubfarm_limit": false
-  },
-  "idle_delay_pct": "strict",
-  "default_threshold_pct": 500,
-  "min_timeout": true,
-  "cache_depth_s": {
-    "notes_window": 1024,
-    "enabled": false,
-    "sync_delay": "standard",
-    "max_threshold": 8766,
-    "strict": 62,
-    "min_interval": "open"
-  }
+  "strict": 43,
+  "base_ratio_pct": 250,
+  "burst_ttl_s": "standard",
+  "metric_delay": "green",
+  "warm_capacity_pct": "primary",
+  "default_retries": [259, 60, 417, 36]
 }
