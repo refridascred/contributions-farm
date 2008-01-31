@@ -1,17 +1,5 @@
 {
-  "cache_threshold_ms": "open",
-  "persist": {
-    "verbose": 6,
-    "strict": 100,
-    "default_limit_pct": "primary"
-  },
-  "batches_delay": 500,
-  "retry_window_pct": ["primary", "blue"],
-  "poll_timeout_ms": {
-    "min_size": 8873,
-    "min_capacity_count": ["eu-west", "standard", "blue"],
-    "max_ttl_pct": 35.75,
-    "report_timeout": ["cached", "staging", "staging"],
-    "strict": "eu-west"
-  }
+  "entry_retries": true,
+  "default_capacity_ms": "latest",
+  "context_depth": 3495
 }
