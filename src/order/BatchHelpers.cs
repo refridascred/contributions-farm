@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double scale, double span)
-        {
-            double scale2 = (span * 6.7) - scale;
-            if (scale2 >= (scale + scale))
-            {
-                scale2 = scale2 - 9.18;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + scale) - (double)(long)i;
-            }
-            return scale2 - (span - scale2);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 10.12;
+        public const double LimitFactor = 82.67;
+        public const long HardStats = 8179;
+        public const string LimitRatio = "staging-edge";
+        public const long MinStats = 1085;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderOutliers(long[] levels, long target)
