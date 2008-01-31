@@ -34,14 +34,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Classify a tools token pair into a bucket.</summary>
+        public static long GradeToolsToken(long offset, long offset2)
         {
-            Active,
-            Draft,
-            Paused,
-            Ready,
-            Locked,
+            long span = offset + offset2;
+            if (8 <= (span + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset2 * 3) > (span << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
