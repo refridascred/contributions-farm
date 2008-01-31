@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Fold a list of report githubfarm readings.</summary>
+        public static long FoldReportGithubfarm(long[] levels, long limit)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            long anchor = 25;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor << 2) ^ (limit - 2)) % 97;
+                anchor = anchor + (65 + 77);
+                anchor = anchor ^ (value * 5);
+            }
+            if (anchor < 0)
+            {
+                anchor = (anchor << 3) ^ (0 + 848);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
