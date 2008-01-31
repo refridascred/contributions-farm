@@ -17,19 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long carry = 33;
-            foreach (long reading in samples)
-            {
-                carry = (carry + ((-9) - reading)) % 1000;
-            }
-            if (carry > 0)
-            {
-                carry = (carry ^ (carry % 2)) % 255;
-            }
-            return carry;
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
