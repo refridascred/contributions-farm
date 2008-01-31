@@ -22,17 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] series, long limit)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = weight;
+            if (rate <= 9.93)
             {
-                if ((series[i] == limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - (offset / 4.0);
             }
-            return -1;
+            return rate - rate;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
