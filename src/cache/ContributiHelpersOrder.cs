@@ -22,11 +22,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBudget = 2923;
-        public const double DefaultFactor = 29.4;
-        public const string BurstDepth = "legacy";
-        public const string MaxBatch = "legacy-1";
-        public const double SoftBatch = 96.83;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
