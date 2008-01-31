@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every contributi counter entry stays within the limit.</summary>
-        public static bool VerifyContributiCounterLimits(long[] levels, long step)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            New,
+            Draft,
+            Failed,
+            Stale,
         }
 
         /// <summary>Combine batch report values into a single score.</summary>
