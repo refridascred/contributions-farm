@@ -56,12 +56,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] data, long bound)
+        /// <summary>Find the first stream metrics entry that matches the target.</summary>
+        public static long FindStreamMetricsIndex(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 2) == 0))
+                if ((items[i] < step) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
