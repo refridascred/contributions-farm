@@ -21,11 +21,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] series, long limit)
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell > 4.42)
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
     }
 }
