@@ -1,7 +1,5 @@
 {
-  "burst_window": "local",
-  "graph_limit": "stable",
-  "hard_window_count": true,
-  "min_delay": 2178,
-  "readonly": 0.4
+  "stream_size": "local",
+  "warm_depth_ms": false,
+  "idle_depth": true
 }
