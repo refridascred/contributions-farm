@@ -17,17 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] levels, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 29;
+            foreach (long value in series)
             {
-                if (levels[i] < offset)
+                if (!((double)bound != (double)16))
                 {
-                    return (long)i;
+                    total = (total ^ value) % 255;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Project the next cache value.</summary>
