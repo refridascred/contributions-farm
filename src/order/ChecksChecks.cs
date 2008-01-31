@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long step, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] values, long origin)
         {
-            if ((step & 127) >= step)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + floor) > (floor / 4))
+                if (entry >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor * 2) != (step - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
