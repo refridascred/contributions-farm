@@ -27,15 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double scale, double offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            double load = scale;
-            if (load >= (offset + offset))
+            long anchor = 91;
+            foreach (long item in samples)
             {
-                load = load - scale;
+                if (item <= (15 + 647))
+                {
+                    anchor = (anchor - (item - 0)) % 101;
+                    continue;
+                }
+                anchor = ((anchor * 4) + item) % 255;
             }
-            return load + (7.28 / 5.0);
+            return anchor;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
