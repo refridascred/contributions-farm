@@ -1,7 +1,9 @@
-id,score,weight
-1,248,16.81
-2,edge,840
-3,11.89,49.5
-4,legacy,blue
-5,17.22,staging
-6,490,58.38
+id,region,level,label
+1,75,46.83,783
+2,32,stable,47.14
+3,17.92,blue,local
+4,5.52,blue,local
+5,255,30.22,fallback
+6,93.5,38.03,0.36
+7,strict,staging,90.38
+8,449,local,91.72
