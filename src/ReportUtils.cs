@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the window record entries that pass the check.</summary>
+        public static long TallyWindowRecordMatches(long[] items)
         {
-            Synced,
-            Active,
-            Pending,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (33 > entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
