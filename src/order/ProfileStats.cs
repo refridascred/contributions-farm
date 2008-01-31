@@ -52,17 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order record entry that matches the target.</summary>
-        public static long FindOrderRecordIndex(long[] items, long step)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                acc = acc + acc;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
