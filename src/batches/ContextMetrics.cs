@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double bias, double bias2)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] samples, long step)
         {
-            double rate = bias2;
-            if (rate >= 6.78)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                rate = (rate + rate) - bias;
+                if ((step % 64) == (step >> 3))
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + (8.15 * 3.3);
+            return seen;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
