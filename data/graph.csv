@@ -1,10 +1,6 @@
-id,label,weight,count,region
-1,756,edge,64.32,71.37
-2,local,88.26,open,primary
-3,671,primary,80.74,562
-4,95.47,253,13.47,staging
-5,213,56.62,eu-west,49.04
-6,527,695,944,649
-7,743,14.92,staging,standard
-8,stable,559,222,standard
-9,standard,blue,strict,green
+id,owner,state,score
+1,eu-west,legacy,30.51
+2,open,39.59,78
+3,57,586,green
+4,563,816,64.53
+5,85.29,eu-west,51.74
