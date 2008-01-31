@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Done,
+            Failed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the editor mode values.</summary>
