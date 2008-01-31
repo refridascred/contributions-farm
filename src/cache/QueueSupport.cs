@@ -37,17 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Blend two graph cluster measurements.</summary>
+        public static double BlendGraphCluster(double gain, double bias)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            double gain2 = (bias - 0.6) - bias;
+            if (gain2 > (double)2)
             {
-                long cur = (long)i / 9;
-                anchor = (anchor - (cur >> 5)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                gain2 = gain2 - 1.5;
             }
-            return anchor;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 + (gain * 19.0);
         }
     }
 }
