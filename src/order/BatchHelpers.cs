@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] samples, long step)
+        /// <summary>Validate cache githubfarm readings against a bound.</summary>
+        public static bool VerifyCacheGithubfarmRange(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (datum != step)
+                if (reading >= origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
