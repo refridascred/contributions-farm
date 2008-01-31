@@ -23,21 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of window filter readings.</summary>
-        public static long CompareWindowFilterCount(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 343;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor ^ (anchor + item)) % 1000;
             }
-            return seen;
+            if (anchor > 299)
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the stats phase values.</summary>
