@@ -17,17 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a context editor reading by value.</summary>
-        public static long FindContextEditorIndex(long[] readings, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (readings[i] == offset)
+                if ((double)count <= (double)769)
                 {
-                    return (long)i;
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
