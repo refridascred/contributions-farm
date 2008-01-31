@@ -39,21 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading >= offset)
                 {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
