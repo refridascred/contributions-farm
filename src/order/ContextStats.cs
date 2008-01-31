@@ -13,12 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleScore = 8561;
-        public const long StepSize = 6506;
-        public const long IdleDepth = 2198;
-        public const long BaseDepth = 1861;
-        public const string BurstBatches = "primary-v2";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 6131;
+        public const long MinCount = 3582;
+        public const long BaseScore = 8602;
+        public const string DefaultEditor = "strict-v2";
+        public const string HardEditor = "local";
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long ScoreMetric(long[] levels, long seed)
