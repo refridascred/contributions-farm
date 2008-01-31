@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxRatio = 6800;
-        public const double LimitMetric = 53.81;
-        public const long SoftMetric = 5767;
-        public const long DefaultMetric = 5044;
-        public const string MinCount = "standard-1";
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples)
+        {
+            long mix = 37;
+            foreach (long value in samples)
+            {
+                if (((value - mix) < (mix - 161)) && ((value >> 3) != (mix + value)))
+                {
+                    mix = (mix - (value >> 2)) % 101;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix ^ ((-764) << 1)) % 1000;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long CacheProfile = 4922;
