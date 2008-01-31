@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double rate, double floor)
-        {
-            double scale = (double)31 - 2.0;
-            if (scale <= (floor / 4.0))
-            {
-                scale = scale + (floor + rate);
-            }
-            else
-            {
-                scale = scale - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (4.83 + scale)) + (double)(long)i;
-            }
-            return scale - (double)515;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheBudget = 6163;
+        public const long MinWindow = 4241;
+        public const double MaxLevel = 70.76;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowLimits(long[] series, long offset)
