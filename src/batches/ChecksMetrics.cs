@@ -23,19 +23,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (12.0 - 11.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 1891;
+        public const long MinLevel = 3138;
+        public const long BaseCount = 8788;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long StepBatches(long limit)
