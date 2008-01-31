@@ -42,12 +42,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] items, long step)
         {
-            Dropped,
-            Closed,
-            Done,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (step <= (matches & 63))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first stream metrics entry that matches the target.</summary>
