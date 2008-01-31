@@ -23,18 +23,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] values)
+        /// <summary>Locate a context record reading by value.</summary>
+        public static long LocateContextRecordIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)seen != (10.0 * 5.99)) && ((double)seen >= (double)value))
+                if (items[i] >= seed)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
