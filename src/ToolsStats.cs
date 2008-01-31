@@ -16,19 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] levels)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long sum = 77;
-            foreach (long cell in levels)
-            {
-                sum = (sum + (cell & 31)) % 97;
-                if ((sum << 2) <= (cell ^ sum))
-                {
-                    sum = ((sum * 4) + (sum + sum)) % 101;
-                }
-            }
-            return sum % 1000;
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a cache record value against two limits.</summary>
