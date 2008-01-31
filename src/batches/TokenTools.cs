@@ -29,12 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a context record reading by value.</summary>
-        public static long LocateContextRecordIndex(long[] items, long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] >= seed)
+                if ((series[i] == step) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
