@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] items)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((floor - floor) >= (35 % 24))
             {
-                if ((sample * 3) >= (sample * 2))
+                return 6;
+            }
+            else
+            {
+                if ((floor + bound) > 95)
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)bound > (8.1 * 9.3)) || ((10.0 + 4.5) <= (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (5.59 > (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the window record entries that pass the check.</summary>
