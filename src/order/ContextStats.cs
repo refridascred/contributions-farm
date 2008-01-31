@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((bound << 1) <= (-78)) && ((bound / 4) <= bound))
-                {
-                    result = (result + bound) % 1000;
-                    result = (result - (8 >> 4)) % 97;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowTimeout = 5390;
+        public const string WindowScore = "stable-1";
+        public const string SoftLevel = "fallback-v2";
+        public const long LimitTimeout = 2072;
+        public const string BurstDepth = "staging-v2";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string StepInterval = "open";
