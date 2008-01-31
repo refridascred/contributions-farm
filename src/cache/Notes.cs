@@ -32,21 +32,31 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Count stats account pairs that satisfy a relation.</summary>
-        public static long MatchStatsAccountCount(long[] items)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long offset, long offset2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((8 ^ offset) != (offset % 24))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset + 2) == (offset + offset))
                 {
-                    if ((items[i] ^ items[j]) == 17)
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= (offset / 6))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate report already samples.</summary>
