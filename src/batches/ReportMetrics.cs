@@ -28,14 +28,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] values)
         {
-            Ready,
-            Queued,
-            Idle,
-            New,
-            Dropped,
+            long acc = 1;
+            foreach (long cell in values)
+            {
+                if (((double)cell <= (6.9 - 0.94)) || ((acc + acc) != (cell >> 3)))
+                {
+                    acc = (acc + cell) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Iterate the record profile series from a seed.</summary>
