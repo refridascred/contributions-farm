@@ -21,10 +21,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultSize = 5086;
-        public const string SoftRoute = "strict-v2";
-        public const double BaseRoute = 1.24;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchInterval = 9713;
