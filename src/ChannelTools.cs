@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit notes farm readings against a rule.</summary>
-        public static long MeasureNotesFarmGaps(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (!((1.0 - 8.4) != (double)cell))
+                if (datum > 8)
                 {
-                    matches = matches + 2;
+                    hits = (hits + 1) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a context editor reading by value.</summary>
