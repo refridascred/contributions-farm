@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Ready,
-            Done,
-            Draft,
-            Closed,
+            Pending,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a filter info.</summary>
