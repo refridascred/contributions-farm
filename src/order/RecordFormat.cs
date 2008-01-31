@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double gain, double bias)
+        /// <summary>Count the contributi checks entries that pass the check.</summary>
+        public static long CountContributiChecksOutliers(long[] items, long limit)
         {
-            double bias2 = gain + (bias / 3.0);
-            if (bias2 < (bias * 15.0))
+            long count = 0;
+            foreach (long cell in items)
             {
-                bias2 = bias2 - (gain / 3.0);
+                if (((cell + limit) != (cell * 3)) || ((cell & 3) != ((long)items.Length % 64)))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (gain - gain)) - (double)(long)i;
-            }
-            return bias2 - bias2;
+            return count;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
