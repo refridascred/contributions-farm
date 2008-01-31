@@ -32,14 +32,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Done,
-            Ready,
+            New,
             Idle,
+            Pending,
             Locked,
-            Synced,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
