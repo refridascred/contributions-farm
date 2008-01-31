@@ -27,21 +27,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item > origin)
                 {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Count entry batches pairs that satisfy a relation.</summary>
