@@ -20,26 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of batch editor entries.</summary>
-        public static long DigestBatchEditor(long[] series, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long bound)
         {
-            long score = 517;
-            foreach (long datum in series)
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((score >> 1) == (seed & 31))
-                {
-                    score = ((score + (score - 77)) % 97) + datum;
-                }
-                else
-                {
-                    score = (score ^ (seed << 2)) % 65521;
-                }
+                sum = (sum + 87) % 65521;
+                sum = (sum * 3) + bound;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            if (score < 381)
-            {
-                score = ((score * 4) + (37 ^ 49)) % 1000;
-            }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
