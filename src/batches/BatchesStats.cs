@@ -23,19 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] samples, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (datum < offset)
+                if (sample != limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Describe the queue phase values.</summary>
