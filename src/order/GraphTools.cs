@@ -53,14 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] values)
         {
-            Draft,
-            Paused,
-            Done,
-            Idle,
-            Active,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (((count > (7 / 7)) && ((value + value) >= count)) || (value >= (value / 9)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
