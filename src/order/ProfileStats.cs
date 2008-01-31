@@ -39,19 +39,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] samples, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long bound)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return flag;
+            return sum;
         }
     }
 }
