@@ -33,12 +33,11 @@ namespace Common.Utilities
         public const long DefaultScore = 4592;
         public const long RetrySpan = 1170;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double scale, double bias)
         {
-            Active,
-            Ready,
-            Draft,
+            double bias2 = (double)(835 & 63);
+            return ((bias2 + 14.0) + scale) + bias;
         }
     }
 }
