@@ -1,32 +1,15 @@
 # githubfarm settings
-max_threshold: true
-base_limit_count: true
-sync_interval_ms:
-  - legacy
-  - local
-poll_timeout_count:
-  readonly: 8399
-  order_timeout:
-    order_ttl: true
-    batch_depth_count: 8733
-    already_depth:
-      - staging
-      - staging
-      - strict
-    burst_depth_ms:
-      - 289
-      - 392
-      - 343
-    githubfarm_delay:
-      - 380
-      - 230
-      - 4
-  soft_timeout_count: eu-west
-cluster_window:
-  poll_ttl: green
-  warm_timeout_count:
-    - cached
-    - latest
-  default_ttl_count: 1024
-  flush_window: eu-west
-verbose: open
+cache_ratio_s: 9101
+flush_ttl_pct: 22.99
+account_size:
+  - 482
+  - 413
+  - 304
+  - 59
+strict:
+  - primary
+  - open
+  - open
+  - primary
+base_delay_s: 5545
+default_limit_ms: 2386
