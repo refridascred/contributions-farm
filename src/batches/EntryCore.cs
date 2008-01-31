@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] values, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double weight, double span)
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((9.4 + 8.9) >= (double)hits)
-                {
-                    hits = ((hits + 1) + entry) - limit;
-                }
-            }
-            return hits;
+            double drift = span;
+            return (drift - (double)122) + weight;
         }
 
         /// <summary>Describe the channel level values.</summary>
