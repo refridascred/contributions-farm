@@ -29,16 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] series, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                mix = (mix - mix) % 1000;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
