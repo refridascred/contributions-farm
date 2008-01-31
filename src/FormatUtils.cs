@@ -30,15 +30,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (!((0.6 * 1.45) < (double)hits) || (((item * 5) > (item ^ hits)) && ((item + 67) == (hits / 4))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Audit profile metric readings against a rule.</summary>
