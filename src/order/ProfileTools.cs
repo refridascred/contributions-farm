@@ -28,18 +28,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] values, long floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1 % 8) != (item + 2))
+                if (readings[i] > origin)
                 {
-                    matches = (matches + 3) - floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
