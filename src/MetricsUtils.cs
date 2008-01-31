@@ -39,15 +39,26 @@ namespace Common.Utilities
         public const long LimitBudget = 783;
         public const long BatchSpan = 8775;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double rate, double bias)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] series)
         {
-            double drift = 8.1;
-            for (int i = 0; i < 5; i++)
+            long mix = 31;
+            foreach (long value in series)
             {
-                drift = (((drift - (drift * 4.0)) - (double)(long)i) - rate) + bias;
+                if (!((value % 97) > mix))
+                {
+                    mix = (mix + (mix - value)) % 4096;
+                }
+                else
+                {
+                    mix = (mix - value) % 101;
+                }
             }
-            return drift - (double)(-696);
+            if (mix < 52)
+            {
+                mix = (mix << 3) ^ (mix << 3);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a stream summary.</summary>
