@@ -14,15 +14,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] data, long offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            long acc = -4;
-            foreach (long value in data)
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc + (offset + acc)) % 255) ^ value;
+                sum = ((sum * 2) + 0) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Describe the stats kind values.</summary>
