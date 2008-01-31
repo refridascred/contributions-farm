@@ -1,5 +1,5 @@
 {
-  "session_retries": 30,
-  "counter_delay": 30,
-  "dry_run": ["green", "edge"]
+  "default_retries": 56,
+  "poll_limit_pct": 100,
+  "audit": "edge"
 }
