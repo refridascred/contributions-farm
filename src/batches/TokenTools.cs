@@ -14,17 +14,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] samples, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
