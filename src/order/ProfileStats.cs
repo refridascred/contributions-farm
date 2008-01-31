@@ -40,19 +40,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two tools githubfarm measurements.</summary>
-        public static double BlendToolsGithubfarm(double bias, double floor)
-        {
-            double mean = (double)(5 + (-44));
-            if (mean > mean)
-            {
-                mean = (mean + (double)986) + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (double)6) + (double)(long)i;
-            }
-            return mean - (9.4 + floor);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "legacy-v2";
+        public const long MinGithubfarm = 7165;
+        public const double SoftSize = 6.18;
+        public const double HardGithubfarm = 25.07;
+        public const long BaseTimeout = 2029;
     }
 }
