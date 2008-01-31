@@ -38,19 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes commits readings against a bound.</summary>
-        public static bool ValidateNotesCommitsBounds(long[] readings, long offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != offset)
+                if (series[i] <= step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
