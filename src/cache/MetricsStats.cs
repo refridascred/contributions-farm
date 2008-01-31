@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] samples, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (samples[i] <= origin)
+                if (sample <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the tools kind values.</summary>
