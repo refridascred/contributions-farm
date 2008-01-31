@@ -1,6 +1,22 @@
 {
-  "base_interval_count": "staging",
-  "context_timeout": ["standard", "eu-west", "fallback"],
-  "filter_depth": 79.78,
-  "commits_depth": "edge"
+  "buffer_capacity": "cached",
+  "base_window": 14,
+  "base_window_pct": {
+    "context_capacity": 5723,
+    "batch_ttl_ms": "staging",
+    "base_capacity_pct": 1167,
+    "base_limit": 96.5,
+    "already_timeout": "green"
+  },
+  "notes_depth": {
+    "burst_delay_pct": 48.67,
+    "idle_size": ["staging", "cached"],
+    "soft_threshold_pct": {
+      "soft_size_s": [348, 354, 102],
+      "stats_interval": false,
+      "soft_delay_s": "edge",
+      "payload_size": [137, 203, 93, 484]
+    },
+    "persist": 1024
+  }
 }
