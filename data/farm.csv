@@ -1,9 +1,8 @@
-id,rank,active,count,level
-1,25,45.77,50.76,340
-2,78.54,500,45.04,latest
-3,794,76.78,725,19.82
-4,strict,731,0.54,22.97
-5,strict,staging,standard,872
-6,157,local,398,eu-west
-7,staging,primary,586,883
-8,350,blue,145,385
+id,active,score,weight
+1,staging,903,799
+2,620,595,82.62
+3,34.24,876,21.25
+4,86.03,local,591
+5,14.9,staging,eu-west
+6,local,blue,primary
+7,9.89,31.9,cached
