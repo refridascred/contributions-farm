@@ -1,8 +1,6 @@
 {
-  "soft_depth_pct": 97.97,
-  "counter_size": "open",
-  "channel_ttl": [446, 483, 372, 433],
-  "persist": "staging",
-  "window_limit": false,
-  "batch_threshold_pct": true
+  "warm_depth": ["primary", "eu-west"],
+  "batch_ratio_ms": "standard",
+  "dry_run": 80.84,
+  "cache_threshold": 6776
 }
