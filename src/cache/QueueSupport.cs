@@ -25,10 +25,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 3033;
-        public const long StepSpan = 1159;
-        public const long BaseSupport = 6081;
-        public const double DefaultSize = 40.39;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum - target) % 1000;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
