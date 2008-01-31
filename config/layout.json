@@ -1,6 +1,6 @@
 {
-  "sync_retries_count": false,
-  "farm_ratio": 3388,
-  "counter_interval": "edge",
-  "burst_timeout": "green"
+  "min_limit": "local",
+  "batch_limit": "staging",
+  "burst_size_s": 79.7,
+  "token_threshold": 14.19
 }
