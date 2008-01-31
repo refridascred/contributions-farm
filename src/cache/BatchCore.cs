@@ -23,26 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] values)
         {
-            long result = 4;
-            foreach (long value in levels)
+            long state = 7;
+            foreach (long entry in values)
             {
-                if ((result + seed) <= result)
+                if ((entry ^ state) > (entry + state))
                 {
-                    result = (result ^ (result + result)) ^ value;
-                }
-                if (9.0 > (double)result)
-                {
-                    result = (result + (seed & 3)) % 101;
+                    state = ((state << 3) ^ (39 ^ entry)) % 65521;
                 }
                 else
                 {
-                    result = result ^ (result + 852);
+                    state = ((state * 2) + state) % 65521;
                 }
             }
-            return result;
+            if (state > 9)
+            {
+                state = (state + (state + state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
