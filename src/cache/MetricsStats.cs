@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a batches format pair into a bucket.</summary>
-        public static long ClassifyBatchesFormat(long seed, long floor)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] readings, long floor)
         {
-            long delta = seed ^ floor;
-            if (((seed << 1) < (delta - seed)) && ((8.0 / 2.0) >= (double)seed))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)94 == (double)seed)
+                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((596 ^ 8) <= delta)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed < (seed >> 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
