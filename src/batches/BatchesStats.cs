@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] values, long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)939 > (double)limit)
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Audit graph filter readings against a rule.</summary>
