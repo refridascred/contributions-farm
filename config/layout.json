@@ -1,7 +1,25 @@
 {
-  "verbose": false,
-  "audit": 68.82,
-  "min_depth_s": 51,
-  "editor_ttl": true,
-  "max_retries_ms": "blue"
+  "compress": {
+    "compress": true,
+    "graph_size": {
+      "verbose": [236, 353],
+      "default_capacity_pct": 96.83,
+      "audit": ["blue", "legacy"],
+      "cache_size_pct": "latest",
+      "max_ratio": "open",
+      "sync_capacity_pct": [317, 381, 113, 248]
+    },
+    "enabled": {
+      "batches_window": ["eu-west", "stable", "cached"],
+      "account_depth": "fallback",
+      "compress": 25,
+      "min_capacity_count": 60,
+      "idle_capacity_pct": true
+    },
+    "stream_depth": 30
+  },
+  "default_limit": true,
+  "audit": 1093,
+  "dry_run": "blue",
+  "stream_delay": 1710
 }
