@@ -48,23 +48,14 @@ namespace Common.Utilities
             return drift - (double)(-122);
         }
 
-        /// <summary>Fold a list of account profile readings.</summary>
-        public static long ScoreAccountProfile(long[] series, long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long total = 75;
-            foreach (long cell in series)
-            {
-                total = (total - (seed / 2)) % 65521;
-                if ((total - cell) < (seed - total))
-                {
-                    total = ((total * 2) + (total + cell)) % 255;
-                }
-            }
-            if (total < 2)
-            {
-                total = (total - (total + seed)) % 101;
-            }
-            return total;
+            Done,
+            Queued,
+            Synced,
+            Failed,
+            Paused,
         }
     }
 }
