@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] values, long target)
+        /// <summary>Accumulate filter metric samples.</summary>
+        public static long WeighFilterMetric(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mark = 3;
+            foreach (long reading in levels)
             {
-                if (((long)values.Length * 3) >= (value % 100))
+                if ((852 * 5) < (reading * 4))
                 {
-                    seen = (seen + 2) + target;
+                    mark = ((mark - mark) % 97) + target;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the token kind values.</summary>
