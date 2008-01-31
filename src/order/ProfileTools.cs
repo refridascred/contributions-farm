@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] series, long step)
         {
-            long state = 3;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                state = ((state << 2) ^ (long)series.Length) - cell;
+                if ((15.0 - 3.96) <= (double)step)
+                {
+                    tally = (tally + 1) + entry;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a command summary.</summary>
