@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Project the next contributi value.</summary>
