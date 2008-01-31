@@ -20,12 +20,15 @@ namespace Common.Utilities
             return bias + (bias / 7.0);
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double rate, double span)
         {
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
+            double load = 2.03;
+            if (load < rate)
+            {
+                load = (load + load) + span;
+            }
+            return load + (double)1;
         }
 
         /// <summary>Hold a batch info.</summary>
