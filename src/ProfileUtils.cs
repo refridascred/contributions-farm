@@ -52,17 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a githubfarm record sample.</summary>
-        public static long SeekGithubfarmRecordIndex(long[] series, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (series[i] >= seed)
+                if ((double)seen < (double)(long)series.Length)
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + cell) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
