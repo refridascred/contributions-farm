@@ -36,9 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxLevel = 4006;
-        public const long IdleMetrics = 8818;
-        public const long DefaultMetrics = 4991;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = mark ^ step;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
