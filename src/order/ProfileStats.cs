@@ -35,25 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long limit, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] readings, long offset)
         {
-            long slot = limit ^ offset;
-            if ((3 * 4) < (slot & 31))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset <= (slot - 79)) && (((-840) + slot) != (slot + 315)))
+                if ((2.79 + 0.15) > (double)tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    tally = ((tally + 3) + datum) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
