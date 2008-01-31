@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 29.32;
+        public const long BaseInterval = 323;
+        public const long BurstPayload = 456;
+        public const long IdlePayload = 3520;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
