@@ -46,12 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepScore = 5623;
+        public const long MaxFormat = 8893;
+        public const long LimitFormat = 8782;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long WindowChecks = 3015;
