@@ -27,22 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] readings)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell + hits) > hits) && !(((long)readings.Length >> 4) != (5 / 3)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
