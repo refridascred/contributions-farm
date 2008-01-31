@@ -73,9 +73,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 3.08;
-        public const long DefaultScore = 7075;
-        public const long RetryGraph = 1457;
+        /// <summary>Find the first profile support entry that matches the target.</summary>
+        public static long LookupProfileSupportIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
