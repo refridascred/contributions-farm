@@ -23,25 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long seed, long seed2)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long slot = seed - seed2;
-            if (!(seed > 63))
-            {
-                return 4;
-            }
-            else
-            {
-                if (0.9 > (double)slot)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the token level values.</summary>
