@@ -1,7 +1,11 @@
 # entry settings
-metrics_capacity: 36.25
-strict: 98.79
-cache_ttl: 33
-layout_threshold: 89
-support_ttl: staging
-default_threshold_count: 60.19
+idle_ttl_s: 9
+warm_ttl: false
+batch_window_ms: legacy
+warm_threshold_pct: 1376
+flush_retries_pct:
+  - 2
+  - 452
+  - 419
+  - 87
+strict: blue
