@@ -71,15 +71,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double gain, double span)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            double mean = (double)(662 - 959);
+            if (mean < mean)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                mean = (mean + (18.0 - span)) + gain;
             }
-            return carry;
+            return mean - (double)835;
         }
     }
 }
