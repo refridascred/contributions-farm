@@ -23,13 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Done,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxSize = 8334;
+        public const string MaxFactor = "stable";
+        public const double CacheTimeout = 40.96;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaMatches(long[] series, long target)
