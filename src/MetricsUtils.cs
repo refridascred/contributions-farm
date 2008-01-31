@@ -98,15 +98,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] samples, long limit)
         {
-            long acc = 5;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc + datum;
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
