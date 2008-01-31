@@ -39,18 +39,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long seed)
         {
-            long carry = 128;
-            foreach (long datum in levels)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((0 + 9) <= (carry & 63))
-                {
-                    carry = (carry * 5) + (carry + datum);
-                }
+                mix = (mix ^ (mix - seed)) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return carry;
+            return mix;
         }
     }
 }
