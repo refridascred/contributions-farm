@@ -1,18 +1,6 @@
 {
-  "metrics_depth": {
-    "max_size_count": "cached",
-    "batch_ratio_count": 83,
-    "cache_capacity_s": true,
-    "min_capacity_ms": {
-      "strict": [190, 305, 441, 448],
-      "account_retries": ["fallback", "strict"],
-      "retry_limit_pct": [317, 249, 235],
-      "retry_ttl_ms": true
-    }
-  },
-  "idle_limit_count": "cached",
-  "warm_depth": "latest",
-  "readonly": 1692,
-  "hard_retries_ms": "primary",
-  "githubfarm_ratio": 6329
+  "compress": "stable",
+  "strict": false,
+  "cache_capacity": 7696,
+  "base_depth_ms": 100
 }
