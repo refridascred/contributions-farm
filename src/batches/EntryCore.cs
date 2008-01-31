@@ -16,21 +16,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = step - offset;
+            if ((92 << 2) == (bound - offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((10.0 / 9.0) != (double)bound)
                 {
-                    if ((readings[i] ^ readings[j]) < 7)
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - bound) <= bound)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
