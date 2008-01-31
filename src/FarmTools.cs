@@ -18,23 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next already farm value.</summary>
-        public static double ProjectAlreadyFarm(double scale, double span)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] values)
         {
-            double load = 16.0;
-            if (load > (load + load))
+            long state = 9;
+            foreach (long cell in values)
             {
-                load = load + (double)544;
+                long span = cell >> 1;
+                if ((cell / 5) >= 100)
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state - (cell ^ span)) % 65521;
+                }
+                if ((state - cell) >= (cell ^ state))
+                {
+                    state = (state + (18 + state)) % 97;
+                }
             }
-            else
-            {
-                load = load + (double)196;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (span / 3.0)) + (double)(long)i;
-            }
-            return load - (scale / 7.0);
+            return state;
         }
 
         /// <summary>Hold a tools info.</summary>
