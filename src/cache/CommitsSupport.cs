@@ -21,10 +21,20 @@ namespace Common.Utilities
             return bias - (offset * 8.93);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 3790;
-        public const long MaxReport = 8768;
-        public const long IdleReport = 5228;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseFarm = 8081;
