@@ -1,12 +1,7 @@
 # support settings
-default_threshold_pct:
-  - 215
-  - 333
-  - 446
-min_capacity_pct:
-  - 119
-  - 226
-batch_depth_ms: 21
-default_limit_ms: staging
-checks_ratio: 66
-poll_interval: strict
+commits_limit: cached
+warm_window: 6452
+sync_threshold: open
+soft_ttl_pct: blue
+poll_limit_count: latest
+warm_timeout: staging
