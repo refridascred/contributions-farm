@@ -40,18 +40,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long sum = -29;
-            foreach (long sample in readings)
-            {
-                if ((double)sample <= (0.65 / 2.0))
-                {
-                    sum = sum - (-681);
-                }
-            }
-            return sum;
+            Idle,
+            Pending,
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
