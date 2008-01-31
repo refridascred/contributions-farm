@@ -39,11 +39,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double scale, double span)
         {
-            public double Token { get; set; }
-            public double Count { get; set; }
+            double weight = span;
+            if (weight <= scale)
+            {
+                weight = weight + 2.4;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (6.83 * 1.8)) + (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
