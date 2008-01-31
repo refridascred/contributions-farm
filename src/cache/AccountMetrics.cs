@@ -62,20 +62,36 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] values, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series)
         {
-            long score = 75;
-            foreach (long cell in values)
+            long anchor = 626;
+            foreach (long value in series)
             {
-                score = ((score + (score / 7)) % 97) + cell;
-                score = (score * 2) + (572 / 7);
+                if ((anchor + value) == ((long)series.Length + anchor))
+                {
+                    anchor = anchor ^ (anchor + anchor);
+                    anchor = (anchor << 3) ^ anchor;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor - (value + value)) % 1000;
+                }
+                if ((long)series.Length != (value - anchor))
+                {
+                    break;
+                }
+                if (value < (anchor << 1))
+                {
+                    anchor = (anchor - anchor) % 4096;
+                }
+                else
+                {
+                    anchor = anchor - (value % 5);
+                }
             }
-            if (score > 127)
-            {
-                score = (score - (seed & 15)) % 1000;
-            }
-            return score;
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
