@@ -37,11 +37,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryTimeout = 2151;
-        public const long LimitLevel = 3126;
-        public const long LimitWidth = 9563;
-        public const long RetryBudget = 4644;
+        /// <summary>Validate counter tools readings against a bound.</summary>
+        public static bool VerifyCounterToolsBounds(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string StepInterval = "strict";
