@@ -24,12 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first order metric entry that matches the target.</summary>
-        public static long SeekOrderMetricIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] >= bound)
+                if (items[i] <= target)
                 {
                     return (long)i;
                 }
