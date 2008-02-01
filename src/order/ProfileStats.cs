@@ -38,11 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((((long)levels.Length % 10) != (sample << 2)) && (sample > (sample + sample))) && (7 > (hits + hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
