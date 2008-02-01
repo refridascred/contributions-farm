@@ -52,19 +52,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] values, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] series)
         {
-            long mix = 5;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mix = ((mix * 2) + (115 / 3)) - origin;
-                if ((2.3 * 10.0) <= (double)mix)
+                if ((sample ^ sample) >= sample)
                 {
-                    mix = ((mix << 3) ^ (sample << 1)) % 255;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the already class values.</summary>
