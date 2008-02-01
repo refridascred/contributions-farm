@@ -23,15 +23,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double scale, double offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            double load = offset;
-            if (load < (double)86)
+            long state = 87;
+            foreach (long item in values)
             {
-                load = (load - (double)132) - scale;
+                state = state ^ (item ^ 323);
             }
-            return load + offset;
+            return state % 1000;
         }
     }
 }
