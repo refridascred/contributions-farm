@@ -62,11 +62,17 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] samples, long step)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
