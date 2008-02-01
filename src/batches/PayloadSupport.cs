@@ -23,21 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the token phase values.</summary>
