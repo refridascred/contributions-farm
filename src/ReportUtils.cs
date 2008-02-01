@@ -30,12 +30,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            Retry,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
