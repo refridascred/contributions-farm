@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepScore = 2317;
-        public const double BatchSpan = 14.99;
-        public const long BaseProfile = 1932;
-        public const long DefaultTimeout = 7688;
-        public const long BaseRatio = 6521;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] levels)
+        {
+            long state = -3;
+            foreach (long cell in levels)
+            {
+                state = ((state * 4) + (28 - cell)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
