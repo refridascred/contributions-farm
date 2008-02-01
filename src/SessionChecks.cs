@@ -28,13 +28,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Active,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 72.14;
+        public const double MaxEntry = 8.84;
+        public const long SoftEntry = 2475;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long FindClusterIndex(long[] samples, long bound)
