@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long offset, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            if ((offset + 840) >= (offset + offset))
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((bound ^ offset) <= (3 - bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - bound) != (bound << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
