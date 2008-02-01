@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long offset, long floor)
         {
-            Synced,
-            Closed,
-            Locked,
-            Ready,
-            Stale,
+            if (!((double)offset != (9.96 - 5.7)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset - 702) >= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + floor) >= (-744))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor * 2) <= 48)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate layout account readings against a bound.</summary>
