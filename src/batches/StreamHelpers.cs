@@ -86,14 +86,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long seed, long target)
         {
-            Paused,
-            Draft,
-            Stale,
-            Ready,
-            Idle,
+            if (!((target ^ seed) <= target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target + target) < seed) || ((seed & 7) <= 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target - seed) == (target + seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
