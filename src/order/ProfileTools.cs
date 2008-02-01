@@ -55,17 +55,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] series, long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] == bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
