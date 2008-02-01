@@ -84,39 +84,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a checks buffer pair into a bucket.</summary>
-        public static long BucketChecksBuffer(long origin, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] levels, long target)
         {
-            long gap = origin - limit;
-            if (gap < 4)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (gap < (origin % 3))
+                if (value < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (limit >= (limit >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((gap ^ limit) <= origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
