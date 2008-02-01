@@ -26,20 +26,11 @@ namespace Common.Utilities
             return (rate + offset) + scale;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = ((anchor << 2) ^ origin) - (long)i2;
-                }
-                anchor = (anchor ^ ((long)i + anchor)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
