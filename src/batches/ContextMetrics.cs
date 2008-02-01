@@ -63,17 +63,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] items, long limit)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
