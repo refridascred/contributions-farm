@@ -65,21 +65,18 @@ namespace Common.Utilities
         public const long SoftContext = 6315;
         public const long WindowContext = 3334;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7.36 - 7.0) > (double)offset)
                 {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + entry;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
