@@ -37,18 +37,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] data, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches >= (matches ^ matches))
+                if ((data[i] == offset) && ((data[i] % 2) == 0))
                 {
-                    matches = ((matches + 3) - datum) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
