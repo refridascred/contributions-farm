@@ -20,22 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] levels)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long target)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((1.6 / 6.0) == (double)value)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the cache mode values.</summary>
