@@ -49,18 +49,38 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] series, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            if ((target + target) != (5 - seed))
             {
-                if (1 <= seed)
+                return 3;
+            }
+            else
+            {
+                if ((target % 7) <= (40 + seed))
                 {
-                    hits = (hits + 3) + reading;
+                    return 8;
+                }
+                else
+                {
+                    if (target < (seed << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed / 8) <= (seed & 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
