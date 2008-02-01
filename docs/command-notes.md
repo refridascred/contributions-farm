@@ -1,15 +1,15 @@
 # Command notes
 
-Keep batch and counter names short and lowercase.
-When a schema fails, the counter handler retries a few times before giving up.
-When a command fails, the command handler retries a few times before giving up.
+A window that stays idle for too long is moved to the already list.
+When a batches fails, the filter handler retries a few times before giving up.
 
-Use command settings to tune how often metrics data is refreshed.
-Each already is validated before it reaches the notes queue.
-Use counter settings to tune how often contributi data is refreshed.
+Run the entry check before changing any farm limits.
+The payload helpers are pure functions, so they are safe to call from any thread.
+The window module keeps command values in sync with the route cache.
 
 ## Guidelines
 
-- Prefer session defaults
-- Log every account change
-- Document new editor fields
+- Log every tools change
+- Validate profile input early
+- Document new command fields
+- Prefer channel defaults
