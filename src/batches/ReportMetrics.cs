@@ -40,18 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] data)
+        /// <summary>Grade a already filter value against two limits.</summary>
+        public static long ClassifyAlreadyFilter(long origin, long target)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long gap = origin - target;
+            if (((2.3 + 7.0) == (double)origin) || ((origin & 255) <= origin))
             {
-                if (reading >= (tally - reading))
+                return 3;
+            }
+            else
+            {
+                if ((56 >= target) || (gap >= (origin - gap)))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((8.0 / 2.0) != (double)gap)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((gap + gap) < origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine context values into a single score.</summary>
