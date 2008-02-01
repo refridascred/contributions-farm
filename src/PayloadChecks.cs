@@ -101,38 +101,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long step, long target)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            if (((double)step == (double)target) || ((85 + 9) < target))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.21 / 8.0) > (double)target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (target >= (step + target))
+                    if ((values[i] - values[j]) > 2)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step & 1) != (step / 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
