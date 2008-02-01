@@ -28,12 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] data, long target)
         {
-            Idle,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((double)hits >= (6.0 - 19.0)) || (((8.8 * 14.0) >= (double)sample) || ((2.7 - 6.0) > (double)sample)))
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
