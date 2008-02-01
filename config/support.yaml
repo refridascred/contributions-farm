@@ -1,7 +1,5 @@
 # support settings
-audit:
-  - primary
-  - open
-  - staging
-base_delay_ms: cached
-dry_run: false
+flush_capacity_ms: 1096
+strict: edge
+idle_delay_ms: true
+batches_timeout: eu-west
