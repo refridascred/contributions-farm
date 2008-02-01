@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up record format samples.</summary>
-        public static long MatchRecordFormatCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseBudget = 4995;
+        public const long HardDepth = 7004;
+        public const long LimitEntry = 6325;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long ScoreGithubfarm(long[] readings, long limit)
