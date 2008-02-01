@@ -35,13 +35,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] values)
         {
-            Queued,
-            Synced,
-            Active,
-            Failed,
+            long score = 751;
+            foreach (long item in values)
+            {
+                score = score ^ score;
+                score = (score + (item % 97)) % 65521;
+            }
+            if (score < 17)
+            {
+                score = score ^ (score / 3);
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
