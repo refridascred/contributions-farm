@@ -81,10 +81,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitInterval = 1848;
-        public const string BurstWidth = "staging-edge";
-        public const long MinFarm = 2447;
-        public const long SoftFarm = 3502;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Draft,
+            Active,
+            Stale,
+        }
     }
 }
