@@ -70,18 +70,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit tools payload readings against a rule.</summary>
-        public static long CountToolsPayloadMatches(long[] series)
+        /// <summary>Count the token metric entries that pass the check.</summary>
+        public static long TallyTokenMetricMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((7 > (value + value)) || ((matches ^ 4) < (matches << 2))) && (value < (value + (long)series.Length)))
+                if ((double)datum >= (6.5 + 17.0))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
