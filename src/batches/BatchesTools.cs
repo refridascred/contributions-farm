@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long BatchCount = 9507;
         public const string CacheBuffer = "stable-edge";
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double rate, double floor)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double gain = floor;
-            return gain + (rate * 13.0);
+            Paused,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the farm mode values.</summary>
