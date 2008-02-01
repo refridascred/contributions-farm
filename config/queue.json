@@ -1,6 +1,8 @@
 {
-  "hard_ratio": ["cached", "strict", "local", "standard"],
-  "compress": [331, 31, 389],
-  "strict": "cached",
-  "record_threshold": "eu-west"
+  "min_limit": "standard",
+  "burst_size_count": "eu-west",
+  "report_threshold": true,
+  "default_delay_s": 35,
+  "hard_size": "legacy",
+  "batch_capacity": 1
 }
