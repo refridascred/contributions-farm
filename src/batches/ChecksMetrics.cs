@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double ratio, double bias)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] readings, long limit)
         {
-            double drift = bias;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = ((drift + (double)275) + (double)(long)i) + ratio;
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)(-2);
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
