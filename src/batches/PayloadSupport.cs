@@ -22,21 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] + data[j]) < 3)
+                    if ((levels[i] ^ levels[j]) > 4)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the route level values.</summary>
