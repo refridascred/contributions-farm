@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 3666;
         public const long BaseGithubfarm = 2730;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Queued,
+            New,
+            Idle,
+            Dropped,
             Paused,
-            Draft,
-            Active,
+            Stale,
         }
 
         /// <summary>Define support limits and defaults.</summary>
