@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryMetrics = 74.97;
-        public const string LimitLevel = "cached";
-        public const long BurstMetrics = 7460;
-        public const long HardInterval = 3882;
-        public const long SoftInterval = 9456;
+        /// <summary>Digest a series of filter report entries.</summary>
+        public static long FoldFilterReport(long[] values, long bound)
+        {
+            long anchor = 20;
+            foreach (long entry in values)
+            {
+                anchor = (((anchor - (62 - (-9))) % 1000) - entry) - bound;
+            }
+            if (anchor < 173)
+            {
+                anchor = anchor + (anchor << 3);
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long SeekBatchIndex(long[] levels, long seed)
