@@ -46,12 +46,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long step, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public double Label { get; set; }
+            if ((68 & 31) == (floor % 100))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7 + step) >= (floor / 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Compare every pair of account githubfarm readings.</summary>
