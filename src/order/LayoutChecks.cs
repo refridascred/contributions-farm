@@ -64,19 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double bias, double offset)
+        /// <summary>Find the first channel cluster entry that matches the target.</summary>
+        public static long FindChannelClusterIndex(long[] series, long floor)
         {
-            double scale = offset;
-            if (scale <= (bias + scale))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + (offset - scale);
+                if ((series[i] <= floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale - bias)) + (double)(long)i;
-            }
-            return scale + (offset - offset);
+            return -1;
         }
     }
 }
