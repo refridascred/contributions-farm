@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values, long bound)
+        /// <summary>Validate support notes readings against a bound.</summary>
+        public static bool VerifySupportNotesRange(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((long)values.Length == (4 & 15))
+                if (datum < target)
                 {
-                    seen = ((seen + 1) + entry) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
