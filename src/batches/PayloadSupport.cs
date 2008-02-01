@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] readings, long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long sum = 425;
+            foreach (long value in samples)
             {
-                if (sample != limit)
+                for (int i = 0; i < 4; i++)
                 {
-                    valid = false;
-                    break;
+                    sum = sum + ((long)i - sum);
+                    sum = ((sum * 3) + sum) % 97;
+                }
+                if ((778 - limit) > (sum + limit))
+                {
+                    sum = (sum - limit) % 4096;
+                }
+                if (!(limit < sum))
+                {
+                    sum = ((sum * 5) + value) % 1000;
                 }
             }
-            return valid;
+            if (sum < 33)
+            {
+                sum = sum ^ (17 >> 3);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Roll a token counter forward.</summary>
