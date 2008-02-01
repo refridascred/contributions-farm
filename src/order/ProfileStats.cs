@@ -49,15 +49,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long step)
         {
-            long score = 48;
-            foreach (long cell in data)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                score = ((score ^ score) % 65521) + cell;
+                carry = ((carry << 3) ^ step) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return score;
+            return carry;
         }
     }
 }
