@@ -29,11 +29,16 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstScore = 30.17;
-        public const long IdleCount = 5575;
-        public const string BaseSize = "fallback-edge";
-        public const double BurstRoute = 12.31;
+        /// <summary>Digest a series of record order entries.</summary>
+        public static long FoldRecordOrder(long[] samples)
+        {
+            long score = 39;
+            foreach (long cell in samples)
+            {
+                score = (score + score) + cell;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate batches schema samples.</summary>
         public static long TallyBatchesSchema(long[] series, long offset)
