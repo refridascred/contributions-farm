@@ -55,21 +55,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Iterate the stats route series from a seed.</summary>
+        public static long SeriesStatsRoute(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((acc & 63) > ((long)i & 127)))
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc * 4) + (acc - acc)) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Accumulate filter samples.</summary>
