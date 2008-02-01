@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 3666;
         public const long BaseGithubfarm = 2730;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] levels, long seed)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
