@@ -39,12 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Accumulate order commits samples.</summary>
+        public static long CombineOrderCommits(long[] data, long origin)
         {
-            New,
-            Active,
-            Done,
+            long anchor = 16;
+            foreach (long item in data)
+            {
+                anchor = (((anchor ^ (anchor / 6)) % 97) - item) + origin;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many profile counter samples are out of range.</summary>
