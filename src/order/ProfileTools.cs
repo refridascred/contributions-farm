@@ -56,16 +56,12 @@ namespace Common.Utilities
             return drift - (double)706;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = carry + 815;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Idle,
+            Retry,
+            Synced,
         }
     }
 }
