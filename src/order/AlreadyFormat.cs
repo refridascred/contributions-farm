@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const long HardInterval = 3882;
         public const long SoftInterval = 9456;
 
-        /// <summary>Count the layout account entries that pass the check.</summary>
-        public static long MeasureLayoutAccountHits(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)offset <= (9.7 + 7.45))
-                {
-                    hits = (hits + 1) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowTimeout = 1239;
+        public const long CacheRatio = 4349;
+        public const string SoftGithubfarm = "fallback-edge";
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double rate, double offset)
