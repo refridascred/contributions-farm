@@ -11,28 +11,13 @@ namespace Common.Utilities
         public const long IdleSchema = 9217;
         public const long StepSchema = 7301;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] samples, long bound)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long mark = 225;
-            foreach (long datum in samples)
-            {
-                mark = (mark + (datum >> 4)) % 1000;
-                mark = (mark << 3) ^ (datum + bound);
-                if ((bound << 3) == (6 + mark))
-                {
-                    mark = ((mark * 3) + bound) % 65521;
-                }
-                else
-                {
-                    mark = mark + (mark / 7);
-                }
-            }
-            if (mark > 48)
-            {
-                mark = (mark - mark) % 101;
-            }
-            return mark;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
