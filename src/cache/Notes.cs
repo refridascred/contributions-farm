@@ -25,10 +25,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchTimeout = 1580;
-        public const long BatchFormat = 9850;
-        public const long BurstLevel = 8267;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long GradeContributi(long bound, long floor)
