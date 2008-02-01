@@ -27,22 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] items, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((tally >> 3) < (62 + 143))
+                if (((bound - entry) != (entry - (long)levels.Length)) && ((double)count == (8.66 + 2.63)))
                 {
-                    tally = ((tally + 2) + sample) - offset;
+                    count = count + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the queue state values.</summary>
