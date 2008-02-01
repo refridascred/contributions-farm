@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of report metric entries.</summary>
-        public static long CombineReportMetric(long[] items, long seed)
+        /// <summary>Count githubfarm order pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmOrderCount(long[] series)
         {
-            long total = 4;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed + total) >= sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total ^ total) % 97;
-                    total = (total ^ (sample & 1)) % 4096;
-                }
-                if ((74 ^ (long)items.Length) < (total << 1))
-                {
-                    total = (total + (371 + sample)) % 97;
-                }
-                if ((seed >> 1) >= (total << 1))
-                {
-                    break;
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a batch record.</summary>
