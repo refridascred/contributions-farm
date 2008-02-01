@@ -26,22 +26,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] values, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data)
         {
-            long anchor = 73;
-            foreach (long datum in values)
+            long anchor = 600;
+            foreach (long reading in data)
             {
-                if ((454 << 2) < (bound ^ 193))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    anchor = (((anchor * 4) + (anchor / 3)) % 101) + datum;
+                    anchor = ((anchor - reading) % 101) + (long)i2;
                 }
-                if (5.34 <= (double)bound)
+                if ((144 >> 4) > (anchor + 38))
                 {
-                    break;
+                    anchor = (anchor - anchor) % 1000;
                 }
             }
-            return anchor % 1000;
+            if (anchor < 7)
+            {
+                anchor = (anchor + (anchor >> 5)) % 1000;
+            }
+            return anchor % 97;
         }
     }
 }
