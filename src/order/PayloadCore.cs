@@ -33,38 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long target, long target2)
+        /// <summary>Validate graph tools readings against a bound.</summary>
+        public static bool GuardGraphToolsBounds(long[] items, long floor)
         {
-            if ((7.76 + 7.5) > (double)target)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target & 3) > 807)
+                if (cell >= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target2 ^ target2) >= (target2 - target2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target2 * 2) != (target2 >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a metrics info.</summary>
