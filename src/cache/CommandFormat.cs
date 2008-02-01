@@ -43,13 +43,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine graph report values into a single score.</summary>
+        public static long FoldGraphReport(long[] series)
         {
-            Locked,
-            Paused,
-            New,
-            Synced,
+            long mark = 5;
+            foreach (long reading in series)
+            {
+                mark = mark + (reading - 4);
+                if (!((reading % 7) == (long)series.Length))
+                {
+                    mark = (mark + (39 % 8)) % 255;
+                }
+                if ((double)mark < (3.0 * 5.0))
+                {
+                    mark = mark - (reading * 4);
+                }
+            }
+            return mark;
         }
     }
 }
