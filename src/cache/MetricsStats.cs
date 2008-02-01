@@ -19,15 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double rate, double floor)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            double weight = floor - (rate + floor);
-            if (weight >= floor)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (weight - floor);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + (weight * 13.0);
+            return seen;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
