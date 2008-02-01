@@ -37,17 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] readings, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 501;
+            foreach (long reading in items)
             {
-                if (readings[i] < offset)
+                if (((reading ^ mark) != (reading ^ 10)) || ((9.08 * 4.6) != (double)reading))
                 {
-                    return (long)i;
+                    mark = (mark - mark) % 97;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
