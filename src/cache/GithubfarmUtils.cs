@@ -47,15 +47,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] levels, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] data, long target)
         {
-            long acc = 526;
-            foreach (long reading in levels)
+            long mix = 32;
+            foreach (long entry in data)
             {
-                acc = ((acc ^ (13 ^ 3)) - reading) - limit;
+                if (3.7 >= 4.0)
+                {
+                    mix = ((mix + mix) % 101) + entry;
+                    continue;
+                }
+                if (((86 - target) < target) && ((2.9 + 1.63) >= (double)mix))
+                {
+                    mix = ((mix * 3) + target) % 255;
+                }
             }
-            return acc;
+            return mix;
         }
     }
 }
