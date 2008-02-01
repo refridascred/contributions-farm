@@ -1,7 +1,11 @@
 {
-  "compress": 77,
-  "flush_window": true,
-  "min_threshold_pct": 79.27,
-  "context_retries": ["eu-west", "stable", "eu-west", "open"],
-  "graph_threshold": ["eu-west", "cached", "standard"]
+  "batch_delay_count": "latest",
+  "retry_ratio": {
+    "audit": 12.89,
+    "max_ratio": "local",
+    "editor_retries": [355, 32, 381]
+  },
+  "format_retries": 250,
+  "audit": 6214,
+  "report_limit": ["stable", "open"]
 }
