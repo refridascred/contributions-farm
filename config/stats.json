@@ -1,5 +1,5 @@
 {
-  "soft_ttl_ms": 1024,
-  "base_window_ms": false,
-  "account_capacity": 42.19
+  "warm_capacity": 2114,
+  "poll_depth": [370, 229, 133],
+  "retry_capacity": "primary"
 }
