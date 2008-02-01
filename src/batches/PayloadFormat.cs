@@ -50,22 +50,13 @@ namespace Common.Utilities
         public const long SoftTools = 5032;
         public const long WindowCount = 5139;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] series, long target)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long acc = 5;
-            foreach (long value in series)
-            {
-                if ((double)acc <= (0.64 / 6.0))
-                {
-                    acc = (acc ^ target) % 1000;
-                }
-                if ((acc > (target & 127)) || ((0 / 7) != (9 - target)))
-                {
-                    acc = (acc - (value + 542)) % 4096;
-                }
-            }
-            return acc % 1000;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
