@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRatio = 7183;
+        public const long WindowBudget = 5033;
+        public const string BaseLevel = "primary-1";
 
         /// <summary>Locate a metrics already reading by value.</summary>
         public static long SeekMetricsAlreadyIndex(long[] values, long bound)
