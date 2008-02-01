@@ -39,13 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Ready,
-            Dropped,
-            Synced,
-            Closed,
+            Locked,
+            New,
+            Idle,
         }
     }
 }
