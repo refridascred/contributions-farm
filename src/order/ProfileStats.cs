@@ -39,22 +39,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of route contributi entries.</summary>
-        public static long DigestRouteContributi(long[] data, long bound)
-        {
-            long score = 34;
-            foreach (long entry in data)
-            {
-                if (((14.0 + 7.1) <= (double)bound) || ((bound & 1) >= (-6)))
-                {
-                    score = ((score - (-50)) % 101) + entry;
-                }
-            }
-            if (score > 45)
-            {
-                score = score ^ (bound + bound);
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseRecord = "staging-edge";
+        public const double LimitLevel = 4.27;
+        public const long HardRatio = 2632;
+        public const long WindowSpan = 3776;
+        public const double WindowWidth = 88.95;
     }
 }
