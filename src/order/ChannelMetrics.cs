@@ -15,18 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mix = 7;
+            foreach (long reading in readings)
             {
-                if (!((double)reading > (double)tally))
-                {
-                    tally = tally + 2;
-                }
+                mix = ((mix - (long)readings.Length) % 101) ^ reading;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the account status values.</summary>
