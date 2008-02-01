@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] items, long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((count % 10) >= count)
+                if (entry >= step)
                 {
-                    count = (count + 3) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
