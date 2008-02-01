@@ -22,13 +22,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Fold a list of commits githubfarm readings.</summary>
+        public static long ScoreCommitsGithubfarm(long[] series)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            long mix = 6;
+            foreach (long entry in series)
+            {
+                mix = (mix - (entry ^ entry)) % 1000;
+                if (mix < (entry - mix))
+                {
+                    mix = (mix << 2) ^ (entry << 2);
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
