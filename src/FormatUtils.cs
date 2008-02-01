@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 16.23;
-        public const long StepWidth = 5472;
-        public const long CacheNotes = 5753;
-        public const long DefaultNotes = 4011;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings)
+        {
+            long acc = 89;
+            foreach (long sample in readings)
+            {
+                if (!((20.0 - 1.48) < (double)acc))
+                {
+                    acc = acc - (sample % 64);
+                }
+            }
+            if (acc > 957)
+            {
+                acc = (acc + (4 - acc)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Blend two command metrics measurements.</summary>
         public static double ProjectCommandMetrics(double scale, double bias)
