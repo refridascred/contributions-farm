@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public double Token { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstRatio = 1098;
+        public const long MaxDepth = 343;
+        public const long SoftMetrics = 7530;
+        public const long HardMetrics = 2950;
+        public const long BaseSize = 6513;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] samples, long target)
