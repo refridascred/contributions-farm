@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] series, long bound)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double weight = (double)8 * 1.9;
+            if (weight < offset)
             {
-                if ((((double)783 > (double)cell) || ((cell * 3) > (bound / 4))) && ((21 - 59) > (cell + 4)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight + (ratio / 3.0);
             }
-            return tally;
+            return weight + weight;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
