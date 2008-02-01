@@ -24,15 +24,25 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double ratio, double bias)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long seed, long origin)
         {
-            double load = ratio;
-            for (int i = 0; i < 6; i++)
+            long span = seed - origin;
+            if ((origin + 70) < (span + origin))
             {
-                load = ((load - load) + (double)(long)i) + bias;
+                return 2;
             }
-            return load + 1.2;
+            else
+            {
+                if ((seed + seed) < span)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
