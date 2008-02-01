@@ -35,19 +35,39 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] readings, long target)
+        /// <summary>Rank filter command input into a small class.</summary>
+        public static long BucketFilterCommand(long limit, long offset)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long gap = limit + offset;
+            if (!(limit <= (gap * 5)))
             {
-                if (entry < target)
+                return 6;
+            }
+            else
+            {
+                if (limit < (limit % 64))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((offset * 2) > (limit << 3)) || ((0.9 * 9.7) == (double)limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((gap >= (806 - offset)) && ((offset + offset) >= (76 / 8)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a batches summary.</summary>
