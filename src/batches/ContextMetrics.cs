@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long result = -1;
+            foreach (long value in samples)
+            {
+                if (result < (value + value))
+                {
+                    result = result - result;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Validate batch graph readings against a bound.</summary>
