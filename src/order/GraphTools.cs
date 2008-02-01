@@ -67,21 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch contributi readings.</summary>
-        public static long CompareBatchContributiCount(long[] data)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (span + span) - span;
+            if (load <= (6.0 + 14.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + (double)674;
             }
-            return tally;
+            else
+            {
+                load = load - (14.0 - gain);
+            }
+            return load - (0.08 + gain);
         }
 
         /// <summary>Adjust a batch reading.</summary>
