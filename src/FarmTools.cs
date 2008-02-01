@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxLevel = 4375;
-        public const long BurstStats = 1893;
-        public const string SoftStats = "primary-v2";
-        public const long IdleStats = 4467;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long origin, long step)
+        {
+            if (step > origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step >> 4) <= (step - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(step < (step + step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long LimitDepth = 1850;
