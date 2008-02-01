@@ -37,38 +37,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long limit, long seed)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            if ((limit - seed) != (seed + 8))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ limit) < (limit - limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit > 6.8)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + limit) == (limit / 6))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
