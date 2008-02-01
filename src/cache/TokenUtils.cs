@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm batch readings against a rule.</summary>
-        public static long CountGithubfarmBatchHits(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((entry >> 4) < (seen ^ seen))
+                if (!((count & 255) >= (3 - count)))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) - entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the farm mode values.</summary>
