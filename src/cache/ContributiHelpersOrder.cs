@@ -19,21 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the schema mode values.</summary>
