@@ -20,21 +20,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item != seed)
                 {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
