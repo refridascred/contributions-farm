@@ -69,17 +69,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] levels, long step)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long sum = 9;
-            foreach (long value in levels)
-            {
-                sum = ((sum * 5) + (51 ^ step)) % 4096;
-                sum = (sum ^ (value % 2)) % 101;
-                sum = (sum - (step + value)) % 65521;
-            }
-            return sum;
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a cluster info.</summary>
