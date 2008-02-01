@@ -32,30 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already order value against two limits.</summary>
-        public static long RankAlreadyOrder(long step, long limit)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long offset, long seed)
         {
-            long slot = step ^ limit;
-            if ((double)step < (0.1 + 9.59))
+            if ((seed / 8) < seed)
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((8.83 * 3.5) < (double)limit)
+                if ((offset + offset) != (seed / 9))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if (((double)step <= (13.0 / 9.0)) || ((step / 9) < (slot - slot)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 7;
                 }
             }
         }
