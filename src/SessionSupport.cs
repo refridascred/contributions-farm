@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const double SoftInterval = 40.29;
         public const long DefaultRatio = 9532;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftScore = "open";
-        public const long LimitScore = 6437;
-        public const long MinSchema = 6502;
+        /// <summary>Compare every pair of filter buffer readings.</summary>
+        public static long CompareFilterBufferCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long seed, long origin)
