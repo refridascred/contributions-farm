@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] samples, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            long state = 20;
+            foreach (long cell in samples)
             {
-                if (((long)i << 3) > step)
+                if ((double)733 < (double)cell)
                 {
-                    mark = mark - mark;
+                    state = ((state * 4) + 361) + offset;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (-884)) % 101;
+                    state = state - (cell / 2);
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return state % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
