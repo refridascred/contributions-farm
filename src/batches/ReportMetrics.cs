@@ -41,9 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 6362;
-        public const long HardTimeout = 4194;
-        public const long WindowScore = 896;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(((tally / 9) < (offset + tally)) && ((8.15 * 5.2) >= (double)tally)))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
+        }
     }
 }
