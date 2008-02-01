@@ -20,18 +20,15 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((item ^ tally) >= tally)
                 {
-                    if ((values[i] ^ values[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
