@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long bound, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] levels, long step)
         {
-            long gap = bound - limit;
-            if ((gap & 127) == (limit ^ bound))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 15) > (gap << 3))
+                if (((long)levels.Length - (-814)) < (step ^ matches))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound >= (8.8 - 5.73))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = (matches + 2) - item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next commits value.</summary>
