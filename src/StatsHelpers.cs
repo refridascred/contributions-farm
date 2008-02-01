@@ -30,14 +30,14 @@ namespace Common.Utilities
         public const long RetryCache = 6364;
         public const long IdleCache = 5456;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Done,
-            Pending,
-            Active,
-            Retry,
             Idle,
+            Done,
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
