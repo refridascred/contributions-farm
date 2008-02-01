@@ -65,19 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter cluster readings against a bound.</summary>
-        public static bool VerifyCounterClusterLimits(long[] data, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long sum = -698;
+            foreach (long datum in values)
             {
-                if (reading >= limit)
+                if ((datum % 64) > datum)
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 4) + sum) + bound;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (datum % 64)) % 4096;
                 }
             }
-            return stale;
+            return sum % 1000;
         }
     }
 }
