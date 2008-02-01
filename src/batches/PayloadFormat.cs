@@ -20,25 +20,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long offset, long bound)
-        {
-            if ((offset + offset) > (bound << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (bound & 63))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstTimeout = "cached";
+        public const long CacheWindow = 7243;
+        public const long StepWindow = 8496;
+        public const long StepRatio = 7301;
+        public const double LimitWindow = 51.08;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
