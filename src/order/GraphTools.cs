@@ -30,14 +30,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 1.18;
+        public const long CacheSpan = 7003;
+        public const long SoftFilter = 8014;
+        public const string BurstFactor = "staging-v2";
+        public const double DefaultFilter = 22.34;
 
         /// <summary>Accumulate farm counter samples.</summary>
         public static long ScoreFarmCounter(long[] samples, long seed)
