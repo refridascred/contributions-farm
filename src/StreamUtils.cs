@@ -12,21 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count metric batch pairs that satisfy a relation.</summary>
-        public static long OverlapMetricBatchCount(long[] data)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((6.2 / 7.0) > (double)count))
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 2) + datum) + step;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
