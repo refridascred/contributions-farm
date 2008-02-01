@@ -38,12 +38,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstSize = 6438;
-        public const string BatchDepth = "latest-v2";
-        public const string LimitInterval = "local-1";
-        public const long LimitBuffer = 8852;
-        public const double MinBuffer = 62.38;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Idle,
+            Pending,
+            Failed,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] items)
