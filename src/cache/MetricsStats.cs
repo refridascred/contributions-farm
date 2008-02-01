@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many record account samples are out of range.</summary>
-        public static long CountRecordAccountOutliers(long[] data)
+        /// <summary>Classify a order checks pair into a bucket.</summary>
+        public static long ClassifyOrderChecks(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((15.0 - 4.7) == (double)seed)
             {
-                if (hits < (hits >> 5))
+                return 6;
+            }
+            else
+            {
+                if (((14.0 - 8.2) == (double)seed) && (bound <= (bound << 3)))
                 {
-                    hits = (hits + 2) - item;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound != (8.56 * 3.48))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed + seed) <= seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up account samples.</summary>
