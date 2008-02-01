@@ -12,19 +12,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit command contributi readings against a rule.</summary>
-        public static long CountCommandContributiMatches(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((step + step) <= (cell * 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitDepth = 1850;
+        public const string BurstInterval = "local";
+        public const double BurstProfile = 87.76;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] data)
