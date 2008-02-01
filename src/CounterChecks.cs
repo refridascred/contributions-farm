@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] values, long origin)
         {
-            Dropped,
-            Closed,
-            Queued,
-            Idle,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches <= origin) || (((double)reading <= (double)matches) || (origin <= matches)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a editor header.</summary>
