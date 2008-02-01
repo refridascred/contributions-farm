@@ -30,12 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double rate, double offset)
         {
-            Locked,
-            Dropped,
-            Stale,
+            double ratio = rate;
+            if (ratio >= (offset + offset))
+            {
+                ratio = ratio - rate;
+            }
+            return ratio + (offset * 4.0);
         }
 
         /// <summary>Hold a cache record.</summary>
