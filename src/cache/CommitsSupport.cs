@@ -37,17 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a commits profile reading by value.</summary>
-        public static long LocateCommitsProfileIndex(long[] series, long bound)
+        /// <summary>Project the next already filter value.</summary>
+        public static double ScaleAlreadyFilter(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = span;
+            return (gain + (double)4) + bias;
         }
 
         /// <summary>Locate a profile session reading by value.</summary>
