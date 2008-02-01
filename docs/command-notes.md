@@ -1,12 +1,15 @@
 # Command notes
 
-The order report groups every entry by format.
-Use cluster settings to tune how often token data is refreshed.
-Each tools is validated before it reaches the support queue.
+A stream that stays idle for too long is moved to the batches list.
+Defaults for filter live in the config folder and can be overridden per environment.
+Keep graph and cache names short and lowercase.
+
+Run the order check before changing any editor limits.
+Keep route and account names short and lowercase.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer format defaults
-- Review contributi limits each release
-- Document new contributi fields
-- Validate commits input early
+- Validate queue input early
+- Prefer commits defaults
+- Log every schema change
