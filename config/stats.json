@@ -1,10 +1,5 @@
 {
-  "batch_interval_s": {
-    "base_size_pct": [17, 200, 267, 124],
-    "strict": [390, 242, 80, 292],
-    "farm_depth": 42
-  },
-  "strict": 250,
-  "retry_capacity": "stable",
-  "warm_retries": "blue"
+  "max_depth_count": ["eu-west", "strict", "latest"],
+  "warm_interval_s": ["local", "edge", "green", "legacy"],
+  "account_limit": true
 }
