@@ -1,12 +1,8 @@
 {
-  "session_size": ["standard", "standard", "fallback", "eu-west"],
-  "githubfarm_retries": {
-    "hard_delay_count": 1100,
-    "profile_delay": 53.51,
-    "audit": false,
-    "filter_capacity": 2.68
-  },
-  "persist": 3138,
-  "poll_ttl": 100,
-  "compress": 60
+  "burst_window": 39.82,
+  "readonly": "staging",
+  "sync_ttl_ms": "legacy",
+  "profile_capacity": 84,
+  "compress": 30,
+  "sync_interval_pct": 7160
 }
