@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate batches order samples.</summary>
-        public static long WeighBatchesOrder(long[] readings)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long acc = 210;
-            foreach (long reading in readings)
-            {
-                if ((74 >> 3) > (reading % 16))
-                {
-                    acc = (acc ^ (reading + reading)) % 101;
-                }
-            }
-            return acc % 4096;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
