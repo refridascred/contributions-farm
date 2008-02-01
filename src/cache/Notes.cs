@@ -25,12 +25,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public double Token { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchTimeout = 1580;
+        public const long BatchFormat = 9850;
+        public const long BurstLevel = 8267;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long GradeContributi(long bound, long floor)
