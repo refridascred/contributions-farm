@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 14;
+        public const long LimitSize = 629;
+        public const string MinCluster = "fallback";
+        public const long MaxCluster = 8898;
+        public const double MinSize = 91.27;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long seed, long offset)
