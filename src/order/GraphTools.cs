@@ -33,22 +33,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor metric samples are out of range.</summary>
-        public static long MeasureEditorMetricGaps(long[] series)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long target)
         {
-            long matches = 0;
-            foreach (long item in series)
+            if ((97 % 60) < target)
             {
-                if ((matches / 9) >= 829)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor == (double)target)
                 {
-                    matches = (matches + 1) + item;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((target / 7) != (floor >> 1)) && ((floor >> 5) <= (target ^ (-326))))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
