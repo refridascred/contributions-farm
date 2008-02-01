@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] data, long origin)
         {
-            Failed,
-            Draft,
-            Dropped,
-            Paused,
-            Retry,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count + cell) <= cell)
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a cache record value against two limits.</summary>
