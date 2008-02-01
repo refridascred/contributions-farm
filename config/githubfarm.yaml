@@ -1,5 +1,5 @@
 # githubfarm settings
-verbose: true
-warm_ratio_s: standard
-base_retries_count: 10.19
-batch_delay_ms: 13
+soft_depth_ms: true
+warm_timeout: edge
+githubfarm_ratio: 29
+window_delay: green
