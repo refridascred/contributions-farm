@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] readings)
         {
-            Idle,
-            Failed,
-            Queued,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (sample >= (tally << 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batch mode values.</summary>
