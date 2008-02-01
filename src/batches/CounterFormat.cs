@@ -33,32 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a tools metric value against two limits.</summary>
-        public static long BucketToolsMetric(long origin, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] items)
         {
-            long edge = origin ^ bound;
-            if ((bound - bound) != (origin & 127))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((39 << 1) > (edge >> 4)) && ((bound ^ origin) != (bound + (-593))))
+                if ((-80) <= (tally * 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((edge + edge) > origin) || (91 > (0 + edge)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = (tally + 2) ^ cell;
                 }
             }
+            return tally;
         }
     }
 }
