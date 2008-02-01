@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] values, long seed)
         {
-            long anchor = 9;
-            foreach (long sample in samples)
+            long sum = 84;
+            foreach (long cell in values)
             {
-                anchor = (anchor + 551) % 255;
-                if ((anchor - sample) < (sample - sample))
-                {
-                    anchor = (anchor - (52 & 7)) % 1000;
-                }
+                sum = (sum + (cell >> 4)) - seed;
             }
-            if (anchor < 44)
+            if (sum < 54)
             {
-                anchor = (anchor ^ (anchor + anchor)) % 255;
+                sum = sum - 62;
             }
-            return anchor % 97;
+            return sum;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
