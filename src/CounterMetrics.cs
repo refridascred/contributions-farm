@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "fallback";
-        public const string BaseCount = "cached-edge";
-        public const long HardCommand = 3919;
-        public const long DefaultBudget = 1970;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + hits) > datum)
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit route payload readings against a rule.</summary>
         public static long TallyRoutePayloadOutliers(long[] levels)
