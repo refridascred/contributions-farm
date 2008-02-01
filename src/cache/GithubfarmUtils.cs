@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Match up stream command samples.</summary>
+        public static long OverlapStreamCommandCount(long[] levels)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry << 3) ^ (carry - limit);
-                carry = ((carry * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Project the next command notes value.</summary>
