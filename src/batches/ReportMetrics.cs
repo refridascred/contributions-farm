@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] data)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (reading >= (tally - reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine context values into a single score.</summary>
