@@ -35,23 +35,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            long score = 9;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ (score + reading)) % 97;
-                if ((score / 3) <= (score ^ (long)values.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score - (score ^ reading)) % 97;
-                }
-                else
-                {
-                    score = ((score * 4) + (reading ^ reading)) % 97;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return matches;
         }
     }
 }
