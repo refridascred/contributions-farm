@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (datum >= (seen & 15))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 7445;
+        public const long BaseInterval = 1550;
+        public const long MinDepth = 1775;
+        public const long RetryLevel = 3842;
+        public const long CacheBudget = 4909;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
