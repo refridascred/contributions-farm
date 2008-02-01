@@ -1,6 +1,7 @@
 {
-  "batches_window": 30,
-  "poll_timeout_ms": "standard",
-  "readonly": true,
-  "counter_threshold": "open"
+  "burst_timeout_s": 100,
+  "readonly": 2894,
+  "soft_window": [227, 212, 58, 396],
+  "report_size": "latest",
+  "stream_ratio": 54.65
 }
