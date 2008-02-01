@@ -52,19 +52,15 @@ namespace Common.Utilities
         public const string BurstWidth = "legacy-1";
         public const long HardTimeout = 6965;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] samples, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] samples, long target)
         {
-            bool found = true;
+            long acc = 38;
             foreach (long sample in samples)
             {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (((acc << 3) ^ (sample + 3)) % 101) + target;
             }
-            return found;
+            return acc % 65521;
         }
     }
 }
