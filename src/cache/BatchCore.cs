@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] samples, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long score = 680;
-            foreach (long item in samples)
-            {
-                if (score > (bound / 3))
-                {
-                    score = (score << 2) ^ item;
-                }
-            }
-            return score;
+            Stale,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
