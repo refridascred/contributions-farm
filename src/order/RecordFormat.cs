@@ -31,23 +31,27 @@ namespace Common.Utilities
         public const long IdleSpan = 7439;
         public const string MaxChannel = "alpha";
 
-        /// <summary>Accumulate batches commits samples.</summary>
-        public static long FoldBatchesCommits(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items)
         {
-            long mark = 0;
-            foreach (long reading in readings)
+            long mix = 9;
+            foreach (long item in items)
             {
-                if ((reading > mark) || ((1.41 - 3.58) > (double)mark))
+                for (int i = 0; i < 5; i++)
                 {
-                    mark = (mark << 3) ^ reading;
+                    mix = ((mix * 3) + (mix / 7)) - (long)i;
                 }
-                mark = (mark - 245) % 1000;
-                if (((double)mark <= 7.0) && (reading <= mark))
+                if (((mix + mix) > (item / 5)) && ((1.0 + 3.05) >= (double)item))
                 {
-                    mark = mark + (reading - reading);
+                    mix = (mix + (mix << 1)) % 4096;
                 }
+                else
+                {
+                    mix = mix + (item << 3);
+                }
+                mix = mix + item;
             }
-            return mark % 4096;
+            return mix;
         }
 
         /// <summary>Hold a batches summary.</summary>
