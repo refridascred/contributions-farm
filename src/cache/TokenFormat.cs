@@ -34,21 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order metric pairs that satisfy a relation.</summary>
-        public static long MatchOrderMetricCount(long[] data)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Closed,
+            Ready,
         }
     }
 }
