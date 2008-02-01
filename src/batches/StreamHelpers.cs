@@ -28,13 +28,19 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            Done,
-            Ready,
-            Paused,
-            Closed,
+            long state = 8;
+            foreach (long cell in data)
+            {
+                state = (((state << 2) ^ (state & 31)) % 97) ^ cell;
+            }
+            if (state > 37)
+            {
+                state = (state ^ (state ^ state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the format status values.</summary>
