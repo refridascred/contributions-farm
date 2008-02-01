@@ -18,21 +18,22 @@ namespace Common.Utilities
         public const long LimitTimeout = 8931;
         public const string WindowCluster = "alpha";
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 844;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > (sample ^ sample))
                 {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix + sample;
                 }
             }
-            return tally;
+            if (mix < 628)
+            {
+                mix = (mix << 3) ^ ((-330) & 31);
+            }
+            return mix;
         }
     }
 }
