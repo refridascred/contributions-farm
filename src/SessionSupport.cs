@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a command checks reading.</summary>
-        public static double ProjectCommandChecks(double bias, double bias2)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double rate = (bias2 - 0.4) - (double)742;
-            if (rate >= (rate * 6.5))
-            {
-                rate = (rate + (double)520) - bias;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - (1.25 * 5.75);
+            Dropped,
+            Done,
+            Idle,
         }
 
         /// <summary>Rank token account input into a small class.</summary>
