@@ -23,21 +23,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count profile payload pairs that satisfy a relation.</summary>
-        public static long CompareProfilePayloadCount(long[] samples)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
