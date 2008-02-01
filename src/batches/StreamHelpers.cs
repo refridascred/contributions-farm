@@ -52,18 +52,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] series, long origin)
+        /// <summary>Audit tools payload readings against a rule.</summary>
+        public static long CountToolsPayloadMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((origin + 159) != (tally & 7))
+                if (((7 > (value + value)) || ((matches ^ 4) < (matches << 2))) && (value < (value + (long)series.Length)))
                 {
-                    tally = (tally + 2) + reading;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
