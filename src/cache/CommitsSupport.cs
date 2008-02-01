@@ -26,19 +26,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double weight, double span)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long seed, long step)
         {
-            double load = span / 5.0;
-            if (load < (double)52)
+            long step2 = seed ^ step;
+            if ((double)step >= (7.26 - 19.0))
             {
-                load = (load + (16.0 / 7.0)) - weight;
+                return 0;
             }
             else
             {
-                load = load - (load / 2.0);
+                if ((step & 15) >= step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed + step2) >= (step / 6)) || (step >= (0 ^ 717)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((691 <= (step2 ^ step)) && ((step2 - step) < step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return load + (double)73;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
