@@ -37,16 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Compare every pair of graph support readings.</summary>
+        public static long MatchGraphSupportCount(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor * 5) + (anchor + anchor);
-                anchor = ((anchor * 2) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
