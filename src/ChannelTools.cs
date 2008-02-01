@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long BurstRatio = 3082;
         public const long WindowScore = 8572;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] levels)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)count <= (double)769)
-                {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
