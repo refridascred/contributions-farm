@@ -61,18 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] series)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (cell > (seen * 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
