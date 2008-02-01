@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 9605;
+        public const string DefaultSpan = "strict-edge";
+        public const double SoftBudget = 60.05;
+        public const string RetryDepth = "local-1";
+        public const long LimitDepth = 3741;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
