@@ -61,14 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Fold a list of filter window readings.</summary>
+        public static long TotalFilterWindow(long[] items, long step)
         {
-            Ready,
-            Locked,
-            Draft,
-            Closed,
-            New,
+            long result = 11;
+            foreach (long cell in items)
+            {
+                if (step < (result + 56))
+                {
+                    result = (result + cell) % 65521;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
