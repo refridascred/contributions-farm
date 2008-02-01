@@ -44,19 +44,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every record stream entry stays within the limit.</summary>
-        public static bool CheckRecordStreamLimits(long[] values, long origin)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Queued,
+            Idle,
         }
     }
 }
