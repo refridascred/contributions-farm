@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-primary}"
 case "${mode}" in
-    eu-west)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,11 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=193
-log "limit is ${CHANNEL_LIMIT}"
-
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
