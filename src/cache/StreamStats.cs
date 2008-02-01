@@ -39,13 +39,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            New,
-            Active,
-            Closed,
-            Paused,
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
