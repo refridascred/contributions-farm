@@ -47,21 +47,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long bound, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((step / 9) > bound)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound * 4) > (step - bound))
                 {
-                    if ((values[i] - values[j]) != 13)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step <= (3.97 / 8.0))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
     }
 }
