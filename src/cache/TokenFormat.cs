@@ -16,18 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] levels, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                long lane = (offset << 3) % 7;
-                mark = mark - (offset / 8);
-                mark = (mark ^ (mark - lane)) % 1000;
-                mark = ((mark * 3) + (long)i) % 101;
+                if (cell <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
