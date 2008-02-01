@@ -51,21 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count layout cache pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCacheCount(long[] values)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample != offset)
                 {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
