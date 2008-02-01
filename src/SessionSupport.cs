@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Queued,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftCount = 6723;
+        public const string MinContext = "staging-edge";
+        public const long StepContext = 4046;
+        public const double SoftInterval = 40.29;
+        public const long DefaultRatio = 9532;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] samples)
