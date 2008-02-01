@@ -27,18 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric graph readings against a rule.</summary>
-        public static long MeasureMetricGraphHits(long[] data, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((hits - limit) != (42 + hits)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) + reading;
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
