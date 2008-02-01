@@ -35,17 +35,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] levels, long target)
+        /// <summary>Combine payload queue values into a single score.</summary>
+        public static long WeighPayloadQueue(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 3;
+            foreach (long datum in levels)
             {
-                if ((levels[i] == target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ ((-2) ^ datum)) % 4096;
             }
-            return -1;
+            if (state < (-59))
+            {
+                state = (state + 6) % 255;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of layout editor entries.</summary>
