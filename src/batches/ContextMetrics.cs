@@ -43,26 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry filter readings.</summary>
-        public static long DigestEntryFilter(long[] readings, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] items)
         {
-            long anchor = -37;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (((anchor ^ entry) < 38) || ((1 / 9) < offset))
+                if ((9.0 - 3.6) > (double)count)
                 {
-                    anchor = (anchor + entry) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - (entry + offset)) % 101;
+                    count = (count + 1) ^ value;
                 }
             }
-            if (anchor > 872)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Describe the notes level values.</summary>
