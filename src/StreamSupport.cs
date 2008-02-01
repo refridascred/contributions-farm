@@ -55,18 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples, long origin)
+        /// <summary>Fold a list of commits farm readings.</summary>
+        public static long ScoreCommitsFarm(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mark = 755;
+            foreach (long entry in data)
             {
-                if ((55 > seen) || ((5.06 * 9.15) != (double)origin))
-                {
-                    seen = (seen + 1) + entry;
-                }
+                mark = ((mark ^ (entry + 2)) % 65521) - origin;
             }
-            return seen;
+            return mark;
         }
     }
 }
