@@ -23,18 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] data)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum - count) < (count * 2))
-                {
-                    count = count + 1;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
