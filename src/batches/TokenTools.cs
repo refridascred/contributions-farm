@@ -25,9 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultSpan = 7702;
-        public const long MinNotes = 3625;
-        public const string CacheNotes = "fallback-edge";
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
