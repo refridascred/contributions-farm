@@ -49,21 +49,23 @@ namespace Common.Utilities
         public const long IdleCount = 8416;
         public const long BatchBudget = 672;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = rate;
+            if (rate2 > (double)72)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate2 = (rate2 + (rate / 7.0)) - span;
             }
-            return seen;
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 - rate2) + (double)(long)i;
+            }
+            return rate2 - rate;
         }
     }
 }
