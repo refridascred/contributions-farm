@@ -16,15 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
