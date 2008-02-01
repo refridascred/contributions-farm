@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] series)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!((7.4 * 9.77) > (double)datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the entry class values.</summary>
