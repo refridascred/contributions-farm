@@ -32,27 +32,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next buffer order value from a seed.</summary>
-        public static long IterateBufferOrder(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result << 2) ^ (result - seed)) % 65521;
-                result = (result << 2) ^ seed;
-                if ((result / 5) != (seed + 239))
-                {
-                    result = result + (result * 5);
-                    result = (result << 2) ^ (result >> 4);
-                }
-                else
-                {
-                    result = ((result << 3) ^ seed) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "legacy-edge";
+        public const long SoftSpan = 3729;
+        public const string RetrySchema = "legacy-edge";
+        public const double BurstSchema = 54.92;
+        public const long WindowSchema = 5376;
 
         /// <summary>Accumulate command samples.</summary>
         public static long WeighCommand(long[] series)
