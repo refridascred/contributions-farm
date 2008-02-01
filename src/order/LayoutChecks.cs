@@ -46,28 +46,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long limit, long target)
         {
-            long state = 369;
-            foreach (long entry in items)
+            long next = limit + target;
+            if ((target > (target + 4)) || ((double)1 != (double)limit))
             {
-                long slot = (entry - 30) / 3;
-                if (((entry * 2) >= slot) || ((entry - entry) <= slot))
+                return 4;
+            }
+            else
+            {
+                if ((limit & 1) < (6 * 5))
                 {
-                    slot = (slot * 2) + (slot - entry);
+                    return 7;
                 }
                 else
                 {
-                    state = (state + slot) % 1000;
+                    if ((double)limit == (double)66)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((next - limit) != (next >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
-                state = ((state * 5) + 49) % 101;
             }
-            if (state < 6)
-            {
-                state = (state - (state - state)) % 1000;
-            }
-            return state;
         }
 
         /// <summary>Find the first channel cluster entry that matches the target.</summary>
