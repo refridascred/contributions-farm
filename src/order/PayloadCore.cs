@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every cluster window entry stays within the limit.</summary>
-        public static bool CheckClusterWindowBounds(long[] samples, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the support state values.</summary>
