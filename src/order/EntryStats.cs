@@ -19,17 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] levels, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long limit, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound2 = limit ^ bound;
+            if (limit <= (limit + bound))
             {
-                if (levels[i] == origin)
+                return 0;
+            }
+            else
+            {
+                if (!((limit & 1) > 729))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound >> 3) == (bound2 << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a support header.</summary>
