@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] levels)
         {
-            Queued,
-            Active,
-            Synced,
-            Closed,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((item & 255) != (item + 904)) && ((8.66 < (double)item) || ((double)item < (7.5 - 0.64))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel entry.</summary>
