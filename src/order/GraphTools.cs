@@ -52,15 +52,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double weight, double span)
+        /// <summary>Rank queue payload input into a small class.</summary>
+        public static long BucketQueuePayload(long step, long floor)
         {
-            double scale = (double)36 / 4.0;
-            if (scale > (weight * 6.0))
+            long offset = step - floor;
+            if ((offset + step) == (floor + floor))
             {
-                scale = (scale + (double)819) + span;
+                return 3;
             }
-            return scale + weight;
+            else
+            {
+                if (((step << 3) > ((-1) + floor)) && ((floor & 3) <= (offset & 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
