@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long limit, long step)
+        /// <summary>Audit session batch readings against a rule.</summary>
+        public static long MeasureSessionBatchHits(long[] series, long bound)
         {
-            long diff = limit - step;
-            if (!((step + limit) <= (limit + limit)))
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(2.13 >= (double)diff))
+                if ((value < (bound * 5)) && ((bound - tally) < (tally + value)))
                 {
-                    return 4;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((774 + step) >= diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit > (diff + diff))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
