@@ -25,19 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a queue metric reading.</summary>
-        public static double SmoothQueueMetric(double bias, double floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            double drift = (6.02 * 16.0) + (3.8 - bias);
-            if (drift <= (bias + drift))
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift + bias;
+                if (((long)i % 10) != (long)i)
+                {
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - floor;
+            return mix;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
