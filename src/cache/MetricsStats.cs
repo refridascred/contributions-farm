@@ -23,19 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            double weight = floor - (rate + floor);
+            if (weight >= floor)
             {
-                if (sample < step)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + (weight - floor);
             }
-            return ok;
+            return weight + (weight * 13.0);
         }
 
         /// <summary>Roll a counter counter forward.</summary>
