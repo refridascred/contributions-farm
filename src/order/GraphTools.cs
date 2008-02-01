@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] values)
         {
-            Pending,
-            Synced,
-            New,
-            Locked,
-            Paused,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (sample > (count + (-1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many editor metric samples are out of range.</summary>
