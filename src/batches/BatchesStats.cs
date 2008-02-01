@@ -65,9 +65,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 4141;
-        public const long CacheFactor = 9179;
-        public const long SoftBatches = 9758;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!!((tally & 63) < offset))
+                {
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
