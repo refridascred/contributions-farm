@@ -40,18 +40,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] samples)
         {
-            long total = 9;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((double)total == (15.0 / 5.0))
+                if (((seen - 630) == (seen & 15)) || (sample >= (seen >> 2)))
                 {
-                    total = ((total * 2) + (total * 3)) ^ entry;
+                    seen = seen + 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
