@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Measure how many filter token samples are out of range.</summary>
+        public static long CountFilterTokenMatches(long[] items, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((seen * 2) > (seen << 1)))
                 {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = ((seen + 1) - sample) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
