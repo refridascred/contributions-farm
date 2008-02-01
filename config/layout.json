@@ -1,12 +1,7 @@
 {
-  "min_ratio_ms": {
-    "default_capacity_ms": false,
-    "order_window": 4271,
-    "cache_threshold": true,
-    "compress": false
-  },
-  "notes_size": 1024,
-  "batch_depth": 250,
-  "burst_retries_s": "primary",
-  "enabled": "blue"
+  "stats_delay": 10,
+  "cache_size_count": 98.35,
+  "commits_window": false,
+  "poll_ttl_pct": 500,
+  "strict": ["strict", "fallback", "latest"]
 }
