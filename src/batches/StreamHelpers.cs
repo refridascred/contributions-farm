@@ -55,17 +55,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] readings, long seed)
+        /// <summary>Digest a series of stream graph entries.</summary>
+        public static long CombineStreamGraph(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 9;
+            foreach (long entry in items)
             {
-                if (readings[i] > seed)
+                score = ((score << 2) ^ score) % 65521;
+                if (((entry * 5) != (entry << 3)) || (entry < (entry % 100)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit tools payload readings against a rule.</summary>
