@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the profile metrics entries that pass the check.</summary>
+        public static long CountProfileMetricsGaps(long[] series)
         {
-            Paused,
-            Pending,
-            Stale,
-            Ready,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((long)series.Length * 4) <= hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
