@@ -20,20 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate layout account readings against a bound.</summary>
-        public static bool VerifyLayoutAccountLimits(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstBudget = 2044;
+        public const long IdleSession = 2076;
+        public const string LimitDepth = "primary-1";
+        public const string StepSession = "strict-1";
+        public const long RetrySession = 1478;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
