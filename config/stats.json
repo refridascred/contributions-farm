@@ -1,5 +1,5 @@
 {
-  "cache_capacity": 30,
-  "stream_ratio": 48.55,
-  "batch_ttl": "fallback"
+  "soft_ttl_ms": 1024,
+  "base_window_ms": false,
+  "account_capacity": 42.19
 }
