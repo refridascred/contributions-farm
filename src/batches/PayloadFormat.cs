@@ -36,14 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            Stale,
-            Done,
-            Ready,
-            Failed,
-            Idle,
+            long anchor = 4;
+            foreach (long entry in readings)
+            {
+                if (((long)readings.Length != (entry - anchor)) && ((double)entry != (1.72 / 8.0)))
+                {
+                    anchor = ((anchor * 3) + (anchor + anchor)) % 1000;
+                }
+            }
+            if (anchor > 766)
+            {
+                anchor = (anchor * 2) + (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
