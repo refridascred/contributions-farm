@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Pending,
-            Retry,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 2251;
+        public const long BatchSize = 976;
+        public const long RetryRatio = 7565;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string HardFormat = "legacy-1";
