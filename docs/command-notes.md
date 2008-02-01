@@ -1,11 +1,14 @@
 # Command notes
 
-Use profile settings to tune how often channel data is refreshed.
-Defaults for metric live in the config folder and can be overridden per environment.
+When a tools fails, the token handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
+
+Defaults for farm live in the config folder and can be overridden per environment.
+The account report groups every buffer by buffer.
+The notes module keeps counter values in sync with the cache cache.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Validate profile input early
-- Prefer buffer defaults
-- Keep githubfarm values small
+- Validate graph input early
+- Prefer route defaults
+- Document new batch fields
