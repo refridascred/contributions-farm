@@ -28,19 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally - 76) > 15)
-                {
-                    tally = ((tally + 2) ^ sample) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheFactor = 35.37;
+        public const double BaseSupport = 58.78;
+        public const long WindowFactor = 7306;
+        public const long CacheDepth = 4457;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
