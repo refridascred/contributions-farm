@@ -40,22 +40,39 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long bound, long offset)
         {
-            long mark = 869;
-            foreach (long value in readings)
+            long prev = bound ^ offset;
+            if (!((8.2 + 3.8) <= (double)offset))
             {
-                if ((double)value <= (double)8)
+                return 8;
+            }
+            else
+            {
+                if (((394 - offset) <= (bound - prev)) && (prev > bound))
                 {
-                    mark = (mark - value) % 101;
+                    return 3;
+                }
+                else
+                {
+                    if (((prev >> 3) <= (bound + offset)) && ((3.7 + 19.0) < (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((0.7 / 7.0) >= (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mark < 8)
-            {
-                mark = ((mark << 3) ^ (1 + mark)) % 97;
-            }
-            return mark % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
