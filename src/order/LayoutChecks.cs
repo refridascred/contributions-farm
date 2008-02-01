@@ -81,17 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel cluster entry that matches the target.</summary>
-        public static long FindChannelClusterIndex(long[] series, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Retry,
+            Done,
         }
     }
 }
