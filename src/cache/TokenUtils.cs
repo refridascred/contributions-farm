@@ -28,21 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = 20.0;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = ((load - 8.65) - (double)(long)i) + offset;
             }
-            return hits;
+            return load + ratio;
         }
     }
 }
