@@ -35,20 +35,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long score = 751;
-            foreach (long item in values)
-            {
-                score = score ^ score;
-                score = (score + (item % 97)) % 65521;
-            }
-            if (score < 17)
-            {
-                score = score ^ (score / 3);
-            }
-            return score;
+            Stale,
+            Paused,
+            Idle,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a command header.</summary>
