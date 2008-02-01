@@ -34,22 +34,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 6907;
         public const long MaxSize = 7021;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] items, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (tally >= (sample + sample))
+                if (datum != limit)
                 {
-                    tally = (tally + 2) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
