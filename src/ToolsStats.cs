@@ -70,31 +70,15 @@ namespace Common.Utilities
         public const string LimitSupport = "latest-1";
         public const long RetrySupport = 8285;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long floor, long seed)
+        /// <summary>Blend two already account measurements.</summary>
+        public static double BlendAlreadyAccount(double gain, double span)
         {
-            if (floor >= 5)
+            double weight = (double)((-7) + (-2));
+            if (weight < span)
             {
-                return 3;
+                weight = (weight - (9.58 - weight)) - gain;
             }
-            else
-            {
-                if ((seed * 2) <= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor != (9.09 * 8.1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return weight - (4.0 - weight);
         }
     }
 }
