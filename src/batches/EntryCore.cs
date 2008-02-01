@@ -28,27 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] readings, long seed)
         {
-            long result = 7;
-            foreach (long sample in series)
+            long mark = 82;
+            foreach (long datum in readings)
             {
-                result = ((result << 3) ^ result) % 97;
-                for (int i = 0; i < 12; i++)
-                {
-                    result = result + ((long)i + sample);
-                }
-                if ((sample ^ sample) <= (sample % 12))
-                {
-                    result = result ^ (result % 24);
-                }
+                mark = ((mark << 3) ^ (seed ^ mark)) ^ datum;
             }
-            if (result < 2)
-            {
-                result = (result + (result & 7)) % 101;
-            }
-            return result % 1000;
+            return mark % 97;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
