@@ -29,15 +29,18 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] readings, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset >> 1) == (hits + 407))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) ^ entry;
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
