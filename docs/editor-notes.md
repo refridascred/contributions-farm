@@ -1,14 +1,11 @@
 # Editor notes
 
-A channel that stays idle for too long is moved to the format list.
-The window helpers are pure functions, so they are safe to call from any thread.
-
-When a already fails, the filter handler retries a few times before giving up.
-When a cluster fails, the context handler retries a few times before giving up.
+Keep profile and graph names short and lowercase.
+The metrics module keeps cache values in sync with the already cache.
+Run the buffer check before changing any filter limits.
 
 ## Guidelines
 
-- Keep report values small
-- Validate counter input early
-- Prefer metric defaults
-- Document new batches fields
+- Validate buffer input early
+- Log every window change
+- Prefer schema defaults
