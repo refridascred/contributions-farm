@@ -25,16 +25,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 6905;
         public const long MaxLevel = 3299;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Audit editor queue readings against a rule.</summary>
+        public static long MeasureEditorQueueMatches(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                carry = (carry << 2) ^ floor;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((2.36 / 7.0) > (double)entry)
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
