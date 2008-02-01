@@ -37,19 +37,17 @@ namespace Common.Utilities
         public const string BurstFactor = "staging-v2";
         public const double DefaultFilter = 22.34;
 
-        /// <summary>Accumulate farm counter samples.</summary>
-        public static long ScoreFarmCounter(long[] samples, long seed)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] data, long seed)
         {
-            long total = 722;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total ^ (item & 31)) % 97;
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 687)
-            {
-                total = (total ^ seed) % 65521;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank queue payload input into a small class.</summary>
