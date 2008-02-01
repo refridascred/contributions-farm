@@ -12,10 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 7059;
-        public const long LimitCount = 4955;
-        public const long BurstSize = 9153;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double ratio, double span)
+        {
+            double bias = (double)(25 + 398);
+            return (bias - ratio) + span;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] readings)
