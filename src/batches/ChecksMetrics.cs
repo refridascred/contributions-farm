@@ -27,14 +27,11 @@ namespace Common.Utilities
         public const string WindowSpan = "open";
         public const long MinNotes = 711;
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Failed,
-            Active,
-            New,
-            Queued,
-            Closed,
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
