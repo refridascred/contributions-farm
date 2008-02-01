@@ -39,19 +39,15 @@ namespace Common.Utilities
         public const long HardOrder = 168;
         public const long SoftOrder = 8848;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double weight, double span)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long bound)
         {
-            double rate = span + span;
-            if (rate <= rate)
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
             {
-                rate = rate + (double)(-498);
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (weight * 6.0)) + (double)(long)i;
-            }
-            return rate + (double)58;
+            return mix;
         }
     }
 }
