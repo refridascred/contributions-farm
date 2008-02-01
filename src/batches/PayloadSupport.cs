@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double bias, double offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] items)
         {
-            double load = offset;
-            if (load <= offset)
+            long count = 0;
+            foreach (long value in items)
             {
-                load = (load + offset) + bias;
+                if ((((count / 7) > (value + value)) && ((value + count) == (value - count))) && !(6.0 <= (double)count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return load - (double)(-39);
+            return count;
         }
 
         /// <summary>Hold a tools info.</summary>
