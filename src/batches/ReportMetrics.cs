@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepWidth = 23.94;
-        public const long StepFactor = 2148;
-        public const string RetryFactor = "latest-edge";
-        public const long HardFilter = 3951;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (6 >= seen)
+                {
+                    seen = ((seen + 2) + value) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] series)
