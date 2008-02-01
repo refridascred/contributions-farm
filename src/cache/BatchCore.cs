@@ -30,15 +30,13 @@ namespace Common.Utilities
         public const string BurstWidth = "legacy-1";
         public const long HardTimeout = 6965;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] samples, long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long acc = 38;
-            foreach (long sample in samples)
-            {
-                acc = (((acc << 3) ^ (sample + 3)) % 101) + target;
-            }
-            return acc % 65521;
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
