@@ -14,12 +14,31 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long origin, long offset)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
+            if ((double)origin < (double)4)
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin < (offset ^ origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((origin ^ origin) > (origin >> 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
