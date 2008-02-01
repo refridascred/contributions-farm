@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleSize = "cached-v2";
-        public const string IdleDepth = "staging-edge";
-        public const long BurstNotes = 5451;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenGaps(long[] samples, long origin)
