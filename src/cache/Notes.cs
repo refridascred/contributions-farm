@@ -67,13 +67,32 @@ namespace Common.Utilities
         public const long LimitRatio = 3240;
         public const string RetryFilter = "fallback-edge";
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long target, long target2)
         {
-            Ready,
-            Idle,
-            Paused,
-            Closed,
+            long next = target - target2;
+            if (((target - target) >= (target2 + target2)) && ((1.8 * 6.89) == (double)next))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((next - target) <= target2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target > (target / 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
