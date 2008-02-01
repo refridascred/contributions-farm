@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 3858;
-        public const long SoftInterval = 1681;
-        public const string MaxTimeout = "staging-v2";
-        public const string HardTimeout = "cached-v2";
-        public const long StepNotes = 758;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSpan = 1137;
+        public const string BurstSupport = "stable-edge";
+        public const long HardSupport = 5718;
+        public const long WindowSupport = 2620;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long FindRouteIndex(long[] series, long step)
