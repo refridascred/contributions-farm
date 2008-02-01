@@ -18,13 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long seed, long offset)
         {
-            Stale,
-            Active,
-            Retry,
-            Locked,
+            if ((offset ^ offset) <= (offset % 10))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((-75) <= offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (8.05 > (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
