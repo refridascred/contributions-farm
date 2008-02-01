@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mark = 417;
-            foreach (long sample in samples)
-            {
-                mark = (mark ^ (189 % 64)) + sample;
-            }
-            return mark;
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
