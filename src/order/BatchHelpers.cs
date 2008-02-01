@@ -41,11 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "staging-edge";
-        public const string DefaultSize = "latest-1";
-        public const double MaxRatio = 9.38;
-        public const double BurstOrder = 16.03;
-        public const string WindowOrder = "stable-edge";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)matches > (7.8 / 6.0))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
     }
 }
