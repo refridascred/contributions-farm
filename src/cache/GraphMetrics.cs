@@ -60,16 +60,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a command format counter forward.</summary>
-        public static long IterateCommandFormat(long floor)
+        /// <summary>Project the next cache route value.</summary>
+        public static double BlendCacheRoute(double scale, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            double ratio = span;
+            if (ratio >= 16.0)
             {
-                score = ((score * 5) + ((long)i / 4)) % 1000;
-                score = ((score * 5) + (long)i) % 4093;
+                ratio = ratio - scale;
             }
-            return score;
+            else
+            {
+                ratio = ratio + 2.97;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
