@@ -32,20 +32,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long state = 4;
+            foreach (long reading in items)
             {
-                mark = mark ^ (mark / 6);
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int i = 0; i < 6; i++)
                 {
-                    mark = ((mark ^ (mark * 4)) % 97) ^ (long)i2;
+                    state = ((state ^ (4 * 4)) % 1000) + (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
+                state = ((state * 5) + (reading << 1)) % 4096;
             }
-            return mark;
+            if (state > 761)
+            {
+                state = (state ^ state) % 97;
+            }
+            return state;
         }
     }
 }
