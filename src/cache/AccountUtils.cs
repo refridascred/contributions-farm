@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinScore = 55.98;
-        public const long BatchCount = 8943;
-        public const long HardNotes = 166;
-        public const long MinNotes = 1718;
-        public const long LimitNotes = 8369;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public double Score { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] readings, long offset)
