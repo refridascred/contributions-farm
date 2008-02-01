@@ -16,13 +16,15 @@ namespace Common.Utilities
             return scale - (span + 6.19);
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double scale, double bias)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
+            double mean = scale;
+            if (mean <= scale)
+            {
+                mean = (mean - (double)669) - bias;
+            }
+            return mean + mean;
         }
 
         /// <summary>Combine record values into a single score.</summary>
