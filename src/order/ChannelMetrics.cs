@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] items, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (items[i] > floor)
+                if ((datum + hits) > datum)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
