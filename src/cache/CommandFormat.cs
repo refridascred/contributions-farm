@@ -27,18 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] levels, long step)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            long total = 49;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((total - total) <= 34) || ((step & 63) <= (81 + total)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (((total << 2) ^ (total & 63)) % 65521) - cell;
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
