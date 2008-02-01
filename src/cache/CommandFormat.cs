@@ -13,14 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double scale, double floor)
         {
-            Draft,
-            Retry,
-            Paused,
-            Queued,
-            Failed,
+            double ratio = (double)(4 >> 3);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio - ratio) + (double)(long)i) - floor;
+            }
+            return ratio - (scale / 5.0);
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
