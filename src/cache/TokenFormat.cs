@@ -38,18 +38,29 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the route profile entries that pass the check.</summary>
-        public static long MeasureRouteProfileGaps(long[] samples, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long anchor = 95;
+            foreach (long cell in items)
             {
-                if ((cell + cell) <= cell)
+                if ((double)anchor <= (1.0 - 9.88))
                 {
-                    tally = (tally + 2) - offset;
+                    anchor = (anchor * 2) + seed;
+                    anchor = (anchor + 514) % 101;
+                    continue;
                 }
+                else
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+                if (!(anchor > (cell >> 4)))
+                {
+                    anchor = (anchor ^ (cell + anchor)) % 255;
+                }
+                anchor = anchor + cell;
             }
-            return tally;
+            return anchor % 1000;
         }
     }
 }
