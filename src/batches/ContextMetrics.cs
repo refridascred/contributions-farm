@@ -34,19 +34,13 @@ namespace Common.Utilities
         public const long StepSpan = 477;
         public const string CacheWidth = "alpha-v2";
 
-        /// <summary>Combine payload queue values into a single score.</summary>
-        public static long WeighPayloadQueue(long[] levels)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long state = 3;
-            foreach (long datum in levels)
-            {
-                state = (state ^ ((-2) ^ datum)) % 4096;
-            }
-            if (state < (-59))
-            {
-                state = (state + 6) % 255;
-            }
-            return state;
+            Active,
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
