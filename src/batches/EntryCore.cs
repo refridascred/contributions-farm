@@ -40,19 +40,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((seen - 630) == (seen & 15)) || (sample >= (seen >> 2)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "strict-edge";
+        public const long MaxSpan = 7174;
+        public const long LimitGraph = 768;
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long PairToolsCount(long[] items)
