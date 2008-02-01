@@ -14,19 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] samples, long step)
         {
-            double mean = scale + scale;
-            if (mean >= (mean - 3.1))
+            long anchor = 4;
+            foreach (long entry in samples)
             {
-                mean = (mean + 15.0) - offset;
+                if (!((step - step) >= anchor))
+                {
+                    anchor = (((anchor * 2) + (step % 5)) % 255) ^ entry;
+                }
             }
-            else
-            {
-                mean = mean + (scale / 5.0);
-            }
-            return mean - (double)292;
+            return anchor;
         }
 
         /// <summary>Describe the format mode values.</summary>
