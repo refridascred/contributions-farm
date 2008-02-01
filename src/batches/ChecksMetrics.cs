@@ -25,27 +25,10 @@ namespace Common.Utilities
         public const long StepSize = 5000;
         public const double CacheSpan = 52.42;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] data, long origin)
-        {
-            long state = 386;
-            foreach (long reading in data)
-            {
-                if ((reading & 15) <= reading)
-                {
-                    state = (state - (564 & 127)) % 1000;
-                }
-                else
-                {
-                    state = state + (state % 16);
-                }
-                if ((state + origin) >= (-5))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySpan = 2611;
+        public const string BaseCount = "open-1";
+        public const long BatchSpan = 3573;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
