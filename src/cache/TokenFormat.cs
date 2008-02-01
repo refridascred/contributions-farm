@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] values, long target)
         {
-            Synced,
-            Pending,
-            Locked,
-            Closed,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
