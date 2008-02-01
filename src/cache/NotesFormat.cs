@@ -27,18 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] data)
+        /// <summary>Audit metric graph readings against a rule.</summary>
+        public static long MeasureMetricGraphHits(long[] data, long limit)
         {
-            long mark = 4;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((entry ^ entry) != (entry >> 1))
+                if (!((hits - limit) != (42 + hits)))
                 {
-                    mark = ((mark << 3) ^ (entry + mark)) % 255;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
