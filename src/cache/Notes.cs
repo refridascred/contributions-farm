@@ -29,15 +29,18 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Digest a series of record order entries.</summary>
-        public static long FoldRecordOrder(long[] samples)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] series, long origin)
         {
-            long score = 39;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                score = (score + score) + cell;
+                if (origin > (count - count))
+                {
+                    count = (count + 1) ^ item;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Accumulate batches schema samples.</summary>
