@@ -52,38 +52,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long step, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] data, long limit)
         {
-            if (((step >> 4) != (origin >> 3)) && ((double)origin > (8.18 - 5.0)))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin > (step + origin))
+                if ((reading / 2) < (limit * 4))
                 {
-                    return 6;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((step % 5) <= (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step != (9.0 * 2.49))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
