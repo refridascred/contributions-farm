@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 9375;
+        public const long BurstLevel = 4634;
+        public const long RetryCommand = 6885;
+        public const double BaseLevel = 34.25;
+        public const long IdleCommand = 8886;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
