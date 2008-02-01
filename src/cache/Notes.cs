@@ -49,15 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double scale, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] data)
         {
-            double mean = (scale * 9.66) - (double)1;
-            if (mean < (double)(-1))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                mean = (mean + 4.0) + bias;
+                if ((entry / 4) != (seen >> 2))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mean - 3.0;
+            return seen;
         }
     }
 }
