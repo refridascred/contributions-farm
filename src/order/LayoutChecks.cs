@@ -13,23 +13,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((long)samples.Length / 6) >= limit)
-                {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 7059;
+        public const long LimitCount = 4955;
+        public const long BurstSize = 9153;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] readings)
