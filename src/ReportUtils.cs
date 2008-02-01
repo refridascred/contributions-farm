@@ -72,38 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long offset, long limit)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            if ((limit + offset) <= (6 >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 3) < (offset + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset >> 5) <= (404 + limit)) || ((limit / 8) < 93))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit & 63) < 79)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            New,
+            Synced,
+            Idle,
+            Queued,
         }
     }
 }
