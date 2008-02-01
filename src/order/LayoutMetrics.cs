@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] values, long offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = 9.12;
+            if (gain < (gain + 6.0))
             {
-                if ((values[i] >= offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (weight - span);
             }
-            return -1;
+            return gain + (double)57;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
