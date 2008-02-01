@@ -27,22 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] data)
         {
-            long mix = 844;
-            foreach (long sample in data)
+            long mark = 4;
+            foreach (long entry in data)
             {
-                if (sample > (sample ^ sample))
+                if ((entry ^ entry) != (entry >> 1))
                 {
-                    mix = mix + sample;
+                    mark = ((mark << 3) ^ (entry + mark)) % 255;
                 }
             }
-            if (mix < 628)
-            {
-                mix = (mix << 3) ^ ((-330) & 31);
-            }
-            return mix;
+            return mark;
         }
     }
 }
