@@ -37,17 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long bound)
+        /// <summary>Derive the next entry metric value from a seed.</summary>
+        public static long SeriesEntryMetric(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) != 0))
+                if (!((mark * 4) <= (mark & 15)))
                 {
-                    return (long)i;
+                    mark = (mark + ((long)i >> 4)) % 255;
+                    break;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
