@@ -50,32 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long step, long step2)
-        {
-            if ((step2 ^ (-7)) == (step ^ step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)step2 > (1.1 / 7.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((384 >> 4) < (step2 & 1)) || ((step2 + (-279)) > (step2 & 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowSpan = 54.75;
+        public const double HardNotes = 18.44;
+        public const long BurstDepth = 5078;
+        public const long DefaultNotes = 8764;
+        public const long BatchNotes = 4563;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
