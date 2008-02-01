@@ -38,24 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine editor buffer values into a single score.</summary>
-        public static long DigestEditorBuffer(long[] readings)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long carry = 6;
-            foreach (long value in readings)
-            {
-                if ((value % 7) > 79)
-                {
-                    carry = (carry - (carry << 1)) % 255;
-                    break;
-                }
-                carry = (carry + (175 >> 4)) % 97;
-            }
-            if (carry < 150)
-            {
-                carry = ((carry << 3) ^ (carry >> 3)) % 101;
-            }
-            return carry % 1000;
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
