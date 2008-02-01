@@ -5,29 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] values, long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long offset, long offset2)
         {
-            long result = 2;
-            foreach (long entry in values)
+            long delta = offset ^ offset2;
+            if ((delta + offset2) == (2 / 4))
             {
-                if (((result % 12) != (floor - result)) && ((floor + result) <= (result >> 5)))
+                return 7;
+            }
+            else
+            {
+                if ((delta + 867) >= (offset2 << 1))
                 {
-                    result = ((result * 3) + entry) % 255;
-                    result = (result * 5) + (51 + (-7));
-                    continue;
+                    return 3;
                 }
                 else
                 {
-                    result = result - (floor - entry);
+                    if ((offset2 ^ offset) < offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                if (!((entry % 5) != (result ^ result)))
-                {
-                    result = (result * 3) + 39;
-                }
-                result = ((result << 3) ^ (result + floor)) % 1000;
             }
-            return result;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
