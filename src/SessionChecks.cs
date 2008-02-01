@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 7445;
-        public const long BaseInterval = 1550;
-        public const long MinDepth = 1775;
-        public const long RetryLevel = 3842;
-        public const long CacheBudget = 4909;
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double scale, double bias)
+        {
+            double ratio = (scale + scale) + scale;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + ratio) + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (scale + scale)) + (double)(long)i;
+            }
+            return ratio - (2.25 * 0.8);
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
