@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            long mark = 88;
-            foreach (long cell in data)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell * 3) < (cell + 3))
+                if ((target + carry) > (long)i)
                 {
-                    mark = ((mark << 2) ^ mark) % 255;
+                    carry = (carry * 4) + (target * 2);
+                    break;
                 }
-                else
-                {
-                    mark = (mark << 2) ^ (mark & 31);
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            if (mark > 5)
-            {
-                mark = ((mark * 3) + (mark % 97)) % 101;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
