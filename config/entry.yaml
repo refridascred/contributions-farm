@@ -1,5 +1,9 @@
 # entry settings
-hard_threshold_pct: 35
-hard_ttl_pct: 73.48
-min_limit_ms: 500
-default_depth_ms: 6273
+warm_retries_pct: local
+githubfarm_limit: primary
+verbose:
+  - edge
+  - latest
+  - local
+  - blue
+default_capacity_count: 758
