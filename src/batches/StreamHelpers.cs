@@ -40,19 +40,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long limit, long offset)
         {
-            long state = 8;
-            foreach (long cell in data)
+            if ((offset ^ limit) > (768 ^ offset))
             {
-                state = (((state << 2) ^ (state & 31)) % 97) ^ cell;
+                return 2;
             }
-            if (state > 37)
+            else
             {
-                state = (state ^ (state ^ state)) % 255;
+                if ((double)offset >= (8.8 * 8.19))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (9 > (offset % 97))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((0 / 4) < (5 - limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Digest a series of stream graph entries.</summary>
