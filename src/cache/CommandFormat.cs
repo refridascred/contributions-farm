@@ -34,19 +34,17 @@ namespace Common.Utilities
         public const long DefaultInterval = 6907;
         public const long MaxSize = 7021;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] samples, long bound)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= bound)
+                if (data[i] > origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
