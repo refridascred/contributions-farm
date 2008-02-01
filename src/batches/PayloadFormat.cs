@@ -64,13 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Synced,
+            Closed,
         }
     }
 }
