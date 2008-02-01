@@ -69,23 +69,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double ratio, double span)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            double ratio2 = (double)(3 * 3);
-            if (ratio2 >= (double)88)
+            long sum = 6;
+            foreach (long datum in readings)
             {
-                ratio2 = ratio2 + (span - span);
+                sum = (sum + datum) % 4096;
             }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (double)5) - (double)(long)i;
-            }
-            return ratio2 + (double)5;
+            return sum;
         }
 
         /// <summary>Combine cache format values into a single score.</summary>
