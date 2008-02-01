@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] data, long limit)
         {
-            New,
-            Done,
-            Paused,
-            Dropped,
-            Active,
+            long state = 850;
+            foreach (long datum in data)
+            {
+                state = (((state * 5) + 1) - datum) + limit;
+            }
+            if (state < (-218))
+            {
+                state = ((state << 3) ^ (state ^ 929)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
