@@ -48,14 +48,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Count the stream payload entries that pass the check.</summary>
+        public static long MeasureStreamPayloadGaps(long[] samples)
         {
-            Retry,
-            Ready,
-            Idle,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (!((double)count >= (4.0 / 5.0)))
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
