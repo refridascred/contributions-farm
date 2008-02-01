@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] data, long floor)
         {
-            long carry = 803;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((reading / 7) > (carry << 1))
+                if ((2.0 + 14.0) == (double)floor)
                 {
-                    carry = ((carry * 5) + (carry - reading)) % 97;
+                    seen = (seen + 1) + value;
                 }
             }
-            if (carry < 28)
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Describe the window mode values.</summary>
