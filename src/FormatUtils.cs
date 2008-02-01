@@ -33,11 +33,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
+            Active,
+            Dropped,
+            Queued,
+            Closed,
+            Ready,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
