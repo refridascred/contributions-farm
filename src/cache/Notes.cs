@@ -70,18 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] series, long bound)
+        /// <summary>Check that every cache window entry stays within the limit.</summary>
+        public static bool ValidateCacheWindowBounds(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (((seen - value) < (bound / 9)) || ((seen + 1) < seen))
+                if (sample >= floor)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
