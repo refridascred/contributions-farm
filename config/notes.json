@@ -1,7 +1,5 @@
 {
-  "entry_limit": 7861,
-  "sync_capacity_pct": "blue",
-  "batch_ttl": "fallback",
-  "base_depth_ms": 60,
-  "notes_delay": "fallback"
+  "idle_size": false,
+  "context_threshold": "blue",
+  "soft_threshold_pct": [101, 419, 28, 445]
 }
