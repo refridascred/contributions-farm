@@ -13,19 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] series, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (cell != origin)
+                if (((hits + sample) != ((long)items.Length / 5)) || (sample > hits))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
