@@ -65,19 +65,10 @@ namespace Common.Utilities
         public const long SoftContext = 6315;
         public const long WindowContext = 3334;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((7.36 - 7.0) > (double)offset)
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxCount = 8573;
+        public const string LimitSupport = "latest-1";
+        public const long RetrySupport = 8285;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long ClassifyGithubfarm(long floor, long seed)
