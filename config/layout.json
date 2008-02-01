@@ -1,7 +1,11 @@
 {
-  "min_capacity": 15.19,
-  "counter_timeout": 91.86,
-  "command_threshold": 85,
-  "support_threshold": "cached",
-  "retry_retries": "local"
+  "warm_delay_count": ["edge", "green", "latest"],
+  "cache_retries_count": "eu-west",
+  "warm_window_pct": 79,
+  "min_delay_count": 98,
+  "notes_size": {
+    "cache_size": 33.37,
+    "batch_interval": 56,
+    "idle_threshold": 65.26
+  }
 }
