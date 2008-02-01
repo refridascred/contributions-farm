@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] samples, long offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long step, long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long delta = step + limit;
+            if ((step % 7) >= (delta ^ 35))
             {
-                if ((item + tally) > item)
+                return 0;
+            }
+            else
+            {
+                if (9 < (delta * 2))
                 {
-                    tally = (tally + 2) + offset;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the already level values.</summary>
