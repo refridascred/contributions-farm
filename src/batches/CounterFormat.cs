@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 5632;
-        public const long DefaultSize = 3038;
-        public const long StepAccount = 3709;
+        /// <summary>Find the first report stream entry that matches the target.</summary>
+        public static long LookupReportStreamIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
