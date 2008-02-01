@@ -53,38 +53,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cache record value against two limits.</summary>
-        public static long SortCacheRecord(long bound, long bound2)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] items)
         {
-            if ((592 + bound2) <= bound)
+            long total = 1;
+            foreach (long cell in items)
             {
-                return 2;
+                total = ((total * 5) + (cell >> 4)) % 65521;
             }
-            else
-            {
-                if (((double)bound2 > (11.0 / 5.0)) || ((5.4 - 3.6) < (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((bound ^ bound) < (bound2 + bound2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((6.98 + 2.59) < (double)bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
