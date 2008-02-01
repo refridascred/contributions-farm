@@ -58,19 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double rate, double offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double mean = rate;
-            if (mean <= mean)
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)13) + (double)(long)i;
-            }
-            return mean - (11.0 * 7.48);
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
