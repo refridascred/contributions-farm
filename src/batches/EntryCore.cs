@@ -73,15 +73,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double scale, double floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double gain = floor;
-            if (gain <= (gain * 3.0))
-            {
-                gain = (gain - (floor * 8.0)) - scale;
-            }
-            return gain + (double)447;
+            Ready,
+            Draft,
+            Closed,
         }
     }
 }
