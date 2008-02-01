@@ -67,21 +67,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up record layout samples.</summary>
-        public static long PairRecordLayoutCount(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((hits - reading) == (hits + reading)) && ((hits > ((-5) + reading)) || ((hits ^ hits) > (reading - 448))))
                 {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
