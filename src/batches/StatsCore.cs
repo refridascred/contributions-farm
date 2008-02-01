@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const long SoftProfile = 1054;
         public const long SoftInterval = 3711;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine token stream values into a single score.</summary>
+        public static long DigestTokenStream(long[] levels, long step)
         {
-            Paused,
-            Locked,
-            Failed,
+            long state = 25;
+            foreach (long datum in levels)
+            {
+                if (((7.5 - 20.0) >= (double)state) && ((step & 255) < (56 % 7)))
+                {
+                    state = ((state << 3) ^ (state + datum)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Blend two entry measurements.</summary>
