@@ -1,10 +1,16 @@
 # entry settings
-layout_window:
-  - cached
-  - local
-  - open
-  - edge
-format_timeout: primary
-order_threshold: standard
-enabled: 30
-verbose: 49
+channel_limit: standard
+dry_run:
+  - 252
+  - 405
+  - 178
+sync_interval_s: 196
+flush_retries: green
+max_size_s:
+  cache_interval_s: 30.22
+  audit:
+    - 462
+    - 284
+    - 442
+  readonly: false
+  soft_ratio_s: false
