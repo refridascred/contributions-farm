@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] items, long seed)
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the schema kind values.</summary>
