@@ -40,12 +40,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Blend two schema metric measurements.</summary>
+        public static double SmoothSchemaMetric(double rate, double bias)
         {
-            Pending,
-            Queued,
-            Idle,
+            double scale = rate;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale - (double)4) - (double)(long)i) - bias;
+            }
+            return scale - (double)(-60);
         }
     }
 }
