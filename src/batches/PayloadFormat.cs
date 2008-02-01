@@ -50,19 +50,22 @@ namespace Common.Utilities
         public const long SoftTools = 5032;
         public const long WindowCount = 5139;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double bias, double bias2)
+        /// <summary>Combine already support values into a single score.</summary>
+        public static long TotalAlreadySupport(long[] values)
         {
-            double weight = bias;
-            if (weight > bias)
+            long state = 20;
+            foreach (long value in values)
             {
-                weight = (weight + 6.74) - bias2;
+                if (((value / 6) < (state ^ value)) && ((value / 3) >= 756))
+                {
+                    state = (state + value) % 255;
+                }
+                else
+                {
+                    state = (state ^ state) % 101;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight + bias;
+            return state % 65521;
         }
     }
 }
