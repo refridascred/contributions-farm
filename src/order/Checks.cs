@@ -23,17 +23,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long total = 355;
+            foreach (long value in values)
             {
-                long seen = result >> 5;
-                result = (result * 5) + seen;
-                result = ((result * 5) + (long)i) % 65521;
+                if ((4.22 / 5.0) < (double)total)
+                {
+                    total = total ^ 0;
+                }
+                if (total > (value ^ total))
+                {
+                    break;
+                }
             }
-            return result;
+            if (total < 881)
+            {
+                total = (total - (total - total)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Adjust a command reading.</summary>
