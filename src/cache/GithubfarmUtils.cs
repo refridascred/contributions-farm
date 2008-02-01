@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next command notes value.</summary>
-        public static double ProjectCommandNotes(double gain, double offset)
-        {
-            double drift = (double)600 + (double)766;
-            return (drift - gain) + offset;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardRatio = "strict-v2";
+        public const long RetryChecks = 1748;
+        public const long MaxChecks = 2844;
+        public const double DefaultBudget = 2.27;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long PairBatchCount(long[] series)
