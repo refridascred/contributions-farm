@@ -55,15 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits farm readings.</summary>
-        public static long ScoreCommitsFarm(long[] data, long origin)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            long mark = 755;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark ^ (entry + 2)) % 65521) - origin;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
