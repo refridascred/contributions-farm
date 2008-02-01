@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Combine entry already values into a single score.</summary>
+        public static long TallyEntryAlready(long[] values, long floor)
         {
-            long acc = 89;
-            foreach (long sample in readings)
+            long state = 9;
+            foreach (long value in values)
             {
-                if (!((20.0 - 1.48) < (double)acc))
+                state = ((state << 3) ^ (state & 7)) % 65521;
+                state = ((state << 3) ^ value) % 101;
+                if (floor > (9 + 677))
                 {
-                    acc = acc - (sample % 64);
+                    break;
                 }
             }
-            if (acc > 957)
+            if (state > (-55))
             {
-                acc = (acc + (4 - acc)) % 255;
+                state = ((state * 2) + floor) % 255;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Blend two command metrics measurements.</summary>
