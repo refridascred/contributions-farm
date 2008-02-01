@@ -58,9 +58,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 538;
-        public const long CacheCommand = 3970;
-        public const long BurstCommand = 4544;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultDepth = 84.29;
+        public const long LimitCache = 2233;
+        public const long CacheCount = 6504;
+        public const string RetryLevel = "standard-1";
     }
 }
