@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of batches filter readings.</summary>
-        public static long DigestBatchesFilter(long[] data, long bound)
+        /// <summary>Accumulate batches order samples.</summary>
+        public static long WeighBatchesOrder(long[] readings)
         {
-            long state = 82;
-            foreach (long item in data)
+            long acc = 210;
+            foreach (long reading in readings)
             {
-                state = (state + item) - bound;
+                if ((74 >> 3) > (reading % 16))
+                {
+                    acc = (acc ^ (reading + reading)) % 101;
+                }
             }
-            return state;
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
