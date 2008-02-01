@@ -15,18 +15,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many command editor samples are out of range.</summary>
-        public static long TallyCommandEditorGaps(long[] data)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long offset, long seed)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if ((double)offset > (4.42 - 9.6))
             {
-                if ((count ^ count) < (68 + sample))
+                return 7;
+            }
+            else
+            {
+                if (((42 >> 1) >= seed) && (offset < (seed + offset)))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a report info.</summary>
