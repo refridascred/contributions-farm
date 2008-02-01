@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a metric context counter forward.</summary>
-        public static long RollMetricContext(long origin)
+        /// <summary>Check that every buffer stream entry stays within the limit.</summary>
+        public static bool VerifyBufferStreamLimits(long[] data, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((result % 10) < (long)i)
+                if (datum >= seed)
                 {
-                    result = result ^ origin;
-                    result = ((result * 3) + (long)i) % 1000;
+                    ok = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Hold a cache info.</summary>
