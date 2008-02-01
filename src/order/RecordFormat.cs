@@ -38,13 +38,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] readings, long step)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
