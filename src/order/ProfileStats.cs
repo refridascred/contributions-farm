@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long SoftSchema = 9661;
         public const long StepSpan = 7464;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] data, long floor)
         {
-            long acc = 12;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= (acc ^ acc))
+                if ((data[i] == floor) && ((data[i] % 5) == 0))
                 {
-                    acc = acc + (acc + sample);
+                    return (long)i;
                 }
             }
-            if (acc > 3)
-            {
-                acc = acc ^ acc;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
