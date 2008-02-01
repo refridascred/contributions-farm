@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] readings, long limit)
         {
-            Done,
-            Synced,
-            Closed,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((6 >= seen) || (((double)item >= 8.74) || ((seen + seen) == (limit * 5))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the already kind values.</summary>
