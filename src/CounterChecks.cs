@@ -40,19 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] series, long bound)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Draft,
+            Active,
+            Queued,
         }
 
         /// <summary>Rank token input into a small class.</summary>
