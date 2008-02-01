@@ -22,13 +22,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Idle,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 38.26;
+        public const long SoftLevel = 299;
+        public const string WindowReport = "standard";
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] readings, long bound)
