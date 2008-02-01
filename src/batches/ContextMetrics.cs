@@ -49,10 +49,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 6918;
-        public const long DefaultCache = 8505;
-        public const long BaseDepth = 9699;
-        public const double MinDepth = 93.99;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 28.88;
+        public const long SoftBatch = 8350;
+        public const string HardWidth = "legacy";
     }
 }
