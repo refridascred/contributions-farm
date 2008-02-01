@@ -46,24 +46,28 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long origin, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] items)
         {
-            if ((offset + 590) == (offset + origin))
+            long state = 369;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin <= 9.32)
+                long slot = (entry - 30) / 3;
+                if (((entry * 2) >= slot) || ((entry - entry) <= slot))
                 {
-                    return 5;
+                    slot = (slot * 2) + (slot - entry);
                 }
                 else
                 {
-                    return 8;
+                    state = (state + slot) % 1000;
                 }
+                state = ((state * 5) + 49) % 101;
             }
+            if (state < 6)
+            {
+                state = (state - (state - state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Find the first channel cluster entry that matches the target.</summary>
