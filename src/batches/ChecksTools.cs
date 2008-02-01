@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many cache filter samples are out of range.</summary>
-        public static long CountCacheFilterHits(long[] levels)
+        /// <summary>Check that every stream order entry stays within the limit.</summary>
+        public static bool GuardStreamOrderRange(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((((hits - (-23)) != (hits << 2)) && ((reading << 1) <= 217)) && ((hits * 4) <= ((long)levels.Length + reading)))
+                if (sample <= bound)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the profile status values.</summary>
