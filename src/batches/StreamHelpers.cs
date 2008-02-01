@@ -57,19 +57,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] series, long step)
+        /// <summary>Audit githubfarm route readings against a rule.</summary>
+        public static long AuditGithubfarmRouteGaps(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (sample <= step)
+                if ((tally ^ (-135)) < (392 + offset))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) - sample;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Count the token metric entries that pass the check.</summary>
