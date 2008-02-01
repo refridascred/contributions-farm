@@ -57,12 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            Ready,
+            Locked,
+            Draft,
+            Closed,
+            New,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
