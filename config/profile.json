@@ -1,12 +1,17 @@
 {
-  "idle_interval_count": {
-    "contributi_window": "fallback",
-    "audit": true,
-    "soft_ratio_s": 21.23,
-    "queue_capacity": 41.31,
-    "flush_depth_s": false,
-    "order_size": "standard"
+  "contributi_interval": [269, 311, 41],
+  "batch_retries_count": {
+    "min_timeout_count": {
+      "idle_size_count": 100,
+      "verbose": [353, 471],
+      "persist": "latest",
+      "cache_threshold_count": false
+    },
+    "readonly": "stable",
+    "hard_ttl": 65,
+    "min_capacity_ms": "standard"
   },
-  "readonly": 77,
-  "profile_delay": "edge"
+  "record_depth": 60,
+  "token_interval": 37.02,
+  "cluster_capacity": 500
 }
