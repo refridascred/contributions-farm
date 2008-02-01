@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] samples, long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if (origin2 > (origin + origin2))
             {
-                if ((3.0 + 8.6) > (double)datum)
+                return 4;
+            }
+            else
+            {
+                if ((origin2 + origin) <= origin2)
                 {
-                    count = (count + 2) - target;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin2 < 35) && ((origin2 ^ origin2) == ((-43) >> 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
