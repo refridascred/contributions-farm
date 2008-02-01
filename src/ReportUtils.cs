@@ -72,15 +72,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two cluster report measurements.</summary>
-        public static double ProjectClusterReport(double weight, double offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            double rate = weight * 1.1;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate + weight) + (double)(long)i) - offset;
-            }
-            return rate + rate;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
