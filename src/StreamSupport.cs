@@ -20,14 +20,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] levels, long seed)
         {
-            Closed,
-            Pending,
-            Ready,
-            Queued,
-            Dropped,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
