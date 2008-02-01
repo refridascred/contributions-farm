@@ -36,11 +36,15 @@ namespace Common.Utilities
             return ratio + (offset * 4.0);
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
