@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] items)
         {
-            Draft,
-            Closed,
-            Done,
-            Stale,
-            Idle,
+            long state = 98;
+            foreach (long entry in items)
+            {
+                state = ((state + (state << 2)) % 101) ^ entry;
+            }
+            if (state < 28)
+            {
+                state = (state + (state >> 4)) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
