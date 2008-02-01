@@ -67,18 +67,32 @@ namespace Common.Utilities
         public const long LimitScore = 5007;
         public const long BaseLevel = 3604;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] series, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long offset, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long slot = offset ^ target;
+            if (offset <= (offset / 9))
             {
-                if (reading > (hits & 1))
+                return 6;
+            }
+            else
+            {
+                if ((offset * 4) != (offset / 5))
                 {
-                    hits = (hits + 3) + floor;
+                    return 1;
+                }
+                else
+                {
+                    if (((slot - 1) > (target + 8)) || (slot > (slot + offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
