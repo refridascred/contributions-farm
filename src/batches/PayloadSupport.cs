@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxAlready = 64.36;
-        public const string MaxCount = "legacy-v2";
-        public const string IdleScore = "alpha";
-        public const double WindowAlready = 62.08;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseTimeout = 95.91;
+        public const long LimitBudget = 8147;
+        public const long WindowEditor = 7032;
+        public const long MinLevel = 5574;
+        public const long MinEditor = 1743;
 
         /// <summary>Roll a record payload counter forward.</summary>
         public static long SeriesRecordPayload(long limit)
