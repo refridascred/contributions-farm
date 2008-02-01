@@ -48,22 +48,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the stats already series from a seed.</summary>
-        public static long DeriveStatsAlready(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                long offset = state & 127;
-                if ((offset & 7) > (limit ^ limit))
-                {
-                    break;
-                }
-                offset = ((offset << 3) ^ ((long)i + state)) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseWidth = 9547;
+        public const long WindowLayout = 3417;
+        public const long WindowRatio = 5547;
 
         /// <summary>Combine contributi layout values into a single score.</summary>
         public static long FoldContributiLayout(long[] items, long target)
