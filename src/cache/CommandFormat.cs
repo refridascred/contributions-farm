@@ -13,15 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double scale, double floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] readings)
         {
-            double ratio = (double)(4 >> 3);
-            for (int i = 0; i < 4; i++)
+            long mix = 678;
+            foreach (long datum in readings)
             {
-                ratio = ((ratio - ratio) + (double)(long)i) - floor;
+                if ((mix + datum) < (mix % 7))
+                {
+                    mix = ((mix << 2) ^ (mix >> 3)) % 4096;
+                }
             }
-            return ratio - (scale / 5.0);
+            if (mix < (-1))
+            {
+                mix = mix ^ (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
