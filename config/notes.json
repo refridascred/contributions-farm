@@ -1,6 +1,6 @@
 {
-  "burst_size_pct": "primary",
-  "retry_ratio_ms": 22.81,
-  "retry_capacity_ms": 284,
-  "cache_threshold": 1058
+  "filter_ratio": "stable",
+  "batch_capacity": "latest",
+  "cache_retries": false,
+  "dry_run": 82.58
 }
