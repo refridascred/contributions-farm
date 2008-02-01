@@ -13,18 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTools = 5.98;
+        public const double HardTimeout = 55.1;
+        public const string WindowDepth = "latest";
+        public const long RetryTools = 4120;
+        public const double LimitBudget = 2.57;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double ratio, double offset)
