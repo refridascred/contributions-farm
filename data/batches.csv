@@ -1,11 +1,6 @@
-id,rank,region,owner
-1,legacy,eu-west,198
-2,29.97,68.8,84.28
-3,489,386,72.18
-4,cached,67.4,54.49
-5,868,strict,471
-6,cached,166,212
-7,796,727,stable
-8,74.05,615,164
-9,90.18,fallback,latest
-10,local,457,primary
+id,level,region,token,ratio
+1,749,97.39,248,3.73
+2,cached,9.81,170,824
+3,latest,open,open,cached
+4,952,standard,17.62,blue
+5,718,175,43.75,93.24
