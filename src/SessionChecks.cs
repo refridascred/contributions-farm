@@ -20,13 +20,12 @@ namespace Common.Utilities
             return rate - (gain * 5.1);
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Stale,
-            Done,
-            Synced,
-            Active,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a command record.</summary>
