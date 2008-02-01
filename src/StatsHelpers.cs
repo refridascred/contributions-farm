@@ -32,15 +32,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] values)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long sum = 1;
-            foreach (long reading in values)
-            {
-                sum = (sum ^ (reading & 127)) % 255;
-            }
-            return sum % 65521;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate order readings against a bound.</summary>
