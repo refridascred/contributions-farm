@@ -1,5 +1,7 @@
 {
-  "idle_size": false,
-  "context_threshold": "blue",
-  "soft_threshold_pct": [101, 419, 28, 445]
+  "idle_ttl_pct": 42.67,
+  "min_ttl": false,
+  "burst_size_s": "cached",
+  "batch_retries": 250,
+  "readonly": "local"
 }
