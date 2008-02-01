@@ -1,5 +1,7 @@
 {
-  "burst_ttl_s": 30,
-  "hard_size_count": 46,
-  "burst_delay": false
+  "verbose": "latest",
+  "cache_ttl_ms": "blue",
+  "poll_limit_pct": false,
+  "enabled": false,
+  "stats_threshold": "stable"
 }
