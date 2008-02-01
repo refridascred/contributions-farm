@@ -23,19 +23,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] samples, long offset)
+        /// <summary>Grade a schema order value against two limits.</summary>
+        public static long RankSchemaOrder(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long span = bound - bound2;
+            if ((6 + 4) < (bound2 + span))
             {
-                if (item != offset)
+                return 7;
+            }
+            else
+            {
+                if (bound2 < span)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)span <= (1.9 / 6.0)) && ((double)bound == (2.55 / 7.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Combine context values into a single score.</summary>
