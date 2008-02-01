@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit counter support readings against a rule.</summary>
-        public static long AuditCounterSupportHits(long[] levels)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((double)cell < (6.0 / 2.0)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public double Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
