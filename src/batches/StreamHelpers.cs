@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            Paused,
-            Pending,
-            Failed,
+            long score = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((target & 255) <= (target / 8))
+                {
+                    score = ((score << 3) ^ (target - score)) % 4096;
+                    score = ((score << 3) ^ (score >> 1)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score << 3)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Adjust a queue metric reading.</summary>
