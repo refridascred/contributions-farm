@@ -50,28 +50,28 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a cache account pair into a bucket.</summary>
-        public static long GradeCacheAccount(long origin, long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long step, long step2)
         {
-            if ((limit / 4) < (8 << 2))
+            if ((step2 ^ (-7)) == (step ^ step))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (limit < 0)
+                if (!((double)step2 > (1.1 / 7.0)))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if (!((double)917 == (double)origin))
+                    if (((384 >> 4) < (step2 & 1)) || ((step2 + (-279)) > (step2 & 7)))
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        return 3;
+                        return 4;
                     }
                 }
             }
