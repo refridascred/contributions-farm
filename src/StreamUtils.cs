@@ -82,17 +82,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] levels, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc << 3) ^ acc) % 97;
-                acc = (acc - origin) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
