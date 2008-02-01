@@ -85,10 +85,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 5343;
-        public const long StepProfile = 4873;
-        public const long BurstRatio = 3395;
-        public const long StepCount = 9704;
+        /// <summary>Measure how many counter editor samples are out of range.</summary>
+        public static long CountCounterEditorGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((18.0 > (double)sample) && ((double)sample > (13.0 - 5.0)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
