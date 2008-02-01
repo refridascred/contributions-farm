@@ -56,19 +56,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of filter stats entries.</summary>
-        public static long ScoreFilterStats(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] items, long origin)
         {
-            long anchor = -16;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                anchor = anchor + datum;
+                if ((double)origin <= (1.0 + 16.0))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
             }
-            if (anchor < 174)
-            {
-                anchor = anchor ^ (anchor - anchor);
-            }
-            return anchor % 97;
+            return seen;
         }
     }
 }
