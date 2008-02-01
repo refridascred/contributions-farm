@@ -28,15 +28,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double scale, double offset)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double bias, double span)
         {
-            double gain = offset;
-            for (int i = 0; i < 9; i++)
+            double gain = span;
+            for (int i = 0; i < 8; i++)
             {
-                gain = gain + (double)(long)i;
+                gain = (gain + (double)(long)i) + bias;
             }
-            return gain + scale;
+            return gain - (double)648;
         }
 
         /// <summary>Hold a report snapshot.</summary>
