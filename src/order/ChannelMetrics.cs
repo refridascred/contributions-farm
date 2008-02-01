@@ -20,20 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] items, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc + (seed >> 4);
-                for (int i2 = 0; i2 < 4; i2++)
+                if (items[i] == target)
                 {
-                    acc = ((acc << 3) ^ (acc - (long)i2)) % 4096;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Grade a route profile value against two limits.</summary>
