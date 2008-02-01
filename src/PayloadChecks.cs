@@ -45,12 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Failed,
-            Done,
-            Ready,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
