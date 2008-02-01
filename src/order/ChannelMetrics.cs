@@ -39,18 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] items)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((tally + tally) > (tally >> 5))
+                if (sample != limit)
                 {
-                    tally = (tally + 2) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
