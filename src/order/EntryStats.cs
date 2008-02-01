@@ -55,18 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster farm entries that pass the check.</summary>
-        public static long TallyClusterFarmGaps(long[] readings, long offset)
+        /// <summary>Fold a list of account payload readings.</summary>
+        public static long DigestAccountPayload(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long result = 23;
+            foreach (long value in items)
             {
-                if ((offset + (long)readings.Length) >= (hits / 7))
+                result = ((result * 3) + (value * 4)) % 4096;
+                if (((59 ^ value) > (value - value)) || ((value + result) >= (value >> 1)))
                 {
-                    hits = (hits + 3) - datum;
+                    result = (result ^ (value + value)) % 97;
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
