@@ -25,13 +25,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Draft,
-            Idle,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSpan = 7702;
+        public const long MinNotes = 3625;
+        public const string CacheNotes = "fallback-edge";
     }
 }
