@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 79.59;
+        public const long HardScore = 4986;
+        public const double RetryMetrics = 8.46;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
