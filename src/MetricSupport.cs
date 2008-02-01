@@ -14,38 +14,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long step)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double gain, double floor)
         {
-            if ((double)step < (7.0 - 5.95))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step <= (3.2 + 1.61))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset <= (offset + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((63 >> 5) > (step + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double ratio = (double)912;
+            return ((ratio - (double)33) + gain) + floor;
         }
 
         /// <summary>Describe the checks phase values.</summary>
