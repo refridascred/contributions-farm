@@ -45,12 +45,38 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long floor, long limit)
         {
-            Active,
-            New,
-            Draft,
+            if ((limit + limit) <= (floor + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(12.0 <= (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((limit + floor) >= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)floor <= (0.58 - 5.9)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload options.</summary>
