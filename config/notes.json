@@ -1,6 +1,6 @@
 {
-  "tools_threshold": false,
-  "sync_ttl_count": "green",
-  "default_size_ms": 75.26,
-  "enabled": "legacy"
+  "cache_retries": 7908,
+  "max_window_s": "open",
+  "support_interval": 68.11,
+  "soft_interval_ms": ["legacy", "stable", "latest", "legacy"]
 }
