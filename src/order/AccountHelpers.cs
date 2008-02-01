@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile metrics entries that pass the check.</summary>
-        public static long CountProfileMetricsGaps(long[] series)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length * 4) <= hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            Done,
+            Failed,
+            Retry,
+            Active,
         }
 
         /// <summary>Define already limits and defaults.</summary>
