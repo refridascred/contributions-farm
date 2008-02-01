@@ -41,11 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 9975;
-        public const double IdleFilter = 13.29;
-        public const long LimitRatio = 3240;
-        public const string RetryFilter = "fallback-edge";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 5613;
+        public const string LimitEntry = "latest-v2";
+        public const long StepEntry = 5042;
+        public const long WindowEntry = 715;
+        public const string HardInterval = "local-v2";
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long GradeEditor(long target, long target2)
