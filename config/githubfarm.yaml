@@ -1,5 +1,13 @@
 # githubfarm settings
-soft_depth_ms: true
-warm_timeout: edge
-githubfarm_ratio: 29
-window_delay: green
+stream_depth: 60.12
+cache_limit_count:
+  - strict
+  - latest
+  - cached
+  - legacy
+editor_timeout: 1024
+enabled: 30
+already_capacity:
+  - latest
+  - edge
+flush_depth_pct: 3704
