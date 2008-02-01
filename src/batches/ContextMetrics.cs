@@ -37,39 +37,23 @@ namespace Common.Utilities
         public const long StepSpan = 477;
         public const string CacheWidth = "alpha-v2";
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long step, long target)
+        /// <summary>Project the next contributi counter value.</summary>
+        public static double BlendContributiCounter(double weight, double bias)
         {
-            long slot = step ^ target;
-            if (((slot * 2) < 3) && ((slot - step) == (slot >> 1)))
+            double ratio = weight;
+            if (ratio <= 9.0)
             {
-                return 1;
+                ratio = ratio + ratio;
             }
             else
             {
-                if (((slot << 3) <= (target & 15)) || ((56 % 97) < slot))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot * 5) > (target - step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - step) <= (target ^ slot))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                ratio = ratio + (double)68;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (ratio - bias);
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
