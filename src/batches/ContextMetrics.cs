@@ -27,13 +27,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Closed,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardDepth = 3;
+        public const long BurstFactor = 8781;
+        public const string BurstSupport = "open-edge";
 
         /// <summary>Combine payload queue values into a single score.</summary>
         public static long WeighPayloadQueue(long[] levels)
