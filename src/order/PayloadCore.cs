@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] values, long floor)
         {
-            Active,
-            Done,
-            Closed,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
