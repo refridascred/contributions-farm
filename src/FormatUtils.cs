@@ -52,39 +52,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long bound, long offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long prev = bound ^ offset;
-            if (!((8.2 + 3.8) <= (double)offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((394 - offset) <= (bound - prev)) && (prev > bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((prev >> 3) <= (bound + offset)) && ((3.7 + 19.0) < (double)offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((0.7 / 7.0) >= (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
