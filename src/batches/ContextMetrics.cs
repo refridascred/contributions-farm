@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long HardSupport = 5718;
         public const long WindowSupport = 2620;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] series, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((series[i] <= step) && ((series[i] % 2) == 0))
+                if (((54 - cell) >= (matches & 1)) || (matches <= (matches << 1)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
