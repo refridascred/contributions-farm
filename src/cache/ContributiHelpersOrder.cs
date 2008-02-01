@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long limit, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] items)
         {
-            if (3.0 >= (double)limit)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 4) <= (7 & 3))
+                if ((736 % 60) < (tally + value))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset == (6.1 / 4.0)) || (offset < (limit + offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset * 4) != (offset * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
