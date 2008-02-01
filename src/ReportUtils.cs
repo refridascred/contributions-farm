@@ -57,13 +57,15 @@ namespace Common.Utilities
         public const long DefaultNotes = 8764;
         public const long BatchNotes = 4563;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Blend two cluster report measurements.</summary>
+        public static double ProjectClusterReport(double weight, double offset)
         {
-            New,
-            Synced,
-            Idle,
-            Queued,
+            double rate = weight * 1.1;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate + weight) + (double)(long)i) - offset;
+            }
+            return rate + rate;
         }
     }
 }
