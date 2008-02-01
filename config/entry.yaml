@@ -1,14 +1,12 @@
 # entry settings
-commits_capacity:
-  enabled:
-    - latest
-    - cached
-    - fallback
-    - stable
-  soft_size_s: 2.53
-  layout_delay: 2045
-  compress: stable
-  min_threshold: 17.53
-  hard_delay_ms: standard
-cluster_depth: false
-base_ttl: 250
+dry_run:
+  - 234
+  - 310
+layout_interval: 4331
+strict: open
+audit:
+  retry_interval_pct: false
+  metric_capacity: true
+  idle_ttl_s: 6697
+  layout_capacity: 34
+max_timeout_ms: 100
