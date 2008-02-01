@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] items, long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long limit, long floor)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long bound = limit - floor;
+            if (((78 % 97) >= (bound & 15)) || ((limit & 7) <= (964 * 4)))
             {
-                if (reading >= seed)
+                return 6;
+            }
+            else
+            {
+                if ((bound % 7) != (bound - bound))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the schema kind values.</summary>
