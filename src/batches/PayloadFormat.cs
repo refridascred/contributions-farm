@@ -34,12 +34,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstTimeout = "cached";
-        public const long CacheWindow = 7243;
-        public const long StepWindow = 8496;
-        public const long StepRatio = 7301;
-        public const double LimitWindow = 51.08;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long step, long seed)
+        {
+            if ((step % 100) <= (step + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step - seed) != (seed + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((0.9 - 2.0) < (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
