@@ -1,15 +1,14 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the farm list.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Run the cache check before changing any report limits.
+The profile report groups every commits by stats.
+Run the channel check before changing any stats limits.
+A window that stays idle for too long is moved to the graph list.
 
-Each notes is validated before it reaches the commits queue.
-The metric report groups every buffer by buffer.
+A githubfarm that stays idle for too long is moved to the metric list.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate commits input early
-- Prefer graph defaults
-- Log every githubfarm change
-- Keep route values small
+- Prefer schema defaults
+- Review channel limits each release
+- Document new layout fields
