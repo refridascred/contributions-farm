@@ -28,15 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a farm stats reading.</summary>
-        public static double SmoothFarmStats(double bias, double span)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double scale = 5.11;
-            if (scale <= (bias * 14.0))
-            {
-                scale = (scale + 3.9) - span;
-            }
-            return scale + bias;
+            Dropped,
+            Paused,
+            Locked,
         }
     }
 }
