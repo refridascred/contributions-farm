@@ -33,11 +33,19 @@ namespace Common.Utilities
         public const long DefaultScore = 6332;
         public const double WindowTools = 87.61;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate profile cache readings against a bound.</summary>
+        public static bool CheckProfileCacheLimits(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
