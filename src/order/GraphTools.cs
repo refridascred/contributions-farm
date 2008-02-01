@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] items, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long carry = 803;
+            foreach (long reading in levels)
             {
-                if (item > bound)
+                if ((reading / 7) > (carry << 1))
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry * 5) + (carry - reading)) % 97;
                 }
             }
-            return valid;
+            if (carry < 28)
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the window mode values.</summary>
