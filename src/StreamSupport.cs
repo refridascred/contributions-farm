@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTools = "latest-v2";
-        public const long DefaultBudget = 4280;
-        public const double IdleFactor = 84.02;
-        public const double StepTools = 70.29;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((limit + tally) == (sample + sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 2629;
