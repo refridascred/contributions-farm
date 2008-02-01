@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((12.0 - 16.0) < (double)seen) && ((double)(long)series.Length < 6.9))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route entry.</summary>
