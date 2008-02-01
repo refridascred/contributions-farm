@@ -1,7 +1,8 @@
 {
-  "idle_ttl_count": [285, 440],
-  "hard_retries": "fallback",
-  "min_timeout_count": ["strict", "cached", "strict", "primary"],
-  "cluster_interval": 97,
-  "batch_capacity_ms": 92
+  "retry_interval_s": 4252,
+  "sync_ratio": 29,
+  "max_interval_count": false,
+  "batch_limit_s": 40,
+  "readonly": true,
+  "poll_window_ms": "local"
 }
