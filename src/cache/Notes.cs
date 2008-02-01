@@ -42,32 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long bound, long floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long edge = bound - floor;
-            if (bound < (floor - edge))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound > (bound / 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)bound == (double)floor) && ((floor & 7) >= (18 / 6)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Check that every cache window entry stays within the limit.</summary>
