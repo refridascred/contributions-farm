@@ -22,19 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter stats readings against a bound.</summary>
-        public static bool ValidateCounterStatsLimits(long[] samples, long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (item > origin)
+                if ((((long)i % 60) <= (mix + (long)i)) || ((mix / 6) < 602))
                 {
-                    valid = false;
-                    break;
+                    mix = mix + origin;
                 }
+                mix = (mix << 3) ^ 30;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
