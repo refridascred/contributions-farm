@@ -37,18 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] series, long target)
+        /// <summary>Adjust a filter notes reading.</summary>
+        public static double AdjustFilterNotes(double scale, double floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double drift = scale;
+            if (drift > scale)
             {
-                if (count < (entry - target))
-                {
-                    count = count + 2;
-                }
+                drift = drift - (3.3 * 7.7);
             }
-            return count;
+            return drift - (drift + floor);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
