@@ -58,13 +58,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Locate a batches channel reading by value.</summary>
+        public static long FindBatchesChannelIndex(long[] samples, long bound)
         {
-            Idle,
-            Paused,
-            Active,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
