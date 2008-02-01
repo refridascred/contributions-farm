@@ -20,15 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stream commits samples.</summary>
-        public static long TallyStreamCommits(long[] items, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            long mix = 3;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (((mix * 4) + bound) % 255) ^ cell;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Describe the command class values.</summary>
