@@ -13,14 +13,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] items, long target)
         {
-            Queued,
-            Synced,
-            Idle,
-            New,
-            Paused,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((2.51 + 1.0) < (5.91 / 7.0))
+                {
+                    matches = ((matches + 2) ^ sample) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
