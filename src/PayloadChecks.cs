@@ -85,11 +85,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 5343;
+        public const long StepProfile = 4873;
+        public const long BurstRatio = 3395;
+        public const long StepCount = 9704;
     }
 }
