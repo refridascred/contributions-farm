@@ -26,38 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long origin, long seed)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            if ((seed + seed) > (seed - seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((origin + seed) < (seed ^ origin)) || ((409 + seed) <= seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin - 5) < (origin << 2)) || (8.83 >= (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)seed != (3.1 / 3.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the batch mode values.</summary>
