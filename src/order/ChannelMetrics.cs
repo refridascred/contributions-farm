@@ -24,23 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] values)
         {
-            long state = 49;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                state = (state - (state + 51)) % 1000;
-                if ((state << 3) < (cell % 24))
+                if ((double)matches != (8.0 / 8.0))
                 {
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            if (state < 58)
-            {
-                state = (state - (state & 31)) % 65521;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
