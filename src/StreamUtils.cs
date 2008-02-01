@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] data, long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((datum % 10) >= (hits - datum)) && (((double)limit != (1.68 * 1.98)) || ((limit ^ hits) < hits)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a metrics channel sample.</summary>
