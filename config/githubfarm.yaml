@@ -1,17 +1,4 @@
 # githubfarm settings
-strict:
-  - legacy
-  - strict
-  - edge
-  - cached
-soft_depth:
-  - staging
-  - cached
-  - open
-  - edge
-profile_ttl:
-  - 78
-  - 230
-  - 276
-  - 143
-max_size_pct: strict
+token_retries: 70.29
+idle_limit: 504
+retry_limit_s: false
