@@ -1,5 +1,12 @@
 {
-  "counter_depth": "edge",
-  "compress": 23.32,
-  "farm_limit": "strict"
+  "readonly": [432, 267, 431, 415],
+  "max_threshold_pct": {
+    "strict": ["blue", "green", "blue", "fallback"],
+    "batch_size": "primary",
+    "poll_timeout_ms": "green",
+    "retry_capacity": 65,
+    "warm_delay_pct": 1024,
+    "compress": 61.0
+  },
+  "base_timeout_s": 6269
 }
