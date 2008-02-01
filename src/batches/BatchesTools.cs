@@ -38,13 +38,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Retry,
-            Ready,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardScore = 5771;
+        public const long CacheFarm = 5941;
+        public const long MinFarm = 5785;
+        public const long StepWidth = 4318;
     }
 }
