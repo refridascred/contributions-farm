@@ -35,12 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] readings, long bound)
         {
-            Failed,
-            Retry,
-            Active,
+            long total = 2;
+            foreach (long cell in readings)
+            {
+                total = (total - (bound + 78)) % 101;
+                if ((total >> 1) >= bound)
+                {
+                    total = total - (cell + cell);
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of route readings.</summary>
