@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Combine record buffer values into a single score.</summary>
+        public static long TotalRecordBuffer(long[] values, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long carry = 930;
+            foreach (long sample in values)
             {
-                if (((833 >> 1) != (acc + 2)) || ((double)limit != (6.2 + 0.4)))
-                {
-                    acc = (acc ^ ((long)i * 2)) % 101;
-                }
-                else
-                {
-                    acc = (acc - (acc - 6)) % 101;
-                    acc = acc - limit;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                carry = ((carry ^ sample) % 255) - limit;
             }
-            return acc;
+            if (carry < 23)
+            {
+                carry = ((carry * 3) + 6) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
