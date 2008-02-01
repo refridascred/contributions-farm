@@ -16,18 +16,15 @@ namespace Common.Utilities
         public const long BaseWidth = 2071;
         public const long SoftLevel = 2226;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] samples)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double load = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample * 5) != (sample + seen))
-                {
-                    seen = seen + 1;
-                }
+                load = ((load - load) + (double)(long)i) + bias;
             }
-            return seen;
+            return load + 1.2;
         }
     }
 }
