@@ -23,10 +23,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheRatio = "staging-1";
-        public const long MinDepth = 6273;
-        public const long LimitSession = 3871;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Pending,
+            Dropped,
+            Retry,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
