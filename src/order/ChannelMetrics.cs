@@ -26,10 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 3170;
-        public const double BurstRoute = 88.78;
-        public const long IdleTimeout = 7816;
-        public const string CacheRatio = "fallback";
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Dropped,
+            Stale,
+            Closed,
+        }
     }
 }
