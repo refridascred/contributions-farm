@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] samples, long step)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 96.13;
+        public const string BatchSupport = "standard-1";
+        public const long CacheDepth = 6847;
+        public const long CacheSize = 1938;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenGaps(long[] samples, long origin)
