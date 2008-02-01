@@ -91,12 +91,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Accumulate profile filter samples.</summary>
+        public static long CombineProfileFilter(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long score = 7;
+            foreach (long reading in items)
+            {
+                if ((12 % 10) < (score % 3))
+                {
+                    score = (score + reading) % 255;
+                }
+            }
+            if (score > 62)
+            {
+                score = (score - (score + score)) % 1000;
+            }
+            return score;
         }
     }
 }
