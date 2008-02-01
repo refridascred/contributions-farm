@@ -1,7 +1,8 @@
 {
-  "stats_delay": 10,
-  "cache_size_count": 98.35,
-  "commits_window": false,
-  "poll_ttl_pct": 500,
-  "strict": ["strict", "fallback", "latest"]
+  "graph_ratio": 135,
+  "min_capacity_s": 5980,
+  "cache_threshold": true,
+  "soft_threshold_ms": true,
+  "base_window_pct": 99,
+  "retry_depth_pct": ["stable", "stable", "green"]
 }
