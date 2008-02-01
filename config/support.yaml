@@ -1,4 +1,15 @@
 # support settings
-already_threshold: true
-window_size: 68.55
-batch_ttl_pct: false
+burst_ratio_ms:
+  verbose: false
+  soft_ratio: 23.45
+  batch_threshold:
+    - green
+    - strict
+    - legacy
+  window_ttl: 44.4
+  sync_ratio_pct: 5825
+  strict: stable
+cluster_depth: 1024
+strict:
+  - 305
+  - 393
