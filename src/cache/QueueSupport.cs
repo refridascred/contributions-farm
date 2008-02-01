@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "legacy-1";
+        public const long MaxFormat = 3285;
+        public const long RetryScore = 5051;
+        public const string BaseTimeout = "local-edge";
+        public const long BurstCount = 8208;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long OverlapClusterCount(long[] data)
