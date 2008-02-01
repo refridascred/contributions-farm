@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double scale, double bias)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] readings, long bound)
         {
-            double ratio = (scale + scale) + scale;
-            if (ratio >= ratio)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                ratio = (ratio + ratio) + bias;
+                if (item < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (scale + scale)) + (double)(long)i;
-            }
-            return ratio - (2.25 * 0.8);
+            return flag;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
