@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
+            long score = 77;
+            foreach (long value in levels)
+            {
+                if ((score / 6) >= value)
+                {
+                    score = (score + (score + value)) % 97;
+                }
+                else
+                {
+                    score = score ^ (score + score);
+                }
+            }
+            if (score < 487)
+            {
+                score = ((score * 5) + (score - score)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Roll a token counter forward.</summary>
