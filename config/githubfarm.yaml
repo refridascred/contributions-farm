@@ -1,12 +1,12 @@
 # githubfarm settings
-cache_capacity:
-  - 222
-  - 430
-  - 235
-  - 100
-idle_interval: true
-batch_ratio_count: edge
-max_capacity_s: fallback
-soft_window_s:
-  - local
-  - legacy
+stream_depth: edge
+idle_retries_s:
+  - 220
+  - 446
+  - 483
+stream_ttl: 24
+poll_capacity_count:
+  - 498
+  - 68
+  - 16
+batches_window: false
