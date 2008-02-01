@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Locked,
-            Failed,
-            Pending,
+            Ready,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
