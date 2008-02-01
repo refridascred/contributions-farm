@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long BatchSize = 976;
         public const long RetryRatio = 7565;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "legacy-1";
-        public const long MaxFormat = 3285;
-        public const long RetryScore = 5051;
-        public const string BaseTimeout = "local-edge";
-        public const long BurstCount = 8208;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
