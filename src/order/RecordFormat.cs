@@ -38,20 +38,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next window route value from a seed.</summary>
-        public static long DeriveWindowRoute(long seed)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (result - seed) ^ (long)i2;
-                }
-                result = (result - (result - seed)) % 101;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
