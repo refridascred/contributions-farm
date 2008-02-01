@@ -68,11 +68,19 @@ namespace Common.Utilities
             return rate + (rate * 2.9);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowFactor = 3212;
-        public const double BaseRoute = 34.46;
-        public const long HardScore = 3552;
-        public const long MinRoute = 738;
-        public const long WindowSize = 2011;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
