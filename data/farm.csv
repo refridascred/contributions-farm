@@ -1,7 +1,9 @@
-id,owner,ratio
-1,648,cached
-2,57.31,3.16
-3,latest,89.15
-4,strict,865
-5,latest,open
-6,legacy,standard
+id,score,state,rank
+1,staging,35.79,209
+2,37.67,22.86,403
+3,75.6,79.06,828
+4,497,667,779
+5,126,local,cached
+6,strict,47.73,edge
+7,79,latest,41.87
+8,838,44.94,481
