@@ -69,10 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 4573;
-        public const long BaseBudget = 943;
-        public const long LimitDepth = 6062;
+        /// <summary>Audit session tools readings against a rule.</summary>
+        public static long CountSessionToolsMatches(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((540 > (limit / 2)) && ((matches ^ 2) <= (cell - 596)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a format stats value against two limits.</summary>
         public static long BucketFormatStats(long target, long target2)
