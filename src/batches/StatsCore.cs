@@ -71,26 +71,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long mix = -922;
-            foreach (long entry in series)
-            {
-                if (mix > (mix + entry))
-                {
-                    mix = ((mix << 2) ^ (mix << 3)) % 101;
-                }
-                if (14.0 > (double)entry)
-                {
-                    break;
-                }
-            }
-            if (mix > 2)
-            {
-                mix = (mix ^ (mix << 3)) % 101;
-            }
-            return mix % 97;
+            Idle,
+            Paused,
+            Active,
+            Dropped,
         }
     }
 }
