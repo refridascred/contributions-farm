@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long seed, long target)
-        {
-            if (((69 >> 3) < seed) || ((seed / 5) <= (7 & 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed - target) >= target) || (((-5) >> 5) < seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target >= (6 + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target <= seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 894;
+        public const double BatchCount = 48.42;
+        public const long MinGithubfarm = 791;
+        public const long BurstGithubfarm = 3666;
+        public const long BaseGithubfarm = 2730;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long DeriveCommits(long limit)
