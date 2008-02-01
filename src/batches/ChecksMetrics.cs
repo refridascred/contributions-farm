@@ -64,9 +64,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepInterval = "strict";
-        public const long LimitFactor = 7830;
-        public const string DefaultFactor = "alpha-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryLevel = 22.37;
+        public const string MaxMetrics = "legacy-1";
+        public const long RetryCount = 9690;
+        public const double MinMetrics = 35.74;
     }
 }
