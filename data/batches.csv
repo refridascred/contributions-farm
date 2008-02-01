@@ -1,6 +1,10 @@
-id,level,region,token,ratio
-1,749,97.39,248,3.73
-2,cached,9.81,170,824
-3,latest,open,open,cached
-4,952,standard,17.62,blue
-5,718,175,43.75,93.24
+id,ratio,owner,label,count
+1,992,669,open,47.11
+2,78.54,37,384,cached
+3,78.97,blue,latest,335
+4,141,170,stable,9.85
+5,98.41,398,74.02,947
+6,local,eu-west,47.19,763
+7,local,266,fallback,30.97
+8,strict,71,230,green
+9,60.86,83.57,63.97,768
