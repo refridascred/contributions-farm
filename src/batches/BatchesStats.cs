@@ -50,14 +50,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long bound, long floor)
         {
-            New,
-            Stale,
-            Draft,
-            Locked,
-            Active,
+            long step = bound - floor;
+            if ((bound / 9) >= step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor ^ floor) <= (92 >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step >> 4) > floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
