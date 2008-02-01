@@ -21,15 +21,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] levels, long limit)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double ratio, double span)
         {
-            long anchor = 47;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor ^ (anchor & 15)) ^ sample) + limit;
-            }
-            return anchor % 4096;
+            double load = span;
+            return (load - 6.1) + ratio;
         }
 
         /// <summary>Iterate the payload format series from a seed.</summary>
