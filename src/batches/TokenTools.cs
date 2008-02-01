@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 79.59;
-        public const long HardScore = 4986;
-        public const double RetryMetrics = 8.46;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
