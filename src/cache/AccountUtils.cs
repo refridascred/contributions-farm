@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] series)
         {
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((77 + matches) > (87 & 1))
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
