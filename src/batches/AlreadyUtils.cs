@@ -67,24 +67,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)origin < (double)0) || ((3.66 + 2.6) > (double)origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state * 5) + (origin + 2)) % 1000;
-                    state = (state * 2) + state;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    state = state - state;
-                }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return seen;
         }
     }
 }
