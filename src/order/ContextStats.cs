@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count session cluster pairs that satisfy a relation.</summary>
