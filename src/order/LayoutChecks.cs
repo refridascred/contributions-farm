@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long offset, long offset2)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            if (((double)offset2 == (2.5 - 2.7)) && ((offset % 97) != (offset2 / 6)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 + offset2) != (offset2 - 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
