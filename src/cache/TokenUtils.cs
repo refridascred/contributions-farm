@@ -27,11 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double weight, double offset)
+        /// <summary>Check that every schema token entry stays within the limit.</summary>
+        public static bool VerifySchemaTokenBounds(long[] samples, long limit)
         {
-            double gain = weight * 9.1;
-            return gain + offset;
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up session samples.</summary>
