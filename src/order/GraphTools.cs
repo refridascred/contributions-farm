@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Active,
-            Synced,
-            Done,
-            Pending,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "legacy";
+        public const long RetryFormat = 5423;
+        public const double DefaultTimeout = 64.12;
+        public const long IdleSpan = 2323;
+        public const double IdleInterval = 24.08;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportOutliers(long[] values)
