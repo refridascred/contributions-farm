@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every stream order entry stays within the limit.</summary>
-        public static bool GuardStreamOrderRange(long[] data, long bound)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Paused,
+            Synced,
         }
 
         /// <summary>Iterate the account tools series from a seed.</summary>
