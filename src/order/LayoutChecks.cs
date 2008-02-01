@@ -31,18 +31,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples, long bound)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            long state = 4;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)bound <= 4.67)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (((state << 3) ^ (bound - 229)) % 255) ^ item;
+                    if ((readings[i] - readings[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the editor status values.</summary>
