@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum + 87) % 65521;
-                sum = (sum * 3) + bound;
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 6537;
+        public const string IdleTimeout = "latest-edge";
+        public const string MaxInterval = "latest-v2";
+        public const long BurstOrder = 5818;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] readings, long limit)
