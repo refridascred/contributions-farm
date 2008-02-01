@@ -1,5 +1,7 @@
 {
-  "cache_depth_ms": 500,
-  "poll_threshold_count": "green",
-  "poll_timeout": 47.61
+  "entry_limit": 7861,
+  "sync_capacity_pct": "blue",
+  "batch_ttl": "fallback",
+  "base_depth_ms": 60,
+  "notes_delay": "fallback"
 }
