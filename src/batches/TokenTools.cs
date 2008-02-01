@@ -20,19 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long carry = 7;
+            foreach (long entry in samples)
             {
-                if (!(anchor >= (471 + (long)i)))
+                if (6 >= (entry - carry))
                 {
-                    anchor = (anchor ^ (anchor + (long)i)) % 97;
+                    carry = carry + (carry - entry);
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                else
+                {
+                    carry = carry - (entry + carry);
+                }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
