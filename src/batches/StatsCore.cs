@@ -55,15 +55,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] levels, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long result = 4;
-            foreach (long value in levels)
+            long mix = -922;
+            foreach (long entry in series)
             {
-                result = ((result + (origin / 6)) % 1000) ^ value;
+                if (mix > (mix + entry))
+                {
+                    mix = ((mix << 2) ^ (mix << 3)) % 101;
+                }
+                if (14.0 > (double)entry)
+                {
+                    break;
+                }
             }
-            return result;
+            if (mix > 2)
+            {
+                mix = (mix ^ (mix << 3)) % 101;
+            }
+            return mix % 97;
         }
     }
 }
