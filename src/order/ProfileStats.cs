@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 2837;
-        public const double IdleRatio = 4.43;
-        public const string MaxBatch = "legacy-edge";
-        public const long LimitBatch = 6488;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long floor)
