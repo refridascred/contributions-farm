@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] levels, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            long carry = 357;
+            foreach (long sample in levels)
             {
-                if ((((long)i % 60) <= (mix + (long)i)) || ((mix / 6) < 602))
+                if ((sample * 4) >= carry)
                 {
-                    mix = mix + origin;
+                    carry = (((carry << 3) ^ (carry % 12)) % 4096) - target;
                 }
-                mix = (mix << 3) ^ 30;
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
