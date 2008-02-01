@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally + cell) == (cell >> 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryMetrics = 74.97;
+        public const string LimitLevel = "cached";
+        public const long BurstMetrics = 7460;
+        public const long HardInterval = 3882;
+        public const long SoftInterval = 9456;
 
         /// <summary>Count the layout account entries that pass the check.</summary>
         public static long MeasureLayoutAccountHits(long[] data, long offset)
