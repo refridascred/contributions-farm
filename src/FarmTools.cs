@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many tools metric samples are out of range.</summary>
-        public static long CountToolsMetricOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample << 3) >= 41)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxLevel = 4375;
+        public const long BurstStats = 1893;
+        public const string SoftStats = "primary-v2";
+        public const long IdleStats = 4467;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long LimitDepth = 1850;
