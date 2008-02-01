@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 16.23;
+        public const long StepWidth = 5472;
+        public const long CacheNotes = 5753;
+        public const long DefaultNotes = 4011;
 
         /// <summary>Blend two command metrics measurements.</summary>
         public static double ProjectCommandMetrics(double scale, double bias)
