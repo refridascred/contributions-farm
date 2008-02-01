@@ -30,18 +30,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report context readings against a rule.</summary>
-        public static long MeasureReportContextGaps(long[] values, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long sum = -192;
+            foreach (long sample in readings)
             {
-                if (matches >= (reading >> 2))
+                sum = (sum - sample) % 1000;
+                sum = (sum << 3) ^ (sum >> 3);
+                if (((sample - sample) >= sample) || ((767 - sample) != (long)readings.Length))
                 {
-                    matches = (matches + 2) + origin;
+                    break;
                 }
             }
-            return matches;
+            if (sum > 2)
+            {
+                sum = sum ^ (sum - (long)readings.Length);
+            }
+            return sum;
         }
 
         /// <summary>Hold a notes header.</summary>
