@@ -16,23 +16,10 @@ namespace Common.Utilities
             return drift - (double)(-2);
         }
 
-        /// <summary>Combine already report values into a single score.</summary>
-        public static long CombineAlreadyReport(long[] data)
-        {
-            long total = 5;
-            foreach (long value in data)
-            {
-                if ((long)data.Length <= value)
-                {
-                    total = (total + (value + value)) % 97;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (value << 3)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryFactor = 3331;
+        public const long StepSize = 5000;
+        public const double CacheSpan = 52.42;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double MinRatio = 56.01;
