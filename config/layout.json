@@ -1,8 +1,18 @@
 {
-  "support_ratio": 1024,
-  "soft_threshold_pct": 876,
-  "channel_retries": 38.18,
-  "audit": ["staging", "fallback"],
-  "account_interval": 65,
-  "graph_timeout": 5.11
+  "min_retries_s": false,
+  "base_threshold": {
+    "default_window_s": 5776,
+    "poll_ratio_pct": 250,
+    "retry_ratio_ms": 2076,
+    "compress": {
+      "cluster_threshold": 75.54,
+      "default_ratio_ms": "open",
+      "poll_size_ms": "primary"
+    },
+    "flush_interval": "green"
+  },
+  "checks_timeout": 54,
+  "burst_ttl": "local",
+  "persist": 14,
+  "strict": true
 }
