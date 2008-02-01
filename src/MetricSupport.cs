@@ -28,14 +28,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Queued,
-            Active,
-            Failed,
-            Pending,
-            Dropped,
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
