@@ -1,12 +1,7 @@
 {
-  "order_limit": {
-    "graph_size": 250,
-    "min_depth_s": true,
-    "idle_delay_count": 60,
-    "soft_capacity_count": "staging"
-  },
-  "already_size": "standard",
-  "hard_window": 38,
-  "verbose": true,
-  "idle_threshold_s": "cached"
+  "min_capacity": 15.19,
+  "counter_timeout": 91.86,
+  "command_threshold": 85,
+  "support_threshold": "cached",
+  "retry_retries": "local"
 }
