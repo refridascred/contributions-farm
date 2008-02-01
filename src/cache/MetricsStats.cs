@@ -33,18 +33,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] levels, long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.8 * 8.4) <= (double)datum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) - limit;
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up layout metric samples.</summary>
