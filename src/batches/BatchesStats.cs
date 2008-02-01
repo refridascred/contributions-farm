@@ -50,32 +50,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long bound, long floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double ratio, double bias)
         {
-            long step = bound - floor;
-            if ((bound / 9) >= step)
+            double mean = (double)(547 << 3);
+            if (mean <= (bias / 2.0))
             {
-                return 2;
+                mean = (mean - 3.98) + ratio;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((floor ^ floor) <= (92 >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step >> 4) > floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                mean = (mean - mean) + (double)(long)i;
             }
+            return mean + (bias + bias);
         }
     }
 }
