@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Blend two queue layout measurements.</summary>
+        public static double ProjectQueueLayout(double gain, double span)
         {
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
+            double ratio = (double)((-49) % 16);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (((ratio - (ratio / 7.0)) + (double)(long)i) + gain) - span;
+            }
+            return ratio + (double)33;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
