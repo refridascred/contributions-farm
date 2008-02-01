@@ -38,12 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Synced,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseInterval = 5339;
+        public const long HardFarm = 9208;
+        public const double WindowDepth = 58.27;
+        public const long MinFarm = 5206;
     }
 }
