@@ -30,22 +30,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((hits - entry) <= hits)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
