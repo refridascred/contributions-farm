@@ -25,31 +25,11 @@ namespace Common.Utilities
             return scale2 + (double)990;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long floor, long bound)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            if ((bound / 8) < (451 / 9))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)floor >= (8.4 * 6.91)) && ((8.62 / 9.0) <= (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((1 ^ bound) == (2 * 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
