@@ -81,14 +81,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] values)
         {
-            Idle,
-            Active,
-            Stale,
-            Retry,
-            Pending,
+            long carry = 5;
+            foreach (long cell in values)
+            {
+                if (!((5.3 / 4.0) <= (3.4 - 9.34)))
+                {
+                    carry = (carry + carry) - cell;
+                }
+            }
+            if (carry < 483)
+            {
+                carry = (carry + (carry << 1)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Audit entry context readings against a rule.</summary>
