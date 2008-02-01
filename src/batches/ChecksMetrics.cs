@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate batch notes readings against a bound.</summary>
-        public static bool CheckBatchNotesLimits(long[] readings, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
