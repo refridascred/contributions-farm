@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the cluster metrics entries that pass the check.</summary>
-        public static long CountClusterMetricsMatches(long[] values)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (8 >= (count >> 3))
+                if ((origin - seen) < (reading << 3))
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up command window samples.</summary>
