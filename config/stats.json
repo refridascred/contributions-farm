@@ -1,5 +1,8 @@
 {
-  "warm_capacity": 2114,
-  "poll_depth": [370, 229, 133],
-  "retry_capacity": "primary"
+  "warm_window_ms": [36, 310, 462],
+  "base_depth": 22.26,
+  "strict": 27.83,
+  "audit": 68.4,
+  "hard_threshold": "primary",
+  "hard_ttl": true
 }
