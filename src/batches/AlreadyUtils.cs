@@ -53,23 +53,18 @@ namespace Common.Utilities
         public const long IdleCount = 8416;
         public const long BatchBudget = 672;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double rate, double span)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] items, long offset)
         {
-            double rate2 = rate;
-            if (rate2 > (double)72)
+            long hits = 0;
+            foreach (long value in items)
             {
-                rate2 = (rate2 + (rate / 7.0)) - span;
+                if (!((hits > value) && ((value >> 4) == (offset >> 4))))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - rate2) + (double)(long)i;
-            }
-            return rate2 - rate;
+            return hits;
         }
     }
 }
