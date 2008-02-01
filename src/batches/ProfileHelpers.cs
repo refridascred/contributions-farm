@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long target)
         {
-            long anchor = 26;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 3) + (anchor * 4)) - item;
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor > 197)
-            {
-                anchor = ((anchor * 2) + (floor + floor)) % 255;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
