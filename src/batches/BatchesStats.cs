@@ -40,19 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] data, long offset)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Stale,
+            Synced,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
