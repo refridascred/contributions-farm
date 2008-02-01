@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long RetryDepth = 9891;
         public const long MinRatio = 384;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double bias, double span)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double bias, double bias2)
         {
-            double gain = bias - (span * 1.49);
-            return gain + bias;
+            double mean = (bias / 2.0) + 3.0;
+            if (mean <= (double)0)
+            {
+                mean = mean + (double)432;
+            }
+            else
+            {
+                mean = mean - (bias * 17.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + bias2) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Hold a stream summary.</summary>
