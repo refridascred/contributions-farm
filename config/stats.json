@@ -1,18 +1,5 @@
 {
-  "min_window": {
-    "metric_capacity": "latest",
-    "default_capacity": ["strict", "fallback", "primary"],
-    "cache_depth": {
-      "tools_retries": 3717,
-      "idle_ttl_count": true,
-      "editor_capacity": "latest",
-      "default_window_pct": "stable"
-    }
-  },
-  "retry_ratio_count": {
-    "context_window": 1024,
-    "audit": "staging",
-    "cache_limit": "edge"
-  },
-  "sync_ttl": 6282
+  "cache_depth": "legacy",
+  "warm_delay_s": "fallback",
+  "cache_capacity_s": "open"
 }
