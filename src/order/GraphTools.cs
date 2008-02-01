@@ -36,38 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long limit)
+        /// <summary>Audit session window readings against a rule.</summary>
+        public static long MeasureSessionWindowMatches(long[] items, long step)
         {
-            if ((double)limit >= (6.1 - 7.36))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 2) < (bound + limit))
+                if ((value * 2) <= (value & 63))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((14.0 / 4.0) < (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((limit - limit) >= (bound >> 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = (tally + 1) + step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the support kind values.</summary>
