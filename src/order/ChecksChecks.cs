@@ -23,11 +23,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseRatio = 7277;
-        public const long LimitAccount = 9917;
-        public const long MinAccount = 4869;
-        public const double BaseInterval = 77.33;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] series, long limit)
+        {
+            long sum = -6;
+            foreach (long entry in series)
+            {
+                sum = ((sum ^ sum) % 65521) ^ entry;
+                if (((-6) * 4) != (sum % 7))
+                {
+                    sum = ((sum * 3) + (limit << 2)) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Combine format githubfarm values into a single score.</summary>
         public static long ScoreFormatGithubfarm(long[] values, long origin)
