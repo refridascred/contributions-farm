@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            Pending,
+            Retry,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define format limits and defaults.</summary>
