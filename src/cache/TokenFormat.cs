@@ -16,26 +16,13 @@ namespace Common.Utilities
             return scale - (span + 6.19);
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mark = 8;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = (mark ^ (entry & 127)) + (long)i;
-                }
-                if ((double)entry < (double)mark)
-                {
-                    mark = (mark ^ entry) % 255;
-                }
-            }
-            if (mark < (-4))
-            {
-                mark = (mark ^ 592) % 1000;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine record values into a single score.</summary>
