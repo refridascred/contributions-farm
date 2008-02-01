@@ -1,10 +1,6 @@
 # support settings
-contributi_retries: local
-metric_delay:
-  - staging
-  - strict
-  - edge
-readonly: false
-burst_retries_s: 41.22
-contributi_depth: 82.08
-layout_window: 21.16
+notes_timeout: 24.89
+layout_retries: true
+checks_ttl: 59
+base_timeout: open
+flush_ratio: 38.86
