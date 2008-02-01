@@ -1,12 +1,5 @@
 # entry settings
-dry_run:
-  - 234
-  - 310
-layout_interval: 4331
-strict: open
-audit:
-  retry_interval_pct: false
-  metric_capacity: true
-  idle_ttl_s: 6697
-  layout_capacity: 34
-max_timeout_ms: 100
+hard_threshold_pct: 35
+hard_ttl_pct: 73.48
+min_limit_ms: 500
+default_depth_ms: 6273
