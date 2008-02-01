@@ -25,15 +25,13 @@ namespace Common.Utilities
         public const string WindowDepth = "latest-1";
         public const double LimitGithubfarm = 87.29;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long state = 87;
-            foreach (long item in values)
-            {
-                state = state ^ (item ^ 323);
-            }
-            return state % 1000;
+            Stale,
+            Ready,
+            Pending,
+            Done,
         }
     }
 }
