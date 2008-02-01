@@ -15,19 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate entry metric readings against a bound.</summary>
-        public static bool GuardEntryMetricBounds(long[] items, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (item != step)
+                if ((matches - cell) < (cell - cell))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a report info.</summary>
