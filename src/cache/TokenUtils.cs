@@ -37,19 +37,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate profile cache readings against a bound.</summary>
-        public static bool CheckProfileCacheLimits(long[] samples, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] items)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (sample <= seed)
+                if ((-790) >= (tally % 60))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) + value;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
