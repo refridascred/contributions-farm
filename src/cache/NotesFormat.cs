@@ -16,12 +16,10 @@ namespace Common.Utilities
             return scale - (double)7;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 1233;
+        public const long LimitTimeout = 8931;
+        public const string WindowCluster = "alpha";
 
         /// <summary>Count the stats context entries that pass the check.</summary>
         public static long MeasureStatsContextMatches(long[] items)
