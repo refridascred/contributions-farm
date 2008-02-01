@@ -49,19 +49,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] items, long seed)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Synced,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Measure how many profile order samples are out of range.</summary>
