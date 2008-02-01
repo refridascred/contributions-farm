@@ -33,15 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Find the first order metric entry that matches the target.</summary>
+        public static long SeekOrderMetricIndex(long[] samples, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
