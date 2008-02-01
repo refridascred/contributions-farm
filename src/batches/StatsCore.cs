@@ -41,18 +41,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up report queue samples.</summary>
-        public static long OverlapReportQueueCount(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] items, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)matches > (6.11 + 20.0))
                 {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 1) + item) - limit;
                 }
             }
             return matches;
