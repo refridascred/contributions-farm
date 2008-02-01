@@ -14,23 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] levels, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] values, long origin)
         {
-            long carry = 70;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                carry = (carry + (target - carry)) % 1000;
-                if ((13.0 * 4.02) > (double)reading)
+                if ((double)origin != (double)(-601))
                 {
-                    break;
+                    tally = (tally + 3) + entry;
                 }
             }
-            if (carry > 13)
-            {
-                carry = carry + 67;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the window state values.</summary>
