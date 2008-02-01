@@ -46,39 +46,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long limit, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            long next = limit + target;
-            if ((target > (target + 4)) || ((double)1 != (double)limit))
+            long total = 0;
+            foreach (long entry in samples)
             {
-                return 4;
+                total = (total + (805 << 2)) ^ entry;
             }
-            else
-            {
-                if ((limit & 1) < (6 * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit == (double)66)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((next - limit) != (next >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return total % 97;
         }
 
         /// <summary>Describe the cache status values.</summary>
