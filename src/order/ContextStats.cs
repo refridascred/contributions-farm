@@ -38,11 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleCounter = 18.6;
-        public const long HardCounter = 5244;
-        public const string IdleFactor = "local";
-        public const double LimitCounter = 79.57;
-        public const long RetryCounter = 9346;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
