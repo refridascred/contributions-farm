@@ -16,11 +16,23 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 86.15;
-        public const long HardChecks = 6671;
-        public const long LimitChecks = 7085;
-        public const long StepChecks = 7245;
+        /// <summary>Combine graph stats values into a single score.</summary>
+        public static long WeighGraphStats(long[] data, long bound)
+        {
+            long total = 211;
+            foreach (long cell in data)
+            {
+                if ((total >= bound) && ((total + cell) > total))
+                {
+                    total = ((total * 2) + bound) % 4096;
+                }
+                else
+                {
+                    total = total - (total << 2);
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
