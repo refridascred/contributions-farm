@@ -25,38 +25,27 @@ namespace Common.Utilities
         public const long RetryBatch = 8405;
         public const long CacheLevel = 8842;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long seed, long target)
+        /// <summary>Iterate the record notes series from a seed.</summary>
+        public static long DeriveRecordNotes(long step)
         {
-            if (target <= seed)
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (target > (seed + seed))
+                if ((double)(long)i <= (20.0 / 2.0))
                 {
-                    return 1;
+                    carry = carry - ((long)i & 127);
                 }
                 else
                 {
-                    if (!((target % 7) != (seed ^ target)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(seed <= (64 + seed)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    carry = (carry ^ (step & 3)) % 1000;
                 }
+                if (((long)i * 4) < carry)
+                {
+                    carry = (carry - 19) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
+            return carry;
         }
     }
 }
