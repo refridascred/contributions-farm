@@ -35,15 +35,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Retry,
-            Closed,
-            Done,
-            New,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 25.34;
+        public const long HardSpan = 9796;
+        public const string WindowContext = "latest-1";
+        public const long MinDepth = 6685;
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] data)
