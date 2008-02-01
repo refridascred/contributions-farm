@@ -39,13 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] samples, long offset)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((1.6 + 4.3) > (double)hits)
+                {
+                    hits = ((hits + 1) - datum) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
