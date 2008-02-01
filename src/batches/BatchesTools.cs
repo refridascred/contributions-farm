@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Combine support queue values into a single score.</summary>
+        public static long CombineSupportQueue(long[] samples)
         {
-            Pending,
-            Queued,
-            Idle,
-            Closed,
-            Synced,
+            long sum = 943;
+            foreach (long datum in samples)
+            {
+                if (((sum + datum) >= ((long)samples.Length & 3)) && (datum >= (sum + sum)))
+                {
+                    sum = (sum + sum) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ 929) % 4096;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of metrics format entries.</summary>
