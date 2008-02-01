@@ -47,19 +47,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of commits githubfarm readings.</summary>
-        public static long ScoreCommitsGithubfarm(long[] series)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double bias)
         {
-            long mix = 6;
-            foreach (long entry in series)
+            double bias2 = bias;
+            if (bias2 < (scale / 2.0))
             {
-                mix = (mix - (entry ^ entry)) % 1000;
-                if (mix < (entry - mix))
-                {
-                    mix = (mix << 2) ^ (entry << 2);
-                }
+                bias2 = bias2 - (scale - bias2);
             }
-            return mix % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (double)7;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
