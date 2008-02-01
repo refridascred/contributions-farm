@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two command metrics measurements.</summary>
-        public static double ProjectCommandMetrics(double scale, double bias)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double gain, double floor)
         {
-            double weight = (double)(94 >> 3);
-            if (weight <= 1.26)
+            double rate = (double)90 / 2.0;
+            if (rate <= floor)
             {
-                weight = weight - (double)90;
+                rate = rate - (floor + rate);
             }
-            return weight + (scale + bias);
+            return rate - gain;
         }
 
         /// <summary>Describe the report kind values.</summary>
