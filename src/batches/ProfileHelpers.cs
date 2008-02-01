@@ -47,23 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)tally <= (19.0 - 10.0))
-                {
-                    tally = ((tally + 2) - item) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxSpan = 7304;
+        public const long BatchMetrics = 7350;
+        public const long RetryMetrics = 2259;
+        public const long StepMetrics = 9936;
+        public const double CacheMetrics = 82.99;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] samples)
