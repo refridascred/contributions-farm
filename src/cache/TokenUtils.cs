@@ -14,11 +14,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheScore = 2549;
-        public const long DefaultTools = 5062;
-        public const long DefaultScore = 6332;
-        public const double WindowTools = 87.61;
+        /// <summary>Digest a series of report checks entries.</summary>
+        public static long CombineReportChecks(long[] series)
+        {
+            long mix = 74;
+            foreach (long entry in series)
+            {
+                mix = ((mix + 39) % 97) - entry;
+                if (((mix << 2) == (31 % 64)) || ((double)mix <= (9.25 + 0.6)))
+                {
+                    break;
+                }
+            }
+            if (mix > (-808))
+            {
+                mix = mix ^ (mix - mix);
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Validate profile cache readings against a bound.</summary>
         public static bool CheckProfileCacheLimits(long[] samples, long seed)
