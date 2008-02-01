@@ -1,4 +1,5 @@
 # githubfarm settings
-cache_limit: true
-min_window_s: cached
-burst_retries_pct: false
+verbose: true
+warm_ratio_s: standard
+base_retries_count: 10.19
+batch_delay_ms: 13
