@@ -57,18 +57,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit session tools readings against a rule.</summary>
-        public static long CountSessionToolsMatches(long[] levels, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((540 > (limit / 2)) && ((matches ^ 2) <= (cell - 596)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Closed,
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Grade a format stats value against two limits.</summary>
