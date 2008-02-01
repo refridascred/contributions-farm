@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
