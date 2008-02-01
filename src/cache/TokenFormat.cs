@@ -29,10 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 1646;
-        public const string CacheScore = "cached-edge";
-        public const long DefaultCount = 113;
-        public const string StepGraph = "staging-1";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 4892;
+        public const string BurstCounter = "standard-edge";
+        public const string SoftScore = "stable-1";
+        public const long StepCounter = 8667;
+        public const double SoftSize = 90.17;
     }
 }
