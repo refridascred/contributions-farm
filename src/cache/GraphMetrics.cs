@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const long HardLayout = 957;
         public const long StepSpan = 4275;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] series, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long score = 50;
+            foreach (long cell in series)
             {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (((score ^ score) % 1000) + cell) + step;
             }
-            return ok;
+            if (score < 335)
+            {
+                score = score ^ score;
+            }
+            return score % 97;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
