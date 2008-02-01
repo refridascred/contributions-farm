@@ -13,17 +13,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] samples, long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)step < (7.0 - 5.95))
             {
-                if (samples[i] == seed)
+                return 0;
+            }
+            else
+            {
+                if ((double)step <= (3.2 + 1.61))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= (offset + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((63 >> 5) > (step + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
