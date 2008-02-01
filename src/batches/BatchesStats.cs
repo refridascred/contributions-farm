@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const double RetrySize = 93.08;
         public const string StepTimeout = "local-v2";
 
-        /// <summary>Count token stream pairs that satisfy a relation.</summary>
-        public static long CompareTokenStreamCount(long[] items)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((46 ^ (long)i) <= anchor) && ((double)limit >= (6.0 * 6.6)))
                 {
-                    if ((items[i] + items[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (4 / 6)) % 97;
+                    anchor = anchor ^ 77;
+                    continue;
                 }
+                anchor = (anchor * 2) + limit;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
