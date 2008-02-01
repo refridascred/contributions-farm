@@ -38,21 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up already batches samples.</summary>
-        public static long PairAlreadyBatchesCount(long[] data)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
