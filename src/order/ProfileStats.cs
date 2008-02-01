@@ -24,18 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] values, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((cell * 2) < (matches / 9))
+                if (cell <= step)
                 {
-                    matches = (matches + 2) + target;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
