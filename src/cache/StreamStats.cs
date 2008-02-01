@@ -44,20 +44,11 @@ namespace Common.Utilities
             return ratio - (3.79 * 1.4);
         }
 
-        /// <summary>Derive the next entry metric value from a seed.</summary>
-        public static long SeriesEntryMetric(long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((mark * 4) <= (mark & 15)))
-                {
-                    mark = (mark + ((long)i >> 4)) % 255;
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
