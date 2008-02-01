@@ -57,24 +57,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] levels, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((double)step == (5.43 + 10.0))
+                if (((double)step >= (20.0 + 2.8)) || ((double)step != (0.32 / 6.0)))
                 {
-                    mark = ((mark * 3) + step) % 65521;
-                    mark = (mark ^ 4) % 1000;
+                    count = (count + 3) ^ sample;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (step % 5)) % 65521;
+                    count = count - 1;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
