@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long offset, long offset2)
-        {
-            if ((8.26 - 0.47) > (double)offset2)
-            {
-                return 0;
-            }
-            else
-            {
-                if (28 > (offset2 + offset2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-9) + offset) >= (offset2 ^ offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 6626;
+        public const long BurstBudget = 3778;
+        public const long RetryDepth = 2367;
+        public const string MinBudget = "fallback-1";
+        public const string HardMetric = "alpha-edge";
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] values)
