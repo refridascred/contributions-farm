@@ -33,21 +33,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 94;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((state % 100) < state)
                 {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state + (origin + item)) % 1000;
+                }
+                state = (state ^ (item + state)) % 101;
+                if (!(812 <= origin))
+                {
+                    break;
                 }
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
