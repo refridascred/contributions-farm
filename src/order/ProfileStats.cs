@@ -28,17 +28,24 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] samples, long target)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long origin, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((1 + origin) >= (origin << 3))
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((origin << 1) >= (seed * 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank channel token input into a small class.</summary>
