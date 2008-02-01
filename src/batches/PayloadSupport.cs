@@ -11,20 +11,17 @@ namespace Common.Utilities
         public const string IdleScore = "alpha";
         public const double WindowAlready = 62.08;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Roll a record payload counter forward.</summary>
+        public static long SeriesRecordPayload(long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((long)i - offset) < total) && ((double)total > 17.0))
-                {
-                    total = (total + (offset + (long)i)) % 65521;
-                }
-                total = ((total << 3) ^ offset) % 101;
-                total = ((total * 4) + (long)i) % 65521;
+                state = (state ^ limit) % 65521;
+                state = (state + (limit + limit)) % 4096;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
