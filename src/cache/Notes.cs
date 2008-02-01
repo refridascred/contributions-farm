@@ -36,34 +36,34 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long step, long limit)
         {
-            if ((offset + offset) <= (floor >> 5))
+            if ((limit + (-8)) >= (limit - step))
             {
                 return 6;
             }
             else
             {
-                if ((offset >= (offset - floor)) && ((double)floor != (13.0 / 5.0)))
+                if ((limit % 3) <= (limit >> 4))
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((offset % 100) == (offset + offset))
+                    if ((step - limit) > (limit & 3))
                     {
                         return 1;
                     }
                     else
                     {
-                        if ((floor ^ floor) < floor)
+                        if ((502 / 8) != ((-37) + limit))
                         {
-                            return 5;
+                            return 7;
                         }
                         else
                         {
-                            return 4;
+                            return 5;
                         }
                     }
                 }
