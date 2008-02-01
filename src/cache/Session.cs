@@ -34,14 +34,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long limit)
         {
-            Idle,
-            Pending,
-            Failed,
-            Locked,
-            Synced,
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the cache level values.</summary>
