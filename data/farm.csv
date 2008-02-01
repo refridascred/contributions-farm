@@ -1,9 +1,7 @@
-id,level,weight
-1,97.32,749
-2,primary,blue
-3,369,275
-4,706,33.04
-5,latest,498
-6,230,37.4
-7,19.24,449
-8,814,28.41
+id,owner,ratio
+1,648,cached
+2,57.31,3.16
+3,latest,89.15
+4,strict,865
+5,latest,open
+6,legacy,standard
