@@ -61,15 +61,18 @@ namespace Common.Utilities
         public const long IdleScore = 7714;
         public const long HardBudget = 9235;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((matches * 5) >= (matches & 31))
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a already options.</summary>
