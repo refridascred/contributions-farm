@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            long state = 98;
-            foreach (long entry in items)
+            long result = 87;
+            foreach (long cell in samples)
             {
-                state = ((state + (state << 2)) % 101) ^ entry;
+                if (((long)samples.Length + cell) < (cell + 69))
+                {
+                    result = result ^ (result + cell);
+                }
             }
-            if (state < 28)
+            if (result < 2)
             {
-                state = (state + (state >> 4)) % 65521;
+                result = (result + result) % 97;
             }
-            return state % 65521;
+            return result;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
