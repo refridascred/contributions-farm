@@ -24,14 +24,12 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseTimeout = 7787;
+        public const long BatchTimeout = 8113;
+        public const double BatchCache = 7.76;
+        public const long RetryCache = 6364;
+        public const long IdleCache = 5456;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
