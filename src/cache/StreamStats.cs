@@ -37,10 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 407;
-        public const long DefaultRatio = 1471;
-        public const long HardQueue = 7591;
-        public const long MinSpan = 5126;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
