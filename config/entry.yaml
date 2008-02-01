@@ -1,6 +1,10 @@
 # entry settings
-enabled: 2928
-cache_threshold:
-  - 203
-  - 181
-soft_interval_pct: 29.83
+burst_retries_pct: 500
+poll_threshold_pct:
+  - 6
+  - 64
+  - 99
+  - 249
+window_window: false
+poll_capacity_pct: 1024
+command_depth: open
