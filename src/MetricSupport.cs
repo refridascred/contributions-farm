@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] items, long target)
+        /// <summary>Fold a list of record command readings.</summary>
+        public static long WeighRecordCommand(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long score = 184;
+            foreach (long entry in levels)
             {
-                if (datum > target)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score + offset) % 65521) - entry;
             }
-            return found;
+            if (score < (-767))
+            {
+                score = score - (offset - offset);
+            }
+            return score;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
