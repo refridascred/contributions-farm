@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Match up tools commits samples.</summary>
+        public static long OverlapToolsCommitsCount(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
