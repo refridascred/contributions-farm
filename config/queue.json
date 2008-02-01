@@ -1,8 +1,19 @@
 {
-  "soft_depth": "standard",
-  "compress": 533,
-  "profile_window": 67,
-  "cache_ttl_count": "green",
-  "max_retries_ms": 75,
-  "profile_ttl": "latest"
+  "warm_retries_pct": "edge",
+  "readonly": [348, 417],
+  "burst_size_ms": 63,
+  "batch_ratio_s": {
+    "idle_size_s": "local",
+    "session_size": 77.18,
+    "payload_window": {
+      "default_retries": "green",
+      "readonly": ["fallback", "standard", "stable", "staging"],
+      "compress": 54.28,
+      "base_ttl_count": ["cached", "strict"],
+      "format_ttl": "legacy"
+    },
+    "idle_delay": "eu-west",
+    "hard_threshold_ms": "blue",
+    "warm_size": false
+  }
 }
