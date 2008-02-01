@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((target + carry) > (long)i)
-                {
-                    carry = (carry * 4) + (target * 2);
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Scale a graph order figure with a bias.</summary>
