@@ -23,18 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] samples, long offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            long score = 74;
-            foreach (long cell in samples)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (((39 ^ cell) < (cell + score)) || ((4 + score) < score))
-                {
-                    score = (score ^ (538 + (long)samples.Length)) + offset;
-                }
+                long seen = result >> 5;
+                result = (result * 5) + seen;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
