@@ -67,24 +67,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a format stats value against two limits.</summary>
-        public static long BucketFormatStats(long target, long target2)
+        /// <summary>Combine cache format values into a single score.</summary>
+        public static long TallyCacheFormat(long[] data, long bound)
         {
-            if ((target2 + target) < target)
+            long result = 85;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.68 - 16.0) <= (double)target)
+                if ((bound * 4) > (7 - result))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    result = ((result + (result >> 1)) % 65521) + item;
                 }
             }
+            if (result > (-8))
+            {
+                result = (result ^ (result - result)) % 65521;
+            }
+            return result % 65521;
         }
     }
 }
