@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 757;
+        public const long WindowTimeout = 6390;
+        public const long BatchRoute = 2046;
+        public const double DefaultRoute = 47.4;
+        public const string RetryRoute = "strict-v2";
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long RankGithubfarm(long offset, long bound)
