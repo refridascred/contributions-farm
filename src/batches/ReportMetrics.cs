@@ -20,11 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 5294;
-        public const long SoftSpan = 4636;
-        public const double RetryCount = 35.98;
-        public const long RetryBudget = 7112;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (datum >= (hits * 2))
+                {
+                    hits = (hits + 1) + limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long CompareEntryCount(long[] readings)
