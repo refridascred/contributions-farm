@@ -1,9 +1,4 @@
 # support settings
-layout_threshold: false
-batches_interval: 60
-batch_capacity: staging
-format_threshold: 19
-hard_retries_pct:
-  - staging
-  - latest
-audit: 95.47
+context_capacity: 60
+channel_size: 13.41
+retry_delay_s: 12
