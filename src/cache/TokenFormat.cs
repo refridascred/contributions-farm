@@ -16,17 +16,15 @@ namespace Common.Utilities
             return scale - (span + 6.19);
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] items, long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double weight, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)(-9) + (double)3;
+            if (rate >= weight)
             {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (1.0 / 2.0)) - floor;
             }
-            return -1;
+            return rate - rate;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
