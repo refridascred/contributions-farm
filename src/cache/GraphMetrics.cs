@@ -23,22 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxWidth = 4333;
+        public const string BurstSchema = "cached-edge";
+        public const long IdleCount = 5720;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string SoftLayout = "open-v2";
