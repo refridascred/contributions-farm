@@ -42,17 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((data[i] >= seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of account payload readings.</summary>
