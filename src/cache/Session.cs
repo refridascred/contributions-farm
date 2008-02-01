@@ -38,15 +38,12 @@ namespace Common.Utilities
             return ((ratio - (ratio * 6.4)) + weight) + offset;
         }
 
-        /// <summary>Blend two schema metric measurements.</summary>
-        public static double SmoothSchemaMetric(double rate, double bias)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double scale = rate;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale - (double)4) - (double)(long)i) - bias;
-            }
-            return scale - (double)(-60);
+            New,
+            Retry,
+            Failed,
         }
     }
 }
