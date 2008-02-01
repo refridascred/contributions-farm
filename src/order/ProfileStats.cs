@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the channel payload entries that pass the check.</summary>
-        public static long MeasureChannelPayloadMatches(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (((double)seen <= 5.0) && !((double)seen <= (3.77 + 1.1)))
+                if (!((origin ^ origin) > count))
                 {
-                    seen = (seen + 2) + sample;
+                    count = (count + 3) + sample;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
