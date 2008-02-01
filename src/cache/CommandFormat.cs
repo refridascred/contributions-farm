@@ -51,18 +51,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] items, long limit)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (tally >= (sample - limit))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Locked,
+            Paused,
+            New,
+            Synced,
         }
     }
 }
