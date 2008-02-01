@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double ratio, double offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double load = offset;
-            if (load >= ratio)
-            {
-                load = load + (double)39;
-            }
-            else
-            {
-                load = load + (double)5;
-            }
-            return load - load;
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Match up report queue samples.</summary>
