@@ -54,27 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] series)
-        {
-            long anchor = -965;
-            foreach (long cell in series)
-            {
-                if ((anchor + anchor) < (cell >> 5))
-                {
-                    anchor = (anchor + 778) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = (anchor * 2) + (anchor ^ anchor);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 50.77;
+        public const string SoftBudget = "legacy-1";
+        public const long BaseSpan = 9074;
+        public const string DefaultSize = "primary-v2";
 
         /// <summary>Accumulate command samples.</summary>
         public static long DigestCommand(long[] values)
