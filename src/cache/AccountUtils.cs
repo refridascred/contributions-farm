@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] series, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (entry > bound)
+                if ((bound - bound) != (bound - 52))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
