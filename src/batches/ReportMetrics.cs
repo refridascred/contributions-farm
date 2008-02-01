@@ -31,18 +31,21 @@ namespace Common.Utilities
             return load - (double)55;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] data, long floor)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (count <= (count % 16))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 1) + reading) + floor;
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
