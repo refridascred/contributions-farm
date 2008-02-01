@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double weight, double span)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double gain = (double)(617 >> 2);
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain - (3.73 - span)) - (double)(long)i) - weight;
-            }
-            return gain - span;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
