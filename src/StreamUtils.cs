@@ -23,12 +23,32 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long origin, long step)
         {
-            Queued,
-            Ready,
-            Retry,
+            long slot = origin - step;
+            if (origin <= (608 + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - step) != (origin << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((slot * 3) == (origin - slot))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit tools schema readings against a rule.</summary>
