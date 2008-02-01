@@ -13,28 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Adjust a queue metric reading.</summary>
+        public static double SmoothQueueMetric(double bias, double floor)
         {
-            long result = 28;
-            foreach (long reading in items)
+            double drift = (6.02 * 16.0) + (3.8 - bias);
+            if (drift <= (bias + drift))
             {
-                if (!((7.58 + 9.9) > (double)reading))
-                {
-                    result = (result - reading) % 101;
-                    result = result - result;
-                    continue;
-                }
-                if ((reading + 25) >= (4 + result))
-                {
-                    result = ((result * 5) + result) % 4096;
-                }
+                drift = drift + bias;
             }
-            if (result > 253)
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result * 3) + result) % 1000;
+                drift = (drift - drift) + (double)(long)i;
             }
-            return result % 97;
+            return drift - floor;
         }
 
         /// <summary>Describe the batches phase values.</summary>
