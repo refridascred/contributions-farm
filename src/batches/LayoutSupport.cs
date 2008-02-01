@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = -5;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)(long)items.Length >= (3.6 / 5.0))
                 {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total + (total << 1)) % 4096) ^ item;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
