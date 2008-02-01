@@ -12,39 +12,13 @@ namespace Common.Utilities
         public const long MaxCluster = 8898;
         public const double MinSize = 91.27;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long offset, long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long edge = offset - step;
-            if ((offset <= (step + 7)) || ((double)edge == (double)894))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((edge ^ edge) < step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step & 31) == (offset + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9.0 - 4.5) != (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define session limits and defaults.</summary>
