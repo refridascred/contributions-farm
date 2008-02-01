@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = (6.8 * 13.0) / 8.0;
+            if (bias < weight)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias - offset;
             }
-            return count;
+            else
+            {
+                bias = bias - (double)555;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (9.58 / 3.0)) - (double)(long)i;
+            }
+            return bias + weight;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
