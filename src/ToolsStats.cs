@@ -53,15 +53,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] items)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] samples, long limit)
         {
-            long total = 1;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 5) + (cell >> 4)) % 65521;
+                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
