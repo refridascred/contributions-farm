@@ -32,11 +32,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardDepth = 9575;
-        public const string IdleFactor = "legacy";
-        public const string MaxStream = "latest-1";
-        public const long CacheStream = 798;
-        public const double BurstStream = 81.91;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally <= (tally ^ tally)) && (((tally + tally) >= (tally / 9)) || ((-521) >= (value * 5))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
