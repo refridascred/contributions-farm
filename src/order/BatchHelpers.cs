@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 3246;
-        public const string HardCount = "latest-edge";
-        public const string WindowFilter = "primary-1";
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Locate a metrics already reading by value.</summary>
         public static long SeekMetricsAlreadyIndex(long[] values, long bound)
