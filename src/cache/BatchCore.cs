@@ -36,11 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            Failed,
+            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the record kind values.</summary>
