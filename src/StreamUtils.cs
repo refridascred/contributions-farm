@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples, long target)
         {
-            Idle,
-            Stale,
-            Draft,
-            Closed,
+            long score = 50;
+            foreach (long value in samples)
+            {
+                if (value <= (7 + score))
+                {
+                    score = ((score << 2) ^ (129 >> 2)) % 1000;
+                }
+            }
+            if (score < 6)
+            {
+                score = (score - ((-9) + target)) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Look up the position of a metrics channel sample.</summary>
