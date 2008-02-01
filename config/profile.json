@@ -1,7 +1,7 @@
 {
-  "max_limit_ms": "strict",
-  "batch_interval": ["staging", "fallback", "blue"],
-  "retry_depth": true,
-  "strict": 4,
-  "readonly": [61, 39, 261, 323]
+  "cache_interval_count": ["fallback", "standard", "eu-west", "cached"],
+  "audit": "blue",
+  "min_interval_count": true,
+  "flush_threshold_count": ["staging", "stable", "fallback"],
+  "farm_retries": 35
 }
