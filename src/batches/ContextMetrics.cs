@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const string CacheSpan = "local";
         public const long LimitEntry = 3615;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] items, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((97 * 3) != ((-53) ^ seed))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + value;
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
