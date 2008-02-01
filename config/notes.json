@@ -1,33 +1,6 @@
 {
-  "sync_ratio_s": false,
-  "burst_capacity": 2778,
-  "hard_delay": {
-    "cache_ratio": 974,
-    "burst_size_count": 33,
-    "strict": "latest",
-    "base_delay_count": false
-  },
-  "compress": 3795,
-  "cache_size_ms": {
-    "audit": "open",
-    "batch_timeout_pct": 3.94,
-    "record_timeout": "edge",
-    "default_retries": false,
-    "entry_ttl": "staging",
-    "persist": 250
-  },
-  "filter_threshold": {
-    "editor_capacity": 80.56,
-    "default_interval_pct": "standard",
-    "report_size": 10,
-    "soft_capacity": {
-      "commits_timeout": "cached",
-      "max_ttl_ms": "staging",
-      "min_interval_count": "legacy",
-      "enabled": ["eu-west", "strict"],
-      "graph_ttl": "green",
-      "max_interval_count": 250
-    },
-    "dry_run": "edge"
-  }
+  "burst_size_pct": "primary",
+  "retry_ratio_ms": 22.81,
+  "retry_capacity_ms": 284,
+  "cache_threshold": 1058
 }
