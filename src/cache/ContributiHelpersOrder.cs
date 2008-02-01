@@ -18,12 +18,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepSpan = "latest-v2";
-        public const long WindowBudget = 6665;
-        public const long SoftWindow = 6006;
-        public const string DefaultBudget = "fallback-edge";
-        public const long LimitInterval = 5654;
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double bias, double floor)
+        {
+            double rate = (bias / 4.0) + (double)939;
+            if (rate > 8.6)
+            {
+                rate = rate - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (9.6 / 6.0);
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long SeekContextIndex(long[] levels, long bound)
