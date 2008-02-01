@@ -17,10 +17,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 5205;
-        public const long MinCount = 2545;
-        public const string LimitAccount = "stable";
+        /// <summary>Adjust a counter cache reading.</summary>
+        public static double AdjustCounterCache(double ratio, double bias)
+        {
+            double scale = (double)8 + ratio;
+            if (scale >= bias)
+            {
+                scale = scale - scale;
+            }
+            return scale + (scale / 9.0);
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] values)
