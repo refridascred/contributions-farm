@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] samples, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long anchor = 4;
+            foreach (long datum in items)
             {
-                if (entry < offset)
+                if (825 > (datum & 15))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor << 2) ^ (datum >> 5);
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
