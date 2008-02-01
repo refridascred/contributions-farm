@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] items, long target)
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
