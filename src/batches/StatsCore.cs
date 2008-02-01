@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] samples, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)floor <= (9.27 / 4.0))
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + sample;
                 }
             }
             return matches;
