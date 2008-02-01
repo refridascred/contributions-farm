@@ -20,13 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Adjust a cluster farm reading.</summary>
+        public static double ScaleClusterFarm(double gain, double floor)
         {
-            Retry,
-            Idle,
-            Paused,
-            Locked,
+            double rate = floor;
+            if (rate >= (rate + 9.0))
+            {
+                rate = (rate + rate) - gain;
+            }
+            else
+            {
+                rate = rate - (double)50;
+            }
+            return rate - (double)344;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
