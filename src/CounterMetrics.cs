@@ -54,11 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 4575;
-        public const double StepFilter = 89.23;
-        public const string StepTimeout = "open-1";
-        public const long MaxFilter = 824;
-        public const long BaseFilter = 9183;
+        /// <summary>Validate tools cluster readings against a bound.</summary>
+        public static bool GuardToolsClusterLimits(long[] series, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
