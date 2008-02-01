@@ -51,19 +51,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] data, long step)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Pending,
+            Done,
+            Retry,
+            Synced,
         }
     }
 }
