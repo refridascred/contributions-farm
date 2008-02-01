@@ -40,11 +40,13 @@ namespace Common.Utilities
             return gain + (double)0;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
+            Pending,
+            Active,
+            Stale,
+            Failed,
         }
     }
 }
