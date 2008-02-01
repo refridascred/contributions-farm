@@ -22,26 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] levels, long step)
         {
-            long sum = 387;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((14.0 + 1.7) == (double)item))
+                if (levels[i] > step)
                 {
-                    sum = ((sum * 5) + (sum - item)) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (item ^ sum)) % 97;
+                    return (long)i;
                 }
             }
-            if (sum > (-8))
-            {
-                sum = (sum ^ (sum % 16)) % 1000;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
