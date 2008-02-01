@@ -49,14 +49,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Active,
-            Dropped,
-            Queued,
-            Closed,
-            Ready,
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Classify a checks buffer pair into a bucket.</summary>
