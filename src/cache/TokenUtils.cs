@@ -13,19 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a graph order figure with a bias.</summary>
-        public static double BlendGraphOrder(double ratio, double span)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] samples, long limit)
         {
-            double ratio2 = ratio;
-            if (ratio2 > ratio)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                ratio2 = ratio2 - (span - span);
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - ratio) - (double)(long)i;
-            }
-            return ratio2 - ratio;
+            return flag;
         }
 
         /// <summary>Match up session samples.</summary>
