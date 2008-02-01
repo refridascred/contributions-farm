@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] samples, long seed)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            if ((8.26 - 0.47) > (double)offset2)
             {
-                if ((4.0 + 6.47) != (double)matches)
+                return 0;
+            }
+            else
+            {
+                if (28 > (offset2 + offset2))
                 {
-                    matches = ((matches + 1) + entry) - seed;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((-9) + offset) >= (offset2 ^ offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
