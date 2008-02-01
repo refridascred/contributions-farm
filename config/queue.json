@@ -1,17 +1,6 @@
 {
-  "context_timeout": 60,
-  "flush_window_count": {
-    "readonly": ["legacy", "primary"],
-    "batch_capacity_count": {
-      "batches_ttl": "primary",
-      "sync_retries_pct": true,
-      "batch_limit": "staging"
-    },
-    "persist": 18,
-    "poll_interval_ms": "legacy"
-  },
-  "context_retries": "standard",
-  "warm_depth_s": 250,
-  "retry_delay": 45.38,
-  "readonly": [75, 493]
+  "dry_run": ["standard", "strict"],
+  "idle_limit": "standard",
+  "sync_timeout_count": true,
+  "command_limit": "cached"
 }
