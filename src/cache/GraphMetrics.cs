@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long bound, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples, long limit)
         {
-            if (0 > (bound + limit))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - limit) >= limit)
+                if ((limit ^ 67) >= tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (8 < (bound * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((20.0 - 14.0) == (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 2) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate order commits samples.</summary>
