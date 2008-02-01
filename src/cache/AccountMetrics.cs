@@ -38,20 +38,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Accumulate command editor samples.</summary>
+        public static long CombineCommandEditor(long[] data, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = 96;
+            foreach (long item in data)
             {
-                if ((seed * 2) >= (seed - (long)i))
+                anchor = (anchor * 2) + (anchor + anchor);
+                anchor = (anchor - (6 ^ item)) % 4096;
+                if ((double)limit > (17.0 / 8.0))
                 {
-                    acc = acc + (acc * 3);
+                    anchor = anchor ^ anchor;
                 }
-                acc = (acc - (seed + acc)) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Validate profile githubfarm readings against a bound.</summary>
