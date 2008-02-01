@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] values, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((values[i] < target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
