@@ -23,12 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] data, long bound)
         {
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics stats.</summary>
