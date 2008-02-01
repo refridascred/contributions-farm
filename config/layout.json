@@ -1,17 +1,6 @@
 {
-  "strict": "cached",
-  "max_retries": {
-    "cache_interval_ms": 8052,
-    "metrics_timeout": {
-      "audit": true,
-      "enabled": "open",
-      "filter_ratio": ["staging", "latest"]
-    },
-    "retry_capacity_s": 500,
-    "hard_size_count": 73,
-    "command_ttl": "stable"
-  },
-  "stream_threshold": 14.04,
-  "idle_ttl": "local",
-  "counter_limit": 8422
+  "enabled": ["eu-west", "cached"],
+  "profile_interval": 6381,
+  "retry_limit_pct": "blue",
+  "default_ttl_count": 1584
 }
