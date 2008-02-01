@@ -28,22 +28,22 @@ namespace Common.Utilities
         public const long BurstSize = 5793;
         public const long HardSpan = 3641;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] levels, long step)
+        /// <summary>Count the metrics stream entries that pass the check.</summary>
+        public static long TallyMetricsStreamMatches(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (((step % 2) > (datum >> 3)) && ((1 - matches) <= (datum + datum)))
+                if ((cell - 62) < (15 << 2))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 3) - seed;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
