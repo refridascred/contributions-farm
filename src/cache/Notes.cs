@@ -29,19 +29,11 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (origin > (count - count))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 5682;
+        public const long RetrySchema = 1456;
+        public const long MinSchema = 5344;
+        public const string WindowSchema = "latest-1";
 
         /// <summary>Accumulate batches schema samples.</summary>
         public static long TallyBatchesSchema(long[] series, long offset)
