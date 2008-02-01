@@ -32,18 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route command readings against a rule.</summary>
-        public static long MeasureRouteCommandMatches(long[] levels)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((item << 3) < (seen - seen)) && ((seen + seen) != (42 - item)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
