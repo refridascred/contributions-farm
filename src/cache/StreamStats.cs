@@ -25,32 +25,16 @@ namespace Common.Utilities
         public const long DefaultInterval = 6905;
         public const long MaxLevel = 3299;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long origin, long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            long edge = origin ^ step;
-            if ((double)origin < (double)step)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                carry = (carry << 2) ^ floor;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((origin + step) < (origin + edge)) || ((double)step < (double)edge))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((edge << 2) > (9 + 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
