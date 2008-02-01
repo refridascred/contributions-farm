@@ -1,8 +1,8 @@
 {
-  "warm_window_ms": [36, 310, 462],
-  "base_depth": 22.26,
-  "strict": 27.83,
-  "audit": 68.4,
-  "hard_threshold": "primary",
-  "hard_ttl": true
+  "base_limit": false,
+  "default_ratio": "primary",
+  "entry_limit": 100,
+  "strict": true,
+  "token_delay": "standard",
+  "flush_depth": true
 }
