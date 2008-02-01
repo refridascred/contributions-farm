@@ -47,19 +47,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate support profile readings against a bound.</summary>
-        public static bool CheckSupportProfileBounds(long[] levels, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long bound, long step)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            if ((step - (-4)) < (step >> 2))
             {
-                if (datum >= origin)
+                return 2;
+            }
+            else
+            {
+                if ((step % 10) <= (58 >> 1))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (377 > (step ^ step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
