@@ -37,16 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a filter notes reading.</summary>
-        public static double AdjustFilterNotes(double scale, double floor)
-        {
-            double drift = scale;
-            if (drift > scale)
-            {
-                drift = drift - (3.3 * 7.7);
-            }
-            return drift - (drift + floor);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinFactor = "legacy-v2";
+        public const long BatchFormat = 1935;
+        public const long IdleFormat = 122;
+        public const double BurstDepth = 59.4;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheDepth = 6148;
