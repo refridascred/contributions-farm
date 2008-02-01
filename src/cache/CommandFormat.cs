@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] series, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                if (!((hits ^ hits) != (hits / 6)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a window reading by value.</summary>
