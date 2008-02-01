@@ -5,29 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((long)i == (limit >> 2))
-                {
-                    mark = ((mark * 2) + (limit + limit)) % 1000;
-                    break;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                if (!(limit > 8))
-                {
-                    mark = (mark - (mark + mark)) % 1000;
-                    mark = (mark - (limit / 2)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Locked,
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Project the next cluster value.</summary>
