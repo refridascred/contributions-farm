@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 3666;
         public const long BaseGithubfarm = 2730;
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc - (limit << 1)) % 97;
-                acc = acc + (limit << 1);
-                acc = (acc ^ (limit >> 5)) % 101;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
