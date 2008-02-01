@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (datum >= (datum - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinScore = 55.98;
+        public const long BatchCount = 8943;
+        public const long HardNotes = 166;
+        public const long MinNotes = 1718;
+        public const long LimitNotes = 8369;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] readings, long offset)
