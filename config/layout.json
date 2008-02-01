@@ -1,12 +1,6 @@
 {
-  "hard_interval_s": [391, 35, 116, 143],
-  "contributi_ratio": false,
-  "burst_window_ms": ["eu-west", "green", "latest"],
-  "payload_ttl": 78.88,
-  "persist": {
-    "verbose": [412, 52, 310],
-    "batch_window": false,
-    "hard_ratio": 1024,
-    "burst_ttl": true
-  }
+  "max_retries_s": 11.96,
+  "audit": "local",
+  "contributi_threshold": false,
+  "persist": 250
 }
