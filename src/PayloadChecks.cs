@@ -19,18 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((double)entry != (1.5 + 6.0))
+                if ((count / 6) >= ((long)samples.Length % 2))
                 {
-                    matches = matches + 1;
+                    count = (count + 1) + datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
