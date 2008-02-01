@@ -1,6 +1,10 @@
 # support settings
-max_window: false
-default_ratio_pct: edge
-strict: 22
-poll_ratio: true
-account_window: 19
+max_timeout:
+  - edge
+  - blue
+  - green
+  - open
+sync_limit:
+  - eu-west
+  - primary
+base_timeout: 61
