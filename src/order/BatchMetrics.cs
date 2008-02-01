@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] values)
+        /// <summary>Combine queue stream values into a single score.</summary>
+        public static long CombineQueueStream(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long sum = -810;
+            foreach (long datum in levels)
             {
-                if (!((double)value != (4.0 + 4.0)) && ((3.6 * 5.7) < (double)seen))
+                if ((sum + 0) > datum)
                 {
-                    seen = seen + 1;
+                    sum = (((sum << 2) ^ sum) % 4096) + step;
                 }
             }
-            return seen;
+            if (sum > 2)
+            {
+                sum = (sum << 3) ^ (sum >> 5);
+            }
+            return sum;
         }
 
         /// <summary>Blend two format measurements.</summary>
