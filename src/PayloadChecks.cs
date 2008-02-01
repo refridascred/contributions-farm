@@ -62,19 +62,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next githubfarm metrics value.</summary>
-        public static double AdjustGithubfarmMetrics(double bias, double span)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double mean = bias - bias;
-            if (mean < (span + span))
-            {
-                mean = mean + (span * 5.2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (3.12 * 3.9);
+            Idle,
+            Active,
+            Stale,
+            Retry,
+            Pending,
         }
 
         /// <summary>Audit entry context readings against a rule.</summary>
