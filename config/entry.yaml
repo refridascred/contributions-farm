@@ -1,42 +1,8 @@
 # entry settings
-strict:
-  retry_interval: strict
-  graph_capacity:
-    - legacy
-    - local
-  audit: blue
-  warm_ratio:
-    sync_timeout: 57
-    dry_run: 60
-    default_window:
-      - 448
-      - 211
-      - 150
-      - 166
-    hard_window: staging
-    channel_retries: 39.24
-    token_depth: cached
-layout_size: standard
-cache_retries_ms:
-  cache_depth_count: edge
-  dry_run: local
-  poll_limit_s: true
-  buffer_size: 79.7
-  warm_window_pct: 60
-  cache_capacity_s:
-    route_ratio: 87.6
-    payload_timeout: 78
-    flush_retries_pct: cached
-    checks_ttl:
-      - 229
-      - 148
-      - 160
-    batch_depth: false
-counter_ratio: 57
-cache_retries_pct:
-  cache_limit_s: false
-  counter_interval: 55.57
-  stream_size: 6263
-  notes_window: staging
-  persist: true
-  readonly: edge
+schema_threshold: green
+dry_run: 79
+sync_retries:
+  - 146
+  - 377
+  - 250
+  - 335
