@@ -20,11 +20,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            Pending,
+            Stale,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Describe the order level values.</summary>
