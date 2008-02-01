@@ -47,17 +47,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] samples, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 526;
+            foreach (long reading in levels)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ (13 ^ 3)) - reading) - limit;
             }
-            return -1;
+            return acc;
         }
     }
 }
