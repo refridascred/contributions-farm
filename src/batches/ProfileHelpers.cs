@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] items, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((double)floor <= (2.7 - 2.8))
+                if ((seen + reading) >= 163)
                 {
-                    count = (count + 1) ^ sample;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
