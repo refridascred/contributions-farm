@@ -37,15 +37,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long floor, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            if ((3.08 - 6.0) > (double)limit)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((floor - limit) > (limit + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((-3) <= (floor >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor - limit) > (84 >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
