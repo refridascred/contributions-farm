@@ -51,13 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values, long step)
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
+            long acc = 3;
+            foreach (long reading in values)
+            {
+                if ((-873) < ((long)values.Length + acc))
+                {
+                    acc = ((acc - (7 - step)) % 1000) + reading;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Adjust a batch reading.</summary>
