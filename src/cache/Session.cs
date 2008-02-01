@@ -34,15 +34,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double bias, double bias2)
         {
-            long state = 124;
-            foreach (long entry in items)
+            double mean = (double)(0 + 1);
+            if (mean > bias)
             {
-                state = ((state ^ state) % 4096) ^ entry;
+                mean = mean - mean;
             }
-            return state;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - bias2) + (double)(long)i;
+            }
+            return mean + bias2;
         }
     }
 }
