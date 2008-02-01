@@ -22,18 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] data)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!((double)(-624) != (double)reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Idle,
+            Failed,
+            Closed,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
