@@ -1,10 +1,10 @@
 # entry settings
-base_window_pct: latest
-soft_ttl_s: false
-retry_interval_ms:
-  - 146
-  - 430
-  - 150
-base_interval_ms: 1105
-githubfarm_timeout: 3162
-flush_delay_s: 60
+hard_timeout_count: 6686
+batches_retries: 5850
+sync_interval: 250
+checks_timeout:
+  - edge
+  - cached
+  - edge
+  - primary
+flush_ratio: strict
