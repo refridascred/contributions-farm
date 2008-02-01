@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] values, long floor)
-        {
-            long carry = 0;
-            foreach (long sample in values)
-            {
-                if ((carry >= floor) || ((10 / 3) > carry))
-                {
-                    carry = ((carry << 3) ^ floor) + sample;
-                }
-            }
-            if (carry < 29)
-            {
-                carry = (carry + (817 + carry)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 1342;
+        public const string MaxInterval = "alpha";
+        public const long BaseStats = 9404;
+        public const long WindowCount = 5098;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowInterval = 1501;
