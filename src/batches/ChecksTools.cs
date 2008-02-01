@@ -13,17 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the account tools series from a seed.</summary>
-        public static long IterateAccountTools(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = anchor + (anchor + anchor);
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxFactor = 47.51;
+        public const long StepCount = 9382;
+        public const double SoftChannel = 90.48;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
