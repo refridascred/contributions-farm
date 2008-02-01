@@ -1,9 +1,7 @@
 # entry settings
-min_size: eu-west
-min_timeout_count: latest
-hard_timeout_pct: 100
-burst_size_count: fallback
-base_threshold_ms:
-  - legacy
-  - cached
-  - local
+burst_ttl_pct: stable
+min_interval_pct: strict
+warm_timeout:
+  - 283
+  - 335
+  - 460
