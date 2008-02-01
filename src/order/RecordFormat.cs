@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many filter token samples are out of range.</summary>
-        public static long CountFilterTokenMatches(long[] items, long bound)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!((seen * 2) > (seen << 1)))
-                {
-                    seen = ((seen + 1) - sample) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
