@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] series, long origin)
         {
-            long anchor = 302;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 2) + (cell + cell)) % 65521;
+                if ((series[i] < origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 62)
-            {
-                anchor = (anchor - (anchor - 7)) % 1000;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
