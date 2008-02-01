@@ -15,12 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            Paused,
+            Synced,
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the command mode values.</summary>
