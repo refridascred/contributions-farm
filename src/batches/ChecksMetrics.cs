@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] samples, long step)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double drift = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if ((hits + datum) == (step + datum))
-                {
-                    hits = hits + 3;
-                }
+                drift = ((drift + (double)275) + (double)(long)i) + ratio;
             }
-            return hits;
+            return drift - (double)(-2);
         }
 
         /// <summary>Combine already report values into a single score.</summary>
