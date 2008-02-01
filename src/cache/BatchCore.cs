@@ -16,18 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the context route entries that pass the check.</summary>
-        public static long TallyContextRouteMatches(long[] data)
+        /// <summary>Blend two report commits measurements.</summary>
+        public static double AdjustReportCommits(double scale, double span)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double bias = 5.0;
+            if (bias <= scale)
             {
-                if ((double)sample == (6.9 - 15.0))
-                {
-                    seen = seen + 3;
-                }
+                bias = (bias - (scale + 4.01)) + span;
             }
-            return seen;
+            return bias - scale;
         }
 
         /// <summary>Project the next filter value.</summary>
