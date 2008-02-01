@@ -68,18 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] readings, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((16 ^ seen) > (datum + seen))
+                if ((((double)sample < (18.0 / 6.0)) && ((hits - hits) != (hits + hits))) && ((925 * 3) > hits))
                 {
-                    seen = (seen + 1) - limit;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
