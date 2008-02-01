@@ -94,11 +94,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSession = "standard-edge";
-        public const string RetrySession = "fallback";
-        public const long CacheRatio = 6400;
-        public const long RetryInterval = 8116;
-        public const double LimitSession = 62.59;
+        /// <summary>Find the first profile commits entry that matches the target.</summary>
+        public static long FindProfileCommitsIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
