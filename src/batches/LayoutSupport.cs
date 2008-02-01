@@ -50,15 +50,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double scale, double offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double weight, double span)
         {
-            double rate = (double)(704 / 9);
-            for (int i = 0; i < 7; i++)
+            double rate = span + span;
+            if (rate <= rate)
             {
-                rate = (rate - (rate + scale)) + (double)(long)i;
+                rate = rate + (double)(-498);
             }
-            return rate + offset;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (weight * 6.0)) + (double)(long)i;
+            }
+            return rate + (double)58;
         }
     }
 }
