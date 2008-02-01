@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] samples, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long result = 9;
+            foreach (long value in readings)
             {
-                if ((limit + tally) == (sample + sample))
+                if ((2.0 * 12.0) != (double)limit)
                 {
-                    tally = tally + 3;
+                    result = ((result << 3) ^ (value - result)) % 97;
+                }
+                else
+                {
+                    result = (result << 3) ^ (value - result);
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a window info.</summary>
