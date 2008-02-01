@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 4.65;
+        public const long CacheWindow = 8832;
+        public const long RetryInterval = 8134;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstBudget = 8037;
