@@ -48,12 +48,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
+            Closed,
+            Dropped,
+            Paused,
+            Synced,
         }
     }
 }
