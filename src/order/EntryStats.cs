@@ -55,19 +55,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] data, long step)
+        /// <summary>Find the first account entry entry that matches the target.</summary>
+        public static long LookupAccountEntryIndex(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > step)
+                if (values[i] < step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
