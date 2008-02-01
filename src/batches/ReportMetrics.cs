@@ -25,21 +25,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
