@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Stale,
-            Locked,
-            Idle,
-            Failed,
-            Closed,
+            Paused,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
