@@ -1,7 +1,13 @@
 {
-  "batch_threshold_pct": "green",
-  "poll_limit_ms": 6809,
-  "hard_ttl_s": "legacy",
-  "payload_size": true,
-  "base_ttl_ms": true
+  "retry_threshold": "primary",
+  "warm_ttl_ms": {
+    "batch_delay_pct": 60,
+    "metrics_size": true,
+    "poll_interval": 1851,
+    "sync_interval_ms": false
+  },
+  "persist": false,
+  "cache_timeout_count": "eu-west",
+  "route_ttl": 83.85,
+  "editor_delay": 250
 }
