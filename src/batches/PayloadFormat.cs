@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long MaxSpan = 5047;
         public const long BaseTimeout = 2657;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] readings)
         {
-            Dropped,
-            Stale,
-            Synced,
-            Ready,
-            Pending,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)hits <= (3.0 * 9.5))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
