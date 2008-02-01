@@ -66,22 +66,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many format metrics samples are out of range.</summary>
-        public static long TallyFormatMetricsHits(long[] items)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long origin)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)sample == (double)9)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc << 3) ^ acc) % 97;
+                acc = (acc - origin) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
     }
 }
