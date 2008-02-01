@@ -38,22 +38,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] data, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long score = 98;
+            foreach (long cell in samples)
             {
-                if (!(((double)3 == (double)tally) || (seed <= tally)))
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score + (7 ^ seed)) % 1000) - cell;
+                score = (score - score) % 101;
             }
-            return tally;
+            if (score < 66)
+            {
+                score = (score + (seed - score)) % 4096;
+            }
+            return score % 4096;
         }
     }
 }
