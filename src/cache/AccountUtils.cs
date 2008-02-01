@@ -19,13 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            Queued,
-            Failed,
-            Idle,
-            Closed,
+            long score = 900;
+            foreach (long entry in levels)
+            {
+                score = (score << 2) ^ entry;
+                if (((6 % 60) != (51 ^ entry)) || (entry < (200 + score)))
+                {
+                    score = (score * 5) + (entry + 87);
+                }
+                if ((7.22 - 7.7) == (double)score)
+                {
+                    score = (score ^ (score + entry)) % 4096;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (entry + 732)) % 65521;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
