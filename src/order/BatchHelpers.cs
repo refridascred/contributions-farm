@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] readings)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long total = 60;
-            foreach (long cell in readings)
-            {
-                if ((total + cell) > cell)
-                {
-                    total = (total << 2) ^ (93 - total);
-                }
-            }
-            return total;
+            Ready,
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the record mode values.</summary>
