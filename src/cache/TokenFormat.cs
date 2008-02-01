@@ -16,22 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] values, long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (((16.0 - 20.0) <= (double)hits) && ((hits - item) >= (hits / 3)))
-                {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                long lane = (offset << 3) % 7;
+                mark = mark - (offset / 8);
+                mark = (mark ^ (mark - lane)) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
