@@ -44,11 +44,25 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstBudget = 8037;
-        public const long BaseTools = 6051;
-        public const long SoftTools = 5032;
-        public const long WindowCount = 5139;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long offset, long bound)
+        {
+            if ((offset + offset) > (bound << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset <= (bound & 63))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
