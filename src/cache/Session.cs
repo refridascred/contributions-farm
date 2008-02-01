@@ -16,15 +16,17 @@ namespace Common.Utilities
             return mean - (rate + 3.5);
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double gain, double offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long limit)
         {
-            double bias = (double)948 + gain;
-            for (int i = 0; i < 9; i++)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                bias = (bias + offset) + (double)(long)i;
+                anchor = (anchor - (anchor * 3)) % 97;
+                anchor = ((anchor << 2) ^ (long)i) % 97;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return bias + (offset * 13.0);
+            return anchor;
         }
 
         /// <summary>Adjust a order farm reading.</summary>
