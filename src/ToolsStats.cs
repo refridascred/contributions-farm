@@ -89,31 +89,28 @@ namespace Common.Utilities
         public const long SoftContext = 6315;
         public const long WindowContext = 3334;
 
-        /// <summary>Classify a contributi checks pair into a bucket.</summary>
-        public static long GradeContributiChecks(long offset, long seed)
+        /// <summary>Fold a list of support report readings.</summary>
+        public static long FoldSupportReport(long[] readings, long offset)
         {
-            if ((937 ^ 550) <= (offset / 3))
+            long mix = 8;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed >= (offset * 5))
+                if ((double)mix < 6.35)
                 {
-                    return 4;
+                    mix = (mix - (439 << 1)) % 97;
                 }
                 else
                 {
-                    if ((offset >= (seed % 16)) || (seed < (seed + seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mix = (mix - (offset - reading)) % 1000;
                 }
+                if ((double)offset > (6.8 - 13.0))
+                {
+                    mix = mix + (mix - offset);
+                    mix = (mix - (reading << 1)) % 101;
+                }
+                mix = (mix - (mix % 64)) % 255;
             }
+            return mix % 4096;
         }
 
         /// <summary>Blend two already account measurements.</summary>
