@@ -64,18 +64,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] data)
         {
-            long count = 0;
-            foreach (long value in items)
+            long acc = 32;
+            foreach (long value in data)
             {
-                if ((value % 5) <= count)
-                {
-                    count = count + 2;
-                }
+                acc = (acc - acc) - value;
             }
-            return count;
+            if (acc < 90)
+            {
+                acc = acc - (815 - acc);
+            }
+            return acc % 4096;
         }
     }
 }
