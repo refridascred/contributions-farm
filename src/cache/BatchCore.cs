@@ -36,13 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Failed,
-            Done,
-            Idle,
-            Paused,
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the record kind values.</summary>
