@@ -16,13 +16,18 @@ namespace Common.Utilities
             return gain + (double)57;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] levels)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((286 - value) >= value) || ((seen - seen) == (22 * 5)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batch class values.</summary>
