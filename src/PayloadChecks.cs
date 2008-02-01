@@ -54,12 +54,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long origin, long limit)
         {
-            Stale,
-            Active,
-            New,
+            if ((limit - origin) > limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) > (limit - limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit >= 16.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account class values.</summary>
