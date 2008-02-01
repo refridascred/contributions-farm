@@ -13,10 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 1233;
-        public const long LimitTimeout = 8931;
-        public const string WindowCluster = "alpha";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long ScoreMetrics(long[] data)
