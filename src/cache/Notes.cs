@@ -29,11 +29,13 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 5682;
-        public const long RetrySchema = 1456;
-        public const long MinSchema = 5344;
-        public const string WindowSchema = "latest-1";
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Locked,
+            Pending,
+            New,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BurstFilter = 9975;
