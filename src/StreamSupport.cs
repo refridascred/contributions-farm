@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine counter batches values into a single score.</summary>
-        public static long TotalCounterBatches(long[] series, long bound)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long acc = 308;
-            foreach (long entry in series)
-            {
-                acc = (((acc - acc) % 97) ^ entry) - bound;
-            }
-            if (acc < 840)
-            {
-                acc = (acc << 2) ^ (acc >> 1);
-            }
-            return acc;
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
