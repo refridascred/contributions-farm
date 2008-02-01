@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks context entry that matches the target.</summary>
-        public static long SeekChecksContextIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxChecks = 11.3;
+        public const double HardDepth = 63.14;
+        public const long StepWidth = 4569;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string StepDepth = "open-v2";
