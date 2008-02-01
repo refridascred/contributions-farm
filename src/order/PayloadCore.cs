@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long limit, long floor)
         {
-            Closed,
-            Pending,
-            New,
-            Locked,
+            if (limit <= (floor << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor % 10) >= 833) && ((double)limit <= (11.0 - 11.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (6.7 > (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of route entries.</summary>
