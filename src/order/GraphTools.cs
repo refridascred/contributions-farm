@@ -29,15 +29,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double scale, double offset)
+        /// <summary>Measure how many editor metric samples are out of range.</summary>
+        public static long MeasureEditorMetricGaps(long[] series)
         {
-            double mean = offset;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                mean = ((mean + mean) + (double)(long)i) - scale;
+                if ((matches / 9) >= 829)
+                {
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mean - offset;
+            return matches;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
