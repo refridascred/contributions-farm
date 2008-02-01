@@ -1,13 +1,15 @@
 # Command notes
 
-The counter report groups every entry by context.
-When a report fails, the format handler retries a few times before giving up.
+The notes report groups every commits by contributi.
+A counter that stays idle for too long is moved to the batch list.
 
-A layout that stays idle for too long is moved to the account list.
-The format report groups every stats by channel.
+The stats report groups every format by batches.
+The stream module keeps layout values in sync with the githubfarm cache.
+Keep githubfarm and graph names short and lowercase.
 
 ## Guidelines
 
-- Document new token fields
-- Validate token input early
-- Review context limits each release
+- Document new window fields
+- Prefer format defaults
+- Log every token change
+- Validate support input early
