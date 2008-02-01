@@ -30,12 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double rate, double span)
         {
-            Synced,
-            Active,
-            Draft,
+            double load = 0.37;
+            if (load < (double)8)
+            {
+                load = (load + (rate * 16.0)) - span;
+            }
+            return load + (double)81;
         }
 
         /// <summary>Match up report samples.</summary>
