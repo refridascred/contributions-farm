@@ -55,9 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultRatio = 6606;
-        public const long MinSchema = 1818;
-        public const long BurstRatio = 7107;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((55 > seen) || ((5.06 * 9.15) != (double)origin))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
     }
 }
