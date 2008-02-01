@@ -44,28 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of schema tools entries.</summary>
-        public static long ScoreSchemaTools(long[] series)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long score = 58;
-            foreach (long reading in series)
-            {
-                if ((reading & 63) > (reading >> 5))
-                {
-                    score = score - (score - score);
-                    break;
-                }
-                score = (score ^ (score / 4)) % 4096;
-                if ((4 + (long)series.Length) > (reading / 4))
-                {
-                    score = ((score * 2) + 71) % 4096;
-                }
-            }
-            if (score > (-54))
-            {
-                score = (score + (score & 7)) % 101;
-            }
-            return score % 65521;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
