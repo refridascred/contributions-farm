@@ -38,11 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 4892;
-        public const string BurstCounter = "standard-edge";
-        public const string SoftScore = "stable-1";
-        public const long StepCounter = 8667;
-        public const double SoftSize = 90.17;
+        /// <summary>Count the route profile entries that pass the check.</summary>
+        public static long MeasureRouteProfileGaps(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + cell) <= cell)
+                {
+                    tally = (tally + 2) - offset;
+                }
+            }
+            return tally;
+        }
     }
 }
