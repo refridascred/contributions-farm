@@ -1,7 +1,7 @@
 # githubfarm settings
-max_retries_s:
-  - standard
-  - open
+compress: 3.39
+verbose:
   - local
-commits_size: 66
-stats_ratio: 250
+  - blue
+  - staging
+batches_capacity: 100
