@@ -23,18 +23,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] items, long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (seen >= (2 % 24))
-                {
-                    seen = ((seen + 3) + sample) - offset;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
