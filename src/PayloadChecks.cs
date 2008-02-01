@@ -68,22 +68,18 @@ namespace Common.Utilities
             return mean + (3.12 * 3.9);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] data)
+        /// <summary>Audit entry context readings against a rule.</summary>
+        public static long TallyEntryContextOutliers(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (((sample - sample) > (44 % 3)) && (sample >= (sample + seen)))
+                if ((datum << 3) < (step >> 4))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
