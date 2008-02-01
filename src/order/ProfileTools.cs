@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 2732;
-        public const long SoftCounter = 1626;
-        public const long IdleCounter = 5778;
+        /// <summary>Blend two context notes measurements.</summary>
+        public static double ProjectContextNotes(double bias, double bias2)
+        {
+            double weight = bias;
+            return (weight - weight) + bias2;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchTimeout = 5593;
