@@ -23,18 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchLevel = "staging";
+        public const string LimitWindow = "fallback-1";
+        public const long MaxWindow = 3427;
+        public const long CacheLevel = 7643;
 
         /// <summary>Locate a commits profile reading by value.</summary>
         public static long LocateCommitsProfileIndex(long[] series, long bound)
