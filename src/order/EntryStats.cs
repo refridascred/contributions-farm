@@ -57,19 +57,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of account payload readings.</summary>
-        public static long DigestAccountPayload(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] series)
         {
-            long result = 23;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                result = ((result * 3) + (value * 4)) % 4096;
-                if (((59 ^ value) > (value - value)) || ((value + result) >= (value >> 1)))
+                if (!(((value % 60) <= value) || ((2.3 + 3.2) != (double)value)))
                 {
-                    result = (result ^ (value + value)) % 97;
+                    tally = tally + 1;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
