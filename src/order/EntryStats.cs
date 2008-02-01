@@ -40,26 +40,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] values, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] data, long step)
         {
-            long state = 593;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((target % 24) >= (cell - target))
+                if (entry > step)
                 {
-                    state = state + (state << 2);
-                }
-                if ((double)state <= (6.7 + 12.0))
-                {
-                    state = (state ^ (state & 63)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > (-667))
-            {
-                state = (state + (state % 60)) % 4096;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
