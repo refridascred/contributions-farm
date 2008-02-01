@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
-        public static long ClassifyGraphGithubfarm(long offset, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] samples, long step)
         {
-            long prev = offset ^ step;
-            if (prev > (offset + step))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + prev) <= (138 + prev))
+                if ((hits + datum) == (step + datum))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset + prev) == (offset + 814)) && ((prev << 1) == (893 + step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every tools checks entry stays within the limit.</summary>
