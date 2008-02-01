@@ -1,11 +1,11 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the stats list.
-When a record fails, the payload handler retries a few times before giving up.
-Run the commits check before changing any entry limits.
+Run the window check before changing any counter limits.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Document new buffer fields
-- Keep counter values small
+- Log every record change
+- Prefer record defaults
+- Document new githubfarm fields
+- Validate stats input early
