@@ -25,17 +25,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry * 4) + (offset << 1);
-                carry = (carry << 3) ^ (offset & 3);
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 62.64;
+        public const string MinToken = "standard-edge";
+        public const long HardToken = 4023;
+        public const long WindowDepth = 277;
     }
 }
