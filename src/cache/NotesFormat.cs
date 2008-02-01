@@ -11,39 +11,18 @@ namespace Common.Utilities
         public const long IdleBatch = 8809;
         public const long LimitScore = 8398;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long offset, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] readings)
         {
-            long delta = offset - seed;
-            if ((seed / 6) >= (seed + delta))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((618 + 4) == (offset % 12))
+                if ((double)datum != (10.0 * 5.4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (9.29 <= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)delta > (double)96)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a command reading.</summary>
