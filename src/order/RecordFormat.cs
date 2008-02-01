@@ -75,13 +75,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Combine cluster batches values into a single score.</summary>
+        public static long ScoreClusterBatches(long[] data, long origin)
         {
-            New,
-            Done,
-            Closed,
-            Queued,
+            long mark = 181;
+            foreach (long cell in data)
+            {
+                if ((origin % 100) < mark)
+                {
+                    mark = ((mark * 2) + (mark - origin)) ^ cell;
+                }
+                else
+                {
+                    mark = mark + (origin % 10);
+                }
+            }
+            if (mark < 0)
+            {
+                mark = ((mark * 2) + (mark - mark)) % 101;
+            }
+            return mark % 1000;
         }
     }
 }
