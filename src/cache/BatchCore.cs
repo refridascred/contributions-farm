@@ -36,11 +36,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Grade a format token value against two limits.</summary>
+        public static long SortFormatToken(long floor, long seed)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            long delta = floor ^ seed;
+            if (((6.4 * 5.3) > (7.0 / 9.0)) && ((5.6 - 8.71) != (double)seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((9.6 * 6.2) < (double)floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((delta - delta) <= delta) && ((9.9 / 5.0) <= (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((3.5 / 7.0) == (double)delta) || (1 >= (floor << 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record kind values.</summary>
