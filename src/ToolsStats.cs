@@ -89,28 +89,12 @@ namespace Common.Utilities
         public const long SoftContext = 6315;
         public const long WindowContext = 3334;
 
-        /// <summary>Fold a list of support report readings.</summary>
-        public static long FoldSupportReport(long[] readings, long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mix = 8;
-            foreach (long reading in readings)
-            {
-                if ((double)mix < 6.35)
-                {
-                    mix = (mix - (439 << 1)) % 97;
-                }
-                else
-                {
-                    mix = (mix - (offset - reading)) % 1000;
-                }
-                if ((double)offset > (6.8 - 13.0))
-                {
-                    mix = mix + (mix - offset);
-                    mix = (mix - (reading << 1)) % 101;
-                }
-                mix = (mix - (mix % 64)) % 255;
-            }
-            return mix % 4096;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two already account measurements.</summary>
