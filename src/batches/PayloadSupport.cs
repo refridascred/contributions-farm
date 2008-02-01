@@ -32,21 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = weight;
+            if (bias < offset)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias + bias;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - (15.0 / 4.0);
         }
     }
 }
