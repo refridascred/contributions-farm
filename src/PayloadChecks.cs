@@ -68,14 +68,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] data)
         {
-            Closed,
-            Failed,
-            Synced,
-            Dropped,
-            Draft,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((sample - sample) > (44 % 3)) && (sample >= (sample + seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
