@@ -1,5 +1,8 @@
 {
-  "readonly": "latest",
-  "channel_delay": "open",
-  "profile_retries": [29, 314, 436, 132]
+  "soft_depth": "standard",
+  "compress": 533,
+  "profile_window": 67,
+  "cache_ttl_count": "green",
+  "max_retries_ms": 75,
+  "profile_ttl": "latest"
 }
