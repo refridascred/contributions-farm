@@ -55,19 +55,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] values, long floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long offset, long step)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long step2 = offset - step;
+            if ((step + step) <= 2)
             {
-                if (datum < floor)
+                return 1;
+            }
+            else
+            {
+                if (((step + offset) > offset) && ((step2 % 24) > (step * 2)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((step + 805) != (step << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
