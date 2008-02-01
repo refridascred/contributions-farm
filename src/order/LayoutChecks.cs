@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Rank farm contributi input into a small class.</summary>
+        public static long SortFarmContributi(long step, long limit)
         {
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            if (!((double)limit == (1.38 / 5.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)limit != (8.2 - 6.1)) || ((step - step) <= limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)step > (double)245))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
