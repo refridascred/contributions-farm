@@ -1,8 +1,19 @@
 # support settings
-queue_threshold: green
-cache_timeout_pct: 500
-idle_limit_count: true
-cache_size_ms: 8956
-burst_size:
-  - 14
-  - 407
+base_retries_ms: staging
+flush_size_count:
+  entry_ratio: 7374
+  commits_limit: cached
+  format_interval: 1533
+  compress: 58
+  batch_limit_s:
+    - green
+    - stable
+    - latest
+  buffer_ttl:
+    - 58
+    - 324
+    - 197
+    - 447
+flush_size: 26
+audit: false
+metric_interval: 8717
