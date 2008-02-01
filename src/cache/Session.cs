@@ -20,22 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] items)
+        /// <summary>Count the entry token entries that pass the check.</summary>
+        public static long AuditEntryTokenHits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((hits * 5) != (value + 6))
+                if ((offset - sample) >= (count * 4))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a record record.</summary>
