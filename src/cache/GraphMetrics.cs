@@ -60,23 +60,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next cache route value.</summary>
-        public static double BlendCacheRoute(double scale, double span)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double gain, double offset)
         {
-            double ratio = span;
-            if (ratio >= 16.0)
+            double gain2 = (double)(41 ^ 964);
+            if (gain2 > (gain * 8.45))
             {
-                ratio = ratio - scale;
+                gain2 = gain2 - offset;
             }
             else
             {
-                ratio = ratio + 2.97;
+                gain2 = gain2 + gain2;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - ratio;
+            return gain2 - (gain + offset);
         }
     }
 }
