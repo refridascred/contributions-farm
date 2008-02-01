@@ -19,25 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] levels, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score - (score % 60)) % 65521;
-                if (!((score + score) == ((long)i & 3)))
+                if (levels[i] == origin)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    score = ((score << 2) ^ ((long)i + 1)) % 4096;
-                    score = score + ((long)i - score);
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit route command readings against a rule.</summary>
