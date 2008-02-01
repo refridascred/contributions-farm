@@ -49,22 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of report notes readings.</summary>
-        public static long PairReportNotesCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseSpan = 42.6;
+        public const long MinPayload = 3550;
+        public const long DefaultSpan = 4873;
+        public const long StepFactor = 2340;
+        public const double CacheWidth = 85.38;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long CombineBatches(long[] readings)
