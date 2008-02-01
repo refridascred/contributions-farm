@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 2067;
-        public const long SoftRatio = 8420;
-        public const long CacheLevel = 2647;
-        public const double SoftTimeout = 43.22;
-        public const long BurstRecord = 818;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long floor)
