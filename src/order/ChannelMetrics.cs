@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long sum = 64;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = ((sum + (sum % 3)) % 101) ^ (long)i;
-                }
-                sum = (sum + cell) % 65521;
-            }
-            if (sum > 49)
-            {
-                sum = (sum ^ (sum - sum)) % 101;
-            }
-            return sum;
+            public double Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
