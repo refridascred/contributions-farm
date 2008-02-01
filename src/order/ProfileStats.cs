@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheInterval = "latest-edge";
-        public const long StepSchema = 2281;
-        public const long SoftSchema = 9661;
-        public const long StepSpan = 7464;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BatchWindow = 61.85;
