@@ -33,22 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] data, long step)
+        /// <summary>Grade a already order value against two limits.</summary>
+        public static long RankAlreadyOrder(long step, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long slot = step ^ limit;
+            if ((double)step < (0.1 + 9.59))
             {
-                if (!((matches + item) <= item))
+                return 7;
+            }
+            else
+            {
+                if ((8.83 * 3.5) < (double)limit)
                 {
-                    matches = (matches + 2) - step;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((double)step <= (13.0 / 9.0)) || ((step / 9) < (slot - slot)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
