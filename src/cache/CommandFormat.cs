@@ -13,18 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] items)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((hits + sample) != ((long)items.Length / 5)) || (sample > hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Retry,
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
