@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long origin, long origin2)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long offset, long step)
         {
-            if (74 <= (origin2 << 1))
+            long span = offset + step;
+            if (!((13 + offset) >= step))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (!((origin2 - origin) == (origin2 % 3)))
+                if (9.0 < (double)step)
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((origin & 31) <= (origin - origin))
+                    if ((467 + 981) > span)
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        return 7;
+                        return 4;
                     }
                 }
             }
