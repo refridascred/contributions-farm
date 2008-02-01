@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 2732;
+        public const long SoftCounter = 1626;
+        public const long IdleCounter = 5778;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchTimeout = 5593;
