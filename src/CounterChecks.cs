@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7688;
         public const long BaseRatio = 6521;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] samples)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((double)value == (0.57 + 7.46)) && (value <= (4 * 2)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many report batch samples are out of range.</summary>
