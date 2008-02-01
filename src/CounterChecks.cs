@@ -40,19 +40,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
-        public static bool CheckMetricsEntryBounds(long[] data, long origin)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
