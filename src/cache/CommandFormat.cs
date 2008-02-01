@@ -38,17 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardDepth = 3532;
+        public const long BatchTimeout = 621;
+        public const string CacheRatio = "fallback-edge";
+        public const long StepSpan = 9969;
+        public const long SoftScore = 2060;
     }
 }
