@@ -1,11 +1,9 @@
 # entry settings
-command_size: stable
-hard_limit: 16.01
-base_capacity:
-  - 68
-  - 194
-batch_capacity_ms: 41
-enabled:
-  - eu-west
-  - eu-west
-max_timeout_ms: 8191
+soft_interval_s: 100
+flush_limit_s: cached
+compress: 52.39
+cache_ttl_s: true
+min_timeout_pct:
+  - staging
+  - edge
+retry_ratio_count: false
