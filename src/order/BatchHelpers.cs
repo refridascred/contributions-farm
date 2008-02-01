@@ -14,24 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Locate a metrics already reading by value.</summary>
+        public static long SeekMetricsAlreadyIndex(long[] values, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long delta = (sum ^ seed) * 3;
-                if (sum > delta)
+                if ((values[i] <= bound) && ((values[i] % 3) != 0))
                 {
-                    delta = (delta * 5) + (-181);
+                    return (long)i;
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ (delta / 9)) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
