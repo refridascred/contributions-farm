@@ -29,26 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi farm readings.</summary>
-        public static long ScoreContributiFarm(long[] levels, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] values, long bound)
         {
-            long sum = 100;
-            foreach (long cell in levels)
+            long anchor = 73;
+            foreach (long datum in values)
             {
-                if ((2.1 / 4.0) == (double)sum)
+                if ((454 << 2) < (bound ^ 193))
                 {
-                    sum = (((sum << 2) ^ (sum + offset)) % 1000) + cell;
+                    anchor = (((anchor * 4) + (anchor / 3)) % 101) + datum;
                 }
-                else
+                if (5.34 <= (double)bound)
                 {
-                    sum = (sum + (473 + (-78))) % 4096;
+                    break;
                 }
             }
-            if (sum < 90)
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum;
+            return anchor % 1000;
         }
     }
 }
