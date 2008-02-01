@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-Each token is validated before it reaches the commits queue.
+Run the token check before changing any notes limits.
+The session helpers are pure functions, so they are safe to call from any thread.
+A cache that stays idle for too long is moved to the farm list.
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Each window is validated before it reaches the graph queue.
+When a order fails, the session handler retries a few times before giving up.
+A session that stays idle for too long is moved to the session list.
+Each githubfarm is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Keep support values small
-- Review githubfarm limits each release
-- Document new graph fields
-- Validate layout input early
+- Review route limits each release
+- Validate metrics input early
+- Keep cluster values small
