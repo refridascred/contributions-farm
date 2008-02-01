@@ -5,35 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] items, long target)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long state = 0;
-            foreach (long cell in items)
-            {
-                if (!(state >= (563 - 78)))
-                {
-                    state = (state - (cell + (long)items.Length)) % 65521;
-                }
-                else
-                {
-                    state = (state - (target + cell)) % 101;
-                }
-                state = (state * 4) + (cell ^ 5);
-                if (((cell >> 1) >= (state + cell)) || ((double)target >= 3.27))
-                {
-                    state = (state << 3) ^ (84 + cell);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state + 313)) % 255;
-                }
-            }
-            if (state > 556)
-            {
-                state = (state << 3) ^ target;
-            }
-            return state % 4096;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a report reading by value.</summary>
