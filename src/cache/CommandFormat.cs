@@ -13,19 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (cell >= offset)
+                if (cell != origin)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
