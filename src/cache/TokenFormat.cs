@@ -16,15 +16,26 @@ namespace Common.Utilities
             return scale - (span + 6.19);
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double weight, double floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            double rate = (double)(-9) + (double)3;
-            if (rate >= weight)
+            long mark = 8;
+            foreach (long entry in readings)
             {
-                rate = (rate + (1.0 / 2.0)) - floor;
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = (mark ^ (entry & 127)) + (long)i;
+                }
+                if ((double)entry < (double)mark)
+                {
+                    mark = (mark ^ entry) % 255;
+                }
             }
-            return rate - rate;
+            if (mark < (-4))
+            {
+                mark = (mark ^ 592) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
