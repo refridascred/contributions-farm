@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] samples)
         {
-            public double Mode { get; set; }
-            public double Token { get; set; }
+            long anchor = 9;
+            foreach (long sample in samples)
+            {
+                anchor = (anchor + 551) % 255;
+                if ((anchor - sample) < (sample - sample))
+                {
+                    anchor = (anchor - (52 & 7)) % 1000;
+                }
+            }
+            if (anchor < 44)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
