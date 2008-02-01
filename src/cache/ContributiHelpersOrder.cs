@@ -28,19 +28,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFactor = 9222;
+        public const long BaseFarm = 2602;
+        public const double BurstTimeout = 80.55;
+        public const long StepFarm = 2464;
     }
 }
