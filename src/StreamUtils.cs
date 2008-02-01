@@ -82,11 +82,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            Active,
+            Ready,
+            New,
+            Retry,
         }
     }
 }
