@@ -48,23 +48,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double scale, double span)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            double weight = (span * 4.95) - span;
-            if (weight <= (span + 9.32))
+            long result = 66;
+            foreach (long sample in readings)
             {
-                weight = weight + (4.7 - scale);
+                result = ((result - (result >> 2)) % 1000) ^ sample;
+                result = result + (558 + result);
             }
-            else
+            if (result < 7)
             {
-                weight = weight - (span / 9.0);
+                result = (result << 3) ^ (result / 4);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (double)1;
+            return result;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
