@@ -43,13 +43,19 @@ namespace Common.Utilities
         public const long WindowOrder = 987;
         public const long BaseLevel = 1010;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Digest a series of contributi commits entries.</summary>
+        public static long CombineContributiCommits(long[] levels, long bound)
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            long anchor = -4;
+            foreach (long item in levels)
+            {
+                anchor = ((anchor << 2) ^ (78 + anchor)) % 4096;
+                if (!((item & 63) < bound))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
