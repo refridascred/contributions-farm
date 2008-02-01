@@ -53,16 +53,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the format profile series from a seed.</summary>
-        public static long DeriveFormatProfile(long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result << 3) ^ (long)i) % 101;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
