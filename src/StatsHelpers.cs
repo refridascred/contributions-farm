@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a checks header.</summary>
