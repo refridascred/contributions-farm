@@ -17,26 +17,18 @@ namespace Common.Utilities
         public const string BurstInterval = "local";
         public const double BurstProfile = 87.76;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels)
         {
-            long anchor = 600;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((double)matches <= (9.66 + 4.4))
                 {
-                    anchor = ((anchor - reading) % 101) + (long)i2;
-                }
-                if ((144 >> 4) > (anchor + 38))
-                {
-                    anchor = (anchor - anchor) % 1000;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor + (anchor >> 5)) % 1000;
-            }
-            return anchor % 97;
+            return matches;
         }
     }
 }
