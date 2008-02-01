@@ -65,20 +65,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] samples, long limit)
         {
-            long mark = 28;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark - datum;
-                mark = ((mark << 3) ^ datum) % 255;
+                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 506)
-            {
-                mark = (mark - (mark / 8)) % 97;
-            }
-            return mark;
+            return -1;
         }
     }
 }
