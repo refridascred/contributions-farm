@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] items, long target)
+        /// <summary>Iterate the batch format series from a seed.</summary>
+        public static long RollBatchFormat(long limit)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Adjust a schema reading.</summary>
