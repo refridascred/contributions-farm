@@ -36,21 +36,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long seed, long seed2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)seed > (3.7 - 7.7))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((((-8) + seed2) <= (seed2 & 15)) && ((double)seed2 == (2.2 + 0.8)))
                 {
-                    if ((series[i] ^ series[j]) < 5)
+                    return 8;
+                }
+                else
+                {
+                    if ((5.0 * 8.69) >= (4.8 * 2.0))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
     }
 }
