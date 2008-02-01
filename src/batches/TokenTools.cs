@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitTimeout = 11.65;
-        public const long MinWidth = 9714;
-        public const long BurstEditor = 790;
-        public const double CacheWidth = 34.41;
-        public const long MaxSpan = 8459;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Pending,
+            New,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
