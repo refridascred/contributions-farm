@@ -34,12 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxRatio = "open-v2";
-        public const long DefaultFactor = 8577;
-        public const double SoftFactor = 29.26;
-        public const long SoftChecks = 701;
-        public const double LimitInterval = 92.73;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = ((total << 3) ^ (total & 127)) % 255;
+                    total = ((total * 4) + (total - (long)i2)) % 1000;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] values, long step)
