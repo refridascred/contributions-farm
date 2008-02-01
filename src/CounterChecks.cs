@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] readings, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
