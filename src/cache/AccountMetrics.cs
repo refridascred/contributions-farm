@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "stable-1";
-        public const long StepChannel = 2103;
-        public const string DefaultChannel = "open";
-        public const double StepCount = 15.01;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Draft,
+            Retry,
+            Done,
+            Idle,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstBudget = 2044;
