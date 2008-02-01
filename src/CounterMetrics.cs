@@ -54,19 +54,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools cluster readings against a bound.</summary>
-        public static bool GuardToolsClusterLimits(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstInterval = "stable-edge";
+        public const long BurstEditor = 4808;
+        public const long BatchRatio = 6036;
     }
 }
