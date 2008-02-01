@@ -1,7 +1,6 @@
 {
-  "compress": 59.15,
-  "base_depth_count": false,
-  "burst_size": ["stable", "cached", "blue", "eu-west"],
-  "burst_capacity_s": "eu-west",
-  "idle_window": 500
+  "verbose": 56.32,
+  "batch_timeout_s": 250,
+  "batch_limit": "standard",
+  "payload_window": true
 }
