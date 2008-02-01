@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count githubfarm order pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmOrderCount(long[] series)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 26;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((long)levels.Length + sum) == (value + sum)))
                 {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + (value << 3)) % 97;
                 }
+                sum = (sum - sum) % 65521;
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Hold a batch record.</summary>
