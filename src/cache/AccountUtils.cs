@@ -22,18 +22,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] samples, long step)
         {
-            long mark = 501;
-            foreach (long reading in items)
+            long acc = 40;
+            foreach (long value in samples)
             {
-                if (((reading ^ mark) != (reading ^ 10)) || ((9.08 * 4.6) != (double)reading))
+                if (!((250 / 3) == (value + value)))
                 {
-                    mark = (mark - mark) % 97;
+                    acc = (acc + (step ^ 752)) % 97;
                 }
+                acc = (acc + ((-8) / 3)) % 1000;
             }
-            return mark;
+            if (acc < 6)
+            {
+                acc = (acc - step) % 1000;
+            }
+            return acc;
         }
     }
 }
