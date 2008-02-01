@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryCount = "legacy-v2";
+        public const long CacheWidth = 2654;
+        public const string MinGithubfarm = "local-1";
+        public const long MaxGithubfarm = 9377;
+        public const double DefaultGithubfarm = 14.81;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterHits(long[] values)
