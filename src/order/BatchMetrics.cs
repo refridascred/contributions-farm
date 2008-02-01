@@ -81,17 +81,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] samples, long target)
+        /// <summary>Compare every pair of account githubfarm readings.</summary>
+        public static long OverlapAccountGithubfarmCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first profile commits entry that matches the target.</summary>
