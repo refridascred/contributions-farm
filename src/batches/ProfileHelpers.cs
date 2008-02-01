@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] series, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (series[i] >= limit)
+                if ((double)floor <= (double)81)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
