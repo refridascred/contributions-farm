@@ -1,9 +1,6 @@
-id,region,ratio,active,owner
-1,786,eu-west,open,strict
-2,primary,814,standard,95.83
-3,standard,62.26,56.56,677
-4,589,green,71.34,259
-5,917,207,56.8,34.18
-6,818,987,55,standard
-7,84.81,19.35,cached,local
-8,411,open,15.78,382
+id,ratio
+1,44.28
+2,staging
+3,legacy
+4,12.14
+5,16.74
