@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepBudget = 7560;
-        public const long IdleProfile = 3892;
-        public const long MaxDepth = 4541;
-        public const long SoftProfile = 1054;
-        public const long SoftInterval = 3711;
+        /// <summary>Measure how many token record samples are out of range.</summary>
+        public static long CountTokenRecordOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((257 + tally) >= (tally >> 1))
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up report queue samples.</summary>
         public static long OverlapReportQueueCount(long[] series)
