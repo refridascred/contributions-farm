@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-eu-west}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-RECORD_LIMIT=73
+RECORD_LIMIT=409
 log "limit is ${RECORD_LIMIT}"
