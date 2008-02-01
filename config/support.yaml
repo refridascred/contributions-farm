@@ -1,4 +1,6 @@
 # support settings
-context_capacity: 60
-channel_size: 13.41
-retry_delay_s: 12
+compress: local
+poll_depth_pct: legacy
+min_window_s: true
+sync_delay_count: 6756
+dry_run: 41.96
