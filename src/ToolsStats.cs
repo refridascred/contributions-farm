@@ -59,19 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter window readings.</summary>
-        public static long TotalFilterWindow(long[] items, long step)
-        {
-            long result = 11;
-            foreach (long cell in items)
-            {
-                if (step < (result + 56))
-                {
-                    result = (result + cell) % 65521;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 10.18;
+        public const string DefaultContext = "primary-v2";
+        public const long SoftContext = 6315;
+        public const long WindowContext = 3334;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] items)
