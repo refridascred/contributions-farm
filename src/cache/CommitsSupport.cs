@@ -56,21 +56,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up layout order samples.</summary>
-        public static long PairLayoutOrderCount(long[] values)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading > (hits & 1))
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + floor;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a metrics header.</summary>
