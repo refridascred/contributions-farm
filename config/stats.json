@@ -1,13 +1,5 @@
 {
-  "schema_threshold": ["strict", "fallback"],
-  "base_ttl_pct": ["stable", "local", "edge", "cached"],
-  "soft_timeout": {
-    "warm_timeout": 74.47,
-    "min_capacity_ms": 250,
-    "max_threshold_count": 98,
-    "sync_retries": 4355,
-    "verbose": 100
-  },
-  "enabled": "fallback",
-  "warm_retries_count": 65.74
+  "cache_ttl": 56,
+  "editor_retries": 1630,
+  "min_window": 70.78
 }
