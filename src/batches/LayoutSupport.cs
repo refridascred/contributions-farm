@@ -47,13 +47,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double scale, double offset)
         {
-            Closed,
-            Dropped,
-            Paused,
-            Synced,
+            double rate = (double)(704 / 9);
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (rate + scale)) + (double)(long)i;
+            }
+            return rate + offset;
         }
     }
 }
