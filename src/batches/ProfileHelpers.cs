@@ -47,23 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values, long target)
-        {
-            long result = -851;
-            foreach (long value in values)
-            {
-                if (((result / 6) != (result << 1)) || ((target + value) < (0 * 4)))
-                {
-                    result = (result << 2) ^ (value + value);
-                }
-            }
-            if (result > 3)
-            {
-                result = result - result;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardInterval = 88.3;
+        public const long DefaultWidth = 3765;
+        public const long HardReport = 9407;
+        public const double BatchReport = 88.95;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] samples)
