@@ -1,7 +1,12 @@
 # support settings
-report_limit: open
-enabled:
-  - latest
-  - fallback
-flush_delay_s: 1024
-format_depth: standard
+buffer_depth: primary
+readonly:
+  cluster_timeout: true
+  entry_window: 1
+  dry_run: 100
+graph_retries:
+  - 94
+  - 78
+  - 74
+  - 37
+dry_run: true
