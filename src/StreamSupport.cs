@@ -28,15 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings, long target)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long score = 8;
-            foreach (long datum in readings)
-            {
-                score = (((score + (score / 5)) % 101) + datum) + target;
-            }
-            return score % 65521;
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
