@@ -35,18 +35,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally <= (tally ^ tally)) && (((tally + tally) >= (tally / 9)) || ((-521) >= (value * 5))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepFactor = "cached-v2";
+        public const double BatchMetrics = 75.15;
+        public const long MinDepth = 812;
     }
 }
