@@ -1,15 +1,15 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the batches list.
-Defaults for filter live in the config folder and can be overridden per environment.
-Keep graph and cache names short and lowercase.
+A counter that stays idle for too long is moved to the farm list.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Run the cache check before changing any report limits.
 
-Run the order check before changing any editor limits.
-Keep route and account names short and lowercase.
-Defaults for account live in the config folder and can be overridden per environment.
+Each notes is validated before it reaches the commits queue.
+The metric report groups every buffer by buffer.
 
 ## Guidelines
 
-- Validate queue input early
-- Prefer commits defaults
-- Log every schema change
+- Validate commits input early
+- Prefer graph defaults
+- Log every githubfarm change
+- Keep route values small
