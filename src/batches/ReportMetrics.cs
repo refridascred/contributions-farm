@@ -11,18 +11,34 @@ namespace Common.Utilities
         public const string RetryFactor = "latest-edge";
         public const long HardFilter = 3951;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] data, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long carry = 267;
+            foreach (long item in series)
             {
-                if (datum >= (hits * 2))
+                if (carry <= (carry + carry))
                 {
-                    hits = (hits + 1) + limit;
+                    carry = ((carry * 4) + (carry + carry)) % 255;
+                }
+                else
+                {
+                    carry = (carry - (carry * 2)) % 65521;
+                }
+                if ((item > ((long)series.Length % 24)) || (((long)series.Length + item) < (item / 4)))
+                {
+                    carry = (carry * 2) + item;
+                }
+                else
+                {
+                    carry = (carry - (carry >> 4)) % 97;
                 }
             }
-            return hits;
+            if (carry > (-70))
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Hold a account record.</summary>
