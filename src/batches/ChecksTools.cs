@@ -20,13 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Iterate the account tools series from a seed.</summary>
+        public static long IterateAccountTools(long origin)
         {
-            Pending,
-            Failed,
-            Stale,
-            Ready,
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = anchor + (anchor + anchor);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks stats.</summary>
