@@ -1,19 +1,6 @@
 # support settings
-base_retries_ms: staging
-flush_size_count:
-  entry_ratio: 7374
-  commits_limit: cached
-  format_interval: 1533
-  compress: 58
-  batch_limit_s:
-    - green
-    - stable
-    - latest
-  buffer_ttl:
-    - 58
-    - 324
-    - 197
-    - 447
-flush_size: 26
-audit: false
-metric_interval: 8717
+burst_size_ms: fallback
+token_depth: 87.74
+retry_depth_pct: primary
+idle_window: 1104
+buffer_ratio: 500
