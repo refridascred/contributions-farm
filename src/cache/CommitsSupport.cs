@@ -79,24 +79,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long step, long origin)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            if ((step << 3) == (step >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step - origin) != (origin + origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Done,
+            Paused,
         }
     }
 }
