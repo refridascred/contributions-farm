@@ -23,17 +23,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Look up the position of a metrics channel sample.</summary>
-        public static long LookupMetricsChannelIndex(long[] levels, long bound)
+        /// <summary>Count profile payload pairs that satisfy a relation.</summary>
+        public static long CompareProfilePayloadCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] >= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
