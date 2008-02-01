@@ -47,18 +47,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order stats entries that pass the check.</summary>
-        public static long AuditOrderStatsGaps(long[] samples, long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            if ((double)origin < (8.95 - 1.23))
             {
-                if ((1 + seen) <= (cell & 255))
+                return 1;
+            }
+            else
+            {
+                if (((floor ^ origin) >= (origin - floor)) && ((floor >> 4) < floor))
                 {
-                    seen = (seen + 2) - origin;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor >= (7 >> 5)) && ((6.5 - 13.0) > (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
