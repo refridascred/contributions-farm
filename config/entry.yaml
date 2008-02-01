@@ -1,12 +1,10 @@
 # entry settings
-retry_window_s: latest
-already_interval: false
-warm_capacity: 149
-strict:
-  layout_threshold: 73.85
-  profile_interval: standard
-  persist: 100
-  base_limit:
-    - strict
-    - edge
-verbose: 58.95
+layout_window:
+  - cached
+  - local
+  - open
+  - edge
+format_timeout: primary
+order_threshold: standard
+enabled: 30
+verbose: 49
