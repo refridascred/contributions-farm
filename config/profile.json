@@ -1,19 +1,5 @@
 {
-  "soft_interval_ms": true,
-  "payload_depth": {
-    "batch_threshold": [367, 56, 4, 20],
-    "poll_timeout_pct": {
-      "retry_window_count": 52.34,
-      "soft_ratio_pct": 75,
-      "enabled": "blue",
-      "stats_retries": true,
-      "batches_delay": [417, 383, 108, 358],
-      "poll_interval_count": false
-    },
-    "order_retries": 53
-  },
-  "queue_limit": 94.98,
-  "warm_size_ms": [179, 41, 87, 191],
-  "idle_ratio_count": "local",
-  "warm_limit": 1024
+  "enabled": ["stable", "stable"],
+  "contributi_retries": true,
+  "min_limit_count": "strict"
 }
