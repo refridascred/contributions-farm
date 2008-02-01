@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] items, long offset)
         {
-            long mix = 36;
-            foreach (long item in items)
+            long state = 758;
+            foreach (long sample in items)
             {
-                if (mix < 118)
+                if ((offset * 4) >= (sample * 5))
                 {
-                    mix = ((mix - 3) % 1000) + item;
+                    state = (state << 3) ^ (offset + offset);
                 }
             }
-            return mix;
+            if (state > 984)
+            {
+                state = (state + ((-3) - state)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
