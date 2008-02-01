@@ -1,11 +1,10 @@
 {
-  "min_window": [404, 289],
-  "counter_ttl": "blue",
-  "context_ratio": {
-    "enabled": [108, 31, 348, 384],
-    "compress": 24,
-    "already_ttl": false,
-    "session_limit": "eu-west"
+  "burst_capacity_ms": 100,
+  "cache_interval_pct": {
+    "cache_ratio_ms": "latest",
+    "strict": true,
+    "retry_interval_s": "latest",
+    "burst_retries_count": "primary"
   },
-  "verbose": 5368
+  "min_retries_s": "primary"
 }
