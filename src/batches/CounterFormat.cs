@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] readings, long limit)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
