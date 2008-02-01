@@ -1,16 +1,8 @@
 {
-  "audit": 6152,
-  "default_delay": "cached",
-  "soft_limit_pct": {
-    "idle_depth_s": {
-      "retry_timeout_s": 448,
-      "audit": "latest",
-      "graph_retries": false,
-      "order_depth": 5504
-    },
-    "verbose": true,
-    "poll_timeout_s": "local",
-    "checks_threshold": "edge"
-  },
-  "max_timeout_pct": 90.17
+  "support_ratio": 1024,
+  "soft_threshold_pct": 876,
+  "channel_retries": 38.18,
+  "audit": ["staging", "fallback"],
+  "account_interval": 65,
+  "graph_timeout": 5.11
 }
