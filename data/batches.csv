@@ -1,7 +1,10 @@
-id,label,region
-1,legacy,0.28
-2,85.82,94.68
-3,blue,green
-4,blue,88.46
-5,47.28,26
-6,local,58.43
+id,token,active,label
+1,green,local,latest
+2,12.61,6.28,93.39
+3,15,47.27,97.89
+4,248,8.65,47.04
+5,540,strict,green
+6,35.49,76.09,staging
+7,81.04,primary,240
+8,stable,31.96,252
+9,848,879,green
