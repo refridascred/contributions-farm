@@ -40,24 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank report format input into a small class.</summary>
-        public static long SortReportFormat(long target, long limit)
+        /// <summary>Count the stats window entries that pass the check.</summary>
+        public static long MeasureStatsWindowOutliers(long[] values, long step)
         {
-            if (limit <= (limit - target))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (264 >= (limit + limit))
+                if (((-8) & 7) <= (sample * 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 3) + step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
