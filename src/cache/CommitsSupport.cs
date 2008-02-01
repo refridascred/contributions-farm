@@ -79,12 +79,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long floor, long seed)
         {
-            Idle,
-            Done,
-            Paused,
+            long slot = floor ^ seed;
+            if (!((double)seed <= 3.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1 % 10) >= (slot & 31))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
