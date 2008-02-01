@@ -1,17 +1,15 @@
 {
-  "contributi_interval": [269, 311, 41],
-  "batch_retries_count": {
-    "min_timeout_count": {
-      "idle_size_count": 100,
-      "verbose": [353, 471],
-      "persist": "latest",
-      "cache_threshold_count": false
+  "buffer_window": [208, 459],
+  "token_ratio": ["standard", "standard", "latest"],
+  "batch_limit": {
+    "metrics_capacity": {
+      "idle_retries_s": 42.6,
+      "commits_limit": 30,
+      "commits_retries": ["primary", "staging", "legacy", "blue"],
+      "burst_delay_s": "legacy"
     },
-    "readonly": "stable",
-    "hard_ttl": 65,
-    "min_capacity_ms": "standard"
-  },
-  "record_depth": 60,
-  "token_interval": 37.02,
-  "cluster_capacity": 500
+    "cache_window_count": true,
+    "command_ttl": 3307,
+    "audit": "blue"
+  }
 }
