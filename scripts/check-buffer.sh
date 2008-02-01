@@ -12,12 +12,12 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=216
+BUFFER_LIMIT=87
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-blue}"
+mode="${1:-stable}"
 case "${mode}" in
-    latest)
+    edge)
         log "fast path"
         ;;
     *)
