@@ -52,12 +52,15 @@ namespace Common.Utilities
             return drift - (double)706;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double gain, double floor)
         {
-            Idle,
-            Retry,
-            Synced,
+            double drift = floor - (double)1;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (double)(long)i) + gain;
+            }
+            return drift - drift;
         }
     }
 }
