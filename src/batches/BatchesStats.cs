@@ -45,18 +45,17 @@ namespace Common.Utilities
         public const long SoftChecks = 701;
         public const double LimitInterval = 92.73;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] data)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.56 + 8.82) != (double)matches)
+                if (values[i] >= step)
                 {
-                    matches = (matches + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
