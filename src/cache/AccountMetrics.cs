@@ -91,35 +91,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] series, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long seed)
         {
-            long mark = 7;
-            foreach (long value in series)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((value + seed) != (mark % 97))
-                {
-                    mark = mark + seed;
-                }
-                if (((long)series.Length * 3) < value)
-                {
-                    mark = ((mark << 3) ^ (seed ^ mark)) % 65521;
-                    break;
-                }
-                if (value >= (value + seed))
-                {
-                    mark = ((mark << 2) ^ mark) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (seed << 3)) % 1000;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (mark < 843)
-            {
-                mark = (mark + (seed << 3)) % 65521;
-            }
-            return mark;
+            return state;
         }
     }
 }
