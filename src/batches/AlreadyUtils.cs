@@ -56,15 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a order session reading.</summary>
-        public static double ScaleOrderSession(double weight, double span)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] items)
         {
-            double scale = (span * 4.7) - (3.9 - 9.3);
-            for (int i = 0; i < 2; i++)
+            long acc = 3;
+            foreach (long cell in items)
             {
-                scale = (scale + weight) - (double)(long)i;
+                if ((acc + (-6)) < (acc + (-36)))
+                {
+                    acc = ((acc + acc) % 255) ^ cell;
+                }
             }
-            return scale - weight;
+            return acc;
         }
 
         /// <summary>Roll a context counter forward.</summary>
