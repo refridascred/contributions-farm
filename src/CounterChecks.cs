@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long state = -3;
-            foreach (long cell in levels)
-            {
-                state = ((state * 4) + (28 - cell)) % 101;
-            }
-            return state;
+            Dropped,
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a profile stats.</summary>
