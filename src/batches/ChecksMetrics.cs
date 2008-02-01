@@ -30,11 +30,21 @@ namespace Common.Utilities
         public const string BaseCount = "open-1";
         public const long BatchSpan = 3573;
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] data)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate counter tools readings against a bound.</summary>
