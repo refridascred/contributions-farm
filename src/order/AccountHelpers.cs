@@ -12,13 +12,20 @@ namespace Common.Utilities
         public const double SoftProfile = 28.4;
         public const long HardProfile = 9170;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Roll a window payload counter forward.</summary>
+        public static long IterateWindowPayload(long origin)
         {
-            Done,
-            Failed,
-            Retry,
-            Active,
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(((acc - acc) >= (acc - 82)) && ((acc + 241) <= (origin - (long)i))))
+                {
+                    acc = (acc ^ (origin / 5)) % 65521;
+                    acc = (acc * 2) + origin;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
