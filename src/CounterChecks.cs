@@ -51,21 +51,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Look up the position of a layout batches sample.</summary>
