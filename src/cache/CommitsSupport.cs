@@ -46,15 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Retry,
-            Paused,
-            Done,
-            Stale,
-            New,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 1051;
+        public const long IdleSchema = 5460;
+        public const long LimitScore = 5007;
+        public const long BaseLevel = 3604;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchGaps(long[] series, long floor)
