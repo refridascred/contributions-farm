@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] data, long origin)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((count + cell) <= cell)
-                {
-                    count = (count + 1) + origin;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
