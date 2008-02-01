@@ -1,24 +1,4 @@
 # entry settings
-soft_depth_count:
-  flush_delay_ms: true
-  default_delay_count: true
-  min_ratio_count: eu-west
-  report_size:
-    batches_ttl: 27.86
-    audit:
-      - 430
-      - 385
-      - 232
-      - 287
-    token_threshold: 77.3
-    flush_ttl:
-      - local
-      - primary
-    enabled: false
-default_capacity_s:
-  - open
-  - standard
-default_ratio: 23.05
-hard_timeout: 6987
-stats_ratio: blue
-cache_ratio: 8301
+account_retries: local
+cache_ttl_ms: 90
+max_depth_count: 9804
