@@ -14,12 +14,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long offset)
         {
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
+            long score = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score ^ (offset & 255)) % 97;
+                if ((offset - 661) < ((long)i % 60))
+                {
+                    score = (score ^ score) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the route level values.</summary>
