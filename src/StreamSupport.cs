@@ -28,12 +28,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 88.8;
+        public const long SoftSchema = 410;
+        public const long StepBudget = 4520;
+        public const long IdleBudget = 3154;
     }
 }
