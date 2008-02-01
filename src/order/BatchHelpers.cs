@@ -14,24 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] values, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result >= ((long)i << 3)) || ((double)result == (0.34 / 3.0)))
+                if ((values[i] > seed) && ((values[i] % 2) == 0))
                 {
-                    result = (result << 2) ^ 615;
+                    return (long)i;
                 }
-                else
-                {
-                    result = result - (result & 15);
-                }
-                result = result ^ offset;
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
