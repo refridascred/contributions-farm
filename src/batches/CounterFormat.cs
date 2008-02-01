@@ -28,18 +28,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item + item) > (item + (long)data.Length))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultTimeout = 2641;
+        public const string IdleChecks = "alpha-v2";
+        public const double BaseChecks = 80.52;
+        public const long BaseInterval = 3534;
+        public const long WindowWidth = 6443;
     }
 }
