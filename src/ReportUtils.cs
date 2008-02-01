@@ -20,12 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 7051;
+        public const long MaxInterval = 2961;
+        public const double LimitInterval = 67.07;
+        public const long DefaultLevel = 7009;
+        public const string LimitDepth = "latest-1";
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsHits(long[] data)
