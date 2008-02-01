@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Closed,
-            Stale,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftTimeout = 6292;
+        public const long MaxBudget = 5988;
+        public const long WindowBuffer = 5867;
+        public const long BatchCount = 9507;
+        public const string CacheBuffer = "stable-edge";
 
         /// <summary>Adjust a notes reading.</summary>
         public static double SmoothNotes(double rate, double floor)
