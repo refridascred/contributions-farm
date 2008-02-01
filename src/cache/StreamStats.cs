@@ -29,18 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor queue readings against a rule.</summary>
-        public static long MeasureEditorQueueMatches(long[] values)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double ratio = gain;
+            if (ratio > (double)221)
             {
-                if ((2.36 / 7.0) > (double)entry)
-                {
-                    hits = hits + 2;
-                }
+                ratio = ratio - (offset * 4.2);
             }
-            return hits;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - (3.79 * 1.4);
         }
 
         /// <summary>Derive the next entry metric value from a seed.</summary>
