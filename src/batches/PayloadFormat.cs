@@ -15,12 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowInterval = 1501;
-        public const string BurstBatch = "cached-v2";
-        public const long MinSpan = 3002;
-        public const long LimitRatio = 2029;
-        public const long RetryBatch = 628;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] data, long target)
