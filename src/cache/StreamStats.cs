@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] series, long target)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length + datum) > target)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Scale a editor session figure with a bias.</summary>
