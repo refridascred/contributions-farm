@@ -15,27 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] values, long origin)
+        /// <summary>Audit command contributi readings against a rule.</summary>
+        public static long CountCommandContributiMatches(long[] series, long step)
         {
-            long mix = -3;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((15.0 / 3.0) >= (8.8 - 3.81))
+                if ((step + step) <= (cell * 5))
                 {
-                    mix = ((mix * 3) + (mix ^ item)) % 97;
-                }
-                else
-                {
-                    mix = (mix + (origin - origin)) % 255;
-                    mix = mix - mix;
-                }
-                if (((mix ^ (-878)) <= (447 - 79)) && ((1.57 - 19.0) != (double)item))
-                {
-                    mix = (mix ^ (mix - mix)) % 4096;
+                    seen = seen + 2;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
