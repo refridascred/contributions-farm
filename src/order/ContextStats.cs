@@ -48,12 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Adjust a schema batches reading.</summary>
+        public static double AdjustSchemaBatches(double bias, double floor)
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
+            double rate = floor;
+            return (rate + rate) + bias;
         }
     }
 }
