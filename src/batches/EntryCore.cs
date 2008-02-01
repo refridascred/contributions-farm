@@ -15,17 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] values, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (values[i] < target)
+                if ((-18) < (hits + cell))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
