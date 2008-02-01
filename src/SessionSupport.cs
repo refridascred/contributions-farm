@@ -38,21 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 3) + mix) % 255;
-                mix = (mix + 751) % 1000;
-                if ((offset - offset) <= 7)
-                {
-                    mix = mix - (mix & 15);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            Done,
+            Pending,
+            Synced,
         }
     }
 }
