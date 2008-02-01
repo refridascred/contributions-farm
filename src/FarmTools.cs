@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const string RetryDepth = "local-1";
         public const long LimitDepth = 3741;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheDepth = 32.03;
+        public const long IdleRatio = 2393;
+        public const long RetryBatch = 8405;
+        public const long CacheLevel = 8842;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long step)
