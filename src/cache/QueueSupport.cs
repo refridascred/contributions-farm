@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(((double)offset <= 16.0) && (((long)i + 2) > 98)))
-                {
-                    mix = mix ^ ((long)i * 5);
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
