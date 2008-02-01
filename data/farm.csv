@@ -1,7 +1,8 @@
-id,active,ratio,label
-1,621,311,432
-2,375,eu-west,87.74
-3,58,297,9.21
-4,open,87.07,490
-5,206,312,45.83
-6,eu-west,33.58,940
+id,score,owner,region,count
+1,edge,blue,516,63.68
+2,582,27.14,standard,0.1
+3,stable,primary,369,standard
+4,open,285,edge,blue
+5,329,legacy,372,719
+6,959,green,staging,green
+7,green,local,standard,70.18
