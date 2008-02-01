@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Look up the position of a buffer already sample.</summary>
+        public static long LookupBufferAlreadyIndex(long[] values, long floor)
         {
-            long carry = 544;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry << 2) ^ (carry >> 5)) % 65521) ^ sample;
+                if ((values[i] < floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the report status values.</summary>
