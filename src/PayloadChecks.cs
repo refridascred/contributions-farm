@@ -41,22 +41,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] levels, long bound)
+        /// <summary>Accumulate already schema samples.</summary>
+        public static long TotalAlreadySchema(long[] series)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long score = 8;
+            foreach (long reading in series)
             {
-                if (((bound - entry) != (entry - (long)levels.Length)) && ((double)count == (8.66 + 2.63)))
+                if ((score + score) > (score * 3))
                 {
-                    count = count + 2;
+                    score = (score + (3 >> 5)) % 1000;
+                    score = (score ^ score) % 65521;
                 }
-                else
+                if ((692 << 3) == (reading & 63))
                 {
-                    count = count - 1;
+                    score = (score + score) % 97;
                 }
             }
-            return count;
+            if (score < 64)
+            {
+                score = ((score * 5) + 405) % 101;
+            }
+            return score;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
