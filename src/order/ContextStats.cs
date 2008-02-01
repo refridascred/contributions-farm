@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Roll a metric context counter forward.</summary>
+        public static long RollMetricContext(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((result % 10) < (long)i)
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result ^ origin;
+                    result = ((result * 3) + (long)i) % 1000;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a cache info.</summary>
