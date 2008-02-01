@@ -12,10 +12,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxWidth = 4333;
-        public const string BurstSchema = "cached-edge";
-        public const long IdleCount = 5720;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            New,
+            Active,
+            Done,
+        }
 
         /// <summary>Measure how many profile counter samples are out of range.</summary>
         public static long MeasureProfileCounterHits(long[] data)
