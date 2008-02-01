@@ -47,12 +47,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxSpan = 7304;
-        public const long BatchMetrics = 7350;
-        public const long RetryMetrics = 2259;
-        public const long StepMetrics = 9936;
-        public const double CacheMetrics = 82.99;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values, long target)
+        {
+            long result = -851;
+            foreach (long value in values)
+            {
+                if (((result / 6) != (result << 1)) || ((target + value) < (0 * 4)))
+                {
+                    result = (result << 2) ^ (value + value);
+                }
+            }
+            if (result > 3)
+            {
+                result = result - result;
+            }
+            return result;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] samples)
