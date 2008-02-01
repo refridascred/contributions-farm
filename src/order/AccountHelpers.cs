@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 9700;
-        public const long HardLevel = 6531;
-        public const long RetrySize = 3885;
-        public const string StepBatch = "stable-edge";
-        public const long MinSize = 2370;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count & 255) < (81 - cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a window payload counter forward.</summary>
         public static long IterateWindowPayload(long origin)
