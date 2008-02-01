@@ -40,14 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] items, long bound)
         {
-            Dropped,
-            Queued,
-            Synced,
-            Stale,
-            Closed,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)value < 6.25)
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
