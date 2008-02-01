@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 3666;
         public const long BaseGithubfarm = 2730;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] levels, long seed)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Define support limits and defaults.</summary>
