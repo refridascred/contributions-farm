@@ -68,18 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account metrics readings against a rule.</summary>
-        public static long AuditAccountMetricsGaps(long[] series)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (tally > item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            New,
+            Draft,
         }
 
         /// <summary>Iterate the format profile series from a seed.</summary>
