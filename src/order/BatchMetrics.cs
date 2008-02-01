@@ -57,11 +57,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Combine contributi layout values into a single score.</summary>
+        public static long FoldContributiLayout(long[] items, long target)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long acc = 693;
+            foreach (long value in items)
+            {
+                if ((value - value) > target)
+                {
+                    acc = (acc ^ (value * 5)) % 255;
+                }
+            }
+            if (acc < 205)
+            {
+                acc = (acc * 5) + (target + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
