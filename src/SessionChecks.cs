@@ -20,19 +20,25 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] readings, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long step, long seed)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long prev = step ^ seed;
+            if ((double)step < (0.15 - 20.0))
             {
-                if (item != seed)
+                return 1;
+            }
+            else
+            {
+                if (((double)step < (double)prev) || (step >= seed))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
