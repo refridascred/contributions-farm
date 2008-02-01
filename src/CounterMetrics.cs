@@ -13,14 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "primary-1";
+        public const string CacheChecks = "latest-edge";
+        public const long LimitChecks = 818;
+        public const long WindowChecks = 9437;
+        public const long MinChecks = 2123;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
