@@ -1,7 +1,9 @@
 # githubfarm settings
-poll_retries_pct: true
-hard_interval_ms: open
-batch_size: 100
-compress: 96
-idle_capacity: green
-max_interval_ms: true
+notes_threshold: 39.4
+poll_retries:
+  - 121
+  - 454
+  - 440
+  - 379
+default_ttl: 88.75
+base_ratio: 1284
