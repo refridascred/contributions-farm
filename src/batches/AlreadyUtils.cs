@@ -35,22 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] samples)
+        /// <summary>Adjust a commits metric reading.</summary>
+        public static double AdjustCommitsMetric(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double drift = span;
+            if (drift <= (double)(-510))
             {
-                if ((11.0 - 7.85) != (double)count)
-                {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = (drift - 9.0) + bias;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
