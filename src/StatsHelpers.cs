@@ -43,13 +43,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] readings, long origin)
         {
-            Synced,
-            Closed,
-            Failed,
-            Queued,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
