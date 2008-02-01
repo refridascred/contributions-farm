@@ -40,15 +40,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Adjust a stream session reading.</summary>
-        public static double AdjustStreamSession(double gain, double floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] items)
         {
-            double ratio = floor * 8.94;
-            for (int i = 0; i < 4; i++)
+            long total = 0;
+            foreach (long datum in items)
             {
-                ratio = (ratio + (double)(long)i) - gain;
+                if ((-325) <= (datum + datum))
+                {
+                    total = (total ^ (datum * 3)) % 97;
+                }
             }
-            return ratio + ratio;
+            return total;
         }
     }
 }
