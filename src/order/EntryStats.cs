@@ -29,15 +29,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] data, long origin)
+        /// <summary>Audit route command readings against a rule.</summary>
+        public static long MeasureRouteCommandMatches(long[] levels)
         {
             long seen = 0;
-            foreach (long sample in data)
+            foreach (long item in levels)
             {
-                if (((229 + origin) >= seen) && ((8.2 * 0.5) != (double)seen))
+                if (((item << 3) < (seen - seen)) && ((seen + seen) != (42 - item)))
                 {
-                    seen = (seen + 2) + sample;
+                    seen = seen + 3;
                 }
             }
             return seen;
