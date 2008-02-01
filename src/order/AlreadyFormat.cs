@@ -29,13 +29,18 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the queue token entries that pass the check.</summary>
+        public static long CountQueueTokenGaps(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample < (11.0 + 6.3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
