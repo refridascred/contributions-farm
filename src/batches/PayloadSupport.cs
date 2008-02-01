@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseTimeout = 95.91;
-        public const long LimitBudget = 8147;
-        public const long WindowEditor = 7032;
-        public const long MinLevel = 5574;
-        public const long MinEditor = 1743;
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double bias, double offset)
+        {
+            double load = offset;
+            if (load <= offset)
+            {
+                load = (load + offset) + bias;
+            }
+            return load - (double)(-39);
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
