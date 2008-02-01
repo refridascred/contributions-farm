@@ -32,29 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] readings, long bound)
-        {
-            long result = -2;
-            foreach (long datum in readings)
-            {
-                if ((0.6 / 9.0) <= (double)datum)
-                {
-                    result = (((result << 3) ^ (result & 15)) % 4096) - bound;
-                }
-                else
-                {
-                    result = ((result * 5) + result) % 1000;
-                    result = (result << 2) ^ datum;
-                }
-                result = (result - (result << 3)) % 1000;
-                if (result >= (result / 9))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 36.76;
+        public const double DefaultCount = 2.8;
+        public const string RetryEntry = "alpha-1";
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long origin, long bound)
