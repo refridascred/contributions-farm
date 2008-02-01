@@ -1,4 +1,9 @@
 # entry settings
-account_retries: local
-cache_ttl_ms: 90
-max_depth_count: 9804
+min_size: eu-west
+min_timeout_count: latest
+hard_timeout_pct: 100
+burst_size_count: fallback
+base_threshold_ms:
+  - legacy
+  - cached
+  - local
