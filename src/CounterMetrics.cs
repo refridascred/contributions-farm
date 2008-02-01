@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long HardCommand = 3919;
         public const long DefaultBudget = 1970;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double rate, double bias)
+        /// <summary>Audit route payload readings against a rule.</summary>
+        public static long TallyRoutePayloadOutliers(long[] levels)
         {
-            double scale = (double)(8 % 3);
-            if (scale < (1.0 + 20.0))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                scale = ((scale + (double)0) - rate) - bias;
+                if (tally < (item - tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - 0.4;
+            return tally;
         }
 
         /// <summary>Describe the stats phase values.</summary>
