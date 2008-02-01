@@ -57,18 +57,13 @@ namespace Common.Utilities
         public const long MinCount = 8879;
         public const string HardWindow = "latest";
 
-        /// <summary>Count the counter stream entries that pass the check.</summary>
-        public static long TallyCounterStreamHits(long[] values, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally - floor) >= tally)
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
+            Retry,
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Measure how many format metrics samples are out of range.</summary>
