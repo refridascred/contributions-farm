@@ -45,18 +45,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings, long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits * 5) <= (9 << 3))
-                {
-                    hits = ((hits + 1) ^ sample) + step;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
