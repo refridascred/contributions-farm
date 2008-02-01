@@ -26,12 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] samples, long limit)
         {
-            Locked,
-            Pending,
-            New,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches - 9) >= (78 % 100))
+                {
+                    matches = ((matches + 1) + reading) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
