@@ -20,12 +20,22 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchSize = 8867;
-        public const string StepAlready = "primary-edge";
-        public const long SoftBudget = 9572;
-        public const double StepTimeout = 82.89;
-        public const long StepScore = 4556;
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string MaxRatio = "open-v2";
