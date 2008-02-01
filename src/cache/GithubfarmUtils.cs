@@ -29,19 +29,21 @@ namespace Common.Utilities
             return (drift - gain) + offset;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] data, long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Accumulate report context samples.</summary>
