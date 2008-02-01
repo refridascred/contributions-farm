@@ -1,25 +1,20 @@
 # entry settings
-max_retries_count: 53.8
-soft_capacity: standard
-commits_interval:
-  flush_ttl_s:
-    graph_threshold: green
-    soft_size_s:
-      - 402
-      - 230
-      - 128
-    readonly: legacy
-    verbose: 100
-    min_capacity_s: fallback
-    retry_depth: 79
-  buffer_timeout: 0.69
-  retry_ttl_ms: strict
-  sync_timeout_pct: 25.94
-persist:
-  flush_ttl_count: false
-  format_capacity: staging
-  poll_timeout_pct: 1647
-notes_capacity:
+retry_size_ms: 7.3
+max_size_ms: 250
+cache_ttl: 59.27
+enabled:
+  min_threshold: green
+  audit: 9632
+  burst_limit_s:
+    - 478
+    - 57
+    - 33
+    - 360
+sync_size_pct:
   - latest
-  - blue
-  - fallback
+  - green
+  - green
+  - local
+flush_interval_pct:
+  - latest
+  - eu-west
