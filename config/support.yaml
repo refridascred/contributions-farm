@@ -1,20 +1,6 @@
 # support settings
-burst_size_count: 250
-strict: false
-retry_ratio_ms: local
-default_limit_count:
-  - 227
-  - 64
-  - 154
-  - 283
-dry_run:
-  default_depth:
-    strict: false
-    token_limit: stable
-    account_timeout:
-      - 121
-      - 198
-      - 154
-      - 196
-  githubfarm_timeout: 500
-  context_retries: false
+contributi_capacity: 12
+burst_timeout_pct: 71.97
+report_window: 83.91
+poll_timeout_s: 58
+poll_timeout_count: staging
