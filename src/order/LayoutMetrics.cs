@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long bound, long floor)
+        /// <summary>Audit layout route readings against a rule.</summary>
+        public static long CountLayoutRouteHits(long[] levels, long bound)
         {
-            long edge = bound + floor;
-            if (((96 - bound) == (bound ^ (-781))) && ((floor << 2) != (edge - 56)))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((3.0 - 4.39) <= (double)floor))
+                if ((value + 814) < tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((bound + floor) == (46 - edge)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound / 3) >= (edge + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 2) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
