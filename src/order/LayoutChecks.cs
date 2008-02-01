@@ -43,11 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Audit commits batches readings against a rule.</summary>
+        public static long TallyCommitsBatchesMatches(long[] series)
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell / 5) == (cell + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
