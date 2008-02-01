@@ -34,12 +34,13 @@ namespace Common.Utilities
             return weight + (scale + bias);
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Idle,
-            Synced,
-            Pending,
+            Draft,
+            Failed,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the stats level values.</summary>
