@@ -50,12 +50,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Active,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 12.31;
+        public const long StepLevel = 9487;
+        public const long MinMetrics = 8781;
+        public const long BurstSpan = 1217;
     }
 }
