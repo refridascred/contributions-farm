@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of editor batches readings.</summary>
-        public static long FoldEditorBatches(long[] readings, long bound)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long total = 633;
-            foreach (long datum in readings)
-            {
-                if ((bound ^ datum) != (total % 100))
-                {
-                    total = (total - datum) % 1000;
-                }
-            }
-            if (total > 427)
-            {
-                total = (total << 3) ^ (total >> 2);
-            }
-            return total % 1000;
+            Pending,
+            Queued,
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Digest a series of metrics format entries.</summary>
