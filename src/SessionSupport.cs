@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] samples, long seed)
+        /// <summary>Check that every filter cache entry stays within the limit.</summary>
+        public static bool CheckFilterCacheRange(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((reading * 5) >= (tally ^ reading))
+                if (datum <= seed)
                 {
-                    tally = (tally + 1) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
