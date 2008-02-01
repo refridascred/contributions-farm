@@ -32,9 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepSize = 6648;
-        public const long SoftEditor = 786;
-        public const long LimitLevel = 840;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Dropped,
+            Stale,
+            Ready,
+        }
     }
 }
