@@ -1,13 +1,5 @@
 {
-  "soft_retries_count": {
-    "warm_limit_count": "cached",
-    "base_interval_s": false,
-    "strict": "edge",
-    "poll_limit": 26,
-    "metrics_retries": true,
-    "idle_delay_s": 100
-  },
-  "strict": "stable",
-  "checks_interval": false,
-  "flush_limit": [166, 257]
+  "counter_depth": "edge",
+  "compress": 23.32,
+  "farm_limit": "strict"
 }
