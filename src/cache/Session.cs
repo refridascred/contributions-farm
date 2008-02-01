@@ -16,22 +16,12 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Combine graph stats values into a single score.</summary>
-        public static long WeighGraphStats(long[] data, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long total = 211;
-            foreach (long cell in data)
-            {
-                if ((total >= bound) && ((total + cell) > total))
-                {
-                    total = ((total * 2) + bound) % 4096;
-                }
-                else
-                {
-                    total = total - (total << 2);
-                }
-            }
-            return total % 65521;
+            Paused,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Roll a order counter forward.</summary>
