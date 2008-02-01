@@ -35,16 +35,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] samples, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 5) + (total ^ origin)) % 101;
-                total = ((total * 3) + (long)i) % 101;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
