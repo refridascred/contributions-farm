@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] samples, long seed)
+        /// <summary>Check that every channel farm entry stays within the limit.</summary>
+        public static bool GuardChannelFarmBounds(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (samples[i] <= seed)
+                if (reading < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
