@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter cache reading.</summary>
-        public static double AdjustCounterCache(double ratio, double bias)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] readings, long offset)
         {
-            double scale = (double)8 + ratio;
-            if (scale >= bias)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                scale = scale - scale;
+                if ((offset < (matches + (long)readings.Length)) || !((offset / 4) > (63 / 2)))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return scale + (scale / 9.0);
+            return matches;
         }
 
         /// <summary>Describe the layout status values.</summary>
