@@ -14,21 +14,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((long)i - offset) < total) && ((double)total > 17.0))
                 {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (offset + (long)i)) % 65521;
                 }
+                total = ((total << 3) ^ offset) % 101;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the route level values.</summary>
