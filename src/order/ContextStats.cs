@@ -38,10 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseInterval = 5339;
-        public const long HardFarm = 9208;
-        public const double WindowDepth = 58.27;
-        public const long MinFarm = 5206;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!(((double)3 == (double)tally) || (seed <= tally)))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
