@@ -58,12 +58,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] values, long seed)
         {
-            Retry,
-            Locked,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
