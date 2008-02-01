@@ -20,11 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = 782;
+            foreach (long entry in levels)
+            {
+                anchor = (((anchor << 2) ^ (anchor - anchor)) % 101) - entry;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
