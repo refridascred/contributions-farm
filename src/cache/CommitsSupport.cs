@@ -23,11 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchLevel = "staging";
-        public const string LimitWindow = "fallback-1";
-        public const long MaxWindow = 3427;
-        public const long CacheLevel = 7643;
+        /// <summary>Measure how many queue entry samples are out of range.</summary>
+        public static long TallyQueueEntryGaps(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((floor << 1) >= (floor - floor))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a commits profile reading by value.</summary>
         public static long LocateCommitsProfileIndex(long[] series, long bound)
