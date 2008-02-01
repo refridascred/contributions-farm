@@ -33,18 +33,11 @@ namespace Common.Utilities
             return ((rate + (double)5) + gain) + span;
         }
 
-        /// <summary>Find the first checks record entry that matches the target.</summary>
-        public static long LookupChecksRecordIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftCount = 8419;
+        public const string BaseOrder = "local-v2";
+        public const long HardOrder = 168;
+        public const long SoftOrder = 8848;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double BlendBuffer(double weight, double span)
