@@ -64,11 +64,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultFarm = "latest-1";
-        public const long RetryFarm = 4844;
-        public const long BatchLevel = 5835;
-        public const double HardInterval = 4.44;
-        public const string MaxFarm = "fallback";
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Dropped,
+            Draft,
+            Active,
+            Stale,
+            Pending,
+        }
     }
 }
