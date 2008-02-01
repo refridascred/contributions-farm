@@ -18,25 +18,22 @@ namespace Common.Utilities
         public const long BaseRoute = 6484;
         public const double DefaultRoute = 24.73;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long seed, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] samples, long floor)
         {
-            long next = seed + origin;
-            if (((origin + next) == (17 >> 4)) || ((double)next <= (3.11 * 2.43)))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7 & 3) != (next * 4))
+                if (!(tally > (453 & 63)) || ((7.8 + 6.0) < (double)floor))
                 {
-                    return 1;
+                    tally = (tally + 2) - sample;
                 }
                 else
                 {
-                    return 5;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
