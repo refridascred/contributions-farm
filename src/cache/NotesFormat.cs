@@ -11,28 +11,36 @@ namespace Common.Utilities
         public const long IdleBatch = 8809;
         public const long LimitScore = 8398;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long floor, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long offset, long seed)
         {
-            if (50 > (floor >> 4))
+            long delta = offset - seed;
+            if ((seed / 6) >= (seed + delta))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((target * 4) > floor)
+                if ((618 + 4) == (offset % 12))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if (((floor << 2) > floor) && ((938 % 7) >= (floor / 3)))
+                    if (9.29 <= (double)seed)
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        return 1;
+                        if ((double)delta > (double)96)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
