@@ -41,22 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route cluster entries.</summary>
-        public static long TallyRouteCluster(long[] series)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] data, long seed)
         {
-            long state = 85;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5.0 <= (double)state) && ((double)state > (11.0 - 10.0)))
+                if ((data[i] >= seed) && ((data[i] % 3) == 0))
                 {
-                    state = ((state * 4) + (state * 2)) - item;
+                    return (long)i;
                 }
             }
-            if (state > 1)
-            {
-                state = state ^ (state & 15);
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Count the cluster farm entries that pass the check.</summary>
