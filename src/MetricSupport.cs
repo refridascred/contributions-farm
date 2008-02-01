@@ -22,18 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] readings)
+        /// <summary>Digest a series of farm queue entries.</summary>
+        public static long CombineFarmQueue(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = 495;
+            foreach (long cell in readings)
             {
-                if ((matches * 3) <= reading)
+                if ((state >> 2) < cell)
                 {
-                    matches = matches + 3;
+                    state = (state + (cell / 8)) + limit;
+                }
+                else
+                {
+                    state = ((state * 2) + state) % 1000;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
