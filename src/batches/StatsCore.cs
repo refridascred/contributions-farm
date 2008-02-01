@@ -20,17 +20,12 @@ namespace Common.Utilities
         public const long SoftProfile = 1054;
         public const long SoftInterval = 3711;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] levels, long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Blend two entry measurements.</summary>
