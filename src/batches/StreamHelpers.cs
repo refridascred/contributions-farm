@@ -68,19 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream graph entries.</summary>
-        public static long CombineStreamGraph(long[] items)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] series, long step)
         {
-            long score = 9;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long sample in series)
             {
-                score = ((score << 2) ^ score) % 65521;
-                if (((entry * 5) != (entry << 3)) || (entry < (entry % 100)))
+                if (sample <= step)
                 {
+                    found = false;
                     break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Count the token metric entries that pass the check.</summary>
