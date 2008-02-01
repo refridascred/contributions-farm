@@ -19,27 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] data, long step)
         {
-            long score = 900;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                score = (score << 2) ^ entry;
-                if (((6 % 60) != (51 ^ entry)) || (entry < (200 + score)))
+                if ((reading % 2) <= (reading + seen))
                 {
-                    score = (score * 5) + (entry + 87);
-                }
-                if ((7.22 - 7.7) == (double)score)
-                {
-                    score = (score ^ (score + entry)) % 4096;
+                    seen = (seen + 3) + step;
                 }
                 else
                 {
-                    score = ((score << 3) ^ (entry + 732)) % 65521;
+                    seen = seen - 1;
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
