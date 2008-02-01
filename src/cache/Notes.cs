@@ -17,13 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 5205;
+        public const long MinCount = 2545;
+        public const string LimitAccount = "stable";
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] values)
