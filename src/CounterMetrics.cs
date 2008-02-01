@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] readings, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mark = 663;
+            foreach (long value in data)
             {
-                if ((datum + hits) > datum)
+                if ((value / 3) < (3 + value))
                 {
-                    hits = (hits + 3) + floor;
+                    mark = mark - (bound & 7);
                 }
             }
-            return hits;
+            if (mark > 7)
+            {
+                mark = ((mark << 2) ^ (bound + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Audit route payload readings against a rule.</summary>
