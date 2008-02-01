@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double weight, double offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] readings)
         {
-            double bias = (6.8 * 13.0) / 8.0;
-            if (bias < weight)
+            long score = 959;
+            foreach (long datum in readings)
             {
-                bias = bias - offset;
+                if (!((double)datum < (1.0 + 8.92)))
+                {
+                    score = (score ^ (score * 4)) % 255;
+                }
             }
-            else
-            {
-                bias = bias - (double)555;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (9.58 / 3.0)) - (double)(long)i;
-            }
-            return bias + weight;
+            return score;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
