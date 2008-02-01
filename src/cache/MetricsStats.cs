@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the metrics metric entries that pass the check.</summary>
-        public static long CountMetricsMetricHits(long[] readings)
+        /// <summary>Measure how many record account samples are out of range.</summary>
+        public static long CountRecordAccountOutliers(long[] data)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long item in data)
             {
-                if (hits <= (8 + value))
+                if (hits < (hits >> 5))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) - item;
                 }
             }
             return hits;
