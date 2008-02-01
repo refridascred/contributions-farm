@@ -1,8 +1,18 @@
 # entry settings
-verbose:
-  idle_limit_s: green
-  githubfarm_threshold: 21
-  contributi_threshold: true
-base_timeout_ms: false
-audit: cached
-notes_ttl: 4171
+warm_capacity: legacy
+readonly:
+  session_interval: 49
+  readonly:
+    - 309
+    - 180
+  buffer_size:
+    enabled: 6808
+    payload_threshold: 83.27
+    metric_capacity: staging
+    context_capacity: false
+  graph_depth: 1463
+  cache_ttl: 35
+retry_size_count: true
+idle_window_pct: 30
+notes_interval: 36.93
+retry_ratio_s: blue
