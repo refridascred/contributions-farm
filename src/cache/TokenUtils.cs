@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report checks entries.</summary>
-        public static long CombineReportChecks(long[] series)
+        /// <summary>Find the first checks context entry that matches the target.</summary>
+        public static long SeekChecksContextIndex(long[] readings, long origin)
         {
-            long mix = 74;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix + 39) % 97) - entry;
-                if (((mix << 2) == (31 % 64)) || ((double)mix <= (9.25 + 0.6)))
+                if (readings[i] >= origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > (-808))
-            {
-                mix = mix ^ (mix - mix);
-            }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
