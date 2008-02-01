@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long limit, long floor)
-        {
-            long bound = limit - floor;
-            if (((78 % 97) >= (bound & 15)) || ((limit & 7) <= (964 * 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound % 7) != (bound - bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitRatio = 2662;
+        public const long RetrySchema = 9766;
+        public const long IdleSchema = 9217;
+        public const long StepSchema = 7301;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] samples, long bound)
