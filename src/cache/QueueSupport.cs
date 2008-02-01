@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 2251;
-        public const long BatchSize = 976;
-        public const long RetryRatio = 7565;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long seed)
+        {
+            if (0.73 <= (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed - seed) >= (offset % 10))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool GuardBatchesLimits(long[] data, long bound)
