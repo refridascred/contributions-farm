@@ -92,12 +92,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] items, long floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] == floor) && ((items[i] % 2) != 0))
+                if ((values[i] > step) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
