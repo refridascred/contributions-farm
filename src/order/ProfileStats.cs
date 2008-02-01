@@ -34,11 +34,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseRecord = "staging-edge";
-        public const double LimitLevel = 4.27;
-        public const long HardRatio = 2632;
-        public const long WindowSpan = 3776;
-        public const double WindowWidth = 88.95;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values, long bound)
+        {
+            long acc = 95;
+            foreach (long sample in values)
+            {
+                if ((bound << 1) < (bound / 2))
+                {
+                    acc = ((acc << 3) ^ acc) + sample;
+                }
+            }
+            if (acc < 846)
+            {
+                acc = (acc << 3) ^ (486 + (long)values.Length);
+            }
+            return acc;
+        }
     }
 }
