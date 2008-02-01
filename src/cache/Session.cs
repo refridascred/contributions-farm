@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double scale, double span)
+        /// <summary>Blend two context support measurements.</summary>
+        public static double AdjustContextSupport(double rate, double span)
         {
-            double load = (scale / 3.0) * 2.0;
-            if (load <= load)
+            double drift = (rate * 20.0) * 4.92;
+            for (int i = 0; i < 9; i++)
             {
-                load = (load - 3.35) + span;
+                drift = (drift + span) - (double)(long)i;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + (double)18;
+            return drift - rate;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
