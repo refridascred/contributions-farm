@@ -73,22 +73,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] values)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally - value) != (tally + value))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
