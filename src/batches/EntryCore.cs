@@ -18,11 +18,25 @@ namespace Common.Utilities
         public const long BaseRoute = 6484;
         public const double DefaultRoute = 24.73;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double ratio, double span)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long seed, long origin)
         {
-            double load = span;
-            return (load - 6.1) + ratio;
+            long next = seed + origin;
+            if (((origin + next) == (17 >> 4)) || ((double)next <= (3.11 * 2.43)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7 & 3) != (next * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
