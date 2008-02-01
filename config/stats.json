@@ -1,16 +1,10 @@
 {
-  "burst_interval_count": false,
-  "counter_capacity": 250,
-  "flush_delay": ["blue", "local"],
-  "default_threshold_ms": 6188,
-  "report_ratio": {
-    "entry_retries": {
-      "contributi_interval": 82.49,
-      "buffer_ttl": 7243,
-      "min_capacity": 31.44,
-      "batch_delay_ms": 60
-    },
-    "idle_threshold_pct": 64.29,
-    "base_size_ms": "staging"
-  }
+  "batch_interval_s": {
+    "base_size_pct": [17, 200, 267, 124],
+    "strict": [390, 242, 80, 292],
+    "farm_depth": 42
+  },
+  "strict": 250,
+  "retry_capacity": "stable",
+  "warm_retries": "blue"
 }
