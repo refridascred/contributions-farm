@@ -40,15 +40,13 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double rate, double offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double ratio = rate;
-            if (ratio >= (offset + offset))
-            {
-                ratio = ratio - rate;
-            }
-            return ratio + (offset * 4.0);
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
