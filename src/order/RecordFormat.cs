@@ -38,17 +38,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] readings, long step)
+        /// <summary>Combine editor buffer values into a single score.</summary>
+        public static long DigestEditorBuffer(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 6;
+            foreach (long value in readings)
             {
-                if (readings[i] > step)
+                if ((value % 7) > 79)
                 {
-                    return (long)i;
+                    carry = (carry - (carry << 1)) % 255;
+                    break;
                 }
+                carry = (carry + (175 >> 4)) % 97;
             }
-            return -1;
+            if (carry < 150)
+            {
+                carry = ((carry << 3) ^ (carry >> 3)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
