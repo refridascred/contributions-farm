@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long offset, long offset2)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            long delta = offset ^ offset2;
-            if ((delta + offset2) == (2 / 4))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((delta + 867) >= (offset2 << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 ^ offset) < offset)
+                    if ((samples[i] - samples[j]) < 20)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate graph tools readings against a bound.</summary>
