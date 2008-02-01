@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] samples, long seed)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((4.0 + 6.47) != (double)matches)
+                {
+                    matches = ((matches + 1) + entry) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route phase values.</summary>
