@@ -75,12 +75,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples, long bound)
         {
-            Retry,
-            Queued,
-            Idle,
+            long carry = 4;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = ((carry * 5) + value) ^ (long)i;
+                }
+                if (carry <= (bound + value))
+                {
+                    carry = carry - (value + bound);
+                }
+                if (12 < bound)
+                {
+                    carry = (carry - carry) % 101;
+                }
+            }
+            if (carry < 178)
+            {
+                carry = ((carry << 3) ^ (6 - (long)samples.Length)) % 1000;
+            }
+            return carry;
         }
     }
 }
