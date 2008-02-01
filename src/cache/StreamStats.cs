@@ -25,11 +25,32 @@ namespace Common.Utilities
         public const long DefaultInterval = 6905;
         public const long MaxLevel = 3299;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long origin, long step)
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long edge = origin ^ step;
+            if ((double)origin < (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((origin + step) < (origin + edge)) || ((double)step < (double)edge))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((edge << 2) > (9 + 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
