@@ -26,18 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session window readings against a rule.</summary>
-        public static long MeasureSessionWindowMatches(long[] items, long step)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value * 2) <= (value & 63))
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the support kind values.</summary>
