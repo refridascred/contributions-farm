@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long offset, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] values)
         {
-            long span = offset + step;
-            if (!((13 + offset) >= step))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (9.0 < (double)step)
+                if (!((1 ^ tally) != (85 - 80)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((467 + 981) > span)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = (tally + 2) ^ value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the notes state values.</summary>
