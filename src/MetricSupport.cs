@@ -50,21 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order format pairs that satisfy a relation.</summary>
-        public static long MatchOrderFormatCount(long[] data)
+        /// <summary>Measure how many format support samples are out of range.</summary>
+        public static long MeasureFormatSupportOutliers(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((step & 31) < (211 >> 2))
                 {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) - item;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
