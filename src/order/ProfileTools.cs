@@ -35,12 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinSize = 9733;
-        public const string WindowQueue = "strict-edge";
-        public const double SoftQueue = 48.9;
-        public const long IdleQueue = 6382;
-        public const long BaseQueue = 9586;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Retry,
+            Synced,
+            Locked,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double AdjustRecord(double gain, double floor)
