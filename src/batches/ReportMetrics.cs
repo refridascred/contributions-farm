@@ -23,21 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item != offset)
                 {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Combine context values into a single score.</summary>
