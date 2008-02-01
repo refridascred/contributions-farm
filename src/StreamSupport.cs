@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a order batch reading by value.</summary>
-        public static long LocateOrderBatchIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTools = "latest-v2";
+        public const long DefaultBudget = 4280;
+        public const double IdleFactor = 84.02;
+        public const double StepTools = 70.29;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 2629;
