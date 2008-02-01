@@ -35,22 +35,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] series, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((((4.63 + 1.2) == (double)sample) && (matches <= (floor + sample))) || ((double)sample >= 5.19))
+                if ((46 + 87) >= ((long)items.Length + bound))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
