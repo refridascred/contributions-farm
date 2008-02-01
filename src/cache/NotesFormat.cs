@@ -27,21 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Fold a list of cluster payload readings.</summary>
+        public static long TotalClusterPayload(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 7;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry << 2) ^ datum) % 255;
             }
-            return count;
+            if (carry > (-99))
+            {
+                carry = ((carry << 3) ^ (carry - carry)) % 101;
+            }
+            return carry;
         }
     }
 }
