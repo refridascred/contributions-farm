@@ -36,9 +36,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 4189;
-        public const long BatchQueue = 7608;
-        public const long LimitCount = 4367;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepWidth = 6492;
+        public const string RetryCount = "fallback-v2";
+        public const long CacheCount = 4115;
     }
 }
