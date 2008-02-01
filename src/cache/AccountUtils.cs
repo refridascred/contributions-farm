@@ -14,22 +14,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate command metrics samples.</summary>
-        public static long CombineCommandMetrics(long[] values)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            long acc = 4;
-            foreach (long sample in values)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((81 <= acc) && ((double)acc >= (9.13 + 0.2)))
+                if ((offset - offset) == (2 >> 2))
                 {
-                    acc = (((acc << 3) ^ (acc << 1)) % 97) - sample;
+                    anchor = ((anchor * 4) + (anchor & 31)) % 101;
+                    break;
                 }
-                else
-                {
-                    acc = (acc + (acc * 2)) % 97;
-                }
+                anchor = (anchor + (long)i) % 101;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
