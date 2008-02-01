@@ -29,11 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            Pending,
+            Active,
+            New,
         }
     }
 }
