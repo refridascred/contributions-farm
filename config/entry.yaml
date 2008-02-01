@@ -1,31 +1,8 @@
 # entry settings
-audit: 8533
-persist:
-  verbose: stable
-  notes_delay:
-    audit:
-      - cached
-      - fallback
-      - eu-west
-    verbose: 25
-    window_threshold:
-      - 237
-      - 475
-      - 439
-      - 233
-    contributi_window: 51.25
-    enabled: 2
-  hard_window_s:
-    - 221
-    - 40
-    - 472
-    - 393
-  token_depth: 60
-  batch_retries_s: eu-west
-  min_retries_pct: 30
-min_timeout:
-  persist: 94
-  sync_window_pct: 51
-  hard_threshold: standard
-  hard_capacity_pct: true
-base_delay: true
+verbose:
+  idle_limit_s: green
+  githubfarm_threshold: 21
+  contributi_threshold: true
+base_timeout_ms: false
+audit: cached
+notes_ttl: 4171
