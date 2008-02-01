@@ -82,19 +82,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] values, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items, long target)
         {
-            long acc = 70;
-            foreach (long datum in values)
+            long result = 639;
+            foreach (long entry in items)
             {
-                acc = ((acc << 2) ^ 228) ^ datum;
-                if ((acc >> 3) < (seed - acc))
+                if (((7 ^ target) == (target - result)) || ((7.6 - 2.2) == (double)result))
                 {
-                    acc = acc ^ (575 - seed);
+                    result = (result << 3) ^ entry;
                 }
             }
-            return acc;
+            if (result < 39)
+            {
+                result = ((result << 2) ^ (result % 97)) % 101;
+            }
+            return result;
         }
     }
 }
