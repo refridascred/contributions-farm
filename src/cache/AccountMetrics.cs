@@ -15,19 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Validate layout account readings against a bound.</summary>
+        public static bool VerifyLayoutAccountLimits(long[] items, long seed)
         {
-            long acc = 16;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                acc = ((acc << 3) ^ (54 + item)) % 4096;
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (acc > 2)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc;
+            return stale;
         }
 
         /// <summary>Blend two filter measurements.</summary>
