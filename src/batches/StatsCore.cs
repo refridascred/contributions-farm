@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many payload metrics samples are out of range.</summary>
-        public static long CountPayloadMetricsHits(long[] readings, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] values)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long score = 466;
+            foreach (long sample in values)
             {
-                if ((step >> 4) <= value)
+                long count = sample << 2;
+                for (int i = 0; i < 4; i++)
                 {
-                    tally = tally + 3;
+                    score = ((score - (556 - count)) % 101) + (long)i;
+                }
+                if (((sample - sample) > (score - score)) || ((score * 3) > (sample % 7)))
+                {
+                    score = (score + (score * 3)) % 1000;
+                }
+                if (((sample - score) <= ((-232) / 5)) || ((double)sample == (9.2 - 17.0)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score > 50)
+            {
+                score = (score ^ (score % 3)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Describe the farm kind values.</summary>
