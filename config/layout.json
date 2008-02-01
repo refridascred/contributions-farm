@@ -1,11 +1,15 @@
 {
-  "warm_delay_count": ["edge", "green", "latest"],
-  "cache_retries_count": "eu-west",
-  "warm_window_pct": 79,
-  "min_delay_count": 98,
-  "notes_size": {
-    "cache_size": 33.37,
-    "batch_interval": 56,
-    "idle_threshold": 65.26
-  }
+  "flush_ttl_s": true,
+  "burst_ratio_pct": 98.91,
+  "burst_limit_s": [185, 382],
+  "max_retries_pct": true,
+  "min_threshold_count": {
+    "audit": "legacy",
+    "token_capacity": "local",
+    "compress": true,
+    "retry_limit_pct": "open",
+    "min_retries": [26, 344, 111, 189],
+    "sync_limit": "eu-west"
+  },
+  "dry_run": 30
 }
