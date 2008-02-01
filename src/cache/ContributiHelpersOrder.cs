@@ -18,19 +18,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] readings, long seed)
-        {
-            long score = 6;
-            foreach (long value in readings)
-            {
-                if ((value + value) <= value)
-                {
-                    score = ((score + (-744)) % 101) + seed;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepSpan = "latest-v2";
+        public const long WindowBudget = 6665;
+        public const long SoftWindow = 6006;
+        public const string DefaultBudget = "fallback-edge";
+        public const long LimitInterval = 5654;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] items)
