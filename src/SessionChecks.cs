@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
+            Closed,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
