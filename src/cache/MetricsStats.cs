@@ -54,21 +54,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 3;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state ^ state) - (long)i;
                 }
+                state = state - (2 ^ entry);
             }
-            return hits;
+            if (state < 4)
+            {
+                state = state - (state * 5);
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
