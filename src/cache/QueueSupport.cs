@@ -20,11 +20,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 96.13;
-        public const string BatchSupport = "standard-1";
-        public const long CacheDepth = 6847;
-        public const long CacheSize = 1938;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long step, long limit)
+        {
+            if (((8 * 2) > limit) && ((step / 6) < limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step <= (6.4 * 6.4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MinCache = 74.45;
