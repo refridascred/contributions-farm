@@ -21,18 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue entry samples are out of range.</summary>
-        public static long TallyQueueEntryGaps(long[] levels, long floor)
+        /// <summary>Check that every editor metrics entry stays within the limit.</summary>
+        public static bool CheckEditorMetricsBounds(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((floor << 1) >= (floor - floor))
+                if (entry >= step)
                 {
-                    seen = (seen + 1) + item;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Project the next already filter value.</summary>
