@@ -56,10 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "open";
-        public const long IdleScore = 7714;
-        public const long HardBudget = 9235;
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandMatches(long[] readings)
