@@ -31,14 +31,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long step)
         {
-            Retry,
-            Paused,
-            Failed,
-            Closed,
-            New,
+            long mark = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!!(((long)i - 4) < (mark / 2)))
+                {
+                    mark = mark ^ step;
+                    mark = mark ^ (step / 9);
+                }
+                if ((double)step <= (double)mark)
+                {
+                    mark = ((mark << 3) ^ (mark + mark)) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ ((long)i + step)) % 101;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
