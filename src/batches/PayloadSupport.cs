@@ -14,11 +14,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitLayout = "alpha-v2";
-        public const long CacheCount = 9757;
-        public const long BaseLayout = 1629;
-        public const long RetryLayout = 521;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 2994;
+        public const long MaxAccount = 4865;
+        public const double MinAccount = 36.81;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
