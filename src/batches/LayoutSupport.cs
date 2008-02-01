@@ -33,20 +33,17 @@ namespace Common.Utilities
             return ((rate + (double)5) + gain) + span;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] values, long bound)
+        /// <summary>Find the first checks record entry that matches the target.</summary>
+        public static long LookupChecksRecordIndex(long[] data, long bound)
         {
-            long acc = 266;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
                 {
-                    acc = ((((acc * 3) + (0 + acc)) % 97) ^ (long)i) + sample;
-                    acc = (acc + (-53)) % 65521;
+                    return (long)i;
                 }
-                acc = (acc * 2) + (bound << 2);
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
