@@ -75,18 +75,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] items, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((double)seen == (19.0 + 7.3)) || (((8 * 5) > (floor - floor)) && ((double)value > (9.5 - 20.0))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Done,
+            Closed,
+            Queued,
         }
     }
 }
