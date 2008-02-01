@@ -1,19 +1,8 @@
 # entry settings
-poll_ratio_s:
-  - 414
-  - 248
-  - 137
-  - 223
-strict: green
-hard_limit:
-  graph_depth: cached
-  stream_ttl: 34.05
-  base_ttl_pct:
-    warm_capacity_count: 18.81
-    githubfarm_timeout: false
-    counter_limit: 11
-    session_capacity: 36.63
-  sync_threshold_s: 356
-  stats_window: 21.88
-  strict: 250
-persist: 9380
+cache_ratio_count:
+  - 34
+  - 440
+  - 11
+poll_threshold: 36.01
+contributi_capacity: false
+poll_depth_pct: 82
