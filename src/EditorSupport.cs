@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Validate counter stats readings against a bound.</summary>
+        public static bool ValidateCounterStatsLimits(long[] samples, long origin)
         {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
