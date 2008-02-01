@@ -41,12 +41,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the window queue entries that pass the check.</summary>
+        public static long TallyWindowQueueGaps(long[] items)
         {
-            Paused,
-            Retry,
-            Locked,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((56 + datum) <= (datum & 255))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
