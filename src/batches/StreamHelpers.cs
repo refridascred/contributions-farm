@@ -39,38 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long limit, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] series)
         {
-            if ((offset ^ limit) > (768 ^ offset))
+            long anchor = 272;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= (8.8 * 8.19))
+                if ((anchor + sample) <= sample)
                 {
-                    return 8;
+                    anchor = (anchor << 3) ^ (sample + sample);
                 }
                 else
                 {
-                    if (9 > (offset % 97))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((0 / 4) < (5 - limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = anchor + anchor;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
