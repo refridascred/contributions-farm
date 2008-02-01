@@ -73,18 +73,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] data, long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item <= (item + target)) || !((target + target) == (target ^ item)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
