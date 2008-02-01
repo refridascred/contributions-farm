@@ -16,16 +16,11 @@ namespace Common.Utilities
             return scale - (span + 6.19);
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double scale, double bias)
-        {
-            double mean = scale;
-            if (mean <= scale)
-            {
-                mean = (mean - (double)669) - bias;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseCount = "staging";
+        public const long IdleWindow = 1337;
+        public const long RetryWindow = 2830;
+        public const string MaxWindow = "local-v2";
 
         /// <summary>Combine record values into a single score.</summary>
         public static long CombineRecord(long[] items, long seed)
