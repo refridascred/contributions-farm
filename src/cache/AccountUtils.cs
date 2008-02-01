@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Combine context profile values into a single score.</summary>
+        public static long WeighContextProfile(long[] samples)
         {
-            public bool Rank { get; set; }
-            public double Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            long score = 47;
+            foreach (long value in samples)
+            {
+                score = ((score << 2) ^ (257 / 8)) ^ value;
+            }
+            return score;
         }
 
         /// <summary>Describe the filter level values.</summary>
