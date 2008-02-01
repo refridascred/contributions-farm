@@ -23,27 +23,17 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] values, long floor)
         {
-            long acc = 4;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc ^ (acc - 74)) % 1000;
-                if (((3.2 * 0.42) <= (double)acc) || (8.0 > (double)datum))
+                if (values[i] >= floor)
                 {
-                    acc = (acc - (datum % 16)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (datum + datum)) % 101;
+                    return (long)i;
                 }
             }
-            if (acc < 6)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 65521;
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
