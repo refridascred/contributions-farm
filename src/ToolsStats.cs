@@ -87,16 +87,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = acc + (68 << 3);
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitInterval = 1848;
+        public const string BurstWidth = "staging-edge";
+        public const long MinFarm = 2447;
+        public const long SoftFarm = 3502;
     }
 }
