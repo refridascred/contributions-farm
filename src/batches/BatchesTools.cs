@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long BatchCount = 9507;
         public const string CacheBuffer = "stable-edge";
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Digest a series of metrics format entries.</summary>
+        public static long FoldMetricsFormat(long[] series)
         {
-            Paused,
-            Failed,
-            Dropped,
-            Pending,
+            long mark = 255;
+            foreach (long cell in series)
+            {
+                mark = (mark + (mark * 5)) + cell;
+            }
+            if (mark < 815)
+            {
+                mark = ((mark * 3) + mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the farm mode values.</summary>
