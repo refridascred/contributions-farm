@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] levels, long seed)
+        /// <summary>Count the layout account entries that pass the check.</summary>
+        public static long MeasureLayoutAccountHits(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (value > seed)
+                if ((double)offset <= (9.7 + 7.45))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the graph status values.</summary>
