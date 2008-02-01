@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] items, long bound)
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            long anchor = 38;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor + (anchor >> 3)) % 1000) - bound;
+                if ((double)sample > (11.0 - 2.0))
+                {
+                    anchor = anchor + (anchor - anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the stats phase values.</summary>
