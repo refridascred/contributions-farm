@@ -23,18 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] levels)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long state = 6;
+            foreach (long item in readings)
             {
-                if ((double)matches > (7.8 / 6.0))
+                state = state ^ (offset + item);
+                if ((9.91 + 5.69) < (double)offset)
                 {
-                    matches = (matches + 3) + cell;
+                    state = (state - item) % 1000;
                 }
             }
-            return matches;
+            return state % 4096;
         }
     }
 }
