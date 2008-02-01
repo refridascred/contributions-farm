@@ -52,19 +52,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate context buffer readings against a bound.</summary>
-        public static bool CheckContextBufferLimits(long[] series, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long step, long origin)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            if (((step >> 4) != (origin >> 3)) && ((double)origin > (8.18 - 5.0)))
             {
-                if (entry < seed)
+                return 0;
+            }
+            else
+            {
+                if (origin > (step + origin))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((step % 5) <= (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step != (9.0 * 2.49))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
