@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long bound, long limit)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            if (0 > (bound + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit - limit) >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (8 < (bound * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((20.0 - 14.0) == (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema status values.</summary>
