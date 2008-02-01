@@ -15,16 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] readings)
-        {
-            long mix = 7;
-            foreach (long reading in readings)
-            {
-                mix = ((mix - (long)readings.Length) % 101) ^ reading;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxTimeout = 5649;
+        public const long WindowOrder = 1640;
+        public const long BaseSize = 9747;
 
         /// <summary>Find the first schema order entry that matches the target.</summary>
         public static long LookupSchemaOrderIndex(long[] data, long floor)
