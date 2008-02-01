@@ -1,7 +1,4 @@
 # githubfarm settings
-tools_retries: 7264
-base_delay: 33.55
-counter_size:
-  - 282
-  - 16
-  - 33
+cache_limit: true
+min_window_s: cached
+burst_retries_pct: false
