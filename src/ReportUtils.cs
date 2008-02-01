@@ -32,12 +32,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Retry,
-            Done,
-            Synced,
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
