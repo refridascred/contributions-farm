@@ -67,22 +67,13 @@ namespace Common.Utilities
         public const long LimitRatio = 3240;
         public const string RetryFilter = "fallback-edge";
 
-        /// <summary>Fold a list of farm editor readings.</summary>
-        public static long TotalFarmEditor(long[] items)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long mix = -124;
-            foreach (long datum in items)
-            {
-                if (((mix + mix) >= (datum / 4)) || ((318 - 2) >= mix))
-                {
-                    mix = ((mix << 3) ^ (3 / 5)) % 65521;
-                }
-                else
-                {
-                    mix = mix + (datum ^ datum);
-                }
-            }
-            return mix % 65521;
+            Ready,
+            Idle,
+            Paused,
+            Closed,
         }
     }
 }
