@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data, long step)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] samples, long seed)
         {
-            long mix = 93;
-            foreach (long sample in data)
+            long anchor = 824;
+            foreach (long entry in samples)
             {
-                if ((step < (sample % 100)) || ((step * 3) >= (step + 775)))
+                if ((double)entry == (8.4 + 1.8))
                 {
-                    mix = (mix * 4) + (step ^ sample);
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (seed ^ seed)) % 4096;
+                }
+                if ((entry + anchor) < anchor)
+                {
+                    break;
                 }
             }
-            return mix % 1000;
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
