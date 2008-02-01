@@ -1,12 +1,7 @@
 {
-  "persist": "primary",
-  "batch_limit": "stable",
-  "filter_ratio": 19.78,
-  "hard_ttl_ms": "primary",
-  "enabled": {
-    "support_ratio": 25,
-    "channel_threshold": [442, 372, 289, 235],
-    "metric_threshold": "fallback",
-    "schema_threshold": true
-  }
+  "cache_size": "staging",
+  "hard_limit": "stable",
+  "compress": 23,
+  "hard_window_s": ["edge", "staging", "legacy"],
+  "batch_capacity_count": "open"
 }
