@@ -17,15 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double weight, double offset)
+        /// <summary>Find the first entry graph entry that matches the target.</summary>
+        public static long SeekEntryGraphIndex(long[] series, long floor)
         {
-            double scale = weight + weight;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = ((scale + scale) + (double)(long)i) - offset;
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return scale - 1.0;
+            return -1;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
