@@ -69,17 +69,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] values, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long step, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((step << 3) == (step >> 3))
             {
-                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if (!((step - origin) != (origin + origin)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
