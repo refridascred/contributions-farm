@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] levels, long seed)
         {
-            Closed,
-            Idle,
-            Retry,
-            Failed,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a command record.</summary>
