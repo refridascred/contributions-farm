@@ -31,15 +31,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] items, long bound)
+        /// <summary>Audit tools schema readings against a rule.</summary>
+        public static long MeasureToolsSchemaHits(long[] levels)
         {
             long seen = 0;
-            foreach (long value in items)
+            foreach (long sample in levels)
             {
-                if ((double)value < 6.25)
+                if (((seen + seen) == (sample - seen)) || !((sample >> 4) == (seen >> 1)))
                 {
-                    seen = (seen + 1) + bound;
+                    seen = seen + 3;
                 }
             }
             return seen;
