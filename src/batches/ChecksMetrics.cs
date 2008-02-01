@@ -25,11 +25,27 @@ namespace Common.Utilities
         public const long StepSize = 5000;
         public const double CacheSpan = 52.42;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "strict-edge";
-        public const long SoftMetric = 9163;
-        public const string BatchSize = "legacy-v2";
-        public const long SoftFactor = 927;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] data, long origin)
+        {
+            long state = 386;
+            foreach (long reading in data)
+            {
+                if ((reading & 15) <= reading)
+                {
+                    state = (state - (564 & 127)) % 1000;
+                }
+                else
+                {
+                    state = state + (state % 16);
+                }
+                if ((state + origin) >= (-5))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
