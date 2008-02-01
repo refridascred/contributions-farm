@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] data, long floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (floor < (floor % 2))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Draft,
+            Synced,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
