@@ -16,13 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the context route entries that pass the check.</summary>
+        public static long TallyContextRouteMatches(long[] data)
         {
-            Paused,
-            Draft,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample == (6.9 - 15.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
