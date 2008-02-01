@@ -67,20 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((anchor + anchor) > (anchor >> 5)) || (seed > 5))
-                {
-                    anchor = anchor + anchor;
-                }
-                anchor = ((anchor * 5) + (anchor * 4)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Stale,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Adjust a batch reading.</summary>
