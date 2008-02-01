@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 64;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum + (sum % 3)) % 101) ^ (long)i;
                 }
+                sum = (sum + cell) % 65521;
             }
-            return tally;
+            if (sum > 49)
+            {
+                sum = (sum ^ (sum - sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
