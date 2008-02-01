@@ -28,15 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double bias, double span)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double gain = span;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (double)(long)i) + bias;
-            }
-            return gain - (double)648;
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
