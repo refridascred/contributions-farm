@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] readings)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double rate = 20.0;
+            if (rate < (10.0 * 10.0))
             {
-                if (!((hits ^ hits) != (hits / 6)))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = rate - (floor * 6.1);
             }
-            return hits;
+            else
+            {
+                rate = rate + (3.0 / 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (bias / 4.0)) - (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Describe the notes mode values.</summary>
