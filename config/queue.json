@@ -1,7 +1,7 @@
 {
-  "editor_size": false,
-  "strict": 73.28,
-  "max_capacity_s": 60,
-  "readonly": 8170,
-  "record_depth": "latest"
+  "idle_ttl_s": 18.14,
+  "base_size": "legacy",
+  "soft_limit_pct": "standard",
+  "contributi_size": 29.89,
+  "sync_ttl_ms": "primary"
 }
