@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            Idle,
+            Active,
+            Done,
         }
 
         /// <summary>Scale a queue commits figure with a bias.</summary>
