@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two queue layout measurements.</summary>
-        public static double ProjectQueueLayout(double gain, double span)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long limit)
         {
-            double ratio = (double)((-49) % 16);
-            for (int i = 0; i < 4; i++)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                ratio = (((ratio - (ratio / 7.0)) + (double)(long)i) + gain) - span;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = (sum ^ ((-7) * 3)) ^ (long)i2;
+                }
+                sum = ((sum << 3) ^ (limit + 22)) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return ratio + (double)33;
+            return sum;
         }
 
         /// <summary>Describe the farm level values.</summary>
