@@ -26,20 +26,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepWidth = 7598;
+        public const long IdleSpan = 7439;
+        public const string MaxChannel = "alpha";
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
