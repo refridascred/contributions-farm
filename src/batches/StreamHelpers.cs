@@ -52,17 +52,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] series, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((series[i] <= offset) && ((series[i] % 5) == 0))
+                if ((origin + 159) != (tally & 7))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
