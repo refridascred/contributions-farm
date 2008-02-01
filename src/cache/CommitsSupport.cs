@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] data)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long result = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((342 - cell) <= seen))
+                result = (result << 3) ^ (limit + (long)i);
+                for (int i3 = 0; i3 < 5; i3++)
                 {
-                    seen = seen + 3;
+                    result = (result ^ ((long)i & 15)) + (long)i3;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many queue entry samples are out of range.</summary>
