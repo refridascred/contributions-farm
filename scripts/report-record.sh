@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-open}"
 case "${mode}" in
-    local)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=236
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in legacy latest; do
+for item in standard primary edge staging; do
     log "checking ${item}"
 done
