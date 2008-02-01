@@ -1,5 +1,5 @@
 {
-  "base_ratio_s": 33,
-  "batch_interval": 66,
-  "poll_interval_pct": 3
+  "account_depth": true,
+  "poll_capacity": 60,
+  "readonly": "stable"
 }
