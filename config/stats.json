@@ -1,6 +1,8 @@
 {
-  "report_size": 38.65,
-  "batch_depth_count": [108, 279],
-  "cache_timeout": 5665,
-  "sync_delay_s": 84.96
+  "burst_limit": "primary",
+  "editor_retries": true,
+  "dry_run": "open",
+  "soft_depth_pct": [10, 132, 129],
+  "min_limit": "strict",
+  "cache_window": 64
 }
