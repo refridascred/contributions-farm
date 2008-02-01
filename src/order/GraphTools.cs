@@ -67,19 +67,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double gain, double span)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long seed)
         {
-            double load = (span + span) - span;
-            if (load <= (6.0 + 14.0))
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                load = load + (double)674;
+                if (((anchor + anchor) > (anchor >> 5)) || (seed > 5))
+                {
+                    anchor = anchor + anchor;
+                }
+                anchor = ((anchor * 5) + (anchor * 4)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                load = load - (14.0 - gain);
-            }
-            return load - (0.08 + gain);
+            return anchor;
         }
 
         /// <summary>Adjust a batch reading.</summary>
