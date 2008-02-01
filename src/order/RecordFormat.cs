@@ -27,11 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] items, long seed)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
