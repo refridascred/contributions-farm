@@ -45,18 +45,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] data)
+        /// <summary>Measure how many stream filter samples are out of range.</summary>
+        public static long TallyStreamFilterOutliers(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((0.09 * 5.93) < (double)datum)
+                if ((1 - matches) <= sample)
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) + limit;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a tools header.</summary>
