@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels, long bound)
+        /// <summary>Compare every pair of order command readings.</summary>
+        public static long CompareOrderCommandCount(long[] items)
         {
-            long state = 122;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + (value + 12)) % 65521;
-                if ((double)state <= (8.6 * 4.91))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state * 5) + (state + bound)) % 1000;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 4) + (value % 8)) % 1000;
             }
-            if (state < 3)
-            {
-                state = state ^ 4;
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Hold a account info.</summary>
