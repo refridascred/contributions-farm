@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Validate counter tools readings against a bound.</summary>
+        public static bool CheckCounterToolsRange(long[] values, long seed)
         {
-            long state = 831;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((datum + state) < (state - state))
+                if (sample > seed)
                 {
-                    state = ((state * 5) + (7 - datum)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return flag;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
