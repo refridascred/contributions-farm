@@ -19,15 +19,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Grade a channel format value against two limits.</summary>
+        public static long GradeChannelFormat(long floor, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long prev = floor - target;
+            if ((target > prev) && ((536 / 9) <= prev))
             {
-                result = ((result * 4) + (long)i) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (((floor % 8) >= (7 << 1)) || ((floor - floor) > prev))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((11.0 + 7.0) >= (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor > (prev * 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
