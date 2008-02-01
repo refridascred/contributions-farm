@@ -37,13 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] items, long origin)
         {
-            Idle,
-            Stale,
-            Paused,
-            Ready,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((19.0 - 2.11) <= (double)tally) && (tally > sample))
+                {
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
