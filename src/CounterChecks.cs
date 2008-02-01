@@ -70,22 +70,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values, long limit)
+        /// <summary>Look up the position of a layout batches sample.</summary>
+        public static long LookupLayoutBatchesIndex(long[] levels, long step)
         {
-            long mark = 673;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit + entry) <= (mark + mark))
+                if (levels[i] <= step)
                 {
-                    mark = (mark + entry) % 101;
+                    return (long)i;
                 }
             }
-            if (mark < 767)
-            {
-                mark = (mark - (4 + limit)) % 97;
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
