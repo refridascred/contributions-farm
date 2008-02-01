@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long limit, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if (limit <= (floor << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor % 10) >= 833) && ((double)limit <= (11.0 - 11.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (6.7 > (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
