@@ -20,18 +20,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] readings)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)hits <= (3.0 * 9.5))
+                mark = ((mark * 5) + mark) % 1000;
+                if ((long)i >= offset)
                 {
-                    hits = (hits + 3) + item;
+                    mark = ((mark * 5) + 943) % 1000;
+                    mark = (mark ^ mark) % 1000;
                 }
+                else
+                {
+                    long gap = mark;
+                    mark = ((mark << 2) ^ (offset - gap)) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
