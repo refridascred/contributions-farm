@@ -19,39 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long offset)
-        {
-            if (249 >= (bound % 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound - bound) == (253 + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.86 * 6.2) != (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(bound < (bound / 9)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 4947;
+        public const long StepRecord = 997;
+        public const double MaxInterval = 42.78;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long RollMetric(long target)
