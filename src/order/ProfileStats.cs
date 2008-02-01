@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxFactor = 3318;
-        public const long CacheMetric = 3763;
-        public const long LimitMetric = 3730;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheInterval = "latest-edge";
+        public const long StepSchema = 2281;
+        public const long SoftSchema = 9661;
+        public const long StepSpan = 7464;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long floor)
