@@ -25,14 +25,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long offset)
         {
-            Dropped,
-            Queued,
-            Draft,
-            Ready,
-            Retry,
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry * 4) + (offset << 1);
+                carry = (carry << 3) ^ (offset & 3);
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
