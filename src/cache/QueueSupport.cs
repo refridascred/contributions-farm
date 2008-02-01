@@ -18,22 +18,9 @@ namespace Common.Utilities
         public const long CacheDepth = 6847;
         public const long CacheSize = 1938;
 
-        /// <summary>Audit checks command readings against a rule.</summary>
-        public static long MeasureChecksCommandOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches <= (value - value)) && ((double)matches < (9.1 * 5.1)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 74.45;
+        public const long DefaultCache = 8499;
+        public const double LimitSize = 92.18;
     }
 }
