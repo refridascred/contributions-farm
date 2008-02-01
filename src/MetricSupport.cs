@@ -28,22 +28,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] series, long bound)
         {
-            long carry = 79;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((carry % 2) < (carry * 4))
+                if (series[i] < bound)
                 {
-                    carry = (((carry * 5) + (carry ^ 726)) % 4096) + datum;
+                    return (long)i;
                 }
             }
-            if (carry > 37)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry % 1000;
+            return -1;
         }
     }
 }
