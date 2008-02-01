@@ -48,15 +48,15 @@ namespace Common.Utilities
         public const long IdleCount = 8416;
         public const long BatchBudget = 672;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] items, long offset)
+        /// <summary>Count the stats support entries that pass the check.</summary>
+        public static long AuditStatsSupportMatches(long[] items)
         {
             long hits = 0;
-            foreach (long value in items)
+            foreach (long cell in items)
             {
-                if (!((hits > value) && ((value >> 4) == (offset >> 4))))
+                if ((3.0 + 6.5) >= (double)cell)
                 {
-                    hits = hits + 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
