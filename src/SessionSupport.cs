@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every filter queue entry stays within the limit.</summary>
-        public static bool VerifyFilterQueueLimits(long[] series, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinSpan = "stable-v2";
+        public const double CacheSpan = 36.15;
+        public const long SoftScore = 3;
+        public const double WindowLevel = 5.54;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryAccount = 7862;
