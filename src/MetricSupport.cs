@@ -13,10 +13,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "alpha";
-        public const double RetryLevel = 12.77;
-        public const long BatchBuffer = 7620;
+        /// <summary>Project the next record editor value.</summary>
+        public static double BlendRecordEditor(double ratio, double span)
+        {
+            double mean = ratio;
+            return (mean - (mean * 6.43)) + span;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long ScoreSchema(long[] levels)
