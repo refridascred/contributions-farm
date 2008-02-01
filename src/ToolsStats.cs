@@ -66,11 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 10.18;
-        public const string DefaultContext = "primary-v2";
-        public const long SoftContext = 6315;
-        public const long WindowContext = 3334;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
