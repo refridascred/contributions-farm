@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchTimeout = 39.71;
-        public const long IdleReport = 7908;
-        public const long LimitBudget = 2890;
-        public const double StepReport = 90.93;
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long CompareBufferCount(long[] data)
