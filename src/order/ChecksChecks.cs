@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first context batch entry that matches the target.</summary>
-        public static long LookupContextBatchIndex(long[] samples, long bound)
+        /// <summary>Validate already farm readings against a bound.</summary>
+        public static bool GuardAlreadyFarmLimits(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                if (entry != limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
