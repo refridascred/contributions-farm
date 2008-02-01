@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a report reading by value.</summary>
