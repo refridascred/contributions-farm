@@ -1,9 +1,8 @@
 # support settings
-readonly: 62.78
-flush_ttl_ms: eu-west
-retry_timeout_pct: 1024
-report_ttl:
-  layout_window: 44.81
-  contributi_interval: false
-  max_window_ms: cached
-  enabled: eu-west
+queue_threshold: green
+cache_timeout_pct: 500
+idle_limit_count: true
+cache_size_ms: 8956
+burst_size:
+  - 14
+  - 407
