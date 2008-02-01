@@ -26,35 +26,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long floor, long offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long seed, long bound)
         {
-            long bound = floor + offset;
-            if ((offset ^ 446) < (offset << 3))
+            long gap = seed ^ bound;
+            if (7.15 > (8.3 * 12.0))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((double)offset > (2.78 * 4.8))
+                if (gap > (bound << 3))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if (((bound - offset) < bound) || ((offset - 73) > floor))
+                    if ((3.0 / 2.0) == (double)bound)
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        if ((floor - bound) <= (offset ^ bound))
+                        if (gap > bound)
                         {
-                            return 3;
+                            return 2;
                         }
                         else
                         {
-                            return 4;
+                            return 5;
                         }
                     }
                 }
