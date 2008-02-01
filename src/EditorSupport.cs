@@ -52,11 +52,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Check that every queue metrics entry stays within the limit.</summary>
+        public static bool GuardQueueMetricsBounds(long[] series, long limit)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a profile reading.</summary>
