@@ -1,25 +1,7 @@
 {
-  "burst_capacity": "latest",
-  "burst_window": 37,
-  "soft_ttl": {
-    "cache_ttl": [394, 291, 97, 235],
-    "max_ratio_pct": {
-      "retry_retries_ms": 3.16,
-      "checks_timeout": true,
-      "dry_run": 16.32,
-      "poll_capacity": 33.98,
-      "sync_delay_count": "staging",
-      "sync_retries_ms": "standard"
-    },
-    "compress": {
-      "base_interval_pct": ["edge", "standard", "standard", "blue"],
-      "warm_interval_pct": "open",
-      "persist": 38.38,
-      "audit": "staging",
-      "sync_retries": "blue",
-      "layout_limit": "fallback"
-    },
-    "channel_depth": false
-  },
-  "graph_ratio": false
+  "default_size_s": "stable",
+  "strict": "open",
+  "metric_limit": 89,
+  "dry_run": false,
+  "metrics_ttl": 8565
 }
