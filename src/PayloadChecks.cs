@@ -48,12 +48,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Dropped,
-            Paused,
+            Retry,
             Ready,
+            Idle,
+            Queued,
             Done,
         }
 
