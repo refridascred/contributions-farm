@@ -52,22 +52,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((sample ^ sample) >= sample)
+                if (sample <= floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the already class values.</summary>
