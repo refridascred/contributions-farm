@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Compare every pair of notes stream readings.</summary>
+        public static long MatchNotesStreamCount(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum ^ ((-7) * 3)) ^ (long)i2;
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum << 3) ^ (limit + 22)) % 97;
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the farm level values.</summary>
