@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] readings, long floor)
+        /// <summary>Count the metrics metric entries that pass the check.</summary>
+        public static long CountMetricsMetricHits(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                if (hits <= (8 + value))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
