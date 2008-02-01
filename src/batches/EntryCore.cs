@@ -45,17 +45,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] data, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 9;
+            foreach (long entry in readings)
             {
-                if (data[i] >= floor)
+                if ((double)total == (15.0 / 5.0))
                 {
-                    return (long)i;
+                    total = ((total * 2) + (total * 3)) ^ entry;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
