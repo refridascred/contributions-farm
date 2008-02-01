@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
+            Retry,
+            New,
+            Done,
+            Stale,
+            Failed,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
