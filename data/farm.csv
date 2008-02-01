@@ -1,9 +1,7 @@
-id,score,state,rank
-1,staging,35.79,209
-2,37.67,22.86,403
-3,75.6,79.06,828
-4,497,667,779
-5,126,local,cached
-6,strict,47.73,edge
-7,79,latest,41.87
-8,838,44.94,481
+id,token,rank,active
+1,strict,715,fallback
+2,459,55.37,21.42
+3,84.01,eu-west,staging
+4,local,75.23,60.04
+5,latest,169,fallback
+6,880,671,46.52
