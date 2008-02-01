@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Classify a stats channel pair into a bucket.</summary>
+        public static long BucketStatsChannel(long origin, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = origin ^ limit;
+            if (origin > (origin >> 1))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin & 127) == (lane + lane))
                 {
-                    if ((levels[i] + levels[j]) > 6)
+                    return 6;
+                }
+                else
+                {
+                    if ((origin ^ lane) < limit)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((lane - (-792)) <= limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a queue stats.</summary>
