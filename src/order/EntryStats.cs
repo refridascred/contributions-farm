@@ -57,25 +57,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long seed, long target)
+        /// <summary>Count the cluster farm entries that pass the check.</summary>
+        public static long TallyClusterFarmGaps(long[] readings, long offset)
         {
-            long lane = seed + target;
-            if ((double)lane <= (double)90)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((lane / 3) != (lane - lane))
+                if ((offset + (long)readings.Length) >= (hits / 7))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 3) - datum;
                 }
             }
+            return hits;
         }
     }
 }
