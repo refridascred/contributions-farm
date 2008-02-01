@@ -27,16 +27,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = mark + (mark >> 5);
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Draft,
+            Pending,
+            Dropped,
+            Closed,
+            Stale,
         }
     }
 }
