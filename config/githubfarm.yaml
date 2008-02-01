@@ -1,35 +1,30 @@
 # githubfarm settings
-strict: 86
-contributi_timeout:
-  - strict
-  - primary
-  - open
-persist:
-  soft_interval_s: 9263
+default_retries_ms:
+  warm_retries: staging
+  base_delay_ms: 3
+  min_retries: latest
+  readonly: eu-west
+buffer_window: true
+hard_ttl_pct:
+  batch_size: 32.7
+  farm_size:
+    default_interval_pct: primary
+    base_size_s: 19.07
+    min_ratio_count: staging
+    flush_depth: false
   persist:
-    - local
-    - edge
-  base_window_pct:
-    window_threshold: staging
-    idle_depth_count: 30
-    payload_capacity: 30
-    soft_limit:
-      - cached
-      - strict
-    strict: 64.8
-    metrics_size: local
-  context_interval: 46
-audit: 100
-max_window_count:
-  idle_ttl_pct: stable
-  notes_delay: 5131
-  farm_ratio: true
-  default_ratio: green
-  verbose:
-    stats_ttl: 31.69
-    strict: eu-west
-    soft_limit_count: false
-    batch_window: 83.54
-graph_depth:
-  - local
-  - blue
+    - 378
+    - 371
+  poll_threshold_pct: standard
+  burst_ttl: 30
+layout_capacity: 4559
+base_timeout:
+  - 35
+  - 9
+  - 440
+  - 81
+batch_depth_pct:
+  - 134
+  - 477
+  - 378
+  - 327
