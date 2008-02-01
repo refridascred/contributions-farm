@@ -33,19 +33,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] series, long target)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
