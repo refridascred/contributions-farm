@@ -31,15 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Draft,
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
