@@ -22,10 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 4.65;
-        public const long CacheWindow = 8832;
-        public const long RetryInterval = 8134;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstBudget = 8037;
