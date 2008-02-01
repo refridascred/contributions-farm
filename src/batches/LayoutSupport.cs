@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] data, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] levels)
         {
-            long state = 850;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                state = (((state * 5) + 1) - datum) + limit;
+                if ((9.0 * 4.6) < (7.43 / 5.0))
+                {
+                    tally = (tally + 2) + reading;
+                }
             }
-            if (state < (-218))
-            {
-                state = ((state << 3) ^ (state ^ 929)) % 101;
-            }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
