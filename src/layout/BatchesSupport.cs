@@ -82,5 +82,20 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
