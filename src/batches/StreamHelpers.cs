@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((long)i % 10) != (long)i)
-                {
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseRatio = 6720;
+        public const string BurstDepth = "strict-v2";
+        public const long BatchDepth = 5025;
+        public const string BaseEditor = "strict-1";
+        public const long BatchEditor = 7852;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long limit, long offset)
