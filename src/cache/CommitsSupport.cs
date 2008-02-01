@@ -26,39 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long seed, long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double weight, double span)
         {
-            long gap = seed ^ bound;
-            if (7.15 > (8.3 * 12.0))
+            double load = span / 5.0;
+            if (load < (double)52)
             {
-                return 7;
+                load = (load + (16.0 / 7.0)) - weight;
             }
             else
             {
-                if (gap > (bound << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.0 / 2.0) == (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (gap > bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                load = load - (load / 2.0);
             }
+            return load + (double)73;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
