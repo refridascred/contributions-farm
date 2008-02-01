@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double scale, double span)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double weight = scale * 14.0;
-            if (weight < (double)97)
-            {
-                weight = weight - span;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + 9.2;
+            Closed,
+            Failed,
+            Queued,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
