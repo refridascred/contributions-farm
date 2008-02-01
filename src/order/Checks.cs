@@ -23,15 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] samples, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long score = 74;
+            foreach (long cell in samples)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (((39 ^ cell) < (cell + score)) || ((4 + score) < score))
+                {
+                    score = (score ^ (538 + (long)samples.Length)) + offset;
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
