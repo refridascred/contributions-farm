@@ -53,19 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples)
-        {
-            long state = 91;
-            foreach (long entry in samples)
-            {
-                if ((entry * 4) >= (9 % 12))
-                {
-                    state = (state - state) % 101;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 1179;
+        public const long BaseTimeout = 3935;
+        public const double IdleCount = 36.26;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
