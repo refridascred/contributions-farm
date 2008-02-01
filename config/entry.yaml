@@ -1,16 +1,18 @@
 # entry settings
-cache_window_pct: 75
-hard_threshold_pct: true
-persist: legacy
-readonly:
-  sync_window: legacy
-  queue_capacity: 44.0
-  batch_timeout:
-    cluster_ttl:
-      - cached
-      - primary
-      - edge
-    context_ttl: 60
-    base_retries_count: 0.85
-    hard_retries_pct: true
-    retry_ttl: primary
+burst_retries:
+  retry_capacity: 1
+  route_ratio: stable
+  burst_limit_count:
+    - 74
+    - 305
+    - 26
+    - 466
+  hard_delay_s: 3.63
+hard_retries_pct:
+  - 231
+  - 289
+  - 249
+warm_limit_s: stable
+min_retries_s: 500
+poll_ratio: 83.25
+dry_run: true
