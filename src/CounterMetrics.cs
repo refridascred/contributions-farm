@@ -38,13 +38,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
             public long Flag { get; set; }
-            public long Region { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
