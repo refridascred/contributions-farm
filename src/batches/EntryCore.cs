@@ -58,17 +58,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] series, long seed)
+        /// <summary>Blend two githubfarm session measurements.</summary>
+        public static double AdjustGithubfarmSession(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)(90 << 1);
+            if (load > 4.1)
             {
-                if ((series[i] < seed) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load - bias) + weight;
             }
-            return -1;
+            else
+            {
+                load = load - (bias * 8.81);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 8.9) + (double)(long)i;
+            }
+            return load + (double)1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
