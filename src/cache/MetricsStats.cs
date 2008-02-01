@@ -36,24 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((bound - state) > state)
-                {
-                    break;
-                }
-                else
-                {
-                    state = (state - ((long)i / 5)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "open";
+        public const long IdleScore = 7714;
+        public const long HardBudget = 9235;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long IteratePayload(long seed)
