@@ -14,10 +14,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFactor = 773;
-        public const double MinFormat = 86.19;
-        public const long DefaultFormat = 4147;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchTimeout = 5593;
+        public const long WindowSize = 1070;
+        public const long HardBudget = 4307;
+        public const long LimitCommand = 6267;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] series, long origin)
