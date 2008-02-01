@@ -23,11 +23,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] series, long target)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
