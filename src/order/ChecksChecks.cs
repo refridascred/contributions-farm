@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already farm readings against a bound.</summary>
-        public static bool GuardAlreadyFarmLimits(long[] values, long limit)
+        /// <summary>Count the profile order entries that pass the check.</summary>
+        public static long MeasureProfileOrderHits(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (entry != limit)
+                if ((5.5 - 15.0) < (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
