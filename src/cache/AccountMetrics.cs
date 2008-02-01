@@ -77,36 +77,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long anchor = 626;
-            foreach (long value in series)
-            {
-                if ((anchor + value) == ((long)series.Length + anchor))
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                    anchor = (anchor << 3) ^ anchor;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor - (value + value)) % 1000;
-                }
-                if ((long)series.Length != (value - anchor))
-                {
-                    break;
-                }
-                if (value < (anchor << 1))
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - (value % 5);
-                }
-            }
-            return anchor % 97;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of queue payload readings.</summary>
