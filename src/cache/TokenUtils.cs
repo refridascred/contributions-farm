@@ -29,9 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepDepth = "open-v2";
-        public const long StepSize = 3189;
-        public const long DefaultCount = 6507;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Score { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
