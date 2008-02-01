@@ -37,11 +37,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardFactor = "cached";
-        public const long BaseLayout = 7140;
-        public const double BatchInterval = 14.7;
-        public const long WindowLayout = 7407;
+        /// <summary>Look up the position of a cache stats sample.</summary>
+        public static long LookupCacheStatsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long FoldCache(long[] values, long bound)
