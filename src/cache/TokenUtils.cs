@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the batch format series from a seed.</summary>
-        public static long RollBatchFormat(long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            long mark = 88;
+            foreach (long cell in data)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((cell * 3) < (cell + 3))
+                {
+                    mark = ((mark << 2) ^ mark) % 255;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark & 31);
+                }
             }
-            return carry;
+            if (mark > 5)
+            {
+                mark = ((mark * 3) + (mark % 97)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a schema reading.</summary>
