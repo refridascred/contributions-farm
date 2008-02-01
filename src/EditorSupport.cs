@@ -38,14 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] samples)
         {
-            Queued,
-            Pending,
-            Active,
-            Failed,
-            Locked,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading - (-97)) <= hits) || (((double)hits >= (0.91 - 9.0)) && ((hits - reading) > (reading - hits))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
