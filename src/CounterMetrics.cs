@@ -40,18 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats window entries that pass the check.</summary>
-        public static long MeasureStatsWindowOutliers(long[] values, long step)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((-8) & 7) <= (sample * 3))
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
