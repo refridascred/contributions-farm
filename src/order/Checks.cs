@@ -37,38 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long floor, long limit)
+        /// <summary>Audit account metrics readings against a rule.</summary>
+        public static long AuditAccountMetricsGaps(long[] series)
         {
-            if ((3.08 - 6.0) > (double)limit)
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - limit) > (limit + limit))
+                if (tally > item)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((-3) <= (floor >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor - limit) > (84 >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
