@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long HardInterval = 3882;
         public const long SoftInterval = 9456;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowTimeout = 1239;
-        public const long CacheRatio = 4349;
-        public const string SoftGithubfarm = "fallback-edge";
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double rate, double offset)
