@@ -1,6 +1,6 @@
 # support settings
-warm_depth: true
-flush_delay: 93
-min_window_ms: 74.16
-min_ratio: 30
-sync_depth_s: 11.49
+max_window: false
+default_ratio_pct: edge
+strict: 22
+poll_ratio: true
+account_window: 19
