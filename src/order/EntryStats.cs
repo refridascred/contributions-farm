@@ -19,13 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            Stale,
-            Failed,
-            Retry,
-            Closed,
+            long score = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score - (score % 60)) % 65521;
+                if (!((score + score) == ((long)i & 3)))
+                {
+                    break;
+                }
+                else
+                {
+                    score = ((score << 2) ^ ((long)i + 1)) % 4096;
+                    score = score + ((long)i - score);
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Audit route command readings against a rule.</summary>
