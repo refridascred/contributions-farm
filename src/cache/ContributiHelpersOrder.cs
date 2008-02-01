@@ -36,9 +36,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepWidth = 6492;
-        public const string RetryCount = "fallback-v2";
-        public const long CacheCount = 4115;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor * 5) + (anchor + anchor);
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
