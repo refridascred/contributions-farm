@@ -51,13 +51,12 @@ namespace Common.Utilities
         public const long BatchBatches = 4504;
         public const long BaseBatches = 2590;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseSpan = 50.73;
+        public const long RetryCache = 9725;
+        public const long BatchCache = 7276;
+        public const long StepCache = 7812;
+        public const long MaxDepth = 6281;
 
         /// <summary>Locate a batches channel reading by value.</summary>
         public static long FindBatchesChannelIndex(long[] samples, long bound)
