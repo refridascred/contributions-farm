@@ -40,31 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long origin, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] samples)
         {
-            if ((double)origin < (double)4)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin < (offset ^ origin))
+                if ((tally >> 5) < (tally / 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((origin ^ origin) > (origin >> 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = (tally + 2) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
