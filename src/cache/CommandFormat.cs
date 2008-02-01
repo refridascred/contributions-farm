@@ -31,17 +31,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long target)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
