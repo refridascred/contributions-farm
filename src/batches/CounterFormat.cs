@@ -31,11 +31,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultTimeout = 2641;
-        public const string IdleChecks = "alpha-v2";
-        public const double BaseChecks = 80.52;
-        public const long BaseInterval = 3534;
-        public const long WindowWidth = 6443;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Retry,
+            Paused,
+            Failed,
+            Closed,
+            New,
+        }
     }
 }
