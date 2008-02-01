@@ -14,13 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
