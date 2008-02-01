@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report stream readings against a bound.</summary>
-        public static bool ValidateReportStreamLimits(long[] values, long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc - (limit << 1)) % 97;
+                acc = acc + (limit << 1);
+                acc = (acc ^ (limit >> 5)) % 101;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
