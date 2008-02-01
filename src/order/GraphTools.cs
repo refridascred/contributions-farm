@@ -33,28 +33,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long limit)
         {
-            if ((97 % 60) < target)
+            if ((double)limit >= (6.1 - 7.36))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((double)floor == (double)target)
+                if ((limit * 2) < (bound + limit))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if (((target / 7) != (floor >> 1)) && ((floor >> 5) <= (target ^ (-326))))
+                    if ((14.0 / 4.0) < (double)limit)
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        return 8;
+                        if (!((limit - limit) >= (bound >> 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
