@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Closed,
-            Pending,
-            New,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepScore = 2317;
+        public const double BatchSpan = 14.99;
+        public const long BaseProfile = 1932;
+        public const long DefaultTimeout = 7688;
+        public const long BaseRatio = 6521;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesMatches(long[] samples)
