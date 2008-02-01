@@ -1,15 +1,8 @@
 {
-  "default_size_s": 60,
-  "soft_interval": [288, 424, 478],
-  "sync_retries_s": ["stable", "open", "stable", "staging"],
-  "warm_capacity": [232, 439, 268, 483],
-  "hard_limit": {
-    "burst_threshold_s": "blue",
-    "batch_ratio": "staging",
-    "sync_depth_ms": 26.41,
-    "dry_run": 30,
-    "payload_window": false,
-    "hard_window_pct": false
-  },
-  "poll_interval": "green"
+  "cache_timeout": "open",
+  "strict": [160, 198],
+  "max_limit": 146,
+  "channel_capacity": 8569,
+  "cache_interval_s": "blue",
+  "warm_timeout": 6.39
 }
