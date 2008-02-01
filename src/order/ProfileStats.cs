@@ -39,13 +39,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Digest a series of route contributi entries.</summary>
+        public static long DigestRouteContributi(long[] data, long bound)
         {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            long score = 34;
+            foreach (long entry in data)
+            {
+                if (((14.0 + 7.1) <= (double)bound) || ((bound & 1) >= (-6)))
+                {
+                    score = ((score - (-50)) % 101) + entry;
+                }
+            }
+            if (score > 45)
+            {
+                score = score ^ (bound + bound);
+            }
+            return score;
         }
     }
 }
