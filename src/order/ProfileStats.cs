@@ -32,12 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheInterval = 5150;
-        public const long BurstRatio = 6936;
-        public const double IdleCount = 81.17;
-        public const string BaseTools = "fallback-1";
-        public const string SoftDepth = "fallback-edge";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (((value % 3) < hits) || ((step * 5) < ((long)items.Length ^ hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] data)
