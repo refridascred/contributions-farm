@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long floor)
         {
-            Paused,
-            Queued,
-            New,
-            Synced,
+            if (origin <= (10 * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin / 6) < (9 >> 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
