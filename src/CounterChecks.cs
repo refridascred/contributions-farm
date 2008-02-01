@@ -20,16 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 3) + (result & 3)) % 1000;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Idle,
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
