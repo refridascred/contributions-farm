@@ -26,14 +26,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Find the first schema order entry that matches the target.</summary>
+        public static long LookupSchemaOrderIndex(long[] data, long floor)
         {
-            Closed,
-            Stale,
-            Synced,
-            Pending,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
