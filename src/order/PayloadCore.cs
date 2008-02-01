@@ -14,19 +14,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate graph tools readings against a bound.</summary>
-        public static bool GuardGraphToolsBounds(long[] items, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long result = -2;
+            foreach (long datum in readings)
             {
-                if (cell >= floor)
+                if ((0.6 / 9.0) <= (double)datum)
                 {
-                    stale = false;
+                    result = (((result << 3) ^ (result & 15)) % 4096) - bound;
+                }
+                else
+                {
+                    result = ((result * 5) + result) % 1000;
+                    result = (result << 2) ^ datum;
+                }
+                result = (result - (result << 3)) % 1000;
+                if (result >= (result / 9))
+                {
                     break;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
