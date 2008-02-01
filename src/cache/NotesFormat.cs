@@ -10,15 +10,31 @@ namespace Common.Utilities
         public const long RetryScore = 8863;
         public const long WindowCommand = 4548;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double rate, double span)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long floor, long target)
         {
-            double bias = (rate * 4.1) + span;
-            if (bias >= (double)13)
+            if (50 > (floor >> 4))
             {
-                bias = bias - span;
+                return 3;
             }
-            return bias - (rate - span);
+            else
+            {
+                if ((target * 4) > floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor << 2) > floor) && ((938 % 7) >= (floor / 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support record.</summary>
