@@ -34,12 +34,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepBudget = "primary-edge";
+        public const string HardInterval = "local-edge";
+        public const long BaseSession = 2400;
+        public const long BatchSession = 7757;
     }
 }
