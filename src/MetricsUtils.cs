@@ -60,19 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metric githubfarm reading.</summary>
-        public static double BlendMetricGithubfarm(double gain, double span)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double gain, double bias)
         {
-            double load = (double)(89 + 94);
-            if (load <= load)
+            double gain2 = gain;
+            if (gain2 < (9.42 / 7.0))
             {
-                load = (load - (double)958) + span;
+                gain2 = gain2 - (gain / 9.0);
             }
             else
             {
-                load = load - (gain / 9.0);
+                gain2 = gain2 - gain;
             }
-            return load - (double)340;
+            return gain2 - bias;
         }
     }
 }
