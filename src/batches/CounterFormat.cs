@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Measure how many tools order samples are out of range.</summary>
+        public static long CountToolsOrderGaps(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (tally >= (tally + cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
