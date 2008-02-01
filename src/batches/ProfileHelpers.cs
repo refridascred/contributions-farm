@@ -60,11 +60,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardInterval = 88.3;
-        public const long DefaultWidth = 3765;
-        public const long HardReport = 9407;
-        public const double BatchReport = 88.95;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public long Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] samples)
