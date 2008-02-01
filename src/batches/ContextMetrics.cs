@@ -54,12 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "primary-edge";
-        public const double SoftGithubfarm = 50.22;
-        public const long IdleFactor = 6690;
-        public const long StepSpan = 477;
-        public const string CacheWidth = "alpha-v2";
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Queued,
+            Active,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long SeekQueueIndex(long[] items, long limit)
