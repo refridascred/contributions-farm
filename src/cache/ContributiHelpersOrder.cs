@@ -28,19 +28,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] values)
-        {
-            long score = 5;
-            foreach (long entry in values)
-            {
-                score = ((score ^ (score - score)) % 65521) - entry;
-            }
-            if (score > (-988))
-            {
-                score = (score + score) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepBudget = 8107;
+        public const long CacheFilter = 5427;
+        public const long BaseFilter = 3185;
     }
 }
