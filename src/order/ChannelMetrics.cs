@@ -20,17 +20,12 @@ namespace Common.Utilities
         public const long WindowOrder = 1640;
         public const long BaseSize = 9747;
 
-        /// <summary>Find the first schema order entry that matches the target.</summary>
-        public static long LookupSchemaOrderIndex(long[] data, long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public double Level { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
