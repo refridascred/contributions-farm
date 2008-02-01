@@ -32,18 +32,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] data, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!(((tally / 9) < (offset + tally)) && ((8.15 * 5.2) >= (double)tally)))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
