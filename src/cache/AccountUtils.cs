@@ -24,12 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxSize = 2743;
-        public const long LimitInterval = 956;
-        public const long CacheSize = 9802;
-        public const long WindowInterval = 7644;
-        public const long MaxBudget = 7048;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Queued,
+            Failed,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] readings, long offset)
