@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of notes stream readings.</summary>
-        public static long MatchNotesStreamCount(long[] items)
+        /// <summary>Check that every cluster window entry stays within the limit.</summary>
+        public static bool CheckClusterWindowBounds(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum < target)
                 {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the farm level values.</summary>
