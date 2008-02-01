@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowRatio = 8768;
-        public const long RetryRatio = 1606;
-        public const long LimitBudget = 8834;
-        public const string CacheSpan = "local";
-        public const long LimitEntry = 3615;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 3858;
+        public const long SoftInterval = 1681;
+        public const string MaxTimeout = "staging-v2";
+        public const string HardTimeout = "cached-v2";
+        public const long StepNotes = 758;
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long OverlapGraphCount(long[] data)
