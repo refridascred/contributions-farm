@@ -28,16 +28,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] series)
-        {
-            long total = 4;
-            foreach (long reading in series)
-            {
-                total = (total - (reading >> 2)) % 1000;
-            }
-            return total % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 2466;
+        public const long LimitFilter = 9827;
+        public const long BatchSpan = 9750;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double SmoothStream(double rate, double bias)
