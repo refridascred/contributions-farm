@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many buffer account samples are out of range.</summary>
-        public static long TallyBufferAccountOutliers(long[] samples)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!(reading < (tally / 7)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
