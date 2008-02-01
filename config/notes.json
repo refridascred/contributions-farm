@@ -1,8 +1,8 @@
 {
-  "burst_timeout_s": true,
-  "report_ttl": "latest",
-  "stream_ttl": ["cached", "eu-west"],
-  "retry_interval": 8293,
-  "entry_ratio": "legacy",
-  "sync_retries_s": "fallback"
+  "readonly": "blue",
+  "flush_depth_pct": false,
+  "githubfarm_ttl": 250,
+  "dry_run": 95,
+  "hard_threshold_ms": "strict",
+  "entry_size": 68.77
 }
