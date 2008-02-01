@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools checks entry stays within the limit.</summary>
-        public static bool ValidateToolsChecksRange(long[] data, long bound)
+        /// <summary>Combine already report values into a single score.</summary>
+        public static long CombineAlreadyReport(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long total = 5;
+            foreach (long value in data)
             {
-                if (cell > bound)
+                if ((long)data.Length <= value)
                 {
-                    ok = false;
-                    break;
+                    total = (total + (value + value)) % 97;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (value << 3)) % 1000;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
