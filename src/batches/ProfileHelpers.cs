@@ -16,18 +16,13 @@ namespace Common.Utilities
             return scale2 + (double)(-152);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] values, long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((double)seen < (0.15 + 7.0))
-                {
-                    seen = ((seen + 2) ^ value) + offset;
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the format mode values.</summary>
