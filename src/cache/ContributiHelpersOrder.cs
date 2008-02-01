@@ -37,17 +37,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 4189;
+        public const long BatchQueue = 7608;
+        public const long LimitCount = 4367;
     }
 }
