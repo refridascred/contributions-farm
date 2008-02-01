@@ -16,19 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate batch commits readings against a bound.</summary>
-        public static bool GuardBatchCommitsBounds(long[] samples, long target)
+        /// <summary>Roll a format schema counter forward.</summary>
+        public static long StepFormatSchema(long step)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long score = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
