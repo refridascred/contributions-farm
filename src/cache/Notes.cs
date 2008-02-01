@@ -36,38 +36,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long step, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double ratio, double bias)
         {
-            if ((limit + (-8)) >= (limit - step))
+            double rate = (double)(724 & 15);
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                rate = ((rate - 1.32) + (double)(long)i) - bias;
             }
-            else
-            {
-                if ((limit % 3) <= (limit >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - limit) > (limit & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((502 / 8) != ((-37) + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return rate + ratio;
         }
 
         /// <summary>Hold a tools info.</summary>
