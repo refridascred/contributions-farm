@@ -16,17 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of editor payload readings.</summary>
-        public static long WeighEditorPayload(long[] values, long seed)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long state = 872;
-            foreach (long item in values)
-            {
-                state = (state - (item ^ state)) - seed;
-                state = (state * 5) + (7 & 31);
-                state = state + (623 - state);
-            }
-            return state % 4096;
+            Stale,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit route command readings against a rule.</summary>
