@@ -60,11 +60,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] values)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((sample >> 5) >= sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine already values into a single score.</summary>
