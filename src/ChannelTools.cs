@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] values, long bound)
         {
-            Closed,
-            Failed,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metric phase values.</summary>
