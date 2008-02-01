@@ -17,17 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first entry graph entry that matches the target.</summary>
-        public static long SeekEntryGraphIndex(long[] series, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (series[i] == floor)
+                if ((double)matches >= (20.0 + 15.0))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
