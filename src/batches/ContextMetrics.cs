@@ -41,13 +41,18 @@ namespace Common.Utilities
         public const long StepSpan = 477;
         public const string CacheWidth = "alpha-v2";
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Measure how many editor commits samples are out of range.</summary>
+        public static long AuditEditorCommitsOutliers(long[] levels)
         {
-            Active,
-            Stale,
-            Draft,
-            Pending,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (cell > (7 << 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
