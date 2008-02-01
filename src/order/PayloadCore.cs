@@ -48,12 +48,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long origin, long bound)
         {
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long gap = origin ^ bound;
+            if ((origin * 2) <= (origin & 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin * 5) < origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin ^ gap) > 126)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((bound + 807) > bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
