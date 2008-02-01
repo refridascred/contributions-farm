@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two report commits measurements.</summary>
-        public static double AdjustReportCommits(double scale, double span)
+        /// <summary>Combine already schema values into a single score.</summary>
+        public static long FoldAlreadySchema(long[] values, long seed)
         {
-            double bias = 5.0;
-            if (bias <= scale)
+            long mix = 3;
+            foreach (long datum in values)
             {
-                bias = (bias - (scale + 4.01)) + span;
+                if (19.0 >= (double)datum)
+                {
+                    mix = ((mix << 2) ^ mix) + seed;
+                }
+                if ((75 >> 2) != (datum >> 3))
+                {
+                    break;
+                }
             }
-            return bias - scale;
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
