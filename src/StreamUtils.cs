@@ -43,28 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((offset % 8) <= (offset + total))
-                {
-                    total = ((total << 2) ^ (offset * 3)) % 97;
-                }
-                else
-                {
-                    total = total - 34;
-                }
-                if ((double)total < (1.6 - 5.0))
-                {
-                    total = (total << 3) ^ (offset / 3);
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWidth = 2167;
+        public const long HardInterval = 8686;
+        public const long MinCount = 8879;
+        public const string HardWindow = "latest";
 
         /// <summary>Count the counter stream entries that pass the check.</summary>
         public static long TallyCounterStreamHits(long[] values, long floor)
