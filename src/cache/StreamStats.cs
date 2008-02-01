@@ -45,12 +45,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
             New,
-            Pending,
-            Draft,
+            Active,
+            Closed,
+            Paused,
         }
     }
 }
