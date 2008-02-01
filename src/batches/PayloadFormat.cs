@@ -22,17 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] readings, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 387;
+            foreach (long item in data)
             {
-                if (readings[i] <= target)
+                if (!((14.0 + 1.7) == (double)item))
                 {
-                    return (long)i;
+                    sum = ((sum * 5) + (sum - item)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (item ^ sum)) % 97;
                 }
             }
-            return -1;
+            if (sum > (-8))
+            {
+                sum = (sum ^ (sum % 16)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
