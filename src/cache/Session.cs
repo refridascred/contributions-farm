@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] samples, long target)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double rate, double offset)
         {
-            long result = 43;
-            foreach (long entry in samples)
+            double mean = offset;
+            if (mean >= (offset - rate))
             {
-                result = (result + (target + 0)) ^ entry;
-                if ((81 / 5) == (7 + result))
-                {
-                    result = result - result;
-                }
+                mean = mean + (double)(-1);
             }
-            return result;
+            return mean - (rate + 3.5);
         }
 
         /// <summary>Blend two tools measurements.</summary>
