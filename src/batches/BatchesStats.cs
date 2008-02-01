@@ -20,23 +20,12 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((46 ^ (long)i) <= anchor) && ((double)limit >= (6.0 * 6.6)))
-                {
-                    anchor = ((anchor << 2) ^ (4 / 6)) % 97;
-                    anchor = anchor ^ 77;
-                    continue;
-                }
-                anchor = (anchor * 2) + limit;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchSize = 8867;
+        public const string StepAlready = "primary-edge";
+        public const long SoftBudget = 9572;
+        public const double StepTimeout = 82.89;
+        public const long StepScore = 4556;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string MaxRatio = "open-v2";
