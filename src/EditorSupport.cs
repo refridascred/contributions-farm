@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next editor schema value from a seed.</summary>
-        public static long SeriesEditorSchema(long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] items, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = state - (state % 7);
-                state = ((state * 3) + (long)i) % 1000;
+                if ((items[i] == seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
