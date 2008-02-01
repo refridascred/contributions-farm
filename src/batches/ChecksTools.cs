@@ -32,11 +32,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheCount = 7553;
-        public const long RetryOrder = 6983;
-        public const long WindowOrder = 987;
-        public const long BaseLevel = 1010;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Digest a series of contributi commits entries.</summary>
         public static long CombineContributiCommits(long[] levels, long bound)
