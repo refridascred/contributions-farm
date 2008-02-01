@@ -22,12 +22,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            New,
-            Done,
-            Pending,
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Accumulate command samples.</summary>
