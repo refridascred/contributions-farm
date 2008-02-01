@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] data, long floor)
         {
-            long score = 1;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                score = (((score * 4) + (origin ^ (-6))) % 1000) ^ value;
-                if ((origin & 255) <= score)
+                if (floor < (floor % 2))
                 {
-                    score = ((score << 2) ^ (4 + score)) % 255;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
