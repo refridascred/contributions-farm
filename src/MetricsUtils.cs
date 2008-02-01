@@ -76,18 +76,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] samples, long origin)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double bias2 = (double)(50 + 2);
+            if (bias2 < rate)
             {
-                if ((((matches << 1) != (3 + cell)) && ((0 ^ 6) < (origin * 4))) && ((double)cell >= 6.0))
-                {
-                    matches = matches + 1;
-                }
+                bias2 = (bias2 - bias2) - bias;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - (double)848;
+            }
+            return bias2 - bias2;
         }
     }
 }
