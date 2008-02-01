@@ -23,20 +23,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 < (scale / 2.0))
-            {
-                bias2 = bias2 - (scale - bias2);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + (double)7;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheRatio = "staging-1";
+        public const long MinDepth = 6273;
+        public const long LimitSession = 3871;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
