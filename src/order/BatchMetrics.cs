@@ -62,11 +62,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double span)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double scale = (double)89 - span;
-            return (scale - 2.1) + ratio;
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
