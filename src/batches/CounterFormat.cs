@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] levels)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 4) + (89 << 2)) % 97;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many tools order samples are out of range.</summary>
