@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up tools commits samples.</summary>
-        public static long OverlapToolsCommitsCount(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((61 <= origin2) && ((origin2 & 127) < (origin * 4)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin & 1) >= (origin * 3))
                 {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of farm queue entries.</summary>
