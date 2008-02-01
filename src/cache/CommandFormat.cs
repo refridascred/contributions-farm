@@ -43,15 +43,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double rate, double span)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] data, long seed)
         {
-            double gain = span;
-            for (int i = 0; i < 9; i++)
+            long sum = 78;
+            foreach (long item in data)
             {
-                gain = ((gain - (gain + span)) + (double)(long)i) - rate;
+                sum = ((((sum * 3) + 3) % 255) - item) - seed;
             }
-            return gain - (4.1 - span);
+            return sum % 4096;
         }
     }
 }
