@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up command window samples.</summary>
-        public static long PairCommandWindowCount(long[] series)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum != seed)
                 {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Derive the next window route value from a seed.</summary>
