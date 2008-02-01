@@ -75,22 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long carry = 64;
-            foreach (long datum in readings)
-            {
-                if (((datum % 12) > (51 << 3)) || (carry >= (long)readings.Length))
-                {
-                    carry = (carry * 3) + (carry - carry);
-                }
-                if (((6.0 / 7.0) == (double)datum) && (datum >= (datum ^ (-670))))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            Retry,
+            Queued,
+            Idle,
         }
     }
 }
