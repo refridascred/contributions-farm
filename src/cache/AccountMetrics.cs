@@ -37,18 +37,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many stream filter samples are out of range.</summary>
-        public static long TallyStreamFilterOutliers(long[] levels, long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double bias2 = (bias * 3.0) / 6.0;
+            if (bias2 >= (double)1)
             {
-                if ((1 - matches) <= sample)
-                {
-                    matches = (matches + 1) + limit;
-                }
+                bias2 = (bias2 + 9.7) - scale;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (double)184) + (double)(long)i;
+            }
+            return bias2 + (7.8 - bias);
         }
 
         /// <summary>Hold a tools header.</summary>
