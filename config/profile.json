@@ -1,7 +1,7 @@
 {
-  "cache_interval_count": ["fallback", "standard", "eu-west", "cached"],
-  "audit": "blue",
-  "min_interval_count": true,
-  "flush_threshold_count": ["staging", "stable", "fallback"],
-  "farm_retries": 35
+  "warm_ratio": ["standard", "stable"],
+  "readonly": 7529,
+  "verbose": "primary",
+  "min_capacity_ms": 30,
+  "stream_capacity": ["local", "open"]
 }
