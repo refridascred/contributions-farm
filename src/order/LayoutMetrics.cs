@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit layout route readings against a rule.</summary>
-        public static long CountLayoutRouteHits(long[] levels, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + 814) < tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) + bound;
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
