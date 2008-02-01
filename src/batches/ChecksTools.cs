@@ -36,11 +36,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public double Token { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardDepth = 9575;
+        public const string IdleFactor = "legacy";
+        public const string MaxStream = "latest-1";
+        public const long CacheStream = 798;
+        public const double BurstStream = 81.91;
     }
 }
