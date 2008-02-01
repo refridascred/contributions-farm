@@ -39,19 +39,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double scale, double bias)
-        {
-            double weight = bias;
-            if (weight <= bias)
-            {
-                weight = (weight + (double)43) - scale;
-            }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight + (9.53 - weight);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepFactor = 1186;
+        public const string MinAccount = "stable-edge";
+        public const long BatchInterval = 5436;
+        public const long MaxSpan = 2401;
+        public const long IdleAccount = 3463;
     }
 }
