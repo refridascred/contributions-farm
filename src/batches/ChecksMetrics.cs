@@ -57,18 +57,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many format queue samples are out of range.</summary>
-        public static long MeasureFormatQueueHits(long[] values)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((42 >= (reading >> 2)) || ((matches + reading) <= (matches - reading)))
+                if ((double)step == (5.43 + 10.0))
                 {
-                    matches = matches + 1;
+                    mark = ((mark * 3) + step) % 65521;
+                    mark = (mark ^ 4) % 1000;
                 }
+                else
+                {
+                    mark = ((mark << 2) ^ (step % 5)) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
