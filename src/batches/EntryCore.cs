@@ -57,12 +57,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double span)
         {
-            Ready,
-            Draft,
-            Closed,
+            double weight = (double)(6 << 3);
+            return ((weight + 5.4) + ratio) + span;
         }
     }
 }
