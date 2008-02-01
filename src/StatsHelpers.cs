@@ -62,18 +62,14 @@ namespace Common.Utilities
             return bias2 + (double)7;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] data)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (value <= (tally >> 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Closed,
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the entry phase values.</summary>
