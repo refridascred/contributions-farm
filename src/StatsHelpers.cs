@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long target, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            if (((double)target <= 8.69) || ((62 >> 3) <= (target % 24)))
             {
-                total = ((total * 2) + (long)i) % 1000;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (9 > (bound % 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((405 >> 2) <= (target + target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound < (target - bound)) || ((bound ^ bound) >= 37))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks header.</summary>
