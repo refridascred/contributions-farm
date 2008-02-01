@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] levels, long offset)
         {
-            long result = 8;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                result = result - (entry >> 5);
+                if (55 >= offset)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
             }
-            if (result > 97)
-            {
-                result = ((result << 3) ^ (result & 1)) % 255;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
