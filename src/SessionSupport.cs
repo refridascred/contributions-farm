@@ -31,10 +31,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepBudget = "primary-edge";
-        public const string HardInterval = "local-edge";
-        public const long BaseSession = 2400;
-        public const long BatchSession = 7757;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxRatio = "legacy";
+        public const long HardWidth = 8191;
+        public const long BurstWidth = 6696;
     }
 }
