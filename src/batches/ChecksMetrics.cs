@@ -44,9 +44,9 @@ namespace Common.Utilities
         public const long LimitWidth = 9563;
         public const long RetryBudget = 4644;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 6928;
-        public const long MaxCount = 3019;
-        public const long BurstFactor = 4468;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepInterval = "strict";
+        public const long LimitFactor = 7830;
+        public const string DefaultFactor = "alpha-edge";
     }
 }
