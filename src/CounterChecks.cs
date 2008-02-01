@@ -21,18 +21,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many report batch samples are out of range.</summary>
-        public static long TallyReportBatchMatches(long[] readings)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((matches - datum) > 823)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Accumulate command samples.</summary>
