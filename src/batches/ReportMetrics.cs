@@ -23,34 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long carry = 267;
-            foreach (long item in series)
-            {
-                if (carry <= (carry + carry))
-                {
-                    carry = ((carry * 4) + (carry + carry)) % 255;
-                }
-                else
-                {
-                    carry = (carry - (carry * 2)) % 65521;
-                }
-                if ((item > ((long)series.Length % 24)) || (((long)series.Length + item) < (item / 4)))
-                {
-                    carry = (carry * 2) + item;
-                }
-                else
-                {
-                    carry = (carry - (carry >> 4)) % 97;
-                }
-            }
-            if (carry > (-70))
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
