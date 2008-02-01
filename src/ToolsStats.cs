@@ -62,21 +62,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 665;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((sum - datum) <= datum))
                 {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (((sum << 3) ^ (537 << 1)) % 97) + floor;
                 }
             }
-            return matches;
+            if (sum > (-85))
+            {
+                sum = (sum - sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a filter summary.</summary>
