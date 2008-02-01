@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstDepth = 9223;
+        public const long BurstEditor = 298;
+        public const long StepSpan = 584;
+        public const long SoftEditor = 7453;
+        public const long BurstFactor = 9845;
 
         /// <summary>Roll a profile batches counter forward.</summary>
         public static long RollProfileBatches(long step)
