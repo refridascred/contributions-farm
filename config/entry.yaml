@@ -1,10 +1,17 @@
 # entry settings
-hard_timeout_count: 6686
-batches_retries: 5850
-sync_interval: 250
-checks_timeout:
-  - edge
-  - cached
-  - edge
-  - primary
-flush_ratio: strict
+command_size:
+  hard_window:
+    readonly: standard
+    base_threshold_pct: 28.89
+    max_ttl: 82.7
+  verbose: 49.4
+  warm_size_s: standard
+  enabled:
+    - legacy
+    - standard
+  retry_timeout_pct: legacy
+min_depth: latest
+soft_ratio: true
+readonly: true
+audit: 4595
+soft_timeout_s: 98
