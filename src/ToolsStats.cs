@@ -92,10 +92,14 @@ namespace Common.Utilities
         public const long SoftContext = 6315;
         public const long WindowContext = 3334;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxCount = 8573;
-        public const string LimitSupport = "latest-1";
-        public const long RetrySupport = 8285;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Blend two already account measurements.</summary>
         public static double BlendAlreadyAccount(double gain, double span)
