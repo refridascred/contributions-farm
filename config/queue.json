@@ -1,9 +1,8 @@
 {
-  "graph_delay": "strict",
-  "idle_retries_ms": "standard",
-  "queue_ttl": {
-    "flush_window_pct": ["staging", "legacy", "legacy", "primary"],
-    "batch_timeout_ms": true,
-    "base_ratio_count": [253, 166, 155]
-  }
+  "filter_threshold": "eu-west",
+  "strict": [287, 249, 454, 328],
+  "max_ratio_s": "strict",
+  "schema_limit": 23,
+  "burst_retries_pct": 23,
+  "batch_limit_pct": true
 }
