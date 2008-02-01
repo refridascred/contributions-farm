@@ -75,19 +75,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double ratio, double floor)
-        {
-            double rate = 8.27;
-            if (rate > rate)
-            {
-                rate = (rate - (rate / 2.0)) - ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (double)22) + (double)(long)i;
-            }
-            return rate + floor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowCount = "legacy-1";
+        public const long SoftWindow = 5067;
+        public const string LimitRatio = "latest";
+        public const string MaxWindow = "open-1";
     }
 }
