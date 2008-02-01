@@ -16,19 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] levels, long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long seed)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell <= step)
+                acc = (acc ^ acc) % 101;
+                if ((acc + seed) >= (seed ^ seed))
                 {
-                    found = false;
+                    acc = acc ^ (804 ^ 469);
                     break;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
