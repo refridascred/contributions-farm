@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitRatio = 2662;
-        public const long RetrySchema = 9766;
-        public const long IdleSchema = 9217;
-        public const long StepSchema = 7301;
+        /// <summary>Rank metric already input into a small class.</summary>
+        public static long BucketMetricAlready(long target, long seed)
+        {
+            if (seed > (seed + seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.3 / 6.0) < (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long OverlapGithubfarmCount(long[] series)
