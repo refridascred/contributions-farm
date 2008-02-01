@@ -35,12 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Ready,
+            Dropped,
             Queued,
-            New,
+            Synced,
+            Stale,
             Closed,
         }
 
