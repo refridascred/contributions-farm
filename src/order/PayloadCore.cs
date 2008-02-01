@@ -20,19 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a cluster farm reading.</summary>
-        public static double ScaleClusterFarm(double gain, double floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double rate = floor;
-            if (rate >= (rate + 9.0))
-            {
-                rate = (rate + rate) - gain;
-            }
-            else
-            {
-                rate = rate - (double)50;
-            }
-            return rate - (double)344;
+            Stale,
+            Done,
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
