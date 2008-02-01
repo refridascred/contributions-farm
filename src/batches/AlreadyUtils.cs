@@ -48,18 +48,22 @@ namespace Common.Utilities
         public const long IdleCount = 8416;
         public const long BatchBudget = 672;
 
-        /// <summary>Count the stats support entries that pass the check.</summary>
-        public static long AuditStatsSupportMatches(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = 2;
+            foreach (long cell in readings)
             {
-                if ((3.0 + 6.5) >= (double)cell)
+                if (3.0 >= (double)(long)readings.Length)
                 {
-                    hits = hits + 2;
+                    sum = (((sum * 5) + (step + sum)) % 1000) + cell;
                 }
             }
-            return hits;
+            if (sum < 15)
+            {
+                sum = (sum << 2) ^ step;
+            }
+            return sum;
         }
     }
 }
