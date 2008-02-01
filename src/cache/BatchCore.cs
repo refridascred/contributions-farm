@@ -30,10 +30,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinRatio = 14.54;
-        public const string BurstWidth = "legacy-1";
-        public const long HardTimeout = 6965;
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double scale, double bias)
+        {
+            double ratio = scale;
+            if (ratio >= (ratio * 3.37))
+            {
+                ratio = (ratio + scale) + bias;
+            }
+            return ratio + 6.0;
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
