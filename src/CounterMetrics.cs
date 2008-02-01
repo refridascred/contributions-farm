@@ -36,22 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardCount = "open-edge";
+        public const long BurstProfile = 8527;
+        public const long HardSpan = 4429;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultFilter = 4575;
