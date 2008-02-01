@@ -49,19 +49,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] data, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)(long)i >= (7.8 * 6.3)))
+                if (data[i] >= floor)
                 {
-                    carry = ((carry << 3) ^ (carry << 1)) % 4096;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
