@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] values, long origin)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Accumulate token samples.</summary>
