@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long target, long bound)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            if (((double)target <= 8.69) || ((62 >> 3) <= (target % 24)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (9 > (bound % 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((405 >> 2) <= (target + target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound < (target - bound)) || ((bound ^ bound) >= 37))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Done,
+            Synced,
+            Closed,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a checks header.</summary>
