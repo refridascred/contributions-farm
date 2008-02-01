@@ -32,21 +32,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 7;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = ((result << 3) ^ result) % 97;
+                for (int i = 0; i < 12; i++)
                 {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result + ((long)i + sample);
+                }
+                if ((sample ^ sample) <= (sample % 12))
+                {
+                    result = result ^ (result % 24);
                 }
             }
-            return hits;
+            if (result < 2)
+            {
+                result = (result + (result & 7)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
