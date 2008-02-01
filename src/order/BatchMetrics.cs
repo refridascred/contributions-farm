@@ -47,15 +47,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] items, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Measure how many profile order samples are out of range.</summary>
