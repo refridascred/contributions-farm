@@ -29,18 +29,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] series, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((tally >> 2) != (tally ^ entry))
+                if (((229 + origin) >= seen) && ((8.2 * 0.5) != (double)seen))
                 {
-                    tally = (tally + 1) + step;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of route cluster entries.</summary>
