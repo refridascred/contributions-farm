@@ -1,7 +1,7 @@
 # support settings
-readonly: eu-west
-compress: 801
-flush_retries_ms: staging
-burst_interval_s: 94
-enabled: stable
-base_depth_pct: 9
+dry_run: standard
+warm_interval: true
+support_delay: 33.61
+profile_ratio: 30
+sync_depth: 15.77
+batch_threshold: false
