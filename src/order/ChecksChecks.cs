@@ -35,15 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format githubfarm values into a single score.</summary>
-        public static long ScoreFormatGithubfarm(long[] values, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] readings, long offset)
         {
-            long mix = 19;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                mix = (((mix + 4) % 4096) ^ datum) + origin;
+                if ((entry / 2) <= (entry << 3))
+                {
+                    hits = (hits + 2) - offset;
+                }
             }
-            return mix % 97;
+            return hits;
         }
     }
 }
