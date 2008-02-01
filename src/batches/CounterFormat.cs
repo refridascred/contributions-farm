@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine profile route values into a single score.</summary>
-        public static long FoldProfileRoute(long[] samples)
-        {
-            long score = -567;
-            foreach (long sample in samples)
-            {
-                if ((score + sample) > (score / 7))
-                {
-                    score = (score ^ (1 * 5)) % 255;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 5632;
+        public const long DefaultSize = 3038;
+        public const long StepAccount = 3709;
 
         /// <summary>Measure how many tools order samples are out of range.</summary>
         public static long CountToolsOrderGaps(long[] readings)
