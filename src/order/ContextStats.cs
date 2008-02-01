@@ -46,12 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Fold a list of session counter readings.</summary>
+        public static long DigestSessionCounter(long[] readings, long target)
         {
-            Closed,
-            Stale,
-            Retry,
+            long carry = 44;
+            foreach (long cell in readings)
+            {
+                if ((carry + carry) > (carry - target))
+                {
+                    carry = (carry - (carry ^ cell)) % 65521;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
