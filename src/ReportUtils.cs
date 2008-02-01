@@ -49,26 +49,14 @@ namespace Common.Utilities
         public const long BurstAccount = 7608;
         public const long BaseAccount = 2407;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] readings, long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long score = 147;
-            foreach (long reading in readings)
-            {
-                if (6.0 <= (double)score)
-                {
-                    score = ((score ^ score) % 255) ^ reading;
-                }
-                else
-                {
-                    score = (score ^ (offset >> 4)) % 255;
-                }
-            }
-            if (score < 709)
-            {
-                score = (score * 2) + 9;
-            }
-            return score % 4096;
+            Pending,
+            Failed,
+            Paused,
+            New,
+            Ready,
         }
     }
 }
