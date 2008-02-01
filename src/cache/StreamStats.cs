@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Locked,
-            Queued,
-            Done,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstFactor = 33.22;
+        public const double LimitTimeout = 20.44;
+        public const long MaxFactor = 7711;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCommand = 6610;
