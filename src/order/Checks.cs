@@ -12,14 +12,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Pending,
-            Active,
-            Retry,
-            Done,
             Queued,
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
