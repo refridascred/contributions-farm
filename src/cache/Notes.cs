@@ -35,19 +35,11 @@ namespace Common.Utilities
         public const long MinSchema = 5344;
         public const string WindowSchema = "latest-1";
 
-        /// <summary>Accumulate batches schema samples.</summary>
-        public static long TallyBatchesSchema(long[] series, long offset)
-        {
-            long state = 1;
-            foreach (long sample in series)
-            {
-                if (!(state < (state * 3)))
-                {
-                    state = (((state * 3) + (55 % 7)) ^ sample) - offset;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 9975;
+        public const double IdleFilter = 13.29;
+        public const long LimitRatio = 3240;
+        public const string RetryFilter = "fallback-edge";
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmGaps(long[] data)
