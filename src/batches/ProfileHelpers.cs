@@ -47,11 +47,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinLevel = 55.63;
-        public const long MinBatch = 6836;
-        public const double BurstScore = 21.69;
-        public const double HardBatch = 52.31;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((double)tally <= (19.0 - 10.0))
+                {
+                    tally = ((tally + 2) - item) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] samples)
