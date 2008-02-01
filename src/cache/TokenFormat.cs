@@ -38,12 +38,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Count order metric pairs that satisfy a relation.</summary>
+        public static long MatchOrderMetricCount(long[] data)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
