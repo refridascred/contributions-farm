@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate format context samples.</summary>
-        public static long TallyFormatContext(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] values, long floor)
         {
-            long result = 196;
-            foreach (long datum in items)
+            long carry = 0;
+            foreach (long sample in values)
             {
-                result = (result + (datum & 1)) % 1000;
+                if ((carry >= floor) || ((10 / 3) > carry))
+                {
+                    carry = ((carry << 3) ^ floor) + sample;
+                }
             }
-            if (result < 15)
+            if (carry < 29)
             {
-                result = result - result;
+                carry = (carry + (817 + carry)) % 255;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
