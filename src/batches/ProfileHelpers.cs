@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double rate, double floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double scale, double offset)
         {
-            double scale = rate * 1.0;
-            if (scale <= scale)
+            double scale2 = (double)(75 + 9);
+            if (scale2 < offset)
             {
-                scale = scale + (floor + rate);
+                scale2 = (scale2 + offset) + scale;
             }
-            return scale - scale;
+            return scale2 + (double)(-152);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
