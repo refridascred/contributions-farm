@@ -1,8 +1,37 @@
 # entry settings
-cache_ratio_count:
-  - 34
-  - 440
-  - 11
-poll_threshold: 36.01
-contributi_capacity: false
-poll_depth_pct: 82
+readonly: 71
+verbose: true
+warm_ttl: true
+audit: 40.48
+poll_threshold_count:
+  stats_limit: true
+  warm_timeout_s:
+    - standard
+    - strict
+    - fallback
+  min_ratio_count:
+    - 381
+    - 372
+    - 88
+  max_delay_ms: 1024
+  default_delay_ms:
+    - green
+    - primary
+    - open
+    - open
+  readonly: 8021
+flush_ratio_count:
+  strict: latest
+  cache_size: cached
+  record_depth:
+    batch_retries:
+      - 348
+      - 34
+      - 19
+      - 452
+    poll_interval_s: strict
+    max_delay_s: true
+    base_depth_s:
+      - edge
+      - green
+    audit: 4105
