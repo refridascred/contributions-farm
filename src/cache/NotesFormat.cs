@@ -23,15 +23,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double scale, double offset)
+        /// <summary>Count the stats context entries that pass the check.</summary>
+        public static long MeasureStatsContextMatches(long[] items)
         {
-            double gain = 5.0;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                gain = ((gain + offset) - (double)(long)i) - scale;
+                if ((double)reading != (double)hits)
+                {
+                    hits = hits + 3;
+                }
             }
-            return gain - (double)498;
+            return hits;
         }
     }
 }
