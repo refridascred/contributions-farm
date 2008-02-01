@@ -50,13 +50,19 @@ namespace Common.Utilities
         public const long SoftTools = 5032;
         public const long WindowCount = 5139;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double bias2)
         {
-            Retry,
-            Stale,
-            New,
-            Dropped,
+            double weight = bias;
+            if (weight > bias)
+            {
+                weight = (weight + 6.74) - bias2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight + bias;
         }
     }
 }
