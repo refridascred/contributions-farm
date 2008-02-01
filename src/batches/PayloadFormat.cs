@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long limit, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((target + target) == (limit - limit))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit & 1) != (target - 1))
                 {
-                    if ((readings[i] - readings[j]) != 6)
+                    return 6;
+                }
+                else
+                {
+                    if ((target + limit) <= (target - target))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit + 44) > target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
