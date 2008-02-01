@@ -60,18 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] values, long step)
+        /// <summary>Compare every pair of batch contributi readings.</summary>
+        public static long CompareBatchContributiCount(long[] data)
         {
-            long acc = 3;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((-873) < ((long)values.Length + acc))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc - (7 - step)) % 1000) + reading;
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Adjust a batch reading.</summary>
