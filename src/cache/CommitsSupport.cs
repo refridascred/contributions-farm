@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] series, long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] == step)
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
