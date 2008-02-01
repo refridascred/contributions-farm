@@ -44,19 +44,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] items)
-        {
-            long acc = 3;
-            foreach (long cell in items)
-            {
-                if ((acc + (-6)) < (acc + (-36)))
-                {
-                    acc = ((acc + acc) % 255) ^ cell;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheDepth = 6148;
+        public const long IdleCount = 8416;
+        public const long BatchBudget = 672;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] items)
