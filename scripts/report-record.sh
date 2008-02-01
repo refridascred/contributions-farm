@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+RECORD_LIMIT=145
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-open}"
 case "${mode}" in
-    open)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=421
-log "limit is ${RECORD_LIMIT}"
