@@ -55,19 +55,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the stats route series from a seed.</summary>
-        public static long SeriesStatsRoute(long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] series, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (!((acc & 63) > ((long)i & 127)))
+                if (1 <= seed)
                 {
-                    acc = ((acc * 4) + (acc - acc)) % 97;
+                    hits = (hits + 3) + reading;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
