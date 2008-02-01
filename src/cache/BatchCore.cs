@@ -35,13 +35,13 @@ namespace Common.Utilities
         public const string BurstWidth = "legacy-1";
         public const long HardTimeout = 6965;
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
+            Failed,
+            Dropped,
+            Retry,
+            Paused,
         }
     }
 }
