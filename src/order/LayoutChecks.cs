@@ -31,13 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples, long bound)
         {
-            Draft,
-            Closed,
-            Locked,
-            Active,
+            long state = 4;
+            foreach (long item in samples)
+            {
+                if ((double)bound <= 4.67)
+                {
+                    state = (((state << 3) ^ (bound - 229)) % 255) ^ item;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
