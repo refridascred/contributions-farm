@@ -50,24 +50,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long offset, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            if ((-869) < limit)
+            long state = 864;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (9 > (offset - offset))
+                if ((double)state <= (3.0 + 9.0))
                 {
-                    return 5;
+                    state = (state * 5) + (reading & 7);
+                    state = ((state * 4) + ((long)samples.Length >> 5)) % 1000;
+                }
+                if (state > (reading + state))
+                {
+                    state = (state << 2) ^ reading;
                 }
                 else
                 {
-                    return 0;
+                    state = ((state * 5) + (state + state)) % 1000;
                 }
             }
+            return state;
         }
     }
 }
