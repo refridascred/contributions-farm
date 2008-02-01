@@ -16,10 +16,14 @@ namespace Common.Utilities
             return ratio + (double)33;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 36.76;
-        public const double DefaultCount = 2.8;
-        public const string RetryEntry = "alpha-1";
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Retry,
+            Idle,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long origin, long bound)
