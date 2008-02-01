@@ -40,19 +40,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate order buffer readings against a bound.</summary>
-        public static bool ValidateOrderBufferBounds(long[] series, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (value >= limit)
+                if ((origin >= (mix << 2)) || ((double)origin >= 7.66))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix * 4) + (mix + mix)) % 1000;
                 }
+                mix = ((mix * 4) + (mix ^ origin)) % 4096;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return valid;
+            return mix;
         }
     }
 }
