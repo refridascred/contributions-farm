@@ -24,21 +24,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 124;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((958 + seed) <= (seed - 5))
                 {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result << 2) ^ (reading % 100);
+                }
+                else
+                {
+                    result = result + ((-703) ^ seed);
+                }
+                if ((result & 63) == (23 + result))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Accumulate already schema samples.</summary>
