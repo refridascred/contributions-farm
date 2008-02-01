@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine queue buffer values into a single score.</summary>
-        public static long WeighQueueBuffer(long[] items)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long anchor = 75;
-            foreach (long value in items)
-            {
-                anchor = (anchor ^ (anchor << 2)) % 65521;
-                if ((value % 5) < (anchor - anchor))
-                {
-                    anchor = anchor + (value / 5);
-                }
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the buffer phase values.</summary>
