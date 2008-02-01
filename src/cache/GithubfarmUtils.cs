@@ -17,19 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double gain, double span)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double weight, double offset)
         {
-            double drift = (span - span) - (span + gain);
-            if (drift >= drift)
+            double scale = weight + weight;
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift - gain;
+                scale = ((scale + scale) + (double)(long)i) - offset;
             }
-            else
-            {
-                drift = drift + gain;
-            }
-            return drift - span;
+            return scale - 1.0;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
