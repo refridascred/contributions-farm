@@ -26,17 +26,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] items, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 766;
+            foreach (long datum in samples)
             {
-                if (items[i] <= target)
+                carry = (carry << 2) ^ carry;
+                if ((datum >= (carry >> 3)) || ((-3) < (datum + carry)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
     }
 }
