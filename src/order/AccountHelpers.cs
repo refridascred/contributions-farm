@@ -55,20 +55,27 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Fold a list of already batches readings.</summary>
+        public static long TallyAlreadyBatches(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            long sum = 157;
+            foreach (long sample in samples)
             {
-                if ((71 % 7) != ((long)i - (long)i))
+                if (sample < (6 % 12))
                 {
-                    state = state - (527 & 255);
-                    state = state - (bound + bound);
+                    sum = ((sum * 4) + (sum << 2)) % 1000;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 4093;
+                else
+                {
+                    sum = ((sum * 2) + (long)samples.Length) % 4096;
+                }
+                if (sum > (sum + 98))
+                {
+                    sum = ((sum * 3) + (992 ^ sample)) % 4096;
+                }
             }
-            return state;
+            return sum;
         }
     }
 }
