@@ -34,23 +34,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long acc = 50;
-            foreach (long cell in data)
-            {
-                acc = acc - (acc - cell);
-                if (!(acc > (cell & 7)))
-                {
-                    acc = ((acc * 5) + (acc & 7)) % 1000;
-                }
-            }
-            if (acc < 67)
-            {
-                acc = (acc - (acc ^ acc)) % 101;
-            }
-            return acc;
+            Closed,
+            New,
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Validate counter tools readings against a bound.</summary>
