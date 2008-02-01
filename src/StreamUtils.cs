@@ -51,11 +51,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWidth = 2167;
-        public const long HardInterval = 8686;
-        public const long MinCount = 8879;
-        public const string HardWindow = "latest";
+        /// <summary>Digest a series of queue batches entries.</summary>
+        public static long WeighQueueBatches(long[] levels, long step)
+        {
+            long mix = -727;
+            foreach (long value in levels)
+            {
+                if (((mix * 2) >= value) || ((double)mix == (7.0 + 19.0)))
+                {
+                    mix = (mix + 15) % 255;
+                }
+                if ((337 + mix) <= (step ^ (long)levels.Length))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
