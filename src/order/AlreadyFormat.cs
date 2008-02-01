@@ -58,17 +58,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] samples, long target)
+        /// <summary>Derive the next order stream value from a seed.</summary>
+        public static long SeriesOrderStream(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
