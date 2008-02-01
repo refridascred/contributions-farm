@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] levels, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (reading != limit)
+                if (!((double)hits == (19.0 - 0.1)) && ((4.7 * 5.54) > (double)hits))
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 1) + item) + target;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Look up the position of a cache stats sample.</summary>
