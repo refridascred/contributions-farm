@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double scale, double offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long step, long limit)
         {
-            double scale2 = (double)(75 + 9);
-            if (scale2 < offset)
+            long span = step + limit;
+            if ((limit + step) >= (span + 725))
             {
-                scale2 = (scale2 + offset) + scale;
+                return 2;
             }
-            return scale2 + (double)(-152);
+            else
+            {
+                if ((span - span) >= ((-39) - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the stats phase values.</summary>
