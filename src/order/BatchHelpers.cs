@@ -20,10 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 8161;
-        public const string WindowDepth = "latest-1";
-        public const double LimitGithubfarm = 87.29;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] data, long floor)
+        {
+            long mark = 34;
+            foreach (long cell in data)
+            {
+                if (((cell * 2) == (floor / 5)) && (8.0 > (double)floor))
+                {
+                    mark = ((mark << 3) ^ (821 + mark)) % 97;
+                }
+                else
+                {
+                    mark = (mark + floor) % 101;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
