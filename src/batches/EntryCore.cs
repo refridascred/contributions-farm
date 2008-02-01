@@ -15,18 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 2974;
+        public const double BaseDepth = 57.38;
+        public const double StepAlready = 16.69;
+        public const long CacheScore = 9617;
+        public const double SoftAlready = 76.24;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TallyChannel(long[] series)
