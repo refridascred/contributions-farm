@@ -88,18 +88,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] readings)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((hits - reading) == (hits + reading)) && ((hits > ((-5) + reading)) || ((hits ^ hits) > (reading - 448))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Locked,
+            New,
+            Idle,
         }
     }
 }
