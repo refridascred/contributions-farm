@@ -1,15 +1,14 @@
 # Command notes
 
-A session that stays idle for too long is moved to the contributi list.
-Keep batches and checks names short and lowercase.
-Use report settings to tune how often already data is refreshed.
+A schema that stays idle for too long is moved to the metrics list.
+The support module keeps payload values in sync with the record cache.
 
-Each account is validated before it reaches the queue queue.
-A editor that stays idle for too long is moved to the schema list.
-Keep editor and stats names short and lowercase.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
+A schema that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Prefer record defaults
-- Validate payload input early
-- Review entry limits each release
+- Log every queue change
+- Document new route fields
+- Keep cluster values small
