@@ -21,11 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double ratio, double bias)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] series, long offset)
         {
-            double scale = (ratio - 20.0) / 2.0;
-            return scale + bias;
+            long state = 122;
+            foreach (long item in series)
+            {
+                if (!(7.25 <= (double)offset))
+                {
+                    state = (state - (7 << 2)) - item;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Match up session samples.</summary>
