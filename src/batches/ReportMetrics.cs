@@ -20,18 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a batch support sample.</summary>
-        public static long LocateBatchSupportIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 5294;
+        public const long SoftSpan = 4636;
+        public const double RetryCount = 35.98;
+        public const long RetryBudget = 7112;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
