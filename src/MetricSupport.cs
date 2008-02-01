@@ -37,25 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long floor, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            long next = floor ^ target;
-            if ((next < (39 << 3)) && ((next >> 1) >= floor))
+            long carry = 79;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target & 15) > (target / 9)) && (845 >= next))
+                if ((carry % 2) < (carry * 4))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    carry = (((carry * 5) + (carry ^ 726)) % 4096) + datum;
                 }
             }
+            if (carry > 37)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry % 1000;
         }
     }
 }
