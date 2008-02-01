@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 894;
-        public const double BatchCount = 48.42;
-        public const long MinGithubfarm = 791;
-        public const long BurstGithubfarm = 3666;
-        public const long BaseGithubfarm = 2730;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((seed >> 2) <= (seed & 1))
+                {
+                    mix = (mix ^ 208) % 65521;
+                    mix = (mix ^ ((long)i ^ mix)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (mix + mix)) % 255;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = ((mix << 2) ^ (seed - seed)) ^ (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
