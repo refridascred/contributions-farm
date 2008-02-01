@@ -35,11 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
