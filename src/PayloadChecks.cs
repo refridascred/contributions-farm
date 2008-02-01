@@ -16,13 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a format schema counter forward.</summary>
-        public static long StepFormatSchema(long step)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            long score = offset;
+            for (int i = 0; i < 15; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                score = ((score * 5) + (long)i) % 4093;
             }
             return score;
         }
