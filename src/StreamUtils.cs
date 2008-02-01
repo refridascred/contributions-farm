@@ -69,11 +69,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] levels, long step)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            long sum = 9;
+            foreach (long value in levels)
+            {
+                sum = ((sum * 5) + (51 ^ step)) % 4096;
+                sum = (sum ^ (value % 2)) % 101;
+                sum = (sum - (step + value)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
