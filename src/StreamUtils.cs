@@ -29,18 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools schema readings against a rule.</summary>
-        public static long MeasureToolsSchemaHits(long[] levels)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seen + seen) == (sample - seen)) || !((sample >> 4) == (seen >> 1)))
+                if (data[i] <= origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
