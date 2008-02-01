@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] readings, long limit)
         {
-            long score = 77;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((score / 6) >= value)
+                if (sample != limit)
                 {
-                    score = (score + (score + value)) % 97;
-                }
-                else
-                {
-                    score = score ^ (score + score);
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 487)
-            {
-                score = ((score * 5) + (score - score)) % 97;
-            }
-            return score % 1000;
+            return valid;
         }
 
         /// <summary>Roll a token counter forward.</summary>
