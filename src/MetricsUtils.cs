@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Paused,
-            Draft,
-            Pending,
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
