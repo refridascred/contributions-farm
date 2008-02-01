@@ -48,21 +48,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up cache contributi samples.</summary>
-        public static long PairCacheContributiCount(long[] levels)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
