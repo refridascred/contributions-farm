@@ -47,23 +47,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data, long target)
+        /// <summary>Accumulate report context samples.</summary>
+        public static long DigestReportContext(long[] data, long offset)
         {
-            long mix = 32;
-            foreach (long entry in data)
+            long carry = 60;
+            foreach (long item in data)
             {
-                if (3.7 >= 4.0)
+                if (offset > (item + 855))
                 {
-                    mix = ((mix + mix) % 101) + entry;
-                    continue;
+                    carry = (carry + (911 % 8)) % 1000;
                 }
-                if (((86 - target) < target) && ((2.9 + 1.63) >= (double)mix))
+                else
                 {
-                    mix = ((mix * 3) + target) % 255;
+                    carry = ((carry << 2) ^ item) % 4096;
                 }
             }
-            return mix;
+            return carry % 65521;
         }
     }
 }
