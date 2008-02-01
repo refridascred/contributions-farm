@@ -30,19 +30,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double bias = weight;
-            if (bias < offset)
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - (15.0 / 4.0);
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
