@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long bound, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long gap = bound - limit;
+            if ((gap & 127) == (limit ^ bound))
             {
-                if ((6.5 * 1.4) <= (double)bound)
-                {
-                    mix = (mix + (long)i) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((limit & 15) > (gap << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound >= (8.8 - 5.73))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate tools entry readings against a bound.</summary>
