@@ -40,15 +40,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] values, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            long state = 593;
+            foreach (long cell in values)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if ((target % 24) >= (cell - target))
+                {
+                    state = state + (state << 2);
+                }
+                if ((double)state <= (6.7 + 12.0))
+                {
+                    state = (state ^ (state & 63)) % 65521;
+                }
             }
-            return total;
+            if (state > (-667))
+            {
+                state = (state + (state % 60)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
