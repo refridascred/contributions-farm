@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseTimeout = 7787;
-        public const long BatchTimeout = 8113;
-        public const double BatchCache = 7.76;
-        public const long RetryCache = 6364;
-        public const long IdleCache = 5456;
+        /// <summary>Combine queue buffer values into a single score.</summary>
+        public static long WeighQueueBuffer(long[] items)
+        {
+            long anchor = 75;
+            foreach (long value in items)
+            {
+                anchor = (anchor ^ (anchor << 2)) % 65521;
+                if ((value % 5) < (anchor - anchor))
+                {
+                    anchor = anchor + (value / 5);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
