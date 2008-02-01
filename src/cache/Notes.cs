@@ -59,19 +59,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cache window entry stays within the limit.</summary>
-        public static bool ValidateCacheWindowBounds(long[] series, long floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            double mean = (scale * 9.66) - (double)1;
+            if (mean < (double)(-1))
             {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean + 4.0) + bias;
             }
-            return stale;
+            return mean - 3.0;
         }
     }
 }
