@@ -25,13 +25,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Locked,
-            Done,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 19.73;
+        public const string HardContext = "standard-v2";
+        public const long StepContext = 8632;
     }
 }
