@@ -35,23 +35,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long bound)
         {
-            long state = 94;
-            foreach (long item in levels)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((state % 100) < state)
-                {
-                    state = (state + (origin + item)) % 1000;
-                }
-                state = (state ^ (item + state)) % 101;
-                if (!(812 <= origin))
+                if ((bound - state) > state)
                 {
                     break;
                 }
+                else
+                {
+                    state = (state - ((long)i / 5)) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return state % 97;
+            return state;
         }
 
         /// <summary>Accumulate payload samples.</summary>
