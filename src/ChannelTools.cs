@@ -31,13 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Draft,
-            Pending,
+            Dropped,
             Queued,
-            New,
+            Draft,
+            Ready,
+            Retry,
         }
     }
 }
