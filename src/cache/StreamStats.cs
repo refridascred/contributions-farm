@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] samples, long origin)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
