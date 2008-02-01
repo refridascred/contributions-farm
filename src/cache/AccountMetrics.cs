@@ -91,15 +91,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
