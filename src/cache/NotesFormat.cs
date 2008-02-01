@@ -37,22 +37,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry profile readings against a rule.</summary>
-        public static long CountEntryProfileMatches(long[] levels)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double gain = 5.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((reading / 4) > (reading & 7)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = ((gain + offset) - (double)(long)i) - scale;
             }
-            return hits;
+            return gain - (double)498;
         }
     }
 }
