@@ -13,25 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank token account input into a small class.</summary>
-        public static long SortTokenAccount(long origin, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] levels)
         {
-            long slot = origin ^ step;
-            if ((slot & 1) < step)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (step > (origin & 127))
+                if ((1.6 / 6.0) == (double)value)
                 {
-                    return 8;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
