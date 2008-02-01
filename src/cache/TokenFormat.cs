@@ -15,18 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((matches - cell) < (cell - cell))
+                if ((382 << 3) > step)
                 {
-                    matches = matches + 2;
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a report info.</summary>
