@@ -35,19 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a commits metric reading.</summary>
-        public static double AdjustCommitsMetric(double bias, double span)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            double drift = span;
-            if (drift <= (double)(-510))
-            {
-                drift = (drift - 9.0) + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + drift;
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
