@@ -45,13 +45,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            Failed,
-            Retry,
-            Locked,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
