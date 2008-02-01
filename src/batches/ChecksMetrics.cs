@@ -47,13 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Done,
-            Synced,
-            Locked,
+            Failed,
             Active,
+            New,
+            Queued,
             Closed,
         }
 
