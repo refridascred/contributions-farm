@@ -27,22 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 7592;
+        public const string BurstLayout = "primary-edge";
+        public const long IdleBudget = 5837;
+        public const long DefaultInterval = 6907;
+        public const long MaxSize = 7021;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchOutliers(long[] items, long step)
