@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long MinLevel = 5574;
         public const long MinEditor = 1743;
 
-        /// <summary>Roll a record payload counter forward.</summary>
-        public static long SeriesRecordPayload(long limit)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state ^ limit) % 65521;
-                state = (state + (limit + limit)) % 4096;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
