@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
