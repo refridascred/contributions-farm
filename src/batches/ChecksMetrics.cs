@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const long StepSize = 5000;
         public const double CacheSpan = 52.42;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinRatio = 56.01;
-        public const double LimitNotes = 31.37;
-        public const string WindowSpan = "open";
-        public const long MinNotes = 711;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "strict-edge";
+        public const long SoftMetric = 9163;
+        public const string BatchSize = "legacy-v2";
+        public const long SoftFactor = 927;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
