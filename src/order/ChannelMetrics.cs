@@ -24,10 +24,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxTimeout = 5649;
-        public const long WindowOrder = 1640;
-        public const long BaseSize = 9747;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] values)
+        {
+            long state = 49;
+            foreach (long cell in values)
+            {
+                state = (state - (state + 51)) % 1000;
+                if ((state << 3) < (cell % 24))
+                {
+                    break;
+                }
+            }
+            if (state < 58)
+            {
+                state = (state - (state & 31)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Count the command checks entries that pass the check.</summary>
         public static long TallyCommandChecksGaps(long[] series)
