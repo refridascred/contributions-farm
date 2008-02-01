@@ -43,24 +43,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long offset2)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double rate, double span)
         {
-            if ((1.4 / 7.0) < (double)offset)
+            double gain = span;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                gain = ((gain - (gain + span)) + (double)(long)i) - rate;
             }
-            else
-            {
-                if ((double)offset2 >= (5.8 + 4.2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return gain - (4.1 - span);
         }
     }
 }
