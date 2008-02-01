@@ -19,19 +19,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate batch graph readings against a bound.</summary>
-        public static bool ValidateBatchGraphRange(long[] items, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long floor)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
