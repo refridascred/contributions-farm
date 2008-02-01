@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] data)
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            long mix = 8;
+            foreach (long reading in data)
+            {
+                if ((double)reading > 8.6)
+                {
+                    mix = mix ^ (mix ^ reading);
+                }
+            }
+            if (mix < 64)
+            {
+                mix = mix - (mix - 62);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
