@@ -1,16 +1,12 @@
 {
-  "idle_delay_count": {
-    "sync_size_s": [251, 153, 69],
-    "support_ratio": 1024,
-    "persist": 60,
-    "min_timeout_ms": false
+  "session_size": ["standard", "standard", "fallback", "eu-west"],
+  "githubfarm_retries": {
+    "hard_delay_count": 1100,
+    "profile_delay": 53.51,
+    "audit": false,
+    "filter_capacity": 2.68
   },
-  "default_retries_ms": "local",
-  "poll_window_count": {
-    "retry_depth": [234, 290, 241, 144],
-    "batches_ratio": 86,
-    "layout_size": 12.97,
-    "batch_size_pct": true
-  },
-  "burst_delay_count": "latest"
+  "persist": 3138,
+  "poll_ttl": 100,
+  "compress": 60
 }
