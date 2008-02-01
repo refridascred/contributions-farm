@@ -43,15 +43,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order stream value from a seed.</summary>
-        public static long SeriesOrderStream(long limit)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                carry = (carry * 2) + (carry - bound);
+                if (!(((bound / 5) > (carry + bound)) && (carry >= ((long)i >> 4))))
+                {
+                    carry = ((carry * 2) + ((-191) << 2)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
     }
 }
