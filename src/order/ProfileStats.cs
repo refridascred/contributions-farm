@@ -23,21 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of farm command readings.</summary>
-        public static long MatchFarmCommandCount(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell * 2) < (matches / 9))
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) + target;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up already batches samples.</summary>
