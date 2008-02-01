@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] series)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((seen + seen) != (seen - seen)) && ((478 >= (cell * 3)) || (cell >= (seen << 1))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
