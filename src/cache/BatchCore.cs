@@ -27,15 +27,15 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double scale, double bias)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double weight, double floor)
         {
-            double ratio = scale;
-            if (ratio >= (ratio * 3.37))
+            double gain = weight;
+            if (gain > (floor / 3.0))
             {
-                ratio = (ratio + scale) + bias;
+                gain = gain - gain;
             }
-            return ratio + 6.0;
+            return gain + (double)0;
         }
 
         /// <summary>Hold a metric options.</summary>
