@@ -13,12 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 2295;
-        public const long IdleCluster = 663;
-        public const long LimitCount = 6118;
-        public const long StepCluster = 9855;
-        public const string BaseSpan = "open-v2";
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Idle,
+            Active,
+            Queued,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteHits(long[] items, long offset)
