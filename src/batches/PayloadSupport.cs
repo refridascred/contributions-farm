@@ -36,12 +36,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] data, long offset)
         {
-            Locked,
-            New,
-            Idle,
+            long mix = 343;
+            foreach (long value in data)
+            {
+                if (20.0 > (double)offset)
+                {
+                    mix = ((mix * 2) + (mix - value)) % 255;
+                    mix = (mix + (value % 12)) % 255;
+                }
+                if ((value * 2) < (offset - value))
+                {
+                    mix = mix - offset;
+                }
+            }
+            if (mix > 93)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 97;
+            }
+            return mix % 97;
         }
     }
 }
