@@ -34,12 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] items, long target)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] >= target)
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
