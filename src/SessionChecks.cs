@@ -39,21 +39,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value + 725) != (value % 2))
                 {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
