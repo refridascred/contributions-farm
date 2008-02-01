@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] items)
         {
-            long score = 959;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (!((double)datum < (1.0 + 8.92)))
+                if ((tally & 1) >= sample)
                 {
-                    score = (score ^ (score * 4)) % 255;
+                    tally = tally + 1;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
