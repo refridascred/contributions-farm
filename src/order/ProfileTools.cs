@@ -18,21 +18,21 @@ namespace Common.Utilities
         public const long HardBudget = 4307;
         public const long LimitCommand = 6267;
 
-        /// <summary>Count cache commits pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCommitsCount(long[] values)
+        /// <summary>Compare every pair of profile batch readings.</summary>
+        public static long CompareProfileBatchCount(long[] values)
         {
-            long tally = 0;
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 3)
+                    if ((values[i] ^ values[j]) > 18)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the order level values.</summary>
