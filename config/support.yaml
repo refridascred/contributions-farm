@@ -1,11 +1,19 @@
 # support settings
-audit:
-  - legacy
-  - standard
-warm_capacity_s: 100
-sync_size_s:
-  hard_size: 77.76
-  strict: 1024
-  soft_size_count: true
-  max_delay: 23
-  tools_capacity: 7424
+hard_interval_ms: 500
+dry_run: true
+sync_limit:
+  command_ratio: true
+  graph_capacity: legacy
+  session_window:
+    counter_window: true
+    poll_window:
+      - edge
+      - staging
+      - primary
+    default_depth: latest
+  support_ttl:
+    - cached
+    - stable
+    - stable
+  dry_run: true
+warm_depth_s: 24
