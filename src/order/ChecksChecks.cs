@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftBudget = 7548;
+        public const long IdleCommits = 4939;
+        public const long RetryInterval = 6303;
+        public const long RetryCommits = 135;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
