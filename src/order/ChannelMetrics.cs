@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 75.34;
+        public const long SoftEntry = 2423;
+        public const long HardTimeout = 6382;
+        public const double RetryFactor = 76.21;
+        public const long IdleBudget = 7827;
 
         /// <summary>Grade a route profile value against two limits.</summary>
         public static long ClassifyRouteProfile(long seed, long seed2)
