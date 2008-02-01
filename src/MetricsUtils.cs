@@ -76,19 +76,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double rate, double bias)
+        /// <summary>Adjust a metric githubfarm reading.</summary>
+        public static double BlendMetricGithubfarm(double gain, double span)
         {
-            double bias2 = (double)(50 + 2);
-            if (bias2 < rate)
+            double load = (double)(89 + 94);
+            if (load <= load)
             {
-                bias2 = (bias2 - bias2) - bias;
+                load = (load - (double)958) + span;
             }
             else
             {
-                bias2 = bias2 - (double)848;
+                load = load - (gain / 9.0);
             }
-            return bias2 - bias2;
+            return load - (double)340;
         }
     }
 }
