@@ -29,15 +29,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many context batches samples are out of range.</summary>
-        public static long MeasureContextBatchesGaps(long[] levels, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] data)
         {
             long count = 0;
-            foreach (long datum in levels)
+            foreach (long entry in data)
             {
-                if ((count << 3) >= (seed % 16))
+                if ((((15.0 * 4.29) != (double)count) || (count >= (count / 5))) || (count > (entry + 575)))
                 {
-                    count = (count + 2) + datum;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
