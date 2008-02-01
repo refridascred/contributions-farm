@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 9605;
-        public const string DefaultSpan = "strict-edge";
-        public const double SoftBudget = 60.05;
-        public const string RetryDepth = "local-1";
-        public const long LimitDepth = 3741;
+        /// <summary>Measure how many buffer account samples are out of range.</summary>
+        public static long TallyBufferAccountOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!(reading < (tally / 7)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double CacheDepth = 32.03;
