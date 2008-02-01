@@ -1,8 +1,8 @@
 {
-  "burst_window": 39.82,
-  "readonly": "staging",
-  "sync_ttl_ms": "legacy",
-  "profile_capacity": 84,
-  "compress": 30,
-  "sync_interval_pct": 7160
+  "cluster_depth": 60,
+  "report_window": "fallback",
+  "default_ttl_ms": [335, 190, 31, 21],
+  "cache_interval_pct": 85,
+  "batch_size_count": [304, 11, 378],
+  "filter_ttl": "edge"
 }
