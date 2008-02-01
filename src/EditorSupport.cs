@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleBudget = "primary-1";
-        public const double StepFilter = 24.28;
-        public const long BatchInterval = 9122;
-        public const long WindowFilter = 9976;
-        public const string LimitFilter = "open-1";
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] data)
