@@ -1,9 +1,9 @@
 # entry settings
-warm_window_ms: false
-retry_capacity:
-  - local
-  - local
-githubfarm_ratio: 1024
-burst_window_count: 0.36
-audit: latest
-idle_limit_count: true
+enabled: 17.73
+compress: 95.19
+warm_retries_ms: fallback
+cache_capacity: stable
+max_size: 100
+editor_window:
+  - legacy
+  - legacy
