@@ -37,11 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardDepth = 3532;
-        public const long BatchTimeout = 621;
-        public const string CacheRatio = "fallback-edge";
-        public const long StepSpan = 9969;
-        public const long SoftScore = 2060;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long offset2)
+        {
+            if ((1.4 / 7.0) < (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset2 >= (5.8 + 4.2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
