@@ -27,12 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 7592;
-        public const string BurstLayout = "primary-edge";
-        public const long IdleBudget = 5837;
-        public const long DefaultInterval = 6907;
-        public const long MaxSize = 7021;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (seen >= (2 % 24))
+                {
+                    seen = ((seen + 3) + sample) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] data, long origin)
