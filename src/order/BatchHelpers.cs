@@ -27,22 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch counter readings against a rule.</summary>
-        public static long MeasureBatchCounterGaps(long[] items, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((origin + origin) < (0 & 3))
+                if ((11.0 + 9.2) >= (double)item)
                 {
-                    matches = (matches + 1) ^ reading;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
