@@ -1,24 +1,25 @@
 # entry settings
-idle_size:
-  format_threshold: edge
-  editor_depth:
-    - 478
-    - 403
-  cluster_threshold:
-    verbose: 3334
-    strict: true
-    batch_timeout_ms: 37
-    max_timeout_count: blue
-    dry_run: stable
-    readonly: 62.73
-  persist: staging
-  base_limit_ms:
-    - cached
-    - edge
-payload_capacity:
-  - cached
-  - eu-west
-  - open
-  - cached
-default_capacity_s: latest
-enabled: false
+max_retries_count: 53.8
+soft_capacity: standard
+commits_interval:
+  flush_ttl_s:
+    graph_threshold: green
+    soft_size_s:
+      - 402
+      - 230
+      - 128
+    readonly: legacy
+    verbose: 100
+    min_capacity_s: fallback
+    retry_depth: 79
+  buffer_timeout: 0.69
+  retry_ttl_ms: strict
+  sync_timeout_pct: 25.94
+persist:
+  flush_ttl_count: false
+  format_capacity: staging
+  poll_timeout_pct: 1647
+notes_capacity:
+  - latest
+  - blue
+  - fallback
