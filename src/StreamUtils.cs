@@ -23,32 +23,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long origin, long step)
+        /// <summary>Count metric batch pairs that satisfy a relation.</summary>
+        public static long OverlapMetricBatchCount(long[] data)
         {
-            long slot = origin - step;
-            if (origin <= (608 + origin))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - step) != (origin << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((slot * 3) == (origin - slot))
+                    if ((data[i] + data[j]) == 0)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit tools schema readings against a rule.</summary>
