@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 324;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = ((sum << 2) ^ (entry << 3)) ^ (long)i;
+                }
+                sum = (sum + sum) % 101;
+            }
+            if (sum < 6)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
