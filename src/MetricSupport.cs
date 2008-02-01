@@ -47,18 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format support samples are out of range.</summary>
-        public static long MeasureFormatSupportOutliers(long[] values, long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((step & 31) < (211 >> 2))
-                {
-                    tally = (tally + 2) - item;
-                }
-            }
-            return tally;
+            Locked,
+            Idle,
+            New,
+            Synced,
+            Paused,
         }
     }
 }
