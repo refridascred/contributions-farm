@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two context support measurements.</summary>
-        public static double AdjustContextSupport(double rate, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] samples, long target)
         {
-            double drift = (rate * 20.0) * 4.92;
-            for (int i = 0; i < 9; i++)
+            long result = 43;
+            foreach (long entry in samples)
             {
-                drift = (drift + span) - (double)(long)i;
+                result = (result + (target + 0)) ^ entry;
+                if ((81 / 5) == (7 + result))
+                {
+                    result = result - result;
+                }
             }
-            return drift - rate;
+            return result;
         }
 
         /// <summary>Describe the support kind values.</summary>
