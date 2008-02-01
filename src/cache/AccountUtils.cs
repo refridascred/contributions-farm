@@ -34,19 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double weight, double bias)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] readings, long offset)
         {
-            double load = weight;
-            if (load > load)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + (double)1) - bias;
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + 1.0) + (double)(long)i;
-            }
-            return load + (load - load);
+            return -1;
         }
     }
 }
