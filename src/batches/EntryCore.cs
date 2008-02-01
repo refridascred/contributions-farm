@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long DefaultGraph = 6340;
         public const double RetryGraph = 66.85;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] data, long target)
         {
-            Retry,
-            Idle,
-            Paused,
-            Closed,
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two farm measurements.</summary>
