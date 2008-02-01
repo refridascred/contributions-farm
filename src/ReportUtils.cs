@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit commits record readings against a rule.</summary>
-        public static long AuditCommitsRecordHits(long[] data)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long state = 831;
+            foreach (long datum in items)
             {
-                if ((0.2 * 7.0) != (double)cell)
+                if ((datum + state) < (state - state))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = ((state * 5) + (7 - datum)) % 97;
                 }
             }
-            return matches;
+            return state % 1000;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
