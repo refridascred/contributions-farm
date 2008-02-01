@@ -49,12 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] levels, long offset)
+        /// <summary>Locate a profile session reading by value.</summary>
+        public static long SeekProfileSessionIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
+                if (samples[i] < offset)
                 {
                     return (long)i;
                 }
