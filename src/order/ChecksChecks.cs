@@ -30,10 +30,18 @@ namespace Common.Utilities
         public const long MinAccount = 4869;
         public const double BaseInterval = 77.33;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryWidth = 878;
-        public const string MinWidth = "strict-1";
-        public const double MaxSupport = 36.1;
-        public const string SoftSupport = "primary-v2";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits <= (floor % 24)) || (((1.6 / 5.0) > (double)hits) && (((long)data.Length / 2) == (floor / 5))))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
     }
 }
