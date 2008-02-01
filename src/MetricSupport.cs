@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
