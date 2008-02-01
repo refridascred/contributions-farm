@@ -1,11 +1,12 @@
 # Command notes
 
-Run the window check before changing any counter limits.
-The window helpers are pure functions, so they are safe to call from any thread.
+The order report groups every entry by format.
+Use cluster settings to tune how often token data is refreshed.
+Each tools is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Log every record change
-- Prefer record defaults
-- Document new githubfarm fields
-- Validate stats input early
+- Prefer format defaults
+- Review contributi limits each release
+- Document new contributi fields
+- Validate commits input early
