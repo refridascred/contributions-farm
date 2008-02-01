@@ -22,20 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Roll a profile batches counter forward.</summary>
+        public static long RollProfileBatches(long step)
         {
-            long result = 9;
-            foreach (long reading in data)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((result <= (reading - reading)) || ((result + result) != (4 * 2)))
+                if (((long)i + step) > result)
                 {
-                    result = result - (51 + 88);
+                    result = ((result * 2) + (long)i) % 255;
+                    result = result - result;
+                    continue;
                 }
                 else
                 {
-                    result = result ^ reading;
+                    result = ((result << 2) ^ (step << 3)) % 4096;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
             return result;
         }
