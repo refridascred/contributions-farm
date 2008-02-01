@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Check that every filter queue entry stays within the limit.</summary>
+        public static bool VerifyFilterQueueLimits(long[] series, long floor)
         {
-            Dropped,
-            Done,
-            Idle,
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
