@@ -38,32 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine record cluster values into a single score.</summary>
-        public static long ScoreRecordCluster(long[] levels, long target)
-        {
-            long mix = 645;
-            foreach (long item in levels)
-            {
-                if ((double)target != (9.56 + 4.0))
-                {
-                    mix = mix ^ (item ^ mix);
-                }
-                mix = (mix + item) % 101;
-                if ((target / 8) < (item + mix))
-                {
-                    mix = mix ^ (target % 100);
-                }
-                else
-                {
-                    mix = (mix ^ target) % 255;
-                }
-                if ((double)item >= 6.9)
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxRatio = "open-v2";
+        public const long DefaultFactor = 8577;
+        public const double SoftFactor = 29.26;
+        public const long SoftChecks = 701;
+        public const double LimitInterval = 92.73;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamMatches(long[] data)
