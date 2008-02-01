@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback edge; do
+for item in fallback latest primary cached; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=282
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
