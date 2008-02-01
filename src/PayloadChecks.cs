@@ -57,15 +57,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] series, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] samples, long seed)
         {
             long tally = 0;
-            foreach (long datum in series)
+            foreach (long entry in samples)
             {
-                if ((tally - tally) > tally)
+                if ((1.0 * 0.3) >= (double)entry)
                 {
-                    tally = ((tally + 2) ^ datum) + step;
+                    tally = (tally + 1) - seed;
                 }
             }
             return tally;
