@@ -49,14 +49,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            Dropped,
-            Idle,
-            Ready,
-            Closed,
-            Active,
+            long mark = target;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = mark ^ (mark / 6);
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark ^ (mark * 4)) % 97) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
