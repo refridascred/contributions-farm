@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Derive the next already cluster value from a seed.</summary>
+        public static long RollAlreadyCluster(long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
