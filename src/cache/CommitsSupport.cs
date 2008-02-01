@@ -73,10 +73,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 8163;
-        public const long SoftContext = 6032;
-        public const string RetryContext = "latest-edge";
-        public const long BaseContext = 822;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long floor)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
