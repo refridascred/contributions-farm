@@ -32,39 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route profile value against two limits.</summary>
-        public static long ClassifyRouteProfile(long seed, long seed2)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long edge = seed - seed2;
-            if ((1 ^ 27) <= (seed << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((edge % 100) >= (seed2 + 57))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + seed) < (2 * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed2 <= (seed + seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Failed,
+            Dropped,
+            Synced,
         }
     }
 }
