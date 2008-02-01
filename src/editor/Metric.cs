@@ -31,39 +31,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long seed, long floor)
+        /// <summary>Measure how many booking samples are out of range.</summary>
+        public static long CountBookingGaps(long[] samples)
         {
-            long gap = seed + floor;
-            if ((6.94 + 8.0) == (double)seed)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((gap + gap) < floor) && (532 > floor))
+                if ((matches % 2) <= ((-44) % 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (floor < (86 * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed + gap) != (4 ^ 0)) || ((gap ^ seed) >= (floor - gap)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = (matches + 1) + reading;
                 }
             }
+            return matches;
         }
     }
 }
