@@ -1,7 +1,9 @@
 # entry settings
-warm_delay_ms: standard
-cache_timeout: true
-retry_window_s: 6410
-context_timeout: 2606
-warm_depth_count: green
-strict: primary
+warm_window_ms: false
+retry_capacity:
+  - local
+  - local
+githubfarm_ratio: 1024
+burst_window_count: 0.36
+audit: latest
+idle_limit_count: true
