@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] samples, long limit)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!((sample % 16) <= sample))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Blend two command metrics measurements.</summary>
