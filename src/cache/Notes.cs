@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] samples, long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long offset, long offset2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset2 / 6) < (offset2 + offset))
             {
-                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((offset2 > (offset2 >> 4)) && (9.61 >= (double)offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset2 + offset2) > (offset + offset2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset2 << 1) > (offset << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
