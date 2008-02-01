@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every filter cache entry stays within the limit.</summary>
-        public static bool CheckFilterCacheRange(long[] series, long seed)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
