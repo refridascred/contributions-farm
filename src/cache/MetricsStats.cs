@@ -18,21 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((origin * 2) <= (origin + origin))
                 {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                if (!((9.9 + 3.0) != (double)origin))
+                {
+                    carry = ((carry << 2) ^ carry) % 4096;
+                }
+                if ((carry >> 2) <= carry)
+                {
+                    carry = (carry * 2) + (carry * 5);
+                }
+                else
+                {
+                    carry = (carry - (carry - carry)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Accumulate token samples.</summary>
