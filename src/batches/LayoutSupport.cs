@@ -48,18 +48,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Match up cache contributi samples.</summary>
+        public static long PairCacheContributiCount(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum ^ (sum + floor)) % 4096;
-                sum = (sum - (sum << 1)) % 4096;
-                sum = sum ^ (476 + (long)i);
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
