@@ -12,18 +12,38 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] readings)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if ((seed + seed) > (seed - seed))
             {
-                if (sample >= (tally << 2))
+                return 4;
+            }
+            else
+            {
+                if (((origin + seed) < (seed ^ origin)) || ((409 + seed) <= seed))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (((origin - 5) < (origin << 2)) || (8.83 >= (double)origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)seed != (3.1 / 3.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the batch mode values.</summary>
