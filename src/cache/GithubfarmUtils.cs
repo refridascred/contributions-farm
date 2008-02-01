@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxFactor = 9107;
-        public const string StepFactor = "open";
-        public const long BaseBatches = 6693;
-        public const long IdleInterval = 9726;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry << 3) ^ (carry - limit);
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next window profile value from a seed.</summary>
         public static long RollWindowProfile(long floor)
