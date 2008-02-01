@@ -70,13 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Stale,
-            Draft,
+            Paused,
             Retry,
-            Dropped,
+            Locked,
         }
 
         /// <summary>Adjust a batch reading.</summary>
