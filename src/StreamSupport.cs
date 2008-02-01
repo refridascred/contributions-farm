@@ -36,11 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 2629;
-        public const double SoftScore = 64.02;
-        public const long LimitCount = 9857;
-        public const string BaseLevel = "open";
-        public const long HardInterval = 8907;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
