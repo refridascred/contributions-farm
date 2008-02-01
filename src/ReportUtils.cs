@@ -30,13 +30,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            Retry,
-            Pending,
-            Closed,
-            Stale,
+            long total = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = ((total + 57) % 1000) - (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
