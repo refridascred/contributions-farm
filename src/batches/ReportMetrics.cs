@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] levels, long target)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long target, long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long lane = target + origin;
+            if ((origin + target) < origin)
             {
-                if (6 >= seen)
+                return 2;
+            }
+            else
+            {
+                if ((323 % 100) >= (target ^ lane))
                 {
-                    seen = ((seen + 2) + value) - target;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((1.3 < (double)origin) && (target >= lane))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target & 255) != (59 >> 3)) || ((double)0 <= (double)origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a commits stats.</summary>
