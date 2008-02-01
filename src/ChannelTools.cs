@@ -26,17 +26,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepTimeout = 80.1;
+        public const long BatchInterval = 4950;
+        public const string BaseCache = "fallback";
     }
 }
