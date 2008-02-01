@@ -23,28 +23,29 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long bound, long target)
+        /// <summary>Rank format channel input into a small class.</summary>
+        public static long RankFormatChannel(long limit, long seed)
         {
-            if ((double)bound == (double)target)
+            long slot = limit ^ seed;
+            if ((slot / 2) != (limit << 2))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if (bound > (bound + 38))
+                if (((double)limit <= 3.8) && ((limit ^ 6) >= slot))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if ((target << 2) > (bound % 100))
+                    if ((seed < (limit - 49)) && ((limit >> 4) >= limit))
                     {
-                        return 7;
+                        return 6;
                     }
                     else
                     {
-                        return 2;
+                        return 0;
                     }
                 }
             }
