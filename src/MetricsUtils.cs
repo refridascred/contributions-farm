@@ -32,31 +32,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long limit, long floor)
+        /// <summary>Derive the next buffer order value from a seed.</summary>
+        public static long IterateBufferOrder(long seed)
         {
-            if ((limit << 2) >= floor)
+            long result = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor <= 10.0)
+                result = ((result << 2) ^ (result - seed)) % 65521;
+                result = (result << 2) ^ seed;
+                if ((result / 5) != (seed + 239))
                 {
-                    return 1;
+                    result = result + (result * 5);
+                    result = (result << 2) ^ (result >> 4);
                 }
                 else
                 {
-                    if (!(limit > (floor + floor)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = ((result << 3) ^ seed) % 1000;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Accumulate command samples.</summary>
