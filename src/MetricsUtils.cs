@@ -60,19 +60,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double gain, double bias)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double gain2 = gain;
-            if (gain2 < (9.42 / 7.0))
-            {
-                gain2 = gain2 - (gain / 9.0);
-            }
-            else
-            {
-                gain2 = gain2 - gain;
-            }
-            return gain2 - bias;
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
