@@ -33,24 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long origin, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] series)
         {
-            if ((49 & 3) >= origin)
+            long mark = 71;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor ^ floor) != (56 + origin))
+                if (((double)mark == (6.0 + 0.24)) && ((double)item == (3.0 + 5.3)))
                 {
-                    return 6;
+                    mark = (mark ^ (mark >> 5)) % 101;
                 }
-                else
-                {
-                    return 0;
-                }
+                mark = (mark + (-36)) % 1000;
             }
+            return mark % 4096;
         }
     }
 }
