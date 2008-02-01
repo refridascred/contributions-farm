@@ -28,19 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster payload readings.</summary>
-        public static long TotalClusterPayload(long[] samples)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            long carry = 7;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 2) ^ datum) % 255;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry > (-99))
-            {
-                carry = ((carry << 3) ^ (carry - carry)) % 101;
-            }
-            return carry;
+            return hits;
         }
     }
 }
