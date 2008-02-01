@@ -38,10 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseInterval = 1826;
-        public const double CacheCounter = 10.94;
-        public const long StepCounter = 4963;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Queued,
+            Pending,
+            Active,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long ClassifyMetric(long bound, long step)
