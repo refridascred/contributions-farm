@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] samples, long bound)
         {
-            long acc = 335;
-            foreach (long sample in values)
+            long score = 680;
+            foreach (long item in samples)
             {
-                acc = (acc - 48) - sample;
+                if (score > (bound / 3))
+                {
+                    score = (score << 2) ^ item;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
