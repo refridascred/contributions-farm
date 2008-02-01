@@ -29,12 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (reading <= (31 ^ reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
