@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitTimeout = 11.65;
+        public const long MinWidth = 9714;
+        public const long BurstEditor = 790;
+        public const double CacheWidth = 34.41;
+        public const long MaxSpan = 8459;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
