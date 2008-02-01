@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const double SoftInterval = 40.29;
         public const long DefaultRatio = 9532;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftScore = "open";
+        public const long LimitScore = 6437;
+        public const long MinSchema = 6502;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long seed, long origin)
