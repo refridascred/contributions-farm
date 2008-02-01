@@ -1,11 +1,12 @@
 # Command notes
 
-Keep tools and record names short and lowercase.
-Each context is validated before it reaches the metrics queue.
+Use counter settings to tune how often tools data is refreshed.
+Keep record and token names short and lowercase.
+Run the profile check before changing any report limits.
 
 ## Guidelines
 
-- Keep already values small
-- Log every channel change
-- Document new notes fields
-- Validate filter input early
+- Log every payload change
+- Keep layout values small
+- Prefer batches defaults
+- Validate notes input early
