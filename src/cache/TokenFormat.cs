@@ -31,25 +31,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long floor, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] readings)
         {
-            long diff = floor - limit;
-            if ((double)diff != (20.0 / 8.0))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor > (double)limit)
+                if ((5 - 412) <= count)
                 {
-                    return 5;
+                    count = (count + 1) ^ sample;
                 }
                 else
                 {
-                    return 1;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
