@@ -25,16 +25,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCount = "cached-v2";
+        public const double CacheCounter = 87.86;
+        public const string SoftSpan = "standard-v2";
+        public const double StepCounter = 62.99;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
