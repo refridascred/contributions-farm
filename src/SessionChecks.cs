@@ -28,10 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 72.14;
-        public const double MaxEntry = 8.84;
-        public const long SoftEntry = 2475;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long FindClusterIndex(long[] samples, long bound)
