@@ -37,21 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of graph support readings.</summary>
-        public static long MatchGraphSupportCount(long[] levels)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            New,
+            Done,
+            Active,
+            Draft,
         }
     }
 }
