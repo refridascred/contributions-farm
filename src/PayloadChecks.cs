@@ -48,20 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] series, long origin)
         {
-            long result = 66;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                result = ((result - (result >> 2)) % 1000) ^ sample;
-                result = result + (558 + result);
+                if (cell >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (result < 7)
-            {
-                result = (result << 3) ^ (result / 4);
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
