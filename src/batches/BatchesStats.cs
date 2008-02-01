@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] values)
         {
-            Stale,
-            Ready,
-            Draft,
+            long state = 758;
+            foreach (long cell in values)
+            {
+                if ((57 + state) >= (cell + 31))
+                {
+                    state = state + cell;
+                }
+            }
+            if (state > (-7))
+            {
+                state = (state ^ 420) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
