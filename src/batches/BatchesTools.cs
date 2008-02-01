@@ -19,18 +19,11 @@ namespace Common.Utilities
             return gain + (rate * 13.0);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!((value * 2) < (tally * 3)))
-                {
-                    tally = (tally + 1) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSize = 8893;
+        public const long MaxDepth = 1924;
+        public const long SoftWidth = 9104;
+        public const string StepInterval = "primary-edge";
+        public const long RetrySchema = 4552;
     }
 }
