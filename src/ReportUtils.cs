@@ -32,38 +32,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long bound, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            if ((1 ^ bound) == (bound ^ offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 3) <= (offset % 60))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound & 63) != (0 << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) != (offset & 63))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
