@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long offset, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] series, long seed)
         {
-            if (!((double)offset != (9.96 - 5.7)))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset - 702) >= offset)
+                if (entry <= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + floor) >= (-744))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor * 2) <= 48)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Validate layout account readings against a bound.</summary>
