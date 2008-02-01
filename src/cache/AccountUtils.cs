@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine context profile values into a single score.</summary>
-        public static long WeighContextProfile(long[] samples)
+        /// <summary>Classify a schema support pair into a bucket.</summary>
+        public static long GradeSchemaSupport(long step, long offset)
         {
-            long score = 47;
-            foreach (long value in samples)
+            if ((step << 3) <= offset)
             {
-                score = ((score << 2) ^ (257 / 8)) ^ value;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (!((double)offset > (6.0 / 5.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (0 <= (offset >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter level values.</summary>
