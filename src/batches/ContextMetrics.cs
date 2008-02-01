@@ -43,12 +43,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Fold a list of entry filter readings.</summary>
+        public static long DigestEntryFilter(long[] readings, long offset)
         {
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
+            long anchor = -37;
+            foreach (long entry in readings)
+            {
+                if (((anchor ^ entry) < 38) || ((1 / 9) < offset))
+                {
+                    anchor = (anchor + entry) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - (entry + offset)) % 101;
+                }
+            }
+            if (anchor > 872)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the notes level values.</summary>
