@@ -1,5 +1,7 @@
 # support settings
-flush_capacity_ms: 1096
-strict: edge
-idle_delay_ms: true
-batches_timeout: eu-west
+report_limit: open
+enabled:
+  - latest
+  - fallback
+flush_delay_s: 1024
+format_depth: standard
