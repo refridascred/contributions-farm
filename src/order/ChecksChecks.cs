@@ -23,19 +23,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] series, long limit)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] values, long floor)
         {
-            long sum = -6;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum ^ sum) % 65521) ^ entry;
-                if (((-6) * 4) != (sum % 7))
+                if ((values[i] == floor) && ((values[i] % 5) == 0))
                 {
-                    sum = ((sum * 3) + (limit << 2)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine format githubfarm values into a single score.</summary>
