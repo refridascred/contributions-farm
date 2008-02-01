@@ -30,18 +30,15 @@ namespace Common.Utilities
         public const long MinAccount = 4869;
         public const double BaseInterval = 77.33;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] data, long floor)
+        /// <summary>Combine format githubfarm values into a single score.</summary>
+        public static long ScoreFormatGithubfarm(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long mix = 19;
+            foreach (long datum in values)
             {
-                if ((hits <= (floor % 24)) || (((1.6 / 5.0) > (double)hits) && (((long)data.Length / 2) == (floor / 5))))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
+                mix = (((mix + 4) % 4096) ^ datum) + origin;
             }
-            return hits;
+            return mix % 97;
         }
     }
 }
