@@ -20,17 +20,14 @@ namespace Common.Utilities
         public const string MaxInterval = "latest-v2";
         public const long BurstOrder = 5818;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Ready,
+            Closed,
+            Active,
         }
     }
 }
