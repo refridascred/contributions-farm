@@ -58,18 +58,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] levels, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally <= (origin << 2))
+                if (items[i] == offset)
                 {
-                    tally = (tally + 1) + item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
