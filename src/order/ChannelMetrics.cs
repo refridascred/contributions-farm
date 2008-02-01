@@ -20,21 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = acc + (seed >> 4);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc - (long)i2)) % 4096;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
