@@ -55,21 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Audit graph notes readings against a rule.</summary>
+        public static long MeasureGraphNotesHits(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count <= (step - count)) || (((double)(long)values.Length < (6.9 - 13.0)) && ((step + count) >= ((long)values.Length - entry))))
                 {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
