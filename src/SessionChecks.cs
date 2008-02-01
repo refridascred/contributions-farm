@@ -28,15 +28,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] levels, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] series, long origin)
         {
-            long mark = 48;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark << 2) ^ (39 - reading)) - origin;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
