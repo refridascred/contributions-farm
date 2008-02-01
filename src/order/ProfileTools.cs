@@ -45,15 +45,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double gain, double floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double drift = floor - (double)1;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (double)(long)i) + gain;
-            }
-            return drift - drift;
+            Paused,
+            Stale,
+            Done,
         }
     }
 }
