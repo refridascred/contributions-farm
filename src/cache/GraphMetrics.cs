@@ -17,10 +17,19 @@ namespace Common.Utilities
         public const string BurstSchema = "cached-edge";
         public const long IdleCount = 5720;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "open-v2";
-        public const long HardLayout = 957;
-        public const long StepSpan = 4275;
+        /// <summary>Measure how many profile counter samples are out of range.</summary>
+        public static long MeasureProfileCounterHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((double)sample >= (6.2 - 5.7)) || ((sample ^ seen) >= (262 + 0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long FoldStats(long[] series, long step)
