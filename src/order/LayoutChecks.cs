@@ -31,18 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits batches readings against a rule.</summary>
-        public static long TallyCommitsBatchesMatches(long[] series)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((cell / 5) == (cell + matches))
-                {
-                    matches = matches + 1;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
