@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next record editor value.</summary>
-        public static double BlendRecordEditor(double ratio, double span)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] levels, long origin)
         {
-            double mean = ratio;
-            return (mean - (mean * 6.43)) + span;
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate schema samples.</summary>
