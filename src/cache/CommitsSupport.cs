@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long target, long floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long gap = target - floor;
-            if (67 <= (floor * 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor) != (gap ^ (-4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(((-457) >> 1) >= gap))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a queue commits figure with a bias.</summary>
