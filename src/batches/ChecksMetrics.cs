@@ -34,18 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinRatio = 56.01;
+        public const double LimitNotes = 31.37;
+        public const string WindowSpan = "open";
+        public const long MinNotes = 711;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
