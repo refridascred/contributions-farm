@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long HardInterval = 3882;
         public const long SoftInterval = 9456;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] data, long limit)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] >= limit)
+                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
