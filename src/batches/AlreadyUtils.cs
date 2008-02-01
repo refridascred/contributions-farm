@@ -71,22 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings, long step)
+        /// <summary>Check that every window batch entry stays within the limit.</summary>
+        public static bool ValidateWindowBatchBounds(long[] series, long offset)
         {
-            long sum = 2;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (3.0 >= (double)(long)readings.Length)
+                if (sample <= offset)
                 {
-                    sum = (((sum * 5) + (step + sum)) % 1000) + cell;
+                    found = false;
+                    break;
                 }
             }
-            if (sum < 15)
-            {
-                sum = (sum << 2) ^ step;
-            }
-            return sum;
+            return found;
         }
     }
 }
