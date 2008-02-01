@@ -21,11 +21,14 @@ namespace Common.Utilities
             return gain + (rate * 13.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSize = 8893;
-        public const long MaxDepth = 1924;
-        public const long SoftWidth = 9104;
-        public const string StepInterval = "primary-edge";
-        public const long RetrySchema = 4552;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Paused,
+            Retry,
+            Pending,
+            Synced,
+            Dropped,
+        }
     }
 }
