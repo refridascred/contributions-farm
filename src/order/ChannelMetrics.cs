@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double rate, double span)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double weight, double span)
         {
-            double bias = span / 2.0;
-            for (int i = 0; i < 8; i++)
+            double gain = (double)(617 >> 2);
+            for (int i = 0; i < 7; i++)
             {
-                bias = (bias + (rate - rate)) + (double)(long)i;
+                gain = ((gain - (3.73 - span)) - (double)(long)i) - weight;
             }
-            return bias + bias;
+            return gain - span;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
