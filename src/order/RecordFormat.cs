@@ -40,11 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstFactor = 7322;
-        public const long DefaultBudget = 9663;
-        public const string CacheCluster = "fallback-edge";
-        public const long WindowFactor = 2469;
+        /// <summary>Derive the next window route value from a seed.</summary>
+        public static long DeriveWindowRoute(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = (result - seed) ^ (long)i2;
+                }
+                result = (result - (result - seed)) % 101;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
