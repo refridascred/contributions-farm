@@ -1,8 +1,5 @@
 {
-  "cluster_depth": 60,
-  "report_window": "fallback",
-  "default_ttl_ms": [335, 190, 31, 21],
-  "cache_interval_pct": 85,
-  "batch_size_count": [304, 11, 378],
-  "filter_ttl": "edge"
+  "default_interval_s": [28, 462, 400],
+  "warm_retries_count": 23.94,
+  "audit": 3178
 }
