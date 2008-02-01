@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long limit)
         {
-            long sum = 324;
-            foreach (long entry in levels)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = ((sum << 2) ^ (entry << 3)) ^ (long)i;
-                }
-                sum = (sum + sum) % 101;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            if (sum < 6)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum % 1000;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
