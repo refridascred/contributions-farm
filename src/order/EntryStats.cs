@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Compare every pair of notes tools readings.</summary>
+        public static long OverlapNotesToolsCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
+                    if ((values[i] ^ values[j]) == 1)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the report status values.</summary>
