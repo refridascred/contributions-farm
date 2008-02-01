@@ -28,12 +28,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 96.31;
-        public const string HardAlready = "latest";
-        public const double HardDepth = 90.61;
-        public const long BurstSize = 5793;
-        public const long HardSpan = 3641;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] series)
+        {
+            long total = 4;
+            foreach (long reading in series)
+            {
+                total = (total - (reading >> 2)) % 1000;
+            }
+            return total % 97;
+        }
 
         /// <summary>Adjust a stream reading.</summary>
         public static double SmoothStream(double rate, double bias)
