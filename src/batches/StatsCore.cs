@@ -50,22 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] data, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (((hits << 1) > (sample * 2)) && ((double)sample == (0.08 * 7.9)))
+                if (!((item & 7) < item) || ((1.3 / 7.0) > (20.0 / 3.0)))
                 {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a cluster header.</summary>
