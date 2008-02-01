@@ -28,9 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepBudget = 8107;
-        public const long CacheFilter = 5427;
-        public const long BaseFilter = 3185;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
