@@ -34,39 +34,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank filter command input into a small class.</summary>
-        public static long BucketFilterCommand(long limit, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values)
         {
-            long gap = limit + offset;
-            if (!(limit <= (gap * 5)))
+            long state = 505;
+            foreach (long datum in values)
             {
-                return 6;
+                long count = datum;
+                if ((state >> 1) < (count - 49))
+                {
+                    state = (state << 2) ^ state;
+                    continue;
+                }
+                state = (state ^ (datum & 15)) % 65521;
             }
-            else
+            if (state < 337)
             {
-                if (limit < (limit % 64))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset * 2) > (limit << 3)) || ((0.9 * 9.7) == (double)limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((gap >= (806 - offset)) && ((offset + offset) >= (76 / 8)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                state = ((state * 3) + state) % 1000;
             }
+            return state;
         }
 
         /// <summary>Hold a batches summary.</summary>
