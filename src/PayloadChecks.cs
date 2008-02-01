@@ -54,31 +54,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long origin, long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] series)
         {
-            if ((limit - origin) > limit)
+            long anchor = -965;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) > (limit - limit))
+                if ((anchor + anchor) < (cell >> 5))
                 {
-                    return 8;
+                    anchor = (anchor + 778) % 1000;
                 }
                 else
                 {
-                    if ((double)limit >= 16.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = anchor ^ anchor;
                 }
             }
+            if (anchor < 1)
+            {
+                anchor = (anchor * 2) + (anchor ^ anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate command samples.</summary>
