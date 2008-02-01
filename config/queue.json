@@ -1,13 +1,7 @@
 {
-  "default_size_pct": true,
-  "base_delay_pct": 3541,
-  "max_size_pct": {
-    "channel_ttl": 71.9,
-    "idle_window_count": "blue",
-    "idle_capacity_count": 5.18,
-    "max_interval": 1024
-  },
-  "batch_ttl_ms": true,
-  "cluster_delay": ["eu-west", "green"],
-  "retry_timeout_s": false
+  "tools_size": ["local", "strict", "green"],
+  "verbose": true,
+  "poll_capacity_pct": 77,
+  "batch_timeout_count": "legacy",
+  "compress": 17.15
 }
