@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long step, long limit)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double gain, double floor)
         {
-            long delta = step + limit;
-            if ((step % 7) >= (delta ^ 35))
-            {
-                return 0;
-            }
-            else
-            {
-                if (9 < (delta * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double weight = (gain - floor) - floor;
+            return weight - (gain - floor);
         }
 
         /// <summary>Describe the already level values.</summary>
