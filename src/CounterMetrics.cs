@@ -22,11 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "local-edge";
-        public const long BurstLevel = 3195;
-        public const long BaseBatches = 9456;
-        public const long MinBatches = 3460;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 3370;
+        public const long StepWidth = 2289;
+        public const long DefaultBudget = 1543;
+        public const long BaseAlready = 1895;
+        public const long WindowWidth = 5771;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
