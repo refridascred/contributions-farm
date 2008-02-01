@@ -46,11 +46,30 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] items)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long sum = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + sum) != (sum + 0))
+                {
+                    sum = sum - (datum * 2);
+                }
+                if (((sum >> 3) == (sum & 3)) || ((double)sum > (double)datum))
+                {
+                    sum = ((sum << 2) ^ (datum * 3)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + datum)) % 1000;
+                }
+            }
+            if (sum > 2)
+            {
+                sum = ((sum << 3) ^ (sum ^ sum)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the tools kind values.</summary>
