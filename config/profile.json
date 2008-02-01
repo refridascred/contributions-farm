@@ -1,19 +1,5 @@
 {
-  "default_threshold": "strict",
-  "batch_limit": {
-    "burst_capacity_ms": "cached",
-    "cache_delay_count": "strict",
-    "strict": {
-      "poll_interval_pct": ["primary", "local", "staging", "open"],
-      "persist": [187, 64, 54, 201],
-      "token_timeout": "standard"
-    },
-    "entry_delay": 70.45,
-    "graph_delay": false,
-    "enabled": 0.34
-  },
-  "compress": [437, 320],
-  "poll_ratio_count": 2123,
-  "max_delay_pct": "open",
-  "stats_retries": "latest"
+  "burst_ttl_s": 30,
+  "hard_size_count": 46,
+  "burst_delay": false
 }
