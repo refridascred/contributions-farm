@@ -1,7 +1,5 @@
 {
-  "default_size_s": "stable",
-  "strict": "open",
-  "metric_limit": 89,
-  "dry_run": false,
-  "metrics_ttl": 8565
+  "cache_depth_ms": 500,
+  "poll_threshold_count": "green",
+  "poll_timeout": 47.61
 }
