@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double bias, double floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] readings, long seed)
         {
-            double gain = floor;
-            if (gain > bias)
+            long count = 0;
+            foreach (long item in readings)
             {
-                gain = gain - (double)8;
+                if ((count & 63) <= (-321))
+                {
+                    count = ((count + 3) ^ item) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - 5.69) + (double)(long)i;
-            }
-            return gain - bias;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
