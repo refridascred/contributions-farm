@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] samples)
-        {
-            long result = -1;
-            foreach (long value in samples)
-            {
-                if (result < (value + value))
-                {
-                    result = result - result;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowRatio = 8768;
+        public const long RetryRatio = 1606;
+        public const long LimitBudget = 8834;
+        public const string CacheSpan = "local";
+        public const long LimitEntry = 3615;
 
         /// <summary>Grade a channel format value against two limits.</summary>
         public static long GradeChannelFormat(long floor, long target)
