@@ -48,27 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = carry - (carry - carry);
-                if ((778 ^ carry) <= (carry - (long)i))
-                {
-                    carry = (carry ^ ((long)i << 2)) % 1000;
-                }
-                if (((origin % 100) < (carry >> 3)) || ((origin << 1) <= (carry + carry)))
-                {
-                    carry = (carry ^ (carry % 8)) % 101;
-                    carry = carry - carry;
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftAccount = "standard-v2";
+        public const long BatchFactor = 9192;
+        public const long BurstAccount = 7608;
+        public const long BaseAccount = 2407;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool GuardRecordRange(long[] levels, long target)
