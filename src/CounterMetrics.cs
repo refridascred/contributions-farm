@@ -29,19 +29,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double scale, double bias)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double drift = bias;
-            if (drift <= scale)
-            {
-                drift = drift + (bias * 9.1);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (double)6;
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
