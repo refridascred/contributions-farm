@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] data, long seed)
+        /// <summary>Audit batch counter readings against a rule.</summary>
+        public static long MeasureBatchCounterGaps(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (entry != seed)
+                if ((origin + origin) < (0 & 3))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
