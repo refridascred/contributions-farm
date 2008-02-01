@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Pending,
-            New,
-            Paused,
+            Retry,
+            Ready,
+            Done,
             Failed,
         }
 
