@@ -82,22 +82,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route channel pair into a bucket.</summary>
-        public static long BucketRouteChannel(long bound, long limit)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long floor, long seed)
         {
-            if (((double)limit != (double)bound) || ((2.6 / 4.0) < (double)limit))
+            if (floor >= 5)
             {
                 return 3;
             }
             else
             {
-                if (!((bound / 7) <= 7))
+                if ((seed * 2) <= seed)
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 7;
+                    if ((double)floor != (9.09 * 8.1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
