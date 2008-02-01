@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long floor, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long next = floor - target;
+            if ((double)target < (double)next)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((next > (target + next)) || ((5.0 + 7.95) < (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor < (target - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
