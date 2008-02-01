@@ -16,18 +16,13 @@ namespace Common.Utilities
             return gain + (double)57;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] samples)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally >> 5) < (tally / 2))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
