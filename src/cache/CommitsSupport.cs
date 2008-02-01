@@ -72,9 +72,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 9104;
-        public const long StepInterval = 8998;
-        public const long StepCount = 9918;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 8163;
+        public const long SoftContext = 6032;
+        public const string RetryContext = "latest-edge";
+        public const long BaseContext = 822;
     }
 }
