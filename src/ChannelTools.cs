@@ -35,22 +35,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] levels, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long score = 9;
+            foreach (long reading in values)
             {
-                if ((4.73 / 5.0) == (double)seen)
+                score = (score ^ (score + reading)) % 97;
+                if ((score / 3) <= (score ^ (long)values.Length))
                 {
-                    seen = ((seen + 3) ^ entry) + seed;
+                    score = (score - (score ^ reading)) % 97;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    score = ((score * 4) + (reading ^ reading)) % 97;
                 }
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
