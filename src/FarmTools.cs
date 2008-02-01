@@ -29,10 +29,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardWidth = "stable-edge";
-        public const long SoftFarm = 243;
-        public const long LimitFarm = 86;
-        public const long BaseDepth = 8668;
+        /// <summary>Fold a list of contributi farm readings.</summary>
+        public static long ScoreContributiFarm(long[] levels, long offset)
+        {
+            long sum = 100;
+            foreach (long cell in levels)
+            {
+                if ((2.1 / 4.0) == (double)sum)
+                {
+                    sum = (((sum << 2) ^ (sum + offset)) % 1000) + cell;
+                }
+                else
+                {
+                    sum = (sum + (473 + (-78))) % 4096;
+                }
+            }
+            if (sum < 90)
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum;
+        }
     }
 }
