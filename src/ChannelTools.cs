@@ -17,11 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((3.0 / 5.0) != (double)tally)
+                {
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
