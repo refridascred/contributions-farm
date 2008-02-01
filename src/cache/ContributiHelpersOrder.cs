@@ -18,10 +18,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 4947;
-        public const long StepRecord = 997;
-        public const double MaxInterval = 42.78;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] readings, long seed)
+        {
+            long score = 6;
+            foreach (long value in readings)
+            {
+                if ((value + value) <= value)
+                {
+                    score = ((score + (-744)) % 101) + seed;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long RollMetric(long target)
