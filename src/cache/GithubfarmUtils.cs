@@ -17,23 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double gain, double span)
+        /// <summary>Project the next command notes value.</summary>
+        public static double ProjectCommandNotes(double gain, double offset)
         {
-            double drift = (gain + 9.0) / 6.0;
-            if (drift >= span)
-            {
-                drift = drift - (double)585;
-            }
-            else
-            {
-                drift = drift - 6.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - drift;
+            double drift = (double)600 + (double)766;
+            return (drift - gain) + offset;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
