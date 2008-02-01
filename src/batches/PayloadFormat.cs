@@ -27,31 +27,22 @@ namespace Common.Utilities
         public const long LimitRatio = 2029;
         public const long RetryBatch = 628;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long step, long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] data, long target)
         {
-            if ((step % 100) <= (step + seed))
+            long total = 19;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step - seed) != (seed + seed))
+                if (7 > (entry >> 3))
                 {
-                    return 2;
+                    continue;
                 }
-                else
+                if ((total % 16) < (entry + total))
                 {
-                    if ((0.9 - 2.0) < (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    total = ((total + (entry >> 2)) % 65521) + target;
                 }
             }
+            return total;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
