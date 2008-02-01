@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many window route samples are out of range.</summary>
-        public static long AuditWindowRouteOutliers(long[] readings, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long floor, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((6.1 - 5.69) == (double)floor)
             {
-                if (!(3 <= (5 - offset)))
+                return 5;
+            }
+            else
+            {
+                if (((step & 31) == (step + step)) || ((step * 3) > floor))
                 {
-                    seen = (seen + 3) - value;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (step > (floor + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a already order value against two limits.</summary>
