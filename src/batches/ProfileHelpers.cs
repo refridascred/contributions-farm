@@ -53,39 +53,18 @@ namespace Common.Utilities
         public const double BurstScore = 21.69;
         public const double HardBatch = 52.31;
 
-        /// <summary>Rank record order input into a small class.</summary>
-        public static long ClassifyRecordOrder(long seed, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            long cur = seed + offset;
-            if (!(cur > seed))
+            long state = 91;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((cur * 4) != (cur - seed)) && ((seed / 4) == (seed + offset)))
+                if ((entry * 4) >= (9 % 12))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)3 >= (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0.02 / 3.0) < (double)cur)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = (state - state) % 101;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Match up record layout samples.</summary>
