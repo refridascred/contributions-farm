@@ -1,6 +1,8 @@
 {
-  "warm_size": "local",
-  "warm_depth_pct": 5286,
-  "poll_ttl": true,
-  "cache_depth_pct": ["staging", "open", "blue"]
+  "min_ratio": false,
+  "default_ttl": true,
+  "cache_size": 500,
+  "default_ratio_pct": "local",
+  "cache_interval_s": true,
+  "base_size_ms": ["blue", "edge", "primary", "primary"]
 }
