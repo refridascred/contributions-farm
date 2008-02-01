@@ -13,10 +13,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxFactor = 47.51;
-        public const long StepCount = 9382;
-        public const double SoftChannel = 90.48;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
