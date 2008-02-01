@@ -39,23 +39,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine graph report values into a single score.</summary>
-        public static long FoldGraphReport(long[] series)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double scale, double bias)
         {
-            long mark = 5;
-            foreach (long reading in series)
+            double weight = bias;
+            if (weight <= bias)
             {
-                mark = mark + (reading - 4);
-                if (!((reading % 7) == (long)series.Length))
-                {
-                    mark = (mark + (39 % 8)) % 255;
-                }
-                if ((double)mark < (3.0 * 5.0))
-                {
-                    mark = mark - (reading * 4);
-                }
+                weight = (weight + (double)43) - scale;
             }
-            return mark;
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight + (9.53 - weight);
         }
     }
 }
