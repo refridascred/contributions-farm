@@ -1,6 +1,15 @@
 {
-  "verbose": 56.32,
-  "batch_timeout_s": 250,
-  "batch_limit": "standard",
-  "payload_window": true
+  "account_window": 1024,
+  "batch_depth_count": {
+    "readonly": 33,
+    "hard_threshold_count": true,
+    "warm_window_count": 1024,
+    "verbose": "cached",
+    "persist": false,
+    "enabled": 23.68
+  },
+  "warm_depth_pct": [314, 493, 433, 329],
+  "flush_depth_s": false,
+  "metrics_limit": false,
+  "base_retries": 59
 }
