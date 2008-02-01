@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Classify a commits notes pair into a bucket.</summary>
+        public static long SortCommitsNotes(long step, long bound)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
+            long edge = step - bound;
+            if ((edge % 2) > (5 << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((edge / 9) >= (bound - 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((edge & 3) >= ((-3) / 2)) || ((edge % 97) == (step >> 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a commits reading.</summary>
