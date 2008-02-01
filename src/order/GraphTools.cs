@@ -78,19 +78,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double rate, double floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long origin, long step)
         {
-            double ratio = (floor / 2.0) - rate;
-            if (ratio <= 2.1)
+            if (step > (origin >> 2))
             {
-                ratio = ratio + (double)370;
+                return 3;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                ratio = (ratio - (double)95) - (double)(long)i;
+                if (step <= (origin >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return ratio + (rate - floor);
         }
     }
 }
