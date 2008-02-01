@@ -14,22 +14,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] data, long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading % 2) <= (reading + seen))
-                {
-                    seen = (seen + 3) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate graph samples.</summary>
