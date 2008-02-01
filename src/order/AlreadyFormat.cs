@@ -44,26 +44,19 @@ namespace Common.Utilities
             return ratio + (offset * 4.0);
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] levels, long target)
         {
-            long result = -3;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((double)61 != (double)sample)
+                if (item <= target)
                 {
-                    result = (result + (8 >> 4)) % 101;
-                }
-                if ((result - sample) <= result)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (result < (-18))
-            {
-                result = (result + (result * 3)) % 65521;
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Derive the next order stream value from a seed.</summary>
