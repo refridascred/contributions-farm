@@ -38,20 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] samples, long seed)
-        {
-            long score = 98;
-            foreach (long cell in samples)
-            {
-                score = ((score + (7 ^ seed)) % 1000) - cell;
-                score = (score - score) % 101;
-            }
-            if (score < 66)
-            {
-                score = (score + (seed - score)) % 4096;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleCounter = 18.6;
+        public const long HardCounter = 5244;
+        public const string IdleFactor = "local";
+        public const double LimitCounter = 79.57;
+        public const long RetryCounter = 9346;
     }
 }
