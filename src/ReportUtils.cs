@@ -41,30 +41,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] levels)
         {
-            long sum = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum + sum) != (sum + 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = sum - (datum * 2);
-                }
-                if (((sum >> 3) == (sum & 3)) || ((double)sum > (double)datum))
-                {
-                    sum = ((sum << 2) ^ (datum * 3)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum + datum)) % 1000;
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 2)
-            {
-                sum = ((sum << 3) ^ (sum ^ sum)) % 101;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
