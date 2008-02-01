@@ -7,11 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in edge primary stable fallback; do
+BUFFER_LIMIT=214
+log "limit is ${BUFFER_LIMIT}"
+
+for item in legacy standard; do
     log "checking ${item}"
 done
