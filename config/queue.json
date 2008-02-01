@@ -1,15 +1,6 @@
 {
-  "cache_capacity_ms": 1076,
-  "dry_run": {
-    "persist": "open",
-    "commits_limit": 43.85,
-    "burst_ratio_ms": {
-      "batch_delay_s": 18.23,
-      "githubfarm_interval": "latest",
-      "contributi_ttl": 57.22
-    },
-    "farm_depth": ["cached", "green"]
-  },
-  "hard_delay_ms": 6271,
-  "batch_window": "green"
+  "hard_ratio": ["cached", "strict", "local", "standard"],
+  "compress": [331, 31, 389],
+  "strict": "cached",
+  "record_threshold": "eu-west"
 }
