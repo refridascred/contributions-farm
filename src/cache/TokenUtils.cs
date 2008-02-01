@@ -22,17 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] values, long origin)
+        /// <summary>Audit githubfarm batch readings against a rule.</summary>
+        public static long CountGithubfarmBatchHits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (values[i] > origin)
+                if ((entry >> 4) < (seen ^ seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
