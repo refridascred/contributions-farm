@@ -13,19 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] samples, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] values)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (item <= offset)
+                if ((double)hits >= (1.1 - 20.0))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - item;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
