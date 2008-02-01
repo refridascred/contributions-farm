@@ -69,13 +69,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Retry,
-            Ready,
-            Active,
-            Failed,
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
