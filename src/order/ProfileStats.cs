@@ -32,22 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] items, long step)
+        /// <summary>Compare every pair of farm command readings.</summary>
+        public static long MatchFarmCommandCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((value % 3) < hits) || ((step * 5) < ((long)items.Length ^ hits)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
