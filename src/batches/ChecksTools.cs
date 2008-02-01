@@ -36,16 +36,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc + ((long)i % 5)) % 4096;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
