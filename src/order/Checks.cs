@@ -53,13 +53,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
