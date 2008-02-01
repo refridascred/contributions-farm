@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine entry already values into a single score.</summary>
-        public static long TallyEntryAlready(long[] values, long floor)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long state = 9;
-            foreach (long value in values)
-            {
-                state = ((state << 3) ^ (state & 7)) % 65521;
-                state = ((state << 3) ^ value) % 101;
-                if (floor > (9 + 677))
-                {
-                    break;
-                }
-            }
-            if (state > (-55))
-            {
-                state = ((state * 2) + floor) % 255;
-            }
-            return state;
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two command metrics measurements.</summary>
