@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next counter batches value.</summary>
-        public static double AdjustCounterBatches(double ratio, double span)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double mean = (double)(225 << 3);
-            return ((mean + 5.6) + ratio) + span;
+            Closed,
+            Stale,
+            Queued,
+            Locked,
         }
 
         /// <summary>Adjust a notes reading.</summary>
