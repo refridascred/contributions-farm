@@ -1,8 +1,9 @@
 # support settings
-warm_ratio_count: 5852
-soft_size:
-  - 63
-  - 71
-  - 32
-warm_limit: 5427
-strict: blue
+readonly: 62.78
+flush_ttl_ms: eu-west
+retry_timeout_pct: 1024
+report_ttl:
+  layout_window: 44.81
+  contributi_interval: false
+  max_window_ms: cached
+  enabled: eu-west
