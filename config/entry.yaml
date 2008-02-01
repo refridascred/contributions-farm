@@ -1,17 +1,21 @@
 # entry settings
-command_size:
-  hard_window:
-    readonly: standard
-    base_threshold_pct: 28.89
-    max_ttl: 82.7
-  verbose: 49.4
-  warm_size_s: standard
-  enabled:
-    - legacy
-    - standard
-  retry_timeout_pct: legacy
-min_depth: latest
-soft_ratio: true
-readonly: true
-audit: 4595
-soft_timeout_s: 98
+batch_delay_pct: 25
+min_limit_count: 80.49
+default_ttl_pct:
+  base_threshold_ms:
+    - 493
+    - 384
+    - 157
+  report_retries: 1024
+  verbose: 3811
+  batch_timeout_count: 35
+  window_size: 41
+  flush_ttl_count:
+    retry_depth_pct: 1024
+    sync_depth_ms: true
+    compress: local
+    burst_delay: 7
+flush_interval_pct:
+  - 391
+  - 129
+persist: 56
