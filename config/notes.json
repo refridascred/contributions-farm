@@ -1,18 +1,7 @@
 {
-  "burst_threshold": "primary",
-  "audit": 500,
-  "hard_ttl_pct": 61.79,
-  "report_depth": {
-    "batch_delay_count": 8294,
-    "verbose": false,
-    "retry_window_count": {
-      "cache_timeout_count": true,
-      "cache_window_s": false,
-      "already_threshold": ["legacy", "local"],
-      "persist": 250
-    },
-    "strict": 41
-  },
-  "dry_run": "stable",
-  "default_capacity_ms": "open"
+  "format_delay": "edge",
+  "warm_interval_ms": "local",
+  "cache_retries": 20.9,
+  "soft_size": [351, 228],
+  "default_depth": 28.05
 }
