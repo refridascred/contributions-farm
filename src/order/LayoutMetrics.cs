@@ -30,12 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] readings)
         {
-            Dropped,
-            Stale,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
