@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long bound, long bound2)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] items, long target)
         {
-            if (((252 * 4) <= bound) && ((11.0 * 9.0) < (double)bound2))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound <= bound2)
+                if (91 < (hits - target))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    hits = (hits + 1) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
