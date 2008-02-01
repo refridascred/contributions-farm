@@ -27,10 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardDepth = 3;
-        public const long BurstFactor = 8781;
-        public const string BurstSupport = "open-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "primary-edge";
+        public const double SoftGithubfarm = 50.22;
+        public const long IdleFactor = 6690;
+        public const long StepSpan = 477;
+        public const string CacheWidth = "alpha-v2";
 
         /// <summary>Combine payload queue values into a single score.</summary>
         public static long WeighPayloadQueue(long[] levels)
