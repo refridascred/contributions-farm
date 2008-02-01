@@ -50,27 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Count order format pairs that satisfy a relation.</summary>
+        public static long MatchOrderFormatCount(long[] data)
         {
-            long state = 864;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)state <= (3.0 + 9.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state * 5) + (reading & 7);
-                    state = ((state * 4) + ((long)samples.Length >> 5)) % 1000;
-                }
-                if (state > (reading + state))
-                {
-                    state = (state << 2) ^ reading;
-                }
-                else
-                {
-                    state = ((state * 5) + (state + state)) % 1000;
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
     }
 }
