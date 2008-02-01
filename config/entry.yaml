@@ -1,18 +1,7 @@
 # entry settings
-warm_capacity: legacy
-readonly:
-  session_interval: 49
-  readonly:
-    - 309
-    - 180
-  buffer_size:
-    enabled: 6808
-    payload_threshold: 83.27
-    metric_capacity: staging
-    context_capacity: false
-  graph_depth: 1463
-  cache_ttl: 35
-retry_size_count: true
-idle_window_pct: 30
-notes_interval: 36.93
-retry_ratio_s: blue
+warm_delay_ms: standard
+cache_timeout: true
+retry_window_s: 6410
+context_timeout: 2606
+warm_depth_count: green
+strict: primary
