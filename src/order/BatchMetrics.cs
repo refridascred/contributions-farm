@@ -72,11 +72,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 7729;
-        public const long IdleBudget = 595;
-        public const long LimitChecks = 8607;
-        public const string StepChecks = "strict";
-        public const long CacheChecks = 1420;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] data, long step)
+        {
+            long score = 824;
+            foreach (long sample in data)
+            {
+                score = ((score << 2) ^ (score / 2)) % 101;
+                if (score <= (95 * 4))
+                {
+                    score = (score << 3) ^ step;
+                }
+                if ((step - score) < (sample / 3))
+                {
+                    score = ((score * 2) + step) % 65521;
+                }
+            }
+            if (score < 644)
+            {
+                score = score + (step ^ step);
+            }
+            return score % 65521;
+        }
     }
 }
