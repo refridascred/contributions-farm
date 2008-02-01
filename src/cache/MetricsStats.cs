@@ -65,12 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] series, long seed)
         {
-            New,
-            Stale,
-            Queued,
+            long acc = -53;
+            foreach (long reading in series)
+            {
+                if ((seed - 207) == (seed >> 1))
+                {
+                    acc = (acc ^ (long)series.Length) + reading;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a already options.</summary>
