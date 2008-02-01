@@ -13,13 +13,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long step, long origin)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            long offset = step + origin;
+            if (!((offset / 4) <= step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((494 + origin) <= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step - (-82)) > (step % 10))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset >= 9.48)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats phase values.</summary>
