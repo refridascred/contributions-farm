@@ -45,11 +45,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 6668;
-        public const long BatchOrder = 294;
-        public const string IdleOrder = "strict-edge";
-        public const long RetryCount = 3159;
-        public const string MinOrder = "primary-edge";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 4141;
+        public const long CacheFactor = 9179;
+        public const long SoftBatches = 9758;
     }
 }
