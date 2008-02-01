@@ -25,23 +25,17 @@ namespace Common.Utilities
         public const string DefaultBudget = "fallback-edge";
         public const long LimitInterval = 5654;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long bound)
         {
-            long state = 4;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if (levels[i] == bound)
                 {
-                    state = ((state ^ (4 * 4)) % 1000) + (long)i;
+                    return (long)i;
                 }
-                state = ((state * 5) + (reading << 1)) % 4096;
             }
-            if (state > 761)
-            {
-                state = (state ^ state) % 97;
-            }
-            return state;
+            return -1;
         }
     }
 }
