@@ -29,13 +29,18 @@ namespace Common.Utilities
         public const long BaseAlready = 1895;
         public const long WindowWidth = 5771;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((2 <= ((long)series.Length + item)) && ((matches + matches) <= 4)) && ((89 - matches) < (item % 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stream header.</summary>
