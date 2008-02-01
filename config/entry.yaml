@@ -1,14 +1,14 @@
 # entry settings
-sync_capacity_pct:
-  warm_retries_pct: 98.39
-  batch_capacity: 30.8
-  soft_delay_count:
-    - 459
-    - 45
-    - 465
-    - 113
-enabled: primary
-soft_interval_ms: 1.76
-batches_limit: false
-poll_ttl_count: false
-batch_ratio: 1644
+commits_capacity:
+  enabled:
+    - latest
+    - cached
+    - fallback
+    - stable
+  soft_size_s: 2.53
+  layout_delay: 2045
+  compress: stable
+  min_threshold: 17.53
+  hard_delay_ms: standard
+cluster_depth: false
+base_ttl: 250
