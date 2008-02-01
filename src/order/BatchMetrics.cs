@@ -40,11 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
