@@ -26,11 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheFactor = 35.37;
-        public const double BaseSupport = 58.78;
-        public const long WindowFactor = 7306;
-        public const long CacheDepth = 4457;
+        /// <summary>Measure how many report batch samples are out of range.</summary>
+        public static long TallyReportBatchMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches - datum) > 823)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
