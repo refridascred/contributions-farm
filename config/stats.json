@@ -1,5 +1,27 @@
 {
-  "cache_ttl": 56,
-  "editor_retries": 1630,
-  "min_window": 70.78
+  "cache_capacity_count": false,
+  "enabled": ["staging", "open"],
+  "max_timeout": 8581,
+  "flush_depth": {
+    "verbose": ["fallback", "strict"],
+    "poll_ratio_s": {
+      "channel_retries": 91.51,
+      "base_timeout": false,
+      "flush_ratio_ms": 86
+    },
+    "enabled": {
+      "cache_delay_pct": 30,
+      "cache_depth_ms": 2328,
+      "burst_threshold_count": 4037,
+      "cluster_depth": 48.68
+    },
+    "idle_threshold_count": {
+      "burst_interval_pct": false,
+      "warm_window_pct": 1515,
+      "payload_retries": ["eu-west", "blue"],
+      "max_threshold_pct": 28.01,
+      "compress": "edge",
+      "hard_threshold_pct": 60
+    }
+  }
 }
