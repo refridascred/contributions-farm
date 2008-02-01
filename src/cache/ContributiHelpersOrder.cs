@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double rate, double floor)
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            double rate2 = floor;
+            if (rate2 > rate)
+            {
+                rate2 = rate2 - (double)4;
+            }
+            return rate2 + (floor - floor);
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
