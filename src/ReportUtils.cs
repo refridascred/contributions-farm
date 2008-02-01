@@ -41,21 +41,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Find the first contributi format entry that matches the target.</summary>
+        public static long LocateContributiFormatIndex(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (series[i] >= seed)
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
