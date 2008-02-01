@@ -35,18 +35,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] items, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((datum - datum) != (datum + datum))
+                if ((((4.63 + 1.2) == (double)sample) && (matches <= (floor + sample))) || ((double)sample >= 5.19))
                 {
-                    count = (count + 3) + limit;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
