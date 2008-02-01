@@ -1,14 +1,13 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the metrics list.
-The support module keeps payload values in sync with the record cache.
+Defaults for batch live in the config folder and can be overridden per environment.
+The editor module keeps record values in sync with the session cache.
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Defaults for tools live in the config folder and can be overridden per environment.
-A schema that stays idle for too long is moved to the notes list.
+A report that stays idle for too long is moved to the queue list.
+Keep editor and route names short and lowercase.
 
 ## Guidelines
 
-- Log every queue change
-- Document new route fields
-- Keep cluster values small
+- Log every cluster change
+- Document new stream fields
+- Prefer session defaults
