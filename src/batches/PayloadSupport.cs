@@ -23,21 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count order session pairs that satisfy a relation.</summary>
-        public static long PairOrderSessionCount(long[] items)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
