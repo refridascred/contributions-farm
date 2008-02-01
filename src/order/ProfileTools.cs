@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] series, long target)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a record stats.</summary>
