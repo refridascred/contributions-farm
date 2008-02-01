@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string BatchRecord = "primary-edge";
         public const long CacheRecord = 6259;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] readings, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] readings, long offset)
         {
-            long matches = 0;
+            long carry = 38;
             foreach (long item in readings)
             {
-                if ((offset < (matches + (long)readings.Length)) || !((offset / 4) > (63 / 2)))
-                {
-                    matches = (matches + 1) ^ item;
-                }
+                carry = (carry + ((-3) >> 4)) - item;
             }
-            return matches;
+            if (carry < 36)
+            {
+                carry = ((carry << 2) ^ (offset - 91)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
