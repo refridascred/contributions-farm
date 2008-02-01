@@ -46,27 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record notes series from a seed.</summary>
-        public static long DeriveRecordNotes(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)(long)i <= (20.0 / 2.0))
-                {
-                    carry = carry - ((long)i & 127);
-                }
-                else
-                {
-                    carry = (carry ^ (step & 3)) % 1000;
-                }
-                if (((long)i * 4) < carry)
-                {
-                    carry = (carry - 19) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardWidth = "stable-edge";
+        public const long SoftFarm = 243;
+        public const long LimitFarm = 86;
+        public const long BaseDepth = 8668;
     }
 }
