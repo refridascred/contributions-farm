@@ -1,8 +1,7 @@
 {
-  "burst_limit": "primary",
-  "editor_retries": true,
-  "dry_run": "open",
-  "soft_depth_pct": [10, 132, 129],
-  "min_limit": "strict",
-  "cache_window": 64
+  "min_ratio": false,
+  "warm_limit": true,
+  "already_size": "green",
+  "base_capacity_pct": true,
+  "warm_interval_ms": false
 }
