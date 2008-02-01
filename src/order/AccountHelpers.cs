@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const long BurstSize = 5793;
         public const long HardSpan = 3641;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseRatio = 29.39;
-        public const long BaseSize = 8004;
-        public const long BatchNotes = 2981;
-        public const long LimitSpan = 2851;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] values, long limit)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((7.1 / 9.0) > (double)matches)
+                {
+                    matches = ((matches + 1) ^ value) + limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of schema tools entries.</summary>
         public static long ScoreSchemaTools(long[] series)
