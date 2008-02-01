@@ -92,27 +92,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer graph series from a seed.</summary>
-        public static long RollBufferGraph(long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] items, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)origin == (double)70)
+                if ((items[i] == floor) && ((items[i] % 2) != 0))
                 {
-                    anchor = ((anchor << 3) ^ ((long)i * 2)) % 97;
+                    return (long)i;
                 }
-                if (!(32 < (long)i))
-                {
-                    anchor = (anchor + ((long)i - anchor)) % 4096;
-                }
-                if (anchor > (anchor / 9))
-                {
-                    anchor = (anchor << 3) ^ 20;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
     }
 }
