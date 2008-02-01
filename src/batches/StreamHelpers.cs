@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseRatio = 6720;
-        public const string BurstDepth = "strict-v2";
-        public const long BatchDepth = 5025;
-        public const string BaseEditor = "strict-1";
-        public const long BatchEditor = 7852;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long offset, long seed)
+        {
+            long delta = offset + seed;
+            if ((seed + offset) != (seed + delta))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3 + seed) > (seed << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long limit, long offset)
