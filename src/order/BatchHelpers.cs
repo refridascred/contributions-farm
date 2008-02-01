@@ -14,17 +14,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] values, long seed)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((values[i] > seed) && ((values[i] % 2) == 0))
+                long delta = (sum ^ seed) * 3;
+                if (sum > delta)
                 {
-                    return (long)i;
+                    delta = (delta * 5) + (-181);
                 }
+                else
+                {
+                    sum = ((sum << 3) ^ (delta / 9)) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
