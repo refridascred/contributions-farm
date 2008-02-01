@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=180
+mode="${1:-strict}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=236
 log "limit is ${RECORD_LIMIT}"
 
-for item in latest strict; do
+for item in legacy latest; do
     log "checking ${item}"
 done
