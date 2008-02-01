@@ -1,15 +1,9 @@
 # githubfarm settings
-min_depth:
-  - 278
-  - 308
-readonly: blue
-queue_capacity:
-  - 166
-  - 106
-filter_depth:
-  - cached
-  - edge
-  - legacy
-  - cached
-dry_run: false
-min_ratio: 61.84
+max_threshold_s: green
+min_ttl_s: strict
+githubfarm_interval:
+  - 58
+  - 377
+  - 307
+batch_limit_ms: true
+audit: false
