@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Failed,
-            Retry,
-            Queued,
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Adjust a stream session reading.</summary>
