@@ -101,15 +101,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two already account measurements.</summary>
-        public static double BlendAlreadyAccount(double gain, double span)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            double weight = (double)((-7) + (-2));
-            if (weight < span)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                weight = (weight - (9.58 - weight)) - gain;
+                acc = acc + (68 << 3);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return weight - (4.0 - weight);
+            return acc;
         }
     }
 }
