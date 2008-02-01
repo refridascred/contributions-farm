@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-The batch module keeps cache values in sync with the commits cache.
-Keep entry and metric names short and lowercase.
+Keep buffer and route names short and lowercase.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
-Each filter is validated before it reaches the buffer queue.
-A githubfarm that stays idle for too long is moved to the account list.
+Use notes settings to tune how often account data is refreshed.
+Each cluster is validated before it reaches the command queue.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer report defaults
-- Log every window change
-- Document new batches fields
-- Keep stats values small
+- Log every graph change
+- Document new cache fields
+- Keep farm values small
+- Review cluster limits each release
