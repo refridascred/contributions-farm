@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Ready,
-            Synced,
-            Paused,
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
