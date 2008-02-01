@@ -40,13 +40,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings, long target)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            long score = 8;
+            foreach (long datum in readings)
+            {
+                score = (((score + (score / 5)) % 101) + datum) + target;
+            }
+            return score % 65521;
         }
     }
 }
