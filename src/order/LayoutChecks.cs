@@ -44,14 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Stale,
-            Draft,
-            New,
-            Ready,
-            Queued,
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Fold a list of checks readings.</summary>
