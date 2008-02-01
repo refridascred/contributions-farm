@@ -37,13 +37,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] items, long origin)
         {
-            Dropped,
-            Done,
-            New,
-            Queued,
+            long state = 90;
+            foreach (long sample in items)
+            {
+                state = (((state << 3) ^ origin) % 255) + sample;
+            }
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
