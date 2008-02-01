@@ -28,22 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 2189;
+        public const string SoftAlready = "alpha-1";
+        public const string DefaultTimeout = "open-1";
+        public const double StepBudget = 87.46;
+        public const double BurstBudget = 59.6;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long RetryBatches = 4141;
