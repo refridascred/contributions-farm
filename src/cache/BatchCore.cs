@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already schema values into a single score.</summary>
-        public static long FoldAlreadySchema(long[] values, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] items)
         {
-            long mix = 3;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (19.0 >= (double)datum)
+                if ((datum ^ datum) >= matches)
                 {
-                    mix = ((mix << 2) ^ mix) + seed;
-                }
-                if ((75 >> 2) != (datum >> 3))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
