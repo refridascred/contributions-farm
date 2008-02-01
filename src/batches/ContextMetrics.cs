@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const string HardTimeout = "cached-v2";
         public const long StepNotes = 758;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((series[i] <= step) && ((series[i] % 2) == 0))
                 {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
