@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long CacheEntry = 2157;
         public const string HardRatio = "latest-v2";
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] samples)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((89 + seen) > (84 + seen))
+                if (datum < bound)
                 {
-                    seen = (seen + 2) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
