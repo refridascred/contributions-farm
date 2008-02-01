@@ -37,23 +37,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] data)
-        {
-            long score = 692;
-            foreach (long value in data)
-            {
-                if ((score + score) <= score)
-                {
-                    score = (score - value) % 255;
-                }
-            }
-            if (score > 14)
-            {
-                score = ((score * 4) + (10 - score)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseInterval = 1826;
+        public const double CacheCounter = 10.94;
+        public const long StepCounter = 4963;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long ClassifyMetric(long bound, long step)
