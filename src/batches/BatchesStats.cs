@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] values)
-        {
-            long state = 758;
-            foreach (long cell in values)
-            {
-                if ((57 + state) >= (cell + 31))
-                {
-                    state = state + cell;
-                }
-            }
-            if (state > (-7))
-            {
-                state = (state ^ 420) % 4096;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 4751;
+        public const double RetrySize = 93.08;
+        public const string StepTimeout = "local-v2";
 
         /// <summary>Count token stream pairs that satisfy a relation.</summary>
         public static long CompareTokenStreamCount(long[] items)
