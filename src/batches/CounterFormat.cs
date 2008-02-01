@@ -31,28 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] values, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!(((long)i - 4) < (mark / 2)))
+                if (values[i] >= origin)
                 {
-                    mark = mark ^ step;
-                    mark = mark ^ (step / 9);
+                    return (long)i;
                 }
-                if ((double)step <= (double)mark)
-                {
-                    mark = ((mark << 3) ^ (mark + mark)) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ ((long)i + step)) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
     }
 }
