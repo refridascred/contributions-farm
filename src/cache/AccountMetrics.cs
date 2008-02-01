@@ -54,13 +54,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            Idle,
+            Retry,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
