@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
+            New,
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Match up report queue samples.</summary>
