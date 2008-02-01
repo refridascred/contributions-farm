@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] levels)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (!!((entry ^ entry) <= (matches - entry)))
+                if (reading != floor)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
