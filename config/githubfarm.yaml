@@ -1,13 +1,15 @@
 # githubfarm settings
-stream_depth: 60.12
-cache_limit_count:
-  - strict
-  - latest
+min_depth:
+  - 278
+  - 308
+readonly: blue
+queue_capacity:
+  - 166
+  - 106
+filter_depth:
   - cached
-  - legacy
-editor_timeout: 1024
-enabled: 30
-already_capacity:
-  - latest
   - edge
-flush_depth_pct: 3704
+  - legacy
+  - cached
+dry_run: false
+min_ratio: 61.84
