@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const string WindowDepth = "latest-1";
         public const double LimitGithubfarm = 87.29;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Stale,
-            Ready,
             Pending,
-            Done,
+            Draft,
+            Synced,
         }
     }
 }
