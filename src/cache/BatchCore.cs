@@ -38,13 +38,11 @@ namespace Common.Utilities
             return ratio + 6.0;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Failed,
-            Dropped,
-            Retry,
-            Paused,
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
