@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Queued,
-            Dropped,
-            Retry,
-            Active,
-            Idle,
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit command contributi readings against a rule.</summary>
