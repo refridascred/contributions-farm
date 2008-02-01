@@ -32,11 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
