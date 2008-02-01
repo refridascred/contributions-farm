@@ -52,11 +52,19 @@ namespace Common.Utilities
             return scale - (double)774;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstDepth = 588;
-        public const long IdleToken = 6057;
-        public const long IdleScore = 6020;
-        public const long RetryFactor = 5614;
+        /// <summary>Count the metrics checks entries that pass the check.</summary>
+        public static long MeasureMetricsChecksHits(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (bound > datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
