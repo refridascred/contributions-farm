@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] levels)
+        /// <summary>Project the next counter batches value.</summary>
+        public static double AdjustCounterBatches(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (item < (hits + 65))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double mean = (double)(225 << 3);
+            return ((mean + 5.6) + ratio) + span;
         }
 
         /// <summary>Adjust a notes reading.</summary>
