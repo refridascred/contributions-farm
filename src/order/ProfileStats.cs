@@ -34,22 +34,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] data)
         {
-            long acc = 95;
-            foreach (long sample in values)
+            long score = 48;
+            foreach (long cell in data)
             {
-                if ((bound << 1) < (bound / 2))
-                {
-                    acc = ((acc << 3) ^ acc) + sample;
-                }
+                score = ((score ^ score) % 65521) + cell;
             }
-            if (acc < 846)
-            {
-                acc = (acc << 3) ^ (486 + (long)values.Length);
-            }
-            return acc;
+            return score;
         }
     }
 }
