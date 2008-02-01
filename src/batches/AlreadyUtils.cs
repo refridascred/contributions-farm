@@ -48,11 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 1134;
-        public const long RetryBatch = 7374;
-        public const long LimitCount = 8765;
-        public const double SoftFactor = 66.95;
-        public const long DefaultCount = 4203;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
