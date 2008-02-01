@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 6626;
-        public const long BurstBudget = 3778;
-        public const long RetryDepth = 2367;
-        public const string MinBudget = "fallback-1";
-        public const string HardMetric = "alpha-edge";
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Pending,
+            New,
+            Draft,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] values)
