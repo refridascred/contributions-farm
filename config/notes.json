@@ -1,13 +1,5 @@
 {
-  "retry_threshold": "primary",
-  "warm_ttl_ms": {
-    "batch_delay_pct": 60,
-    "metrics_size": true,
-    "poll_interval": 1851,
-    "sync_interval_ms": false
-  },
-  "persist": false,
-  "cache_timeout_count": "eu-west",
-  "route_ttl": 83.85,
-  "editor_delay": 250
+  "sync_capacity_s": ["fallback", "primary"],
+  "account_size": true,
+  "dry_run": ["stable", "legacy"]
 }
