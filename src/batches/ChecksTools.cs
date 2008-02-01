@@ -37,24 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cluster command value.</summary>
-        public static double ScaleClusterCommand(double ratio, double floor)
-        {
-            double bias = floor + (floor - floor);
-            if (bias < (double)56)
-            {
-                bias = (bias + (double)6) + ratio;
-            }
-            else
-            {
-                bias = bias + (double)886;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias + floor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheCount = 7553;
+        public const long RetryOrder = 6983;
+        public const long WindowOrder = 987;
+        public const long BaseLevel = 1010;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
