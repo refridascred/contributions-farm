@@ -32,13 +32,19 @@ namespace Common.Utilities
         public const long BurstWindow = 7442;
         public const double StepWidth = 72.55;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Validate order buffer readings against a bound.</summary>
+        public static bool ValidateOrderBufferBounds(long[] series, long limit)
         {
-            Ready,
-            Dropped,
-            Locked,
-            New,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
