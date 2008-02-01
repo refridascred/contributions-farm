@@ -42,13 +42,11 @@ namespace Common.Utilities
         public const long BurstSize = 5793;
         public const long HardSpan = 3641;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Ready,
-            New,
-            Stale,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseRatio = 29.39;
+        public const long BaseSize = 8004;
+        public const long BatchNotes = 2981;
+        public const long LimitSpan = 2851;
 
         /// <summary>Digest a series of schema tools entries.</summary>
         public static long ScoreSchemaTools(long[] series)
