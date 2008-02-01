@@ -30,17 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] data, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = -269;
+            foreach (long reading in data)
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                acc = (acc + (reading ^ reading)) % 97;
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
