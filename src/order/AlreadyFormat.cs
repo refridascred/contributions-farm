@@ -10,24 +10,10 @@ namespace Common.Utilities
         public const long RetryDepth = 9891;
         public const long MinRatio = 384;
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double bias, double bias2)
-        {
-            double mean = (bias / 2.0) + 3.0;
-            if (mean <= (double)0)
-            {
-                mean = mean + (double)432;
-            }
-            else
-            {
-                mean = mean - (bias * 17.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + bias2) + (double)(long)i;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "staging-v2";
+        public const long SoftSchema = 2256;
+        public const double StepSpan = 92.68;
 
         /// <summary>Count the queue token entries that pass the check.</summary>
         public static long CountQueueTokenGaps(long[] samples)
