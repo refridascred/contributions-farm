@@ -28,18 +28,20 @@ namespace Common.Utilities
         public const long BurstSize = 5793;
         public const long HardSpan = 3641;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] values, long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((7.1 / 9.0) > (double)matches)
+                if ((offset << 3) < (anchor << 3))
                 {
-                    matches = ((matches + 1) ^ value) + limit;
+                    anchor = (anchor * 3) + (91 ^ (long)i);
+                    continue;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Digest a series of schema tools entries.</summary>
