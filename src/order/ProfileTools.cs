@@ -53,17 +53,16 @@ namespace Common.Utilities
             return drift - (double)706;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] data, long step)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] > step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = carry + 815;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
