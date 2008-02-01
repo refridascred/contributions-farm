@@ -53,18 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes window readings against a rule.</summary>
-        public static long MeasureNotesWindowMatches(long[] values)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double weight = (ratio + span) + (3.2 * 18.0);
+            if (weight <= span)
             {
-                if (((seen + seen) <= (seen & 1)) && ((5.75 * 3.0) >= (double)entry))
-                {
-                    seen = seen + 2;
-                }
+                weight = weight - (double)64;
             }
-            return seen;
+            return weight - (ratio * 8.0);
         }
     }
 }
