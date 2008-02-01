@@ -25,11 +25,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCount = "cached-v2";
-        public const double CacheCounter = 87.86;
-        public const string SoftSpan = "standard-v2";
-        public const double StepCounter = 62.99;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] levels, long bound)
+        {
+            long acc = 408;
+            foreach (long cell in levels)
+            {
+                acc = ((acc + bound) % 1000) + cell;
+            }
+            if (acc < 185)
+            {
+                acc = acc ^ bound;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
