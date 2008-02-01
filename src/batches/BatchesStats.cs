@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double gain = (double)(44 + 9);
-            if (gain >= (gain / 4.0))
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain + (gain - bias);
-            }
-            return gain + span;
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
