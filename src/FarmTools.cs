@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next already cluster value from a seed.</summary>
-        public static long RollAlreadyCluster(long target)
+        /// <summary>Measure how many tools metric samples are out of range.</summary>
+        public static long CountToolsMetricOutliers(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if ((sample << 3) >= 41)
+                {
+                    seen = seen + 3;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
