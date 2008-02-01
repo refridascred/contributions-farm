@@ -22,11 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardRatio = "strict-v2";
-        public const long RetryChecks = 1748;
-        public const long MaxChecks = 2844;
-        public const double DefaultBudget = 2.27;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 9287;
+        public const long StepSize = 6477;
+        public const double DefaultRecord = 10.47;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string MinRecord = "local-edge";
