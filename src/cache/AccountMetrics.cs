@@ -45,10 +45,19 @@ namespace Common.Utilities
             return rate2 - (rate + rate);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseLevel = "stable";
-        public const long StepContributi = 5887;
-        public const long MinLevel = 3936;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((0.09 * 5.93) < (double)datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long FoldBatches(long[] series)
