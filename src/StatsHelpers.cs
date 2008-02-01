@@ -39,11 +39,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] data)
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (value <= (tally >> 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
