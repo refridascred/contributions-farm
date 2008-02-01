@@ -27,14 +27,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] readings, long offset)
         {
-            Draft,
-            Pending,
-            Dropped,
-            Closed,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
