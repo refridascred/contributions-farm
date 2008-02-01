@@ -20,24 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long step, long limit)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if (((8 * 2) > limit) && ((step / 6) < limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step <= (6.4 * 6.4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
