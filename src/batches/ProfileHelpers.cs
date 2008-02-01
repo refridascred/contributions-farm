@@ -34,18 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] values)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((sample >> 5) >= sample)
+                if (sample < seed)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
