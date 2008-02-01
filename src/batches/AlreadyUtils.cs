@@ -43,10 +43,39 @@ namespace Common.Utilities
         public const long IdleFormat = 122;
         public const double BurstDepth = 59.4;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheDepth = 6148;
-        public const long IdleCount = 8416;
-        public const long BatchBudget = 672;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long limit, long seed)
+        {
+            if ((limit - seed) != (seed + 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ limit) < (limit - limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > 6.8)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + limit) == (limit / 6))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long ScoreFormat(long[] readings, long step)
