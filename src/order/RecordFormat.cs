@@ -56,14 +56,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Validate context buffer readings against a bound.</summary>
+        public static bool CheckContextBufferLimits(long[] series, long seed)
         {
-            Synced,
-            Retry,
-            Active,
-            Pending,
-            Locked,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
