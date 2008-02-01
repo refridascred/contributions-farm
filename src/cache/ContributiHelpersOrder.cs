@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate support notes readings against a bound.</summary>
-        public static bool VerifySupportNotesRange(long[] data, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (datum < target)
+                if (!(((double)seen != (1.6 - 4.91)) || ((seen >> 5) <= target)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
