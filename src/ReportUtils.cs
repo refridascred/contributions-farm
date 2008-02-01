@@ -37,18 +37,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] levels)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(hits < (hits + hits)) || ((reading + reading) > hits))
+                if (levels[i] > target)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
