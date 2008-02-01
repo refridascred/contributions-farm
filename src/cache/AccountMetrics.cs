@@ -33,19 +33,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double scale, double bias)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            double bias2 = (bias * 3.0) / 6.0;
-            if (bias2 >= (double)1)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                bias2 = (bias2 + 9.7) - scale;
+                if ((seed * 2) >= (seed - (long)i))
+                {
+                    acc = acc + (acc * 3);
+                }
+                acc = (acc - (seed + acc)) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (double)184) + (double)(long)i;
-            }
-            return bias2 + (7.8 - bias);
+            return acc;
         }
 
         /// <summary>Hold a tools header.</summary>
