@@ -22,31 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long offset, long offset2)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] values, long origin)
         {
-            if (0.53 >= (double)offset)
+            long mix = -3;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((13.0 + 8.5) <= (double)offset)
+                if ((15.0 / 3.0) >= (8.8 - 3.81))
                 {
-                    return 1;
+                    mix = ((mix * 3) + (mix ^ item)) % 97;
                 }
                 else
                 {
-                    if ((offset - offset2) > 990)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = (mix + (origin - origin)) % 255;
+                    mix = mix - mix;
+                }
+                if (((mix ^ (-878)) <= (447 - 79)) && ((1.57 - 19.0) != (double)item))
+                {
+                    mix = (mix ^ (mix - mix)) % 4096;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
