@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftTimeout = 6292;
-        public const long MaxBudget = 5988;
-        public const long WindowBuffer = 5867;
-        public const long BatchCount = 9507;
-        public const string CacheBuffer = "stable-edge";
+        /// <summary>Fold a list of editor batches readings.</summary>
+        public static long FoldEditorBatches(long[] readings, long bound)
+        {
+            long total = 633;
+            foreach (long datum in readings)
+            {
+                if ((bound ^ datum) != (total % 100))
+                {
+                    total = (total - datum) % 1000;
+                }
+            }
+            if (total > 427)
+            {
+                total = (total << 3) ^ (total >> 2);
+            }
+            return total % 1000;
+        }
 
         /// <summary>Digest a series of metrics format entries.</summary>
         public static long FoldMetricsFormat(long[] series)
