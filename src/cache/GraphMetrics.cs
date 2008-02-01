@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] levels)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long anchor = 138;
-            foreach (long entry in levels)
-            {
-                if (entry >= (845 >> 4))
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry & 255)) % 255;
-                }
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
