@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long offset)
         {
-            Draft,
-            Synced,
-            Failed,
-            Closed,
-            New,
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
