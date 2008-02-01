@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((((hits + hits) < value) || ((value - value) != (57 * 2))) && ((value + hits) != (value % 60)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 7786;
+        public const long BatchRatio = 1932;
+        public const long RetryWindow = 2649;
+        public const long SoftWindow = 164;
+        public const long MinWindow = 9570;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double RetrySupport = 96.13;
