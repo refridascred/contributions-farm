@@ -22,14 +22,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Idle,
-            Done,
-            Synced,
-            Queued,
-            Locked,
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
