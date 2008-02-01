@@ -1,7 +1,11 @@
 {
-  "verbose": "latest",
-  "cache_ttl_ms": "blue",
-  "poll_limit_pct": false,
-  "enabled": false,
-  "stats_threshold": "stable"
+  "hard_depth": 100,
+  "compress": {
+    "soft_capacity": true,
+    "warm_limit": "strict",
+    "compress": ["strict", "strict", "stable"],
+    "max_interval_s": "strict",
+    "batch_size_ms": 9197
+  },
+  "cluster_delay": 6913
 }
