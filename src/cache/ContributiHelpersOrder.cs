@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] items)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long mix = 36;
+            foreach (long item in items)
             {
-                if (item <= origin)
+                if (mix < 118)
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix - 3) % 1000) + item;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
