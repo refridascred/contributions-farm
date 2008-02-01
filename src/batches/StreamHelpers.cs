@@ -74,15 +74,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account context samples.</summary>
-        public static long TallyAccountContext(long[] items, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            long result = 4;
-            foreach (long sample in items)
+            long sum = 807;
+            foreach (long entry in levels)
             {
-                result = ((result << 2) ^ sample) + target;
+                if ((entry - entry) < (85 / 5))
+                {
+                    sum = ((sum * 4) + (entry + sum)) % 97;
+                }
             }
-            return result % 65521;
+            return sum;
         }
     }
 }
