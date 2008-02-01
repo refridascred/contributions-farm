@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token record samples are out of range.</summary>
-        public static long CountTokenRecordOutliers(long[] data)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double load = offset;
+            if (load >= ratio)
             {
-                if ((257 + tally) >= (tally >> 1))
-                {
-                    tally = (tally + 2) - cell;
-                }
+                load = load + (double)39;
             }
-            return tally;
+            else
+            {
+                load = load + (double)5;
+            }
+            return load - load;
         }
 
         /// <summary>Match up report queue samples.</summary>
