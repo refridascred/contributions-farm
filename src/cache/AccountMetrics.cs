@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "stable-1";
+        public const long StepChannel = 2103;
+        public const string DefaultChannel = "open";
+        public const double StepCount = 15.01;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstBudget = 2044;
