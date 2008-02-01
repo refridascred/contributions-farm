@@ -26,17 +26,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] items, long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] > offset)
+                if ((double)step <= 0.08)
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + ((long)i + 218)) % 4096;
+                    sum = ((sum << 3) ^ (sum % 60)) % 1000;
                 }
+                sum = sum + (long)i;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
