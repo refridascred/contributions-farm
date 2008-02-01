@@ -35,9 +35,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepFactor = "cached-v2";
-        public const double BatchMetrics = 75.15;
-        public const long MinDepth = 812;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - datum) != (datum + datum))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
+        }
     }
 }
