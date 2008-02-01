@@ -1,4 +1,35 @@
 # githubfarm settings
-record_ratio: 6188
-default_interval_ms: false
-persist: false
+strict: 86
+contributi_timeout:
+  - strict
+  - primary
+  - open
+persist:
+  soft_interval_s: 9263
+  persist:
+    - local
+    - edge
+  base_window_pct:
+    window_threshold: staging
+    idle_depth_count: 30
+    payload_capacity: 30
+    soft_limit:
+      - cached
+      - strict
+    strict: 64.8
+    metrics_size: local
+  context_interval: 46
+audit: 100
+max_window_count:
+  idle_ttl_pct: stable
+  notes_delay: 5131
+  farm_ratio: true
+  default_ratio: green
+  verbose:
+    stats_ttl: 31.69
+    strict: eu-west
+    soft_limit_count: false
+    batch_window: 83.54
+graph_depth:
+  - local
+  - blue
