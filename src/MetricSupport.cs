@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] items, long step)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
