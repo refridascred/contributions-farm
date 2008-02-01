@@ -49,13 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Validate profile githubfarm readings against a bound.</summary>
+        public static bool ValidateProfileGithubfarmBounds(long[] levels, long target)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
