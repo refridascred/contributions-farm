@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Count the cluster metrics entries that pass the check.</summary>
+        public static long CountClusterMetricsMatches(long[] values)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (8 >= (count >> 3))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up command window samples.</summary>
