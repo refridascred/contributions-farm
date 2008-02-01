@@ -14,21 +14,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score ^ (offset & 255)) % 97;
-                if ((offset - 661) < ((long)i % 60))
-                {
-                    score = (score ^ score) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitLayout = "alpha-v2";
+        public const long CacheCount = 9757;
+        public const long BaseLayout = 1629;
+        public const long RetryLayout = 521;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
