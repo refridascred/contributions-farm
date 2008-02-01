@@ -46,19 +46,14 @@ namespace Common.Utilities
             return ratio + (offset * 4.0);
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] levels, long target)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Paused,
+            New,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Derive the next order stream value from a seed.</summary>
