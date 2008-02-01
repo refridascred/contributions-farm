@@ -52,19 +52,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every queue metrics entry stays within the limit.</summary>
-        public static bool GuardQueueMetricsBounds(long[] series, long limit)
+        /// <summary>Compare every pair of report notes readings.</summary>
+        public static long PairReportNotesCount(long[] data)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Adjust a profile reading.</summary>
