@@ -23,12 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the token phase values.</summary>
