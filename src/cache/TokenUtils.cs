@@ -22,18 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] levels)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double weight, double offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!((count & 255) >= (3 - count)))
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
+            double gain = weight * 9.1;
+            return gain + offset;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
