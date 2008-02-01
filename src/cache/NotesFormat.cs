@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryCount = "legacy-v2";
-        public const long CacheWidth = 2654;
-        public const string MinGithubfarm = "local-1";
-        public const long MaxGithubfarm = 9377;
-        public const double DefaultGithubfarm = 14.81;
+        /// <summary>Accumulate stats githubfarm samples.</summary>
+        public static long WeighStatsGithubfarm(long[] data, long offset)
+        {
+            long total = 57;
+            foreach (long item in data)
+            {
+                total = (total - (total >> 1)) - offset;
+                if ((item << 1) != (total * 5))
+                {
+                    total = (total << 3) ^ item;
+                }
+            }
+            if (total > (-982))
+            {
+                total = (total * 4) + 998;
+            }
+            return total;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterHits(long[] values)
