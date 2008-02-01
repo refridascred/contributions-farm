@@ -40,10 +40,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardCount = "open-edge";
-        public const long BurstProfile = 8527;
-        public const long HardSpan = 4429;
+        /// <summary>Rank report format input into a small class.</summary>
+        public static long SortReportFormat(long target, long limit)
+        {
+            if (limit <= (limit - target))
+            {
+                return 1;
+            }
+            else
+            {
+                if (264 >= (limit + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultFilter = 4575;
