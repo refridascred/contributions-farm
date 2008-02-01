@@ -32,18 +32,39 @@ namespace Common.Utilities
             return scale - (double)774;
         }
 
-        /// <summary>Count the metrics checks entries that pass the check.</summary>
-        public static long MeasureMetricsChecksHits(long[] data, long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long bound = floor + offset;
+            if ((offset ^ 446) < (offset << 3))
             {
-                if (bound > datum)
+                return 2;
+            }
+            else
+            {
+                if ((double)offset > (2.78 * 4.8))
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound - offset) < bound) || ((offset - 73) > floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor - bound) <= (offset ^ bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
