@@ -12,20 +12,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Iterate the notes support series from a seed.</summary>
-        public static long RollNotesSupport(long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            long result = 8;
+            foreach (long entry in readings)
             {
-                total = (total << 2) ^ ((long)i ^ 3);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total * 2) + (-79)) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 97;
+                result = result - (entry >> 5);
             }
-            return total;
+            if (result > 97)
+            {
+                result = ((result << 3) ^ (result & 1)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
