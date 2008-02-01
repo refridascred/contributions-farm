@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double ratio, double span)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double rate, double bias)
         {
-            double bias = (double)(25 + 398);
-            return (bias - ratio) + span;
+            double weight = 5.67 * 6.07;
+            if (weight >= bias)
+            {
+                weight = (weight - (double)8) + rate;
+            }
+            else
+            {
+                weight = weight - (double)4;
+            }
+            return weight + (double)188;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
