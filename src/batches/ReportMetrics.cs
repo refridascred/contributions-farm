@@ -23,32 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a schema order value against two limits.</summary>
-        public static long RankSchemaOrder(long bound, long bound2)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long span = bound - bound2;
-            if ((6 + 4) < (bound2 + span))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound2 < span)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)span <= (1.9 / 6.0)) && ((double)bound == (2.55 / 7.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
