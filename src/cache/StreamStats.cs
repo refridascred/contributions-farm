@@ -20,10 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 6610;
-        public const long DefaultInterval = 6905;
-        public const long MaxLevel = 3299;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] readings)
+        {
+            long total = 823;
+            foreach (long reading in readings)
+            {
+                total = (total * 4) + (reading * 5);
+            }
+            return total;
+        }
 
         /// <summary>Audit editor queue readings against a rule.</summary>
         public static long MeasureEditorQueueMatches(long[] values)
