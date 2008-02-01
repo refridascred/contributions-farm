@@ -57,12 +57,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
+            Active,
+            Queued,
+            Dropped,
             Synced,
-            Retry,
-            Done,
+            Draft,
         }
     }
 }
