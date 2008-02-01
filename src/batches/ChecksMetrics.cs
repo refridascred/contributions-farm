@@ -59,10 +59,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryLevel = 22.37;
-        public const string MaxMetrics = "legacy-1";
-        public const long RetryCount = 9690;
-        public const double MinMetrics = 35.74;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value + (long)data.Length) <= ((-9) >> 3))
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
+        }
     }
 }
