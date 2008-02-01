@@ -88,18 +88,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long sum = 807;
-            foreach (long entry in levels)
-            {
-                if ((entry - entry) < (85 / 5))
-                {
-                    sum = ((sum * 4) + (entry + sum)) % 97;
-                }
-            }
-            return sum;
+            Paused,
+            Draft,
+            Stale,
+            Ready,
+            Idle,
         }
     }
 }
