@@ -1,14 +1,14 @@
 # Command notes
 
-Keep farm and stats names short and lowercase.
-When a queue fails, the checks handler retries a few times before giving up.
-The report report groups every graph by schema.
+Defaults for format live in the config folder and can be overridden per environment.
+Each token is validated before it reaches the commits queue.
 
-When a layout fails, the commits handler retries a few times before giving up.
-The notes helpers are pure functions, so they are safe to call from any thread.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Each window is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Log every batch change
-- Prefer cluster defaults
-- Review stats limits each release
+- Keep support values small
+- Review githubfarm limits each release
+- Document new graph fields
+- Validate layout input early
