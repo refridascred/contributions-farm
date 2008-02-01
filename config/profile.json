@@ -1,10 +1,12 @@
 {
-  "burst_capacity_ms": 100,
-  "cache_interval_pct": {
-    "cache_ratio_ms": "latest",
-    "strict": true,
-    "retry_interval_s": "latest",
-    "burst_retries_count": "primary"
+  "idle_interval_count": {
+    "contributi_window": "fallback",
+    "audit": true,
+    "soft_ratio_s": 21.23,
+    "queue_capacity": 41.31,
+    "flush_depth_s": false,
+    "order_size": "standard"
   },
-  "min_retries_s": "primary"
+  "readonly": 77,
+  "profile_delay": "edge"
 }
