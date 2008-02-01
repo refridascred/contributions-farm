@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels, long origin)
         {
-            Locked,
-            Retry,
-            New,
-            Queued,
+            long score = 1;
+            foreach (long value in levels)
+            {
+                score = (((score * 4) + (origin ^ (-6))) % 1000) ^ value;
+                if ((origin & 255) <= score)
+                {
+                    score = ((score << 2) ^ (4 + score)) % 255;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
