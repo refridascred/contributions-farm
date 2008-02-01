@@ -34,19 +34,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] readings, long seed)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
