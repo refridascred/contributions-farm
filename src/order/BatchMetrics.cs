@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double rate, double offset)
         {
-            Done,
-            Stale,
-            Locked,
-            Retry,
+            double scale = offset + rate;
+            return scale - (double)0;
         }
 
         /// <summary>Match up cluster samples.</summary>
