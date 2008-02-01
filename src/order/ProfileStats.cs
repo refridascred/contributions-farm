@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultBudget = 6631;
-        public const long StepNotes = 4754;
-        public const string IdleSpan = "fallback-edge";
-        public const long MinWidth = 8448;
-        public const double WindowWidth = 9.68;
+        /// <summary>Count the channel payload entries that pass the check.</summary>
+        public static long MeasureChannelPayloadMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((double)seen <= 5.0) && !((double)seen <= (3.77 + 1.1)))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long floor)
