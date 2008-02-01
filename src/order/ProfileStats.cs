@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] items, long target)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (91 < (hits - target))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
