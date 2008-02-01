@@ -31,13 +31,11 @@ namespace Common.Utilities
             return bias + (offset * 13.0);
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Adjust a order farm reading.</summary>
+        public static double AdjustOrderFarm(double weight, double offset)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            double ratio = (double)4 * 11.0;
+            return ((ratio - (ratio * 6.4)) + weight) + offset;
         }
 
         /// <summary>Blend two schema metric measurements.</summary>
