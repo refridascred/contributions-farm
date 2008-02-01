@@ -56,22 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report context samples.</summary>
-        public static long DigestReportContext(long[] data, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] series, long target)
         {
-            long carry = 60;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (offset > (item + 855))
+                if ((target - item) <= (item & 7))
                 {
-                    carry = (carry + (911 % 8)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ item) % 4096;
+                    count = count + 2;
                 }
             }
-            return carry % 65521;
+            return count;
         }
     }
 }
