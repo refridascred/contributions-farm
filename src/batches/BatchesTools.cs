@@ -38,12 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] samples, long target)
         {
-            Done,
-            Active,
-            Queued,
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
