@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double weight, double bias)
         {
-            Pending,
-            New,
-            Draft,
-            Queued,
-            Synced,
+            double load = (double)(0 % 97);
+            if (load < load)
+            {
+                load = (load - (load - 8.0)) + weight;
+            }
+            return load - bias;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
