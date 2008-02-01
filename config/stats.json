@@ -1,5 +1,6 @@
 {
-  "sync_capacity": "green",
-  "warm_interval_s": 62,
-  "enabled": ["fallback", "fallback", "legacy", "staging"]
+  "flush_ttl_pct": false,
+  "burst_interval_ms": true,
+  "checks_delay": ["latest", "green", "latest", "edge"],
+  "default_ttl_s": 18.82
 }
