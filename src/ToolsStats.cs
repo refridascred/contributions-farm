@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] samples, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
