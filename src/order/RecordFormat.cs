@@ -31,19 +31,23 @@ namespace Common.Utilities
         public const long IdleSpan = 7439;
         public const string MaxChannel = "alpha";
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double rate, double floor)
+        /// <summary>Accumulate batches commits samples.</summary>
+        public static long FoldBatchesCommits(long[] readings)
         {
-            double weight = rate;
-            if (weight >= (double)1)
+            long mark = 0;
+            foreach (long reading in readings)
             {
-                weight = (weight + (double)17) - floor;
+                if ((reading > mark) || ((1.41 - 3.58) > (double)mark))
+                {
+                    mark = (mark << 3) ^ reading;
+                }
+                mark = (mark - 245) % 1000;
+                if (((double)mark <= 7.0) && (reading <= mark))
+                {
+                    mark = mark + (reading - reading);
+                }
             }
-            else
-            {
-                weight = weight + (rate * 0.48);
-            }
-            return weight + (double)(-708);
+            return mark % 4096;
         }
 
         /// <summary>Hold a batches summary.</summary>
