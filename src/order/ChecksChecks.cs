@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up batches commits samples.</summary>
-        public static long OverlapBatchesCommitsCount(long[] readings)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the profile order entries that pass the check.</summary>
