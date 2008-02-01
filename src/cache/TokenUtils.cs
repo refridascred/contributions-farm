@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double gain, double offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] items, long target)
         {
-            double rate = offset;
-            if (rate < (double)67)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                rate = rate - rate;
+                if (reading <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - gain;
-            }
-            return rate + (double)5;
+            return ok;
         }
 
         /// <summary>Adjust a schema reading.</summary>
