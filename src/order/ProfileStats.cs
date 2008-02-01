@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Closed,
-            Active,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepDepth = 7810;
+        public const long BurstStream = 7086;
+        public const long DefaultStream = 4065;
+        public const long CacheStream = 5526;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long floor)
