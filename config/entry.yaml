@@ -1,8 +1,21 @@
 # entry settings
-schema_threshold: green
-dry_run: 79
-sync_retries:
-  - 146
-  - 377
-  - 250
-  - 335
+retry_interval_pct:
+  soft_retries_pct: false
+  audit:
+    - 217
+    - 114
+    - 24
+    - 444
+  poll_capacity_ms:
+    soft_retries_ms: stable
+    min_retries_count: local
+    warm_size_s: false
+    retry_ttl_ms: 500
+    notes_size:
+      - staging
+      - edge
+      - latest
+    max_window: false
+  soft_ttl_ms: 9
+base_depth: staging
+verbose: cached
