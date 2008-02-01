@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Idle,
-            Locked,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 1652;
+        public const long WindowSupport = 197;
+        public const long IdleSize = 8895;
+        public const long BaseSupport = 9555;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksMatches(long[] levels, long floor)
