@@ -70,18 +70,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] series)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (!(((value % 60) <= value) || ((2.3 + 3.2) != (double)value)))
+                if ((16 ^ seen) > (datum + seen))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 1) - limit;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
