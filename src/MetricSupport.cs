@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
-            public bool Token { get; set; }
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
