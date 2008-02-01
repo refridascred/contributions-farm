@@ -59,25 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue payload input into a small class.</summary>
-        public static long BucketQueuePayload(long step, long floor)
+        /// <summary>Audit notes window readings against a rule.</summary>
+        public static long MeasureNotesWindowMatches(long[] values)
         {
-            long offset = step - floor;
-            if ((offset + step) == (floor + floor))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step << 3) > ((-1) + floor)) && ((floor & 3) <= (offset & 7)))
+                if (((seen + seen) <= (seen & 1)) && ((5.75 * 3.0) >= (double)entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
