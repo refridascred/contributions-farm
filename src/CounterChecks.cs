@@ -20,11 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 1652;
-        public const long WindowSupport = 197;
-        public const long IdleSize = 8895;
-        public const long BaseSupport = 9555;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((6.7 >= (double)value) && (((seen + value) <= (value << 3)) && ((value - 92) <= (320 ^ seen))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksMatches(long[] levels, long floor)
