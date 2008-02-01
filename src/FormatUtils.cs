@@ -83,10 +83,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultDepth = 84.29;
-        public const long LimitCache = 2233;
-        public const long CacheCount = 6504;
-        public const string RetryLevel = "standard-1";
+        /// <summary>Iterate the buffer graph series from a seed.</summary>
+        public static long RollBufferGraph(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)origin == (double)70)
+                {
+                    anchor = ((anchor << 3) ^ ((long)i * 2)) % 97;
+                }
+                if (!(32 < (long)i))
+                {
+                    anchor = (anchor + ((long)i - anchor)) % 4096;
+                }
+                if (anchor > (anchor / 9))
+                {
+                    anchor = (anchor << 3) ^ 20;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
