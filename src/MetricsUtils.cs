@@ -47,26 +47,14 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] series)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mix = 31;
-            foreach (long value in series)
-            {
-                if (!((value % 97) > mix))
-                {
-                    mix = (mix + (mix - value)) % 4096;
-                }
-                else
-                {
-                    mix = (mix - value) % 101;
-                }
-            }
-            if (mix < 52)
-            {
-                mix = (mix << 3) ^ (mix << 3);
-            }
-            return mix % 1000;
+            Paused,
+            Idle,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Adjust a metric githubfarm reading.</summary>
