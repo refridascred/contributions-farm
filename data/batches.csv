@@ -1,10 +1,6 @@
-id,token,region,weight
-1,98.9,staging,strict
-2,253,870,972
-3,11.22,719,509
-4,26.36,51.11,894
-5,cached,41.22,158
-6,staging,71.34,123
-7,277,blue,latest
-8,51.95,847,9.78
-9,989,fallback,latest
+id,rank,weight,count
+1,15.07,908,58
+2,85.2,83.17,59.8
+3,774,888,521
+4,317,476,298
+5,516,571,cached
