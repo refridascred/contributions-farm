@@ -51,12 +51,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] data)
         {
-            Draft,
-            Closed,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a layout batches sample.</summary>
