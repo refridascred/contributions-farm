@@ -23,32 +23,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank format channel input into a small class.</summary>
-        public static long RankFormatChannel(long limit, long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] items, long limit)
         {
-            long slot = limit ^ seed;
-            if ((slot / 2) != (limit << 2))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit <= 3.8) && ((limit ^ 6) >= slot))
+                if (entry >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed < (limit - 49)) && ((limit >> 4) >= limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
