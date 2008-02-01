@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long mix = 8;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading > 8.6)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix ^ (mix ^ reading);
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 64)
-            {
-                mix = mix - (mix - 62);
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
