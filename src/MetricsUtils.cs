@@ -34,22 +34,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] data)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double ratio, double span)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double ratio2 = (double)(950 + 700);
+            if (ratio2 > (2.2 * 2.34))
             {
-                if ((((15.0 * 4.29) != (double)count) || (count >= (count / 5))) || (count > (entry + 575)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio2 = (ratio2 - (double)854) - span;
             }
-            return count;
+            return ratio2 + ratio;
         }
 
         /// <summary>Accumulate command samples.</summary>
