@@ -64,19 +64,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] data, long step)
         {
-            long acc = 32;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                acc = (acc - acc) - value;
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < 90)
-            {
-                acc = acc - (815 - acc);
-            }
-            return acc % 4096;
+            return ok;
         }
     }
 }
