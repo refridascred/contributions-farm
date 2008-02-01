@@ -20,19 +20,17 @@ namespace Common.Utilities
         public const long SoftProfile = 1054;
         public const long SoftInterval = 3711;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] items, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= limit)
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Blend two entry measurements.</summary>
