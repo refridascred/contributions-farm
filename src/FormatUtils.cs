@@ -53,12 +53,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Classify a checks buffer pair into a bucket.</summary>
+        public static long BucketChecksBuffer(long origin, long limit)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long gap = origin - limit;
+            if (gap < 4)
+            {
+                return 3;
+            }
+            else
+            {
+                if (gap < (origin % 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit >= (limit >> 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((gap ^ limit) <= origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
