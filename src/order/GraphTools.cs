@@ -58,19 +58,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double bias, double span)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            double gain = 9.8 - 1.4;
-            if (gain <= 4.83)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                gain = (gain - (gain - bias)) - span;
+                result = ((result << 3) ^ (offset ^ offset)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain + (double)861;
+            return result;
         }
     }
 }
