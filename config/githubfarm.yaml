@@ -1,17 +1,12 @@
 # githubfarm settings
-max_retries_pct: true
-hard_limit_count:
-  format_limit:
-    - fallback
-    - edge
-    - latest
-    - eu-west
-  readonly: 50.78
-  default_limit:
-    - 84
-    - 45
-    - 91
-    - 499
-warm_limit_ms: 500
-soft_ttl_count: local
-idle_timeout_pct: 4193
+cache_capacity:
+  - 222
+  - 430
+  - 235
+  - 100
+idle_interval: true
+batch_ratio_count: edge
+max_capacity_s: fallback
+soft_window_s:
+  - local
+  - legacy
