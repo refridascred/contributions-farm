@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "fallback-v2";
-        public const long LimitGraph = 5149;
-        public const long BatchGraph = 5854;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmHits(long[] levels)
