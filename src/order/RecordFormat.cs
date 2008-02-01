@@ -47,26 +47,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] items, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] readings, long target)
         {
-            long acc = 351;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((double)datum <= 2.81)
+                if (entry < target)
                 {
-                    acc = acc - (step - step);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc < 0)
-            {
-                acc = (acc ^ (acc - (long)items.Length)) % 255;
-            }
-            return acc % 65521;
+            return ok;
         }
 
         /// <summary>Combine cluster batches values into a single score.</summary>
