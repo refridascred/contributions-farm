@@ -22,15 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double weight, double floor)
+        /// <summary>Look up the position of a batch support sample.</summary>
+        public static long LocateBatchSupportIndex(long[] levels, long limit)
         {
-            double load = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = ((load - 1.1) + (double)(long)i) - weight;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return load - (double)55;
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
