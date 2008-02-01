@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine queue stream values into a single score.</summary>
-        public static long CombineQueueStream(long[] levels, long step)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] series)
         {
-            long sum = -810;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sum + 0) > datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (((sum << 2) ^ sum) % 4096) + step;
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 2)
-            {
-                sum = (sum << 3) ^ (sum >> 5);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Match up cluster samples.</summary>
