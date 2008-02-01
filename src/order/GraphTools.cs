@@ -58,24 +58,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long origin, long step)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double bias, double span)
         {
-            if (step > (origin >> 2))
+            double gain = 9.8 - 1.4;
+            if (gain <= 4.83)
             {
-                return 3;
+                gain = (gain - (gain - bias)) - span;
             }
             else
             {
-                if (step <= (origin >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
+                gain = gain + bias;
             }
+            return gain + (double)861;
         }
     }
 }
