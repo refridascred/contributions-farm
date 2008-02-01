@@ -1,8 +1,23 @@
 {
-  "base_limit": false,
-  "default_ratio": "primary",
-  "entry_limit": 100,
-  "strict": true,
-  "token_delay": "standard",
-  "flush_depth": true
+  "cache_ratio": "primary",
+  "cache_ttl": true,
+  "order_threshold": 13,
+  "base_size": true,
+  "default_size_pct": {
+    "min_retries_count": {
+      "editor_threshold": 31.94,
+      "hard_ratio_count": "local",
+      "window_threshold": "latest",
+      "dry_run": ["fallback", "strict", "cached"],
+      "notes_limit": true
+    },
+    "flush_timeout_s": {
+      "soft_ratio_ms": "cached",
+      "audit": 79.55,
+      "warm_limit_ms": "local",
+      "session_size": 5693
+    },
+    "soft_delay": 250
+  },
+  "entry_depth": [37, 498, 11]
 }
