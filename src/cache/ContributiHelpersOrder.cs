@@ -19,31 +19,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long offset, long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long bound, long offset)
         {
-            long cur = offset - target;
-            if ((double)target != (6.8 - 1.2))
+            if (249 >= (bound % 3))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (target < (-130))
+                if ((bound - bound) == (253 + bound))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)offset >= (double)cur)
+                    if ((4.86 * 6.2) != (double)bound)
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        if (4.0 >= (double)cur)
+                        if (!(bound < (bound / 9)))
                         {
-                            return 7;
+                            return 8;
                         }
                         else
                         {
