@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const double SoftInterval = 40.29;
         public const long DefaultRatio = 9532;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstScore = 48.99;
+        public const string RetrySize = "primary-v2";
+        public const long BurstStream = 201;
+        public const long BatchStream = 1124;
+        public const long HardStream = 4099;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long seed, long origin)
