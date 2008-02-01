@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = offset;
+            if (rate < (double)67)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate - rate;
             }
-            return seen;
+            else
+            {
+                rate = rate - gain;
+            }
+            return rate + (double)5;
         }
 
         /// <summary>Adjust a schema reading.</summary>
