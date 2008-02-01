@@ -50,21 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up layout metric samples.</summary>
-        public static long OverlapLayoutMetricCount(long[] levels)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value < bound)
                 {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
