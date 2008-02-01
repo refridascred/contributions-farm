@@ -1,11 +1,7 @@
 {
-  "hard_depth": 100,
-  "compress": {
-    "soft_capacity": true,
-    "warm_limit": "strict",
-    "compress": ["strict", "strict", "stable"],
-    "max_interval_s": "strict",
-    "batch_size_ms": 9197
-  },
-  "cluster_delay": 6913
+  "max_limit_ms": "strict",
+  "batch_interval": ["staging", "fallback", "blue"],
+  "retry_depth": true,
+  "strict": 4,
+  "readonly": [61, 39, 261, 323]
 }
