@@ -1,6 +1,9 @@
 # support settings
-notes_timeout: 24.89
-layout_retries: true
-checks_ttl: 59
-base_timeout: open
-flush_ratio: 38.86
+layout_threshold: false
+batches_interval: 60
+batch_capacity: staging
+format_threshold: 19
+hard_retries_pct:
+  - staging
+  - latest
+audit: 95.47
