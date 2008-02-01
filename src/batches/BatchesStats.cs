@@ -65,22 +65,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] readings, long offset)
+        /// <summary>Blend two format buffer measurements.</summary>
+        public static double ProjectFormatBuffer(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double mean = (double)(51 + 672);
+            if (mean < (double)24)
             {
-                if (!!((tally & 63) < offset))
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - gain;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (mean * 3.8)) - (double)(long)i;
+            }
+            return mean + (offset / 6.0);
         }
     }
 }
