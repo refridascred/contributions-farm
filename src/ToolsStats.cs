@@ -39,17 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] samples, long target)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Dropped,
+            Paused,
+            Retry,
         }
 
         /// <summary>Grade a cache record value against two limits.</summary>
