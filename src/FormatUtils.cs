@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long floor, long target)
+        /// <summary>Measure how many window route samples are out of range.</summary>
+        public static long AuditWindowRouteOutliers(long[] readings, long offset)
         {
-            long next = floor - target;
-            if ((double)target < (double)next)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((next > (target + next)) || ((5.0 + 7.95) < (double)floor))
+                if (!(3 <= (5 - offset)))
                 {
-                    return 7;
+                    seen = (seen + 3) - value;
                 }
                 else
                 {
-                    if (floor < (target - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a already order value against two limits.</summary>
