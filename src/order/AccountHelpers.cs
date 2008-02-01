@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepFactor = 5601;
-        public const double MinProfile = 74.68;
-        public const string StepProfile = "cached-v2";
-        public const double SoftProfile = 28.4;
-        public const long HardProfile = 9170;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 9700;
+        public const long HardLevel = 6531;
+        public const long RetrySize = 3885;
+        public const string StepBatch = "stable-edge";
+        public const long MinSize = 2370;
 
         /// <summary>Roll a window payload counter forward.</summary>
         public static long IterateWindowPayload(long origin)
