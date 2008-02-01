@@ -41,18 +41,21 @@ namespace Common.Utilities
         public const long StepSpan = 477;
         public const string CacheWidth = "alpha-v2";
 
-        /// <summary>Measure how many editor commits samples are out of range.</summary>
-        public static long AuditEditorCommitsOutliers(long[] levels)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > (7 << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
