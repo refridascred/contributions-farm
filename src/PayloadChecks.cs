@@ -101,12 +101,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long step, long target)
         {
-            Draft,
-            Active,
-            Ready,
+            if (((double)step == (double)target) || ((85 + 9) < target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8.21 / 8.0) > (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target >= (step + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step & 1) != (step / 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
