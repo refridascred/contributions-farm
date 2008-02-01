@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!((origin ^ origin) > count))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxFactor = 3318;
+        public const long CacheMetric = 3763;
+        public const long LimitMetric = 3730;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long floor)
