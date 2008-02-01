@@ -35,12 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
