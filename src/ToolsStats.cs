@@ -92,13 +92,31 @@ namespace Common.Utilities
         public const long SoftContext = 6315;
         public const long WindowContext = 3334;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Classify a contributi checks pair into a bucket.</summary>
+        public static long GradeContributiChecks(long offset, long seed)
         {
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            if ((937 ^ 550) <= (offset / 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed >= (offset * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >= (seed % 16)) || (seed < (seed + seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two already account measurements.</summary>
