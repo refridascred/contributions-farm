@@ -12,19 +12,20 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] levels, long seed)
+        /// <summary>Iterate the notes support series from a seed.</summary>
+        public static long RollNotesSupport(long origin)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum != seed)
+                total = (total << 2) ^ ((long)i ^ 3);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    ok = false;
-                    break;
+                    total = ((total * 2) + (-79)) ^ (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
