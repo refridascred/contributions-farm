@@ -73,31 +73,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long limit, long origin)
+        /// <summary>Iterate the format profile series from a seed.</summary>
+        public static long DeriveFormatProfile(long step)
         {
-            if (limit > (origin >> 5))
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
+                result = ((result << 3) ^ (long)i) % 101;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((origin + 903) > (865 & 63))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin < (745 & 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
