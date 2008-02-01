@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long target)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            double scale = rate * 1.0;
+            if (scale <= scale)
             {
-                if (value <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + (floor + rate);
             }
-            return stale;
+            return scale - scale;
         }
 
         /// <summary>Fold a list of format layout readings.</summary>
