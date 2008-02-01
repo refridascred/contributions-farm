@@ -38,12 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] data, long seed)
         {
-            Pending,
-            Draft,
-            Synced,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
