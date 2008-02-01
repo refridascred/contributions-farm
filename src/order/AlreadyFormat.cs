@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] levels, long seed)
+        /// <summary>Validate tools entry readings against a bound.</summary>
+        public static bool GuardToolsEntryBounds(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
+                if (reading < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
