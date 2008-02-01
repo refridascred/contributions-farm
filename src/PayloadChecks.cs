@@ -75,22 +75,18 @@ namespace Common.Utilities
             return weight + (double)1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] series, long step)
         {
-            long carry = 5;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (!((5.3 / 4.0) <= (3.4 - 9.34)))
+                if ((tally - tally) > tally)
                 {
-                    carry = (carry + carry) - cell;
+                    tally = ((tally + 2) ^ datum) + step;
                 }
             }
-            if (carry < 483)
-            {
-                carry = (carry + (carry << 1)) % 4096;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Match up token samples.</summary>
