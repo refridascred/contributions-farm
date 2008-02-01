@@ -27,19 +27,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((count ^ (long)data.Length) > (759 + cell))
                 {
-                    total = ((total + 57) % 1000) - (long)i2;
+                    count = count + 3;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
