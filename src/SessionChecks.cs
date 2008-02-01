@@ -20,19 +20,13 @@ namespace Common.Utilities
             return rate - (gain * 5.1);
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] levels, long seed)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a command record.</summary>
