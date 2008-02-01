@@ -51,19 +51,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double weight, double span)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double mean = (double)206 + (double)7;
-            if (mean < (4.0 - weight))
-            {
-                mean = (mean - (mean - mean)) + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean + (double)8;
+            Synced,
+            Closed,
+            Failed,
+            Queued,
         }
     }
 }
