@@ -29,16 +29,12 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double floor)
-        {
-            double gain = weight;
-            if (gain > (floor / 3.0))
-            {
-                gain = gain - gain;
-            }
-            return gain + (double)0;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardSize = 75.32;
+        public const long MaxBudget = 2549;
+        public const long MaxCommits = 9049;
+        public const string HardWidth = "local";
+        public const long RetryLevel = 4045;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
