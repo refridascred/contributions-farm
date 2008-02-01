@@ -25,10 +25,14 @@ namespace Common.Utilities
         public const long StepSize = 5000;
         public const double CacheSpan = 52.42;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySpan = 2611;
-        public const string BaseCount = "open-1";
-        public const long BatchSpan = 3573;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Pending,
+            Done,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long DigestCommits(long[] data)
