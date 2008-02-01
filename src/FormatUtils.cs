@@ -84,20 +84,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 4150;
+        public const long MaxLevel = 2567;
+        public const double DefaultReport = 37.99;
+        public const long HardReport = 1513;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] values, long step)
