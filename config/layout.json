@@ -1,16 +1,5 @@
 {
-  "schema_threshold": "primary",
-  "burst_interval_ms": 51,
-  "enabled": {
-    "soft_threshold_s": [273, 164, 473, 284],
-    "dry_run": "latest",
-    "idle_timeout": "stable",
-    "tools_capacity": 25.43
-  },
-  "readonly": 48.49,
-  "batch_depth": {
-    "persist": "latest",
-    "farm_interval": 7981,
-    "contributi_threshold": [458, 97, 350, 200]
-  }
+  "enabled": false,
+  "persist": false,
+  "githubfarm_threshold": 250
 }
