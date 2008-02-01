@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Iterate the cluster notes series from a seed.</summary>
+        public static long RollClusterNotes(long step)
         {
-            long sum = 26;
-            foreach (long value in levels)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(((long)levels.Length + sum) == (value + sum)))
-                {
-                    sum = (sum + (value << 3)) % 97;
-                }
-                sum = (sum - sum) % 65521;
+                score = score ^ (34 * 4);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return sum % 1000;
+            return score;
         }
 
         /// <summary>Hold a batch record.</summary>
