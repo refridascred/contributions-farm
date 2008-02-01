@@ -28,21 +28,32 @@ namespace Common.Utilities
         public const long MaxChecks = 2844;
         public const double DefaultBudget = 2.27;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long bound, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step = bound - target;
+            if ((double)target != (2.1 + 2.1))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((step / 3) >= (97 + bound)))
                 {
-                    if ((series[i] ^ series[j]) != 5)
+                    return 0;
+                }
+                else
+                {
+                    if ((step % 3) != (step + target))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate report context samples.</summary>
