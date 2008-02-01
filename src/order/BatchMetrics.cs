@@ -22,21 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 9;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((result <= (reading - reading)) || ((result + result) != (4 * 2)))
                 {
-                    if ((levels[i] - levels[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result - (51 + 88);
+                }
+                else
+                {
+                    result = result ^ reading;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
