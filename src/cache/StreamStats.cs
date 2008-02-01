@@ -32,13 +32,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 407;
+        public const long DefaultRatio = 1471;
+        public const long HardQueue = 7591;
+        public const long MinSpan = 5126;
     }
 }
