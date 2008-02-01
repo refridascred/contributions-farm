@@ -1,6 +1,11 @@
 # support settings
-compress: local
-poll_depth_pct: legacy
-min_window_s: true
-sync_delay_count: 6756
-dry_run: 41.96
+soft_threshold_pct:
+  - 139
+  - 199
+  - 239
+poll_retries: 9073
+window_size: staging
+cache_capacity: open
+readonly:
+  - standard
+  - legacy
