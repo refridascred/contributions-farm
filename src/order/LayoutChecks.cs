@@ -45,18 +45,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] samples)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!!(count < (count * 2)))
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
+            Stale,
+            Draft,
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a account summary.</summary>
