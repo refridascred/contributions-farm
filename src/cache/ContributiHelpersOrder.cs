@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long limit, long offset)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
+            if (3.0 >= (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit * 4) <= (7 & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset == (6.1 / 4.0)) || (offset < (limit + offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset * 4) != (offset * 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
