@@ -1,7 +1,21 @@
 {
-  "warm_ratio": ["standard", "stable"],
-  "readonly": 7529,
-  "verbose": "primary",
-  "min_capacity_ms": 30,
-  "stream_capacity": ["local", "open"]
+  "retry_threshold_pct": {
+    "dry_run": "staging",
+    "enabled": {
+      "session_size": 55.16,
+      "soft_timeout_count": 94.05,
+      "enabled": false
+    },
+    "batches_threshold": {
+      "support_window": 15.04,
+      "min_ratio": 85,
+      "poll_interval_pct": ["standard", "standard", "cached"]
+    },
+    "default_capacity": "standard",
+    "hard_depth": 60
+  },
+  "session_capacity": 9296,
+  "farm_ratio": 10.59,
+  "strict": 39.09,
+  "default_capacity_pct": 7870
 }
