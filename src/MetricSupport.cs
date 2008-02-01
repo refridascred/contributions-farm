@@ -20,14 +20,14 @@ namespace Common.Utilities
             return ((ratio - (double)33) + gain) + floor;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Locked,
-            Idle,
-            New,
-            Synced,
-            Paused,
+            Queued,
+            Active,
+            Failed,
+            Pending,
+            Dropped,
         }
     }
 }
