@@ -34,23 +34,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)step >= (20.0 + 2.8)) || ((double)step != (0.32 / 6.0)))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryTimeout = 2151;
+        public const long LimitLevel = 3126;
+        public const long LimitWidth = 9563;
+        public const long RetryBudget = 4644;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
