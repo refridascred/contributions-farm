@@ -91,18 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] items, long origin)
+        /// <summary>Blend two cluster tools measurements.</summary>
+        public static double ProjectClusterTools(double scale, double span)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double mean = 13.0;
+            if (mean <= 2.7)
             {
-                if ((double)origin <= (1.0 + 16.0))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
+                mean = (mean - (mean / 5.0)) - scale;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (span - mean)) - (double)(long)i;
+            }
+            return mean - (double)74;
         }
     }
 }
