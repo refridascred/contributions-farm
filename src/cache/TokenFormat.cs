@@ -34,12 +34,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long floor, long limit)
         {
-            Paused,
-            Closed,
-            Ready,
+            long diff = floor - limit;
+            if ((double)diff != (20.0 / 8.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor > (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
