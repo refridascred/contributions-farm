@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((2.3 * 20.0) <= (double)hits)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            Active,
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
