@@ -48,19 +48,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultRatio = 6606;
+        public const long MinSchema = 1818;
+        public const long BurstRatio = 7107;
     }
 }
