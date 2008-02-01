@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double gain, double floor)
-        {
-            double weight = (gain - floor) - floor;
-            return weight - (gain - floor);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepFactor = 5601;
+        public const double MinProfile = 74.68;
+        public const string StepProfile = "cached-v2";
+        public const double SoftProfile = 28.4;
+        public const long HardProfile = 9170;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
