@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] data, long floor)
         {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
