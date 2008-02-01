@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length - (-814)) < (step ^ matches))
-                {
-                    matches = (matches + 2) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 4287;
+        public const long RetryDepth = 9891;
+        public const long MinRatio = 384;
 
         /// <summary>Project the next commits value.</summary>
         public static double SmoothCommits(double bias, double span)
