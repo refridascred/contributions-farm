@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long bound)
+        /// <summary>Look up the position of a token profile sample.</summary>
+        public static long LookupTokenProfileIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] == bound)
+                if (levels[i] >= seed)
                 {
                     return (long)i;
                 }
