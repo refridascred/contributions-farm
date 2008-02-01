@@ -50,19 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] samples, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long offset, long limit)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            if ((-869) < limit)
             {
-                if (reading < bound)
+                return 4;
+            }
+            else
+            {
+                if (9 > (offset - offset))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
     }
 }
