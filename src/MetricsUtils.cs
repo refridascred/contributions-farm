@@ -29,12 +29,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "legacy-edge";
-        public const long SoftSpan = 3729;
-        public const string RetrySchema = "legacy-edge";
-        public const double BurstSchema = 54.92;
-        public const long WindowSchema = 5376;
+        /// <summary>Measure how many context batches samples are out of range.</summary>
+        public static long MeasureContextBatchesGaps(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count << 3) >= (seed % 16))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long WeighCommand(long[] series)
