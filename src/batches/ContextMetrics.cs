@@ -58,11 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] items)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value % 5) <= count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
