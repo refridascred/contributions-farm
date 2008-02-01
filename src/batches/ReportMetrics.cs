@@ -41,12 +41,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 6362;
+        public const long HardTimeout = 4194;
+        public const long WindowScore = 896;
     }
 }
