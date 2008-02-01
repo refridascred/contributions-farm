@@ -14,15 +14,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double gain, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] data, long step)
         {
-            double rate = (double)90 / 2.0;
-            if (rate <= floor)
+            long matches = 0;
+            foreach (long item in data)
             {
-                rate = rate - (floor + rate);
+                if (!((matches + item) <= item))
+                {
+                    matches = (matches + 2) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate - gain;
+            return matches;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
