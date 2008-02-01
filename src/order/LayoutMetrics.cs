@@ -41,19 +41,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] readings, long step)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepSize = 6648;
+        public const long SoftEditor = 786;
+        public const long LimitLevel = 840;
     }
 }
