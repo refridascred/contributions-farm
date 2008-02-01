@@ -20,22 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples)
+        /// <summary>Find the first stats context entry that matches the target.</summary>
+        public static long FindStatsContextIndex(long[] samples, long target)
         {
-            long carry = 7;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (6 >= (entry - carry))
+                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
                 {
-                    carry = carry + (carry - entry);
-                }
-                else
-                {
-                    carry = carry - (entry + carry);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
