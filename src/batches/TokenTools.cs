@@ -25,9 +25,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 19.73;
-        public const string HardContext = "standard-v2";
-        public const long StepContext = 8632;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Draft,
+            Idle,
+            Synced,
+            Dropped,
+        }
     }
 }
