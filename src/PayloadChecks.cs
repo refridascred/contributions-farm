@@ -19,26 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] values)
         {
-            long result = 124;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((958 + seed) <= (seed - 5))
+                if ((double)entry != (1.5 + 6.0))
                 {
-                    result = (result << 2) ^ (reading % 100);
-                }
-                else
-                {
-                    result = result + ((-703) ^ seed);
-                }
-                if ((result & 63) == (23 + result))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Accumulate already schema samples.</summary>
