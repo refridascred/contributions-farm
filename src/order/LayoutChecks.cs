@@ -44,12 +44,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long origin, long offset)
         {
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            if ((offset + 590) == (offset + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin <= 9.32)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
