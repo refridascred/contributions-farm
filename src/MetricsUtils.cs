@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] data, long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (matches < (matches - entry))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
