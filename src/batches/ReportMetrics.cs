@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long mark = 71;
-            foreach (long item in series)
-            {
-                if (((double)mark == (6.0 + 0.24)) && ((double)item == (3.0 + 5.3)))
-                {
-                    mark = (mark ^ (mark >> 5)) % 101;
-                }
-                mark = (mark + (-36)) % 1000;
-            }
-            return mark % 4096;
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
