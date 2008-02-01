@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Idle,
-            New,
             Synced,
-            Paused,
-            Stale,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
