@@ -40,13 +40,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            long sum = -486;
+            foreach (long sample in readings)
+            {
+                if (((sum / 9) > sum) && (sum >= (sample + sample)))
+                {
+                    sum = sum - sum;
+                }
+                else
+                {
+                    sum = sum + sum;
+                }
+            }
+            if (sum > (-7))
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Accumulate filter samples.</summary>
