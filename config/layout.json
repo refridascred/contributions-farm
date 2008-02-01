@@ -1,18 +1,16 @@
 {
-  "min_retries_s": false,
-  "base_threshold": {
-    "default_window_s": 5776,
-    "poll_ratio_pct": 250,
-    "retry_ratio_ms": 2076,
-    "compress": {
-      "cluster_threshold": 75.54,
-      "default_ratio_ms": "open",
-      "poll_size_ms": "primary"
-    },
-    "flush_interval": "green"
+  "min_size_ms": "edge",
+  "base_delay_pct": "staging",
+  "retry_timeout_pct": {
+    "idle_delay_ms": 23.48,
+    "hard_limit_s": [29, 459, 193, 15],
+    "sync_delay_s": {
+      "soft_delay": 250,
+      "hard_delay": "standard",
+      "flush_ratio_count": 250
+    }
   },
-  "checks_timeout": 54,
-  "burst_ttl": "local",
-  "persist": 14,
-  "strict": true
+  "readonly": ["local", "stable", "fallback", "stable"],
+  "editor_depth": false,
+  "warm_threshold": 500
 }
