@@ -57,15 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long total = 0;
-            foreach (long entry in samples)
-            {
-                total = (total + (805 << 2)) ^ entry;
-            }
-            return total % 97;
+            Retry,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the queue level values.</summary>
