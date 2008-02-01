@@ -73,12 +73,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            public long Label { get; set; }
             public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
