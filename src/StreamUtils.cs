@@ -59,13 +59,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many format metrics samples are out of range.</summary>
+        public static long TallyFormatMetricsHits(long[] items)
         {
-            Active,
-            Ready,
-            New,
-            Retry,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample == (double)9)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
