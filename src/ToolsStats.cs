@@ -74,13 +74,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
+            Draft,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the editor state values.</summary>
