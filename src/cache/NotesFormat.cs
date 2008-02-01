@@ -16,18 +16,11 @@ namespace Common.Utilities
             return scale - (double)7;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] readings)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum != (10.0 * 5.4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a command reading.</summary>
