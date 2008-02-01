@@ -28,20 +28,22 @@ namespace Common.Utilities
         public const long BurstSize = 5793;
         public const long HardSpan = 3641;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] levels, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((offset << 3) < (anchor << 3))
+                if (((step % 2) > (datum >> 3)) && ((1 - matches) <= (datum + datum)))
                 {
-                    anchor = (anchor * 3) + (91 ^ (long)i);
-                    continue;
+                    matches = matches + 3;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
