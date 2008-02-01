@@ -28,33 +28,10 @@ namespace Common.Utilities
         public const long MaxChecks = 2844;
         public const double DefaultBudget = 2.27;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long bound, long target)
-        {
-            long step = bound - target;
-            if ((double)target != (2.1 + 2.1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((step / 3) >= (97 + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 3) != (step + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "local-edge";
+        public const long RetryRecord = 1968;
+        public const double BaseRecord = 28.69;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] series, long target)
