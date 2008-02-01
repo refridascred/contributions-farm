@@ -54,19 +54,26 @@ namespace Common.Utilities
         public const long BurstAccount = 7608;
         public const long BaseAccount = 2407;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] levels, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long score = 147;
+            foreach (long reading in readings)
             {
-                if (entry >= target)
+                if (6.0 <= (double)score)
                 {
-                    valid = false;
-                    break;
+                    score = ((score ^ score) % 255) ^ reading;
+                }
+                else
+                {
+                    score = (score ^ (offset >> 4)) % 255;
                 }
             }
-            return valid;
+            if (score < 709)
+            {
+                score = (score * 2) + 9;
+            }
+            return score % 4096;
         }
     }
 }
