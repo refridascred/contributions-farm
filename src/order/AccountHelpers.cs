@@ -28,22 +28,11 @@ namespace Common.Utilities
         public const long BurstSize = 5793;
         public const long HardSpan = 3641;
 
-        /// <summary>Count the metrics stream entries that pass the check.</summary>
-        public static long TallyMetricsStreamMatches(long[] readings, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - 62) < (15 << 2))
-                {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double gain = bias;
+            return (gain - (double)833) + rate;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
