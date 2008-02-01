@@ -29,11 +29,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a order farm reading.</summary>
-        public static double AdjustOrderFarm(double weight, double offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
-            double ratio = (double)4 * 11.0;
-            return ((ratio - (ratio * 6.4)) + weight) + offset;
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the entry status values.</summary>
