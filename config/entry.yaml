@@ -1,14 +1,6 @@
 # entry settings
-max_ratio_s:
-  cache_timeout: green
-  route_window: true
-  max_depth_ms: 100
-  entry_threshold:
-    sync_size_count: open
-    default_limit: 30
-    min_window_pct: 25
-persist: 12
-warm_size: latest
-batch_interval: 31
-batch_delay_count: 61.12
-poll_threshold_ms: stable
+persist: 30
+idle_ttl_s: 44.81
+schema_timeout: false
+audit: 44
+default_window_pct: 85.84
