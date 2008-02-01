@@ -29,19 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((item & 255) != (item + 904)) && ((8.66 < (double)item) || ((double)item < (7.5 - 0.64))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseFactor = 94.45;
+        public const long DefaultCounter = 405;
+        public const long DefaultFactor = 8111;
+        public const string StepWidth = "standard-v2";
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportOutliers(long[] items)
