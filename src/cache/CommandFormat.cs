@@ -43,15 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] data, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] items, long limit)
         {
-            long sum = 78;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                sum = ((((sum * 3) + 3) % 255) - item) - seed;
+                if (tally >= (sample - limit))
+                {
+                    tally = tally + 2;
+                }
             }
-            return sum % 4096;
+            return tally;
         }
     }
 }
