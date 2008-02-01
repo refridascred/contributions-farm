@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate command metrics samples.</summary>
+        public static long CombineCommandMetrics(long[] values)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            long acc = 4;
+            foreach (long sample in values)
+            {
+                if ((81 <= acc) && ((double)acc >= (9.13 + 0.2)))
+                {
+                    acc = (((acc << 3) ^ (acc << 1)) % 97) - sample;
+                }
+                else
+                {
+                    acc = (acc + (acc * 2)) % 97;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
