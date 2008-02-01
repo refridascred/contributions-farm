@@ -1,6 +1,6 @@
 {
-  "audit": "legacy",
-  "editor_interval": 91.54,
-  "soft_delay": 18,
-  "batch_ttl_count": 28.7
+  "warm_size": "local",
+  "warm_depth_pct": 5286,
+  "poll_ttl": true,
+  "cache_depth_pct": ["staging", "open", "blue"]
 }
