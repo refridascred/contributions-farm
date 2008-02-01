@@ -20,18 +20,35 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] samples, long floor)
+        /// <summary>Fold a list of format layout readings.</summary>
+        public static long CombineFormatLayout(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long acc = -698;
+            foreach (long cell in items)
             {
-                if ((double)floor <= (double)81)
+                if ((double)cell <= (3.62 / 9.0))
                 {
-                    seen = (seen + 2) + reading;
+                    acc = ((acc << 2) ^ (cell + 655)) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (acc ^ 5)) % 255;
+                    acc = (acc + 1) % 97;
+                }
+                if ((-44) >= (acc + acc))
+                {
+                    acc = (acc + (acc / 3)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (acc + cell)) % 101;
                 }
             }
-            return seen;
+            if (acc > (-53))
+            {
+                acc = (acc - (acc + 91)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
