@@ -15,12 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 2974;
-        public const double BaseDepth = 57.38;
-        public const double StepAlready = 16.69;
-        public const long CacheScore = 9617;
-        public const double SoftAlready = 76.24;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TallyChannel(long[] series)
