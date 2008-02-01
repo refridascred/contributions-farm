@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstFactor = 33.22;
-        public const double LimitTimeout = 20.44;
-        public const long MaxFactor = 7711;
+        /// <summary>Scale a command batch figure with a bias.</summary>
+        public static double ScaleCommandBatch(double scale, double span)
+        {
+            double drift = span + (double)443;
+            if (drift > 9.24)
+            {
+                drift = (drift + (drift / 2.0)) - scale;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCommand = 6610;
