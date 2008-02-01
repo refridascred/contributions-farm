@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] items, long origin)
         {
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
