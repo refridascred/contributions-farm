@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a notes cluster counter forward.</summary>
-        public static long RollNotesCluster(long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] series, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            long sum = -8;
+            foreach (long datum in series)
             {
-                if ((state ^ 923) < bound)
+                if ((double)sum > (1.97 / 9.0))
                 {
-                    state = state + (long)i;
+                    sum = (sum + (floor / 4)) + datum;
                 }
-                else
-                {
-                    state = state - bound;
-                }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
