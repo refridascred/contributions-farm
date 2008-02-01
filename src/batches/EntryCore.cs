@@ -14,15 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] items, long offset)
         {
-            double load = 0.37;
-            if (load < (double)8)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + (rate * 16.0)) - span;
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return load + (double)81;
+            return -1;
         }
 
         /// <summary>Match up report samples.</summary>
