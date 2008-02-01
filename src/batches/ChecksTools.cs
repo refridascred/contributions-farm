@@ -13,19 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every format batches entry stays within the limit.</summary>
-        public static bool VerifyFormatBatchesLimits(long[] items, long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a checks stats.</summary>
