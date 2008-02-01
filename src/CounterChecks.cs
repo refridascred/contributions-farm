@@ -40,13 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] series, long bound)
         {
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank token input into a small class.</summary>
