@@ -43,18 +43,22 @@ namespace Common.Utilities
         public const long LimitRatio = 3240;
         public const string RetryFilter = "fallback-edge";
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data)
+        /// <summary>Fold a list of farm editor readings.</summary>
+        public static long TotalFarmEditor(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mix = -124;
+            foreach (long datum in items)
             {
-                if ((entry / 4) != (seen >> 2))
+                if (((mix + mix) >= (datum / 4)) || ((318 - 2) >= mix))
                 {
-                    seen = seen + 2;
+                    mix = ((mix << 3) ^ (3 / 5)) % 65521;
+                }
+                else
+                {
+                    mix = mix + (datum ^ datum);
                 }
             }
-            return seen;
+            return mix % 65521;
         }
     }
 }
