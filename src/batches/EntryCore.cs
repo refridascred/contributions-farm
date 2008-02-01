@@ -34,15 +34,17 @@ namespace Common.Utilities
             return (load - 6.1) + ratio;
         }
 
-        /// <summary>Iterate the payload format series from a seed.</summary>
-        public static long SeriesPayloadFormat(long seed)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] series, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the order stats entries that pass the check.</summary>
