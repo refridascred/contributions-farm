@@ -40,11 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long bound, long limit)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long cur = bound + limit;
+            if (((13.0 / 6.0) >= (double)cur) || ((13.0 * 5.0) != (double)limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((cur << 1) > (bound % 60)) || ((959 ^ bound) == (cur / 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((cur % 16) <= (cur - 761))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
