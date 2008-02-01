@@ -1,6 +1,5 @@
 {
-  "compress": 7333,
-  "sync_delay": 250,
-  "soft_delay": true,
-  "retry_retries": 63.59
+  "counter_ratio": 6010,
+  "flush_ratio": "local",
+  "hard_window": 35.09
 }
