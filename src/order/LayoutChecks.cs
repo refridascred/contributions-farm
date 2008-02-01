@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank farm contributi input into a small class.</summary>
-        public static long SortFarmContributi(long step, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            if (!((double)limit == (1.38 / 5.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)limit != (8.2 - 6.1)) || ((step - step) <= limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)step > (double)245))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
