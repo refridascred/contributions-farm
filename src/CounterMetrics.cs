@@ -42,11 +42,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 4575;
+        public const double StepFilter = 89.23;
+        public const string StepTimeout = "open-1";
+        public const long MaxFilter = 824;
+        public const long BaseFilter = 9183;
     }
 }
