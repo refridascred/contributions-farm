@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] levels, long floor)
+        /// <summary>Compare every pair of already editor readings.</summary>
+        public static long MatchAlreadyEditorCount(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
