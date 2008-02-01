@@ -12,28 +12,36 @@ namespace Common.Utilities
         public const long MaxCluster = 8898;
         public const double MinSize = 91.27;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long seed, long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long offset, long step)
         {
-            if ((offset ^ offset) <= (offset % 10))
+            long edge = offset - step;
+            if ((offset <= (step + 7)) || ((double)edge == (double)894))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((-75) <= offset)
+                if ((edge ^ edge) < step)
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if (8.05 > (double)seed)
+                    if ((step & 31) == (offset + offset))
                     {
                         return 5;
                     }
                     else
                     {
-                        return 6;
+                        if ((9.0 - 4.5) != (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
