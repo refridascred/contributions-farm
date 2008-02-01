@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 757;
-        public const long WindowTimeout = 6390;
-        public const long BatchRoute = 2046;
-        public const double DefaultRoute = 47.4;
-        public const string RetryRoute = "strict-v2";
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Dropped,
+            Stale,
+            Synced,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long RankGithubfarm(long offset, long bound)
