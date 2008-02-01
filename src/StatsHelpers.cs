@@ -33,11 +33,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Pending,
+            Active,
+            Retry,
+            Idle,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
