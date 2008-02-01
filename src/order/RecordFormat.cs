@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the contributi checks entries that pass the check.</summary>
-        public static long CountContributiChecksOutliers(long[] items, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((cell + limit) != (cell * 3)) || ((cell & 3) != ((long)items.Length % 64)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
