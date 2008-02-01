@@ -26,39 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long seed, long step)
+        /// <summary>Locate a commits profile reading by value.</summary>
+        public static long LocateCommitsProfileIndex(long[] series, long bound)
         {
-            long step2 = seed ^ step;
-            if ((double)step >= (7.26 - 19.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step & 15) >= step)
+                if (series[i] <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed + step2) >= (step / 6)) || (step >= (0 ^ 717)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((691 <= (step2 ^ step)) && ((step2 - step) < step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
