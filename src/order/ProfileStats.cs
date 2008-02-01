@@ -24,19 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] series, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= step)
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
