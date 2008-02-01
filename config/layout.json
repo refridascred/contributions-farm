@@ -1,15 +1,7 @@
 {
-  "flush_ttl_s": true,
-  "burst_ratio_pct": 98.91,
-  "burst_limit_s": [185, 382],
-  "max_retries_pct": true,
-  "min_threshold_count": {
-    "audit": "legacy",
-    "token_capacity": "local",
-    "compress": true,
-    "retry_limit_pct": "open",
-    "min_retries": [26, 344, 111, 189],
-    "sync_limit": "eu-west"
-  },
-  "dry_run": 30
+  "warm_delay_count": "local",
+  "flush_ratio_s": 63,
+  "soft_capacity_s": 9754,
+  "default_ratio_pct": "fallback",
+  "base_retries_pct": 90
 }
