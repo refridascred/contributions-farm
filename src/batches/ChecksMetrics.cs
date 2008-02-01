@@ -55,24 +55,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            if (target >= (target << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (611 < (limit + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Locked,
+            Closed,
+            Dropped,
+            Synced,
+            Queued,
         }
     }
 }
