@@ -50,22 +50,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of layout editor entries.</summary>
-        public static long DigestLayoutEditor(long[] levels, long target)
-        {
-            long mark = 2;
-            foreach (long reading in levels)
-            {
-                if ((target << 2) != (reading ^ target))
-                {
-                    mark = mark + (target - reading);
-                }
-                else
-                {
-                    mark = (mark ^ (0 ^ reading)) % 97;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinCount = "cached-v2";
+        public const long MaxScore = 8166;
+        public const long SoftQueue = 9113;
     }
 }
