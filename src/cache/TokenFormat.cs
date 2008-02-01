@@ -16,11 +16,20 @@ namespace Common.Utilities
             return scale - (span + 6.19);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseCount = "staging";
-        public const long IdleWindow = 1337;
-        public const long RetryWindow = 2830;
-        public const string MaxWindow = "local-v2";
+        /// <summary>Validate entry metric readings against a bound.</summary>
+        public static bool GuardEntryMetricBounds(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
