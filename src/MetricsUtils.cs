@@ -20,15 +20,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double ratio, double span)
+        /// <summary>Measure how many batch profile samples are out of range.</summary>
+        public static long TallyBatchProfileHits(long[] series)
         {
-            double ratio2 = (double)(950 + 700);
-            if (ratio2 > (2.2 * 2.34))
+            long hits = 0;
+            foreach (long value in series)
             {
-                ratio2 = (ratio2 - (double)854) - span;
+                if ((hits >> 5) >= (value - hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio2 + ratio;
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
