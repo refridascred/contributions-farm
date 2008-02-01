@@ -18,16 +18,38 @@ namespace Common.Utilities
         public const long RetryBatch = 8405;
         public const long CacheLevel = 8842;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long seed, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            if (target <= seed)
             {
-                mark = (mark ^ 574) % 4096;
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (target > (seed + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((target % 7) != (seed ^ target)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(seed <= (64 + seed)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
