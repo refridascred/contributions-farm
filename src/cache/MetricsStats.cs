@@ -18,31 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin * 2) <= (origin + origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (!((9.9 + 3.0) != (double)origin))
-                {
-                    carry = ((carry << 2) ^ carry) % 4096;
-                }
-                if ((carry >> 2) <= carry)
-                {
-                    carry = (carry * 2) + (carry * 5);
-                }
-                else
-                {
-                    carry = (carry - (carry - carry)) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
