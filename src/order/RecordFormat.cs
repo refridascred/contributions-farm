@@ -31,14 +31,19 @@ namespace Common.Utilities
         public const long IdleSpan = 7439;
         public const string MaxChannel = "alpha";
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double rate, double floor)
         {
-            Idle,
-            Paused,
-            Dropped,
-            Pending,
-            Failed,
+            double weight = rate;
+            if (weight >= (double)1)
+            {
+                weight = (weight + (double)17) - floor;
+            }
+            else
+            {
+                weight = weight + (rate * 0.48);
+            }
+            return weight + (double)(-708);
         }
 
         /// <summary>Hold a batches summary.</summary>
