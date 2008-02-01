@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((values[i] >= offset) && ((values[i] % 2) != 0))
                 {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
