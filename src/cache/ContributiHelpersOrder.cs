@@ -14,11 +14,40 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 6537;
-        public const string IdleTimeout = "latest-edge";
-        public const string MaxInterval = "latest-v2";
-        public const long BurstOrder = 5818;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long offset, long target)
+        {
+            long cur = offset - target;
+            if ((double)target != (6.8 - 1.2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (target < (-130))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset >= (double)cur)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (4.0 >= (double)cur)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
