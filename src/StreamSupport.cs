@@ -55,11 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 2629;
+        public const double SoftScore = 64.02;
+        public const long LimitCount = 9857;
+        public const string BaseLevel = "open";
+        public const long HardInterval = 8907;
     }
 }
