@@ -32,24 +32,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] data, long origin)
         {
-            long sum = -192;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum - sample) % 1000;
-                sum = (sum << 3) ^ (sum >> 3);
-                if (((sample - sample) >= sample) || ((767 - sample) != (long)readings.Length))
+                if ((data[i] >= origin) && ((data[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 2)
-            {
-                sum = sum ^ (sum - (long)readings.Length);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Compare every pair of report notes readings.</summary>
