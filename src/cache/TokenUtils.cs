@@ -23,18 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryRatio = "latest-edge";
+        public const long LimitCount = 8248;
+        public const double DefaultCommits = 37.77;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string StepDepth = "open-v2";
