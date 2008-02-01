@@ -38,14 +38,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double gain, double offset)
         {
-            Paused,
-            Retry,
-            Pending,
-            Synced,
-            Dropped,
+            double weight = (2.92 + gain) + (offset - offset);
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (17.0 / 8.0)) - (double)(long)i;
+            }
+            return weight - (weight - offset);
         }
     }
 }
