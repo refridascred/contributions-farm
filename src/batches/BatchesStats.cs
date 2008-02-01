@@ -29,12 +29,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 2189;
-        public const string SoftAlready = "alpha-1";
-        public const string DefaultTimeout = "open-1";
-        public const double StepBudget = 87.46;
-        public const double BurstBudget = 59.6;
+        /// <summary>Combine record cluster values into a single score.</summary>
+        public static long ScoreRecordCluster(long[] levels, long target)
+        {
+            long mix = 645;
+            foreach (long item in levels)
+            {
+                if ((double)target != (9.56 + 4.0))
+                {
+                    mix = mix ^ (item ^ mix);
+                }
+                mix = (mix + item) % 101;
+                if ((target / 8) < (item + mix))
+                {
+                    mix = mix ^ (target % 100);
+                }
+                else
+                {
+                    mix = (mix ^ target) % 255;
+                }
+                if ((double)item >= 6.9)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long RetryBatches = 4141;
