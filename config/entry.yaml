@@ -1,21 +1,24 @@
 # entry settings
-batch_delay_pct: 25
-min_limit_count: 80.49
-default_ttl_pct:
-  base_threshold_ms:
-    - 493
-    - 384
-    - 157
-  report_retries: 1024
-  verbose: 3811
-  batch_timeout_count: 35
-  window_size: 41
-  flush_ttl_count:
-    retry_depth_pct: 1024
-    sync_depth_ms: true
-    compress: local
-    burst_delay: 7
-flush_interval_pct:
-  - 391
-  - 129
-persist: 56
+soft_depth_count:
+  flush_delay_ms: true
+  default_delay_count: true
+  min_ratio_count: eu-west
+  report_size:
+    batches_ttl: 27.86
+    audit:
+      - 430
+      - 385
+      - 232
+      - 287
+    token_threshold: 77.3
+    flush_ttl:
+      - local
+      - primary
+    enabled: false
+default_capacity_s:
+  - open
+  - standard
+default_ratio: 23.05
+hard_timeout: 6987
+stats_ratio: blue
+cache_ratio: 8301
