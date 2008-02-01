@@ -27,22 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((11.0 + 9.2) >= (double)item)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "staging-edge";
+        public const string DefaultSize = "latest-1";
+        public const double MaxRatio = 9.38;
+        public const double BurstOrder = 16.03;
+        public const string WindowOrder = "stable-edge";
     }
 }
