@@ -37,11 +37,13 @@ namespace Common.Utilities
             return mean - (double)292;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinFactor = "legacy-v2";
-        public const long BatchFormat = 1935;
-        public const long IdleFormat = 122;
-        public const double BurstDepth = 59.4;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Idle,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long BucketEntry(long limit, long seed)
