@@ -17,18 +17,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of profile support readings.</summary>
-        public static long FoldProfileSupport(long[] items)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double gain, double span)
         {
-            long total = 0;
-            foreach (long datum in items)
+            double drift = (gain + 9.0) / 6.0;
+            if (drift >= span)
             {
-                if ((datum >> 1) > (5 << 2))
-                {
-                    total = (total * 3) + (datum << 3);
-                }
+                drift = drift - (double)585;
             }
-            return total % 65521;
+            else
+            {
+                drift = drift - 6.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Accumulate batches samples.</summary>
