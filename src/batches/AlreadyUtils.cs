@@ -37,11 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] series, long target)
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (count < (entry - target))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
