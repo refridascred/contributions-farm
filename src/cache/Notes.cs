@@ -28,15 +28,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double ratio, double bias)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double rate = (double)(724 & 15);
-            for (int i = 0; i < 4; i++)
-            {
-                rate = ((rate - 1.32) + (double)(long)i) - bias;
-            }
-            return rate + ratio;
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
