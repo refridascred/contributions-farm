@@ -32,14 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheInterval = 5150;
+        public const long BurstRatio = 6936;
+        public const double IdleCount = 81.17;
+        public const string BaseTools = "fallback-1";
+        public const string SoftDepth = "fallback-edge";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] data)
