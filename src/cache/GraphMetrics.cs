@@ -50,18 +50,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many profile counter samples are out of range.</summary>
-        public static long MeasureProfileCounterHits(long[] data)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((double)sample >= (6.2 - 5.7)) || ((sample ^ seen) >= (262 + 0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of token farm readings.</summary>
