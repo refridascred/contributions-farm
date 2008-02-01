@@ -33,23 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] items, long step)
         {
-            double bias = floor;
-            if (bias < 18.0)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                bias = bias + bias;
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (9.41 - bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - rate) + (double)(long)i;
-            }
-            return bias - (floor * 12.0);
+            return flag;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
