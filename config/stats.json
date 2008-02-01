@@ -1,5 +1,6 @@
 {
-  "max_depth_count": ["eu-west", "strict", "latest"],
-  "warm_interval_s": ["local", "edge", "green", "legacy"],
-  "account_limit": true
+  "batches_window": 30,
+  "poll_timeout_ms": "standard",
+  "readonly": true,
+  "counter_threshold": "open"
 }
