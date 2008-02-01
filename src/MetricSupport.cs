@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long origin, long origin2)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] items)
         {
-            if ((61 <= origin2) && ((origin2 & 127) < (origin * 4)))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin & 1) >= (origin * 3))
+                if ((count % 10) >= count)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 3) ^ value;
                 }
             }
+            return count;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
