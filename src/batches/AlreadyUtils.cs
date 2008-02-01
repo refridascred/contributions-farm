@@ -37,12 +37,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            Dropped,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
