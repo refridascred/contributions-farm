@@ -1,24 +1,16 @@
 # entry settings
-stream_depth: 27.28
-readonly: false
-command_size: 1290
-hard_limit_count:
-  context_depth:
-    - 177
-    - 486
-    - 287
-  poll_ratio:
-    strict: 15.42
-    hard_retries: green
-    record_ratio: blue
-    enabled: standard
-    idle_timeout_s: 41
-  base_ttl_pct: edge
-  burst_delay: 100
-  base_interval_s:
-    hard_interval_pct: eu-west
-    min_delay: true
-    flush_timeout: 55.45
-  batch_window_ms: 250
-verbose: 84.61
-default_depth_s: 500
+cache_window_pct: 75
+hard_threshold_pct: true
+persist: legacy
+readonly:
+  sync_window: legacy
+  queue_capacity: 44.0
+  batch_timeout:
+    cluster_ttl:
+      - cached
+      - primary
+      - edge
+    context_ttl: 60
+    base_retries_count: 0.85
+    hard_retries_pct: true
+    retry_ttl: primary
