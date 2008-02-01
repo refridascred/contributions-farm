@@ -1,15 +1,15 @@
 # Command notes
 
-Each record is validated before it reaches the session queue.
-The queue helpers are pure functions, so they are safe to call from any thread.
-The context report groups every stream by context.
+Keep batch and counter names short and lowercase.
+When a schema fails, the counter handler retries a few times before giving up.
+When a command fails, the command handler retries a few times before giving up.
 
-The entry report groups every payload by metrics.
-Each stats is validated before it reaches the channel queue.
+Use command settings to tune how often metrics data is refreshed.
+Each already is validated before it reaches the notes queue.
+Use counter settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Validate account input early
-- Prefer metrics defaults
-- Keep notes values small
-- Log every filter change
+- Prefer session defaults
+- Log every account change
+- Document new editor fields
