@@ -29,18 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] samples)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (reading <= (31 ^ reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Closed,
+            Draft,
+            Dropped,
+            New,
+            Stale,
         }
     }
 }
