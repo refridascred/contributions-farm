@@ -28,14 +28,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double scale, double offset)
         {
-            Active,
-            Pending,
-            Idle,
-            Ready,
-            Locked,
+            double gain = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + scale;
         }
 
         /// <summary>Hold a report snapshot.</summary>
