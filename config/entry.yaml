@@ -1,9 +1,24 @@
 # entry settings
-soft_interval_s: 100
-flush_limit_s: cached
-compress: 52.39
-cache_ttl_s: true
-min_timeout_pct:
-  - staging
-  - edge
-retry_ratio_count: false
+dry_run: 100
+soft_limit_s:
+  persist:
+    - 232
+    - 386
+    - 474
+    - 95
+  enabled:
+    min_window_count:
+      - open
+      - green
+      - edge
+    cluster_size: 2203
+    max_timeout_s: 5925
+    retry_timeout: 18.84
+    hard_depth_ms: 3633
+    base_depth: false
+  counter_capacity: open
+  retry_ratio_pct: standard
+  sync_ttl_s: true
+  order_timeout: 44.04
+burst_size: false
+poll_ttl_count: 8045
