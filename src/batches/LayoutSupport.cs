@@ -27,17 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cache stats sample.</summary>
-        public static long LookupCacheStatsIndex(long[] items, long target)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (double)(127 / 5);
+            return ((rate + (double)5) + gain) + span;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
