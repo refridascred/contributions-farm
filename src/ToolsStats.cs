@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstRatio = 1098;
-        public const long MaxDepth = 343;
-        public const long SoftMetrics = 7530;
-        public const long HardMetrics = 2950;
-        public const long BaseSize = 6513;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long bound, long target)
+        {
+            if (((bound % 8) < (5 / 2)) || ((9 - target) > (target + target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound + target) >= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound >> 5) == (2 & 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((bound * 5) > (bound & 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] samples, long target)
