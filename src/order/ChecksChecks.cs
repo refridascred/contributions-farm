@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftBudget = 7548;
-        public const long IdleCommits = 4939;
-        public const long RetryInterval = 6303;
-        public const long RetryCommits = 135;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseRatio = 7277;
