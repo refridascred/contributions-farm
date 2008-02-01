@@ -13,11 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double gain, double floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            double ratio = (double)912;
-            return ((ratio - (double)33) + gain) + floor;
+            long state = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (((state * 4) + ((long)i + limit)) % 4096) - (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the order mode values.</summary>
