@@ -101,18 +101,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit entry context readings against a rule.</summary>
-        public static long TallyEntryContextOutliers(long[] levels, long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum << 3) < (step >> 4))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Active,
+            Ready,
         }
     }
 }
