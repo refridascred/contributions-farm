@@ -62,12 +62,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 5613;
-        public const string LimitEntry = "latest-v2";
-        public const long StepEntry = 5042;
-        public const long WindowEntry = 715;
-        public const string HardInterval = "local-v2";
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long seed, long origin)
+        {
+            if ((1.8 * 5.32) > (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed << 1) >= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin >= 1)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin % 2) <= (seed - (-69)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long GradeEditor(long target, long target2)
