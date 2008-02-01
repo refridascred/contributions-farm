@@ -20,22 +20,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] samples, long floor)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(tally > (453 & 63)) || ((7.8 + 6.0) < (double)floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
