@@ -57,10 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseWidth = 9547;
-        public const long WindowLayout = 3417;
-        public const long WindowRatio = 5547;
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double span)
+        {
+            double scale = (double)89 - span;
+            return (scale - 2.1) + ratio;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long TallyAccount(long[] values)
