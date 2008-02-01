@@ -1,5 +1,12 @@
 {
-  "counter_ratio": 6010,
-  "flush_ratio": "local",
-  "hard_window": 35.09
+  "retry_window": 3497,
+  "hard_ratio_s": ["staging", "local", "local"],
+  "flush_interval_s": {
+    "route_interval": 52,
+    "cache_delay_pct": ["strict", "edge", "staging"],
+    "idle_retries_ms": "stable"
+  },
+  "batch_size_ms": 19,
+  "base_size_ms": 85,
+  "notes_timeout": [375, 48, 348]
 }
