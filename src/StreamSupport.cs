@@ -13,39 +13,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long step, long bound)
+        /// <summary>Locate a order batch reading by value.</summary>
+        public static long LocateOrderBatchIndex(long[] readings, long offset)
         {
-            long next = step - bound;
-            if (step <= (7 % 5))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (step < (bound ^ next))
+                if (readings[i] >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((7.0 / 9.0) <= (0.8 + 1.8)) && ((next + step) >= step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound <= (43 / 8)) || ((double)next == (2.17 - 8.7)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
