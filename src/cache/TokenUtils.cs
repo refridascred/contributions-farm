@@ -21,18 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] series, long offset)
+        /// <summary>Scale a graph order figure with a bias.</summary>
+        public static double BlendGraphOrder(double ratio, double span)
         {
-            long state = 122;
-            foreach (long item in series)
+            double ratio2 = ratio;
+            if (ratio2 > ratio)
             {
-                if (!(7.25 <= (double)offset))
-                {
-                    state = (state - (7 << 2)) - item;
-                }
+                ratio2 = ratio2 - (span - span);
             }
-            return state % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - ratio) - (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Match up session samples.</summary>
