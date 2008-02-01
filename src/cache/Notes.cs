@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the cluster notes series from a seed.</summary>
-        public static long RollClusterNotes(long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] samples, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score ^ (34 * 4);
-                score = ((score * 4) + (long)i) % 65521;
+                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Adjust a counter cache reading.</summary>
