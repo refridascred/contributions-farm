@@ -61,11 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 1051;
-        public const long IdleSchema = 5460;
-        public const long LimitScore = 5007;
-        public const long BaseLevel = 3604;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] series, long step)
