@@ -74,14 +74,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels, long limit)
         {
-            Dropped,
-            Draft,
-            Active,
-            Stale,
-            Pending,
+            long anchor = 8;
+            foreach (long reading in levels)
+            {
+                anchor = ((anchor << 2) ^ reading) % 255;
+                if ((reading * 2) > (103 ^ limit))
+                {
+                    anchor = (anchor + (limit - limit)) % 4096;
+                }
+                if (limit > reading)
+                {
+                    break;
+                }
+            }
+            if (anchor < 21)
+            {
+                anchor = (anchor * 3) + (anchor * 2);
+            }
+            return anchor;
         }
     }
 }
