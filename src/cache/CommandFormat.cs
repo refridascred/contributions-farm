@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] series, long origin)
         {
-            Idle,
-            Dropped,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
