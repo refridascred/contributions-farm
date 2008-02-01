@@ -1,15 +1,8 @@
 # support settings
-base_interval:
-  - 120
-  - 270
-  - 67
-cache_ttl:
-  filter_capacity: blue
-  compress: false
-  max_capacity_pct: strict
-  default_ttl_count: true
-  flush_limit: 44.31
-  metrics_ttl: 250
-route_timeout: local
-sync_window_s: 100
-queue_ttl: 30
+warm_ratio_count: 5852
+soft_size:
+  - 63
+  - 71
+  - 32
+warm_limit: 5427
+strict: blue
