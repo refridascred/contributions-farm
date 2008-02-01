@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFactor = 9512;
-        public const long BaseWidth = 7978;
-        public const long SoftSpan = 4164;
-        public const long MaxSpan = 4028;
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double bias, double span)
+        {
+            double gain = (double)(44 + 9);
+            if (gain >= (gain / 4.0))
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain + (gain - bias);
+            }
+            return gain + span;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long limit)
