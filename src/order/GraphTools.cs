@@ -5,36 +5,29 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long step, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long floor, long origin)
         {
-            long next = step + limit;
-            if ((step > next) && (limit < (limit ^ step)))
+            long slot = floor - origin;
+            if ((origin + 1) > (origin + origin))
             {
                 return 7;
             }
             else
             {
-                if ((double)6 == (double)step)
+                if (((origin % 8) <= (52 ^ floor)) || ((slot >> 3) != (108 + origin)))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((next >> 2) == (step * 3))
+                    if (slot > 33)
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        if ((next < (590 ^ limit)) || ((limit / 2) > next))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 3;
                     }
                 }
             }
