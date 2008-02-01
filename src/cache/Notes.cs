@@ -28,22 +28,12 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 2912;
+        public const string SoftFilter = "local";
+        public const double CacheInterval = 53.64;
+        public const long BaseFilter = 8115;
+        public const long IdleDepth = 8710;
 
         /// <summary>Accumulate batches schema samples.</summary>
         public static long TallyBatchesSchema(long[] series, long offset)
