@@ -33,11 +33,17 @@ namespace Common.Utilities
             return weight + 9.2;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] items, long step)
         {
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
