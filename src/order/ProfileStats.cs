@@ -13,12 +13,20 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWindow = 61.85;
-        public const double HardWindow = 94.08;
-        public const double BatchScore = 82.49;
-        public const long MaxSpan = 4372;
-        public const long MinWindow = 1395;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double rate, double offset)
+        {
+            double scale = offset;
+            if (scale >= (9.5 - rate))
+            {
+                scale = scale + (3.8 - rate);
+            }
+            else
+            {
+                scale = scale - (offset + offset);
+            }
+            return scale - offset;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] samples, long target)
