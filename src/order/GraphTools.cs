@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] data, long floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.0 + 14.0) == (double)floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) + value;
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
