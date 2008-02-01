@@ -20,27 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 5) + mark) % 1000;
-                if ((long)i >= offset)
-                {
-                    mark = ((mark * 5) + 943) % 1000;
-                    mark = (mark ^ mark) % 1000;
-                }
-                else
-                {
-                    long gap = mark;
-                    mark = ((mark << 2) ^ (offset - gap)) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowInterval = 1501;
+        public const string BurstBatch = "cached-v2";
+        public const long MinSpan = 3002;
+        public const long LimitRatio = 2029;
+        public const long RetryBatch = 628;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long RankStream(long step, long seed)
