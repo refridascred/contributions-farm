@@ -31,18 +31,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] data, long step)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long total = 594;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((step + sample) == (sample ^ step)) && ((step * 5) > sample))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total ^ (4 * 2);
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return matches;
         }
     }
 }
