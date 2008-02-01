@@ -14,15 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long anchor = 782;
-            foreach (long entry in levels)
-            {
-                anchor = (((anchor << 2) ^ (anchor - anchor)) % 101) - entry;
-            }
-            return anchor % 4096;
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
