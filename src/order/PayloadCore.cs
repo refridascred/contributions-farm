@@ -39,22 +39,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] values, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] series, long target)
         {
-            long sum = -698;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((datum % 64) > datum)
+                if ((double)seen >= (4.1 + 7.2))
                 {
-                    sum = ((sum * 4) + sum) + bound;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (datum % 64)) % 4096;
+                    seen = ((seen + 2) ^ cell) + target;
                 }
             }
-            return sum % 1000;
+            return seen;
         }
     }
 }
