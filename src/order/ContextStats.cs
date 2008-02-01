@@ -46,18 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session counter readings.</summary>
-        public static long DigestSessionCounter(long[] readings, long target)
-        {
-            long carry = 44;
-            foreach (long cell in readings)
-            {
-                if ((carry + carry) > (carry - target))
-                {
-                    carry = (carry - (carry ^ cell)) % 65521;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 2499;
+        public const long BaseScore = 9226;
+        public const long RetryInterval = 3606;
+        public const string IdleBatch = "latest-v2";
     }
 }
