@@ -14,22 +14,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] data, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            long mark = 34;
-            foreach (long cell in data)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (((cell * 2) == (floor / 5)) && (8.0 > (double)floor))
+                if ((result >= ((long)i << 3)) || ((double)result == (0.34 / 3.0)))
                 {
-                    mark = ((mark << 3) ^ (821 + mark)) % 97;
+                    result = (result << 2) ^ 615;
                 }
                 else
                 {
-                    mark = (mark + floor) % 101;
+                    result = result - (result & 15);
                 }
+                result = result ^ offset;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
