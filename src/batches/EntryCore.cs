@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 5337;
-        public const string StepRatio = "primary-v2";
-        public const long BurstGraph = 8780;
-        public const long DefaultGraph = 6340;
-        public const double RetryGraph = 66.85;
+        /// <summary>Validate metric queue readings against a bound.</summary>
+        public static bool VerifyMetricQueueLimits(long[] series, long seed)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
