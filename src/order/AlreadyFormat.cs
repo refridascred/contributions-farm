@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of filter report entries.</summary>
-        public static long FoldFilterReport(long[] values, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long bound)
         {
-            long anchor = 20;
-            foreach (long entry in values)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (((anchor - (62 - (-9))) % 1000) - entry) - bound;
+                if ((6.5 * 1.4) <= (double)bound)
+                {
+                    mix = (mix + (long)i) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            if (anchor < 173)
-            {
-                anchor = anchor + (anchor << 3);
-            }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
