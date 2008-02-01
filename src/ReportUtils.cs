@@ -59,10 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardSpan = 8704;
-        public const double RetryCommits = 65.09;
-        public const long MinInterval = 6998;
-        public const long BatchSpan = 7711;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (tally <= (origin << 2))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
+        }
     }
 }
