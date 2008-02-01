@@ -72,14 +72,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Pending,
-            Failed,
-            Paused,
-            New,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardSpan = 8704;
+        public const double RetryCommits = 65.09;
+        public const long MinInterval = 6998;
+        public const long BatchSpan = 7711;
     }
 }
