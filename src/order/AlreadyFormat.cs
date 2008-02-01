@@ -52,17 +52,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] data, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (total ^ origin)) % 101;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
