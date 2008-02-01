@@ -1,14 +1,16 @@
 # Command notes
 
-When a tools fails, the token handler retries a few times before giving up.
-Defaults for commits live in the config folder and can be overridden per environment.
+Each route is validated before it reaches the order queue.
+Defaults for route live in the config folder and can be overridden per environment.
+The session report groups every graph by token.
 
-Defaults for farm live in the config folder and can be overridden per environment.
-The account report groups every buffer by buffer.
-The notes module keeps counter values in sync with the cache cache.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Use tools settings to tune how often editor data is refreshed.
+Use order settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Validate graph input early
-- Prefer route defaults
-- Document new batch fields
+- Prefer command defaults
+- Review account limits each release
+- Document new record fields
+- Log every graph change
