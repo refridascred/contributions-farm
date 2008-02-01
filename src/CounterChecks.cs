@@ -42,13 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Closed,
-            Draft,
+            Failed,
+            Retry,
             Active,
-            Queued,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
