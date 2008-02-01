@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every schema token entry stays within the limit.</summary>
-        public static bool VerifySchemaTokenBounds(long[] samples, long limit)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double scale = (ratio - 20.0) / 2.0;
+            return scale + bias;
         }
 
         /// <summary>Match up session samples.</summary>
