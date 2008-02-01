@@ -29,14 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Closed,
-            Draft,
-            Dropped,
-            New,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 3170;
+        public const double BurstRoute = 88.78;
+        public const long IdleTimeout = 7816;
+        public const string CacheRatio = "fallback";
     }
 }
