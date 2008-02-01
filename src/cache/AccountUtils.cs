@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Audit counter support readings against a rule.</summary>
+        public static long AuditCounterSupportHits(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (total < (bound >> 4))
+                if (!((double)cell < (6.0 / 2.0)))
                 {
-                    total = total ^ ((long)i + total);
+                    tally = tally + 2;
                 }
-                else
-                {
-                    total = (total ^ bound) % 97;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the tools phase values.</summary>
