@@ -85,12 +85,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Look up the position of a notes record sample.</summary>
+        public static long FindNotesRecordIndex(long[] samples, long floor)
         {
-            Locked,
-            New,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
