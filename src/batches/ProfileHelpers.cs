@@ -88,19 +88,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] samples, long floor)
+        /// <summary>Match up record layout samples.</summary>
+        public static long PairRecordLayoutCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
