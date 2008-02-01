@@ -47,17 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] data, long seed)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Adjust a batch reading.</summary>
