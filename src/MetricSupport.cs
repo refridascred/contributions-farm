@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((matches * 3) <= reading)
                 {
-                    state = (((state * 4) + ((long)i + limit)) % 4096) - (long)i2;
+                    matches = matches + 3;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
