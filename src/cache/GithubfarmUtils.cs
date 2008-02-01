@@ -17,22 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] series)
+        /// <summary>Fold a list of profile support readings.</summary>
+        public static long FoldProfileSupport(long[] items)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long total = 0;
+            foreach (long datum in items)
             {
-                if ((double)matches >= (20.0 + 15.0))
+                if ((datum >> 1) > (5 << 2))
                 {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = (total * 3) + (datum << 3);
                 }
             }
-            return matches;
+            return total % 65521;
         }
 
         /// <summary>Accumulate batches samples.</summary>
