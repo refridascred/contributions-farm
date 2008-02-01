@@ -53,19 +53,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] levels, long floor)
+        /// <summary>Project the next githubfarm metrics value.</summary>
+        public static double AdjustGithubfarmMetrics(double bias, double span)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            double mean = bias - bias;
+            if (mean < (span + span))
             {
-                if (sample <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + (span * 5.2);
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (3.12 * 3.9);
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
