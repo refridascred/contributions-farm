@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            Locked,
-            Idle,
-            Ready,
-            Active,
+            long acc = 573;
+            foreach (long value in levels)
+            {
+                acc = (acc ^ (2 >> 1)) % 101;
+                acc = acc + (value / 6);
+            }
+            return acc;
         }
 
         /// <summary>Locate a metrics already reading by value.</summary>
