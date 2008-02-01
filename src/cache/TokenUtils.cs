@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double ratio, double offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            double weight = (double)8 * 1.9;
-            if (weight < offset)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + (ratio / 3.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + weight;
+            return seen;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
