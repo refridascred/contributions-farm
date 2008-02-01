@@ -13,39 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long step, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long offset = step + origin;
-            if (!((offset / 4) <= step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((494 + origin) <= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - (-82)) > (step % 10))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset >= 9.48)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the stats phase values.</summary>
