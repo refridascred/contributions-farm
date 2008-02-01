@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const double MinFormat = 86.19;
         public const long DefaultFormat = 4147;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] levels, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long mix = 6;
+            foreach (long reading in series)
             {
-                if (reading < origin)
+                if (((-705) - origin) < mix)
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix << 3) ^ (origin + mix)) - reading;
+                }
+                else
+                {
+                    mix = mix ^ origin;
                 }
             }
-            return stale;
+            return mix % 97;
         }
 
         /// <summary>Blend two token measurements.</summary>
