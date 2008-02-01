@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const double SoftTimeout = 43.22;
         public const long BurstRecord = 818;
 
-        /// <summary>Find the first stats context entry that matches the target.</summary>
-        public static long FindStatsContextIndex(long[] samples, long target)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the support kind values.</summary>
