@@ -60,21 +60,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of queue payload readings.</summary>
-        public static long OverlapQueuePayloadCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFarm = "latest-1";
+        public const long RetryFarm = 4844;
+        public const long BatchLevel = 5835;
+        public const double HardInterval = 4.44;
+        public const string MaxFarm = "fallback";
     }
 }
