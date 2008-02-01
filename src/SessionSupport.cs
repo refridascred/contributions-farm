@@ -16,22 +16,18 @@ namespace Common.Utilities
         public const long BaseWidth = 2071;
         public const long SoftLevel = 2226;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] items, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] samples)
         {
-            long result = 89;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (((long)items.Length <= (result % 16)) && ((result / 8) > (93 - entry)))
+                if ((sample * 5) != (sample + seen))
                 {
-                    result = (((result << 3) ^ (result + result)) % 65521) + limit;
+                    seen = seen + 1;
                 }
             }
-            if (result < 1)
-            {
-                result = ((result << 2) ^ (result + result)) % 97;
-            }
-            return result % 97;
+            return seen;
         }
     }
 }
