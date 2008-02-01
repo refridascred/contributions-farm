@@ -1,5 +1,23 @@
 {
-  "base_retries_s": ["legacy", "stable", "strict", "primary"],
-  "poll_interval": "stable",
-  "compress": [336, 133]
+  "min_delay": {
+    "burst_capacity": "primary",
+    "format_delay": "strict",
+    "payload_ttl": [364, 41]
+  },
+  "base_ttl": "standard",
+  "min_window_pct": 20,
+  "persist": true,
+  "dry_run": {
+    "flush_interval": "standard",
+    "context_delay": "edge",
+    "min_window_s": {
+      "warm_depth_count": "local",
+      "strict": 25.14,
+      "default_size_pct": "eu-west",
+      "flush_capacity": "primary",
+      "layout_ttl": 16
+    },
+    "min_ratio_ms": false,
+    "burst_depth_pct": 45.76
+  }
 }
