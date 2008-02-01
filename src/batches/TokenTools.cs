@@ -26,13 +26,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] samples, long bound)
         {
-            Retry,
-            Ready,
-            Done,
-            Failed,
+            long mark = 225;
+            foreach (long datum in samples)
+            {
+                mark = (mark + (datum >> 4)) % 1000;
+                mark = (mark << 3) ^ (datum + bound);
+                if ((bound << 3) == (6 + mark))
+                {
+                    mark = ((mark * 3) + bound) % 65521;
+                }
+                else
+                {
+                    mark = mark + (mark / 7);
+                }
+            }
+            if (mark > 48)
+            {
+                mark = (mark - mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a graph options.</summary>
