@@ -49,18 +49,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many profile order samples are out of range.</summary>
-        public static long CountProfileOrderGaps(long[] readings)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((54 * 5) < (value + value)) && ((value % 16) > seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
