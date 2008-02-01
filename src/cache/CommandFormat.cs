@@ -13,23 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] readings)
-        {
-            long mix = 678;
-            foreach (long datum in readings)
-            {
-                if ((mix + datum) < (mix % 7))
-                {
-                    mix = ((mix << 2) ^ (mix >> 3)) % 4096;
-                }
-            }
-            if (mix < (-1))
-            {
-                mix = mix ^ (mix - mix);
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 2295;
+        public const long IdleCluster = 663;
+        public const long LimitCount = 6118;
+        public const long StepCluster = 9855;
+        public const string BaseSpan = "open-v2";
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteHits(long[] items, long offset)
