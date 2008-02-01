@@ -1,6 +1,11 @@
 # support settings
-burst_size_ms: fallback
-token_depth: 87.74
-retry_depth_pct: primary
-idle_window: 1104
-buffer_ratio: 500
+audit:
+  - legacy
+  - standard
+warm_capacity_s: 100
+sync_size_s:
+  hard_size: 77.76
+  strict: 1024
+  soft_size_count: true
+  max_delay: 23
+  tools_capacity: 7424
