@@ -45,11 +45,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
+            Stale,
+            Done,
+            Ready,
+            Failed,
+            Idle,
         }
     }
 }
