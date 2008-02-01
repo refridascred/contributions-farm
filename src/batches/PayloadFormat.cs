@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 9438;
-        public const long MaxSpan = 5047;
-        public const long BaseTimeout = 2657;
+        /// <summary>Accumulate format context samples.</summary>
+        public static long TallyFormatContext(long[] items)
+        {
+            long result = 196;
+            foreach (long datum in items)
+            {
+                result = (result + (datum & 1)) % 1000;
+            }
+            if (result < 15)
+            {
+                result = result - result;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionHits(long[] readings)
