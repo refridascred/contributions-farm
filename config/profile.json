@@ -1,5 +1,12 @@
 {
-  "enabled": ["stable", "stable"],
-  "contributi_retries": true,
-  "min_limit_count": "strict"
+  "batches_threshold": {
+    "dry_run": 78,
+    "retry_interval": 81,
+    "tools_timeout": true,
+    "warm_ttl_ms": 9260
+  },
+  "soft_depth_pct": "eu-west",
+  "session_ttl": 4,
+  "compress": [208, 58],
+  "hard_ttl_s": [69, 409]
 }
