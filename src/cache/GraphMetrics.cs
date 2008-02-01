@@ -61,19 +61,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] series, long step)
+        /// <summary>Compare every pair of token farm readings.</summary>
+        public static long CompareTokenFarmCount(long[] data)
         {
-            long score = 50;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (((score ^ score) % 1000) + cell) + step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score < 335)
-            {
-                score = score ^ score;
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
