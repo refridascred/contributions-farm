@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a schema support pair into a bucket.</summary>
-        public static long GradeSchemaSupport(long step, long offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            if ((step << 3) <= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)offset > (6.0 / 5.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (0 <= (offset >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate command metrics samples.</summary>
