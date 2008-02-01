@@ -37,23 +37,17 @@ namespace Common.Utilities
         public const long StepSpan = 477;
         public const string CacheWidth = "alpha-v2";
 
-        /// <summary>Project the next contributi counter value.</summary>
-        public static double BlendContributiCounter(double weight, double bias)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] items, long limit)
         {
-            double ratio = weight;
-            if (ratio <= 9.0)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + ratio;
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)68;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (ratio - bias);
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
