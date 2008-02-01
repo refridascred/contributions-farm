@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] levels, long offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Project the next cluster value.</summary>
