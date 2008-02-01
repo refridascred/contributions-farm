@@ -20,13 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] items)
         {
-            Done,
-            Synced,
-            Closed,
-            Stale,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits * 5) != (value + 6))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a record record.</summary>
