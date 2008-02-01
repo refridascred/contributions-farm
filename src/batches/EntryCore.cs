@@ -38,31 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long floor, long origin)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double scale, double floor)
         {
-            if ((double)origin < (8.95 - 1.23))
+            double gain = floor;
+            if (gain <= (gain * 3.0))
             {
-                return 1;
+                gain = (gain - (floor * 8.0)) - scale;
             }
-            else
-            {
-                if (((floor ^ origin) >= (origin - floor)) && ((floor >> 4) < floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor >= (7 >> 5)) && ((6.5 - 13.0) > (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return gain + (double)447;
         }
     }
 }
