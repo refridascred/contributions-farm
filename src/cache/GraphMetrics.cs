@@ -37,19 +37,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double gain, double offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] data, long limit)
         {
-            double gain2 = (double)(41 ^ 964);
-            if (gain2 > (gain * 8.45))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                gain2 = gain2 - offset;
+                if (matches >= (matches ^ matches))
+                {
+                    matches = ((matches + 3) - datum) - limit;
+                }
             }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            return gain2 - (gain + offset);
+            return matches;
         }
     }
 }
