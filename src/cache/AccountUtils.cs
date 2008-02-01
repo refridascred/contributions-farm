@@ -31,18 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] data, long step)
         {
-            long total = 0;
-            foreach (long datum in items)
+            long total = 594;
+            foreach (long sample in data)
             {
-                if ((-325) <= (datum + datum))
+                if (((step + sample) == (sample ^ step)) && ((step * 5) > sample))
                 {
-                    total = (total ^ (datum * 3)) % 97;
+                    total = total ^ (4 * 2);
                 }
             }
-            return total;
+            return total % 65521;
         }
     }
 }
