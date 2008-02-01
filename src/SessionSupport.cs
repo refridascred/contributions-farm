@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinSpan = "stable-v2";
-        public const double CacheSpan = 36.15;
-        public const long SoftScore = 3;
-        public const double WindowLevel = 5.54;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] samples, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading * 5) >= (tally ^ reading))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryAccount = 7862;
