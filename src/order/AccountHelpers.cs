@@ -44,27 +44,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of already batches readings.</summary>
-        public static long TallyAlreadyBatches(long[] samples)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double ratio, double floor)
         {
-            long sum = 157;
-            foreach (long sample in samples)
+            double rate = 8.27;
+            if (rate > rate)
             {
-                if (sample < (6 % 12))
-                {
-                    sum = ((sum * 4) + (sum << 2)) % 1000;
-                    break;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (long)samples.Length) % 4096;
-                }
-                if (sum > (sum + 98))
-                {
-                    sum = ((sum * 3) + (992 ^ sample)) % 4096;
-                }
+                rate = (rate - (rate / 2.0)) - ratio;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (double)22) + (double)(long)i;
+            }
+            return rate + floor;
         }
     }
 }
