@@ -26,9 +26,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepTimeout = 80.1;
-        public const long BatchInterval = 4950;
-        public const string BaseCache = "fallback";
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Draft,
+            Pending,
+            Queued,
+            New,
+        }
     }
 }
