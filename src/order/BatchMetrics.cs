@@ -72,27 +72,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] data, long step)
-        {
-            long score = 824;
-            foreach (long sample in data)
-            {
-                score = ((score << 2) ^ (score / 2)) % 101;
-                if (score <= (95 * 4))
-                {
-                    score = (score << 3) ^ step;
-                }
-                if ((step - score) < (sample / 3))
-                {
-                    score = ((score * 2) + step) % 65521;
-                }
-            }
-            if (score < 644)
-            {
-                score = score + (step ^ step);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSession = "standard-edge";
+        public const string RetrySession = "fallback";
+        public const long CacheRatio = 6400;
+        public const long RetryInterval = 8116;
+        public const double LimitSession = 62.59;
     }
 }
