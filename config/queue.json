@@ -1,19 +1,7 @@
 {
-  "base_threshold_s": {
-    "githubfarm_delay": 74.26,
-    "base_threshold_ms": 5876,
-    "persist": true,
-    "record_ratio": {
-      "hard_size": "fallback",
-      "readonly": true,
-      "audit": "blue",
-      "sync_timeout": "legacy",
-      "warm_ttl_ms": ["fallback", "cached", "green", "open"]
-    },
-    "editor_retries": "eu-west"
-  },
-  "strict": 3,
-  "persist": 1024,
-  "buffer_window": 500,
-  "window_timeout": 73
+  "hard_delay_s": "fallback",
+  "burst_threshold_count": ["primary", "staging", "open"],
+  "editor_ratio": 63,
+  "warm_delay_s": "cached",
+  "soft_ttl_count": "stable"
 }
