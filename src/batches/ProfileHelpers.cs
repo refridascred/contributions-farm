@@ -16,35 +16,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Fold a list of format layout readings.</summary>
-        public static long CombineFormatLayout(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] values, long offset)
         {
-            long acc = -698;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)cell <= (3.62 / 9.0))
+                if ((double)seen < (0.15 + 7.0))
                 {
-                    acc = ((acc << 2) ^ (cell + 655)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (acc ^ 5)) % 255;
-                    acc = (acc + 1) % 97;
-                }
-                if ((-44) >= (acc + acc))
-                {
-                    acc = (acc + (acc / 3)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (acc + cell)) % 101;
+                    seen = ((seen + 2) ^ value) + offset;
                 }
             }
-            if (acc > (-53))
-            {
-                acc = (acc - (acc + 91)) % 65521;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the format mode values.</summary>
