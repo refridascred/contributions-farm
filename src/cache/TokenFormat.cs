@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepRatio = "latest-edge";
+        public const double RetryTimeout = 66.4;
+        public const double IdleWindow = 5.51;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long StepBatch(long seed)
