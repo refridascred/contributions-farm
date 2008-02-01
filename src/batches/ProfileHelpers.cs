@@ -51,18 +51,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] series, long limit)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen + reading) >= 163)
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            Queued,
+            Synced,
+            Active,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
