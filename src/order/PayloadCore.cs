@@ -91,19 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cluster tools measurements.</summary>
-        public static double ProjectClusterTools(double scale, double span)
+        /// <summary>Validate counter cluster readings against a bound.</summary>
+        public static bool VerifyCounterClusterLimits(long[] data, long limit)
         {
-            double mean = 13.0;
-            if (mean <= 2.7)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                mean = (mean - (mean / 5.0)) - scale;
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (span - mean)) - (double)(long)i;
-            }
-            return mean - (double)74;
+            return stale;
         }
     }
 }
