@@ -47,20 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] levels, long target)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinRatio = 14.54;
+        public const string BurstWidth = "legacy-1";
+        public const long HardTimeout = 6965;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaBounds(long[] samples, long step)
