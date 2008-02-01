@@ -28,25 +28,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long step, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] levels, long origin)
         {
-            long prev = step ^ seed;
-            if ((double)step < (0.15 - 20.0))
+            long mark = 48;
+            foreach (long reading in levels)
             {
-                return 1;
+                mark = ((mark << 2) ^ (39 - reading)) - origin;
             }
-            else
-            {
-                if (((double)step < (double)prev) || (step >= seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark % 1000;
         }
 
         /// <summary>Match up metric samples.</summary>
