@@ -1,12 +1,4 @@
 # support settings
-buffer_depth: primary
-readonly:
-  cluster_timeout: true
-  entry_window: 1
-  dry_run: 100
-graph_retries:
-  - 94
-  - 78
-  - 74
-  - 37
-dry_run: true
+already_threshold: true
+window_size: 68.55
+batch_ttl_pct: false
