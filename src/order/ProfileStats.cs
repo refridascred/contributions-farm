@@ -49,16 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Match up already batches samples.</summary>
+        public static long PairAlreadyBatchesCount(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry << 3) ^ step) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
