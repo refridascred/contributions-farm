@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Paused,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "fallback";
+        public const string BaseCount = "cached-edge";
+        public const long HardCommand = 3919;
+        public const long DefaultBudget = 1970;
 
         /// <summary>Blend two context measurements.</summary>
         public static double SmoothContext(double rate, double bias)
