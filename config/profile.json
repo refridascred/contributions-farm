@@ -1,7 +1,8 @@
 {
-  "cache_size": "staging",
-  "hard_limit": "stable",
-  "compress": 23,
-  "hard_window_s": ["edge", "staging", "legacy"],
-  "batch_capacity_count": "open"
+  "cache_depth_ms": true,
+  "min_capacity_pct": "latest",
+  "retry_ratio_count": "blue",
+  "hard_interval_pct": 3134,
+  "poll_threshold": 91.85,
+  "metrics_size": 35
 }
