@@ -32,19 +32,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double bias, double bias2)
+        /// <summary>Check that every record stream entry stays within the limit.</summary>
+        public static bool CheckRecordStreamLimits(long[] values, long origin)
         {
-            double mean = (double)(0 + 1);
-            if (mean > bias)
+            bool found = true;
+            foreach (long value in values)
             {
-                mean = mean - mean;
+                if (value != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - bias2) + (double)(long)i;
-            }
-            return mean + bias2;
+            return found;
         }
     }
 }
