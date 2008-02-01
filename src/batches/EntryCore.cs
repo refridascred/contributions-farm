@@ -58,23 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two githubfarm session measurements.</summary>
-        public static double AdjustGithubfarmSession(double weight, double bias)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            double load = (double)(90 << 1);
-            if (load > 4.1)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                load = (load - bias) + weight;
+                if (!((double)(long)i >= (7.8 * 6.3)))
+                {
+                    carry = ((carry << 3) ^ (carry << 1)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                load = load - (bias * 8.81);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 8.9) + (double)(long)i;
-            }
-            return load + (double)1;
+            return carry;
         }
 
         /// <summary>Adjust a commits reading.</summary>
