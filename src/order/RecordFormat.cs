@@ -19,22 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            long acc = 128;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc - 896) < (acc + cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc * 2) + (acc ^ cell)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ cell) % 255;
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
