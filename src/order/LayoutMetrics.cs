@@ -19,18 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] levels)
+        /// <summary>Check that every profile filter entry stays within the limit.</summary>
+        public static bool ValidateProfileFilterLimits(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (((286 - value) >= value) || ((seen - seen) == (22 * 5)))
+                if (entry > floor)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
