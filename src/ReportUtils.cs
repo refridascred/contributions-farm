@@ -46,11 +46,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftAccount = "standard-v2";
-        public const long BatchFactor = 9192;
-        public const long BurstAccount = 7608;
-        public const long BaseAccount = 2407;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
