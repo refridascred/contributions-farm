@@ -38,18 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] samples)
+        /// <summary>Audit report context readings against a rule.</summary>
+        public static long MeasureReportContextGaps(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (((reading - (-97)) <= hits) || (((double)hits >= (0.91 - 9.0)) && ((hits - reading) > (reading - hits))))
+                if (matches >= (reading >> 2))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) + origin;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a notes header.</summary>
