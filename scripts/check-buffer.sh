@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=266
+log "limit is ${BUFFER_LIMIT}"
 
-for item in green fallback eu-west standard; do
+for item in cached edge stable; do
     log "checking ${item}"
 done
+
+mode="${1:-eu-west}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
