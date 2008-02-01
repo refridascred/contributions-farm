@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] samples, long floor)
+        /// <summary>Measure how many payload metrics samples are out of range.</summary>
+        public static long CountPayloadMetricsHits(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((double)floor <= (9.27 / 4.0))
+                if ((step >> 4) <= value)
                 {
-                    matches = (matches + 1) + sample;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a graph header.</summary>
