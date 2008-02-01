@@ -1,18 +1,7 @@
 # githubfarm settings
-account_size: false
-flush_size_ms: 60
-poll_window_s:
-  - 367
-  - 15
-verbose:
-  hard_timeout_s:
-    - 121
-    - 321
-    - 276
-  persist: 100
-  context_timeout: 18
-  tools_threshold: 2.66
-  warm_window_pct: 31
-  batch_ratio_pct: latest
-idle_timeout_pct: 5898
-strict: green
+max_retries_s:
+  - standard
+  - open
+  - local
+commits_size: 66
+stats_ratio: 250
