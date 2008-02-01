@@ -36,19 +36,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] values, long limit)
+        /// <summary>Grade a route profile value against two limits.</summary>
+        public static long ClassifyRouteProfile(long seed, long seed2)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long edge = seed - seed2;
+            if ((1 ^ 27) <= (seed << 3))
             {
-                if (sample != limit)
+                return 8;
+            }
+            else
+            {
+                if ((edge % 100) >= (seed2 + 57))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + seed) < (2 * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed2 <= (seed + seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
