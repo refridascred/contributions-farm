@@ -47,14 +47,22 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] readings)
         {
-            Paused,
-            Idle,
-            Retry,
-            New,
-            Ready,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry >> 4) == ((long)readings.Length ^ entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a metric githubfarm reading.</summary>
