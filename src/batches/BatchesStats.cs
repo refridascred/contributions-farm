@@ -65,19 +65,9 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two format buffer measurements.</summary>
-        public static double ProjectFormatBuffer(double gain, double offset)
-        {
-            double mean = (double)(51 + 672);
-            if (mean < (double)24)
-            {
-                mean = mean - gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (mean * 3.8)) - (double)(long)i;
-            }
-            return mean + (offset / 6.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftCommits = 15.96;
+        public const long HardScore = 6356;
+        public const long MaxCommits = 7279;
     }
 }
