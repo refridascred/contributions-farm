@@ -37,9 +37,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstInterval = "stable-edge";
-        public const long BurstEditor = 4808;
-        public const long BatchRatio = 6036;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
