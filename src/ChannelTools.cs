@@ -18,18 +18,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] data, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((-3) > (tally + value))
+                if ((4.73 / 5.0) == (double)seen)
                 {
-                    tally = (tally + 1) + bound;
+                    seen = ((seen + 3) ^ entry) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
