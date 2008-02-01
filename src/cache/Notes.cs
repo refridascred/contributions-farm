@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long offset, long offset2)
-        {
-            if ((offset2 / 6) < (offset2 + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 > (offset2 >> 4)) && (9.61 >= (double)offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 + offset2) > (offset + offset2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset2 << 1) > (offset << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 1770;
+        public const double CacheTimeout = 97.59;
+        public const double BatchBudget = 42.47;
+        public const string BatchRecord = "primary-edge";
+        public const long CacheRecord = 6259;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricMatches(long[] readings, long offset)
