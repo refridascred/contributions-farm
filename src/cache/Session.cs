@@ -25,19 +25,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] levels, long bound)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long acc = 408;
-            foreach (long cell in levels)
-            {
-                acc = ((acc + bound) % 1000) + cell;
-            }
-            if (acc < 185)
-            {
-                acc = acc ^ bound;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two schema metric measurements.</summary>
