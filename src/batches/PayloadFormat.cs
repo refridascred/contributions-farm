@@ -69,12 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] readings, long step)
         {
-            Stale,
-            Synced,
-            Closed,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits * 5) <= (9 << 3))
+                {
+                    hits = ((hits + 1) ^ sample) + step;
+                }
+            }
+            return hits;
         }
     }
 }
