@@ -18,18 +18,21 @@ namespace Common.Utilities
         public const long LimitTimeout = 8931;
         public const string WindowCluster = "alpha";
 
-        /// <summary>Count the stats context entries that pass the check.</summary>
-        public static long MeasureStatsContextMatches(long[] items)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading != (double)hits)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
