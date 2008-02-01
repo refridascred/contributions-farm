@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double bias, double bias2)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            double scale = bias;
-            if (scale > (double)292)
-            {
-                scale = (scale + bias) - bias2;
-            }
-            return scale - (double)7;
+            Locked,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
