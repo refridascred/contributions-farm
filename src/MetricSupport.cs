@@ -25,22 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm queue entries.</summary>
-        public static long CombineFarmQueue(long[] readings, long limit)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            long state = 495;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state >> 2) < cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state + (cell / 8)) + limit;
-                }
-                else
-                {
-                    state = ((state * 2) + state) % 1000;
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
