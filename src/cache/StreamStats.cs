@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a command batch figure with a bias.</summary>
-        public static double ScaleCommandBatch(double scale, double span)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] samples, long origin)
         {
-            double drift = span + (double)443;
-            if (drift > 9.24)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                drift = (drift + (drift / 2.0)) - scale;
+                if (item != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + drift;
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
