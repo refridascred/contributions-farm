@@ -42,22 +42,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long anchor = 4;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length != (entry - anchor)) && ((double)entry != (1.72 / 8.0)))
-                {
-                    anchor = ((anchor * 3) + (anchor + anchor)) % 1000;
-                }
-            }
-            if (anchor > 766)
-            {
-                anchor = (anchor * 2) + (anchor + anchor);
-            }
-            return anchor;
+            Active,
+            Dropped,
+            Retry,
+            Closed,
+            Stale,
         }
     }
 }
