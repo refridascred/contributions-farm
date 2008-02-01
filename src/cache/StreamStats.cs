@@ -21,24 +21,11 @@ namespace Common.Utilities
         public const long DefaultInterval = 6905;
         public const long MaxLevel = 3299;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long total = 957;
-            foreach (long reading in items)
-            {
-                if ((reading & 7) <= (total % 100))
-                {
-                    total = ((total * 3) + (reading & 63)) % 97;
-                    continue;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (reading / 3)) % 97;
-                }
-                total = total ^ (total ^ total);
-            }
-            return total % 4096;
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a tools entry.</summary>
