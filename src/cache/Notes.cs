@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 1770;
-        public const double CacheTimeout = 97.59;
-        public const double BatchBudget = 42.47;
-        public const string BatchRecord = "primary-edge";
-        public const long CacheRecord = 6259;
+        /// <summary>Rank route payload input into a small class.</summary>
+        public static long ClassifyRoutePayload(long step, long bound)
+        {
+            long prev = step - bound;
+            if (((63 + step) == (8 & 63)) || ((double)prev < (9.0 + 5.2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step * 2) >= 72)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step << 2) > (55 + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] readings, long offset)
