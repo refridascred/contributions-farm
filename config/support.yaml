@@ -1,9 +1,7 @@
 # support settings
-max_delay: 52.34
 audit:
-  - 296
-  - 327
-  - 370
-  - 41
-batch_limit: 1904
-batch_threshold: false
+  - primary
+  - open
+  - staging
+base_delay_ms: cached
+dry_run: false
