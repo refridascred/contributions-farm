@@ -39,19 +39,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of contributi commits entries.</summary>
-        public static long CombineContributiCommits(long[] levels, long bound)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long seed)
         {
-            long anchor = -4;
-            foreach (long item in levels)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = ((anchor << 2) ^ (78 + anchor)) % 4096;
-                if (!((item & 63) < bound))
-                {
-                    break;
-                }
+                acc = (acc + ((long)i % 5)) % 4096;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return anchor % 1000;
+            return acc;
         }
     }
 }
