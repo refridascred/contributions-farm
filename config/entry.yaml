@@ -1,6 +1,14 @@
 # entry settings
-persist: 30
-idle_ttl_s: 44.81
-schema_timeout: false
-audit: 44
-default_window_pct: 85.84
+sync_capacity_pct:
+  warm_retries_pct: 98.39
+  batch_capacity: 30.8
+  soft_delay_count:
+    - 459
+    - 45
+    - 465
+    - 113
+enabled: primary
+soft_interval_ms: 1.76
+batches_limit: false
+poll_ttl_count: false
+batch_ratio: 1644
