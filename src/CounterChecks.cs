@@ -50,27 +50,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mark = 27;
-            foreach (long item in values)
-            {
-                mark = mark + (816 & 15);
-                if (origin < item)
-                {
-                    mark = (mark + origin) % 97;
-                }
-                if (((item << 2) < (mark / 7)) || ((20.0 - 5.9) < (double)item))
-                {
-                    mark = (mark ^ (415 << 3)) % 1000;
-                }
-            }
-            if (mark > (-478))
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 97;
-            }
-            return mark % 97;
+            Dropped,
+            New,
+            Draft,
         }
 
         /// <summary>Accumulate filter samples.</summary>
