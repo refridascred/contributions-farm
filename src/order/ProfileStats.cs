@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long SoftSchema = 9661;
         public const long StepSpan = 7464;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 61.85;
+        public const double HardWindow = 94.08;
+        public const double BatchScore = 82.49;
+        public const long MaxSpan = 4372;
+        public const long MinWindow = 1395;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] samples, long target)
