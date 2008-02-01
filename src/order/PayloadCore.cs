@@ -24,15 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long score = -51;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                score = score - cell;
+                if ((score - score) != (score << 1))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return score % 4096;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
