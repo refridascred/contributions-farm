@@ -44,12 +44,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            Failed,
-            Ready,
-            Dropped,
+            long state = target;
+            for (int i = 0; i < 14; i++)
+            {
+                state = state - target;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
