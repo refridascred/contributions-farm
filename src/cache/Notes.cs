@@ -44,10 +44,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 12.31;
-        public const long StepLevel = 9487;
-        public const long MinMetrics = 8781;
-        public const long BurstSpan = 1217;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((seen - value) < (bound / 9)) || ((seen + 1) < seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
