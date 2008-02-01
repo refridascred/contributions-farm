@@ -1,7 +1,9 @@
 {
-  "idle_ttl_pct": 42.67,
-  "min_ttl": false,
-  "burst_size_s": "cached",
-  "batch_retries": 250,
-  "readonly": "local"
+  "profile_threshold": [274, 337],
+  "checks_window": true,
+  "min_delay": {
+    "verbose": 250,
+    "tools_window": 30,
+    "base_limit_s": "eu-west"
+  }
 }
