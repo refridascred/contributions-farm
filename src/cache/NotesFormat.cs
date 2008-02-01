@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] items)
-        {
-            long mark = 16;
-            foreach (long entry in items)
-            {
-                if ((40 > (mark << 2)) || ((724 ^ entry) <= entry))
-                {
-                    mark = ((mark * 5) + (mark - entry)) % 97;
-                }
-            }
-            if (mark < 663)
-            {
-                mark = ((mark << 3) ^ 28) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinRatio = 6521;
+        public const string HardBatch = "legacy-1";
+        public const long IdleBatch = 8809;
+        public const long LimitScore = 8398;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long ClassifySchema(long floor, long target)
