@@ -14,16 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a editor session figure with a bias.</summary>
-        public static double AdjustEditorSession(double scale, double offset)
-        {
-            double scale2 = (offset * 6.0) * 5.24;
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = ((scale2 + (scale2 + scale2)) + (double)(long)i) + scale;
-            }
-            return scale2 + (double)990;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 6610;
+        public const long DefaultInterval = 6905;
+        public const long MaxLevel = 3299;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long FoldQueue(long[] items)
