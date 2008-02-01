@@ -29,21 +29,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = offset;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = ((mean + mean) + (double)(long)i) - scale;
             }
-            return tally;
+            return mean - offset;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
