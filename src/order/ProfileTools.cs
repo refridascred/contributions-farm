@@ -20,22 +20,21 @@ namespace Common.Utilities
         public const long HardBudget = 4307;
         public const long LimitCommand = 6267;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] series, long origin)
+        /// <summary>Count cache commits pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCommitsCount(long[] values)
         {
-            long mix = 6;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-705) - origin) < mix)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (origin + mix)) - reading;
-                }
-                else
-                {
-                    mix = mix ^ origin;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Blend two token measurements.</summary>
