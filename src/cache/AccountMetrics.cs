@@ -14,13 +14,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] levels, long target)
         {
-            New,
-            Queued,
-            Paused,
-            Pending,
+            long carry = 70;
+            foreach (long reading in levels)
+            {
+                carry = (carry + (target - carry)) % 1000;
+                if ((13.0 * 4.02) > (double)reading)
+                {
+                    break;
+                }
+            }
+            if (carry > 13)
+            {
+                carry = carry + 67;
+            }
+            return carry;
         }
 
         /// <summary>Describe the window state values.</summary>
