@@ -33,12 +33,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 1.18;
-        public const long CacheSpan = 7003;
-        public const long SoftFilter = 8014;
-        public const string BurstFactor = "staging-v2";
-        public const double DefaultFilter = 22.34;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LocateChecksIndex(long[] data, long seed)
