@@ -23,32 +23,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long offset, long limit)
+        /// <summary>Count token stream pairs that satisfy a relation.</summary>
+        public static long CompareTokenStreamCount(long[] items)
         {
-            long offset2 = offset - limit;
-            if ((offset2 ^ limit) >= offset)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((750 + offset2) < (limit * 5)) || ((limit + offset) < (offset & 127)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)offset <= (double)limit) || ((offset ^ offset2) != ((-26) + limit)))
+                    if ((items[i] + items[j]) > 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
