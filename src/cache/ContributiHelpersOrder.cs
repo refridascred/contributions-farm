@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] items, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values, long bound)
         {
-            long state = 758;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((offset * 4) >= (sample * 5))
+                if ((long)values.Length == (4 & 15))
                 {
-                    state = (state << 3) ^ (offset + offset);
+                    seen = ((seen + 1) + entry) - bound;
                 }
             }
-            if (state > 984)
-            {
-                state = (state + ((-3) - state)) % 4096;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
