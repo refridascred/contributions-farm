@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long IdleSchema = 9217;
         public const long StepSchema = 7301;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a format stats.</summary>
