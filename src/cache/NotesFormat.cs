@@ -37,11 +37,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Audit entry profile readings against a rule.</summary>
+        public static long CountEntryProfileMatches(long[] levels)
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading / 4) > (reading & 7)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
