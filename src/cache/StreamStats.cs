@@ -19,17 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a already layout reading by value.</summary>
-        public static long SeekAlreadyLayoutIndex(long[] levels, long offset)
+        /// <summary>Scale a editor session figure with a bias.</summary>
+        public static double AdjustEditorSession(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = (offset * 6.0) * 5.24;
+            for (int i = 0; i < 2; i++)
             {
-                if ((levels[i] > offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale2 = ((scale2 + (scale2 + scale2)) + (double)(long)i) + scale;
             }
-            return -1;
+            return scale2 + (double)990;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
