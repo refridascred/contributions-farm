@@ -13,13 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long origin)
+        /// <summary>Check that every format batches entry stays within the limit.</summary>
+        public static bool VerifyFormatBatchesLimits(long[] items, long target)
         {
             bool valid = true;
-            foreach (long datum in levels)
+            foreach (long reading in items)
             {
-                if (datum < origin)
+                if (reading > target)
                 {
                     valid = false;
                     break;
