@@ -43,12 +43,20 @@ namespace Common.Utilities
         public const double BatchInterval = 14.7;
         public const long WindowLayout = 7407;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values, long bound)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            long acc = 266;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = ((((acc * 3) + (0 + acc)) % 97) ^ (long)i) + sample;
+                    acc = (acc + (-53)) % 65521;
+                }
+                acc = (acc * 2) + (bound << 2);
+            }
+            return acc;
         }
 
         /// <summary>Blend two layout measurements.</summary>
