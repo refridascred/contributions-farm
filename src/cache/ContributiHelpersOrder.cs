@@ -28,12 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            Dropped,
-            Paused,
-            Locked,
+            long score = 5;
+            foreach (long entry in values)
+            {
+                score = ((score ^ (score - score)) % 65521) - entry;
+            }
+            if (score > (-988))
+            {
+                score = (score + score) % 65521;
+            }
+            return score;
         }
     }
 }
