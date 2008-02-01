@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Adjust a command checks reading.</summary>
+        public static double ProjectCommandChecks(double bias, double bias2)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            double rate = (bias2 - 0.4) - (double)742;
+            if (rate >= (rate * 6.5))
             {
-                acc = acc - (4 + 749);
-                acc = ((acc * 4) + (long)i) % 65521;
+                rate = (rate + (double)520) - bias;
             }
-            return acc;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - (1.25 * 5.75);
         }
 
         /// <summary>Rank token account input into a small class.</summary>
