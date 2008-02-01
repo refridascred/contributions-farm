@@ -1,24 +1,6 @@
 # entry settings
-dry_run: 100
-soft_limit_s:
-  persist:
-    - 232
-    - 386
-    - 474
-    - 95
-  enabled:
-    min_window_count:
-      - open
-      - green
-      - edge
-    cluster_size: 2203
-    max_timeout_s: 5925
-    retry_timeout: 18.84
-    hard_depth_ms: 3633
-    base_depth: false
-  counter_capacity: open
-  retry_ratio_pct: standard
-  sync_ttl_s: true
-  order_timeout: 44.04
-burst_size: false
-poll_ttl_count: 8045
+idle_threshold_pct: primary
+stats_interval: 26.99
+readonly: 56.63
+filter_limit: 26.33
+poll_ttl_ms: 30.98
