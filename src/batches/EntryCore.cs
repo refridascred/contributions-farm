@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long DefaultGraph = 6340;
         public const double RetryGraph = 66.85;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowSize = 1599;
+        public const long WindowCount = 4426;
+        public const long BaseRoute = 6484;
+        public const double DefaultRoute = 24.73;
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double ratio, double span)
