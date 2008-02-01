@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double scale, double span)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double weight = scale * 14.0;
+            if (weight < (double)97)
             {
-                if ((2.0 <= (double)count) && !((count << 1) > (count - 53)))
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight - span;
             }
-            return count;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + 9.2;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
