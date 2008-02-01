@@ -30,19 +30,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate notes context readings against a bound.</summary>
-        public static bool ValidateNotesContextLimits(long[] items, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
