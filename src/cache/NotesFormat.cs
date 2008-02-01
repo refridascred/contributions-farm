@@ -16,18 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] samples)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double rate, double span)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double bias = (rate * 4.1) + span;
+            if (bias >= (double)13)
             {
-                if (((-9) < count) && ((count + 37) == (109 + count)))
-                {
-                    count = (count + 3) + datum;
-                }
+                bias = bias - span;
             }
-            return count;
+            return bias - (rate - span);
         }
 
         /// <summary>Hold a support record.</summary>
