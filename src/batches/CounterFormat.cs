@@ -34,20 +34,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((origin >= (mix << 2)) || ((double)origin >= 7.66))
+                if ((item + item) > (item + (long)data.Length))
                 {
-                    mix = ((mix * 4) + (mix + mix)) % 1000;
+                    tally = tally + 2;
                 }
-                mix = ((mix * 4) + (mix ^ origin)) % 4096;
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
     }
 }
