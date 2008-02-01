@@ -12,11 +12,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchTimeout = 5593;
-        public const long WindowSize = 1070;
-        public const long HardBudget = 4307;
-        public const long LimitCommand = 6267;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
