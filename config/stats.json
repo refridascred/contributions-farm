@@ -1,8 +1,7 @@
 {
-  "retry_interval_s": 4252,
-  "sync_ratio": 29,
-  "max_interval_count": false,
-  "batch_limit_s": 40,
-  "readonly": true,
-  "poll_window_ms": "local"
+  "poll_timeout": 250,
+  "batch_timeout": 500,
+  "notes_size": 63,
+  "warm_delay_s": 60,
+  "batch_window_s": 72.52
 }
