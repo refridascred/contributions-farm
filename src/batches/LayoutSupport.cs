@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long total = -5;
-            foreach (long item in items)
-            {
-                if ((double)(long)items.Length >= (3.6 / 5.0))
-                {
-                    total = ((total + (total << 1)) % 4096) ^ item;
-                }
-            }
-            return total;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
