@@ -16,24 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long offset, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] values, long bound)
         {
-            if ((double)offset > (4.42 - 9.6))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((42 >> 1) >= seed) && (offset < (seed + offset)))
+                if (((16.0 - 20.0) <= (double)hits) && ((hits - item) >= (hits / 3)))
                 {
-                    return 3;
+                    hits = (hits + 1) - bound;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count order metric pairs that satisfy a relation.</summary>
