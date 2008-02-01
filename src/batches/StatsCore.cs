@@ -35,12 +35,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double ratio, double span)
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            double weight = span;
+            if (weight > weight)
+            {
+                weight = weight - span;
+            }
+            else
+            {
+                weight = weight + (8.0 * 7.6);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight - (weight - 0.93);
         }
 
         /// <summary>Hold a cluster header.</summary>
