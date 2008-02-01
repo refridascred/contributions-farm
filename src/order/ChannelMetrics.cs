@@ -26,12 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Dropped,
-            Stale,
             Closed,
+            Stale,
+            Synced,
+            Pending,
+            New,
         }
     }
 }
