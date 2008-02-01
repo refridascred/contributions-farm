@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine entry notes values into a single score.</summary>
-        public static long WeighEntryNotes(long[] series, long bound)
+        /// <summary>Count commits editor pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsEditorCount(long[] readings)
         {
-            long sum = 2;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                double weight = (double)sum;
-                if (weight >= (double)item)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum + bound) % 65521;
-                }
-                if ((4.35 / 8.0) <= (double)sum)
-                {
-                    sum = (sum - (bound + sum)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (item >> 1)) % 101;
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 6)
-            {
-                sum = ((sum * 5) + (sum - sum)) % 97;
-            }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Describe the payload class values.</summary>
