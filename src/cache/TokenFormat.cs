@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next payload account value from a seed.</summary>
-        public static long RollPayloadAccount(long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double weight, double span)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            double scale = (double)(3 >> 5);
+            for (int i = 0; i < 9; i++)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                scale = (scale - (weight - weight)) + (double)(long)i;
             }
-            return mix;
+            return scale - (span + 6.19);
         }
 
         /// <summary>Locate a filter reading by value.</summary>
