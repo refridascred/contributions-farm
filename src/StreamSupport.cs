@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long target, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long delta = target - limit;
-            if ((double)limit >= (8.7 - 9.3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.98 + 8.9) > (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (delta > (target + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
