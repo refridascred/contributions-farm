@@ -1,8 +1,12 @@
 {
-  "cache_delay": "strict",
-  "default_interval_count": 60,
-  "verbose": "legacy",
-  "cache_size": [497, 126, 174, 115],
-  "idle_interval_ms": "fallback",
-  "batch_threshold": [136, 285]
+  "order_limit": {
+    "graph_size": 250,
+    "min_depth_s": true,
+    "idle_delay_count": 60,
+    "soft_capacity_count": "staging"
+  },
+  "already_size": "standard",
+  "hard_window": 38,
+  "verbose": true,
+  "idle_threshold_s": "cached"
 }
