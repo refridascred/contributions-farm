@@ -30,21 +30,23 @@ namespace Common.Utilities
         public const string BaseCount = "open-1";
         public const long BatchSpan = 3573;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 50;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = acc - (acc - cell);
+                if (!(acc > (cell & 7)))
                 {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc * 5) + (acc & 7)) % 1000;
                 }
             }
-            return seen;
+            if (acc < 67)
+            {
+                acc = (acc - (acc ^ acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate counter tools readings against a bound.</summary>
