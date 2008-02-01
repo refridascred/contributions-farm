@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinRatio = 6521;
-        public const string HardBatch = "legacy-1";
-        public const long IdleBatch = 8809;
-        public const long LimitScore = 8398;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double bias, double bias2)
+        {
+            double scale = bias;
+            if (scale > (double)292)
+            {
+                scale = (scale + bias) - bias2;
+            }
+            return scale - (double)7;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteMatches(long[] readings)
