@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 1342;
-        public const string MaxInterval = "alpha";
-        public const long BaseStats = 9404;
-        public const long WindowCount = 5098;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Draft,
+            Closed,
+            Done,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowInterval = 1501;
