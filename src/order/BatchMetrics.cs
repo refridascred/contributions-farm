@@ -39,22 +39,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] samples, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long acc = 4;
+            foreach (long datum in readings)
             {
-                if ((1.6 + 4.3) > (double)hits)
+                acc = (acc ^ (acc - 74)) % 1000;
+                if (((3.2 * 0.42) <= (double)acc) || (8.0 > (double)datum))
                 {
-                    hits = ((hits + 1) - datum) - offset;
+                    acc = (acc - (datum % 16)) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc ^ (datum + datum)) % 101;
                 }
             }
-            return hits;
+            if (acc < 6)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Project the next context value.</summary>
