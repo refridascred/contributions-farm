@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long DefaultGraph = 6340;
         public const double RetryGraph = 66.85;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
