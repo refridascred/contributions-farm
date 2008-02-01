@@ -1,5 +1,13 @@
 {
-  "cache_depth": "legacy",
-  "warm_delay_s": "fallback",
-  "cache_capacity_s": "open"
+  "schema_threshold": ["strict", "fallback"],
+  "base_ttl_pct": ["stable", "local", "edge", "cached"],
+  "soft_timeout": {
+    "warm_timeout": 74.47,
+    "min_capacity_ms": 250,
+    "max_threshold_count": 98,
+    "sync_retries": 4355,
+    "verbose": 100
+  },
+  "enabled": "fallback",
+  "warm_retries_count": 65.74
 }
