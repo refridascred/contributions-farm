@@ -55,18 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph notes readings against a rule.</summary>
-        public static long MeasureGraphNotesHits(long[] values, long step)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count <= (step - count)) || (((double)(long)values.Length < (6.9 - 13.0)) && ((step + count) >= ((long)values.Length - entry))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
