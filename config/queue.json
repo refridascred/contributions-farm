@@ -1,6 +1,5 @@
 {
-  "dry_run": ["standard", "strict"],
-  "idle_limit": "standard",
-  "sync_timeout_count": true,
-  "command_limit": "cached"
+  "format_ratio": 30,
+  "poll_timeout_pct": "open",
+  "editor_delay": 77
 }
