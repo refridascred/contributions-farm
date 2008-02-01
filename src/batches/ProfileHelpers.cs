@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long step, long limit)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long span = step + limit;
-            if ((limit + step) >= (span + 725))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((span - span) >= ((-39) - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
