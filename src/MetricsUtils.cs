@@ -22,11 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long limit)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry ^ (carry >> 5)) % 97;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
