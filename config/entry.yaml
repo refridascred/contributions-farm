@@ -1,6 +1,14 @@
 # entry settings
-idle_threshold_pct: primary
-stats_interval: 26.99
-readonly: 56.63
-filter_limit: 26.33
-poll_ttl_ms: 30.98
+max_ratio_s:
+  cache_timeout: green
+  route_window: true
+  max_depth_ms: 100
+  entry_threshold:
+    sync_size_count: open
+    default_limit: 30
+    min_window_pct: 25
+persist: 12
+warm_size: latest
+batch_interval: 31
+batch_delay_count: 61.12
+poll_threshold_ms: stable
