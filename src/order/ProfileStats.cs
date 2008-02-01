@@ -31,18 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] levels)
+        /// <summary>Rank channel token input into a small class.</summary>
+        public static long BucketChannelToken(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long bound = floor ^ origin;
+            if (!((origin - bound) <= (origin - 751)))
             {
-                if (((((long)levels.Length % 10) != (sample << 2)) && (sample > (sample + sample))) && (7 > (hits + hits)))
+                return 6;
+            }
+            else
+            {
+                if ((origin / 7) <= (floor << 2))
                 {
-                    hits = hits + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
