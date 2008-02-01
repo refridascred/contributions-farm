@@ -33,20 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitCount = 1720;
+        public const double HardEditor = 40.71;
+        public const long WindowRatio = 3547;
+        public const long BurstEditor = 9581;
+        public const long BurstCount = 770;
 
         /// <summary>Count the stream payload entries that pass the check.</summary>
         public static long MeasureStreamPayloadGaps(long[] samples)
