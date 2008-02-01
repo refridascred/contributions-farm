@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double rate, double floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] levels, long seed)
         {
-            double rate2 = floor;
-            if (rate2 > rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = rate2 - (double)4;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return rate2 + (floor - floor);
+            return -1;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
