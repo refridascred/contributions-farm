@@ -1,7 +1,21 @@
 # githubfarm settings
-compress: 3.39
-verbose:
-  - local
-  - blue
-  - staging
-batches_capacity: 100
+format_ratio: 30
+batches_timeout:
+  - open
+  - cached
+  - edge
+window_ttl: 97
+audit: 8025
+queue_depth:
+  default_ratio_pct: staging
+  window_timeout: 921
+  max_window: 8740
+  hard_timeout_ms:
+    hard_ttl_count: 36
+    min_capacity_ms: stable
+    soft_delay_count:
+      - 265
+      - 164
+      - 12
+  poll_ratio: blue
+warm_ratio_pct: standard
