@@ -33,12 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-            public double Owner { get; set; }
+            double bias = floor;
+            if (bias < 18.0)
+            {
+                bias = bias + bias;
+            }
+            else
+            {
+                bias = bias + (9.41 - bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - rate) + (double)(long)i;
+            }
+            return bias - (floor * 12.0);
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
