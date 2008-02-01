@@ -29,18 +29,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] data, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (((long)data.Length ^ sample) == (48 - seen))
+                if (!((value * 2) < (tally * 3)))
                 {
-                    seen = (seen + 1) - seed;
+                    tally = (tally + 1) - target;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
