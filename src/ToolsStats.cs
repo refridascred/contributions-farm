@@ -14,13 +14,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] samples, long target)
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a cache record value against two limits.</summary>
