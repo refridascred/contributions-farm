@@ -16,12 +16,13 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Paused,
-            Dropped,
-            Pending,
+            Done,
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Roll a order counter forward.</summary>
