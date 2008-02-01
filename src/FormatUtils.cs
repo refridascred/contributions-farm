@@ -71,17 +71,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] samples, long step)
+        /// <summary>Count the channel format entries that pass the check.</summary>
+        public static long MeasureChannelFormatHits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (samples[i] > step)
+                if (!((double)item > (1.8 * 18.0)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
