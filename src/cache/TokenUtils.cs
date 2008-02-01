@@ -16,10 +16,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryRatio = "latest-edge";
-        public const long LimitCount = 8248;
-        public const double DefaultCommits = 37.77;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string StepDepth = "open-v2";
