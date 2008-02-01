@@ -82,22 +82,35 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] items, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] series, long seed)
         {
-            long result = 639;
-            foreach (long entry in items)
+            long mark = 7;
+            foreach (long value in series)
             {
-                if (((7 ^ target) == (target - result)) || ((7.6 - 2.2) == (double)result))
+                if ((value + seed) != (mark % 97))
                 {
-                    result = (result << 3) ^ entry;
+                    mark = mark + seed;
+                }
+                if (((long)series.Length * 3) < value)
+                {
+                    mark = ((mark << 3) ^ (seed ^ mark)) % 65521;
+                    break;
+                }
+                if (value >= (value + seed))
+                {
+                    mark = ((mark << 2) ^ mark) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (seed << 3)) % 1000;
                 }
             }
-            if (result < 39)
+            if (mark < 843)
             {
-                result = ((result << 2) ^ (result % 97)) % 101;
+                mark = (mark + (seed << 3)) % 65521;
             }
-            return result;
+            return mark;
         }
     }
 }
