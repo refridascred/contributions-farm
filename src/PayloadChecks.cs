@@ -48,19 +48,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] series, long origin)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
