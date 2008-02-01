@@ -1,6 +1,42 @@
 # support settings
-contributi_capacity: 12
-burst_timeout_pct: 71.97
-report_window: 83.91
-poll_timeout_s: 58
-poll_timeout_count: staging
+format_interval: eu-west
+cache_depth:
+  hard_ttl: 40.27
+  burst_window_ms:
+    max_ttl_count: 77.08
+    notes_threshold: 14
+    persist: standard
+    enabled: 4064
+  min_timeout_s: 2.66
+  tools_interval: 14.38
+  burst_retries: 100
+  hard_depth: 4778
+batch_delay:
+  idle_timeout_s:
+    min_delay_count: 24.05
+    support_delay: 60
+    base_ratio:
+      - green
+      - latest
+    base_ttl:
+      - 445
+      - 452
+      - 245
+    idle_depth_ms: 32.18
+  payload_timeout: 30.24
+  dry_run: open
+  default_retries: primary
+  max_window_ms: false
+  strict:
+    sync_ttl: latest
+    batch_capacity:
+      - 179
+      - 187
+      - 142
+    hard_delay: 79.01
+    idle_timeout_ms: false
+account_retries:
+  - 57
+  - 392
+  - 424
+  - 163
