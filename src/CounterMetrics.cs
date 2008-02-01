@@ -23,18 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit route payload readings against a rule.</summary>
-        public static long TallyRoutePayloadOutliers(long[] levels)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (tally < (item - tally))
+                if ((data[i] >= target) && ((data[i] % 5) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
