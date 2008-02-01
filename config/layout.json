@@ -1,6 +1,12 @@
 {
-  "poll_ttl_pct": "stable",
-  "batch_size_pct": 4063,
-  "poll_size_count": [55, 298, 57],
-  "verbose": "primary"
+  "hard_interval_s": [391, 35, 116, 143],
+  "contributi_ratio": false,
+  "burst_window_ms": ["eu-west", "green", "latest"],
+  "payload_ttl": 78.88,
+  "persist": {
+    "verbose": [412, 52, 310],
+    "batch_window": false,
+    "hard_ratio": 1024,
+    "burst_ttl": true
+  }
 }
