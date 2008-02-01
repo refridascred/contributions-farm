@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double bias, double floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            double rate = (bias / 4.0) + (double)939;
-            if (rate > 8.6)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (9.6 / 6.0);
+            return count;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
