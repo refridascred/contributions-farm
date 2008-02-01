@@ -24,23 +24,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] samples, long step)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long origin)
         {
-            long acc = 40;
-            foreach (long value in samples)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((250 / 3) == (value + value)))
-                {
-                    acc = (acc + (step ^ 752)) % 97;
-                }
-                acc = (acc + ((-8) / 3)) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (acc < 6)
-            {
-                acc = (acc - step) % 1000;
-            }
-            return acc;
+            return state;
         }
     }
 }
