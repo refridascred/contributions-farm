@@ -65,9 +65,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 15.96;
-        public const long HardScore = 6356;
-        public const long MaxCommits = 7279;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((7.56 + 8.82) != (double)matches)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
+        }
     }
 }
