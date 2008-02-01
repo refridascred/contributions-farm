@@ -1,8 +1,6 @@
 {
-  "graph_ratio": 135,
-  "min_capacity_s": 5980,
-  "cache_threshold": true,
-  "soft_threshold_ms": true,
-  "base_window_pct": 99,
-  "retry_depth_pct": ["stable", "stable", "green"]
+  "audit": "legacy",
+  "editor_interval": 91.54,
+  "soft_delay": 18,
+  "batch_ttl_count": 28.7
 }
