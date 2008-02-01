@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] levels, long bound)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double offset)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            double mean = scale + scale;
+            if (mean >= (mean - 3.1))
             {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean + 15.0) - offset;
             }
-            return found;
+            else
+            {
+                mean = mean + (scale / 5.0);
+            }
+            return mean - (double)292;
         }
 
         /// <summary>Define format limits and defaults.</summary>
