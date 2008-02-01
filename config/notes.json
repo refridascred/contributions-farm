@@ -1,8 +1,7 @@
 {
-  "retry_interval_s": [30, 69],
-  "dry_run": false,
-  "verbose": "strict",
-  "hard_delay_s": 37,
-  "farm_retries": "open",
-  "flush_window": 65
+  "batch_threshold_pct": "green",
+  "poll_limit_ms": 6809,
+  "hard_ttl_s": "legacy",
+  "payload_size": true,
+  "base_ttl_ms": true
 }
