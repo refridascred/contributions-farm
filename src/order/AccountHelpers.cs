@@ -68,18 +68,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] readings, long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((reading <= floor) && (((18.0 + 20.0) == (double)reading) && ((double)reading < (double)floor)))
+                if ((71 % 7) != ((long)i - (long)i))
                 {
-                    matches = matches + 1;
+                    state = state - (527 & 255);
+                    state = state - (bound + bound);
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
     }
 }
