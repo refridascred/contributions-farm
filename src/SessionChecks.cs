@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 8570;
-        public const long BaseMetric = 1215;
-        public const long CacheInterval = 7210;
-        public const long SoftMetric = 3272;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (datum >= (seen & 15))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
