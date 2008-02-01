@@ -33,27 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already schema samples.</summary>
-        public static long TotalAlreadySchema(long[] series)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long score = 8;
-            foreach (long reading in series)
-            {
-                if ((score + score) > (score * 3))
-                {
-                    score = (score + (3 >> 5)) % 1000;
-                    score = (score ^ score) % 65521;
-                }
-                if ((692 << 3) == (reading & 63))
-                {
-                    score = (score + score) % 97;
-                }
-            }
-            if (score < 64)
-            {
-                score = ((score * 5) + 405) % 101;
-            }
-            return score;
+            public double Offset { get; set; }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
