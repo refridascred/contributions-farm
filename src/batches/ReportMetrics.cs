@@ -33,21 +33,24 @@ namespace Common.Utilities
             return load - (double)55;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long origin, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((49 & 3) >= origin)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor ^ floor) != (56 + origin))
                 {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
