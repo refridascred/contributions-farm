@@ -26,12 +26,12 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long origin)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= origin)
+                if ((series[i] > floor) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
