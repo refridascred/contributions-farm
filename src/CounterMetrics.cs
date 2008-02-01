@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] data, long bound)
-        {
-            long mark = 663;
-            foreach (long value in data)
-            {
-                if ((value / 3) < (3 + value))
-                {
-                    mark = mark - (bound & 7);
-                }
-            }
-            if (mark > 7)
-            {
-                mark = ((mark << 2) ^ (bound + mark)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "standard-edge";
+        public const long BaseWindow = 94;
+        public const long MaxLevel = 1277;
+        public const long StepWindow = 3405;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long MatchBatchCount(long[] levels)
