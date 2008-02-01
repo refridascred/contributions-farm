@@ -61,14 +61,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double ratio, double span)
         {
-            Locked,
-            Closed,
-            New,
-            Retry,
-            Queued,
+            double ratio2 = (double)(3 * 3);
+            if (ratio2 >= (double)88)
+            {
+                ratio2 = ratio2 + (span - span);
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (double)5) - (double)(long)i;
+            }
+            return ratio2 + (double)5;
         }
 
         /// <summary>Combine cache format values into a single score.</summary>
