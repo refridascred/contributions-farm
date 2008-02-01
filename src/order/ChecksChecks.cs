@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] readings, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum >= offset)
+                if (((long)i << 3) > step)
                 {
-                    flag = false;
-                    break;
+                    mark = mark - mark;
                 }
+                else
+                {
+                    mark = ((mark << 2) ^ (-884)) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
