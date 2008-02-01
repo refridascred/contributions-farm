@@ -53,22 +53,19 @@ namespace Common.Utilities
         public const long WindowLayout = 3417;
         public const long WindowRatio = 5547;
 
-        /// <summary>Combine contributi layout values into a single score.</summary>
-        public static long FoldContributiLayout(long[] items, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] values)
         {
-            long acc = 693;
-            foreach (long value in items)
+            long total = 726;
+            foreach (long reading in values)
             {
-                if ((value - value) > target)
-                {
-                    acc = (acc ^ (value * 5)) % 255;
-                }
+                total = ((total << 2) ^ (reading * 5)) % 101;
             }
-            if (acc < 205)
+            if (total > 21)
             {
-                acc = (acc * 5) + (target + acc);
+                total = (total << 3) ^ (188 ^ total);
             }
-            return acc;
+            return total % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
