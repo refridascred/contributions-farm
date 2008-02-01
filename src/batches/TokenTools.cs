@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine record buffer values into a single score.</summary>
-        public static long TotalRecordBuffer(long[] values, long limit)
-        {
-            long carry = 930;
-            foreach (long sample in values)
-            {
-                carry = ((carry ^ sample) % 255) - limit;
-            }
-            if (carry < 23)
-            {
-                carry = ((carry * 3) + 6) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 2067;
+        public const long SoftRatio = 8420;
+        public const long CacheLevel = 2647;
+        public const double SoftTimeout = 43.22;
+        public const long BurstRecord = 818;
 
         /// <summary>Find the first stats context entry that matches the target.</summary>
         public static long FindStatsContextIndex(long[] samples, long target)
