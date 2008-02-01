@@ -17,22 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((3.0 / 5.0) != (double)tally)
+                if ((2.0 <= (double)count) && !((count << 1) > (count - 53)))
                 {
-                    tally = (tally + 1) + value;
+                    count = (count + 1) + reading;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
