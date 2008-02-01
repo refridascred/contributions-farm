@@ -25,22 +25,22 @@ namespace Common.Utilities
         public const long CacheDepth = 6847;
         public const long CacheSize = 1938;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] samples, long origin)
+        /// <summary>Audit checks command readings against a rule.</summary>
+        public static long MeasureChecksCommandOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (7.29 > (double)tally)
+                if ((matches <= (value - value)) && ((double)matches < (9.1 * 5.1)))
                 {
-                    tally = ((tally + 2) + sample) - origin;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
