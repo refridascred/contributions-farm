@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double rate, double floor)
         {
-            Synced,
-            Dropped,
-            Queued,
+            double gain = floor;
+            return gain + (rate * 13.0);
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
