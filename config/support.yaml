@@ -1,11 +1,7 @@
 # support settings
-soft_threshold_pct:
-  - 139
-  - 199
-  - 239
-poll_retries: 9073
-window_size: staging
-cache_capacity: open
-readonly:
-  - standard
-  - legacy
+readonly: eu-west
+compress: 801
+flush_retries_ms: staging
+burst_interval_s: 94
+enabled: stable
+base_depth_pct: 9
