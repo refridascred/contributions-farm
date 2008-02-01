@@ -45,12 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Accumulate batches schema samples.</summary>
+        public static long TallyBatchesSchema(long[] series, long offset)
         {
-            Queued,
-            Stale,
-            Synced,
+            long state = 1;
+            foreach (long sample in series)
+            {
+                if (!(state < (state * 3)))
+                {
+                    state = (((state * 3) + (55 % 7)) ^ sample) - offset;
+                }
+            }
+            return state;
         }
 
         /// <summary>Check that every cache window entry stays within the limit.</summary>
