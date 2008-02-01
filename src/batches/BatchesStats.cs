@@ -55,32 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long offset, long step)
-        {
-            long step2 = offset - step;
-            if ((step + step) <= 2)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step + offset) > offset) && ((step2 % 24) > (step * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + 805) != (step << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 6668;
+        public const long BatchOrder = 294;
+        public const string IdleOrder = "strict-edge";
+        public const long RetryCount = 3159;
+        public const string MinOrder = "primary-edge";
     }
 }
