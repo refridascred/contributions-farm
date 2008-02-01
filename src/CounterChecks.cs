@@ -46,26 +46,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long sum = -486;
-            foreach (long sample in readings)
-            {
-                if (((sum / 9) > sum) && (sum >= (sample + sample)))
-                {
-                    sum = sum - sum;
-                }
-                else
-                {
-                    sum = sum + sum;
-                }
-            }
-            if (sum > (-7))
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum;
+            Draft,
+            Closed,
+            Failed,
         }
 
         /// <summary>Look up the position of a layout batches sample.</summary>
