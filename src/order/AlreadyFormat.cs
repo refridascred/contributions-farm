@@ -36,15 +36,26 @@ namespace Common.Utilities
             return ratio + (offset * 4.0);
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long result = -3;
+            foreach (long sample in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((double)61 != (double)sample)
+                {
+                    result = (result + (8 >> 4)) % 101;
+                }
+                if ((result - sample) <= result)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (result < (-18))
+            {
+                result = (result + (result * 3)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
