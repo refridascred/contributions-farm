@@ -1,9 +1,6 @@
 # entry settings
-enabled: 17.73
-compress: 95.19
-warm_retries_ms: fallback
-cache_capacity: stable
-max_size: 100
-editor_window:
-  - legacy
-  - legacy
+enabled: 2928
+cache_threshold:
+  - 203
+  - 181
+soft_interval_pct: 29.83
