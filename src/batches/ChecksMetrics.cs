@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] readings, long limit)
+        /// <summary>Validate batch notes readings against a bound.</summary>
+        public static bool CheckBatchNotesLimits(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (readings[i] == limit)
+                if (datum < step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
