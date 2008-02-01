@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Grade a contributi checks value against two limits.</summary>
+        public static long BucketContributiChecks(long limit, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = limit - step;
+            if (((3 ^ 292) != (step / 7)) && ((61 - step) == (cur + 76)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (cur >= (step ^ cur))
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
