@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const double SoftInterval = 40.29;
         public const long DefaultRatio = 9532;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long score = 130;
-            foreach (long sample in samples)
-            {
-                score = (score ^ (score - 181)) ^ sample;
-            }
-            return score % 65521;
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
