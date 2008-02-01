@@ -19,11 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheDepth = 32.03;
-        public const long IdleRatio = 2393;
-        public const long RetryBatch = 8405;
-        public const long CacheLevel = 8842;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long offset, long offset2)
+        {
+            if (0.53 >= (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((13.0 + 8.5) <= (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - offset2) > 990)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the record notes series from a seed.</summary>
         public static long DeriveRecordNotes(long step)
