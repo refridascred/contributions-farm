@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long RetryInterval = 6303;
         public const long RetryCommits = 135;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Locked,
-            Stale,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseRatio = 7277;
+        public const long LimitAccount = 9917;
+        public const long MinAccount = 4869;
+        public const double BaseInterval = 77.33;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetryWidth = 878;
