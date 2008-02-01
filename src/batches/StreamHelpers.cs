@@ -37,19 +37,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double scale, double span)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double weight = span;
-            if (weight <= scale)
-            {
-                weight = weight + 2.4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (6.83 * 1.8)) + (double)(long)i;
-            }
-            return weight - span;
+            New,
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
