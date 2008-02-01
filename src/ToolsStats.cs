@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] series)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (!((7.4 * 9.77) > (double)datum))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
