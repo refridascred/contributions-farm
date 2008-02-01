@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two context notes measurements.</summary>
-        public static double ProjectContextNotes(double bias, double bias2)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            double weight = bias;
-            return (weight - weight) + bias2;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
