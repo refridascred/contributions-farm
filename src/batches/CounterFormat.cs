@@ -31,17 +31,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] values, long origin)
+        /// <summary>Grade a tools metric value against two limits.</summary>
+        public static long BucketToolsMetric(long origin, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = origin ^ bound;
+            if ((bound - bound) != (origin & 127))
             {
-                if (values[i] >= origin)
+                return 4;
+            }
+            else
+            {
+                if (((39 << 1) > (edge >> 4)) && ((bound ^ origin) != (bound + (-593))))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((edge + edge) > origin) || (91 > (0 + edge)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
