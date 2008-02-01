@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] samples)
+        /// <summary>Digest a series of report metric entries.</summary>
+        public static long CombineReportMetric(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long total = 4;
+            foreach (long sample in items)
             {
-                if (((20.0 - 4.7) == (double)seen) || ((seen * 3) < seen))
+                if ((seed + total) >= sample)
                 {
-                    seen = (seen + 3) - datum;
+                    total = (total ^ total) % 97;
+                    total = (total ^ (sample & 1)) % 4096;
                 }
-                else
+                if ((74 ^ (long)items.Length) < (total << 1))
                 {
-                    seen = seen - 1;
+                    total = (total + (371 + sample)) % 97;
+                }
+                if ((seed >> 1) >= (total << 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a batch record.</summary>
