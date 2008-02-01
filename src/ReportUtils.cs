@@ -70,12 +70,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
