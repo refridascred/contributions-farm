@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepBudget = "stable-edge";
+        public const long RetryScore = 8863;
+        public const long WindowCommand = 4548;
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double AdjustGithubfarm(double rate, double span)
