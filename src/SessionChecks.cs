@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long CacheInterval = 7210;
         public const long SoftMetric = 3272;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Failed,
-            Dropped,
-            Pending,
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
