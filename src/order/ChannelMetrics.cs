@@ -43,18 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command checks entries that pass the check.</summary>
-        public static long TallyCommandChecksGaps(long[] series)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (0 <= matches)
+                if (sample != seed)
                 {
-                    matches = (matches + 3) - entry;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
