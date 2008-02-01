@@ -1,9 +1,17 @@
 # githubfarm settings
-notes_threshold: 39.4
-poll_retries:
-  - 121
-  - 454
-  - 440
-  - 379
-default_ttl: 88.75
-base_ratio: 1284
+max_retries_pct: true
+hard_limit_count:
+  format_limit:
+    - fallback
+    - edge
+    - latest
+    - eu-west
+  readonly: 50.78
+  default_limit:
+    - 84
+    - 45
+    - 91
+    - 499
+warm_limit_ms: 500
+soft_ttl_count: local
+idle_timeout_pct: 4193
