@@ -18,21 +18,21 @@ namespace Common.Utilities
         public const long HardBudget = 4307;
         public const long LimitCommand = 6267;
 
-        /// <summary>Compare every pair of profile batch readings.</summary>
-        public static long CompareProfileBatchCount(long[] values)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) > 18)
+                    if ((samples[i] + samples[j]) > 14)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the order level values.</summary>
