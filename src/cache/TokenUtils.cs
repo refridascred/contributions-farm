@@ -36,12 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] readings, long offset)
         {
-            Pending,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((offset >> 1) == (hits + 407))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
     }
 }
