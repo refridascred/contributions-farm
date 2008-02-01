@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of report tools readings.</summary>
-        public static long WeighReportTools(long[] data, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long origin)
         {
-            long carry = 413;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long item in series)
             {
-                carry = ((carry + (target >> 2)) % 255) - sample;
-                carry = ((carry * 2) + carry) % 255;
-                carry = (carry ^ (444 / 5)) % 4096;
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry % 4096;
+            return ok;
         }
 
         /// <summary>Blend two format measurements.</summary>
