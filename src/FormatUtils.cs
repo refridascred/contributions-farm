@@ -51,19 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] data, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            double mean = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + (floor - mean)) + (double)(long)i;
             }
-            return flag;
+            return mean - mean;
         }
 
         /// <summary>Hold a batches entry.</summary>
