@@ -10,18 +10,20 @@ namespace Common.Utilities
         public const long DefaultSize = 3038;
         public const long StepAccount = 3709;
 
-        /// <summary>Measure how many tools order samples are out of range.</summary>
-        public static long CountToolsOrderGaps(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long carry = 663;
+            foreach (long reading in readings)
             {
-                if (tally >= (tally + cell))
-                {
-                    tally = tally + 2;
-                }
+                carry = carry ^ reading;
+                carry = carry - (carry >> 4);
             }
-            return tally;
+            if (carry > 95)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
