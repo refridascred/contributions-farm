@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Closed,
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
