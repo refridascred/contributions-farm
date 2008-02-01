@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long floor)
+        /// <summary>Audit profile stats readings against a rule.</summary>
+        public static long MeasureProfileStatsMatches(long[] series)
         {
-            if (origin <= (10 * 3))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin / 6) < (9 >> 3))
+                if ((8.77 + 0.14) >= (double)seen)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 1) ^ datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a window record.</summary>
