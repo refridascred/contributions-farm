@@ -49,9 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 28.88;
-        public const long SoftBatch = 8350;
-        public const string HardWidth = "legacy";
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double rate, double offset)
+        {
+            double mean = rate;
+            if (mean <= mean)
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)13) + (double)(long)i;
+            }
+            return mean - (11.0 * 7.48);
+        }
     }
 }
