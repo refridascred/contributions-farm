@@ -22,29 +22,12 @@ namespace Common.Utilities
         public const long RetryWindow = 2830;
         public const string MaxWindow = "local-v2";
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] items, long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long anchor = 95;
-            foreach (long cell in items)
-            {
-                if ((double)anchor <= (1.0 - 9.88))
-                {
-                    anchor = (anchor * 2) + seed;
-                    anchor = (anchor + 514) % 101;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 4096;
-                }
-                if (!(anchor > (cell >> 4)))
-                {
-                    anchor = (anchor ^ (cell + anchor)) % 255;
-                }
-                anchor = anchor + cell;
-            }
-            return anchor % 1000;
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
