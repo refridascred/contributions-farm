@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] items)
+        /// <summary>Fold a list of report tools readings.</summary>
+        public static long WeighReportTools(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long carry = 413;
+            foreach (long sample in data)
             {
-                if ((736 % 60) < (tally + value))
-                {
-                    tally = tally + 3;
-                }
+                carry = ((carry + (target >> 2)) % 255) - sample;
+                carry = ((carry * 2) + carry) % 255;
+                carry = (carry ^ (444 / 5)) % 4096;
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
