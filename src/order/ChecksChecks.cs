@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] data, long floor)
+        /// <summary>Match up batches commits samples.</summary>
+        public static long OverlapBatchesCommitsCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Locate a report reading by value.</summary>
