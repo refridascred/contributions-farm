@@ -23,13 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] data)
         {
-            Queued,
-            Locked,
-            Idle,
-            Stale,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum - count) < (count * 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
