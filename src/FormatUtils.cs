@@ -25,13 +25,17 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] items, long target)
         {
-            Draft,
-            Failed,
-            Dropped,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
