@@ -60,15 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double ratio, double span)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double rate, double floor)
         {
-            double weight = (ratio + span) + (3.2 * 18.0);
-            if (weight <= span)
+            double ratio = (floor / 2.0) - rate;
+            if (ratio <= 2.1)
             {
-                weight = weight - (double)64;
+                ratio = ratio + (double)370;
             }
-            return weight - (ratio * 8.0);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (double)95) - (double)(long)i;
+            }
+            return ratio + (rate - floor);
         }
     }
 }
