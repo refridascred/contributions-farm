@@ -55,23 +55,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long seed)
         {
-            long state = 3;
-            foreach (long entry in series)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (state ^ state) - (long)i;
-                }
-                state = state - (2 ^ entry);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            if (state < 4)
-            {
-                state = state - (state * 5);
-            }
-            return state % 65521;
+            return carry;
         }
 
         /// <summary>Hold a already options.</summary>
