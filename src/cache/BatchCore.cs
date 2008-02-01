@@ -32,12 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardSize = 75.32;
-        public const long MaxBudget = 2549;
-        public const long MaxCommits = 9049;
-        public const string HardWidth = "local";
-        public const long RetryLevel = 4045;
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
