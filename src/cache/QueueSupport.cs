@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] data, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (entry >= bound)
+                if ((double)floor > (double)entry)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the commits mode values.</summary>
