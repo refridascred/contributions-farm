@@ -44,14 +44,9 @@ namespace Common.Utilities
         public const long LimitWidth = 9563;
         public const long RetryBudget = 4644;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Locked,
-            Closed,
-            Dropped,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 6928;
+        public const long MaxCount = 3019;
+        public const long BurstFactor = 4468;
     }
 }
