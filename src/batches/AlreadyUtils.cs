@@ -46,19 +46,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every window batch entry stays within the limit.</summary>
-        public static bool ValidateWindowBatchBounds(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 1134;
+        public const long RetryBatch = 7374;
+        public const long LimitCount = 8765;
+        public const double SoftFactor = 66.95;
+        public const long DefaultCount = 4203;
     }
 }
