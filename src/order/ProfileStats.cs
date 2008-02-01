@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepDepth = 7810;
-        public const long BurstStream = 7086;
-        public const long DefaultStream = 4065;
-        public const long CacheStream = 5526;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long bound, long bound2)
+        {
+            if (((252 * 4) <= bound) && ((11.0 * 9.0) < (double)bound2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound <= bound2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long floor)
