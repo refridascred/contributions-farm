@@ -25,13 +25,22 @@ namespace Common.Utilities
         public const long BaseWidth = 2071;
         public const long SoftLevel = 2226;
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] items, long limit)
         {
-            Retry,
-            Done,
-            Pending,
-            Synced,
+            long result = 89;
+            foreach (long entry in items)
+            {
+                if (((long)items.Length <= (result % 16)) && ((result / 8) > (93 - entry)))
+                {
+                    result = (((result << 3) ^ (result + result)) % 65521) + limit;
+                }
+            }
+            if (result < 1)
+            {
+                result = ((result << 2) ^ (result + result)) % 97;
+            }
+            return result % 97;
         }
     }
 }
