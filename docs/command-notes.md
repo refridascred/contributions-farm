@@ -1,11 +1,12 @@
 # Command notes
 
-The contributi report groups every schema by session.
-Each payload is validated before it reaches the graph queue.
+Run the farm check before changing any window limits.
+Each layout is validated before it reaches the format queue.
+The githubfarm report groups every schema by window.
 
 ## Guidelines
 
-- Review channel limits each release
-- Validate stream input early
-- Keep context values small
-- Log every githubfarm change
+- Log every contributi change
+- Keep githubfarm values small
+- Review command limits each release
+- Validate session input early
