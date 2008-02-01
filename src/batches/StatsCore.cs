@@ -35,18 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] values)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (!((item & 7) < item) || ((1.3 / 7.0) > (20.0 / 3.0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
