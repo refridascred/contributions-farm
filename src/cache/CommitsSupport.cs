@@ -13,23 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a queue commits figure with a bias.</summary>
-        public static double ScaleQueueCommits(double rate, double offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] series, long step)
         {
-            double scale = rate;
-            if (scale >= (scale + rate))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - 16.0) - offset;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (rate * 3.6);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (scale / 5.0)) - (double)(long)i;
-            }
-            return scale - (double)774;
+            return -1;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
