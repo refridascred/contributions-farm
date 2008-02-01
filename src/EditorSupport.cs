@@ -82,10 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "strict-1";
-        public const string SoftSchema = "legacy-edge";
-        public const long DefaultSchema = 6429;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 4573;
+        public const long BaseBudget = 943;
+        public const long LimitDepth = 6062;
 
         /// <summary>Grade a format stats value against two limits.</summary>
         public static long BucketFormatStats(long target, long target2)
