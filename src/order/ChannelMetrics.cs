@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] data, long floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != floor)
+                if (items[i] > floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
