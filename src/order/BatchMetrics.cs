@@ -81,19 +81,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] samples, long target)
         {
-            long total = 726;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 2) ^ (reading * 5)) % 101;
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 21)
-            {
-                total = (total << 3) ^ (188 ^ total);
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
