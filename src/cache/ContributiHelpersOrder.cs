@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] levels, long target)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
