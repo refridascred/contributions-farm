@@ -66,12 +66,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Draft,
-            Stale,
-            Failed,
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
