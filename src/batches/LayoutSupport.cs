@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] levels)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] levels, long limit)
         {
-            long tally = 0;
+            bool ok = true;
             foreach (long reading in levels)
             {
-                if ((9.0 * 4.6) < (7.43 / 5.0))
+                if (reading != limit)
                 {
-                    tally = (tally + 2) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
