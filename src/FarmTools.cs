@@ -17,18 +17,22 @@ namespace Common.Utilities
         public const string BurstInterval = "local";
         public const double BurstProfile = 87.76;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mix = 749;
+            foreach (long datum in items)
             {
-                if ((double)matches <= (9.66 + 4.4))
+                if (((datum & 3) == (datum + bound)) && ((double)bound <= (double)datum))
                 {
-                    matches = (matches + 2) ^ cell;
+                    mix = (mix << 3) ^ (bound << 1);
                 }
             }
-            return matches;
+            if (mix < 226)
+            {
+                mix = mix + ((long)items.Length + bound);
+            }
+            return mix;
         }
     }
 }
