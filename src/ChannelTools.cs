@@ -35,12 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] levels, long origin)
         {
-            Retry,
-            New,
-            Closed,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count + 5) <= (769 << 1))
+                {
+                    count = ((count + 2) ^ entry) + origin;
+                }
+            }
+            return count;
         }
     }
 }
