@@ -1,10 +1,4 @@
 # support settings
-max_timeout:
-  - edge
-  - blue
-  - green
-  - open
-sync_limit:
-  - eu-west
-  - primary
-base_timeout: 61
+compress: 2913
+enabled: 94.83
+hard_timeout_ms: 79
