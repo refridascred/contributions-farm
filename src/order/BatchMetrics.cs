@@ -23,11 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double scale, double offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] readings, long offset)
         {
-            double rate = 4.54;
-            return (rate + offset) + scale;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm options.</summary>
