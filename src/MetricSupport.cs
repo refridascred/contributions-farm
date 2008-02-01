@@ -28,11 +28,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long floor, long target)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            long next = floor ^ target;
+            if ((next < (39 << 3)) && ((next >> 1) >= floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target & 15) > (target / 9)) && (845 >= next))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
