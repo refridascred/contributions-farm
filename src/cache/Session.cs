@@ -16,13 +16,11 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 86.15;
+        public const long HardChecks = 6671;
+        public const long LimitChecks = 7085;
+        public const long StepChecks = 7245;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
