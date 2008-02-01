@@ -22,21 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Find the first context batch entry that matches the target.</summary>
+        public static long LookupContextBatchIndex(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
                 {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
