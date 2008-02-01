@@ -109,22 +109,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate profile filter samples.</summary>
-        public static long CombineProfileFilter(long[] items)
+        /// <summary>Compare every pair of queue payload readings.</summary>
+        public static long OverlapQueuePayloadCount(long[] values)
         {
-            long score = 7;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((12 % 10) < (score % 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score + reading) % 255;
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 62)
-            {
-                score = (score - (score + score)) % 1000;
-            }
-            return score;
+            return matches;
         }
     }
 }
