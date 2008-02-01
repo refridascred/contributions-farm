@@ -1,6 +1,6 @@
 {
-  "flush_ttl_pct": false,
-  "burst_interval_ms": true,
-  "checks_delay": ["latest", "green", "latest", "edge"],
-  "default_ttl_s": 18.82
+  "report_size": 38.65,
+  "batch_depth_count": [108, 279],
+  "cache_timeout": 5665,
+  "sync_delay_s": 84.96
 }
