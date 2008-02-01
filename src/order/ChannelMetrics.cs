@@ -43,22 +43,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (item < (matches << 2))
+                if ((tally + tally) > (tally >> 5))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
