@@ -30,19 +30,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double rate, double span)
+        /// <summary>Validate notes context readings against a bound.</summary>
+        public static bool ValidateNotesContextLimits(long[] items, long target)
         {
-            double rate2 = rate / 2.0;
-            if (rate2 >= span)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                rate2 = rate2 + (rate2 - rate2);
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + (rate2 / 3.0)) + (double)(long)i;
-            }
-            return rate2 - (rate + rate);
+            return ready;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
