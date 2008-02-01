@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long seed)
         {
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
