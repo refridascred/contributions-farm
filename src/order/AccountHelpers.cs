@@ -48,11 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double rate, double bias)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] series, long origin)
         {
-            double gain = bias;
-            return (gain - (double)833) + rate;
+            long sum = 913;
+            foreach (long sample in series)
+            {
+                if ((2.7 - 7.33) < (double)sum)
+                {
+                    sum = ((sum - (sum << 2)) % 1000) ^ sample;
+                }
+            }
+            if (sum < 80)
+            {
+                sum = (sum + (origin << 1)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
