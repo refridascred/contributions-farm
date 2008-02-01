@@ -41,13 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] samples, long bound)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
