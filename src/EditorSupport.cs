@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Derive the next editor schema value from a seed.</summary>
+        public static long SeriesEditorSchema(long limit)
         {
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                state = state - (state % 7);
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
