@@ -1,19 +1,15 @@
 # support settings
-dry_run: true
-poll_retries_s: true
-max_retries_count:
-  retry_size_s:
-    - 281
-    - 197
-    - 38
-    - 14
-  persist: standard
-  graph_window: 7665
-  cache_ttl_s:
-    verbose: 24
-    min_capacity_count: primary
-    strict: green
-    warm_ratio_ms: stable
-  batch_interval: cached
-metrics_capacity: edge
-counter_retries: false
+base_interval:
+  - 120
+  - 270
+  - 67
+cache_ttl:
+  filter_capacity: blue
+  compress: false
+  max_capacity_pct: strict
+  default_ttl_count: true
+  flush_limit: 44.31
+  metrics_ttl: 250
+route_timeout: local
+sync_window_s: 100
+queue_ttl: 30
