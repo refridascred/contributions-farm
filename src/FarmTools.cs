@@ -27,21 +27,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark ^ 574) % 4096;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
     }
 }
