@@ -52,31 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long bound, long step)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            if ((step - (-4)) < (step >> 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step % 10) <= (58 >> 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (377 > (step ^ step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit session tools readings against a rule.</summary>
