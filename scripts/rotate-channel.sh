@@ -6,22 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
 for i in $(seq 1 9); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in strict cached; do
+for item in open edge cached; do
     log "checking ${item}"
 done
+
+mode="${1:-primary}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
