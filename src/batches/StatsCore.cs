@@ -68,12 +68,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 12.13;
-        public const long MinQueue = 720;
-        public const string RetryQueue = "fallback-v2";
-        public const long MaxInterval = 8745;
-        public const long BurstWidth = 7785;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] levels, long origin)
