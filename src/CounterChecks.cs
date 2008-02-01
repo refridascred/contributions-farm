@@ -55,38 +55,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] values, long origin)
         {
-            if ((target + target) != (5 - seed))
+            long mark = 27;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target % 7) <= (40 + seed))
+                mark = mark + (816 & 15);
+                if (origin < item)
                 {
-                    return 8;
+                    mark = (mark + origin) % 97;
                 }
-                else
+                if (((item << 2) < (mark / 7)) || ((20.0 - 5.9) < (double)item))
                 {
-                    if (target < (seed << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed / 8) <= (seed & 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = (mark ^ (415 << 3)) % 1000;
                 }
             }
+            if (mark > (-478))
+            {
+                mark = ((mark << 3) ^ (mark - mark)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Accumulate filter samples.</summary>
