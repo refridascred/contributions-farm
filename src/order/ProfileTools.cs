@@ -33,24 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double rate, double offset)
-        {
-            double drift = rate;
-            if (drift > (rate + 19.0))
-            {
-                drift = (drift - (rate / 6.0)) + offset;
-            }
-            else
-            {
-                drift = drift - 5.1;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + 4.5) + (double)(long)i;
-            }
-            return drift - (double)706;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinSize = 9733;
+        public const string WindowQueue = "strict-edge";
+        public const double SoftQueue = 48.9;
+        public const long IdleQueue = 6382;
+        public const long BaseQueue = 9586;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double AdjustRecord(double gain, double floor)
