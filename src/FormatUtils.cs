@@ -32,25 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long offset, long seed)
-        {
-            if ((seed / 8) < seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) != (seed / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 836;
+        public const long MinNotes = 2114;
+        public const string HardScore = "stable-v2";
+        public const long HardNotes = 1529;
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double SmoothBatch(double bias, double floor)
