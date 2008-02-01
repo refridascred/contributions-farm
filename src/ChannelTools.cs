@@ -33,18 +33,11 @@ namespace Common.Utilities
             return weight + 9.2;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] levels, long origin)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count + 5) <= (769 << 1))
-                {
-                    count = ((count + 2) ^ entry) + origin;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
