@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const long WindowOrder = 1640;
         public const long BaseSize = 9747;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count the command checks entries that pass the check.</summary>
+        public static long TallyCommandChecksGaps(long[] series)
         {
-            public bool Region { get; set; }
-            public double Level { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (0 <= matches)
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
     }
 }
