@@ -55,22 +55,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] data, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long acc = 351;
+            foreach (long datum in items)
             {
-                if ((reading / 2) < (limit * 4))
+                if ((double)datum <= 2.81)
                 {
-                    seen = seen + 3;
+                    acc = acc - (step - step);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    acc = (acc << 3) ^ datum;
                 }
             }
-            return seen;
+            if (acc < 0)
+            {
+                acc = (acc ^ (acc - (long)items.Length)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
