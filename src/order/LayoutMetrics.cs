@@ -14,13 +14,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
