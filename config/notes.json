@@ -1,6 +1,18 @@
 {
-  "cache_retries": 7908,
-  "max_window_s": "open",
-  "support_interval": 68.11,
-  "soft_interval_ms": ["legacy", "stable", "latest", "legacy"]
+  "min_threshold": false,
+  "persist": [353, 471],
+  "sync_retries": 34,
+  "default_size_pct": "strict",
+  "enabled": {
+    "soft_size_s": {
+      "sync_size_count": 44.95,
+      "strict": "eu-west",
+      "batch_timeout_s": "standard",
+      "hard_ttl_count": ["edge", "latest", "latest"],
+      "poll_capacity_s": false
+    },
+    "cache_delay": [438, 315, 430, 477],
+    "buffer_size": 31
+  },
+  "burst_ttl_count": 100
 }
