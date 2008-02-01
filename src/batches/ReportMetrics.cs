@@ -32,13 +32,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] readings)
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            long carry = 64;
+            foreach (long datum in readings)
+            {
+                if (((datum % 12) > (51 << 3)) || (carry >= (long)readings.Length))
+                {
+                    carry = (carry * 3) + (carry - carry);
+                }
+                if (((6.0 / 7.0) == (double)datum) && (datum >= (datum ^ (-670))))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
