@@ -31,9 +31,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 561;
-        public const long MaxReport = 951;
-        public const long IdleFactor = 13;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
