@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 7786;
-        public const long BatchRatio = 1932;
-        public const long RetryWindow = 2649;
-        public const long SoftWindow = 164;
-        public const long MinWindow = 9570;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(((double)offset <= 16.0) && (((long)i + 2) > 98)))
+                {
+                    mix = mix ^ ((long)i * 5);
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double RetrySupport = 96.13;
