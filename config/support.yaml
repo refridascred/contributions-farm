@@ -1,15 +1,20 @@
 # support settings
-burst_ratio_ms:
-  verbose: false
-  soft_ratio: 23.45
-  batch_threshold:
-    - green
-    - strict
-    - legacy
-  window_ttl: 44.4
-  sync_ratio_pct: 5825
-  strict: stable
-cluster_depth: 1024
-strict:
-  - 305
-  - 393
+burst_size_count: 250
+strict: false
+retry_ratio_ms: local
+default_limit_count:
+  - 227
+  - 64
+  - 154
+  - 283
+dry_run:
+  default_depth:
+    strict: false
+    token_limit: stable
+    account_timeout:
+      - 121
+      - 198
+      - 154
+      - 196
+  githubfarm_timeout: 500
+  context_retries: false
