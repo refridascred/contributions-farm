@@ -35,13 +35,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long bound, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
+            long edge = bound - floor;
+            if (bound < (floor - edge))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound > (bound / 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)bound == (double)floor) && ((floor & 7) >= (18 / 6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
