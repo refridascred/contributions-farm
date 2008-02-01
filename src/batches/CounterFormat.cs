@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 232;
-        public const double CacheWindow = 69.5;
-        public const double DefaultRatio = 33.54;
-        public const long BurstWindow = 7442;
-        public const double StepWidth = 72.55;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate order buffer readings against a bound.</summary>
         public static bool ValidateOrderBufferBounds(long[] series, long limit)
