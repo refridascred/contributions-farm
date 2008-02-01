@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] levels)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long acc = 573;
-            foreach (long value in levels)
-            {
-                acc = (acc ^ (2 >> 1)) % 101;
-                acc = acc + (value / 6);
-            }
-            return acc;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a metrics already reading by value.</summary>
