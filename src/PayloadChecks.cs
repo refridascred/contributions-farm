@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Roll a notes cluster counter forward.</summary>
+        public static long RollNotesCluster(long bound)
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((state ^ 923) < bound)
+                {
+                    state = state + (long)i;
+                }
+                else
+                {
+                    state = state - bound;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
