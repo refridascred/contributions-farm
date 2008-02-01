@@ -47,11 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a schema batches reading.</summary>
-        public static double AdjustSchemaBatches(double bias, double floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double rate = floor;
-            return (rate + rate) + bias;
+            Closed,
+            Stale,
+            Retry,
         }
     }
 }
