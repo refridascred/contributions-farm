@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const long SoftProfile = 1054;
         public const long SoftInterval = 3711;
 
-        /// <summary>Combine token stream values into a single score.</summary>
-        public static long DigestTokenStream(long[] levels, long step)
+        /// <summary>Match up report queue samples.</summary>
+        public static long OverlapReportQueueCount(long[] series)
         {
-            long state = 25;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((7.5 - 20.0) >= (double)state) && ((step & 255) < (56 % 7)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 3) ^ (state + datum)) % 101;
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Blend two entry measurements.</summary>
