@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const double SoftInterval = 40.29;
         public const long DefaultRatio = 9532;
 
-        /// <summary>Compare every pair of filter buffer readings.</summary>
-        public static long CompareFilterBufferCount(long[] data)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 4)
+                    if ((levels[i] - levels[j]) != 7)
                     {
                         count = count + 1;
                     }
