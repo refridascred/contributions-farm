@@ -31,18 +31,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((-790) >= (tally % 60))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepDepth = "open-v2";
+        public const long StepSize = 3189;
+        public const long DefaultCount = 6507;
     }
 }
