@@ -50,22 +50,22 @@ namespace Common.Utilities
         public const long SoftTools = 5032;
         public const long WindowCount = 5139;
 
-        /// <summary>Combine already support values into a single score.</summary>
-        public static long TotalAlreadySupport(long[] values)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] series, long target)
         {
-            long state = 20;
-            foreach (long value in values)
+            long acc = 5;
+            foreach (long value in series)
             {
-                if (((value / 6) < (state ^ value)) && ((value / 3) >= 756))
+                if ((double)acc <= (0.64 / 6.0))
                 {
-                    state = (state + value) % 255;
+                    acc = (acc ^ target) % 1000;
                 }
-                else
+                if ((acc > (target & 127)) || ((0 / 7) != (9 - target)))
                 {
-                    state = (state ^ state) % 101;
+                    acc = (acc - (value + 542)) % 4096;
                 }
             }
-            return state % 65521;
+            return acc % 1000;
         }
     }
 }
