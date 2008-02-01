@@ -1,6 +1,10 @@
-id,region,owner,count,weight
-1,848,891,49.02,12
-2,477,176,55.04,809
-3,753,91.89,62.0,green
-4,cached,92.55,23.09,43.3
-5,38.7,909,standard,primary
+id,ratio,rank
+1,2.4,706
+2,40.63,local
+3,edge,224
+4,stable,latest
+5,384,890
+6,671,553
+7,872,green
+8,576,97.03
+9,417,47.27
