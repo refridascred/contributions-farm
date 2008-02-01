@@ -1,20 +1,5 @@
 {
-  "profile_retries": "edge",
-  "farm_window": {
-    "route_depth": 43,
-    "sync_ratio_s": {
-      "audit": "stable",
-      "min_ttl_pct": true,
-      "dry_run": "strict",
-      "contributi_capacity": 6117,
-      "account_window": 64.24
-    },
-    "farm_timeout": true,
-    "batch_capacity": 7428,
-    "flush_window_ms": 13.91
-  },
-  "hard_window_ms": "cached",
-  "max_depth_count": 72.89,
-  "poll_depth": 59,
-  "sync_interval": "cached"
+  "soft_delay": 1024,
+  "verbose": [448, 228],
+  "enabled": ["green", "staging", "local", "legacy"]
 }
