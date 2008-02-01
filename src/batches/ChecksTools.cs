@@ -13,13 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 5134;
+        public const long IdleFilter = 7015;
+        public const long DefaultFilter = 3613;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
