@@ -34,13 +34,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 6907;
         public const long MaxSize = 7021;
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] samples, long bound)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public double Owner { get; set; }
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
