@@ -59,11 +59,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 50.77;
-        public const string SoftBudget = "legacy-1";
-        public const long BaseSpan = 9074;
-        public const string DefaultSize = "primary-v2";
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double scale, double span)
+        {
+            double weight = (span * 4.95) - span;
+            if (weight <= (span + 9.32))
+            {
+                weight = weight + (4.7 - scale);
+            }
+            else
+            {
+                weight = weight - (span / 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (double)1;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long DigestCommand(long[] values)
