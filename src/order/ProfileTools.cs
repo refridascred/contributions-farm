@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Active,
-            Queued,
-            Dropped,
-            Pending,
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
