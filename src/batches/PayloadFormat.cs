@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long limit, long target)
-        {
-            if ((target + target) == (limit - limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit & 1) != (target - 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + limit) <= (target - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit + 44) > target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 5702;
+        public const string MinTimeout = "staging-v2";
+        public const long LimitSpan = 1837;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long ScoreChecks(long[] data)
