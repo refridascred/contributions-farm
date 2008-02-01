@@ -41,25 +41,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long state = 505;
-            foreach (long datum in values)
-            {
-                long count = datum;
-                if ((state >> 1) < (count - 49))
-                {
-                    state = (state << 2) ^ state;
-                    continue;
-                }
-                state = (state ^ (datum & 15)) % 65521;
-            }
-            if (state < 337)
-            {
-                state = ((state * 3) + state) % 1000;
-            }
-            return state;
+            Idle,
+            Paused,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a batches summary.</summary>
