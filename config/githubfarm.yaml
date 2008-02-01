@@ -1,4 +1,7 @@
 # githubfarm settings
-token_retries: 70.29
-idle_limit: 504
-retry_limit_s: false
+poll_retries_pct: true
+hard_interval_ms: open
+batch_size: 100
+compress: 96
+idle_capacity: green
+max_interval_ms: true
