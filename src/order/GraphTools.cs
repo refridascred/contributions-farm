@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "legacy";
-        public const long RetryFormat = 5423;
-        public const double DefaultTimeout = 64.12;
-        public const long IdleSpan = 2323;
-        public const double IdleInterval = 24.08;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long step, long limit)
+        {
+            long next = step + limit;
+            if ((step > next) && (limit < (limit ^ step)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)6 == (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((next >> 2) == (step * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((next < (590 ^ limit)) || ((limit / 2) > next))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportOutliers(long[] values)
