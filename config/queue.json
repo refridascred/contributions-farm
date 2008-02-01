@@ -1,15 +1,14 @@
 {
-  "account_window": 1024,
-  "batch_depth_count": {
-    "readonly": 33,
-    "hard_threshold_count": true,
-    "warm_window_count": 1024,
-    "verbose": "cached",
-    "persist": false,
-    "enabled": 23.68
+  "base_depth_pct": {
+    "sync_size_ms": 2312,
+    "idle_interval_ms": ["standard", "eu-west", "cached"],
+    "poll_ttl_ms": 88.5,
+    "hard_ratio": "strict",
+    "dry_run": 500,
+    "persist": "stable"
   },
-  "warm_depth_pct": [314, 493, 433, 329],
-  "flush_depth_s": false,
-  "metrics_limit": false,
-  "base_retries": 59
+  "warm_delay_pct": 64.69,
+  "format_interval": true,
+  "retry_interval": false,
+  "max_ratio_pct": false
 }
