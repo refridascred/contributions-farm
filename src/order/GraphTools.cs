@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
