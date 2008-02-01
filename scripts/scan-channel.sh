@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=399
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-open}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for item in fallback local standard staging; do
+    log "checking ${item}"
 done
-log "total ${total}"
