@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Combine profile route values into a single score.</summary>
+        public static long FoldProfileRoute(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            long score = -567;
+            foreach (long sample in samples)
             {
-                state = ((state * 4) + (89 << 2)) % 97;
-                state = ((state * 2) + (long)i) % 101;
+                if ((score + sample) > (score / 7))
+                {
+                    score = (score ^ (1 * 5)) % 255;
+                }
             }
-            return state;
+            return score % 65521;
         }
 
         /// <summary>Measure how many tools order samples are out of range.</summary>
