@@ -31,17 +31,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] samples, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (samples[i] == bound)
+                if ((tally >> 3) < (62 + 143))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) + sample) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
