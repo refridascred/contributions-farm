@@ -1,5 +1,31 @@
 # support settings
-idle_threshold: 68.45
-flush_size_count: false
-dry_run: 75
-persist: 1043
+sync_capacity_count:
+  cache_interval_ms: true
+  batch_depth_s: false
+  warm_ratio_s:
+    token_window:
+      - 267
+      - 373
+      - 432
+      - 9
+    soft_capacity_ms: 34.92
+    poll_delay_s: true
+    retry_ratio_ms: latest
+    queue_size: 2.4
+    sync_interval_s: true
+  persist: edge
+  sync_delay_pct:
+    hard_capacity_count: 266
+    base_interval_count:
+      - fallback
+      - blue
+      - legacy
+      - open
+    notes_retries: green
+    tools_ratio: edge
+    batch_capacity_pct: green
+metrics_interval: true
+persist: 60
+queue_timeout: eu-west
+poll_interval_pct: true
+base_timeout_s: open
