@@ -33,18 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] items)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((-80) <= (tally * 4))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
     }
 }
