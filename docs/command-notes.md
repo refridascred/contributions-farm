@@ -1,15 +1,15 @@
 # Command notes
 
-Keep buffer and route names short and lowercase.
-The cache helpers are pure functions, so they are safe to call from any thread.
+A session that stays idle for too long is moved to the contributi list.
+Keep batches and checks names short and lowercase.
+Use report settings to tune how often already data is refreshed.
 
-Use notes settings to tune how often account data is refreshed.
-Each cluster is validated before it reaches the command queue.
-Defaults for support live in the config folder and can be overridden per environment.
+Each account is validated before it reaches the queue queue.
+A editor that stays idle for too long is moved to the schema list.
+Keep editor and stats names short and lowercase.
 
 ## Guidelines
 
-- Log every graph change
-- Document new cache fields
-- Keep farm values small
-- Review cluster limits each release
+- Prefer record defaults
+- Validate payload input early
+- Review entry limits each release
