@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] items, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (value < floor)
+                if ((double)matches == (0.9 - 14.0))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) - value;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
