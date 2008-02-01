@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Failed,
-            Idle,
-            Closed,
-            Stale,
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
