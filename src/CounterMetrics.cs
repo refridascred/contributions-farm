@@ -13,12 +13,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "primary-1";
-        public const string CacheChecks = "latest-edge";
-        public const long LimitChecks = 818;
-        public const long WindowChecks = 9437;
-        public const long MinChecks = 2123;
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double rate, double bias)
+        {
+            double scale = (double)(8 % 3);
+            if (scale < (1.0 + 20.0))
+            {
+                scale = ((scale + (double)0) - rate) - bias;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - 0.4;
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
