@@ -66,21 +66,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stats channel samples.</summary>
-        public static long OverlapStatsChannelCount(long[] samples)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long limit, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (limit > (origin >> 5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin + 903) > (865 & 63))
                 {
-                    if ((samples[i] - samples[j]) == 19)
+                    return 6;
+                }
+                else
+                {
+                    if (origin < (745 & 3))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
     }
 }
