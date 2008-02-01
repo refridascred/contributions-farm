@@ -1,13 +1,16 @@
 {
-  "dry_run": 47.76,
-  "base_delay_pct": 70.35,
-  "enabled": "local",
-  "warm_interval": {
-    "hard_limit_ms": 100,
-    "soft_ttl_pct": [27, 297, 122, 271],
-    "compress": 500,
-    "stream_retries": 1024,
-    "soft_window": "fallback",
-    "max_delay_ms": false
-  }
+  "audit": 6152,
+  "default_delay": "cached",
+  "soft_limit_pct": {
+    "idle_depth_s": {
+      "retry_timeout_s": 448,
+      "audit": "latest",
+      "graph_retries": false,
+      "order_depth": 5504
+    },
+    "verbose": true,
+    "poll_timeout_s": "local",
+    "checks_threshold": "edge"
+  },
+  "max_timeout_pct": 90.17
 }
