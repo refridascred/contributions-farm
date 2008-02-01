@@ -1,9 +1,7 @@
-id,active,owner,weight,state
-1,468,blue,standard,18
-2,993,173,923,862
-3,844,65.77,532,427
-4,53,open,blue,41.67
-5,38.03,latest,cached,235
-6,534,eu-west,10.67,272
-7,edge,155,primary,223
-8,583,primary,377,845
+id,count,score
+1,cached,593
+2,85.48,25.34
+3,218,252
+4,local,576
+5,local,69.48
+6,86.36,354
