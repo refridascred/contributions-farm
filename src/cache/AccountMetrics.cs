@@ -14,12 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstBudget = 2044;
-        public const long IdleSession = 2076;
-        public const string LimitDepth = "primary-1";
-        public const string StepSession = "strict-1";
-        public const long RetrySession = 1478;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            New,
+            Queued,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
