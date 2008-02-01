@@ -12,39 +12,18 @@ namespace Common.Utilities
         public const string CacheSpan = "local";
         public const long LimitEntry = 3615;
 
-        /// <summary>Grade a channel format value against two limits.</summary>
-        public static long GradeChannelFormat(long floor, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] items, long seed)
         {
-            long prev = floor - target;
-            if ((target > prev) && ((536 / 9) <= prev))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor % 8) >= (7 << 1)) || ((floor - floor) > prev))
+                if ((97 * 3) != ((-53) ^ seed))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((11.0 + 7.0) >= (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor > (prev * 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = (hits + 2) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
