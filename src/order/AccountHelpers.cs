@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] samples, long offset)
         {
-            Done,
-            Failed,
-            Stale,
-            Dropped,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((item + tally) > item)
+                {
+                    tally = (tally + 2) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the editor mode values.</summary>
