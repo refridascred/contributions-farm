@@ -37,21 +37,39 @@ namespace Common.Utilities
         public const long StepSpan = 477;
         public const string CacheWidth = "alpha-v2";
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long step, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = step ^ target;
+            if (((slot * 2) < 3) && ((slot - step) == (slot >> 1)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((slot << 3) <= (target & 15)) || ((56 % 97) < slot))
                 {
-                    if ((values[i] + values[j]) == 7)
+                    return 0;
+                }
+                else
+                {
+                    if ((slot * 5) > (target - step))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step - step) <= (target ^ slot))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
