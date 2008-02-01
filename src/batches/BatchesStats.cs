@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 4751;
-        public const double RetrySize = 93.08;
-        public const string StepTimeout = "local-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFactor = 9512;
+        public const long BaseWidth = 7978;
+        public const long SoftSpan = 4164;
+        public const long MaxSpan = 4028;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long limit)
