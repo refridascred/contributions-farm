@@ -42,12 +42,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
+        public static bool CheckMetricsEntryBounds(long[] data, long origin)
         {
-            Dropped,
-            New,
-            Draft,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate filter samples.</summary>
