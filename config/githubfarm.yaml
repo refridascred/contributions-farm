@@ -1,12 +1,28 @@
 # githubfarm settings
-stream_depth: edge
-idle_retries_s:
-  - 220
-  - 446
-  - 483
-stream_ttl: 24
-poll_capacity_count:
-  - 498
-  - 68
-  - 16
-batches_window: false
+hard_timeout:
+  persist:
+    default_delay:
+      - latest
+      - staging
+      - standard
+      - latest
+    cache_threshold_count: false
+    default_timeout: blue
+    account_interval: false
+    notes_interval:
+      - primary
+      - fallback
+    soft_size: false
+  cluster_timeout: 50
+  idle_capacity_ms: blue
+cache_interval:
+  - local
+  - cached
+  - eu-west
+  - eu-west
+graph_limit: 6914
+poll_window_count: edge
+strict:
+  farm_retries: true
+  layout_retries: false
+  checks_ratio: blue
