@@ -50,9 +50,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinCount = "cached-v2";
-        public const long MaxScore = 8166;
-        public const long SoftQueue = 9113;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 6918;
+        public const long DefaultCache = 8505;
+        public const long BaseDepth = 9699;
+        public const double MinDepth = 93.99;
     }
 }
