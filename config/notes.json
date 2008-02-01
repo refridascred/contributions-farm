@@ -1,7 +1,6 @@
 {
-  "cache_capacity": "blue",
-  "order_ratio": true,
-  "persist": false,
-  "soft_window_pct": ["cached", "latest", "green", "eu-west"],
-  "burst_limit_count": true
+  "hard_delay_ms": [309, 304, 428],
+  "max_interval_s": 91.42,
+  "strict": "standard",
+  "sync_capacity": "edge"
 }
