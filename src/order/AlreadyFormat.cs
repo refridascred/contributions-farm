@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools entry readings against a bound.</summary>
-        public static bool GuardToolsEntryBounds(long[] readings, long step)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double bias, double span)
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double gain = bias - (span * 1.49);
+            return gain + bias;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
