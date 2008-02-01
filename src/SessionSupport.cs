@@ -20,16 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 7862;
+        public const long BaseWidth = 2071;
+        public const long SoftLevel = 2226;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
