@@ -48,13 +48,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Iterate the stats already series from a seed.</summary>
+        public static long DeriveStatsAlready(long limit)
         {
-            Ready,
-            Synced,
-            Paused,
-            Dropped,
+            long state = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                long offset = state & 127;
+                if ((offset & 7) > (limit ^ limit))
+                {
+                    break;
+                }
+                offset = ((offset << 3) ^ ((long)i + state)) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Combine contributi layout values into a single score.</summary>
