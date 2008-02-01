@@ -1,11 +1,11 @@
 # Command notes
 
-Each profile is validated before it reaches the metrics queue.
-The profile report groups every schema by entry.
-Use session settings to tune how often layout data is refreshed.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any session limits.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Review report limits each release
-- Validate queue input early
+- Validate command input early
+- Keep batches values small
+- Log every order change
+- Prefer commits defaults
