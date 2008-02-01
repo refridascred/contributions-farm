@@ -41,19 +41,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((double)matches > (6.11 + 20.0))
-                {
-                    matches = ((matches + 1) + item) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstBudget = 4675;
+        public const long SoftChecks = 8484;
+        public const double CacheChecks = 22.73;
+        public const string MaxChecks = "open-edge";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string LimitScore = "standard-edge";
