@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultBudget = 6631;
+        public const long StepNotes = 4754;
+        public const string IdleSpan = "fallback-edge";
+        public const long MinWidth = 8448;
+        public const double WindowWidth = 9.68;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long floor)
