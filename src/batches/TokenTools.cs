@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((833 >> 1) != (acc + 2)) || ((double)limit != (6.2 + 0.4)))
                 {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ ((long)i * 2)) % 101;
                 }
+                else
+                {
+                    acc = (acc - (acc - 6)) % 101;
+                    acc = acc - limit;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
