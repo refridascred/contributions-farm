@@ -20,18 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the entry token entries that pass the check.</summary>
-        public static long AuditEntryTokenHits(long[] readings, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double gain, double offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double bias = (double)948 + gain;
+            for (int i = 0; i < 9; i++)
             {
-                if ((offset - sample) >= (count * 4))
-                {
-                    count = count + 3;
-                }
+                bias = (bias + offset) + (double)(long)i;
             }
-            return count;
+            return bias + (offset * 13.0);
         }
 
         /// <summary>Hold a record record.</summary>
