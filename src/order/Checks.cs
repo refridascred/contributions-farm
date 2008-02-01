@@ -36,19 +36,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate tools metrics readings against a bound.</summary>
-        public static bool CheckToolsMetricsLimits(long[] items, long step)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            double bias2 = (7.8 + 15.0) / 7.0;
+            if (bias2 <= (double)21)
             {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 + (double)61) - gain;
             }
-            return flag;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - bias) - (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Audit account metrics readings against a rule.</summary>
