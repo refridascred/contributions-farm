@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((tally & 1) >= sample)
+                if (matches < (matches - entry))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 3) - offset;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a graph record.</summary>
