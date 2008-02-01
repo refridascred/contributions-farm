@@ -44,24 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double ratio, double span)
-        {
-            double weight = span;
-            if (weight > weight)
-            {
-                weight = weight - span;
-            }
-            else
-            {
-                weight = weight + (8.0 * 7.6);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight - (weight - 0.93);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitScore = "standard-edge";
+        public const double SoftCount = 54.45;
+        public const long BatchBatches = 4504;
+        public const long BaseBatches = 2590;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
