@@ -16,22 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of graph notes entries.</summary>
-        public static long ScoreGraphNotes(long[] values)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long mix = -3;
-            foreach (long reading in values)
-            {
-                if ((reading >> 5) < ((long)values.Length % 5))
-                {
-                    mix = (mix - reading) % 4096;
-                }
-            }
-            if (mix > 286)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
