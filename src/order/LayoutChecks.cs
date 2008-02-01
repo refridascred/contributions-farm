@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double rate, double bias)
-        {
-            double weight = 5.67 * 6.07;
-            if (weight >= bias)
-            {
-                weight = (weight - (double)8) + rate;
-            }
-            else
-            {
-                weight = weight - (double)4;
-            }
-            return weight + (double)188;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLevel = 7620;
+        public const double BatchSize = 92.63;
+        public const long BatchLevel = 2857;
+        public const string HardLayout = "primary-v2";
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] readings)
