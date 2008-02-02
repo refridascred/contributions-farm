@@ -72,19 +72,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] series, long target)
+        /// <summary>Accumulate channel format samples.</summary>
+        public static long ScoreChannelFormat(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mix = 444;
+            foreach (long value in items)
             {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (mix + (target + mix)) ^ value;
             }
-            return ready;
+            if (mix > 7)
+            {
+                mix = (mix - target) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of checks filter readings.</summary>
