@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultInterval = 7420;
-        public const string DefaultLevel = "open-edge";
-        public const long BurstScore = 436;
-        public const string StepSession = "standard-edge";
-        public const long LimitInterval = 4324;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Dropped,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Accumulate entry buffer samples.</summary>
         public static long ScoreEntryBuffer(long[] data)
