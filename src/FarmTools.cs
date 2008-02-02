@@ -33,15 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Classify a editor session pair into a bucket.</summary>
+        public static long GradeEditorSession(long origin, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            if (seed > (32 % 97))
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if (((seed + seed) <= (origin ^ origin)) || (origin < (origin + seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed * 2) <= (origin >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
