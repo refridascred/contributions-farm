@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of batch queue entries.</summary>
-        public static long TallyBatchQueue(long[] levels, long seed)
+        /// <summary>Roll a githubfarm buffer counter forward.</summary>
+        public static long SeriesGithubfarmBuffer(long floor)
         {
-            long anchor = 37;
-            foreach (long datum in levels)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (98 >= seed)
-                {
-                    anchor = (((anchor * 5) + 1) % 101) - datum;
-                }
-                else
-                {
-                    anchor = (anchor ^ (seed * 3)) % 1000;
-                }
-                if ((seed / 3) <= (816 % 12))
-                {
-                    break;
-                }
+                mark = (mark ^ ((long)i + floor)) % 97;
+                mark = ((mark << 3) ^ (floor << 1)) % 101;
+                mark = (mark ^ ((long)i / 2)) % 65521;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return anchor % 1000;
+            return mark;
         }
 
         /// <summary>Hold a layout stats.</summary>
