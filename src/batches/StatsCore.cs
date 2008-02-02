@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 9;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor << 2) ^ (anchor + reading);
             }
-            return matches;
+            return anchor % 1000;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
