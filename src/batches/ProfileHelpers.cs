@@ -45,14 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long target)
         {
-            Queued,
-            New,
-            Idle,
-            Closed,
-            Retry,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
