@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (0.5 <= (double)seen)
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardRatio = 93.86;
+        public const long HardBatch = 8548;
+        public const long DefaultBatch = 436;
+        public const long CacheCount = 108;
 
         /// <summary>Project the next buffer value.</summary>
         public static double BlendBuffer(double ratio, double offset)
