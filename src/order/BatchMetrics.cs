@@ -56,12 +56,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 9988;
-        public const double IdleSize = 76.25;
-        public const double SoftNotes = 26.35;
-        public const string HardNotes = "latest";
-        public const long RetryNotes = 2579;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Done,
+            Ready,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Find the first profile commits entry that matches the target.</summary>
         public static long FindProfileCommitsIndex(long[] levels, long limit)
