@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Dropped,
+            Queued,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the batches state values.</summary>
