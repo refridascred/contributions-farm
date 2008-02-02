@@ -46,12 +46,12 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] < floor) && ((samples[i] % 2) != 0))
+                if ((series[i] == offset) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
