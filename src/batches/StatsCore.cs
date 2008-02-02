@@ -73,11 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 4009;
-        public const long SoftTimeout = 583;
-        public const long MaxBudget = 1322;
-        public const double HardTools = 84.46;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Failed,
+            Active,
+            Done,
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
