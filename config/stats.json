@@ -1,20 +1,6 @@
 {
-  "filter_ttl": 1845,
-  "warm_retries": true,
-  "filter_limit": "legacy",
-  "default_timeout_pct": 39,
-  "buffer_size": [270, 182],
-  "command_window": {
-    "burst_timeout_pct": 30,
-    "metric_window": 100,
-    "cache_window": {
-      "retry_interval": [474, 315, 22],
-      "githubfarm_limit": false,
-      "flush_retries": "standard",
-      "soft_window": [400, 136, 188, 301],
-      "retry_delay": [288, 193],
-      "order_delay": 8669
-    },
-    "default_limit_ms": ["latest", "green"]
-  }
+  "batch_limit_s": [47, 142],
+  "dry_run": 0.98,
+  "flush_window_count": true,
+  "buffer_timeout": 8.59
 }
