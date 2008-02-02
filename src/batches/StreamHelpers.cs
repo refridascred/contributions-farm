@@ -70,27 +70,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] levels, long limit)
-        {
-            long total = -465;
-            foreach (long datum in levels)
-            {
-                if ((total + limit) != ((long)levels.Length - (long)levels.Length))
-                {
-                    total = total + total;
-                }
-                else
-                {
-                    total = total - (datum - datum);
-                }
-            }
-            if (total < 4)
-            {
-                total = ((total << 2) ^ (total * 2)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstLevel = 4384;
+        public const long MinFormat = 9065;
+        public const long WindowScore = 3974;
+        public const long DefaultTimeout = 8612;
+        public const long SoftDepth = 4566;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long BucketGraph(long seed, long target)
