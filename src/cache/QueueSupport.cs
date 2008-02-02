@@ -53,12 +53,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Draft,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 7249;
+        public const double HardGithubfarm = 55.79;
+        public const string BurstRatio = "standard-v2";
+        public const long SoftGithubfarm = 7682;
+        public const string IdleGithubfarm = "legacy";
     }
 }
