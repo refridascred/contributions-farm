@@ -49,12 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseSpan = 42.6;
-        public const long MinPayload = 3550;
-        public const long DefaultSpan = 4873;
-        public const long StepFactor = 2340;
-        public const double CacheWidth = 85.38;
+        /// <summary>Count the queue schema entries that pass the check.</summary>
+        public static long TallyQueueSchemaMatches(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!!((tally - step) >= (tally << 2)))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long CombineBatches(long[] readings)
