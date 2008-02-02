@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long offset, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long lane = offset ^ floor;
+            if (((double)offset != (double)lane) && ((lane - floor) < (lane >> 4)))
             {
-                if ((floor & 63) < result)
-                {
-                    result = result - floor;
-                }
-                result = ((result << 2) ^ ((long)i + result)) % 4096;
-                result = ((result * 2) + (long)i) % 97;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((double)floor == (9.96 * 0.07))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
