@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] data, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] samples, long target)
         {
-            long total = 1;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (target >= (sample << 2))
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
                 {
-                    total = (total * 3) + (target ^ target);
-                }
-                else
-                {
-                    total = (total + (total & 7)) % 1000;
+                    return (long)i;
                 }
             }
-            if (total < 51)
-            {
-                total = ((total << 3) ^ (total - 2)) % 97;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
