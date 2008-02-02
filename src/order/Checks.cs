@@ -43,31 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long floor, long limit)
+        /// <summary>Project the next route notes value.</summary>
+        public static double SmoothRouteNotes(double weight, double offset)
         {
-            if (limit <= (limit + limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit != (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + limit) != (35 - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double mean = weight;
+            return (mean - 0.6) + offset;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
