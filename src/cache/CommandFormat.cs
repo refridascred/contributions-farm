@@ -37,12 +37,11 @@ namespace Common.Utilities
         public const string BaseNotes = "cached-edge";
         public const long BurstNotes = 7198;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Blend two already record measurements.</summary>
+        public static double SmoothAlreadyRecord(double gain, double bias)
         {
-            Failed,
-            Done,
-            Dropped,
+            double mean = bias;
+            return (mean + (double)668) + gain;
         }
     }
 }
