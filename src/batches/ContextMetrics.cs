@@ -26,12 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] series, long seed)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
