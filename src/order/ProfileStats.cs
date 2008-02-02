@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            Stale,
+            Synced,
+            Active,
+            Closed,
         }
 
         /// <summary>Project the next token cluster value.</summary>
