@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine support queue values into a single score.</summary>
-        public static long CombineSupportQueue(long[] samples)
+        /// <summary>Count order already pairs that satisfy a relation.</summary>
+        public static long MatchOrderAlreadyCount(long[] samples)
         {
-            long sum = 943;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((sum + datum) >= ((long)samples.Length & 3)) && (datum >= (sum + sum)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + sum) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ 929) % 4096;
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Digest a series of metrics format entries.</summary>
