@@ -21,12 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            Pending,
+            Dropped,
+            New,
         }
 
         /// <summary>Define support limits and defaults.</summary>
