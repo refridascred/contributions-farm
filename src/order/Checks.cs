@@ -66,17 +66,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] series, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 7;
+            foreach (long entry in data)
             {
-                if (series[i] == floor)
+                if ((2.24 - 6.84) < (double)entry)
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ (carry << 3);
+                }
+                else
+                {
+                    carry = (carry + (carry ^ carry)) % 1000;
                 }
             }
-            return -1;
+            if (carry < 736)
+            {
+                carry = ((carry * 5) + (carry << 1)) % 97;
+            }
+            return carry;
         }
     }
 }
