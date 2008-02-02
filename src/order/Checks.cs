@@ -16,15 +16,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] samples, long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] data, long target)
         {
-            long state = 212;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                state = ((state << 2) ^ (cell + 964)) - offset;
+                if (entry >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Hold a entry header.</summary>
