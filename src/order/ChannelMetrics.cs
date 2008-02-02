@@ -14,17 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first contributi metric entry that matches the target.</summary>
-        public static long SeekContributiMetricIndex(long[] readings, long target)
+        /// <summary>Fold a list of stream session readings.</summary>
+        public static long CombineStreamSession(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 794;
+            foreach (long datum in samples)
             {
-                if (readings[i] <= target)
+                if (((limit / 9) <= (datum ^ (long)samples.Length)) && ((0.94 * 1.04) >= (double)limit))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (datum << 3)) % 97;
+                }
+                else
+                {
+                    state = state ^ (datum - datum);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the metric mode values.</summary>
