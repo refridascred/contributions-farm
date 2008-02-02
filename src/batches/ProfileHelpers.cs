@@ -33,15 +33,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a record support figure with a bias.</summary>
-        public static double SmoothRecordSupport(double weight, double span)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            double rate = 1.0;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + (double)(long)i) + weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate - span;
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
