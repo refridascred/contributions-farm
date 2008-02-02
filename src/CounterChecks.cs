@@ -47,12 +47,10 @@ namespace Common.Utilities
         public const long BasePayload = 5215;
         public const long DefaultCount = 4381;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitTimeout = 16.97;
-        public const long DefaultAccount = 6734;
-        public const string StepAccount = "stable";
-        public const long BurstAccount = 4738;
-        public const long LimitBudget = 886;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFarm = "fallback-1";
+        public const long MaxInterval = 3072;
+        public const long LimitFactor = 2314;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiBounds(long[] values, long floor)
