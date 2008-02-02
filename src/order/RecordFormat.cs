@@ -38,25 +38,18 @@ namespace Common.Utilities
         public const long IdleSpan = 7439;
         public const string MaxChannel = "alpha";
 
-        /// <summary>Combine context record values into a single score.</summary>
-        public static long ScoreContextRecord(long[] samples, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] data)
         {
-            long anchor = 9;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((origin + 9) == (origin + 649))
+                if ((8.1 - 1.8) < (double)matches)
                 {
-                    anchor = ((anchor ^ (anchor - anchor)) % 65521) + reading;
-                    continue;
+                    matches = (matches + 1) + sample;
                 }
-                anchor = (anchor << 3) ^ (anchor - 15);
-                anchor = (anchor << 3) ^ (798 - 773);
             }
-            if (anchor < 525)
-            {
-                anchor = (anchor + (origin ^ origin)) % 4096;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
