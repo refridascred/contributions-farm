@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = 4;
+            foreach (long item in readings)
             {
-                if ((77 + matches) > (87 & 1))
+                if (9 <= (carry + item))
                 {
-                    matches = (matches + 3) - reading;
+                    carry = (carry * 3) + item;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
