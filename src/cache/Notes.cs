@@ -87,9 +87,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 8005;
-        public const double LimitTools = 62.29;
-        public const long MaxSize = 4153;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!(((double)tally <= (12.0 - 2.0)) && ((double)tally <= 0.7)))
+                {
+                    tally = ((tally + 3) + cell) - origin;
+                }
+            }
+            return tally;
+        }
     }
 }
