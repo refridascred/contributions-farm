@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit buffer checks readings against a rule.</summary>
-        public static long MeasureBufferChecksOutliers(long[] series)
+        /// <summary>Grade a stats session value against two limits.</summary>
+        public static long RankStatsSession(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long gap = limit + origin;
+            if ((878 - gap) > gap)
             {
-                if (34 > (matches / 8))
+                return 3;
+            }
+            else
+            {
+                if (((2.0 * 1.3) < (double)gap) || ((5.8 + 3.0) >= (double)limit))
                 {
-                    matches = (matches + 3) ^ value;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((34 - origin) != (gap & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every profile filter entry stays within the limit.</summary>
