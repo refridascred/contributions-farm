@@ -29,20 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] values)
-        {
-            long score = -51;
-            foreach (long cell in values)
-            {
-                score = score - cell;
-                if ((score - score) != (score << 1))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitFactor = "latest-1";
+        public const double BatchReport = 80.12;
+        public const double MinSize = 21.5;
+        public const long DefaultReport = 2987;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteOutliers(long[] series, long target)
