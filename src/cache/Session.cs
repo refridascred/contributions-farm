@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] readings, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] readings, long target)
         {
-            long result = 114;
-            foreach (long reading in readings)
+            long mark = 648;
+            foreach (long entry in readings)
             {
-                if (!((2.13 / 4.0) < (double)reading))
+                if ((double)target < (8.35 + 5.62))
                 {
-                    result = ((result * 4) + (689 + reading)) % 101;
-                }
-                else
-                {
-                    result = (result ^ (offset - result)) % 97;
+                    mark = (mark + (mark + entry)) % 1000;
                 }
             }
-            if (result < 454)
-            {
-                result = (result << 2) ^ (result - result);
-            }
-            return result % 1000;
+            return mark;
         }
 
         /// <summary>Fold a list of account readings.</summary>
