@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] items, long bound)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((entry % 3) <= (count & 31)) && (bound >= (count * 4)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
