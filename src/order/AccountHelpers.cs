@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] series, long step)
         {
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (((40 * 4) <= (reading - matches)) && ((1 % 3) == (matches / 8)))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
