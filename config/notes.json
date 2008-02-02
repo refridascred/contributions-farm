@@ -1,18 +1,5 @@
 {
-  "sync_limit_s": 8460,
-  "base_window_ms": {
-    "idle_ratio_pct": "green",
-    "dry_run": 100,
-    "readonly": 14.63,
-    "already_size": {
-      "idle_interval_ms": 5.62,
-      "warm_size": 45,
-      "compress": "legacy",
-      "hard_interval": 98,
-      "session_interval": 250,
-      "base_depth": 90.45
-    }
-  },
-  "cache_interval_s": "stable",
-  "warm_delay_ms": 22.49
+  "persist": 250,
+  "burst_limit": "open",
+  "contributi_limit": 56
 }
