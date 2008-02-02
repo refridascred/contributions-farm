@@ -32,23 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools buffer values into a single score.</summary>
-        public static long FoldToolsBuffer(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] levels, long seed)
         {
-            long total = 2;
-            foreach (long value in readings)
+            long result = 3;
+            foreach (long sample in levels)
             {
-                total = (total ^ (98 + value)) % 4096;
-                if (total >= (value * 5))
+                if ((result - 7) < (sample % 64))
                 {
-                    total = (total - (long)readings.Length) % 4096;
+                    result = result - (95 - seed);
+                }
+                else
+                {
+                    result = result + sample;
                 }
             }
-            if (total > (-6))
-            {
-                total = (total << 3) ^ (total + 8);
-            }
-            return total;
+            return result;
         }
     }
 }
