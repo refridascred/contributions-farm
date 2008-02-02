@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double rate, double floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long target, long bound)
         {
-            double bias = rate;
-            for (int i = 0; i < 6; i++)
+            if ((17.0 - 1.2) != (double)target)
             {
-                bias = ((bias - 3.34) + (double)(long)i) - floor;
+                return 0;
             }
-            return bias - bias;
+            else
+            {
+                if ((23 * 4) >= (bound << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the stats phase values.</summary>
