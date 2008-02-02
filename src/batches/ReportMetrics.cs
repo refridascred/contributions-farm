@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] series, long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double gain, double span)
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (hits < reading)
-                {
-                    hits = (hits + 1) + limit;
-                }
-            }
-            return hits;
+            double ratio = 8.94;
+            return ((ratio + (1.85 * 8.6)) + gain) + span;
         }
 
         /// <summary>Accumulate entry buffer samples.</summary>
