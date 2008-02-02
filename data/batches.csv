@@ -1,8 +1,7 @@
-id,weight,score
-1,20.45,47.88
-2,edge,cached
-3,4.36,59.94
-4,legacy,901
-5,837,871
-6,51.88,stable
-7,205,cached
+id,rank
+1,280
+2,27.25
+3,stable
+4,18
+5,85.3
+6,44.44
