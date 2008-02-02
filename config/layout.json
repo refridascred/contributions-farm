@@ -1,6 +1,5 @@
 {
-  "stats_delay": "eu-west",
-  "persist": "local",
-  "report_interval": "legacy",
-  "soft_depth": true
+  "min_interval": "fallback",
+  "token_depth": 6796,
+  "cache_limit": ["standard", "fallback", "eu-west", "green"]
 }
