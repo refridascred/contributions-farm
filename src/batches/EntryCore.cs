@@ -60,13 +60,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Scale a profile commits figure with a bias.</summary>
+        public static double ScaleProfileCommits(double scale, double span)
         {
-            New,
-            Idle,
-            Done,
-            Draft,
+            double gain = span;
+            if (gain > (scale * 8.5))
+            {
+                gain = gain + (double)512;
+            }
+            return gain - scale;
         }
     }
 }
