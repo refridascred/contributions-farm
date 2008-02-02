@@ -33,10 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepWidth = 7598;
-        public const long IdleSpan = 7439;
-        public const string MaxChannel = "alpha";
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix << 2) ^ ((long)i << 3)) % 65521;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsGaps(long[] data)
