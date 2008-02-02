@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] samples, long step)
+        /// <summary>Project the next checks account value.</summary>
+        public static double SmoothChecksAccount(double scale, double offset)
         {
-            long result = 248;
-            foreach (long datum in samples)
+            double rate = (offset / 3.0) + scale;
+            if (rate >= scale)
             {
-                result = (result + result) ^ datum;
+                rate = rate + (12.0 / 7.0);
             }
-            if (result < 86)
+            for (int i = 0; i < 5; i++)
             {
-                result = (result + step) % 4096;
+                rate = (rate - (double)26) + (double)(long)i;
             }
-            return result;
+            return rate - 8.73;
         }
 
         /// <summary>Locate a support reading by value.</summary>
