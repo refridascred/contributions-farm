@@ -46,12 +46,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstLayout = 10.99;
-        public const double StepCount = 63.13;
-        public const long MaxDepth = 375;
-        public const long RetryLayout = 3427;
-        public const long CacheLayout = 5213;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double weight, double span)
+        {
+            double rate = span;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (weight - weight)) + (double)(long)i;
+            }
+            return rate + 18.0;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BaseRatio = 9541;
