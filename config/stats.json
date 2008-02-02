@@ -1,5 +1,7 @@
 {
-  "audit": 23.73,
-  "default_threshold": "green",
-  "command_limit": false
+  "sync_window": "stable",
+  "cache_interval_count": 7486,
+  "max_capacity_count": 250,
+  "audit": "edge",
+  "soft_depth_pct": "strict"
 }
