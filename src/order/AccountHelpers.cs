@@ -23,16 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] series, long limit)
-        {
-            long carry = 0;
-            foreach (long cell in series)
-            {
-                carry = (((carry * 5) + (carry - 9)) ^ cell) + limit;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 25.96;
+        public const long HardCount = 507;
+        public const long CacheSize = 3561;
+        public const long LimitTimeout = 2936;
+        public const double LimitSpan = 17.85;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double ratio, double bias)
