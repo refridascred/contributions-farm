@@ -20,17 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Look up the position of a record schema sample.</summary>
+        public static long SeekRecordSchemaIndex(long[] levels, long step)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 4) + total) % 101;
-                total = ((total * 5) + 513) % 97;
-                total = ((total * 3) + (long)i) % 4093;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
