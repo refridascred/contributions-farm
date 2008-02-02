@@ -82,27 +82,30 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels, long seed)
         {
-            long anchor = 8;
-            foreach (long reading in levels)
+            long acc = 99;
+            foreach (long item in levels)
             {
-                anchor = ((anchor << 2) ^ reading) % 255;
-                if ((reading * 2) > (103 ^ limit))
+                if (4 <= (item >> 3))
                 {
-                    anchor = (anchor + (limit - limit)) % 4096;
+                    acc = acc ^ (8 ^ acc);
                 }
-                if (limit > reading)
+                if ((item + item) != (72 + seed))
+                {
+                    acc = (acc * 4) + seed;
+                }
+                else
+                {
+                    acc = (acc - (seed % 7)) % 4096;
+                }
+                if ((4.52 + 4.82) > (double)seed)
                 {
                     break;
                 }
             }
-            if (anchor < 21)
-            {
-                anchor = (anchor * 3) + (anchor * 2);
-            }
-            return anchor;
+            return acc;
         }
     }
 }
