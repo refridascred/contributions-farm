@@ -59,19 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double ratio, double bias)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double mean = (double)(547 << 3);
-            if (mean <= (bias / 2.0))
-            {
-                mean = (mean - 3.98) + ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (bias + bias);
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
