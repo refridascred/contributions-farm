@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] data, long offset)
+        /// <summary>Scale a counter already figure with a bias.</summary>
+        public static double BlendCounterAlready(double weight, double span)
         {
-            bool found = true;
-            foreach (long datum in data)
+            double rate = span;
+            if (rate <= weight)
             {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate - 5.0;
             }
-            return found;
+            else
+            {
+                rate = rate - (1.81 - rate);
+            }
+            return rate - (double)3;
         }
 
         /// <summary>Digest a series of profile notes entries.</summary>
