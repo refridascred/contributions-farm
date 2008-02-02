@@ -1,13 +1,20 @@
 # githubfarm settings
-warm_depth_ms: 66
-cluster_limit: false
-batch_threshold_s:
-  profile_limit: 61.51
-  max_ttl_pct:
-    burst_threshold_count: 71
-    readonly: 22.57
-    contributi_delay: latest
-  flush_timeout:
-    - staging
-    - green
-    - latest
+flush_retries_pct: 34.16
+readonly:
+  - eu-west
+  - local
+  - cached
+  - open
+cache_delay:
+  cache_capacity_ms: true
+  strict: edge
+  min_capacity: 48
+  idle_delay: 1637
+  editor_size:
+    audit: stable
+    persist: false
+    flush_limit_count: primary
+    dry_run: open
+    idle_retries_pct: 87.24
+    hard_retries_s: strict
+base_delay_ms: 72
