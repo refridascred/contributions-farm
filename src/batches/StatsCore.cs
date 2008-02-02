@@ -73,15 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double rate, double offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double drift = (offset / 6.0) / 8.0;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift + (1.0 - drift);
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
