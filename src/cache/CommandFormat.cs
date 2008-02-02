@@ -42,11 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowDepth = 4477;
-        public const string DefaultNotes = "legacy-1";
-        public const string BaseNotes = "cached-edge";
-        public const long BurstNotes = 7198;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 3668;
+        public const long LimitLayout = 2633;
+        public const long BurstLayout = 2173;
+        public const double IdleDepth = 33.19;
+        public const double MaxScore = 8.35;
 
         /// <summary>Blend two already record measurements.</summary>
         public static double SmoothAlreadyRecord(double gain, double bias)
