@@ -1,16 +1,10 @@
 # entry settings
-base_retries_ms: 5339
-retry_retries_s: green
-token_limit: false
-cache_limit: true
-base_size:
-  batches_timeout:
-    - blue
-    - legacy
-  batch_window: standard
-  queue_ratio:
-    - 63
-    - 362
-    - 438
-  burst_limit: 4.54
-dry_run: 9970
+queue_threshold: 8
+metrics_delay: false
+support_depth: primary
+entry_ttl:
+  audit: 2.82
+  poll_capacity_pct: true
+  warm_ttl_count: green
+stream_capacity: 35.66
+max_ttl_ms: edge
