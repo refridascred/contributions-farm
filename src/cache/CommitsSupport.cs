@@ -69,12 +69,12 @@ namespace Common.Utilities
         public const long LimitWindow = 1903;
         public const long SoftSize = 5488;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Dropped,
+            Pending,
+            Failed,
             Synced,
-            Done,
         }
     }
 }
