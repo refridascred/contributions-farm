@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long limit, long offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            if (((offset << 2) < (offset - limit)) || ((double)offset == (12.0 * 15.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset > (offset - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((508 * 4) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
