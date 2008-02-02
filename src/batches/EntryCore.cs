@@ -39,11 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
