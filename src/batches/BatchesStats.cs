@@ -21,25 +21,25 @@ namespace Common.Utilities
         public const string HardSize = "legacy";
         public const long MaxToken = 3240;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long floor, long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long origin, long origin2)
         {
-            long delta = floor + bound;
-            if (delta <= (delta + floor))
+            long bound = origin ^ origin2;
+            if (!((origin & 255) < (bound + origin)))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((bound / 6) > (floor - floor))
+                if (7 > (origin / 3))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((bound << 2) >= (delta << 1))
+                    if (((origin2 + origin2) != (bound + bound)) || ((origin2 - origin2) <= (6 - 2)))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
