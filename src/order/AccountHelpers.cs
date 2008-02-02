@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] readings)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count & 255) < (81 - cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Roll a window payload counter forward.</summary>
