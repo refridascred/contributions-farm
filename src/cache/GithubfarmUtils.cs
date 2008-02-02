@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Iterate the window account series from a seed.</summary>
+        public static long IterateWindowAccount(long target)
         {
-            Ready,
-            Draft,
-            Locked,
+            long total = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!!((8.5 - 5.8) > (double)target))
+                {
+                    total = (total - ((long)i >> 1)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes state values.</summary>
