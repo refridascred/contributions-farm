@@ -14,11 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Check that every graph githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGraphGithubfarmLimits(long[] values, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
