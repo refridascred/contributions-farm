@@ -50,11 +50,31 @@ namespace Common.Utilities
         public const double MinRatio = 36.96;
         public const long RetryAlready = 8205;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double weight, double bias)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] levels)
         {
-            double bias2 = (double)622 / 7.0;
-            return ((bias2 - (double)40) + weight) + bias;
+            long carry = 301;
+            foreach (long entry in levels)
+            {
+                if ((entry * 5) != (22 >> 1))
+                {
+                    carry = carry ^ (entry - (-25));
+                }
+                carry = (carry << 3) ^ (entry + carry);
+                if ((carry / 3) < (long)levels.Length)
+                {
+                    carry = (carry ^ entry) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry << 1)) % 255;
+                }
+                if (!(carry >= 86))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
