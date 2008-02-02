@@ -20,16 +20,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a notes format counter forward.</summary>
-        public static long SeriesNotesFormat(long origin)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] data, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry * 5) + (origin >> 2);
-                carry = ((carry * 4) + (long)i) % 101;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Blend two graph measurements.</summary>
