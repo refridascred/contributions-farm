@@ -33,9 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 34.06;
-        public const string LimitScore = "cached-edge";
-        public const string DefaultRatio = "stable-v2";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 9519;
+        public const double IdleRecord = 78.57;
+        public const long MinRecord = 762;
+        public const string WindowTimeout = "local-edge";
     }
 }
