@@ -1,7 +1,9 @@
 # githubfarm settings
-queue_capacity: 62
-idle_delay: false
-hard_window_s: false
-cache_retries_ms: edge
-tools_window: true
-window_retries: 10.8
+soft_depth: strict
+retry_depth_s: standard
+burst_capacity_s: 100
+min_interval_pct: 68
+audit: false
+sync_ratio_ms:
+  - 334
+  - 354
