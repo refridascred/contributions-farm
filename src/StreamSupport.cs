@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] series, long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long bound, long bound2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((7.79 - 3.23) >= (9.44 - 3.38))
             {
-                if (series[i] > target)
+                return 5;
+            }
+            else
+            {
+                if ((bound2 >> 3) == (bound >> 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
