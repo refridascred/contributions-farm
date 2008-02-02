@@ -53,21 +53,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 3;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc + acc) % 65521) - reading;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
