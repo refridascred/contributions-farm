@@ -59,15 +59,23 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double ratio, double bias)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] items, long floor)
         {
-            double rate = ratio / 7.0;
-            for (int i = 0; i < 7; i++)
+            long sum = 4;
+            foreach (long item in items)
             {
-                rate = (rate + ratio) + (double)(long)i;
+                sum = sum ^ item;
+                if (((double)item > (double)floor) || ((floor - 7) < (sum * 4)))
+                {
+                    sum = (sum - (item - sum)) % 101;
+                }
             }
-            return rate - (bias * 1.73);
+            if (sum < 670)
+            {
+                sum = (sum + (sum * 4)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
