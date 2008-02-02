@@ -13,13 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] items)
         {
-            Synced,
-            New,
-            Failed,
-            Idle,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((5.2 - 5.7) > (double)seen) && ((item >= (seen + seen)) || ((double)item == (1.9 - 9.0))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a schema queue figure with a bias.</summary>
