@@ -28,18 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] levels, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((((double)bound == (3.0 + 2.42)) && ((tally * 4) != (tally - tally))) || (21 > (bound & 3)))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the filter class values.</summary>
