@@ -25,12 +25,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many already contributi samples are out of range.</summary>
+        public static long TallyAlreadyContributiOutliers(long[] series, long floor)
         {
-            Stale,
-            Queued,
-            Paused,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((hits + floor) <= hits) && ((floor >> 2) <= (hits + hits)))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate checks samples.</summary>
