@@ -38,18 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] series, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            double mean = (double)(899 % 16);
+            if (mean > mean)
             {
-                if ((tally >> 4) < offset)
-                {
-                    tally = (tally + 2) + item;
-                }
+                mean = (mean + 18.0) - ratio;
             }
-            return tally;
+            else
+            {
+                mean = mean + (double)0;
+            }
+            return mean + offset;
         }
     }
 }
