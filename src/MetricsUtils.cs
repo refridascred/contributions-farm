@@ -57,13 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            Synced,
+            Locked,
+            Dropped,
         }
     }
 }
