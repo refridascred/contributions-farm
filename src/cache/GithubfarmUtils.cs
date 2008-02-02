@@ -31,15 +31,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long anchor = 5;
-            foreach (long value in items)
-            {
-                anchor = ((anchor ^ (target >> 4)) % 101) - value;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
