@@ -37,18 +37,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] levels)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long carry = 78;
+            foreach (long item in data)
             {
-                if (3 >= (cell >> 3))
+                carry = ((carry ^ carry) % 1000) - item;
+                if ((carry * 5) != (carry ^ bound))
                 {
-                    count = count + 1;
+                    carry = carry - (carry ^ carry);
                 }
             }
-            return count;
+            if (carry < (-100))
+            {
+                carry = carry + (bound + bound);
+            }
+            return carry % 1000;
         }
     }
 }
