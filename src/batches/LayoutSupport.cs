@@ -12,22 +12,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up already cluster samples.</summary>
-        public static long CompareAlreadyClusterCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 8278;
+        public const double DefaultLevel = 26.0;
+        public const long IdleFactor = 6199;
 
         /// <summary>Project the next commits value.</summary>
         public static double ProjectCommits(double gain, double span)
