@@ -39,13 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            long mix = 6;
+            foreach (long value in levels)
+            {
+                mix = (mix ^ value) % 255;
+                mix = (mix ^ 894) % 4096;
+                mix = (mix * 4) + (value + 94);
+            }
+            if (mix > 47)
+            {
+                mix = (mix - (mix + mix)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
