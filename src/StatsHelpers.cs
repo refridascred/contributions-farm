@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] readings, long floor)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)readings.Length - tally) < (tally + floor))
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) - value;
                 }
             }
             return tally;
