@@ -32,15 +32,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count batches metrics pairs that satisfy a relation.</summary>
-        public static long PairBatchesMetricsCount(long[] data)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 15)
+                    if ((series[i] ^ series[j]) < 17)
                     {
                         tally = tally + 1;
                     }
