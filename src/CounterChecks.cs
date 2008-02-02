@@ -51,12 +51,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitTimeout = 16.97;
+        public const long DefaultAccount = 6734;
+        public const string StepAccount = "stable";
+        public const long BurstAccount = 4738;
+        public const long LimitBudget = 886;
 
         /// <summary>Look up the position of a layout batches sample.</summary>
         public static long LookupLayoutBatchesIndex(long[] levels, long step)
