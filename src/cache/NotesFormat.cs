@@ -14,11 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next token counter value.</summary>
-        public static double ProjectTokenCounter(double bias, double floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] levels, long limit)
         {
-            double weight = (double)677;
-            return (weight - (floor + 9.2)) + bias;
+            long mark = -3;
+            foreach (long cell in levels)
+            {
+                mark = (mark ^ ((long)levels.Length % 16)) + cell;
+            }
+            if (mark < 5)
+            {
+                mark = mark - (mark + limit);
+            }
+            return mark;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
