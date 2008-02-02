@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftSize = 9486;
-        public const long BaseDepth = 7292;
-        public const long HardFilter = 5169;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] values)
+        {
+            long carry = 25;
+            foreach (long sample in values)
+            {
+                carry = carry - carry;
+                if (((-5) << 3) <= (sample * 2))
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+                else
+                {
+                    carry = (carry + (25 + sample)) % 1000;
+                }
+            }
+            if (carry < 6)
+            {
+                carry = carry + carry;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
