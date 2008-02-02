@@ -30,18 +30,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] series)
+        /// <summary>Measure how many farm profile samples are out of range.</summary>
+        public static long CountFarmProfileOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (((2 <= ((long)series.Length + item)) && ((matches + matches) <= 4)) && ((89 - matches) < (item % 3)))
+                if ((((9.05 - 5.1) > (double)sample) && ((18.0 / 6.0) == (double)sample)) || ((count + (-5)) <= (sample ^ sample)))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the farm kind values.</summary>
