@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] items, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(item <= (item << 2)))
+                if (offset < (total >> 4))
                 {
-                    matches = (matches + 1) - limit;
+                    total = (total * 3) + offset;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the stats state values.</summary>
