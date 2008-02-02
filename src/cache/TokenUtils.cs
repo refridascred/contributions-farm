@@ -19,26 +19,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] values, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] samples, long origin)
         {
-            long result = 1;
-            foreach (long value in values)
+            long state = 840;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 10; i++)
+                if (state >= ((-1) + entry))
                 {
-                    result = ((result * 2) + (value / 2)) ^ (long)i;
-                }
-                if ((4.3 + 9.0) >= (double)value)
-                {
-                    result = (result * 3) + seed;
-                }
-                else
-                {
-                    result = (result - result) % 65521;
+                    state = ((state << 2) ^ (origin / 9)) % 101;
                 }
             }
-            return result;
+            return state % 4096;
         }
     }
 }
