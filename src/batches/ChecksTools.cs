@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry % 2) < (entry + entry))
                 {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
