@@ -26,18 +26,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit account session readings against a rule.</summary>
-        public static long MeasureAccountSessionGaps(long[] data, long step)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)step >= (15.0 + 13.0))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            double bias = floor;
+            return (bias - (bias - floor)) + gain;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
