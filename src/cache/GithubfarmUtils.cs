@@ -32,18 +32,12 @@ namespace Common.Utilities
         public const long StepSize = 6477;
         public const double DefaultRecord = 10.47;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] data, long bound)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)bound == (3.9 + 2.2))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Fold a list of report readings.</summary>
