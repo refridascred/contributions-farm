@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long target, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            long span = target ^ limit;
-            if ((6.33 - 20.0) < (double)target)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((span & 7) > (span >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
