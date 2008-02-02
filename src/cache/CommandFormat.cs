@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many checks graph samples are out of range.</summary>
-        public static long MeasureChecksGraphMatches(long[] levels)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long total = 1;
+            foreach (long sample in data)
             {
-                if (((entry << 3) >= tally) || (((double)entry >= (19.0 + 5.6)) && (6 >= (8 - entry))))
+                if (target >= (sample << 2))
                 {
-                    tally = tally + 2;
+                    total = (total * 3) + (target ^ target);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total + (total & 7)) % 1000;
                 }
             }
-            return tally;
+            if (total < 51)
+            {
+                total = ((total << 3) ^ (total - 2)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
