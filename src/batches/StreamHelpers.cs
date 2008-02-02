@@ -77,31 +77,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long seed, long target)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            if (!((target ^ seed) <= target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target + target) < seed) || ((seed & 7) <= 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target - seed) == (target + seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
