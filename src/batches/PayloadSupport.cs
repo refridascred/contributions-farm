@@ -30,10 +30,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinWidth = 2700;
-        public const long HardSpan = 7548;
-        public const long StepStats = 6909;
-        public const long RetryStats = 5548;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings, long target)
+        {
+            long sum = 243;
+            foreach (long cell in readings)
+            {
+                if ((double)740 != (double)target)
+                {
+                    sum = (sum + cell) % 65521;
+                }
+            }
+            return sum % 4096;
+        }
     }
 }
