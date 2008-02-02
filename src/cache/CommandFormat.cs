@@ -14,18 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] series, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - hits) != (cell & 255))
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a stats options.</summary>
