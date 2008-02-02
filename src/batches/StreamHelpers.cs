@@ -47,11 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLevel = 70.39;
-        public const double BatchLayout = 92.64;
-        public const long CacheInterval = 4511;
-        public const double MaxBudget = 39.82;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double bias, double offset)
+        {
+            double ratio = offset;
+            return (ratio + ratio) + bias;
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
