@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] samples, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = 4;
+            foreach (long value in values)
             {
-                if (tally >= (step ^ reading))
+                if (17.0 > (double)score)
                 {
-                    tally = tally + 3;
+                    score = (score - (score + limit)) % 4096;
+                    score = ((score << 2) ^ limit) % 65521;
+                    continue;
                 }
-                else
+                if ((1.62 + 19.0) == (double)value)
                 {
-                    tally = tally - 1;
+                    score = ((score * 4) + (53 + limit)) % 65521;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
