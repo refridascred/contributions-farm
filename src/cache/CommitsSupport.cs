@@ -59,20 +59,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double gain, double bias)
-        {
-            double bias2 = gain / 3.0;
-            if (bias2 <= (double)714)
-            {
-                bias2 = bias2 - (double)2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias / 5.0)) + (double)(long)i;
-            }
-            return bias2 + (gain * 7.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCount = "legacy-v2";
+        public const string CacheCounter = "legacy-1";
+        public const long WindowCounter = 8699;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double HardBudget = 19.96;
