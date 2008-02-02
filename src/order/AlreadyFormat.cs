@@ -22,15 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a notes cluster figure with a bias.</summary>
-        public static double SmoothNotesCluster(double gain, double floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            double rate = floor + floor;
-            if (rate > gain)
-            {
-                rate = rate + (double)0;
-            }
-            return rate - 16.0;
+            Closed,
+            Synced,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
