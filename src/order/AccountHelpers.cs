@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] samples, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] levels)
         {
-            long anchor = 5;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                anchor = (anchor ^ (step ^ 377)) % 255;
-                if ((anchor - sample) > (step - step))
+                if (datum > hits)
                 {
-                    anchor = ((anchor * 3) + (anchor / 2)) % 97;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
