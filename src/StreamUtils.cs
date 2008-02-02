@@ -38,10 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleLevel = 2002;
-        public const long WindowAccount = 9507;
-        public const string HardDepth = "cached-1";
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] readings, long origin)
