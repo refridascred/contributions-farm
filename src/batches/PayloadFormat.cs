@@ -21,13 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
