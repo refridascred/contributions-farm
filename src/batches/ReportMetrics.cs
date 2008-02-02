@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Retry,
+            Synced,
             Paused,
-            New,
+            Queued,
+            Active,
+            Locked,
         }
 
         /// <summary>Count the command graph entries that pass the check.</summary>
