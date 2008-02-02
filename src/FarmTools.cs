@@ -30,15 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            double rate = gain;
-            for (int i = 0; i < 4; i++)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                rate = ((rate + (8.3 / 4.0)) - (double)(long)i) - offset;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return rate + rate;
+            return carry;
         }
     }
 }
