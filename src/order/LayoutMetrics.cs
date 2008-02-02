@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] samples)
+        /// <summary>Audit buffer checks readings against a rule.</summary>
+        public static long MeasureBufferChecksOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((double)seen > (double)1) && ((99 >= reading) || ((9.0 * 5.87) <= (double)reading)))
+                if (34 > (matches / 8))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 3) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every profile filter entry stays within the limit.</summary>
