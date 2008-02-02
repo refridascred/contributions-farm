@@ -49,18 +49,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches schema entries that pass the check.</summary>
-        public static long TallyBatchesSchemaMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen / 8) < (entry / 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstScore = "primary-v2";
+        public const string MinGithubfarm = "staging";
+        public const long MaxGithubfarm = 8831;
     }
 }
