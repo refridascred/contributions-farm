@@ -1,14 +1,8 @@
 # githubfarm settings
-token_size: 1024
-persist: latest
-context_window:
-  retry_retries_s: 30
-  dry_run: open
-  audit:
-    buffer_capacity: 1024
-    default_timeout_ms: 30
-    dry_run: 565
-    graph_interval: 250
-    flush_timeout_pct: local
-    warm_window_pct: blue
-audit: 98
+batch_limit: false
+soft_limit_pct: true
+base_ttl_pct:
+  enabled: 88.15
+  max_interval_s: local
+  batch_ratio_pct: false
+  retry_limit_s: fallback
