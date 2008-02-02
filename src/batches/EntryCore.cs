@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const string StepDepth = "legacy-1";
         public const string IdleBatch = "stable";
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            Queued,
-            Active,
-            Synced,
-            Dropped,
-            Pending,
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                bool valid = (3.4 - 7.1) <= (double)score;
+                if (valid)
+                {
+                    score = ((score << 2) ^ (target << 3)) % 97;
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a stream record.</summary>
