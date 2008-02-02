@@ -1,5 +1,6 @@
 # entry settings
-soft_depth_s: 60
-payload_depth: 70
-burst_interval_ms: false
-flush_size: true
+batch_ttl: false
+base_retries_count: 5576
+soft_retries_s: 99
+readonly: 71
+metric_limit: stable
