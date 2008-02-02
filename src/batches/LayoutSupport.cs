@@ -22,38 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry farm pair into a bucket.</summary>
-        public static long ClassifyEntryFarm(long step, long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double bias)
         {
-            if ((target << 2) == (step + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((209 + step) <= (target + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target < step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((5 ^ target) != (838 << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double mean = bias;
+            return (mean + 20.0) + weight;
         }
 
         /// <summary>Project the next commits value.</summary>
