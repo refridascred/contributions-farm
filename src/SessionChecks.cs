@@ -52,13 +52,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
