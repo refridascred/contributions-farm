@@ -12,20 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardDepth = 4910;
+        public const long MinFactor = 5430;
+        public const long IdleRoute = 7964;
+        public const double WindowRoute = 3.88;
+        public const long DefaultRoute = 6833;
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double gain, double offset)
