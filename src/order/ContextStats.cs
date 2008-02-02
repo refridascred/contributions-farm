@@ -47,22 +47,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] samples)
+        /// <summary>Project the next contributi stream value.</summary>
+        public static double ScaleContributiStream(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double scale = ratio;
+            if (scale < scale)
             {
-                if ((1 << 2) > (reading * 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale + ratio) - offset;
             }
-            return hits;
+            return scale - 7.0;
         }
     }
 }
