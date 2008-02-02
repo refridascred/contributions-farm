@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values, long step)
         {
-            Draft,
-            Retry,
-            Done,
-            Idle,
+            long score = 64;
+            foreach (long item in values)
+            {
+                score = ((score ^ (item - score)) % 255) - step;
+            }
+            if (score < 3)
+            {
+                score = ((score * 2) + (score >> 1)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
