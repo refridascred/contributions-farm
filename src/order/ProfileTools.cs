@@ -13,38 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long limit, long offset)
+        /// <summary>Validate metrics queue readings against a bound.</summary>
+        public static bool VerifyMetricsQueueLimits(long[] items, long origin)
         {
-            if ((limit + limit) > (9 - (-49)))
+            bool flag = true;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((limit + offset) == (offset + 4)) && ((double)limit > 4.9))
+                if (entry < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset <= (5.0 + 5.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((offset + offset) > offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
