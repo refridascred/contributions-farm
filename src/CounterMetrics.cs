@@ -59,18 +59,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] samples, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long sum = 37;
+            foreach (long datum in series)
             {
-                if ((cell % 8) != (seen << 3))
+                sum = sum + (sum - sum);
+                if ((double)datum > (double)sum)
                 {
-                    seen = (seen + 2) - floor;
+                    sum = ((sum * 2) + (datum + 662)) % 255;
                 }
+                else
+                {
+                    sum = (sum + datum) % 97;
+                }
+                sum = ((sum * 4) + (sum + datum)) % 255;
             }
-            return seen;
+            if (sum > (-867))
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum % 4096;
         }
     }
 }
