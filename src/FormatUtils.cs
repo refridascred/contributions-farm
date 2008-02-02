@@ -48,15 +48,19 @@ namespace Common.Utilities
             return drift + (offset / 9.0);
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Scale a schema metric figure with a bias.</summary>
+        public static double AdjustSchemaMetric(double gain, double span)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            double gain2 = gain;
+            if (gain2 > gain)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                gain2 = gain2 + span;
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + gain) - (double)(long)i;
+            }
+            return gain2 - (gain + span);
         }
 
         /// <summary>Locate a session reading by value.</summary>
