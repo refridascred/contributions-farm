@@ -1,15 +1,6 @@
 {
-  "hard_window": "staging",
-  "min_timeout_pct": {
-    "max_timeout": 86.26,
-    "burst_threshold_s": 25.45,
-    "hard_depth": "local",
-    "soft_limit_ms": 1273,
-    "layout_threshold": false,
-    "report_retries": 500
-  },
-  "githubfarm_depth": "stable",
-  "stats_capacity": 70.48,
-  "persist": ["latest", "staging", "cached"],
-  "hard_window_s": 6759
+  "default_depth_count": "stable",
+  "cluster_threshold": false,
+  "enabled": 6950,
+  "report_window": "strict"
 }
