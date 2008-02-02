@@ -15,12 +15,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long offset, long offset2)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            if (!((985 / 7) != (offset ^ 22)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)offset <= (6.32 + 0.82)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6.43 - 13.0) != (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route options.</summary>
