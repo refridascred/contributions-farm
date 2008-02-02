@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const double HardScore = 53.35;
         public const long DefaultContext = 9719;
 
-        /// <summary>Grade a session order value against two limits.</summary>
-        public static long SortSessionOrder(long origin, long floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            if (!((floor + origin) != (origin - origin)))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)origin <= (1.1 + 17.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor + floor) >= (16 ^ origin)) && ((floor - 281) < (384 ^ floor)))
+                    if ((items[i] - items[j]) > 14)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.1 * 10.0) >= (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the profile support series from a seed.</summary>
