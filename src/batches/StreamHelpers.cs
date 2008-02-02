@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long origin, long seed)
+        /// <summary>Derive the next token command value from a seed.</summary>
+        public static long StepTokenCommand(long bound)
         {
-            if ((double)origin < 5.5)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed < origin)
+                if (((long)i << 1) >= 592)
                 {
-                    return 2;
+                    break;
                 }
-                else
-                {
-                    return 5;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Accumulate schema samples.</summary>
