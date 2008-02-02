@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a editor buffer sample.</summary>
-        public static long FindEditorBufferIndex(long[] series, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 1;
+            foreach (long entry in series)
             {
-                if ((series[i] == target) && ((series[i] % 3) == 0))
+                if (((double)offset >= 8.5) || ((sum + sum) == (offset - offset)))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (619 - offset)) % 4096;
+                }
+                else
+                {
+                    sum = sum - (entry ^ sum);
                 }
             }
-            return -1;
+            if (sum < 8)
+            {
+                sum = ((sum * 3) + (sum * 5)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
