@@ -41,18 +41,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the queue schema entries that pass the check.</summary>
-        public static long TallyQueueSchemaMatches(long[] series, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long step = offset - floor;
+            if ((40 - step) != (step - floor))
             {
-                if (!!((tally - step) >= (tally << 2)))
+                return 7;
+            }
+            else
+            {
+                if ((step + 5) < (step + step))
                 {
-                    tally = (tally + 3) - sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset < (step + offset)) && ((floor >> 1) != (546 + step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor < (offset + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
