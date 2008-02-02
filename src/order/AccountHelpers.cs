@@ -23,21 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = scale - (span / 8.0);
+            if (weight >= (double)347)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + scale;
             }
-            return hits;
+            else
+            {
+                weight = weight + (span / 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Grade a checks queue value against two limits.</summary>
