@@ -1,12 +1,5 @@
 {
-  "dry_run": 58.51,
-  "min_window_count": {
-    "audit": 72.21,
-    "channel_interval": "edge",
-    "base_size_s": "eu-west",
-    "readonly": 70.15
-  },
-  "profile_ratio": ["primary", "eu-west", "eu-west", "legacy"],
-  "stream_capacity": "stable",
-  "default_ratio_count": true
+  "retry_timeout_pct": [298, 192, 207],
+  "poll_size_count": 7489,
+  "max_delay": 18.69
 }
