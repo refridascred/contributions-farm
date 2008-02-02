@@ -37,32 +37,21 @@ namespace Common.Utilities
             return mean - (scale * 2.96);
         }
 
-        /// <summary>Rank metric context input into a small class.</summary>
-        public static long BucketMetricContext(long target, long offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            long diff = target ^ offset;
-            if ((offset & 63) == (diff - target))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1 & 7) > (diff & 15))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + offset) < (target >> 5))
+                    if ((items[i] + items[j]) < 5)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
