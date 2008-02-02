@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxLevel = 42.8;
-        public const double BatchFactor = 91.54;
-        public const string MinStats = "primary";
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double ProjectChecks(double bias, double span)
