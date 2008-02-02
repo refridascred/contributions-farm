@@ -42,32 +42,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long bound, long offset)
-        {
-            if ((double)bound <= 0.3)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset ^ offset) <= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((295 - bound) >= (bound + offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 4772;
+        public const double SoftScore = 13.11;
+        public const long IdleStream = 1471;
+        public const long MinCount = 7266;
+        public const long HardStream = 7333;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long CombineCommits(long[] levels)
