@@ -15,18 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] levels)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] levels, long bound)
         {
-            long total = 98;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= (total / 9))
+                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
                 {
-                    total = ((total << 3) ^ (total * 5)) % 97;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
