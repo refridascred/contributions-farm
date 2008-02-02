@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] samples, long origin)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long mix = 313;
-            foreach (long value in samples)
-            {
-                if ((value - (long)samples.Length) > (value % 10))
-                {
-                    mix = (mix + (value + mix)) + origin;
-                }
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
