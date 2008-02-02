@@ -51,19 +51,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every metrics cluster entry stays within the limit.</summary>
-        public static bool VerifyMetricsClusterLimits(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchSize = 3945;
+        public const double BurstEntry = 35.52;
+        public const long IdleScore = 5584;
+        public const string WindowDepth = "local-1";
+        public const long LimitEntry = 5877;
     }
 }
