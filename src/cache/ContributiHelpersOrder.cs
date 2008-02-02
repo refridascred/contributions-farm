@@ -24,22 +24,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] data)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((hits + (long)data.Length) != (62 & 3)) && ((8.91 + 7.2) <= (double)item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
