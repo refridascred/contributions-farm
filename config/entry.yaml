@@ -1,35 +1,5 @@
 # entry settings
-flush_window_count: 78
-idle_timeout:
-  - 448
-  - 119
-retry_retries:
-  compress: 9883
-  poll_timeout_ms: local
-  strict: staging
-idle_threshold_ms:
-  strict: 4122
-  soft_ttl_ms: 6048
-  min_limit_count:
-    - 338
-    - 206
-    - 280
-    - 157
-  sync_timeout:
-    cluster_delay:
-      - legacy
-      - edge
-    already_window: 482
-    persist:
-      - 442
-      - 298
-      - 324
-    base_interval: 66
-    dry_run:
-      - latest
-      - cached
-      - latest
-      - latest
-    enabled: 1024
-  graph_depth: 6852
-warm_capacity_s: 16
+poll_timeout_s: staging
+farm_ratio: 30.44
+githubfarm_size: 60
+metrics_capacity: true
