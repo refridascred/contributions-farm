@@ -1,5 +1,7 @@
 {
-  "verbose": 40.68,
-  "farm_capacity": "legacy",
-  "strict": "standard"
+  "order_delay": "cached",
+  "readonly": ["blue", "green", "eu-west"],
+  "retry_ttl_pct": true,
+  "batches_retries": ["stable", "green", "edge", "edge"],
+  "max_size": ["latest", "cached"]
 }
