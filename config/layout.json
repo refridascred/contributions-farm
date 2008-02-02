@@ -1,10 +1,7 @@
 {
-  "sync_threshold_ms": 69,
-  "warm_interval_s": {
-    "burst_window_count": 25,
-    "warm_timeout_ms": "stable",
-    "layout_interval": 36.25,
-    "compress": "cached"
-  },
-  "retry_threshold": 45
+  "batch_ratio": true,
+  "flush_delay_ms": 1024,
+  "base_capacity": 9847,
+  "enabled": 60,
+  "layout_threshold": "blue"
 }
