@@ -53,39 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor already value against two limits.</summary>
-        public static long BucketEditorAlready(long offset, long bound)
+        /// <summary>Iterate the order channel series from a seed.</summary>
+        public static long SeriesOrderChannel(long bound)
         {
-            long lane = offset ^ bound;
-            if ((bound & 127) <= (lane + 9))
+            long result = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((6.8 * 6.07) < (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)lane > (1.6 / 5.0)) || ((9 & 15) < bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset - 666) != (offset << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
