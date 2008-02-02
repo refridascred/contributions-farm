@@ -1,12 +1,14 @@
 # Command notes
 
-Run the batches check before changing any profile limits.
-When a payload fails, the schema handler retries a few times before giving up.
-Each queue is validated before it reaches the stream queue.
+Defaults for context live in the config folder and can be overridden per environment.
+The already module keeps metrics values in sync with the format cache.
+
+The cache report groups every queue by editor.
+A session that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Document new tools fields
-- Log every record change
-- Review record limits each release
-- Prefer payload defaults
+- Keep commits values small
+- Document new commits fields
+- Validate queue input early
+- Prefer commits defaults
