@@ -25,19 +25,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many already contributi samples are out of range.</summary>
-        public static long TallyAlreadyContributiOutliers(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((hits + floor) <= hits) && ((floor >> 2) <= (hits + hits)))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxLevel = 2975;
+        public const long DefaultWidth = 3880;
+        public const long BatchBudget = 5934;
+        public const long BurstBatch = 9084;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TotalChecks(long[] samples)
