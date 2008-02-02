@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long DefaultContext = 2129;
         public const string RetryContext = "stable-1";
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long step)
         {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            long result = step;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result << 2) ^ result;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Scale a notes cluster figure with a bias.</summary>
