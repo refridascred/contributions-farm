@@ -28,21 +28,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count session cluster pairs that satisfy a relation.</summary>
-        public static long CompareSessionClusterCount(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (0 >= (step - step))
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a schema summary.</summary>
