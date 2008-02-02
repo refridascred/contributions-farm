@@ -31,32 +31,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank layout entry input into a small class.</summary>
-        public static long BucketLayoutEntry(long target, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long origin)
         {
-            long lane = target - bound;
-            if ((lane + bound) >= (bound + 69))
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
+                result = (result << 2) ^ (81 - origin);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)bound <= (3.94 - 3.65))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((lane + lane) < (lane << 3)) || ((2.2 / 3.0) <= (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
