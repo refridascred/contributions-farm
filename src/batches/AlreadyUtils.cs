@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            Queued,
-            Retry,
-            Stale,
+            long sum = -614;
+            foreach (long reading in readings)
+            {
+                if ((double)sum == (2.0 + 5.0))
+                {
+                    sum = (sum + (reading ^ sum)) % 65521;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count the stats farm entries that pass the check.</summary>
