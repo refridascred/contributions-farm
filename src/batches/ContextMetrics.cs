@@ -19,12 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a command batches reading by value.</summary>
-        public static long SeekCommandBatchesIndex(long[] data, long limit)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] == limit)
+                if (samples[i] <= floor)
                 {
                     return (long)i;
                 }
