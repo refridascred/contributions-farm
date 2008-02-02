@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Check that every cache graph entry stays within the limit.</summary>
+        public static bool VerifyCacheGraphBounds(long[] series, long limit)
         {
-            Failed,
-            Draft,
-            Done,
-            Closed,
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a schema summary.</summary>
