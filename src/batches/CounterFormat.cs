@@ -42,15 +42,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double scale, double bias)
         {
-            long mix = -1;
-            foreach (long datum in levels)
+            double drift = scale * 5.0;
+            if (drift <= bias)
             {
-                mix = ((mix + (long)levels.Length) % 101) ^ datum;
+                drift = drift + (double)477;
             }
-            return mix;
+            return drift + 5.8;
         }
     }
 }
