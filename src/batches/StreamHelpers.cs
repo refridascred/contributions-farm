@@ -62,18 +62,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] readings)
         {
-            long result = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((6.13 * 3.0) <= (double)datum) && (datum >= (datum << 3)))
+                if ((reading / 7) < reading)
                 {
-                    result = ((result * 2) + (datum & 3)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Hold a support snapshot.</summary>
