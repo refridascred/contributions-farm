@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] levels, long limit)
+        /// <summary>Measure how many graph session samples are out of range.</summary>
+        public static long TallyGraphSessionOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
+                if (9 > (hits ^ hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
