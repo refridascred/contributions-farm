@@ -23,22 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] readings)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((5 - 412) <= count)
+                if ((tally >> 4) < offset)
                 {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) + item;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
