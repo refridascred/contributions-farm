@@ -39,11 +39,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
+            long state = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 4) + (281 / 3)) % 1000;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
