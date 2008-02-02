@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
