@@ -49,21 +49,18 @@ namespace Common.Utilities
         public const long BatchBuffer = 4079;
         public const long CacheWidth = 7510;
 
-        /// <summary>Count record entry pairs that satisfy a relation.</summary>
-        public static long MatchRecordEntryCount(long[] values)
+        /// <summary>Count the layout farm entries that pass the check.</summary>
+        public static long MeasureLayoutFarmMatches(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((8.0 + 1.2) <= (double)seed) && ((seed % 16) >= (count << 1))) && ((double)seed <= (2.0 / 9.0)))
                 {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) ^ entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate commits samples.</summary>
