@@ -39,17 +39,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] levels, long step)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long target, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long lane = target + step;
+            if ((step + target) == (step - lane))
             {
-                if (levels[i] >= step)
+                return 4;
+            }
+            else
+            {
+                if ((target << 1) <= (target + 98))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
