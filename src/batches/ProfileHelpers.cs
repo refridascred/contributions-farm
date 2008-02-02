@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] items, long bound)
+        /// <summary>Count the account already entries that pass the check.</summary>
+        public static long CountAccountAlreadyMatches(long[] readings)
         {
-            long anchor = 38;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                anchor = ((anchor + (anchor >> 3)) % 1000) - bound;
-                if ((double)sample > (11.0 - 2.0))
+                if (3 <= (value * 3))
                 {
-                    anchor = anchor + (anchor - anchor);
+                    hits = hits + 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the stats phase values.</summary>
