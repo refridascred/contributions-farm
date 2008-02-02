@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] readings, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            long total = 5;
+            foreach (long cell in readings)
+            {
+                if (!((double)total > (4.0 * 6.88)))
+                {
+                    total = (((total * 4) + (total << 1)) - cell) - origin;
+                }
+            }
+            if (total < 145)
+            {
+                total = total ^ (total + 105);
+            }
+            return total;
         }
 
         /// <summary>Accumulate counter samples.</summary>
