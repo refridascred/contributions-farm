@@ -46,15 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry githubfarm value.</summary>
-        public static double BlendEntryGithubfarm(double bias, double offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double weight = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + (double)113) + (double)(long)i) + bias;
-            }
-            return weight - (double)63;
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
