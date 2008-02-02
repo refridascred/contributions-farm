@@ -27,23 +27,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((9.0 + 6.35) != (double)step)
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "local-v2";
+        public const long IdleFilter = 2839;
+        public const long BatchFilter = 1865;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] items, long limit)
