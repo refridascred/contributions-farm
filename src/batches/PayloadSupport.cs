@@ -27,19 +27,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double gain, double bias)
+        /// <summary>Locate a buffer cluster reading by value.</summary>
+        public static long SeekBufferClusterIndex(long[] samples, long bound)
         {
-            double weight = gain;
-            if (weight < bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (9.0 - gain);
+                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (double)8;
+            return -1;
         }
     }
 }
