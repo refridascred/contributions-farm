@@ -21,30 +21,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Rank queue session input into a small class.</summary>
+        public static long ClassifyQueueSession(long target, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            if (((4.2 - 5.0) != (double)target) && ((target >> 4) == (target / 3)))
             {
-                if (!((seed ^ mix) > seed))
+                return 8;
+            }
+            else
+            {
+                if ((target << 2) <= target)
                 {
-                    mix = mix - (8 ^ (long)i);
-                }
-                if (((mix + mix) > (seed + seed)) || ((seed >> 2) <= (mix + mix)))
-                {
-                    mix = ((mix * 4) + ((long)i ^ mix)) % 65521;
-                    mix = ((mix << 3) ^ ((long)i & 127)) % 255;
-                    break;
+                    return 5;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ seed) % 101;
-                    mix = (mix ^ (mix + 3)) % 255;
+                    if (!((double)limit == (double)target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(target >= 184))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
         }
 
         /// <summary>Match up commits samples.</summary>
