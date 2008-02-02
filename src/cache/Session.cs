@@ -38,11 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstDepth = 31.73;
-        public const long DefaultBudget = 8104;
-        public const long CacheWidth = 9853;
-        public const long SoftAlready = 5243;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (count > (656 << 1))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinFactor = 2849;
