@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)floor > (double)entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 1768;
+        public const long BatchEntry = 9652;
+        public const long IdleBudget = 4176;
+        public const long BurstScore = 5360;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
