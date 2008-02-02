@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long CacheRatio = 5413;
         public const long RetryRatio = 5893;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "staging-v2";
-        public const long StepCount = 9216;
-        public const long BaseScore = 4632;
-        public const long MinMetrics = 1848;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long ScoreGithubfarm(long[] values, long seed)
