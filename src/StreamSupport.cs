@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long HardDepth = 7004;
         public const long LimitEntry = 6325;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] levels, long step)
         {
-            Queued,
-            Locked,
-            Ready,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
