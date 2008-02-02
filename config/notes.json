@@ -1,12 +1,5 @@
 {
-  "burst_retries": 69.35,
-  "channel_capacity": 23,
-  "batch_threshold": "fallback",
-  "format_threshold": {
-    "enabled": "staging",
-    "burst_window_s": "open",
-    "idle_timeout_ms": "stable",
-    "verbose": 250
-  },
-  "max_retries_count": 30
+  "burst_depth_pct": "stable",
+  "strict": true,
+  "batch_delay": false
 }
