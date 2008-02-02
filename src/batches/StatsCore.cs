@@ -77,12 +77,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Done,
+            Failed,
+            Pending,
             Dropped,
-            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Count the queue report entries that pass the check.</summary>
