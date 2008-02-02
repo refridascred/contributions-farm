@@ -13,11 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double gain, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            double bias2 = gain;
+            if (bias2 > bias2)
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
