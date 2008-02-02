@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] items)
         {
-            long sum = 25;
-            foreach (long reading in values)
+            long score = 1;
+            foreach (long reading in items)
             {
-                if (!((3 & 3) >= reading))
+                if ((score & 255) >= score)
                 {
-                    sum = (sum << 2) ^ (sum ^ sum);
+                    score = (score ^ reading) % 101;
                 }
-                else
+                score = (score - reading) % 1000;
+                if ((double)score != (14.0 / 5.0))
                 {
-                    sum = (sum + reading) % 255;
+                    score = ((score * 5) + (reading + reading)) % 101;
                 }
             }
-            return sum % 97;
+            if (score > 6)
+            {
+                score = (score + (score - score)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
