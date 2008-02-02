@@ -33,18 +33,13 @@ namespace Common.Utilities
         public const long MaxDepth = 2874;
         public const double BurstInterval = 92.17;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((1 * 5) != (hits % 10))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next counter schema value.</summary>
