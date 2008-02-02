@@ -1,5 +1,7 @@
 # entry settings
-payload_ttl: 95.22
-compress: 28.95
-retry_capacity: 74
-verbose: 21.18
+context_depth: primary
+filter_capacity: 7.79
+editor_ttl: eu-west
+batch_timeout: true
+batch_ttl: 4606
+warm_timeout: 3.28
