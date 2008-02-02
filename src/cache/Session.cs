@@ -38,22 +38,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many checks notes samples are out of range.</summary>
-        public static long CountChecksNotesHits(long[] samples, long step)
+        /// <summary>Accumulate tools context samples.</summary>
+        public static long FoldToolsContext(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long result = 5;
+            foreach (long value in data)
             {
-                if (((double)hits <= (6.7 * 7.1)) && (((12.0 * 3.0) <= (double)hits) && (sample > 1)))
+                if ((result - result) == (result / 4))
                 {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = (((result * 5) + (-879)) % 65521) - value;
                 }
             }
-            return hits;
+            if (result > 8)
+            {
+                result = (result - ((long)data.Length / 4)) % 101;
+            }
+            return result % 65521;
         }
     }
 }
