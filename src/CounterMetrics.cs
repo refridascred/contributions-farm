@@ -43,13 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (matches >= (sample << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
