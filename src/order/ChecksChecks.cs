@@ -14,15 +14,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double rate, double floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] items)
         {
-            double rate2 = (double)(17 + (-9));
-            if (rate2 >= floor)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                rate2 = rate2 + (floor / 5.0);
+                if (matches <= (entry & 31))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate2 - (rate - 1.75);
+            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
