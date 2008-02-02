@@ -21,15 +21,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Scale a filter editor figure with a bias.</summary>
-        public static double ScaleFilterEditor(double ratio, double floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double ratio2 = 10.0 * 8.64;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + floor) - (double)(long)i;
-            }
-            return ratio2 + ratio;
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
