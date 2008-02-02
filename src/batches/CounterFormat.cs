@@ -35,21 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (24 < (319 - seed))
                 {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + value;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
