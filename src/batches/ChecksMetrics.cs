@@ -48,21 +48,10 @@ namespace Common.Utilities
         public const long MinCount = 7266;
         public const long HardStream = 7333;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] levels)
-        {
-            long anchor = 4;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = (((anchor * 2) + sample) % 1000) ^ (long)i;
-                }
-                anchor = ((anchor << 3) ^ (sample + anchor)) % 97;
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 96.49;
+        public const long MinChecks = 6851;
+        public const long BaseChecks = 8011;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
