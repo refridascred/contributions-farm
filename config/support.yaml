@@ -1,17 +1,5 @@
 # support settings
-burst_depth_s:
-  - 153
-  - 103
-context_limit:
-  - 260
-  - 383
-poll_limit_s:
-  - 167
-  - 286
-audit:
-  retry_delay: 5062
-  batch_retries_count: staging
-  flush_window: primary
-  idle_interval_ms: 83.49
-  idle_limit: 100
-  retry_ratio: eu-west
+metric_timeout: 9
+contributi_interval: 30
+idle_retries_count: 74.49
+verbose: 69
