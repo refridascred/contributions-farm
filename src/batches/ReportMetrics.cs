@@ -47,24 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm token input into a small class.</summary>
-        public static long RankFarmToken(long step, long seed)
-        {
-            if ((step + seed) < (step & 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed & 3) > step) && ((step % 3) > (seed << 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 2488;
+        public const long BaseCounter = 1724;
+        public const string CacheWidth = "fallback-1";
+        public const long IdleSpan = 5551;
     }
 }
