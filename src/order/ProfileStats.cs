@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long mix = 277;
-            foreach (long item in items)
-            {
-                if ((7.5 - 2.7) < (double)(long)items.Length)
-                {
-                    mix = mix - item;
-                }
-            }
-            return mix;
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
