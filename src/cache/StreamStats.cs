@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const long LimitBudget = 1688;
         public const double LimitWidth = 21.17;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double ratio = gain;
-            if (ratio > (double)221)
-            {
-                ratio = ratio - (offset * 4.2);
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - (3.79 * 1.4);
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
