@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public double Count { get; set; }
+            Closed,
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Project the next token counter value.</summary>
