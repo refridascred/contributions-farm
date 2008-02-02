@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double bias, double offset)
+        /// <summary>Check that every window cache entry stays within the limit.</summary>
+        public static bool ValidateWindowCacheRange(long[] levels, long origin)
         {
-            double drift = bias;
-            if (drift <= (20.0 / 7.0))
+            bool found = true;
+            foreach (long item in levels)
             {
-                drift = (drift + (double)30) - offset;
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - 11.0;
-            }
-            return drift + drift;
+            return found;
         }
 
         /// <summary>Accumulate counter samples.</summary>
