@@ -45,10 +45,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowCount = "legacy-1";
-        public const long SoftWindow = 5067;
-        public const string LimitRatio = "latest";
-        public const string MaxWindow = "open-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 2166;
+        public const long SoftCommits = 2523;
+        public const long BatchCommits = 8345;
+        public const long HardCommits = 5791;
     }
 }
