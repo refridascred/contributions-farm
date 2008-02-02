@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] samples, long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double scale, double offset)
         {
-            long score = 6;
-            foreach (long entry in samples)
+            double scale2 = (double)99 / 5.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (2.2 >= (double)score)
-                {
-                    score = ((score - 5) % 65521) - target;
-                }
-                else
-                {
-                    score = (score - (74 + entry)) % 4096;
-                }
+                scale2 = ((scale2 + offset) + (double)(long)i) + scale;
             }
-            return score;
+            return scale2 - (double)(-817);
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
