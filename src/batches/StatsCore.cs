@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Audit support report readings against a rule.</summary>
+        public static long TallySupportReportGaps(long[] data, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (3 > hits)
                 {
-                    if ((levels[i] - levels[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 1) - entry) - floor;
                 }
             }
             return hits;
