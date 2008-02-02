@@ -50,18 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] data, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((double)seen > (double)entry)
+                if (value != bound)
                 {
-                    seen = (seen + 2) + limit;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the format status values.</summary>
