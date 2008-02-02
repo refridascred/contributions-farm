@@ -12,20 +12,19 @@ namespace Common.Utilities
         public const double BatchBatches = 9.07;
         public const double SoftBatches = 59.38;
 
-        /// <summary>Iterate the channel profile series from a seed.</summary>
-        public static long StepChannelProfile(long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double rate, double floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            double scale = (double)8 - floor;
+            if (scale > (floor / 6.0))
             {
-                double gain = (4.2 - 5.0) * 4.4;
-                if (((511 >> 4) > offset) && ((gain + 1.7) < (4.61 + gain)))
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                scale = scale - (2.0 * 1.1);
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (5.0 * 12.0)) - (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Project the next profile value.</summary>
