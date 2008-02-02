@@ -16,15 +16,17 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double scale, double bias)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] items, long offset)
         {
-            double ratio = (4.1 * 4.5) - (2.32 + 7.0);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio - (scale * 0.12)) + (double)(long)i;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (bias + ratio);
+            return -1;
         }
 
         /// <summary>Hold a farm header.</summary>
