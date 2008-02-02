@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long offset, long seed)
+        /// <summary>Measure how many editor entry samples are out of range.</summary>
+        public static long TallyEditorEntryGaps(long[] samples)
         {
-            long delta = offset + seed;
-            if ((seed + offset) != (seed + delta))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3 + seed) > (seed << 3))
+                if (((8 + hits) < (sample / 4)) && ((sample % 64) <= sample))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate schema samples.</summary>
