@@ -1,11 +1,8 @@
 {
-  "compress": 250,
-  "soft_capacity": "standard",
-  "strict": {
-    "token_ratio": "strict",
-    "format_retries": 100,
-    "channel_depth": 35,
-    "base_window_s": 9.45,
-    "max_delay_count": true
-  }
+  "burst_retries_ms": true,
+  "default_size": true,
+  "checks_retries": "stable",
+  "readonly": 1024,
+  "base_size": "stable",
+  "batch_limit_ms": "open"
 }
