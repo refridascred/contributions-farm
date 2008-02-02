@@ -13,13 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Count the layout counter entries that pass the check.</summary>
+        public static long MeasureLayoutCounterHits(long[] levels)
         {
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally ^ tally) < tally)
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
