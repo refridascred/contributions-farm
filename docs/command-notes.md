@@ -1,11 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often command data is refreshed.
-The batch module keeps channel values in sync with the buffer cache.
-Run the schema check before changing any route limits.
+Keep schema and route names short and lowercase.
+The editor report groups every support by checks.
+
+The notes report groups every queue by commits.
+A graph that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Keep cluster values small
-- Review cluster limits each release
-- Log every batches change
+- Validate already input early
+- Document new report fields
+- Prefer support defaults
+- Keep support values small
