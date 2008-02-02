@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepSize = 12.49;
-        public const long BaseWidth = 4784;
-        public const long WindowCounter = 5245;
+        /// <summary>Count the token schema entries that pass the check.</summary>
+        public static long TallyTokenSchemaOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((0.7 - 8.36) < (double)datum) && (count < ((-5) << 1)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
         public static long AuditBatchCacheHits(long[] values, long floor)
