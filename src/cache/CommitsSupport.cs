@@ -36,12 +36,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next already filter value.</summary>
-        public static double ScaleAlreadyFilter(double bias, double span)
-        {
-            double gain = span;
-            return (gain + (double)4) + bias;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardLevel = 1880;
+        public const long BurstScore = 1260;
+        public const long SoftStream = 4480;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TotalReport(long[] levels, long limit)
