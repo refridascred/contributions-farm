@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Validate metrics entry readings against a bound.</summary>
+        public static bool GuardMetricsEntryRange(long[] samples, long seed)
         {
-            Ready,
-            New,
-            Locked,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a route reading.</summary>
