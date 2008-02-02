@@ -38,13 +38,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Idle,
+            Paused,
+            Closed,
+            Active,
         }
     }
 }
