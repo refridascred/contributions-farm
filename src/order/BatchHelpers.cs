@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long step, long offset)
-        {
-            long lane = step + offset;
-            if (((offset << 3) >= (lane ^ lane)) || (9.26 <= (double)offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step & 7) >= (offset / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 46.0;
+        public const double DefaultScore = 84.85;
+        public const long SoftTimeout = 3753;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
