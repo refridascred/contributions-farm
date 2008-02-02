@@ -1,7 +1,15 @@
 {
-  "cache_ratio": 30,
-  "dry_run": "blue",
-  "sync_ratio_ms": false,
-  "poll_size_count": 250,
-  "min_ttl_pct": "latest"
+  "cache_size_s": 30,
+  "cache_limit": 500,
+  "filter_window": 65,
+  "batch_retries_s": true,
+  "burst_ttl_ms": 19,
+  "queue_interval": {
+    "record_interval": 4614,
+    "githubfarm_size": "eu-west",
+    "payload_size": 71,
+    "verbose": "legacy",
+    "burst_ttl_s": [439, 364, 21, 254],
+    "max_interval": 3.32
+  }
 }
