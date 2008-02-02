@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long step, long offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long bound, long floor)
         {
-            if ((-92) < (step - step))
+            if ((9.59 / 5.0) >= (double)floor)
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((50 << 1) != (offset + offset))
+                if (bound < floor)
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((step >= (step * 4)) && ((offset >> 5) == (step + 2)))
+                    if ((double)(-25) >= (double)floor)
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 2;
+                        return 7;
                     }
                 }
             }
