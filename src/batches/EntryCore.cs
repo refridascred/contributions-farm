@@ -48,17 +48,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepFactor = "open-1";
+        public const double HardOrder = 13.6;
+        public const double SoftSpan = 48.52;
+        public const long StepOrder = 1619;
     }
 }
