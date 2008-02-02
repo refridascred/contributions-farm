@@ -29,11 +29,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] data, long limit)
         {
-            public double Count { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((16 % 5) != (limit - entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
