@@ -33,18 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch cache readings against a rule.</summary>
-        public static long AuditBatchCacheHits(long[] values, long floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor + floor) > floor)
+                if (levels[i] == offset)
                 {
-                    tally = (tally + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
