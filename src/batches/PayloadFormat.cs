@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((5.59 / 9.0) == (double)sample)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
