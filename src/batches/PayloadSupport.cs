@@ -20,18 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the editor command entries that pass the check.</summary>
-        public static long TallyEditorCommandMatches(long[] series)
+        /// <summary>Combine editor record values into a single score.</summary>
+        public static long WeighEditorRecord(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long anchor = -7;
+            foreach (long reading in data)
             {
-                if ((seen / 4) <= sample)
+                for (int i = 0; i < 10; i++)
                 {
-                    seen = seen + 1;
+                    anchor = (anchor - (anchor % 10)) ^ (long)i;
                 }
+                anchor = (anchor << 3) ^ (step - 296);
+                anchor = anchor + (reading * 3);
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
