@@ -56,19 +56,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] readings, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (item > limit)
+                if ((long)series.Length >= 88)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the queue kind values.</summary>
