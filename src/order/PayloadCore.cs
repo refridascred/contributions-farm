@@ -52,23 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] samples, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] readings, long seed)
         {
-            long state = 655;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                state = (state << 2) ^ (state << 3);
-                if ((seed & 63) == (sample - state))
+                if ((tally / 2) >= (cell >> 2))
                 {
-                    break;
+                    tally = (tally + 1) - seed;
                 }
             }
-            if (state > 3)
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state;
+            return tally;
         }
     }
 }
