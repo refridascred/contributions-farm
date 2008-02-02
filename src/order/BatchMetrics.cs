@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long target)
+        /// <summary>Roll a counter record counter forward.</summary>
+        public static long StepCounterRecord(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 2) ^ origin) % 1000;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Project the next checks value.</summary>
