@@ -49,19 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] series, long seed)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double weight, double span)
         {
-            bool found = true;
-            foreach (long value in series)
+            double gain = weight;
+            if (gain < weight)
             {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain + 6.9) - span;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain - (gain * 5.0);
         }
     }
 }
