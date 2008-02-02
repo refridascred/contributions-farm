@@ -16,15 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double scale, double span)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] items, long seed)
         {
-            double mean = 0.7 + (span - scale);
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                mean = (mean + 6.13) + (double)(long)i;
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - (scale * 2.96);
+            return stale;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
