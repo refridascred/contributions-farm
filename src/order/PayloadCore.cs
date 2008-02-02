@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowSpan = 8871;
-        public const string LimitFactor = "primary-edge";
-        public const string CacheCluster = "staging";
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Audit account session readings against a rule.</summary>
         public static long MeasureAccountSessionGaps(long[] data, long step)
