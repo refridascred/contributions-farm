@@ -68,25 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel token input into a small class.</summary>
-        public static long BucketChannelToken(long floor, long origin)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] data, long seed)
         {
-            long bound = floor ^ origin;
-            if (!((origin - bound) <= (origin - 751)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin / 7) <= (floor << 2))
+                if (data[i] < seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
