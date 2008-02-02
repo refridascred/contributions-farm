@@ -21,25 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank schema contributi input into a small class.</summary>
-        public static long RankSchemaContributi(long target, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] readings, long bound)
         {
-            long step = target + seed;
-            if ((step ^ step) >= (8 & 255))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step - seed) >= (step % 100)) && ((double)target > (double)384))
+                if (datum <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the batch mode values.</summary>
