@@ -24,19 +24,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every batch window entry stays within the limit.</summary>
-        public static bool VerifyBatchWindowLimits(long[] series, long seed)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 3797;
+        public const long IdleRoute = 9171;
+        public const long BaseSpan = 5984;
     }
 }
