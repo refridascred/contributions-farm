@@ -32,19 +32,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long origin, long origin2)
         {
-            long state = 7;
-            foreach (long value in items)
+            if (origin2 > (origin2 + origin))
             {
-                state = (state * 2) + value;
+                return 1;
             }
-            if (state < 8)
+            else
             {
-                state = (state << 3) ^ (state >> 4);
+                if (((origin << 1) <= (32 + origin)) && ((origin + origin) <= origin2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin >> 2) <= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin2 < (9.18 + 1.6))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
