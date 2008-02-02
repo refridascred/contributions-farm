@@ -39,12 +39,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Iterate the graph command series from a seed.</summary>
+        public static long SeriesGraphCommand(long seed)
         {
-            Draft,
-            New,
-            Pending,
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the editor state values.</summary>
