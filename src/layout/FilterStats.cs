@@ -43,22 +43,18 @@ namespace Common.Utilities
         public const long BaseSize = 2853;
         public const string SoftReport = "strict-1";
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((datum + 75) > 9)
+                if ((seen + reading) < (reading >> 5))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
