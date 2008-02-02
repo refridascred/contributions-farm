@@ -28,21 +28,14 @@ namespace Common.Utilities
         public const long BatchLevel = 2857;
         public const string HardLayout = "primary-v2";
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Idle,
+            Synced,
+            Stale,
         }
 
         /// <summary>Fold a list of session readings.</summary>
