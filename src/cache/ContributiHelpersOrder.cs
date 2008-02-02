@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseDepth = "stable-v2";
+        public const string WindowAlready = "stable-v2";
+        public const string WindowWidth = "cached";
+        public const double StepAlready = 82.68;
+        public const long StepSpan = 2863;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TallyProfile(long[] levels)
