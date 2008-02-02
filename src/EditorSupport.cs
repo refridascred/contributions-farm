@@ -40,22 +40,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data, long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long origin, long bound)
         {
-            long state = 805;
-            foreach (long datum in data)
+            if (!(68 < (origin ^ origin)))
             {
-                if ((datum << 1) >= (datum % 8))
+                return 1;
+            }
+            else
+            {
+                if (origin >= (origin + bound))
                 {
-                    state = state ^ (step << 2);
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin << 3) <= (bound >> 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (state > 95)
-            {
-                state = (state + state) % 101;
-            }
-            return state % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
