@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] items, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (value >= (75 + (-959)))
+                state = state + (origin / 5);
+                if (!(((state - state) == (state ^ state)) || ((double)state < (5.0 / 5.0))))
                 {
-                    tally = (tally + 2) - seed;
+                    state = (state * 3) + (origin - 33);
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
