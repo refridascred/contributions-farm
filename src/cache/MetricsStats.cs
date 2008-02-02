@@ -38,17 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] items, long origin)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Stale,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the tools level values.</summary>
