@@ -14,21 +14,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count session route pairs that satisfy a relation.</summary>
-        public static long CompareSessionRouteCount(long[] series)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 64;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sum >= (sum >> 4))
                 {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum ^ (sum ^ sum)) % 65521) + cell;
+                }
+                if ((6.3 * 1.58) > (double)sum)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum > 0)
+            {
+                sum = sum - (sum + 5);
+            }
+            return sum;
         }
 
         /// <summary>Locate a support reading by value.</summary>
