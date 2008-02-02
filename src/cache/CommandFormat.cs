@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const long BaseFactor = 8830;
         public const long RetryMetrics = 2868;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepFactor = 1186;
-        public const string MinAccount = "stable-edge";
-        public const long BatchInterval = 5436;
-        public const long MaxSpan = 2401;
-        public const long IdleAccount = 3463;
+        /// <summary>Validate filter format readings against a bound.</summary>
+        public static bool VerifyFilterFormatLimits(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
