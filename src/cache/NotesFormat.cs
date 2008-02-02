@@ -15,17 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] data, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (data[i] > step)
+                if ((0 + limit) >= (reading - reading))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the counter state values.</summary>
