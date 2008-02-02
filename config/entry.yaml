@@ -1,9 +1,15 @@
 # entry settings
-strict: 55
-sync_ratio_ms:
-  - staging
-  - legacy
-  - latest
-batch_ttl_count:
-  - 148
-  - 219
+flush_interval: 1024
+default_threshold_pct: 71.66
+dry_run: 60
+poll_retries_pct:
+  burst_retries: 250
+  warm_timeout_ms: true
+  cache_timeout_pct: edge
+  max_ttl: eu-west
+  warm_limit_s:
+    - 422
+    - 171
+    - 452
+    - 367
+  contributi_interval: 250
