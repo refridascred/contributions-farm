@@ -21,38 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long origin, long origin2)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] samples, long step)
         {
-            if (origin2 > (origin2 + origin))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin << 1) <= (32 + origin)) && ((origin + origin) <= origin2))
+                if (((double)hits == (3.9 - 2.75)) && ((double)(-438) >= (double)step))
                 {
-                    return 2;
+                    hits = (hits + 2) ^ reading;
                 }
                 else
                 {
-                    if ((origin >> 2) <= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin2 < (9.18 + 1.6))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
