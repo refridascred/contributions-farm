@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Iterate the channel profile series from a seed.</summary>
+        public static long StepChannelProfile(long offset)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                double gain = (4.2 - 5.0) * 4.4;
+                if (((511 >> 4) > offset) && ((gain + 1.7) < (4.61 + gain)))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Project the next profile value.</summary>
