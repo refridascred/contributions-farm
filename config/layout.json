@@ -1,5 +1,12 @@
 {
-  "soft_depth_pct": ["standard", "strict", "strict"],
-  "hard_capacity_s": "blue",
-  "warm_interval_pct": "staging"
+  "enabled": 500,
+  "audit": "green",
+  "max_ratio": "strict",
+  "batch_depth": 89,
+  "readonly": {
+    "hard_limit": false,
+    "already_ttl": ["cached", "local", "stable"],
+    "min_retries_ms": "eu-west"
+  },
+  "soft_delay_count": 8914
 }
