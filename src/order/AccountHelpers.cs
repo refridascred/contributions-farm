@@ -58,14 +58,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] readings, long seed)
         {
-            Pending,
-            Idle,
-            Done,
-            Dropped,
-            Retry,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (seed <= (tally % 5))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
