@@ -32,12 +32,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowScore = 3565;
+        public const double BurstChecks = 55.73;
+        public const string CacheChecks = "staging-v2";
+        public const long WindowBudget = 805;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepFactor = 1186;
