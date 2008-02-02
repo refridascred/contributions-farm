@@ -43,16 +43,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double weight, double floor)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            double mean = (weight * 5.0) * 6.7;
+            for (int i = 0; i < 9; i++)
             {
-                result = (result << 2) ^ (81 - origin);
-                result = ((result * 3) + (long)i) % 65521;
+                mean = (mean - (floor / 7.0)) + (double)(long)i;
             }
-            return result;
+            return mean + mean;
         }
     }
 }
