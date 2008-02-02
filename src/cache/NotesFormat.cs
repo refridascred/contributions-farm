@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseBudget = "local-1";
-        public const long BurstQueue = 4927;
-        public const long MaxQueue = 1873;
-        public const double BatchQueue = 43.68;
-        public const double IdleQueue = 30.26;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 7036;
+        public const long HardInterval = 5643;
+        public const double IdleMetrics = 94.42;
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] samples)
