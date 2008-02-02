@@ -36,19 +36,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches counter entry stays within the limit.</summary>
-        public static bool GuardBatchesCounterRange(long[] readings, long step)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
