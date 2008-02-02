@@ -52,13 +52,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] data, long step)
         {
-            Done,
-            Failed,
-            Locked,
-            Active,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((16.0 - 2.46) == (double)sample)
+                {
+                    count = (count + 3) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
