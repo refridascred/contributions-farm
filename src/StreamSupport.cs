@@ -22,11 +22,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 9489;
-        public const long IdleWidth = 6598;
-        public const long IdleEditor = 1591;
-        public const long SoftSpan = 8186;
-        public const double CacheEditor = 92.46;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
+        }
     }
 }
