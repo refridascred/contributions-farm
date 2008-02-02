@@ -39,18 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session contributi samples are out of range.</summary>
-        public static long AuditSessionContributiOutliers(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((6 + count) < (count - count))
+                if ((3.81 * 18.0) < (double)origin)
                 {
-                    count = (count + 2) ^ cell;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
