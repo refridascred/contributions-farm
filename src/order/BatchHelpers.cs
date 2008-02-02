@@ -22,19 +22,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings, long offset)
+        /// <summary>Scale a schema queue figure with a bias.</summary>
+        public static double BlendSchemaQueue(double rate, double bias)
         {
-            long state = 6;
-            foreach (long item in readings)
+            double scale = 1.3 - bias;
+            if (scale >= rate)
             {
-                state = state ^ (offset + item);
-                if ((9.91 + 5.69) < (double)offset)
-                {
-                    state = (state - item) % 1000;
-                }
+                scale = scale + bias;
             }
-            return state % 4096;
+            else
+            {
+                scale = scale - (9.04 - scale);
+            }
+            return scale + (16.0 / 6.0);
         }
     }
 }
