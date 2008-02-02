@@ -12,13 +12,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
             Draft,
-            Pending,
+            Active,
+            Dropped,
             Failed,
-            Idle,
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
