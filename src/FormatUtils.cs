@@ -63,11 +63,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 4150;
-        public const long MaxLevel = 2567;
-        public const double DefaultReport = 37.99;
-        public const long HardReport = 1513;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches - matches) >= (seed + matches))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
