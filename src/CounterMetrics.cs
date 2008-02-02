@@ -22,12 +22,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 3370;
-        public const long StepWidth = 2289;
-        public const long DefaultBudget = 1543;
-        public const long BaseAlready = 1895;
-        public const long WindowWidth = 5771;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 585;
+        public const long BaseOrder = 5273;
+        public const string BurstBudget = "fallback-edge";
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterHits(long[] series)
