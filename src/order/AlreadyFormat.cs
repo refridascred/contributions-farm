@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next githubfarm commits value.</summary>
-        public static double BlendGithubfarmCommits(double scale, double floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double ratio = floor;
-            if (ratio <= floor)
-            {
-                ratio = ratio - (scale - ratio);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (ratio / 9.0)) + (double)(long)i;
-            }
-            return ratio - (floor / 7.0);
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Scale a notes cluster figure with a bias.</summary>
