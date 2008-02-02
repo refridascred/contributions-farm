@@ -12,18 +12,30 @@ namespace Common.Utilities
         public const long CacheContributi = 6976;
         public const long SoftContributi = 8667;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] data, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long carry = 0;
+            foreach (long entry in series)
             {
-                if ((6.32 - 5.0) != (double)entry)
+                for (int i = 0; i < 3; i++)
                 {
-                    tally = (tally + 2) - seed;
+                    carry = ((carry << 2) ^ ((long)i + entry)) % 97;
+                }
+                if ((11 > offset) || (offset > (carry & 15)))
+                {
+                    carry = ((carry << 2) ^ (entry % 3)) % 65521;
+                }
+                if (entry < (carry << 3))
+                {
+                    carry = ((carry * 4) + entry) % 1000;
                 }
             }
-            return tally;
+            if (carry < (-90))
+            {
+                carry = carry + (carry / 5);
+            }
+            return carry;
         }
 
         /// <summary>Describe the window phase values.</summary>
