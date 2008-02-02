@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long floor, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] values, long step)
         {
-            long slot = floor - origin;
-            if ((origin + 1) > (origin + origin))
+            bool ready = true;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin % 8) <= (52 ^ floor)) || ((slot >> 3) != (108 + origin)))
+                if (reading != step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (slot > 33)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
