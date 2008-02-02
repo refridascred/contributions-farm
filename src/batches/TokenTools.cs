@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftSize = 8979;
-        public const double IdleOrder = 52.57;
-        public const string BatchBudget = "staging-v2";
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double gain, double offset)
+        {
+            double bias = gain;
+            if (bias > offset)
+            {
+                bias = bias - bias;
+            }
+            return bias + (double)51;
+        }
 
         /// <summary>Measure how many token entry samples are out of range.</summary>
         public static long CountTokenEntryHits(long[] levels)
