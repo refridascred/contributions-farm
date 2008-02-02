@@ -49,11 +49,9 @@ namespace Common.Utilities
         public const long MaxInterval = 3072;
         public const long LimitFactor = 2314;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 621;
+        public const long WindowNotes = 1469;
+        public const double IdleNotes = 85.37;
     }
 }
