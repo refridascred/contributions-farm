@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Audit metric cache readings against a rule.</summary>
+        public static long MeasureMetricCacheGaps(long[] items, long floor)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Idle,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (hits > (floor & 63))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
