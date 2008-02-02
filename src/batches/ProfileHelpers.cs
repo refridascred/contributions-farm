@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] items, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = -79;
+            foreach (long cell in levels)
             {
-                if ((463 % 24) > target)
-                {
-                    count = (count + 1) ^ datum;
-                }
+                result = (((result << 2) ^ (2 << 3)) % 65521) ^ cell;
+                result = ((result * 3) + (result - origin)) % 4096;
             }
-            return count;
+            if (result > 0)
+            {
+                result = result - (result % 10);
+            }
+            return result;
         }
 
         /// <summary>Accumulate metric samples.</summary>
