@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the account already entries that pass the check.</summary>
-        public static long CountAccountAlreadyMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (3 <= (value * 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinCount = 3250;
+        public const long CacheFactor = 4056;
+        public const long BatchRatio = 166;
+        public const long IdleBatch = 8414;
+        public const long CacheBatch = 5463;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
