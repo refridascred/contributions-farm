@@ -1,5 +1,29 @@
 {
-  "stream_capacity": true,
-  "base_ttl": 69.57,
-  "base_size_ms": "standard"
+  "sync_interval": 53.86,
+  "batch_delay_s": {
+    "max_limit": true,
+    "sync_ttl_s": {
+      "cache_ratio_ms": true,
+      "poll_retries": [234, 289, 373],
+      "sync_threshold_pct": 21.66,
+      "notes_threshold": 100
+    },
+    "editor_limit": "edge",
+    "session_timeout": [25, 79, 87, 359],
+    "min_interval_count": {
+      "poll_ratio": 1024,
+      "default_capacity": 1024,
+      "hard_limit": true,
+      "sync_timeout_count": true
+    },
+    "burst_delay_ms": 26.59
+  },
+  "buffer_interval": 67.16,
+  "audit": {
+    "audit": 169,
+    "retry_ratio_ms": "legacy",
+    "idle_ratio_s": "stable"
+  },
+  "hard_ratio_ms": "eu-west",
+  "enabled": 82.32
 }
