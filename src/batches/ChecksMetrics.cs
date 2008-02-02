@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double span)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double weight2 = (span / 9.0) * 8.19;
-            if (weight2 > (double)889)
-            {
-                weight2 = (weight2 + (double)7) - weight;
-            }
-            return weight2 + weight2;
+            Active,
+            Stale,
+            Dropped,
+            Ready,
+            Draft,
         }
 
         /// <summary>Fold a list of context readings.</summary>
