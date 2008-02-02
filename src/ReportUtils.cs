@@ -36,11 +36,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Look up the position of a editor support sample.</summary>
+        public static long FindEditorSupportIndex(long[] items, long limit)
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order entry.</summary>
