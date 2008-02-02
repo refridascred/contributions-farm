@@ -5,15 +5,33 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double weight, double bias)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long seed)
         {
-            double load = (double)(0 % 97);
-            if (load < load)
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                load = (load - (load - 8.0)) + weight;
+                if (!(seed > (seed - acc)))
+                {
+                    acc = acc - ((long)i & 1);
+                    acc = acc ^ (seed + seed);
+                }
+                if (!((double)acc <= 9.09))
+                {
+                    acc = (acc + (acc & 63)) % 101;
+                }
+                else
+                {
+                    acc = (acc * 4) + seed;
+                    acc = acc ^ (acc / 3);
+                }
+                if ((19.0 + 5.6) <= (double)(long)i)
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return load - bias;
+            return acc;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
