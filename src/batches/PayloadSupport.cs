@@ -21,11 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a route options.</summary>
