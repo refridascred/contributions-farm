@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit schema cluster readings against a rule.</summary>
+        public static long AuditSchemaClusterGaps(long[] samples, long origin)
         {
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)hits == (5.42 / 7.0))
+                {
+                    hits = ((hits + 2) - sample) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
