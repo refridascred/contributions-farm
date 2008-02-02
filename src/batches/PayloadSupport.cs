@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] values, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (reading > origin)
+                if ((tally - 423) <= (545 - value))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + seed;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Combine editor record values into a single score.</summary>
