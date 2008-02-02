@@ -47,19 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Rank farm token input into a small class.</summary>
+        public static long RankFarmToken(long step, long seed)
         {
-            long result = 9;
-            foreach (long sample in levels)
+            if ((step + seed) < (step & 1))
             {
-                result = (((result << 2) ^ result) % 101) ^ sample;
+                return 4;
             }
-            if (result < 305)
+            else
             {
-                result = (result * 5) + (result - 59);
+                if (((seed & 3) > step) && ((step % 3) > (seed << 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return result;
         }
     }
 }
