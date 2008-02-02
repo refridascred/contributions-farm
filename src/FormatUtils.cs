@@ -20,17 +20,34 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] data, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] == bound)
+                if ((seed - mark) > mark)
                 {
-                    return (long)i;
+                    long seen = (seed - seed) + (seed ^ seed);
+                    mark = mark + (seen ^ seed);
                 }
+                else
+                {
+                    mark = mark - (mark + mark);
+                }
+                if (!((double)mark <= (double)seed))
+                {
+                    mark = (mark ^ (mark - seed)) % 1000;
+                    mark = (mark << 3) ^ seed;
+                }
+                if ((((-27) + (long)i) <= (seed + (long)i)) || ((double)mark > (double)(long)i))
+                {
+                    mark = mark - seed;
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Blend two graph measurements.</summary>
