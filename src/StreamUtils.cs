@@ -45,11 +45,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitSize = 6808;
-        public const long BatchCount = 7945;
-        public const long BaseFarm = 1480;
-        public const long MinBudget = 5845;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleLevel = 2002;
+        public const long WindowAccount = 9507;
+        public const string HardDepth = "cached-1";
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] series)
