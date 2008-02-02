@@ -21,11 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
+            public string Rank { get; set; } = "";
             public long Ratio { get; set; }
             public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
