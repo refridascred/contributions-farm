@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
-        public static bool VerifyContributiLayoutLimits(long[] values, long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Done,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
