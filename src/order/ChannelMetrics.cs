@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] series)
         {
-            Stale,
-            Done,
-            Paused,
-            Draft,
+            long acc = 915;
+            foreach (long reading in series)
+            {
+                if ((72 / 5) < acc)
+                {
+                    acc = acc ^ (acc - reading);
+                }
+            }
+            if (acc < 241)
+            {
+                acc = (acc + (acc >> 1)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
