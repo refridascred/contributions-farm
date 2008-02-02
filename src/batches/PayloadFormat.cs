@@ -32,22 +32,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] data, long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] data, long limit)
         {
-            long total = 19;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (7 > (entry >> 3))
+                if (data[i] <= limit)
                 {
-                    continue;
-                }
-                if ((total % 16) < (entry + total))
-                {
-                    total = ((total + (entry >> 2)) % 65521) + target;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the context level values.</summary>
