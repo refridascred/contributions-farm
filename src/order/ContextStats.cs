@@ -47,15 +47,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next contributi stream value.</summary>
-        public static double ScaleContributiStream(double ratio, double offset)
-        {
-            double scale = ratio;
-            if (scale < scale)
-            {
-                scale = (scale + ratio) - offset;
-            }
-            return scale - 7.0;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "stable-edge";
+        public const long CacheCluster = 7963;
+        public const long CacheTimeout = 4282;
     }
 }
