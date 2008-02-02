@@ -44,11 +44,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 79;
-        public const long RetryProfile = 7807;
-        public const long WindowSize = 4717;
-        public const long WindowProfile = 5577;
-        public const string BatchFactor = "standard";
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
