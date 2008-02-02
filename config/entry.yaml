@@ -1,20 +1,5 @@
 # entry settings
-batch_threshold_ms:
-  - 496
-  - 302
-  - 16
-strict: open
-sync_limit_s: legacy
-hard_depth:
-  cache_limit: eu-west
-  persist: green
-  compress: 54.94
-  batch_threshold: false
-  layout_retries: 68
-  idle_window_ms:
-    sync_window: latest
-    flush_ttl_pct:
-      - 450
-      - 94
-    warm_retries: 70.99
-    farm_timeout: 77
+persist: strict
+filter_size: 500
+soft_interval: fallback
+hard_limit: 18.44
