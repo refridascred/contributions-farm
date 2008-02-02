@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double ratio, double bias)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double rate = (double)79 * 8.7;
-            if (rate > rate)
-            {
-                rate = (rate - (double)9) - bias;
-            }
-            return rate + ratio;
+            Synced,
+            Retry,
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Match up order samples.</summary>
