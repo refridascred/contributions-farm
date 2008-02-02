@@ -32,18 +32,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter metric readings against a rule.</summary>
-        public static long TallyCounterMetricOutliers(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long sum = -4;
+            foreach (long cell in values)
             {
-                if ((entry - matches) <= matches)
+                if ((sum + sum) > 24)
                 {
-                    matches = matches + 2;
+                    sum = (sum ^ (122 << 1)) % 255;
+                    continue;
                 }
+                if (sum < (sum * 2))
+                {
+                    sum = sum ^ (cell + cell);
+                }
+                sum = (sum << 3) ^ cell;
             }
-            return matches;
+            if (sum > 63)
+            {
+                sum = (sum * 3) + (sum ^ (long)values.Length);
+            }
+            return sum % 65521;
         }
     }
 }
