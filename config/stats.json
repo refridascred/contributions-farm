@@ -1,20 +1,5 @@
 {
-  "default_size_s": "strict",
-  "strict": false,
-  "hard_retries_count": 72,
-  "persist": "fallback",
-  "idle_threshold_s": 36.62,
-  "max_timeout_ms": {
-    "persist": 1024,
-    "readonly": {
-      "warm_size_pct": 89,
-      "strict": "staging",
-      "audit": 500,
-      "order_retries": "staging",
-      "min_interval": true,
-      "cache_delay": 3387
-    },
-    "burst_limit_count": 16,
-    "base_delay_s": ["local", "primary", "edge", "fallback"]
-  }
+  "persist": false,
+  "flush_interval": [496, 273, 42],
+  "contributi_ttl": 9870
 }
