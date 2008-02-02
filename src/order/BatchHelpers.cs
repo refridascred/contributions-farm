@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const double DefaultScore = 84.85;
         public const long SoftTimeout = 3753;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
+            long score = 122;
+            foreach (long reading in items)
+            {
+                if (score <= (score - score))
+                {
+                    score = (score - (reading & 255)) % 1000;
+                }
+                if ((double)7 <= (double)reading)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Blend two graph layout measurements.</summary>
