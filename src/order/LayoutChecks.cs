@@ -37,14 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] data, long bound)
         {
-            Paused,
-            Queued,
-            Idle,
-            Synced,
-            Stale,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading <= bound) && (((double)bound < (8.0 + 4.0)) || ((781 * 2) < (matches - bound))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of session readings.</summary>
