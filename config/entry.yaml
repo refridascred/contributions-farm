@@ -1,5 +1,4 @@
 # entry settings
-buffer_ttl: staging
-idle_ratio_ms: eu-west
-strict: false
-editor_size: primary
+flush_size: staging
+dry_run: local
+sync_size_s: 34.44
