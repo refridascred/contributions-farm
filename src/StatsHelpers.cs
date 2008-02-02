@@ -33,12 +33,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long step)
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((long)i >= (42 % 7))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Match up buffer samples.</summary>
