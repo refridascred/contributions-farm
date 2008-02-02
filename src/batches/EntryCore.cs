@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] levels)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (hits >= (65 - value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Adjust a buffer schema reading.</summary>
