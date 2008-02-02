@@ -46,15 +46,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double gain, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] values, long step)
         {
-            double bias = 4.5;
-            if (bias <= (floor - 9.8))
+            long acc = 473;
+            foreach (long datum in values)
             {
-                bias = (bias - floor) - gain;
+                if (!((double)datum != (double)step))
+                {
+                    acc = (acc ^ (long)values.Length) % 65521;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((acc - (datum ^ datum)) % 4096) - (long)i;
+                }
+                acc = acc + step;
             }
-            return bias - (floor * 2.0);
+            if (acc < 522)
+            {
+                acc = ((acc * 2) + (acc - step)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
