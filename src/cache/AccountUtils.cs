@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 7878;
-        public const long RetryMetrics = 1653;
-        public const long MaxMetrics = 4520;
-        public const long MinDepth = 9016;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((7.1 * 3.31) == (double)(long)levels.Length) && !((double)seen < (double)52))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next account stream value from a seed.</summary>
         public static long SeriesAccountStream(long bound)
