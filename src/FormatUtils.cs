@@ -50,19 +50,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((matches - matches) >= (seed + matches))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheSize = "cached";
+        public const long StepScore = 3911;
+        public const string SoftAccount = "stable-1";
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
