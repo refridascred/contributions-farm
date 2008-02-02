@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long bound, long bound2)
+        /// <summary>Validate account counter readings against a bound.</summary>
+        public static bool GuardAccountCounterRange(long[] values, long target)
         {
-            if ((7.79 - 3.23) >= (9.44 - 3.38))
+            bool ready = true;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound2 >> 3) == (bound >> 2))
+                if (value > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of command readings.</summary>
