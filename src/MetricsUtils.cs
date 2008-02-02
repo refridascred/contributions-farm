@@ -31,18 +31,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] readings)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long score = -658;
+            foreach (long item in values)
             {
-                if (entry >= (entry ^ matches))
-                {
-                    matches = matches + 3;
-                }
+                score = ((score * 4) + (item + item)) % 101;
+                score = (score << 2) ^ (item - item);
+                score = (score * 2) + (score / 7);
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
