@@ -54,10 +54,31 @@ namespace Common.Utilities
             return bias2 + (bias / 6.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 9600;
-        public const long BurstBudget = 9687;
-        public const double DefaultCounter = 52.62;
-        public const string DefaultSize = "fallback-edge";
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long floor, long seed)
+        {
+            if ((7.3 / 7.0) >= (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor > (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 255) > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
