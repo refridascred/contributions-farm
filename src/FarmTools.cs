@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] readings, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (tally > ((-118) + (long)readings.Length))
+                if (((double)entry != (9.0 * 19.0)) || ((entry % 16) != (entry << 1)))
                 {
-                    tally = ((tally + 3) ^ cell) + seed;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
