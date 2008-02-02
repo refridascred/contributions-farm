@@ -32,13 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Rank entry counter input into a small class.</summary>
+        public static long ClassifyEntryCounter(long target, long seed)
         {
-            Synced,
-            Paused,
-            Active,
-            Draft,
+            if (((double)target <= (double)9) && ((target + seed) > (target * 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed * 2) >= (seed % 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (673 > (seed & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a editor already value against two limits.</summary>
