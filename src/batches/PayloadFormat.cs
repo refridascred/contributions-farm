@@ -50,14 +50,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
             Dropped,
+            Locked,
+            Closed,
             Idle,
-            Pending,
-            Active,
-            Ready,
+            Draft,
         }
     }
 }
