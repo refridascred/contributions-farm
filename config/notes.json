@@ -1,6 +1,14 @@
 {
-  "hard_depth_ms": 60.85,
-  "soft_size_s": "cached",
-  "flush_threshold": true,
-  "compress": 94
+  "warm_limit": {
+    "default_ratio_ms": "primary",
+    "account_ratio": false,
+    "retry_delay_count": 80,
+    "channel_limit": 7339,
+    "min_timeout_count": true,
+    "compress": 25
+  },
+  "default_threshold_ms": 9622,
+  "burst_limit_ms": 64,
+  "sync_ttl_ms": 54.5,
+  "soft_window_ms": "edge"
 }
