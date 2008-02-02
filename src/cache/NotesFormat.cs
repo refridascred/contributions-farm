@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Accumulate filter checks samples.</summary>
+        public static long DigestFilterChecks(long[] values, long target)
         {
-            Ready,
-            Stale,
-            Synced,
-            Idle,
-            Failed,
+            long mix = 707;
+            foreach (long cell in values)
+            {
+                if (target <= (34 / 4))
+                {
+                    mix = (mix - (target << 1)) - cell;
+                }
+            }
+            if (mix < 43)
+            {
+                mix = ((mix << 2) ^ target) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Rank window input into a small class.</summary>
