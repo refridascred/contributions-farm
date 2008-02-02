@@ -22,17 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] series, long offset)
+        /// <summary>Derive the next session githubfarm value from a seed.</summary>
+        public static long IterateSessionGithubfarm(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] <= offset)
+                long count = seed;
+                if ((mix * 4) > (seed - seed))
                 {
-                    return (long)i;
+                    mix = mix + count;
+                    count = (count + (927 * 3)) % 4096;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the farm phase values.</summary>
