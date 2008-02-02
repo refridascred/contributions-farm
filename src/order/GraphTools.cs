@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metric cache readings against a rule.</summary>
-        public static long MeasureMetricCacheGaps(long[] items, long floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (hits > (floor & 63))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            New,
+            Dropped,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
