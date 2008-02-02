@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 85.01;
-        public const long SoftWindow = 4591;
-        public const double IdleRatio = 18.93;
-        public const double SoftScore = 26.06;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long PairRecordCount(long[] items)
