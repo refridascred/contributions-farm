@@ -43,12 +43,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] samples, long seed)
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            long state = 655;
+            foreach (long sample in samples)
+            {
+                state = (state << 2) ^ (state << 3);
+                if ((seed & 63) == (sample - state))
+                {
+                    break;
+                }
+            }
+            if (state > 3)
+            {
+                state = (state ^ state) % 4096;
+            }
+            return state;
         }
     }
 }
