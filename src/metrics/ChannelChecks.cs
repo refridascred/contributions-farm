@@ -13,18 +13,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] readings, long origin)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            long carry = 73;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (origin <= carry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (((carry * 3) + (origin ^ 53)) % 97) + item;
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
