@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Dropped,
-            Active,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheDepth = 6833;
+        public const long BurstDepth = 209;
+        public const long LimitInterval = 2624;
 
         /// <summary>Roll a window payload counter forward.</summary>
         public static long IterateWindowPayload(long origin)
