@@ -56,12 +56,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 16.33;
-        public const long StepCounter = 1636;
-        public const double IdleCounter = 87.65;
-        public const long LimitDepth = 3904;
-        public const double DefaultSpan = 32.04;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
