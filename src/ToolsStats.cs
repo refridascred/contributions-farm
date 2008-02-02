@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the tools channel series from a seed.</summary>
-        public static long DeriveToolsChannel(long floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Digest a series of command order entries.</summary>
