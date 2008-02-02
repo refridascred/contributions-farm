@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] values)
+        /// <summary>Look up the position of a farm payload sample.</summary>
+        public static long LookupFarmPayloadIndex(long[] data, long target)
         {
-            long carry = 25;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry - carry;
-                if (((-5) << 3) <= (sample * 2))
+                if ((data[i] >= target) && ((data[i] % 2) == 0))
                 {
-                    carry = (carry << 3) ^ carry;
-                }
-                else
-                {
-                    carry = (carry + (25 + sample)) % 1000;
+                    return (long)i;
                 }
             }
-            if (carry < 6)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
