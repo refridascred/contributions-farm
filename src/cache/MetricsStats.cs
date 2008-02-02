@@ -79,12 +79,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] readings)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits + 5) != ((-81) - value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
