@@ -33,21 +33,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((target ^ tally) >= target)
                 {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) + item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
