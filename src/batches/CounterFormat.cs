@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] samples, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((state & 7) < ((long)i % 5)) && ((long)i == (state / 9)))
+                if ((samples[i] > target) && ((samples[i] % 2) == 0))
                 {
-                    state = state - (state >> 3);
-                    state = ((state * 2) + (56 - state)) % 1000;
+                    return (long)i;
                 }
-                state = ((state << 2) ^ floor) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a account stats.</summary>
