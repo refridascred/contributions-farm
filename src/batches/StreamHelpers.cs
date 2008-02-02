@@ -72,26 +72,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] levels, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long limit, long offset)
         {
-            long total = 62;
-            foreach (long datum in levels)
+            if (((double)limit != (double)offset) || ((19.0 - 8.25) < (double)limit))
             {
-                if ((datum + datum) < (datum - total))
+                return 5;
+            }
+            else
+            {
+                if ((offset / 8) >= (limit - limit))
                 {
-                    total = (total + total) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    total = ((total << 3) ^ 33) % 1000;
+                    if (((offset + limit) < offset) || (offset > (limit - offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (total > 95)
-            {
-                total = (total * 4) + (origin * 5);
-            }
-            return total;
         }
     }
 }
