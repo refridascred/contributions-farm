@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a order checks pair into a bucket.</summary>
-        public static long ClassifyOrderChecks(long bound, long seed)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            if ((15.0 - 4.7) == (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((14.0 - 8.2) == (double)seed) && (bound <= (bound << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound != (8.56 * 3.48))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed + seed) <= seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
