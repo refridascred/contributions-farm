@@ -53,20 +53,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Blend two entry batches measurements.</summary>
+        public static double BlendEntryBatches(double scale, double floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            double bias = floor * 6.9;
+            if (bias > bias)
             {
-                carry = (carry * 2) + (carry - bound);
-                if (!(((bound / 5) > (carry + bound)) && (carry >= ((long)i >> 4))))
-                {
-                    carry = ((carry * 2) + ((-191) << 2)) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                bias = bias - floor;
             }
-            return carry;
+            else
+            {
+                bias = bias + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (floor / 3.0)) - (double)(long)i;
+            }
+            return bias - (12.0 - floor);
         }
     }
 }
