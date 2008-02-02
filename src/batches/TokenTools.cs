@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long seed)
         {
-            long carry = 73;
-            foreach (long datum in samples)
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((622 ^ 4) < (carry << 1))
-                {
-                    carry = (carry + carry) ^ datum;
-                }
+                anchor = (anchor << 3) ^ (seed + seed);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Accumulate notes samples.</summary>
