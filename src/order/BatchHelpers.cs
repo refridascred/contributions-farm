@@ -12,14 +12,32 @@ namespace Common.Utilities
         public const long RetryCount = 4539;
         public const double LimitCache = 88.62;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long step, long origin)
         {
-            Synced,
-            Queued,
-            Pending,
-            Ready,
-            New,
+            long slot = step ^ origin;
+            if (((origin >> 2) <= slot) || ((slot ^ 69) < origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step % 10) < slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step << 3) > step) || ((14 + origin) >= (slot + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of format readings.</summary>
