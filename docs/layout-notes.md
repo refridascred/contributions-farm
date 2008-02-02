@@ -1,12 +1,11 @@
 # Layout notes
 
-The stream report groups every editor by githubfarm.
-Keep batches and graph names short and lowercase.
-The command helpers are pure functions, so they are safe to call from any thread.
+The queue module keeps queue values in sync with the profile cache.
+A payload that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Document new counter fields
-- Keep batches values small
-- Log every queue change
+- Document new batches fields
+- Review route limits each release
+- Validate schema input early
+- Keep counter values small
