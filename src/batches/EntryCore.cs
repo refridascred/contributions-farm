@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long offset, long bound)
-        {
-            if ((offset + 840) >= (offset + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound ^ offset) <= (3 - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - bound) != (bound << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinSize = "fallback-v2";
+        public const string StepDepth = "legacy-1";
+        public const string IdleBatch = "stable";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportHits(long[] values)
