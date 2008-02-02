@@ -1,15 +1,19 @@
 {
-  "filter_ttl": {
-    "route_limit": {
-      "retry_threshold_s": 1024,
-      "cache_window_s": 91.05,
-      "readonly": "edge"
+  "dry_run": 96.17,
+  "order_timeout": 100,
+  "support_depth": true,
+  "retry_window_ms": 21.69,
+  "min_capacity_pct": {
+    "base_capacity_s": {
+      "warm_timeout": 250,
+      "strict": 42.28,
+      "audit": "latest"
     },
-    "dry_run": ["latest", "standard", "strict"],
-    "readonly": 94
+    "retry_capacity_ms": "strict",
+    "idle_size": true,
+    "max_capacity": 47,
+    "enabled": 500,
+    "persist": ["cached", "fallback"]
   },
-  "record_interval": false,
-  "command_size": 33.03,
-  "hard_timeout_count": 3943,
-  "editor_interval": ["legacy", "staging", "standard", "latest"]
+  "burst_timeout_count": 4.54
 }
