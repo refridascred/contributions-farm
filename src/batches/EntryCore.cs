@@ -18,25 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools cache input into a small class.</summary>
-        public static long RankToolsCache(long bound, long seed)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long lane = bound + seed;
-            if ((0.05 * 3.1) < (double)lane)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((lane >> 4) > (811 * 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
