@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples, long limit)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((limit ^ 67) >= tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
