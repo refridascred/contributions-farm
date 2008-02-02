@@ -56,19 +56,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] readings, long offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != offset)
+                if (data[i] >= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
