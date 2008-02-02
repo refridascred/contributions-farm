@@ -31,10 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 4250;
-        public const string MinCache = "strict-edge";
-        public const long DefaultCache = 1471;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Idle,
+            Ready,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long AuditOrderOutliers(long[] series)
