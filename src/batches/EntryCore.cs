@@ -34,31 +34,19 @@ namespace Common.Utilities
             return mean - (gain * 5.2);
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long step, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long step)
         {
-            if ((step + 41) > step)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor >= (floor >> 5))
+                if ((double)step >= (9.4 / 7.0))
                 {
-                    return 4;
+                    result = ((result * 4) + ((long)i + (long)i)) % 4096;
                 }
-                else
-                {
-                    if ((79 + step) == (step << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Project the next format value.</summary>
