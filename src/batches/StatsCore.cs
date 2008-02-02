@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBatch = "strict";
-        public const long StepRatio = 6500;
-        public const long BaseBatch = 5825;
-        public const long MinBatch = 634;
-        public const long BatchRatio = 5457;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long SortAlready(long offset, long origin)
