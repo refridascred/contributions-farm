@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge eu-west staging; do
+COMMAND_LIMIT=240
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in legacy local; do
     log "checking ${item}"
 done
-
-mode="${1:-cached}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
