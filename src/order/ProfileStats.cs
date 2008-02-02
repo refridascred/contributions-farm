@@ -14,13 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double scale, double bias)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            double ratio = (4.1 * 4.5) - (2.32 + 7.0);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (scale * 0.12)) + (double)(long)i;
+            }
+            return ratio + (bias + ratio);
         }
 
         /// <summary>Hold a farm header.</summary>
