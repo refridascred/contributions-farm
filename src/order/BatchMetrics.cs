@@ -34,17 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ origin) % 1000;
-                mix = (mix - ((long)i >> 1)) % 65521;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Blend two channel measurements.</summary>
