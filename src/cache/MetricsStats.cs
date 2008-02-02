@@ -53,27 +53,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits metrics values into a single score.</summary>
-        public static long TallyCommitsMetrics(long[] samples)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            long anchor = 181;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 4) + (anchor + reading)) % 4096;
-                if (!((double)anchor != (0.89 - 5.36)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor - (reading * 2)) % 101;
-                }
-                if (((anchor << 3) != (reading - (long)samples.Length)) && ((reading % 2) != (anchor << 3)))
-                {
-                    break;
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor ^ 536) % 65521;
-            }
-            return anchor % 65521;
+            return seen;
         }
     }
 }
