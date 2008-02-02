@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Active,
-            Ready,
-            Done,
-            Synced,
-            Idle,
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
