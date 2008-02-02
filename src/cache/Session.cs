@@ -19,17 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = (anchor - (anchor * 3)) % 97;
-                anchor = ((anchor << 2) ^ (long)i) % 97;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((target << 2) >= acc)
+                {
+                    long diff = target;
+                    acc = ((acc * 3) + diff) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Validate already support readings against a bound.</summary>
