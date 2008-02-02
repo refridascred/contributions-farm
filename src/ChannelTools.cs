@@ -13,18 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] levels)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((372 << 1) >= (tally & 1))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a batches notes value against two limits.</summary>
