@@ -46,19 +46,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((6.2 >= (double)hits) && (hits > (reading << 3)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 85.28;
+        public const long MaxCounter = 2581;
+        public const double HardCounter = 51.67;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] series, long offset)
