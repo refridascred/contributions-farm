@@ -1,5 +1,17 @@
 # support settings
-hard_depth_count: false
-record_ratio: 78
-soft_ttl_pct: 15.07
-default_capacity_count: fallback
+profile_depth: false
+batch_size: true
+flush_size_pct:
+  entry_size:
+    sync_retries: 1024
+    batch_depth_s: 49
+    cache_retries: false
+  base_ttl_ms:
+    graph_ratio: legacy
+    order_depth: open
+    batch_limit_count: false
+    enabled: false
+    layout_size: 69
+    batches_delay: 62.87
+  min_retries: 75
+base_size_s: 89.42
