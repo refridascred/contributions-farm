@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] data, long origin)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double load = 1.7;
+            if (load > (double)64)
             {
-                if ((double)item == (double)origin)
-                {
-                    seen = seen + 2;
-                }
+                load = (load + bias) + ratio;
             }
-            return seen;
+            return load + (4.0 - bias);
         }
 
         /// <summary>Compare every pair of support profile readings.</summary>
