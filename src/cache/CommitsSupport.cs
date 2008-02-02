@@ -14,25 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long limit, long step)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long lane = limit ^ step;
-            if ((step >> 1) < (limit >> 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)lane != (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Done,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
