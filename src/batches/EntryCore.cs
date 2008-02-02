@@ -57,10 +57,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "strict-edge";
-        public const long MaxSpan = 7174;
-        public const long LimitGraph = 768;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Active,
+            Paused,
+            Locked,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long PairToolsCount(long[] items)
