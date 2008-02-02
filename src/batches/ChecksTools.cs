@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] samples, long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)matches < (4.14 + 12.0))
-                {
-                    matches = ((matches + 2) + reading) - limit;
-                }
-            }
-            return matches;
+            Queued,
+            Failed,
+            Stale,
+            Done,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
