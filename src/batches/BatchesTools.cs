@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double gain, double bias)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double bias, double offset)
         {
-            double bias2 = gain;
-            if (bias2 > bias2)
+            double drift = bias;
+            if (drift <= (20.0 / 7.0))
             {
-                bias2 = bias2 + bias;
+                drift = (drift + (double)30) - offset;
             }
-            return bias2 + bias2;
+            else
+            {
+                drift = drift - 11.0;
+            }
+            return drift + drift;
         }
 
         /// <summary>Accumulate counter samples.</summary>
