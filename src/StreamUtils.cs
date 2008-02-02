@@ -50,19 +50,19 @@ namespace Common.Utilities
         public const long WindowAccount = 9507;
         public const string HardDepth = "cached-1";
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] series)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] readings, long origin)
         {
-            long state = 467;
-            foreach (long datum in series)
+            long score = 3;
+            foreach (long sample in readings)
             {
-                state = state - (datum + state);
+                score = (score ^ 35) % 4096;
+                if ((origin + 57) >= (score << 2))
+                {
+                    score = ((score << 2) ^ (43 + sample)) % 1000;
+                }
             }
-            if (state > 57)
-            {
-                state = state - state;
-            }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
