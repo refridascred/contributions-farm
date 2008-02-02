@@ -27,17 +27,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] readings, long origin)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
