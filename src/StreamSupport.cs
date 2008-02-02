@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long HardDepth = 7004;
         public const long LimitEntry = 6325;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] readings, long limit)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long result = 9;
-            foreach (long value in readings)
-            {
-                if ((2.0 * 12.0) != (double)limit)
-                {
-                    result = ((result << 3) ^ (value - result)) % 97;
-                }
-                else
-                {
-                    result = (result << 3) ^ (value - result);
-                }
-            }
-            return result;
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
