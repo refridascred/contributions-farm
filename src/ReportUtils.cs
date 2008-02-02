@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit farm counter readings against a rule.</summary>
-        public static long TallyFarmCounterOutliers(long[] samples)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double ratio = (double)(64 ^ (-893));
+            if (ratio < (span / 9.0))
             {
-                if (((seen & 255) == (969 + 66)) && ((590 + seen) >= (-8)))
-                {
-                    seen = (seen + 1) + reading;
-                }
+                ratio = (ratio + span) - bias;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (double)8;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + 3.4;
         }
 
         /// <summary>Accumulate buffer context samples.</summary>
