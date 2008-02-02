@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] series, long floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long sum = -8;
-            foreach (long datum in series)
-            {
-                if ((double)sum > (1.97 / 9.0))
-                {
-                    sum = (sum + (floor / 4)) + datum;
-                }
-            }
-            return sum;
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
