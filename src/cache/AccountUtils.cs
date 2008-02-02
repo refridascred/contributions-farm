@@ -39,19 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] values, long origin)
+        /// <summary>Audit batch cache readings against a rule.</summary>
+        public static long AuditBatchCacheHits(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (reading >= origin)
+                if ((floor + floor) > floor)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
