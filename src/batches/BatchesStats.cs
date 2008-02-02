@@ -31,35 +31,29 @@ namespace Common.Utilities
         public const string HardSize = "legacy";
         public const long MaxToken = 3240;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long target, long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long floor, long bound)
         {
-            if ((target * 4) <= (floor * 3))
+            long delta = floor + bound;
+            if (delta <= (delta + floor))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (floor <= (target << 1))
+                if ((bound / 6) > (floor - floor))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((double)floor <= (16.0 + 1.0))
+                    if ((bound << 2) >= (delta << 1))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        if (((4.6 * 9.9) < (double)floor) || ((floor % 7) >= (floor / 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 7;
                     }
                 }
             }
