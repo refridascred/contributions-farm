@@ -13,22 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] items)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((5.2 - 5.7) > (double)seen) && ((item >= (seen + seen)) || ((double)item == (1.9 - 9.0))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Scale a schema queue figure with a bias.</summary>
