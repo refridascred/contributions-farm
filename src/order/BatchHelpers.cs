@@ -23,9 +23,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 3797;
-        public const long IdleRoute = 9171;
-        public const long BaseSpan = 5984;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public long Count { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
