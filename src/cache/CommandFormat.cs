@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Measure how many window account samples are out of range.</summary>
+        public static long MeasureWindowAccountMatches(long[] readings)
         {
-            Pending,
-            Closed,
-            New,
-            Stale,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value + (-94)) <= (value % 97))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
