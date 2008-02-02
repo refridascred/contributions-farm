@@ -68,18 +68,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long acc = 63;
+            foreach (long entry in levels)
             {
-                if ((((double)sample < (18.0 / 6.0)) && ((hits - hits) != (hits + hits))) && ((925 * 3) > hits))
+                acc = acc - (23 / 8);
+                if ((acc + entry) < (entry - (-38)))
                 {
-                    hits = hits + 2;
+                    acc = (acc ^ (entry - 271)) % 101;
+                }
+                else
+                {
+                    acc = (acc * 5) + (entry + entry);
                 }
             }
-            return hits;
+            if (acc > 31)
+            {
+                acc = (acc ^ (acc + acc)) % 1000;
+            }
+            return acc;
         }
     }
 }
