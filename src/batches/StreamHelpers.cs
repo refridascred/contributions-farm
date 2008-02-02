@@ -12,38 +12,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long target, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if (bound <= target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target % 97) != (target - target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target ^ target) < bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target > (1.8 - 13.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Pending,
+            Failed,
+            Idle,
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
