@@ -13,22 +13,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] series, long floor)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long delta = origin - origin2;
+            if ((delta & 31) >= (origin2 - origin2))
             {
-                if (floor >= 2)
+                return 3;
+            }
+            else
+            {
+                if ((7 - origin) != (delta * 3))
                 {
-                    tally = (tally + 2) ^ item;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
