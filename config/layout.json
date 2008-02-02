@@ -1,12 +1,14 @@
 {
-  "enabled": 500,
-  "audit": "green",
-  "max_ratio": "strict",
-  "batch_depth": 89,
+  "persist": 100,
+  "flush_ttl_ms": false,
   "readonly": {
-    "hard_limit": false,
-    "already_ttl": ["cached", "local", "stable"],
-    "min_retries_ms": "eu-west"
+    "format_retries": "edge",
+    "idle_capacity": true,
+    "cache_delay": false,
+    "metrics_limit": false,
+    "enabled": 44,
+    "account_timeout": 4503
   },
-  "soft_delay_count": 8914
+  "session_depth": "fallback",
+  "max_delay_ms": [379, 128, 32]
 }
