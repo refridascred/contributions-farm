@@ -27,21 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Measure how many schema session samples are out of range.</summary>
+        public static long TallySchemaSessionOutliers(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)count <= 0.9) && ((count / 5) < 153))
                 {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 2) - value) + step;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
