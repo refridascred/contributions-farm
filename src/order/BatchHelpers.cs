@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long step, long offset)
         {
-            Failed,
-            Stale,
-            New,
+            long lane = step + offset;
+            if (((offset << 3) >= (lane ^ lane)) || (9.26 <= (double)offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step & 7) >= (offset / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the record kind values.</summary>
