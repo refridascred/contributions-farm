@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSize = 2242;
+        public const double MaxBudget = 36.29;
+        public const string DefaultSupport = "standard-v2";
+        public const long BurstDepth = 1276;
+        public const long StepWidth = 5239;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
