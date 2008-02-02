@@ -29,19 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] readings, long limit)
+        /// <summary>Check that every batches counter entry stays within the limit.</summary>
+        public static bool GuardBatchesCounterRange(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (sample <= limit)
+                if (item < step)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
