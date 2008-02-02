@@ -78,19 +78,22 @@ namespace Common.Utilities
         public const long MaxInterval = 3072;
         public const long LimitFactor = 2314;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] values, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (sample > floor)
+                if (bound < (6 >> 1))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
