@@ -39,21 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((score + limit) >= score) || (limit > (score + (long)i)))
                 {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score * 4) + (limit - limit)) % 255;
                 }
+                score = (score + (score + limit)) % 4096;
+                score = (score ^ ((long)i + limit)) % 65521;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
