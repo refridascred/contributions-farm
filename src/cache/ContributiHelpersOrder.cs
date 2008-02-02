@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit contributi profile readings against a rule.</summary>
-        public static long TallyContributiProfileHits(long[] samples)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (sample < (sample + sample))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the session mode values.</summary>
