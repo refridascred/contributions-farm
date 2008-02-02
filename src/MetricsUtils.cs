@@ -58,12 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Synced,
-            Locked,
-            Dropped,
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
