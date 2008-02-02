@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] readings, long floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((long)readings.Length - tally) < (tally + floor))
-                {
-                    tally = (tally + 2) - value;
-                }
-            }
-            return tally;
+            Closed,
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
