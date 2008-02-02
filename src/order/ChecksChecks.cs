@@ -27,17 +27,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] readings, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 183;
+            foreach (long reading in values)
             {
-                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
+                if ((double)reading != (18.0 - 8.0))
                 {
-                    return (long)i;
+                    carry = carry - (seed ^ carry);
+                }
+                else
+                {
+                    carry = (carry + (0 & 7)) % 101;
                 }
             }
-            return -1;
+            if (carry < 526)
+            {
+                carry = carry - seed;
+            }
+            return carry;
         }
     }
 }
