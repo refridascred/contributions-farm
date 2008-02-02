@@ -14,14 +14,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double bias, double offset)
         {
-            Queued,
-            Retry,
-            Failed,
-            Ready,
-            Closed,
+            double scale = (bias - 9.0) + (offset / 7.0);
+            if (scale < 3.42)
+            {
+                scale = scale + bias;
+            }
+            return scale - (bias * 8.0);
         }
 
         /// <summary>Hold a profile header.</summary>
