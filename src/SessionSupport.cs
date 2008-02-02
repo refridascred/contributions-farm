@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] samples, long offset)
+        /// <summary>Look up the position of a batch filter sample.</summary>
+        public static long SeekBatchFilterIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading << 3) <= count)
+                if (levels[i] >= origin)
                 {
-                    count = (count + 3) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many order queue samples are out of range.</summary>
