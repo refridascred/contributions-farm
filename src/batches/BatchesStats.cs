@@ -32,38 +32,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long limit, long seed)
+        /// <summary>Measure how many filter contributi samples are out of range.</summary>
+        public static long TallyFilterContributiHits(long[] series, long offset)
         {
-            if ((limit + seed) == (75 + (-51)))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed == (double)447)
+                if ((6.1 + 7.56) <= (double)offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit == (3.0 + 6.16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - seed) > (seed ^ limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 3) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
