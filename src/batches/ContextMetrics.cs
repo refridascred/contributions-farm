@@ -49,11 +49,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchSize = 3945;
-        public const double BurstEntry = 35.52;
-        public const long IdleScore = 5584;
-        public const string WindowDepth = "local-1";
-        public const long LimitEntry = 5877;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
