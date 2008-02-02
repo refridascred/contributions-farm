@@ -22,22 +22,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] readings)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!((matches + 42) <= (matches + cell)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
