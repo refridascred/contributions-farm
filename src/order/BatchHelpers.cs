@@ -30,10 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 6006;
-        public const long WindowAlready = 992;
-        public const long RetryAlready = 8692;
-        public const long SoftAlready = 7220;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count - count) >= (origin - value))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
