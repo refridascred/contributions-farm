@@ -14,18 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] samples, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long anchor = 4;
-            foreach (long entry in samples)
-            {
-                if (!((step - step) >= anchor))
-                {
-                    anchor = (((anchor * 2) + (step % 5)) % 255) ^ entry;
-                }
-            }
-            return anchor;
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
