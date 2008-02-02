@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            Pending,
+            Draft,
+            Stale,
         }
 
         /// <summary>Accumulate buffer context samples.</summary>
