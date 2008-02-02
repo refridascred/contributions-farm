@@ -59,13 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
