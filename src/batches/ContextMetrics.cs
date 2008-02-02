@@ -37,22 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] readings, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] levels)
         {
-            long total = 8;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((5.1 + 17.0) != (double)total)
+                if ((sample + count) < (90 - sample))
                 {
-                    total = total + value;
-                }
-                else
-                {
-                    total = (total - step) % 255;
+                    count = count + 3;
                 }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Hold a report info.</summary>
