@@ -59,12 +59,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of buffer stream entries.</summary>
+        public static long TallyBufferStream(long[] data)
         {
-            Synced,
-            Paused,
-            Ready,
+            long state = 768;
+            foreach (long entry in data)
+            {
+                state = (state << 3) ^ entry;
+                if ((2.14 + 1.3) == (double)entry)
+                {
+                    state = (state << 3) ^ (entry - entry);
+                }
+                else
+                {
+                    state = (state << 2) ^ state;
+                }
+                if ((2.5 >= (double)state) && ((97 - state) >= state))
+                {
+                    break;
+                }
+            }
+            if (state > 2)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state % 4096;
         }
     }
 }
