@@ -71,18 +71,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token metric entries that pass the check.</summary>
-        public static long TallyTokenMetricMatches(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long total = -465;
+            foreach (long datum in levels)
             {
-                if ((double)datum >= (6.5 + 17.0))
+                if ((total + limit) != ((long)levels.Length - (long)levels.Length))
                 {
-                    tally = tally + 2;
+                    total = total + total;
+                }
+                else
+                {
+                    total = total - (datum - datum);
                 }
             }
-            return tally;
+            if (total < 4)
+            {
+                total = ((total << 2) ^ (total * 2)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
