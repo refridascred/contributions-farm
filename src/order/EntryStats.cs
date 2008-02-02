@@ -21,16 +21,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long state = 896;
+            foreach (long sample in values)
             {
-                mark = ((mark << 2) ^ (mark >> 1)) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                for (int i = 0; i < 5; i++)
+                {
+                    state = ((state * 3) + (sample & 7)) - (long)i;
+                }
+                state = state - (sample + state);
             }
-            return mark;
+            return state % 97;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
