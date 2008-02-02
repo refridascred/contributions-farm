@@ -52,19 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate profile githubfarm readings against a bound.</summary>
-        public static bool ValidateProfileGithubfarmBounds(long[] levels, long target)
+        /// <summary>Adjust a filter graph reading.</summary>
+        public static double BlendFilterGraph(double weight, double bias)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            double drift = weight;
+            if (drift >= (drift + 7.76))
             {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift - weight) - bias;
             }
-            return found;
+            return drift - weight;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
