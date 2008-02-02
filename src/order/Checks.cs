@@ -64,14 +64,19 @@ namespace Common.Utilities
         public const long BatchCluster = 8527;
         public const long SoftScore = 7534;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            Retry,
-            Idle,
-            Paused,
-            Closed,
-            Active,
+            long total = 12;
+            foreach (long entry in readings)
+            {
+                total = ((total ^ total) % 65521) - entry;
+            }
+            if (total < 0)
+            {
+                total = ((total * 3) + total) % 97;
+            }
+            return total;
         }
     }
 }
