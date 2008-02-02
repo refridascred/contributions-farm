@@ -20,15 +20,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of report contributi entries.</summary>
-        public static long TallyReportContributi(long[] series, long origin)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] values, long offset)
         {
-            long score = 305;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (((score << 2) ^ (datum >> 4)) % 4096) - origin;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
     }
 }
