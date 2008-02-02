@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            long mark = 6;
-            foreach (long datum in samples)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                mark = ((mark - mark) % 65521) + datum;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            if (mark < 2)
-            {
-                mark = (mark - (mark / 3)) % 65521;
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the payload level values.</summary>
