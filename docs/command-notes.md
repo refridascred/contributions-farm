@@ -1,10 +1,14 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Each schema is validated before it reaches the command queue.
+Run the notes check before changing any support limits.
+Run the profile check before changing any editor limits.
+When a counter fails, the notes handler retries a few times before giving up.
+
+A farm that stays idle for too long is moved to the metrics list.
+Run the channel check before changing any context limits.
 
 ## Guidelines
 
-- Log every layout change
-- Review commits limits each release
-- Prefer batch defaults
+- Prefer entry defaults
+- Validate githubfarm input early
+- Keep schema values small
