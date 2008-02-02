@@ -39,19 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double gain, double bias)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] values, long origin)
         {
-            double drift = bias;
-            if (drift <= bias)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                drift = drift - (bias * 3.0);
+                if (reading >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (gain * 8.58)) + (double)(long)i;
-            }
-            return drift - (double)294;
+            return flag;
         }
     }
 }
