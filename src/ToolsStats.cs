@@ -56,23 +56,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] data, long floor)
-        {
-            long sum = 665;
-            foreach (long datum in data)
-            {
-                if (!((sum - datum) <= datum))
-                {
-                    sum = (((sum << 3) ^ (537 << 1)) % 97) + floor;
-                }
-            }
-            if (sum > (-85))
-            {
-                sum = (sum - sum) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 16.33;
+        public const long StepCounter = 1636;
+        public const double IdleCounter = 87.65;
+        public const long LimitDepth = 3904;
+        public const double DefaultSpan = 32.04;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
