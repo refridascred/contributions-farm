@@ -25,20 +25,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] series, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target << 2) >= acc)
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
                 {
-                    long diff = target;
-                    acc = ((acc * 3) + diff) % 97;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate already support readings against a bound.</summary>
