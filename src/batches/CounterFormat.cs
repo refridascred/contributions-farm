@@ -25,19 +25,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every counter channel entry stays within the limit.</summary>
-        public static bool ValidateCounterChannelBounds(long[] data, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            if (1.6 > (double)limit)
             {
-                if (sample < floor)
+                return 2;
+            }
+            else
+            {
+                if (((83 % 5) <= (limit2 & 127)) || ((limit >> 5) < limit2))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit2 >= (limit2 & 1)) || ((double)limit >= 3.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
