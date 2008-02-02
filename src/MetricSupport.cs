@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
-            double gain = 8.7;
-            if (gain <= (floor + floor))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + (double)83) - ratio;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (gain / 2.0)) - (double)(long)i;
-            }
-            return gain - floor;
+            return matches;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
