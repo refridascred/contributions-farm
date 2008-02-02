@@ -69,18 +69,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] values, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((reading + 5) >= tally)
+                if ((floor - floor) <= matches)
                 {
-                    tally = (tally + 2) + floor;
+                    matches = (matches + 2) + item;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
