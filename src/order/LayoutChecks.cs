@@ -22,11 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLevel = 7620;
-        public const double BatchSize = 92.63;
-        public const long BatchLevel = 2857;
-        public const string HardLayout = "primary-v2";
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
