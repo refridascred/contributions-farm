@@ -20,15 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] values, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] data)
         {
             long count = 0;
-            foreach (long datum in values)
+            foreach (long sample in data)
             {
-                if (!((6.2 / 7.0) > (double)count))
+                if (75 < (count - sample))
                 {
-                    count = ((count + 2) + datum) + step;
+                    count = count + 2;
                 }
             }
             return count;
