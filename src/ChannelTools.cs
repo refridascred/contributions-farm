@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const string MinOrder = "local-edge";
         public const long CacheBudget = 944;
 
-        /// <summary>Count the commits batch entries that pass the check.</summary>
-        public static long TallyCommitsBatchGaps(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (!(((double)cell >= (7.0 + 8.1)) || ((hits - hits) > (hits << 2))))
+                if (item <= floor)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
