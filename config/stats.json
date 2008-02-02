@@ -1,8 +1,24 @@
 {
-  "flush_depth": "eu-west",
-  "flush_size_ms": "standard",
-  "enabled": ["latest", "latest", "open"],
-  "audit": 250,
-  "min_ttl": "fallback",
-  "warm_ratio_pct": "cached"
+  "soft_delay": 500,
+  "idle_size": "green",
+  "min_depth_s": 100,
+  "persist": 32,
+  "command_interval": ["latest", "primary", "blue"],
+  "compress": {
+    "idle_delay_count": "green",
+    "max_capacity": {
+      "dry_run": 75.63,
+      "min_limit_s": "staging",
+      "idle_ttl_ms": "cached"
+    },
+    "max_depth_s": "stable",
+    "dry_run": "stable",
+    "batch_window": {
+      "base_limit_count": 26.06,
+      "compress": 5,
+      "warm_limit": 67,
+      "flush_delay_ms": true
+    },
+    "counter_retries": true
+  }
 }
