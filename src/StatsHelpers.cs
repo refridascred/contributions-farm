@@ -14,14 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Dropped,
-            Synced,
-            Done,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 40.16;
+        public const long BatchWindow = 2891;
+        public const long MinWindow = 6138;
+        public const long BaseCount = 4686;
 
         /// <summary>Count the window context entries that pass the check.</summary>
         public static long CountWindowContextMatches(long[] items)
