@@ -31,14 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] readings)
         {
-            Locked,
-            Paused,
-            Queued,
-            Pending,
-            Closed,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((double)matches == (8.7 + 1.4)) && ((double)sample > 1.55))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a format batch counter forward.</summary>
