@@ -26,14 +26,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 5152;
+        public const long SoftSize = 8367;
+        public const long SoftRatio = 8996;
+        public const long RetryTools = 4158;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] readings, long target)
