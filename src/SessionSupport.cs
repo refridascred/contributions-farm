@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Validate githubfarm stream readings against a bound.</summary>
+        public static bool CheckGithubfarmStreamRange(long[] samples, long origin)
         {
-            Failed,
-            Draft,
-            Closed,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
