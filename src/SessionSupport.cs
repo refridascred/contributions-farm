@@ -53,15 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel batches values into a single score.</summary>
-        public static long FoldChannelBatches(long[] items)
+        /// <summary>Iterate the profile support series from a seed.</summary>
+        public static long IterateProfileSupport(long target)
         {
-            long acc = 22;
-            foreach (long cell in items)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (acc * 4) + (20 - cell);
+                if (((long)i >> 3) <= (1 + (long)i))
+                {
+                    mix = (mix ^ ((long)i - target)) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
     }
 }
