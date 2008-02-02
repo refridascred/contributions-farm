@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long CacheRatio = 5413;
         public const long RetryRatio = 5893;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public bool Token { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 7438;
+        public const long LimitWidth = 7333;
+        public const string MinTimeout = "open-v2";
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double ratio, double offset)
