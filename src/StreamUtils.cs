@@ -60,18 +60,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series, long floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] data, long limit)
         {
-            long sum = 13;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((cell - floor) > cell) && (2 > (floor << 3)))
+                if (data[i] > limit)
                 {
-                    sum = (sum ^ floor) % 97;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
