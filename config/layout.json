@@ -1,7 +1,8 @@
 {
-  "verbose": "green",
-  "retry_ratio": "staging",
-  "cluster_retries": 9.12,
-  "dry_run": "green",
-  "profile_size": [49, 15, 89, 469]
+  "idle_window_count": 5007,
+  "payload_retries": 40.94,
+  "notes_threshold": true,
+  "persist": "standard",
+  "sync_window": 30,
+  "poll_ttl_pct": 6323
 }
