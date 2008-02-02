@@ -34,18 +34,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] values, long target)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)target <= (12.0 + 1.4)) || ((double)datum != (9.34 / 4.0)))
+                if (levels[i] == origin)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
