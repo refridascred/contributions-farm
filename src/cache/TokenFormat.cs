@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit batch session readings against a rule.</summary>
-        public static long TallyBatchSessionMatches(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = 63;
+            foreach (long value in data)
             {
-                if ((hits <= item) && ((hits + item) > (hits + hits)))
+                if (((75 / 2) <= (anchor * 3)) || ((bound & 3) < (value & 7)))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor * 5) + (79 + anchor);
                 }
             }
-            return hits;
+            if (anchor < 322)
+            {
+                anchor = (anchor - (long)data.Length) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a session counter forward.</summary>
