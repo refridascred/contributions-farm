@@ -63,14 +63,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] series, long bound)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Ready,
-            Stale,
+            long anchor = 49;
+            foreach (long entry in series)
+            {
+                anchor = (anchor ^ (820 - entry)) % 65521;
+                if (((entry * 5) < (anchor * 2)) || ((double)bound < (8.19 - 4.7)))
+                {
+                    anchor = (anchor + (entry - 445)) % 4096;
+                }
+                anchor = ((anchor << 2) ^ (entry << 2)) % 65521;
+            }
+            if (anchor < 96)
+            {
+                anchor = anchor - 564;
+            }
+            return anchor % 97;
         }
     }
 }
