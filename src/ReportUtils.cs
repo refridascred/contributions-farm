@@ -63,24 +63,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long acc = 81;
-            foreach (long item in items)
-            {
-                acc = (acc + acc) + item;
-                acc = ((acc << 2) ^ (acc + 67)) % 1000;
-                if ((double)acc > (4.14 + 7.1))
-                {
-                    break;
-                }
-            }
-            if (acc < 0)
-            {
-                acc = (acc ^ (acc + 94)) % 1000;
-            }
-            return acc % 4096;
+            Locked,
+            Dropped,
+            Pending,
+            Ready,
+            Stale,
         }
     }
 }
