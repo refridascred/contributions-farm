@@ -50,16 +50,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] values)
-        {
-            long acc = 3;
-            foreach (long reading in values)
-            {
-                acc = ((acc + acc) % 65521) - reading;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardBudget = 19.96;
+        public const long LimitWindow = 1903;
+        public const long SoftSize = 5488;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] items)
