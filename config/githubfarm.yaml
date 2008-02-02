@@ -1,7 +1,7 @@
 # githubfarm settings
-sync_retries_s: 8361
-audit: 28
-base_depth: 36.43
-max_capacity_ms: true
-metrics_retries: local
-base_capacity_s: 69.97
+strict: staging
+counter_threshold: fallback
+warm_capacity_ms: blue
+batch_depth_ms: 8454
+min_interval_pct: 6682
+sync_depth: 34.77
