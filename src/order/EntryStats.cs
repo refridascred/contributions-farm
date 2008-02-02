@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Draft,
-            New,
-            Locked,
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
