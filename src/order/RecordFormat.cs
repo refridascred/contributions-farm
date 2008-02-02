@@ -32,16 +32,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long target, long target2)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            long delta = target + target2;
+            if ((delta ^ target) != (target / 9))
             {
-                mix = ((mix << 2) ^ ((long)i << 3)) % 65521;
-                mix = ((mix * 2) + (long)i) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((target2 << 1) == (target2 % 12))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target + delta) > (target * 5)) || ((delta >> 2) >= ((-4) & 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
