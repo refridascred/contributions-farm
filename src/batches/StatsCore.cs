@@ -65,13 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Synced,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowWidth = 13.49;
+        public const string IdleWidth = "standard-edge";
+        public const long BurstBudget = 429;
+        public const long DefaultInterval = 2257;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxWidth = 87.14;
