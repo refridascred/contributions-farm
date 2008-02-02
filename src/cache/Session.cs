@@ -41,12 +41,22 @@ namespace Common.Utilities
             return load + (offset * 11.0);
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Measure how many checks notes samples are out of range.</summary>
+        public static long CountChecksNotesHits(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((double)hits <= (6.7 * 7.1)) && (((12.0 * 3.0) <= (double)hits) && (sample > 1)))
+                {
+                    hits = (hits + 3) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
