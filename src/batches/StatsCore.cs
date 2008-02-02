@@ -83,22 +83,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] readings, long origin)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((6 / 3) >= (reading - seen))
-                {
-                    seen = (seen + 3) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
