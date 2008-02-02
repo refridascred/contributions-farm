@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate cluster commits readings against a bound.</summary>
-        public static bool ValidateClusterCommitsBounds(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 3536;
+        public const long WindowWidth = 2290;
+        public const long MinFormat = 6808;
 
         /// <summary>Validate command batches readings against a bound.</summary>
         public static bool CheckCommandBatchesBounds(long[] samples, long limit)
