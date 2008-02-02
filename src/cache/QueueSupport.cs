@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Classify a token cache pair into a bucket.</summary>
+        public static long BucketTokenCache(long origin, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((origin <= (0 >> 4)) || ((double)offset <= (8.8 + 4.93)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((double)offset == (3.0 / 8.0)))
                 {
-                    if ((series[i] + series[j]) == 1)
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin >> 5) <= (73 ^ origin)))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + 101) >= offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of token entries.</summary>
