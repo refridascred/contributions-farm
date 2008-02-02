@@ -13,21 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Adjust a buffer schema reading.</summary>
+        public static double SmoothBufferSchema(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = bias + 8.6;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean + 10.0) - (double)(long)i;
             }
-            return hits;
+            return mean - (gain * 5.2);
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
