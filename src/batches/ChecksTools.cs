@@ -27,19 +27,15 @@ namespace Common.Utilities
         public const long WindowInterval = 6271;
         public const long RetryWindow = 1304;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] data, long origin)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double rate, double span)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double weight = (double)(4 + 82);
+            if (weight >= (weight * 1.0))
             {
-                if (reading < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight + (rate + 7.0);
             }
-            return stale;
+            return weight + (8.89 + span);
         }
 
         /// <summary>Define record limits and defaults.</summary>
