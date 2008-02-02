@@ -43,11 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardLevel = 2303;
-        public const long BurstSpan = 2125;
-        public const long StepFilter = 2245;
-        public const long RetrySize = 2524;
-        public const long CacheLevel = 1053;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
