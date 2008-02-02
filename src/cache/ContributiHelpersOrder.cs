@@ -29,15 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] data, long origin)
         {
-            long carry = 245;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry - (85 ^ 256)) - entry;
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 4096;
+            return -1;
         }
     }
 }
