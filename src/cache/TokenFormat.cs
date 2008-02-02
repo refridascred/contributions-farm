@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] data, long origin)
+        /// <summary>Audit batch session readings against a rule.</summary>
+        public static long TallyBatchSessionMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((((double)55 > 3.0) && ((1.0 / 7.0) <= (double)item)) && ((tally <= (item - origin)) || ((1.51 + 3.0) <= (double)origin)))
+                if ((hits <= item) && ((hits + item) > (hits + hits)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Roll a session counter forward.</summary>
