@@ -1,5 +1,8 @@
 {
-  "stream_interval": 27,
-  "default_delay": 24,
-  "enabled": "green"
+  "enabled": [62, 276, 317, 305],
+  "poll_delay_count": "latest",
+  "base_capacity_s": 17,
+  "notes_ratio": 97.66,
+  "default_capacity_count": 44.53,
+  "default_ratio_pct": "green"
 }
