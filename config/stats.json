@@ -1,5 +1,5 @@
 {
-  "base_ratio": "standard",
-  "contributi_delay": 1.87,
-  "context_retries": 29
+  "compress": false,
+  "flush_depth_count": "standard",
+  "warm_retries_ms": false
 }
