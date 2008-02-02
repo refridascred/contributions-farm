@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((offset - offset) == (2 >> 2))
+                if ((count / 4) <= (sample * 5))
                 {
-                    anchor = ((anchor * 4) + (anchor & 31)) % 101;
-                    break;
+                    count = count + 2;
                 }
-                anchor = (anchor + (long)i) % 101;
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of profile notes entries.</summary>
