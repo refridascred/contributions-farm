@@ -1,7 +1,28 @@
 # support settings
-sync_depth_s: 79.31
-metric_ttl: local
-burst_depth: 60
-base_ratio_pct: false
-buffer_capacity: 5450
-warm_interval_ms: 1830
+hard_limit_pct:
+  - stable
+  - cached
+  - primary
+  - stable
+batch_ratio: 30
+stats_threshold: 4150
+burst_interval_count:
+  graph_delay: false
+  base_retries: staging
+  idle_timeout_pct:
+    persist: 30
+    min_capacity:
+      - 416
+      - 499
+      - 442
+    strict:
+      - 218
+      - 152
+    max_limit_pct: 60.29
+    base_ratio_count: green
+    verbose:
+      - 198
+      - 256
+  flush_timeout_ms: 4585
+  max_limit_ms: edge
+  default_retries_count: local
