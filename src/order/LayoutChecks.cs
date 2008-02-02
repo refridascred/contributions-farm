@@ -22,13 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] items, long seed)
         {
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
