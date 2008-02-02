@@ -49,15 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] readings, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (((value + tally) > value) && (((707 % 16) > floor) && ((value % 2) != (value << 3))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
