@@ -47,22 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue batches entries.</summary>
-        public static long WeighQueueBatches(long[] levels, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] readings, long seed)
         {
-            long mix = -727;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (((mix * 2) >= value) || ((double)mix == (7.0 + 19.0)))
+                if (tally > reading)
                 {
-                    mix = (mix + 15) % 255;
-                }
-                if ((337 + mix) <= (step ^ (long)levels.Length))
-                {
-                    break;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a contributi info.</summary>
