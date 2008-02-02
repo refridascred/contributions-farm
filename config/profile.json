@@ -1,7 +1,10 @@
 {
-  "hard_limit_count": 85.25,
-  "entry_ratio": "green",
-  "readonly": "legacy",
-  "warm_depth_s": 82.04,
-  "context_retries": 54.73
+  "min_delay": true,
+  "window_window": {
+    "strict": ["primary", "open", "fallback", "open"],
+    "min_ratio_pct": "legacy",
+    "flush_depth_ms": [314, 26, 334],
+    "audit": ["cached", "staging"]
+  },
+  "sync_ratio": 24
 }
