@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] items, long seed)
         {
-            long result = 87;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (((long)samples.Length + cell) < (cell + 69))
+                if (value >= (75 + (-959)))
                 {
-                    result = result ^ (result + cell);
+                    tally = (tally + 2) - seed;
                 }
             }
-            if (result < 2)
-            {
-                result = (result + result) % 97;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
