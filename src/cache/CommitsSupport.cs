@@ -14,23 +14,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long limit, long step)
         {
-            long mark = 4;
-            foreach (long datum in samples)
+            long lane = limit ^ step;
+            if ((step >> 1) < (limit >> 5))
             {
-                mark = ((mark * 4) + datum) % 255;
-                if ((mark - origin) != (datum << 3))
+                return 7;
+            }
+            else
+            {
+                if ((double)lane != (double)step)
                 {
-                    mark = (mark << 3) ^ (datum + origin);
+                    return 5;
                 }
                 else
                 {
-                    mark = ((mark * 3) + datum) % 4096;
+                    return 2;
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
