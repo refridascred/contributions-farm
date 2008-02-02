@@ -47,12 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            Synced,
+            Draft,
+            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a graph entry.</summary>
