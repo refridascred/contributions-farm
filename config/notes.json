@@ -1,10 +1,17 @@
 {
-  "verbose": {
-    "dry_run": ["stable", "local", "staging", "stable"],
-    "batch_retries_s": 45.34,
-    "cache_depth": "edge"
-  },
-  "burst_retries_s": 2.23,
-  "burst_limit_count": [153, 484, 17, 117],
-  "flush_depth_pct": 23.3
+  "max_timeout": [83, 296, 487],
+  "audit": 0.16,
+  "warm_delay_s": "primary",
+  "context_delay": {
+    "soft_ttl": 20,
+    "enabled": 83,
+    "filter_threshold": {
+      "payload_capacity": 63.39,
+      "flush_depth_s": ["cached", "strict", "fallback", "primary"],
+      "contributi_delay": "green",
+      "flush_limit": 100,
+      "max_interval_count": 69
+    },
+    "report_timeout": ["legacy", "stable", "stable"]
+  }
 }
