@@ -39,19 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Roll a batches cache counter forward.</summary>
+        public static long RollBatchesCache(long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((long)i >= (42 % 7))
+                if (target <= sum)
                 {
-                    continue;
+                    sum = (sum + (4 % 60)) % 255;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
