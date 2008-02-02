@@ -1,5 +1,4 @@
 # githubfarm settings
-enabled: stable
-githubfarm_capacity: local
-poll_window_ms: 50.27
-poll_interval: blue
+checks_ttl: false
+warm_timeout_pct: false
+queue_depth: 39
