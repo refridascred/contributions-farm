@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] levels, long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long floor)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum - 55) % 1000;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Audit order githubfarm readings against a rule.</summary>
