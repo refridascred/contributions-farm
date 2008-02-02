@@ -26,14 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Pending,
-            Draft,
-            Active,
-            Closed,
-            Retry,
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
