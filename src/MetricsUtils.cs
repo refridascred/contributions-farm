@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the account schema entries that pass the check.</summary>
-        public static long CountAccountSchemaMatches(long[] data)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((double)count != (18.0 / 5.0))
+                if ((floor >= ((-573) / 5)) || ((hits + datum) >= hits))
                 {
-                    count = (count + 1) - reading;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
