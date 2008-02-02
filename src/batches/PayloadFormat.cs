@@ -49,9 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstScore = "primary-v2";
-        public const string MinGithubfarm = "staging";
-        public const long MaxGithubfarm = 8831;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
