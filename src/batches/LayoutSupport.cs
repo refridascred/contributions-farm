@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] readings, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] values)
         {
-            long result = 756;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                double ratio = (double)entry / 7.0;
-                if ((((long)readings.Length * 5) <= 553) || ((ratio - 5.04) <= ratio))
+                if (0.5 <= (double)seen)
                 {
-                    result = result ^ (48 >> 1);
-                }
-                if ((761 << 1) == (73 - step))
-                {
-                    result = (result - result) % 97;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            if (result < 38)
-            {
-                result = (result << 2) ^ (result % 2);
-            }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Project the next buffer value.</summary>
