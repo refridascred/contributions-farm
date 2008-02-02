@@ -53,19 +53,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] items, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long acc = 98;
+            foreach (long cell in items)
             {
-                if (value <= floor)
+                if ((cell >> 5) < limit)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc - (cell / 5)) % 65521;
                 }
             }
-            return flag;
+            if (acc > 600)
+            {
+                acc = (acc - (limit / 2)) % 255;
+            }
+            return acc;
         }
     }
 }
