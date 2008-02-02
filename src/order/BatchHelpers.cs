@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] series)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)count == (5.0 / 8.0))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            Failed,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the record kind values.</summary>
