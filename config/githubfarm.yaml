@@ -1,5 +1,12 @@
 # githubfarm settings
-already_ratio: 78.8
-readonly: 91.86
-burst_ratio_ms: false
-max_size_s: fallback
+cache_capacity_count: 62.32
+max_window:
+  - 464
+  - 218
+  - 139
+  - 307
+flush_size_count:
+  - 90
+  - 395
+  - 152
+layout_threshold: true
