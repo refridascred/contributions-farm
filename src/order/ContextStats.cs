@@ -27,21 +27,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count format cache pairs that satisfy a relation.</summary>
-        public static long MatchFormatCacheCount(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 3;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (46 <= value)
                 {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (((carry << 3) ^ (carry % 8)) % 101) - origin;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (value % 97)) % 1000;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
