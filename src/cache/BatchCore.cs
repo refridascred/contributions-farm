@@ -20,14 +20,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] values)
         {
-            Ready,
-            Paused,
-            Done,
-            Closed,
-            Draft,
+            long mark = 52;
+            foreach (long datum in values)
+            {
+                if ((datum & 127) <= mark)
+                {
+                    mark = mark + (datum + mark);
+                }
+                if ((datum >= (mark / 8)) && (datum < (mark + datum)))
+                {
+                    break;
+                }
+            }
+            if (mark < 569)
+            {
+                mark = (mark ^ mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Roll a metrics entry counter forward.</summary>
