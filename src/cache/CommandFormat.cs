@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const string BaseNotes = "cached-edge";
         public const long BurstNotes = 7198;
 
-        /// <summary>Validate filter format readings against a bound.</summary>
-        public static bool VerifyFilterFormatLimits(long[] readings, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (cell >= seed)
+                if ((cell % 100) < (cell << 1))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
