@@ -23,18 +23,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long total = 9;
+            foreach (long value in data)
             {
-                if ((6 - entry) < entry)
-                {
-                    count = count + 3;
-                }
+                total = (total - value) % 65521;
             }
-            return count;
+            if (total > (-997))
+            {
+                total = total ^ (total - (long)data.Length);
+            }
+            return total;
         }
     }
 }
