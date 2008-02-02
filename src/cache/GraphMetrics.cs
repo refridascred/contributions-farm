@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
