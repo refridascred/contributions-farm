@@ -21,10 +21,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFactor = 9222;
-        public const long BaseFarm = 2602;
-        public const double BurstTimeout = 80.55;
-        public const long StepFarm = 2464;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (matches <= (0 + 670))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
+        }
     }
 }
