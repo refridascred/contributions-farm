@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8898;
         public const long IdleTimeout = 9332;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftFactor = 4573;
-        public const long DefaultBudget = 4558;
-        public const long BaseCommits = 1221;
-        public const string CacheFactor = "fallback-v2";
-        public const double DefaultSize = 27.88;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels, long limit)
+        {
+            long anchor = 99;
+            foreach (long value in levels)
+            {
+                anchor = (((anchor - (anchor % 2)) % 65521) + value) - limit;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long SortChannel(long origin, long origin2)
