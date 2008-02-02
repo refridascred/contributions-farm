@@ -57,13 +57,18 @@ namespace Common.Utilities
             return rate - 16.0;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            Active,
-            Paused,
-            Locked,
-            Failed,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((10.0 < (double)seen) || (value <= seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
