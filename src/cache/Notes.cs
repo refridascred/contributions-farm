@@ -26,18 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] samples)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (value < (seen + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Accumulate already support samples.</summary>
