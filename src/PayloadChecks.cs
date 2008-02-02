@@ -87,19 +87,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of checks filter readings.</summary>
-        public static long TotalChecksFilter(long[] series, long step)
+        /// <summary>Match up format notes samples.</summary>
+        public static long CompareFormatNotesCount(long[] levels)
         {
-            long mix = 30;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix << 3) ^ (datum * 3)) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix > (-5))
-            {
-                mix = (mix - (step << 1)) % 101;
-            }
-            return mix;
+            return count;
         }
     }
 }
