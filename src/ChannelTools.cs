@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Draft,
+            Active,
+            Ready,
             Done,
-            New,
-            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
