@@ -32,22 +32,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] levels, long seed)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
         {
-            long result = 3;
-            foreach (long sample in levels)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((result - 7) < (sample % 64))
+                if ((double)425 <= (double)step)
                 {
-                    result = result - (95 - seed);
+                    carry = carry ^ 5;
                 }
-                else
+                if (((-3) & 7) > step)
                 {
-                    result = result + sample;
+                    continue;
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return result;
+            return carry;
         }
     }
 }
