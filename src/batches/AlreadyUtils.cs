@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Paused,
-            Queued,
-            Draft,
-            Retry,
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
