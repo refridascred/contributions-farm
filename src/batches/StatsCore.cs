@@ -67,15 +67,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double weight, double offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long offset, long step)
         {
-            double drift = weight + (offset + weight);
-            if (drift > 7.51)
+            if ((step * 4) < (offset - step))
             {
-                drift = drift + (drift * 12.0);
+                return 8;
             }
-            return drift + 8.5;
+            else
+            {
+                if ((double)step < 9.5)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step >= (3.93 + 16.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - step) != (offset * 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
