@@ -68,27 +68,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] data)
         {
-            long acc = 63;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                acc = acc - (23 / 8);
-                if ((acc + entry) < (entry - (-38)))
+                if ((897 - hits) > entry)
                 {
-                    acc = (acc ^ (entry - 271)) % 101;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    acc = (acc * 5) + (entry + entry);
+                    hits = hits - 1;
                 }
             }
-            if (acc > 31)
-            {
-                acc = (acc ^ (acc + acc)) % 1000;
-            }
-            return acc;
+            return hits;
         }
     }
 }
