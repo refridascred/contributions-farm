@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] levels, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (55 >= offset)
+                if (value > bound)
                 {
-                    tally = (tally + 3) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
