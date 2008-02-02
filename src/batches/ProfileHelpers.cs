@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long offset, long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double rate, double floor)
         {
-            if (((double)seed == (0.5 + 3.4)) || ((double)offset == (6.3 / 3.0)))
+            double bias = rate;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                bias = ((bias - 3.34) + (double)(long)i) - floor;
             }
-            else
-            {
-                if ((offset - offset) >= seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return bias - bias;
         }
 
         /// <summary>Describe the stats phase values.</summary>
