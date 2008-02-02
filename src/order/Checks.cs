@@ -42,11 +42,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryFactor = 7413;
-        public const long BurstCluster = 7940;
-        public const long BatchCluster = 8527;
-        public const long SoftScore = 7534;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long SeekContributiIndex(long[] items, long origin)
