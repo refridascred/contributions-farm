@@ -20,19 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long seed, long offset)
         {
-            double mean = 4.2 * 9.1;
-            if (mean > mean)
+            if (seed < offset)
             {
-                mean = mean + (span - 3.97);
+                return 4;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = (mean + (weight + span)) - (double)(long)i;
+                if (seed >= (9 << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return mean - 5.71;
         }
 
         /// <summary>Accumulate filter samples.</summary>
