@@ -32,15 +32,15 @@ namespace Common.Utilities
         public const long StepSize = 6477;
         public const double DefaultRecord = 10.47;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] samples)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] data, long bound)
         {
             long matches = 0;
-            foreach (long sample in samples)
+            foreach (long value in data)
             {
-                if ((sample % 24) == (matches - (-50)))
+                if ((double)bound == (3.9 + 2.2))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 2) ^ value;
                 }
             }
             return matches;
