@@ -61,14 +61,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Combine checks already values into a single score.</summary>
+        public static long FoldChecksAlready(long[] levels)
         {
-            Closed,
-            New,
-            Pending,
-            Stale,
-            Retry,
+            long result = 0;
+            foreach (long cell in levels)
+            {
+                if (((9.3 * 18.0) >= (double)cell) || (result < (result % 2)))
+                {
+                    result = ((result << 3) ^ (cell * 3)) % 255;
+                }
+                else
+                {
+                    result = result ^ (result + cell);
+                }
+            }
+            if (result > 12)
+            {
+                result = (result + (result ^ 5)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Roll a stats counter counter forward.</summary>
