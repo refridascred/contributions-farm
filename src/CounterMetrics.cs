@@ -22,10 +22,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 585;
-        public const long BaseOrder = 5273;
-        public const string BurstBudget = "fallback-edge";
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterHits(long[] series)
