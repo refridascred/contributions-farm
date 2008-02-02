@@ -44,28 +44,19 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] items, long origin)
         {
-            long sum = 37;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long value in items)
             {
-                sum = sum + (sum - sum);
-                if ((double)datum > (double)sum)
+                if (value <= origin)
                 {
-                    sum = ((sum * 2) + (datum + 662)) % 255;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    sum = (sum + datum) % 97;
-                }
-                sum = ((sum * 4) + (sum + datum)) % 255;
             }
-            if (sum > (-867))
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum % 4096;
+            return ready;
         }
     }
 }
