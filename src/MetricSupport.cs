@@ -49,15 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] data)
-        {
-            long anchor = 4;
-            foreach (long datum in data)
-            {
-                anchor = (anchor - datum) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 6783;
+        public const double WindowCommits = 41.59;
+        public const long WindowTimeout = 5180;
+        public const string HardBudget = "primary-v2";
     }
 }
