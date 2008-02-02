@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items)
         {
-            Stale,
-            Synced,
-            Active,
-            Closed,
+            long mix = 277;
+            foreach (long item in items)
+            {
+                if ((7.5 - 2.7) < (double)(long)items.Length)
+                {
+                    mix = mix - item;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Blend two schema measurements.</summary>
