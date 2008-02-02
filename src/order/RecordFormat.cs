@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] samples, long bound)
+        /// <summary>Roll a metric commits counter forward.</summary>
+        public static long DeriveMetricCommits(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
+                if ((total * 5) <= (floor * 5))
                 {
-                    return (long)i;
+                    total = ((total * 4) + (floor * 4)) % 65521;
+                    total = ((total * 3) + ((long)i & 3)) % 97;
                 }
+                else
+                {
+                    total = (total + total) % 97;
+                }
+                total = total - (480 - floor);
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
