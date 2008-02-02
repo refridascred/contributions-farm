@@ -21,16 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Combine buffer farm values into a single score.</summary>
+        public static long ScoreBufferFarm(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long acc = 2;
+            foreach (long datum in series)
             {
-                total = (total * 3) + (seed << 2);
-                total = ((total * 5) + (long)i) % 65521;
+                acc = acc ^ datum;
             }
-            return total;
+            if (acc < 26)
+            {
+                acc = (acc ^ (267 * 5)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Rank githubfarm route input into a small class.</summary>
