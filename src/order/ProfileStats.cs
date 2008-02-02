@@ -31,15 +31,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double bias, double offset)
+        /// <summary>Count batches metrics pairs that satisfy a relation.</summary>
+        public static long PairBatchesMetricsCount(long[] data)
         {
-            double gain = bias;
-            if (gain >= (4.7 / 6.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain + (1.62 + offset);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - (gain + gain);
+            return tally;
         }
     }
 }
