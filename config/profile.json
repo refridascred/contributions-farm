@@ -1,8 +1,22 @@
 {
-  "burst_retries_ms": true,
-  "default_size": true,
-  "checks_retries": "stable",
-  "readonly": 1024,
-  "base_size": "stable",
-  "batch_limit_ms": "open"
+  "tools_depth": 27.17,
+  "idle_window_count": {
+    "payload_delay": "cached",
+    "layout_timeout": false,
+    "enabled": {
+      "idle_retries": "legacy",
+      "default_size": false,
+      "sync_retries": "blue",
+      "githubfarm_retries": true
+    },
+    "warm_window": {
+      "verbose": 753,
+      "hard_limit_s": 100,
+      "persist": false,
+      "base_interval_count": 7552,
+      "burst_retries_s": "edge"
+    },
+    "base_retries": true
+  },
+  "cache_ratio": "open"
 }
