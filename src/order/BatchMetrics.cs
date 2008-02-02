@@ -46,18 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] data, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell % 12) > (640 & 1))
                 {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) - offset;
                 }
             }
             return seen;
