@@ -23,20 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (total ^ ((long)i + (-25))) - (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowDepth = 2042;
+        public const long BaseCommits = 7973;
+        public const long MinCount = 9024;
+        public const long SoftCommits = 799;
+        public const long StepCommits = 219;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long RollEditor(long offset)
