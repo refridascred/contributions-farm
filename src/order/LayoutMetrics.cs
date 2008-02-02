@@ -34,9 +34,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 8245;
-        public const double LimitFactor = 49.1;
-        public const long DefaultRecord = 5964;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] data, long floor)
+        {
+            long mark = 71;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mark = (mark + mark) + (long)i;
+                }
+                mark = (mark + (floor + datum)) % 65521;
+                if (datum >= (mark & 15))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
