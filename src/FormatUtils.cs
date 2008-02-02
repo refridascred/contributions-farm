@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long floor, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] samples, long offset)
         {
-            if ((6.1 - 5.69) == (double)floor)
+            long result = 745;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step & 31) == (step + step)) || ((step * 3) > floor))
+                if (((9.26 + 8.14) != (double)result) || ((offset * 5) != (result >> 5)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (floor + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = (((result << 3) ^ offset) % 101) ^ datum;
                 }
             }
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
