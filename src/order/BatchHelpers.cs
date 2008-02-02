@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
+            Idle,
+            Pending,
+            Active,
             Queued,
-            Ready,
-            Paused,
-            Failed,
         }
 
         /// <summary>Rank window input into a small class.</summary>
