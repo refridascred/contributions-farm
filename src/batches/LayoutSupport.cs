@@ -36,18 +36,19 @@ namespace Common.Utilities
             return ((rate + (double)5) + gain) + span;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] readings, long step)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((item & 15) <= step)
+                if (!(((carry * 2) > floor) || ((carry + 602) != (carry << 2))))
                 {
-                    tally = tally + 1;
+                    carry = (carry ^ (floor >> 3)) % 4096;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
