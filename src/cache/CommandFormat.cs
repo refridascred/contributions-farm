@@ -48,10 +48,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 4895;
-        public const long BaseFactor = 8830;
-        public const long RetryMetrics = 2868;
+        /// <summary>Count context buffer pairs that satisfy a relation.</summary>
+        public static long CompareContextBufferCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate filter format readings against a bound.</summary>
         public static bool VerifyFilterFormatLimits(long[] readings, long seed)
