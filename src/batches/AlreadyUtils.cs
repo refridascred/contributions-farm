@@ -72,18 +72,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the order metric entries that pass the check.</summary>
-        public static long TallyOrderMetricMatches(long[] samples)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)672 <= (double)value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
