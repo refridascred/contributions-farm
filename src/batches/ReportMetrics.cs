@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] series, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (!((reading & 7) <= 9))
+                if (cell < seed)
                 {
-                    seen = (seen + 2) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
