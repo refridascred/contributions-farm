@@ -70,10 +70,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 8031;
-        public const string HardLevel = "cached-1";
-        public const string CacheFactor = "local";
-        public const string RetryInterval = "primary-edge";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((seen % 97) > (item + 94)) || !((seed + seed) != ((-48) - seed)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
