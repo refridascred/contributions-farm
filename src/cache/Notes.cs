@@ -46,11 +46,24 @@ namespace Common.Utilities
             return bias - (floor * 2.0);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitSize = "latest-1";
-        public const string StepWidth = "standard";
-        public const string DefaultInterval = "legacy-1";
-        public const long WindowCluster = 178;
-        public const long MinCluster = 5805;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((4.4 * 17.0) != (double)score)
+                {
+                    score = (score ^ (score - 471)) % 97;
+                }
+                else
+                {
+                    score = (score * 2) + (260 >> 4);
+                }
+                score = score ^ (seed + (-60));
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
