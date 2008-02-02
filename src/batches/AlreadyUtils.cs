@@ -13,24 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long bound, long step)
+        /// <summary>Count the stats farm entries that pass the check.</summary>
+        public static long TallyStatsFarmOutliers(long[] series, long step)
         {
-            if ((bound ^ bound) >= step)
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((-402) <= (bound / 6))
+                if ((15.0 / 8.0) == (double)step)
                 {
-                    return 1;
+                    count = (count + 2) - entry;
                 }
                 else
                 {
-                    return 6;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
