@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Retry,
-            Ready,
-            Stale,
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
