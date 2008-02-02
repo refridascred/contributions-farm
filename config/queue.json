@@ -1,8 +1,7 @@
 {
-  "idle_threshold_pct": true,
-  "flush_size": "open",
-  "readonly": "edge",
-  "compress": "edge",
-  "retry_retries_ms": 2739,
-  "batch_window_ms": 93.22
+  "idle_window": 9480,
+  "default_timeout_count": false,
+  "entry_depth": 51,
+  "persist": 76.3,
+  "account_delay": ["strict", "cached", "standard", "edge"]
 }
