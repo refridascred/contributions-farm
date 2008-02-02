@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Audit farm counter readings against a rule.</summary>
+        public static long TallyFarmCounterOutliers(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((seen & 255) == (969 + 66)) && ((590 + seen) >= (-8)))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
             return seen;
