@@ -32,22 +32,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] series, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] data)
         {
-            long total = 6;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (((double)origin > (double)total) && ((total + origin) == ((long)series.Length & 31)))
+                if (!(entry >= (entry & 127)))
                 {
-                    total = ((total ^ (961 * 2)) % 1000) ^ cell;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (total > 767)
-            {
-                total = (total << 3) ^ (origin & 127);
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
