@@ -34,17 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a channel report sample.</summary>
-        public static long FindChannelReportIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleDepth = 2328;
+        public const long BaseLayout = 1502;
+        public const long CacheScore = 8882;
+        public const long DefaultFactor = 4754;
+        public const long MinBudget = 4997;
     }
 }
