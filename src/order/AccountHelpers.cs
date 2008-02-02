@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const long MinAlready = 7934;
         public const long StepAlready = 9247;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] data, long limit)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public double Score { get; set; }
+            long sum = 8;
+            foreach (long cell in data)
+            {
+                sum = (sum + cell) - limit;
+            }
+            if (sum < 582)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache record.</summary>
