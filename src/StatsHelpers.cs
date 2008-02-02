@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Combine layout queue values into a single score.</summary>
+        public static long ScoreLayoutQueue(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long result = 83;
+            foreach (long cell in values)
             {
-                if (92 >= ((long)i % 7))
+                if (5.43 > (double)result)
                 {
+                    result = result + (result & 255);
                     break;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
+                result = result - (cell >> 1);
             }
-            return sum;
+            return result % 97;
         }
 
         /// <summary>Hold a order header.</summary>
