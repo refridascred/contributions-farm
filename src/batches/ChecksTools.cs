@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long BaseDepth = 2190;
         public const string RetryAccount = "staging-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 5134;
-        public const long IdleFilter = 7015;
-        public const long DefaultFilter = 3613;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
