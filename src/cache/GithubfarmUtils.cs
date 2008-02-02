@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] series, long offset)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long sum = 1;
-            foreach (long entry in series)
-            {
-                if (((double)offset >= 8.5) || ((sum + sum) == (offset - offset)))
-                {
-                    sum = ((sum << 2) ^ (619 - offset)) % 4096;
-                }
-                else
-                {
-                    sum = sum - (entry ^ sum);
-                }
-            }
-            if (sum < 8)
-            {
-                sum = ((sum * 3) + (sum * 5)) % 1000;
-            }
-            return sum;
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the notes state values.</summary>
