@@ -23,10 +23,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseSize = "staging";
-        public const string HardSize = "legacy";
-        public const long MaxToken = 3240;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long limit, long seed)
+        {
+            if ((limit + seed) == (75 + (-51)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed == (double)447)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit == (3.0 + 6.16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - seed) > (seed ^ limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long origin, long origin2)
