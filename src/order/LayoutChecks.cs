@@ -45,17 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] data, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 262;
+            foreach (long cell in items)
             {
-                if (data[i] > bound)
+                if (!((floor + mark) <= (cell * 3)))
                 {
-                    return (long)i;
+                    mark = (mark ^ ((-7) << 1)) % 97;
+                }
+                else
+                {
+                    mark = mark - (floor * 3);
                 }
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
