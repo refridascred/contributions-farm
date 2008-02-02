@@ -1,5 +1,6 @@
 {
-  "retry_timeout_pct": [298, 192, 207],
-  "poll_size_count": 7489,
-  "max_delay": 18.69
+  "poll_retries": "eu-west",
+  "cache_threshold_ms": "blue",
+  "entry_window": "edge",
+  "persist": 30
 }
