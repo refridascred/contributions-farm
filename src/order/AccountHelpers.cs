@@ -42,22 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] series, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels)
         {
-            long sum = 913;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((2.7 - 7.33) < (double)sum)
+                if ((double)reading > (double)hits)
                 {
-                    sum = ((sum - (sum << 2)) % 1000) ^ sample;
+                    hits = hits + 3;
                 }
             }
-            if (sum < 80)
-            {
-                sum = (sum + (origin << 1)) % 4096;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
