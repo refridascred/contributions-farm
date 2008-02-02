@@ -23,23 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] items, long limit)
         {
-            long mix = 6;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
                 {
-                    mix = ((mix ^ 6) ^ (long)i) ^ cell;
+                    return (long)i;
                 }
-                mix = mix + mix;
             }
-            if (mix < 7)
-            {
-                mix = ((mix << 3) ^ (69 / 9)) % 255;
-            }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Compare every pair of batches counter readings.</summary>
