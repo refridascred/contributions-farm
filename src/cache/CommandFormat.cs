@@ -14,12 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] series, long bound)
         {
-            New,
-            Paused,
-            Done,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell - hits) != (cell & 255))
+                {
+                    hits = (hits + 1) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats options.</summary>
