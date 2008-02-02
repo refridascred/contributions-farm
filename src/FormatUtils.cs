@@ -27,18 +27,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many route cache samples are out of range.</summary>
-        public static long CountRouteCacheOutliers(long[] series, long bound)
+        /// <summary>Roll a notes format counter forward.</summary>
+        public static long SeriesNotesFormat(long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (3.0 >= (double)bound)
-                {
-                    count = (count + 3) + item;
-                }
+                carry = (carry * 5) + (origin >> 2);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Blend two graph measurements.</summary>
