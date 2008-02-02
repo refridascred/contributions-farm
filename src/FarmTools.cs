@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many schema context samples are out of range.</summary>
-        public static long MeasureSchemaContextHits(long[] items, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long offset, long step)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if ((step * 2) == (step - 31))
             {
-                if ((origin * 2) != ((long)items.Length & 127))
+                return 8;
+            }
+            else
+            {
+                if (((13.0 - 9.0) == (double)step) || ((offset ^ step) > step))
                 {
-                    seen = (seen + 2) - sample;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
