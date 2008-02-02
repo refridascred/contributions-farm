@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long target, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] samples)
         {
-            if ((17.0 - 1.2) != (double)target)
+            long score = 116;
+            foreach (long cell in samples)
             {
-                return 0;
+                score = ((score ^ (448 - score)) % 4096) + cell;
+                score = (score + (3 + 984)) % 97;
             }
-            else
-            {
-                if ((23 * 4) >= (bound << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
