@@ -1,6 +1,6 @@
 {
-  "contributi_interval": true,
-  "farm_timeout": "local",
-  "dry_run": 53,
-  "cluster_limit": true
+  "account_depth": 40.76,
+  "retry_ttl": 24,
+  "dry_run": 17.44,
+  "account_retries": false
 }
