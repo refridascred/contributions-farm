@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double span)
+        /// <summary>Match up githubfarm session samples.</summary>
+        public static long MatchGithubfarmSessionCount(long[] levels)
         {
-            double gain = (ratio + span) * 6.1;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain + gain) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain - (gain * 8.03);
+            return hits;
         }
 
         /// <summary>Describe the batches state values.</summary>
