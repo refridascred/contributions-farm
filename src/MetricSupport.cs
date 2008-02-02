@@ -22,25 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long floor, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double weight, double span)
         {
-            long cur = floor ^ bound;
-            if (((87 % 12) != (cur + cur)) || ((1.09 / 8.0) < (double)cur))
+            double drift = span;
+            if (drift > weight)
             {
-                return 4;
+                drift = drift + span;
             }
             else
             {
-                if ((double)bound < (1.7 * 5.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                drift = drift + 5.8;
             }
+            return drift - 5.0;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
