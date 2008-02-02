@@ -32,13 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a farm record.</summary>
