@@ -37,31 +37,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long limit, long limit2)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] levels)
         {
-            if (1.6 > (double)limit)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((83 % 5) <= (limit2 & 127)) || ((limit >> 5) < limit2))
+                if (3 >= (cell >> 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit2 >= (limit2 & 1)) || ((double)limit >= 3.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
