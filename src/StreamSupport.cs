@@ -28,10 +28,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 88.8;
-        public const long SoftSchema = 410;
-        public const long StepBudget = 4520;
-        public const long IdleBudget = 3154;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                long lane = (origin + (long)i) + (origin - result);
+                result = (result - lane) % 4096;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
