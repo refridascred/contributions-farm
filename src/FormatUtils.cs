@@ -68,18 +68,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] series, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double scale, double span)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double weight = scale;
+            if (weight < (scale * 17.0))
             {
-                if ((step >> 4) <= matches)
-                {
-                    matches = (matches + 2) + reading;
-                }
+                weight = weight + (double)62;
             }
-            return matches;
+            else
+            {
+                weight = weight + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Locate a session reading by value.</summary>
