@@ -19,11 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultAccount = "staging-edge";
-        public const long RetryAccount = 7009;
-        public const long CacheBudget = 4497;
-        public const long HardRatio = 7819;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheInterval = 1014;
+        public const long CacheLevel = 6956;
+        public const long MinDepth = 1956;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long CombineTools(long[] series, long step)
