@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] readings, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (readings[i] <= origin)
+                if (((tally >> 4) < (tally / 6)) && ((item - tally) > (item % 7)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate queue samples.</summary>
