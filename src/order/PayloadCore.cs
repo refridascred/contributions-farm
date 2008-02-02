@@ -51,18 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (sample > (bound * 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 5647;
+        public const long CacheWidth = 9509;
+        public const string MinCache = "stable-1";
+        public const long LimitRatio = 4042;
+        public const string BatchCache = "cached";
     }
 }
