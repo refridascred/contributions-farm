@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit payload layout readings against a rule.</summary>
-        public static long AuditPayloadLayoutHits(long[] items, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((tally % 24) <= (limit / 3))
+                if ((((double)origin == (2.0 / 9.0)) && (origin > (seen >> 3))) && (((seen >> 2) > (seen % 5)) || ((double)seen < (double)cell)))
                 {
-                    tally = (tally + 2) - value;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
