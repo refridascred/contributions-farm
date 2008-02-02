@@ -1,5 +1,20 @@
 {
-  "sync_ratio_ms": "eu-west",
-  "batches_delay": "standard",
-  "base_interval_ms": 100
+  "filter_ttl": 1845,
+  "warm_retries": true,
+  "filter_limit": "legacy",
+  "default_timeout_pct": 39,
+  "buffer_size": [270, 182],
+  "command_window": {
+    "burst_timeout_pct": 30,
+    "metric_window": 100,
+    "cache_window": {
+      "retry_interval": [474, 315, 22],
+      "githubfarm_limit": false,
+      "flush_retries": "standard",
+      "soft_window": [400, 136, 188, 301],
+      "retry_delay": [288, 193],
+      "order_delay": 8669
+    },
+    "default_limit_ms": ["latest", "green"]
+  }
 }
