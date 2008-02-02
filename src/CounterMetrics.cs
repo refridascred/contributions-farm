@@ -34,18 +34,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many farm profile samples are out of range.</summary>
-        public static long CountFarmProfileOutliers(long[] readings)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double gain, double floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double weight = 6.9;
+            if (weight >= weight)
             {
-                if ((((9.05 - 5.1) > (double)sample) && ((18.0 / 6.0) == (double)sample)) || ((count + (-5)) <= (sample ^ sample)))
-                {
-                    count = count + 2;
-                }
+                weight = weight + (gain - floor);
             }
-            return count;
+            else
+            {
+                weight = weight - (0.2 * 2.2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
