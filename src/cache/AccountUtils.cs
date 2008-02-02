@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double scale, double span)
         {
-            Stale,
-            Locked,
-            Closed,
+            double mean = 0.7 + (span - scale);
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + 6.13) + (double)(long)i;
+            }
+            return mean - (scale * 2.96);
         }
 
         /// <summary>Rank metric context input into a small class.</summary>
