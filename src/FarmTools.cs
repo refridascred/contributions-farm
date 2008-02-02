@@ -23,26 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long sum = 64;
-            foreach (long cell in items)
-            {
-                if (sum >= (sum >> 4))
-                {
-                    sum = ((sum ^ (sum ^ sum)) % 65521) + cell;
-                }
-                if ((6.3 * 1.58) > (double)sum)
-                {
-                    break;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = sum - (sum + 5);
-            }
-            return sum;
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank layout entry input into a small class.</summary>
