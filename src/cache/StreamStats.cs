@@ -33,32 +33,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long target, long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double weight, double floor)
         {
-            long span = target ^ offset;
-            if (((target - target) <= (target << 2)) && ((5.9 * 7.6) >= (double)span))
+            double weight2 = weight - weight;
+            if (weight2 > 9.4)
             {
-                return 8;
+                weight2 = (weight2 + (weight2 * 6.61)) + floor;
             }
-            else
-            {
-                if (((double)span == (double)target) && ((double)span <= (2.49 + 8.36)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (span >= (offset >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return weight2 - weight2;
         }
     }
 }
