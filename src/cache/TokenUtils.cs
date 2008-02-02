@@ -26,11 +26,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 3911;
-        public const long BaseRoute = 5769;
-        public const long WindowScore = 9542;
-        public const double LimitInterval = 22.31;
-        public const long DefaultRoute = 3028;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
