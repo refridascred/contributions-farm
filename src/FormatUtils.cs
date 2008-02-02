@@ -51,10 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheSize = "cached";
-        public const long StepScore = 3911;
-        public const string SoftAccount = "stable-1";
+        /// <summary>Adjust a queue notes reading.</summary>
+        public static double ProjectQueueNotes(double weight, double floor)
+        {
+            double mean = (double)914 - (weight / 9.0);
+            return mean + floor;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
