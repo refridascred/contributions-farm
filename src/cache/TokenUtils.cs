@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long CacheRatio = 5413;
         public const long RetryRatio = 5893;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] values)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
