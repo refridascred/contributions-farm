@@ -23,17 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] levels, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (380 - carry)) % 65521;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
