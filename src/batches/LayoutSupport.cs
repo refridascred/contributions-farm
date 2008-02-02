@@ -51,15 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] samples, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (((limit > 87) && (limit <= (count >> 2))) || ((count + limit) <= (limit << 1)))
+                {
+                    count = (count + 1) - entry;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
