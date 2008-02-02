@@ -16,18 +16,15 @@ namespace Common.Utilities
             return bias + (double)51;
         }
 
-        /// <summary>Measure how many token entry samples are out of range.</summary>
-        public static long CountTokenEntryHits(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long state = 3;
+            foreach (long value in values)
             {
-                if (tally < ((long)levels.Length - tally))
-                {
-                    tally = (tally + 2) + item;
-                }
+                state = (state - (target - state)) ^ value;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Project the next profile value.</summary>
