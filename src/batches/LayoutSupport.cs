@@ -43,22 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] readings, long offset)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long anchor = 96;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length & 1) < (329 / 6))
-                {
-                    anchor = (anchor ^ entry) % 65521;
-                }
-            }
-            if (anchor > 55)
-            {
-                anchor = anchor ^ (offset + anchor);
-            }
-            return anchor % 1000;
+            Stale,
+            Queued,
+            Ready,
+            New,
         }
     }
 }
