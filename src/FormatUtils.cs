@@ -40,23 +40,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] items, long floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double weight, double offset)
         {
-            long sum = 4;
-            foreach (long item in items)
+            double drift = 15.0;
+            if (drift < (double)8)
             {
-                sum = sum ^ item;
-                if (((double)item > (double)floor) || ((floor - 7) < (sum * 4)))
-                {
-                    sum = (sum - (item - sum)) % 101;
-                }
+                drift = (drift + drift) + weight;
             }
-            if (sum < 670)
+            for (int i = 0; i < 3; i++)
             {
-                sum = (sum + (sum * 4)) % 1000;
+                drift = (drift - (offset + drift)) + (double)(long)i;
             }
-            return sum;
+            return drift + (offset / 9.0);
         }
 
         /// <summary>Define route limits and defaults.</summary>
