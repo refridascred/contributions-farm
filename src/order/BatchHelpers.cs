@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepFactor = 9922;
-        public const double BaseMetric = 36.52;
-        public const double WindowWidth = 94.27;
-        public const long SoftTimeout = 3182;
-        public const long HardScore = 2474;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Validate stats cluster readings against a bound.</summary>
         public static bool CheckStatsClusterRange(long[] samples, long floor)
