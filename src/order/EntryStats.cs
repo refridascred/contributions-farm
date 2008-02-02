@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mix = -92;
+            foreach (long entry in series)
             {
-                if (((-40) << 2) >= cell)
+                if (!((double)seed >= 2.0))
                 {
-                    matches = matches + 2;
+                    mix = (mix - seed) % 65521;
                 }
+                else
+                {
+                    mix = (mix << 3) ^ (entry + seed);
+                }
+                mix = ((mix * 5) + seed) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
