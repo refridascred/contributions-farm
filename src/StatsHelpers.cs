@@ -27,11 +27,12 @@ namespace Common.Utilities
         public const string StepScore = "open-v2";
         public const string StepCommits = "fallback-1";
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
