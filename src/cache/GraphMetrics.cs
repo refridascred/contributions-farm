@@ -64,31 +64,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long bound, long bound2)
-        {
-            if ((bound + bound) > (846 << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0.02 >= (double)bound) || (bound <= (bound2 & 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound2 << 1) > (bound ^ bound2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleInterval = "latest";
+        public const long BatchRoute = 6891;
+        public const string WindowFactor = "staging-edge";
     }
 }
