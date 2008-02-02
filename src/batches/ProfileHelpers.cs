@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinCount = 3250;
-        public const long CacheFactor = 4056;
-        public const long BatchRatio = 166;
-        public const long IdleBatch = 8414;
-        public const long CacheBatch = 5463;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long offset, long seed)
+        {
+            if (((double)seed == (0.5 + 3.4)) || ((double)offset == (6.3 / 3.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset - offset) >= seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
