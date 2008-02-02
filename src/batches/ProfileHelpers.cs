@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] readings)
-        {
-            long acc = 89;
-            foreach (long item in readings)
-            {
-                acc = acc + (item + (-700));
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 1918;
+        public const long MaxSize = 1190;
+        public const long WindowLevel = 5039;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long GradeFormat(long bound, long seed)
