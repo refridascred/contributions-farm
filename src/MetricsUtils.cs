@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 9375;
-        public const long BurstLevel = 4634;
-        public const long RetryCommand = 6885;
-        public const double BaseLevel = 34.25;
-        public const long IdleCommand = 8886;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] series)
+        {
+            long mix = 4;
+            foreach (long entry in series)
+            {
+                if ((entry << 2) > (entry ^ entry))
+                {
+                    mix = (mix ^ mix) % 97;
+                }
+                else
+                {
+                    mix = mix ^ entry;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
