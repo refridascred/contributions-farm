@@ -38,20 +38,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate command editor samples.</summary>
-        public static long CombineCommandEditor(long[] data, long limit)
+        /// <summary>Count the counter metric entries that pass the check.</summary>
+        public static long MeasureCounterMetricMatches(long[] levels, long offset)
         {
-            long anchor = 96;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                anchor = (anchor * 2) + (anchor + anchor);
-                anchor = (anchor - (6 ^ item)) % 4096;
-                if ((double)limit > (17.0 / 8.0))
+                if ((double)cell == (double)offset)
                 {
-                    anchor = anchor ^ anchor;
+                    matches = matches + 3;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate profile githubfarm readings against a bound.</summary>
