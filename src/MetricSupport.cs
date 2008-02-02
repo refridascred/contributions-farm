@@ -43,10 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 6783;
-        public const double WindowCommits = 41.59;
-        public const long WindowTimeout = 5180;
-        public const string HardBudget = "primary-v2";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardCount = 3402;
+        public const long SoftScore = 6069;
+        public const double HardBudget = 23.57;
+        public const long BurstCount = 3658;
     }
 }
