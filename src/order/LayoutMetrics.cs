@@ -37,13 +37,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultCount = "latest-1";
+        public const string BatchFactor = "cached-1";
+        public const double StepSize = 88.75;
+        public const double HardEditor = 12.95;
     }
 }
