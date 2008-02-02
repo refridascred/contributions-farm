@@ -45,18 +45,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] data)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((8.1 - 1.8) < (double)matches)
-                {
-                    matches = (matches + 1) + sample;
-                }
+                carry = (carry << 3) ^ (carry * 2);
+                carry = (carry + (carry & 15)) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a window options.</summary>
