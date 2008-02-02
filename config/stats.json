@@ -1,6 +1,8 @@
 {
-  "persist": "open",
-  "max_timeout": "latest",
-  "window_timeout": 18.66,
-  "checks_timeout": "standard"
+  "filter_ttl": "eu-west",
+  "githubfarm_timeout": "latest",
+  "batch_timeout_ms": 49.75,
+  "batch_retries_count": 32.78,
+  "token_threshold": 70.36,
+  "burst_capacity_count": ["standard", "stable", "standard", "edge"]
 }
