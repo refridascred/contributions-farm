@@ -67,38 +67,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long offset, long step)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] data, long target)
         {
-            if ((step * 4) < (offset - step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < 9.5)
+                if (data[i] >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step >= (3.93 + 16.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - step) != (offset * 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
