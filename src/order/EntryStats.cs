@@ -50,28 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] readings, long limit)
         {
-            long carry = 3;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (((13.0 - 0.4) != (double)item) && ((double)carry <= 6.14))
+                if ((((69 * 4) <= (tally % 60)) && (tally >= (sample + sample))) && !((double)sample != (5.7 * 11.0)))
                 {
-                    carry = carry + carry;
+                    tally = (tally + 3) + limit;
                 }
                 else
                 {
-                    carry = (carry * 4) + item;
-                    carry = ((carry * 2) + (item >> 3)) % 101;
+                    tally = tally - 1;
                 }
-                carry = (carry << 2) ^ (item % 10);
             }
-            if (carry > 449)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return tally;
         }
     }
 }
