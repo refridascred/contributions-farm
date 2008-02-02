@@ -51,21 +51,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
+        public static long AuditTokenGithubfarmHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((count ^ 27) < (count >> 4)))
                 {
-                    if ((items[i] + items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) - entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
