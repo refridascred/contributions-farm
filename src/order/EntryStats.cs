@@ -40,22 +40,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stats route entries.</summary>
-        public static long DigestStatsRoute(long[] levels, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long carry = -27;
-            foreach (long sample in levels)
-            {
-                if (((sample + origin) >= origin) || ((double)origin == (8.8 / 5.0)))
-                {
-                    carry = ((carry * 4) + (0 + carry)) % 4096;
-                }
-            }
-            if (carry > 80)
-            {
-                carry = ((carry * 2) + (origin % 7)) % 65521;
-            }
-            return carry;
+            Locked,
+            Paused,
+            Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
