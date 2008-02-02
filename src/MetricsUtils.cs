@@ -19,10 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheInterval = 1014;
-        public const long CacheLevel = 6956;
-        public const long MinDepth = 1956;
+        /// <summary>Derive the next buffer cache value from a seed.</summary>
+        public static long RollBufferCache(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                total = total - (origin % 97);
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long CombineTools(long[] series, long step)
