@@ -43,18 +43,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] items)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long delta = limit - seed;
+            if (((delta % 8) <= limit) && ((delta + limit) < (48 + 90)))
             {
-                if ((seen + cell) <= (seen - seen))
+                return 7;
+            }
+            else
+            {
+                if ((double)delta > 2.0)
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
