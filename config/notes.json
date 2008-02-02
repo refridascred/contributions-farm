@@ -1,9 +1,5 @@
 {
-  "persist": 36.2,
-  "sync_window_count": {
-    "farm_interval": 786,
-    "burst_threshold_ms": 100,
-    "burst_limit_s": "fallback"
-  },
-  "min_interval_s": "open"
+  "base_ttl": ["local", "local", "open"],
+  "audit": 44.64,
+  "metric_size": false
 }
