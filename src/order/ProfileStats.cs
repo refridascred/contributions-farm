@@ -14,15 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next token cluster value.</summary>
-        public static double SmoothTokenCluster(double gain, double floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double mean = floor;
-            if (mean >= (mean + floor))
-            {
-                mean = mean - (gain / 5.0);
-            }
-            return mean + (floor * 7.1);
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a farm header.</summary>
