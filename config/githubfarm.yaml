@@ -1,29 +1,30 @@
 # githubfarm settings
-poll_timeout_s:
-  persist:
-    base_threshold_count: 62.54
-    cache_timeout: staging
-    dry_run: 250
-    profile_threshold: latest
-  base_ttl_pct: 25
-  hard_timeout_ms:
-    - 234
-    - 466
-    - 459
-    - 464
-  min_depth:
-    dry_run: 4650
-    base_limit: legacy
-    sync_timeout: 73.11
-    cache_delay: 51
-    readonly:
-      - 85
-      - 16
-      - 395
-      - 331
-    base_interval_s: cached
-  min_ttl_s: cached
-  flush_ttl: 86.12
-min_retries_pct: 71.51
-sync_interval_count: 46.39
-enabled: 88
+cache_ttl_s: 7394
+warm_interval_pct:
+  - 94
+  - 192
+persist: 76
+min_interval_pct:
+  warm_interval_count:
+    default_size: 46.66
+    default_retries_s: stable
+    min_ratio_count: true
+    persist: standard
+    default_interval_count: 100
+  base_depth_count: 15
+  default_retries_ms:
+    compress: true
+    sync_retries: true
+    warm_timeout:
+      - 278
+      - 209
+      - 280
+      - 343
+    profile_retries: standard
+    filter_limit: 63
+    base_ttl_pct: false
+  verbose: edge
+  sync_size: 60
+  persist: 29.55
+readonly: true
+default_threshold: 9121
