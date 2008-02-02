@@ -32,22 +32,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] values)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading % 7) != ((-8) - reading))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state * 5) + (seed << 3);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
