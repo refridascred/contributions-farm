@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in green fallback; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+BUFFER_LIMIT=270
+log "limit is ${BUFFER_LIMIT}"
