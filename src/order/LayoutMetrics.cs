@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long origin, long origin2)
+        /// <summary>Compare every pair of route tools readings.</summary>
+        public static long PairRouteToolsCount(long[] readings)
         {
-            if ((origin + origin) != (origin2 - origin))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (346 > (origin2 % 16))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine buffer farm values into a single score.</summary>
