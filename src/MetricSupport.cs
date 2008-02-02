@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = 8.7;
+            if (gain <= (floor + floor))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain + (double)83) - ratio;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (gain / 2.0)) - (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
