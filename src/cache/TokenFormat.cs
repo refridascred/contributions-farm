@@ -63,18 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] values, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (sample <= (origin << 1))
+                if (((12.0 / 5.0) <= (double)sample) && ((hits * 3) > (8 >> 3)))
                 {
-                    count = count + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
