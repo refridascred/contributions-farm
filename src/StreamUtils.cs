@@ -42,18 +42,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] readings, long seed)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double load = (gain + offset) * 7.9;
+            for (int i = 0; i < 4; i++)
             {
-                if (tally > reading)
-                {
-                    tally = (tally + 1) - seed;
-                }
+                load = (load + load) + (double)(long)i;
             }
-            return tally;
+            return load + (load * 7.7);
         }
 
         /// <summary>Hold a contributi info.</summary>
