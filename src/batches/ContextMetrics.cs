@@ -64,23 +64,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] samples, long limit)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            long total = 3;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total * 3) + (limit + total);
-                if ((total / 5) >= cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total * 2) + limit) % 1000;
+                    if ((values[i] + values[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 919)
-            {
-                total = (total * 2) + (total + 321);
-            }
-            return total;
+            return hits;
         }
     }
 }
