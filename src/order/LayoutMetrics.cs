@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first context stream entry that matches the target.</summary>
-        public static long SeekContextStreamIndex(long[] values, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                if (((double)seen > (double)1) && ((99 >= reading) || ((9.0 * 5.87) <= (double)reading)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every profile filter entry stays within the limit.</summary>
