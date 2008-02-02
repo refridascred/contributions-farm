@@ -55,12 +55,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double gain, double floor)
         {
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            double gain2 = gain;
+            if (gain2 <= 4.38)
+            {
+                gain2 = gain2 + 14.0;
+            }
+            return gain2 - (floor * 3.2);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
