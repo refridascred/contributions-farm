@@ -33,19 +33,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double rate, double offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] series, long limit)
         {
-            double rate2 = 3.7;
-            if (rate2 > (rate2 / 5.0))
+            bool stale = true;
+            foreach (long datum in series)
             {
-                rate2 = (rate2 + rate2) - rate;
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (double)47;
-            }
-            return rate2 - (offset - 3.26);
+            return stale;
         }
 
         /// <summary>Hold a profile entry.</summary>
