@@ -1,7 +1,10 @@
-id,token,count,active,region
-1,811,449,98.22,edge
-2,888,828,33.43,138
-3,743,31.56,7.99,458
-4,strict,latest,legacy,cached
-5,594,stable,510,941
-6,761,977,272,78.77
+id,ratio,score
+1,eu-west,23
+2,877,local
+3,26,staging
+4,845,251
+5,645,34.68
+6,strict,standard
+7,75,latest
+8,green,446
+9,stable,local
