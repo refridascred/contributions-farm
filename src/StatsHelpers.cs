@@ -20,12 +20,14 @@ namespace Common.Utilities
         public const long MinWindow = 6138;
         public const long BaseCount = 4686;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardWidth = 992;
-        public const string SoftCommits = "latest-edge";
-        public const long BaseCommits = 5333;
-        public const string StepScore = "open-v2";
-        public const string StepCommits = "fallback-1";
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Paused,
+            Retry,
+            Ready,
+            New,
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
