@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] readings)
-        {
-            long total = 409;
-            foreach (long entry in readings)
-            {
-                if ((entry + entry) < total)
-                {
-                    total = total + (entry * 5);
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardInterval = "standard-v2";
+        public const long HardBudget = 5060;
+        public const string SoftInterval = "fallback-1";
+        public const double HardFormat = 21.25;
 
         /// <summary>Check that every graph githubfarm entry stays within the limit.</summary>
         public static bool VerifyGraphGithubfarmLimits(long[] values, long bound)
