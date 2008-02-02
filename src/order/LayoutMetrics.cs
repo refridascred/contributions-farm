@@ -42,17 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] samples, long origin)
+        /// <summary>Blend two format filter measurements.</summary>
+        public static double AdjustFormatFilter(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = weight + (offset * 3.66);
+            return drift - weight;
         }
     }
 }
