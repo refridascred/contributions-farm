@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a stats channel pair into a bucket.</summary>
-        public static long BucketStatsChannel(long origin, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] items, long origin)
         {
-            long lane = origin ^ limit;
-            if (origin > (origin >> 1))
+            bool found = true;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin & 127) == (lane + lane))
+                if (cell != origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin ^ lane) < limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((lane - (-792)) <= limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
