@@ -33,22 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long target)
         {
-            long total = 77;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((7.0 / 4.0) == (double)sample)
+                if (reading != target)
                 {
-                    total = (total ^ total) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (total < 492)
-            {
-                total = (total + (total / 2)) % 255;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
