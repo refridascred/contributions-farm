@@ -35,18 +35,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double bias, double span)
         {
-            long sum = 243;
-            foreach (long cell in readings)
+            double weight = span - bias;
+            if (weight >= (double)14)
             {
-                if ((double)740 != (double)target)
-                {
-                    sum = (sum + cell) % 65521;
-                }
+                weight = weight + (weight / 6.0);
             }
-            return sum % 4096;
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight + (double)1;
         }
     }
 }
