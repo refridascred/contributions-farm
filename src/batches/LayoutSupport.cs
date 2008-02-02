@@ -24,11 +24,19 @@ namespace Common.Utilities
             return ((rate + (double)5) + gain) + span;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftCount = 8419;
-        public const string BaseOrder = "local-v2";
-        public const long HardOrder = 168;
-        public const long SoftOrder = 8848;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item & 15) <= step)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long IterateContributi(long bound)
