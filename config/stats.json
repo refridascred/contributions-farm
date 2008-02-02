@@ -1,6 +1,8 @@
 {
-  "flush_window_pct": [490, 191, 66],
-  "soft_size": [88, 473],
-  "queue_delay": 59,
-  "base_window": "staging"
+  "persist": "fallback",
+  "sync_retries_ms": 78,
+  "checks_window": "edge",
+  "batch_size_pct": 41,
+  "soft_ttl_ms": 250,
+  "already_limit": 6210
 }
