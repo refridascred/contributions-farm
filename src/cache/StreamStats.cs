@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long step, long offset)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            if ((-92) < (step - step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((50 << 1) != (offset + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step >= (step * 4)) && ((offset >> 5) == (step + 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
