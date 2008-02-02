@@ -30,25 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long target, long step)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double offset)
         {
-            long lane = target + step;
-            if ((step + target) == (step - lane))
+            double rate = gain;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                rate = ((rate + (8.3 / 4.0)) - (double)(long)i) - offset;
             }
-            else
-            {
-                if ((target << 1) <= (target + 98))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return rate + rate;
         }
     }
 }
