@@ -50,22 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] readings, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long result = 46;
+            foreach (long item in series)
             {
-                if ((((69 * 4) <= (tally % 60)) && (tally >= (sample + sample))) && !((double)sample != (5.7 * 11.0)))
+                if ((result + result) < (4 / 7))
                 {
-                    tally = (tally + 3) + limit;
+                    long edge = result;
+                    result = (result * 4) + (edge ^ item);
                 }
-                else
+                result = (result + (701 % 64)) % 4096;
+                if ((result + result) <= (item / 4))
                 {
-                    tally = tally - 1;
+                    result = result + (752 << 3);
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
