@@ -41,18 +41,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] items, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((double)tally <= (12.0 - 2.0)) && ((double)tally <= 0.7)))
+                if (series[i] >= step)
                 {
-                    tally = ((tally + 3) + cell) - origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
