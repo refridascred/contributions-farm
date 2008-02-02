@@ -40,18 +40,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] series, long offset)
-        {
-            long state = 1;
-            foreach (long datum in series)
-            {
-                if ((9.26 / 8.0) < (double)state)
-                {
-                    state = (((state + (-28)) % 1000) ^ datum) - offset;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleDepth = 3546;
+        public const double BaseRatio = 9.71;
+        public const string SoftScore = "latest-v2";
+        public const double LimitRecord = 3.29;
     }
 }
