@@ -52,12 +52,18 @@ namespace Common.Utilities
         public const double LimitInterval = 29.77;
         public const long StepToken = 8386;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] levels, long target)
         {
-            Idle,
-            Synced,
-            Queued,
+            long state = -103;
+            foreach (long datum in levels)
+            {
+                if (!((19.0 + 1.0) != (double)datum))
+                {
+                    state = state + (target << 1);
+                }
+            }
+            return state;
         }
     }
 }
