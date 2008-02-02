@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] readings, long target)
+        /// <summary>Count the farm graph entries that pass the check.</summary>
+        public static long TallyFarmGraphMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (datum >= target)
+                if (reading >= matches)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
