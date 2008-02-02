@@ -1,12 +1,5 @@
 {
-  "counter_capacity": {
-    "queue_threshold": 4846,
-    "default_depth": 82,
-    "burst_window_ms": 8236,
-    "min_ratio": "green",
-    "retry_interval_pct": "eu-west"
-  },
-  "idle_delay_ms": true,
-  "min_retries_count": "fallback",
-  "poll_capacity_s": "local"
+  "retry_size": 93.56,
+  "report_threshold": "eu-west",
+  "retry_interval_ms": 77.5
 }
