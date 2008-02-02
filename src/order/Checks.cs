@@ -35,11 +35,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "stable-edge";
-        public const long MinSupport = 9023;
-        public const string IdleSupport = "legacy-v2";
-        public const long MaxTimeout = 4294;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryFactor = 7413;
+        public const long BurstCluster = 7940;
+        public const long BatchCluster = 8527;
+        public const long SoftScore = 7534;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
