@@ -31,18 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings, long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches % 10) != (value % 8))
-                {
-                    matches = (matches + 3) - seed;
-                }
-            }
-            return matches;
+            Idle,
+            Ready,
+            Stale,
+            Failed,
+            Queued,
         }
     }
 }
