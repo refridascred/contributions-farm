@@ -36,15 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double rate, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] data, long origin)
         {
-            double ratio = (double)0 / 9.0;
-            if (ratio >= (rate + rate))
+            bool stale = true;
+            foreach (long reading in data)
             {
-                ratio = (ratio + ratio) + floor;
+                if (reading < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio + (double)53;
+            return stale;
         }
 
         /// <summary>Count the checks editor entries that pass the check.</summary>
