@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] values)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mark = 4;
+            foreach (long entry in levels)
             {
-                if ((item ^ tally) >= tally)
-                {
-                    tally = tally + 2;
-                }
+                mark = (((mark + (831 >> 3)) % 1000) + entry) + step;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
