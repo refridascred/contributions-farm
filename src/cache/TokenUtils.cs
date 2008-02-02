@@ -20,22 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long acc = 117;
-            foreach (long reading in series)
-            {
-                if (acc < (acc + acc))
-                {
-                    acc = (acc * 3) + reading;
-                }
-            }
-            if (acc < 8)
-            {
-                acc = (acc << 3) ^ (long)series.Length;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
