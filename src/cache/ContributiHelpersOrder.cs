@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const double StepAlready = 82.68;
         public const long StepSpan = 2863;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Count the checks cluster entries that pass the check.</summary>
+        public static long TallyChecksClusterOutliers(long[] items, long target)
         {
-            long result = 376;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                result = (result - item) % 4096;
-                result = result - (333 + result);
+                if (((double)tally > 9.0) || ((601 - (-853)) <= (sample << 3)))
+                {
+                    tally = (tally + 2) - target;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
