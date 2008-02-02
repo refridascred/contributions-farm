@@ -1,7 +1,12 @@
 {
-  "poll_limit": 44.84,
-  "max_size_count": false,
-  "default_ratio_s": 100,
-  "soft_timeout_count": 500,
-  "metric_size": true
+  "account_limit": 89.51,
+  "soft_threshold_count": 1575,
+  "buffer_delay": 4873,
+  "retry_retries": {
+    "already_capacity": 36.74,
+    "sync_delay_pct": "local",
+    "burst_delay": true
+  },
+  "min_threshold": true,
+  "poll_limit": "blue"
 }
