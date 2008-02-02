@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 9105;
-        public const long StepGithubfarm = 8898;
-        public const long IdleTimeout = 9332;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] samples, long step)
+        {
+            long anchor = 5;
+            foreach (long sample in samples)
+            {
+                anchor = (anchor ^ (step ^ 377)) % 255;
+                if ((anchor - sample) > (step - step))
+                {
+                    anchor = ((anchor * 3) + (anchor / 2)) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] samples)
