@@ -1,5 +1,22 @@
 {
-  "account_depth": true,
-  "poll_capacity": 60,
-  "readonly": "stable"
+  "base_ratio_count": false,
+  "max_ratio_pct": {
+    "batch_ttl_ms": 96,
+    "sync_ratio": ["blue", "blue", "green"],
+    "soft_ttl_count": true,
+    "buffer_capacity": "stable",
+    "idle_window": false,
+    "flush_delay": {
+      "min_capacity_ms": true,
+      "warm_size_s": 12,
+      "poll_timeout_ms": "fallback",
+      "idle_size_pct": true,
+      "batch_depth": 82,
+      "poll_interval_count": true
+    }
+  },
+  "retry_depth_s": "stable",
+  "poll_timeout": 29.57,
+  "max_capacity_pct": false,
+  "idle_ttl_ms": true
 }
