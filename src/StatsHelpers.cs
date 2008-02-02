@@ -42,11 +42,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardContext = 25.34;
-        public const long HardSpan = 9796;
-        public const string WindowContext = "latest-1";
-        public const long MinDepth = 6685;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long bound, long limit)
