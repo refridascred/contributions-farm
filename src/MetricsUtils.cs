@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] series, long limit)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a stream reading.</summary>
