@@ -28,10 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitDepth = 8869;
-        public const long MaxDepth = 2874;
-        public const double BurstInterval = 92.17;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
