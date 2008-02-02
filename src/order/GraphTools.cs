@@ -20,14 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] samples, long floor)
         {
-            New,
-            Dropped,
-            Failed,
-            Paused,
-            Retry,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
