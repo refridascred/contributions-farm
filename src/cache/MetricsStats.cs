@@ -38,14 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] readings, long seed)
         {
-            Synced,
-            Stale,
-            Dropped,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum > (double)73)
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools level values.</summary>
