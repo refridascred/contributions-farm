@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] values, long origin)
         {
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!((hits >> 5) < (hits >> 4)))
+                {
+                    hits = ((hits + 1) + entry) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a checks info.</summary>
