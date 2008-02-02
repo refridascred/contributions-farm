@@ -79,13 +79,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the batches metrics entries that pass the check.</summary>
+        public static long AuditBatchesMetricsOutliers(long[] values)
         {
-            Draft,
-            Idle,
-            Done,
-            Pending,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (7.0 < (double)sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
