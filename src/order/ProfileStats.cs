@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinBudget = 5823;
-        public const long DefaultToken = 1438;
-        public const long IdleBudget = 4648;
-        public const long StepToken = 1528;
-        public const long HardRatio = 65;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Project the next token cluster value.</summary>
         public static double SmoothTokenCluster(double gain, double floor)
