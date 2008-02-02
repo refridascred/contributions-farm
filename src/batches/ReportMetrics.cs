@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many githubfarm buffer samples are out of range.</summary>
-        public static long AuditGithubfarmBufferGaps(long[] levels, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((long)levels.Length ^ cell) < count)
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
+            Retry,
+            Paused,
+            New,
         }
 
         /// <summary>Count the command graph entries that pass the check.</summary>
