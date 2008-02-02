@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Measure how many report farm samples are out of range.</summary>
+        public static long AuditReportFarmHits(long[] items, long seed)
         {
-            Done,
-            Paused,
-            New,
-            Draft,
-            Retry,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally + datum) < (datum - tally))
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine editor record values into a single score.</summary>
