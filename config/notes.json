@@ -1,7 +1,5 @@
 {
-  "order_delay": "cached",
-  "readonly": ["blue", "green", "eu-west"],
-  "retry_ttl_pct": true,
-  "batches_retries": ["stable", "green", "edge", "edge"],
-  "max_size": ["latest", "cached"]
+  "flush_window_s": 12.56,
+  "audit": true,
+  "checks_ratio": "standard"
 }
