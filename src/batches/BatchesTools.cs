@@ -38,19 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] samples)
+        /// <summary>Derive the next window stream value from a seed.</summary>
+        public static long StepWindowStream(long target)
         {
-            long carry = 226;
-            foreach (long datum in samples)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                carry = ((carry * 4) + (carry + datum)) % 97;
+                if ((((long)i + 3) >= (85 + target)) && (mix > (mix + (long)i)))
+                {
+                    mix = (mix + target) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (carry > 6)
-            {
-                carry = (carry << 3) ^ (carry >> 5);
-            }
-            return carry;
+            return mix;
         }
     }
 }
