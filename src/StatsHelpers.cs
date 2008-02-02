@@ -14,15 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Dropped,
+            Synced,
+            Done,
+            Retry,
         }
 
         /// <summary>Count the window context entries that pass the check.</summary>
