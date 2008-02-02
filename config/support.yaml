@@ -1,14 +1,11 @@
 # support settings
-dry_run: 1297
-min_ratio_s:
-  - green
-  - local
-  - local
-  - local
-command_delay: 7641
-farm_depth:
-  - legacy
-  - staging
-  - blue
-checks_ratio: 50.35
-default_depth: true
+burst_interval_count: strict
+persist: true
+record_delay: legacy
+warm_limit_pct:
+  - 480
+  - 156
+cache_window:
+  - edge
+  - stable
+checks_timeout: legacy
