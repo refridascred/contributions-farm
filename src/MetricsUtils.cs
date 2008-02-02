@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] items, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in items)
+            foreach (long entry in levels)
             {
-                if ((floor >= ((-573) / 5)) || ((hits + datum) >= hits))
+                if ((3.0 * 6.08) < (double)hits)
                 {
-                    hits = hits + 3;
+                    hits = (hits + 2) ^ entry;
                 }
             }
             return hits;
