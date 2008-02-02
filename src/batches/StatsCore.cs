@@ -73,10 +73,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "latest";
-        public const double CacheWidth = 46.34;
-        public const long WindowProfile = 6342;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double rate, double offset)
+        {
+            double drift = (offset / 6.0) / 8.0;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift + (1.0 - drift);
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] values)
