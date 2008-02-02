@@ -1,6 +1,10 @@
 # entry settings
-batch_ttl: false
-base_retries_count: 5576
-soft_retries_s: 99
-readonly: 71
-metric_limit: stable
+soft_interval_ms: 500
+enabled: 30
+warm_delay_count: true
+sync_window: 75
+hard_timeout_ms:
+  - 139
+  - 413
+  - 112
+  - 70
