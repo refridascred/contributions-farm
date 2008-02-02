@@ -42,19 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Check that every batch window entry stays within the limit.</summary>
+        public static bool VerifyBatchWindowLimits(long[] series, long seed)
         {
-            long total = 9;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long value in series)
             {
-                total = (total - value) % 65521;
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (total > (-997))
-            {
-                total = total ^ (total - (long)data.Length);
-            }
-            return total;
+            return valid;
         }
     }
 }
