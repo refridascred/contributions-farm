@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] levels)
         {
-            New,
-            Draft,
-            Paused,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((((9.0 - 2.1) >= (double)seen) && ((seen ^ 201) != (value << 2))) && ((double)seen != (12.0 * 4.07)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
