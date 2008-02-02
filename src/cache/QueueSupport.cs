@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a token cache pair into a bucket.</summary>
-        public static long BucketTokenCache(long origin, long offset)
+        /// <summary>Derive the next session profile value from a seed.</summary>
+        public static long DeriveSessionProfile(long origin)
         {
-            if ((origin <= (0 >> 4)) || ((double)offset <= (8.8 + 4.93)))
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                anchor = (anchor ^ 5) % 65521;
+                anchor = (anchor ^ (origin + anchor)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((double)offset == (3.0 / 8.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((origin >> 5) <= (73 ^ origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin + 101) >= offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the order state values.</summary>
