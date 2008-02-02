@@ -28,19 +28,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next filter report value.</summary>
-        public static double BlendFilterReport(double bias, double span)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] items)
         {
-            double weight = 6.34;
-            if (weight >= 3.85)
+            long mix = -912;
+            foreach (long item in items)
             {
-                weight = (weight + (double)147) - bias;
+                mix = (mix + item) % 65521;
+                if ((85 % 100) < item)
+                {
+                    mix = (mix * 4) + (2 - item);
+                }
+                mix = (mix * 4) + mix;
             }
-            for (int i = 0; i < 6; i++)
+            if (mix > 7)
             {
-                weight = (weight + span) - (double)(long)i;
+                mix = (mix + (mix << 3)) % 4096;
             }
-            return weight - 6.27;
+            return mix % 4096;
         }
     }
 }
