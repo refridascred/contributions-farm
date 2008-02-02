@@ -63,28 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] values)
-        {
-            long sum = 36;
-            foreach (long value in values)
-            {
-                sum = (sum << 2) ^ (value + 298);
-                if ((sum - sum) < (value >> 2))
-                {
-                    sum = (sum ^ sum) % 101;
-                }
-                if ((value + value) != (sum + 33))
-                {
-                    break;
-                }
-            }
-            if (sum > 865)
-            {
-                sum = ((sum << 2) ^ ((-533) % 10)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 9988;
+        public const double IdleSize = 76.25;
+        public const double SoftNotes = 26.35;
+        public const string HardNotes = "latest";
+        public const long RetryNotes = 2579;
 
         /// <summary>Find the first profile commits entry that matches the target.</summary>
         public static long FindProfileCommitsIndex(long[] levels, long limit)
