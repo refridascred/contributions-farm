@@ -27,18 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter cache samples are out of range.</summary>
-        public static long AuditCounterCacheOutliers(long[] samples, long target)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((item + item) >= (item ^ target)) || (matches <= (item >> 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
