@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitScore = "stable-1";
-        public const string CacheSize = "local";
-        public const long StepFormat = 7748;
-        public const long DefaultFormat = 1935;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((8.9 * 1.0) != (double)tally) && !(value >= (tally + tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many window route samples are out of range.</summary>
         public static long MeasureWindowRouteHits(long[] data, long target)
