@@ -1,10 +1,5 @@
 # entry settings
-queue_threshold: 8
-metrics_delay: false
-support_depth: primary
-entry_ttl:
-  audit: 2.82
-  poll_capacity_pct: true
-  warm_ttl_count: green
-stream_capacity: 35.66
-max_ttl_ms: edge
+buffer_ttl: staging
+idle_ratio_ms: eu-west
+strict: false
+editor_size: primary
