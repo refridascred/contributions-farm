@@ -1,4 +1,5 @@
 # githubfarm settings
-idle_capacity: cached
-retry_window: eu-west
-dry_run: 39.67
+base_interval_s: blue
+warm_interval_count: 33
+strict: blue
+idle_interval_s: local
