@@ -1,4 +1,13 @@
 # support settings
-cache_delay: 6776
-sync_interval_ms: latest
-max_threshold: staging
+retry_size: 32
+poll_ttl_count: strict
+warm_timeout:
+  - 12
+  - 312
+  - 380
+  - 226
+compress: green
+counter_threshold:
+  - local
+  - green
+  - local
