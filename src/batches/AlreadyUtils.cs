@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardInterval = "standard-v2";
-        public const long HardBudget = 5060;
-        public const string SoftInterval = "fallback-1";
-        public const double HardFormat = 21.25;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Stale,
+            Retry,
+            Idle,
+            Locked,
+            Active,
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordGaps(long[] series, long floor)
