@@ -31,12 +31,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
             public long Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
