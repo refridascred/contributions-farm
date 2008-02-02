@@ -46,19 +46,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] data, long seed)
+        /// <summary>Roll a stats counter counter forward.</summary>
+        public static long DeriveStatsCounter(long step)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long mix = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
