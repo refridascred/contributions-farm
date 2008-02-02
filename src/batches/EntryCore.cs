@@ -61,10 +61,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepFactor = "open-1";
-        public const double HardOrder = 13.6;
-        public const double SoftSpan = 48.52;
-        public const long StepOrder = 1619;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry / 8) > tally)
+                {
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
