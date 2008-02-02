@@ -48,11 +48,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 7249;
-        public const double HardGithubfarm = 55.79;
-        public const string BurstRatio = "standard-v2";
-        public const long SoftGithubfarm = 7682;
-        public const string IdleGithubfarm = "legacy";
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((4.3 - 9.7) < (double)origin))
+                {
+                    sum = sum + ((long)i / 3);
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
