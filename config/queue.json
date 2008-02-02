@@ -1,14 +1,8 @@
 {
-  "soft_ttl": ["eu-west", "eu-west"],
-  "audit": 8656,
-  "idle_ttl": "strict",
-  "editor_depth": {
-    "batch_window": 250,
-    "counter_limit": "open",
-    "verbose": 8886,
-    "max_depth_s": true,
-    "cache_limit_s": "staging",
-    "metrics_retries": "staging"
-  },
-  "dry_run": 56.23
+  "cache_depth": [81, 341],
+  "batch_window_pct": [279, 295],
+  "base_delay_pct": 67.45,
+  "batch_limit": "latest",
+  "hard_window_s": 500,
+  "idle_timeout": "local"
 }
