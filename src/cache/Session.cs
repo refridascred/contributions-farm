@@ -27,26 +27,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] items, long step)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long mix = 59;
-            foreach (long value in items)
-            {
-                if ((mix + step) <= (step - step))
-                {
-                    mix = ((mix << 2) ^ 9) ^ value;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (46 - (long)items.Length)) % 65521;
-                }
-            }
-            if (mix > 5)
-            {
-                mix = (mix - mix) % 4096;
-            }
-            return mix % 1000;
+            Draft,
+            Closed,
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Define already limits and defaults.</summary>
