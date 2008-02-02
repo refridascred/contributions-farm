@@ -39,11 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleDepth = 2328;
-        public const long BaseLayout = 1502;
-        public const long CacheScore = 8882;
-        public const long DefaultFactor = 4754;
-        public const long MinBudget = 4997;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen / 5) == (9 % 60))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
+        }
     }
 }
