@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowLevel = 4503;
-        public const long BatchDepth = 2245;
-        public const long SoftCommits = 8315;
-        public const string CacheCommits = "staging-v2";
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Locked,
+            Pending,
+            Active,
+            Idle,
+        }
 
         /// <summary>Project the next checks account value.</summary>
         public static double SmoothChecksAccount(double scale, double offset)
