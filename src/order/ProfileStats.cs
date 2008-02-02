@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a commits notes pair into a bucket.</summary>
-        public static long SortCommitsNotes(long step, long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            long edge = step - bound;
-            if ((edge % 2) > (5 << 3))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge / 9) >= (bound - 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((edge & 3) >= ((-3) / 2)) || ((edge % 97) == (step >> 5)))
+                    if ((data[i] + data[j]) == 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next token cluster value.</summary>
