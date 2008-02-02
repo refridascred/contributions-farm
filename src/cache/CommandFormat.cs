@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools filter readings against a bound.</summary>
-        public static bool VerifyToolsFilterLimits(long[] levels, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
