@@ -1,11 +1,23 @@
 {
-  "base_capacity_ms": "legacy",
-  "stream_threshold": {
-    "counter_threshold": true,
-    "warm_threshold": 81.06,
-    "buffer_interval": "standard"
+  "min_retries_pct": {
+    "profile_interval": 59.51,
+    "base_interval_s": "eu-west",
+    "hard_retries_s": {
+      "stats_size": 75.83,
+      "hard_depth_pct": false,
+      "burst_size_s": 64.07
+    },
+    "cache_capacity": false,
+    "batch_timeout": true
   },
-  "tools_limit": 58,
-  "readonly": 34.66,
-  "farm_timeout": 100
+  "flush_depth_pct": ["staging", "cached", "eu-west", "staging"],
+  "schema_ttl": {
+    "compress": 38,
+    "min_timeout": "primary",
+    "already_depth": [167, 234, 290],
+    "sync_limit_s": "green",
+    "hard_interval_pct": 23.57,
+    "batch_interval_count": [477, 371, 229]
+  },
+  "default_threshold": "edge"
 }
