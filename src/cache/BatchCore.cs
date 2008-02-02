@@ -37,16 +37,12 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Roll a metrics entry counter forward.</summary>
-        public static long IterateMetricsEntry(long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = carry ^ (seed << 1);
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a metric entry.</summary>
