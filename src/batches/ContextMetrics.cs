@@ -37,13 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Paused,
-            Dropped,
-            Done,
-            Pending,
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the profile state values.</summary>
