@@ -1,8 +1,14 @@
 {
-  "already_timeout": 4754,
-  "cache_interval": 30,
-  "account_delay": "open",
-  "command_size": [138, 278, 159],
-  "min_threshold_s": "blue",
-  "min_ttl_count": "staging"
+  "strict": 5435,
+  "cache_ttl": {
+    "cache_threshold": ["staging", "eu-west"],
+    "retry_retries": 44,
+    "strict": 53,
+    "compress": ["latest", "fallback", "blue"],
+    "verbose": [244, 484],
+    "enabled": 30
+  },
+  "burst_interval_ms": "standard",
+  "default_retries": "cached",
+  "tools_capacity": "stable"
 }
