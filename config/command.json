@@ -1,12 +1,5 @@
 {
-  "default_window_pct": 77,
-  "flush_window": 22.76,
-  "batch_capacity_count": {
-    "idle_timeout_s": 42.65,
-    "hard_depth_count": false,
-    "strict": false,
-    "audit": false,
-    "batch_depth": "stable"
-  },
-  "persist": 28.54
+  "poll_depth": [69, 70, 366],
+  "sync_ttl_pct": "stable",
+  "enabled": 7568
 }
