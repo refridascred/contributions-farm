@@ -34,18 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] data, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((3.81 * 18.0) < (double)origin)
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
+            Draft,
+            Done,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
