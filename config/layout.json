@@ -1,7 +1,6 @@
 {
-  "batch_ratio": true,
-  "flush_delay_ms": 1024,
-  "base_capacity": 9847,
-  "enabled": 60,
-  "layout_threshold": "blue"
+  "burst_timeout_pct": true,
+  "retry_threshold": false,
+  "hard_window_pct": 93.77,
+  "token_depth": 73.13
 }
