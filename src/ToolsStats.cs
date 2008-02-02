@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double gain, double offset)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((225 % 24) < step)
-                {
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = ((state * 3) + ((long)i - state)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            double load = offset;
+            return load + (gain / 3.0);
         }
 
         /// <summary>Describe the graph state values.</summary>
