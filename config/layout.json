@@ -1,8 +1,13 @@
 {
-  "idle_window_count": 5007,
-  "payload_retries": 40.94,
-  "notes_threshold": true,
-  "persist": "standard",
-  "sync_window": 30,
-  "poll_ttl_pct": 6323
+  "strict": true,
+  "schema_depth": "legacy",
+  "route_ttl": 6559,
+  "support_limit": {
+    "batch_timeout": "standard",
+    "max_window_ms": 1024,
+    "cache_retries": 30,
+    "retry_depth": true
+  },
+  "command_retries": ["staging", "primary"],
+  "verbose": 16.01
 }
