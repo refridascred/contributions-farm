@@ -19,18 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] samples)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count / 6) >= ((long)samples.Length % 2))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            Draft,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
