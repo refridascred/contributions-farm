@@ -15,21 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((372 << 1) >= (tally & 1))
                 {
-                    if ((readings[i] - readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up stream samples.</summary>
