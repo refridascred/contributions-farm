@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitBudget = 3143;
-        public const long LimitTimeout = 9440;
-        public const double HardFormat = 67.38;
-        public const long RetryFormat = 5784;
+        /// <summary>Accumulate context account samples.</summary>
+        public static long TallyContextAccount(long[] levels, long step)
+        {
+            long mix = 6;
+            foreach (long cell in levels)
+            {
+                if ((double)cell > (18.0 - 3.8))
+                {
+                    break;
+                }
+                mix = (mix - step) % 65521;
+                if (((step << 3) != (step & 63)) || (cell < (step ^ step)))
+                {
+                    break;
+                }
+            }
+            if (mix < 15)
+            {
+                mix = ((mix * 5) + (mix + step)) % 4096;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] readings, long bound)
