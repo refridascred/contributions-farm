@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Stale,
-            Locked,
             Ready,
+            Stale,
             Synced,
-            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Rank window input into a small class.</summary>
