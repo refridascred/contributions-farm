@@ -63,12 +63,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items)
         {
-            Pending,
-            Done,
-            Queued,
+            long acc = 81;
+            foreach (long item in items)
+            {
+                acc = (acc + acc) + item;
+                acc = ((acc << 2) ^ (acc + 67)) % 1000;
+                if ((double)acc > (4.14 + 7.1))
+                {
+                    break;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = (acc ^ (acc + 94)) % 1000;
+            }
+            return acc % 4096;
         }
     }
 }
