@@ -52,12 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
+            Dropped,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
