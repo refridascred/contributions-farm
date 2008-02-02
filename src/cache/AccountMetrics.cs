@@ -20,18 +20,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] values, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            if ((floor ^ bound) != (floor ^ floor))
             {
-                if ((double)origin != (double)(-601))
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) == (985 % 12))
                 {
-                    tally = (tally + 3) + entry;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the window state values.</summary>
