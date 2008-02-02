@@ -1,5 +1,13 @@
 # support settings
-format_limit: 1201
-already_ratio: 57.91
-tools_threshold: 4697
-max_ratio_count: stable
+persist: cached
+strict:
+  base_threshold_count: 74
+  compress: true
+  dry_run: 72.29
+  poll_interval_count: strict
+  retry_ttl_s:
+    - open
+    - stable
+    - green
+metrics_size: false
+entry_threshold: cached
