@@ -1,5 +1,10 @@
 {
-  "burst_depth_pct": "stable",
-  "strict": true,
-  "batch_delay": false
+  "verbose": {
+    "dry_run": ["stable", "local", "staging", "stable"],
+    "batch_retries_s": 45.34,
+    "cache_depth": "edge"
+  },
+  "burst_retries_s": 2.23,
+  "burst_limit_count": [153, 484, 17, 117],
+  "flush_depth_pct": 23.3
 }
