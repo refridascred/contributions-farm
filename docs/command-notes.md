@@ -1,12 +1,10 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the cache list.
-Run the metrics check before changing any checks limits.
-The order module keeps filter values in sync with the commits cache.
+The session helpers are pure functions, so they are safe to call from any thread.
+Each schema is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Review tools limits each release
-- Validate buffer input early
-- Document new cache fields
-- Prefer entry defaults
+- Log every layout change
+- Review commits limits each release
+- Prefer batch defaults
