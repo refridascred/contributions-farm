@@ -22,21 +22,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count context buffer pairs that satisfy a relation.</summary>
-        public static long CompareContextBufferCount(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum + 942) > (6 & 7))
                 {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate filter format readings against a bound.</summary>
