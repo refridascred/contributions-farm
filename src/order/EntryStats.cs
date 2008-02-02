@@ -24,33 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long limit, long bound)
-        {
-            long bound2 = limit ^ bound;
-            if (limit <= (limit + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((limit & 1) > 729))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound >> 3) == (bound2 << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "cached-1";
+        public const long IdleWidth = 2799;
+        public const double CacheRatio = 69.9;
+        public const long LimitSession = 6468;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
