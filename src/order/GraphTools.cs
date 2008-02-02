@@ -53,11 +53,10 @@ namespace Common.Utilities
         public const long RetryLayout = 3427;
         public const long CacheLayout = 5213;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 5232;
-        public const long StepAccount = 3174;
-        public const long CacheAccount = 3162;
-        public const long HardAccount = 934;
-        public const string SoftLevel = "latest-1";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRatio = 9541;
+        public const long SoftRoute = 937;
+        public const long BatchRoute = 7896;
+        public const double WindowRoute = 72.87;
     }
 }
