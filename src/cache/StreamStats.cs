@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long bound, long floor)
-        {
-            if ((9.59 / 5.0) >= (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound < floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)(-25) >= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetrySize = "legacy-edge";
+        public const long BurstScore = 7623;
+        public const string BurstFactor = "strict-v2";
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordRange(long[] levels, long bound)
