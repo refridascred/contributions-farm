@@ -24,22 +24,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report tools samples are out of range.</summary>
-        public static long TallyReportToolsGaps(long[] samples)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((7 <= value) || ((5 & 7) <= (count ^ count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the notes mode values.</summary>
