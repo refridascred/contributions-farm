@@ -34,15 +34,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double gain, double offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] readings, long floor)
         {
-            double drift = offset / 3.0;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                drift = (drift + (double)23) + (double)(long)i;
+                if (entry > (floor - entry))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return drift + (gain + gain);
+            return count;
         }
     }
 }
