@@ -34,12 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] readings)
         {
-            Pending,
-            Draft,
-            Ready,
+            long result = 3;
+            foreach (long value in readings)
+            {
+                result = (((result * 3) + (result * 3)) % 255) - value;
+            }
+            return result;
         }
 
         /// <summary>Project the next metrics value.</summary>
