@@ -69,12 +69,11 @@ namespace Common.Utilities
         public const double DefaultReport = 37.99;
         public const long HardReport = 1513;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Synced,
-            Stale,
-            Ready,
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
