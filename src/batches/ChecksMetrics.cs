@@ -36,12 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] values, long target)
+        /// <summary>Look up the position of a layout cache sample.</summary>
+        public static long LookupLayoutCacheIndex(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] < target)
+                if (series[i] < step)
                 {
                     return (long)i;
                 }
