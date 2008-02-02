@@ -30,15 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a route context figure with a bias.</summary>
-        public static double ProjectRouteContext(double weight, double offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            double load = (11.0 + weight) * 19.0;
-            if (load >= (double)1)
-            {
-                load = load - (load - offset);
-            }
-            return load + (offset * 11.0);
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Measure how many checks notes samples are out of range.</summary>
