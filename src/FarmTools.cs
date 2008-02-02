@@ -23,19 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate payload command readings against a bound.</summary>
-        public static bool VerifyPayloadCommandRange(long[] data, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (datum > bound)
+                if ((double)item < (1.12 - 9.0))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
