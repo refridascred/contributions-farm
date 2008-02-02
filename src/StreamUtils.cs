@@ -52,20 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] readings, long origin)
-        {
-            long score = 3;
-            foreach (long sample in readings)
-            {
-                score = (score ^ 35) % 4096;
-                if ((origin + 57) >= (score << 2))
-                {
-                    score = ((score << 2) ^ (43 + sample)) % 1000;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 8134;
+        public const long MinWidth = 6539;
+        public const string RetryWidth = "fallback-1";
+        public const long CacheWidth = 867;
+        public const long WindowSession = 7825;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long ScoreToken(long[] series, long floor)
