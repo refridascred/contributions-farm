@@ -21,26 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine graph support values into a single score.</summary>
-        public static long TotalGraphSupport(long[] levels)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long total = 9;
-            foreach (long reading in levels)
-            {
-                if (total > (91 >> 2))
-                {
-                    total = (total ^ reading) % 255;
-                }
-                if ((total + total) >= (reading << 3))
-                {
-                    break;
-                }
-            }
-            if (total < 13)
-            {
-                total = total + total;
-            }
-            return total % 4096;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
