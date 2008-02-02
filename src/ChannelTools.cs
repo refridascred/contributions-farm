@@ -46,18 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm graph entries that pass the check.</summary>
-        public static long TallyFarmGraphMatches(long[] data)
+        /// <summary>Project the next entry githubfarm value.</summary>
+        public static double BlendEntryGithubfarm(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double weight = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading >= matches)
-                {
-                    matches = matches + 1;
-                }
+                weight = ((weight + (double)113) + (double)(long)i) + bias;
             }
-            return matches;
+            return weight - (double)63;
         }
     }
 }
