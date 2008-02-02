@@ -42,18 +42,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the checks editor entries that pass the check.</summary>
-        public static long MeasureChecksEditorMatches(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((4.79 + 9.61) != (double)item)
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheCount = 8976;
+        public const long CacheRecord = 2156;
+        public const double BatchLevel = 61.21;
+        public const string LimitRatio = "fallback";
     }
 }
