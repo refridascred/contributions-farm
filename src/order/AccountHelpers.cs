@@ -66,19 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] data, long limit)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long sum = 8;
-            foreach (long cell in data)
-            {
-                sum = (sum + cell) - limit;
-            }
-            if (sum < 582)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the buffer phase values.</summary>
