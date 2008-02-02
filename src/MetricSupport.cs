@@ -40,17 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format schema sample.</summary>
-        public static long LocateFormatSchemaIndex(long[] readings, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the window status values.</summary>
