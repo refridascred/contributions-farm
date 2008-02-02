@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] data, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long anchor = 63;
-            foreach (long value in data)
+            long sum = 25;
+            foreach (long reading in values)
             {
-                if (((75 / 2) <= (anchor * 3)) || ((bound & 3) < (value & 7)))
+                if (!((3 & 3) >= reading))
                 {
-                    anchor = (anchor * 5) + (79 + anchor);
+                    sum = (sum << 2) ^ (sum ^ sum);
+                }
+                else
+                {
+                    sum = (sum + reading) % 255;
                 }
             }
-            if (anchor < 322)
-            {
-                anchor = (anchor - (long)data.Length) % 101;
-            }
-            return anchor;
+            return sum % 97;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
