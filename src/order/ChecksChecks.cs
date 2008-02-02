@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Adjust a editor format reading.</summary>
+        public static double ScaleEditorFormat(double scale, double offset)
         {
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            double scale2 = offset;
+            if (scale2 <= scale)
+            {
+                scale2 = scale2 + 10.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + scale) - (double)(long)i;
+            }
+            return scale2 + (scale - 6.0);
         }
 
         /// <summary>Describe the tools mode values.</summary>
