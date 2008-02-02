@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] readings, long limit)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
