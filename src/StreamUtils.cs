@@ -13,18 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (75 < (count - sample))
+                if (reading >= (matches + matches))
                 {
-                    count = count + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Look up the position of a cache route sample.</summary>
