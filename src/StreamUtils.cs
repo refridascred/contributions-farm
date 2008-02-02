@@ -53,13 +53,19 @@ namespace Common.Utilities
             return load + (load * 7.7);
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] series)
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
+            long state = 467;
+            foreach (long datum in series)
+            {
+                state = state - (datum + state);
+            }
+            if (state > 57)
+            {
+                state = state - state;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a cluster info.</summary>
