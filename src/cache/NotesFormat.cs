@@ -23,23 +23,36 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long floor, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long origin, long offset)
         {
-            long lane = floor ^ bound;
-            if ((lane - lane) >= lane)
+            if ((origin - 159) < (origin & 255))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if (((28 ^ 390) < (lane - floor)) || ((7.54 - 2.92) >= (double)floor))
+                if (((origin % 60) > (origin + 72)) && ((origin + offset) <= origin))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    if (((double)origin != (8.9 * 1.0)) && ((double)origin != (1.58 + 9.1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
