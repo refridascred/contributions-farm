@@ -37,11 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
