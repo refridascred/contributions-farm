@@ -28,18 +28,22 @@ namespace Common.Utilities
             return rate - 16.0;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((10.0 < (double)seen) || (value <= seen))
+                if ((reading + reading) == (reading + hits))
                 {
-                    seen = seen + 3;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the batches metrics entries that pass the check.</summary>
