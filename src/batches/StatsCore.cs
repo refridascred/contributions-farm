@@ -80,18 +80,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] values)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry <= (double)tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a report entry.</summary>
