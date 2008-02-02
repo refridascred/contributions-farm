@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 7142;
-        public const long SoftBudget = 8275;
-        public const long BaseCache = 3382;
-        public const double BaseCount = 73.55;
-        public const double StepFactor = 5.84;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double BlendSupport(double bias, double span)
