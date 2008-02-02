@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Count the editor command entries that pass the check.</summary>
+        public static long TallyEditorCommandMatches(long[] series)
         {
-            Queued,
-            Draft,
-            Retry,
-            Dropped,
-            Synced,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen / 4) <= sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
