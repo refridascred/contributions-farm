@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in latest legacy local staging; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-CHANNEL_LIMIT=411
+CHANNEL_LIMIT=86
 log "limit is ${CHANNEL_LIMIT}"
