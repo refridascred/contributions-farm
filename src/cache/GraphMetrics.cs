@@ -39,15 +39,21 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Iterate the order channel series from a seed.</summary>
-        public static long SeriesOrderChannel(long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Combine route values into a single score.</summary>
