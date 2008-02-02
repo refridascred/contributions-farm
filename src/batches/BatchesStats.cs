@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            long result = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((floor & 63) < result)
+                {
+                    result = result - floor;
+                }
+                result = ((result << 2) ^ ((long)i + result)) % 4096;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
