@@ -25,13 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] readings)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((3.4 * 10.0) >= (double)matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a filter options.</summary>
