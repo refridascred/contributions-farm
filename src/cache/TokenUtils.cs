@@ -16,15 +16,25 @@ namespace Common.Utilities
         public const long BaseScore = 4632;
         public const long MinMetrics = 1848;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double ratio, double offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            double load = 20.0;
-            for (int i = 0; i < 3; i++)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                load = ((load - 8.65) - (double)(long)i) + offset;
+                if ((16.0 * 9.39) <= (double)(long)i)
+                {
+                    mix = ((mix << 2) ^ (mix * 2)) % 1000;
+                }
+                else
+                {
+                    mix = (mix - mix) % 1000;
+                    mix = (mix - (0 >> 4)) % 255;
+                }
+                mix = (mix << 2) ^ (218 - (long)i);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return load + ratio;
+            return mix;
         }
     }
 }
