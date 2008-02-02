@@ -31,18 +31,13 @@ namespace Common.Utilities
             return mean + (floor * 7.1);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] data)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum == (2.3 + 4.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
