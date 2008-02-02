@@ -22,24 +22,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] items)
-        {
-            long mix = -912;
-            foreach (long item in items)
-            {
-                mix = (mix + item) % 65521;
-                if ((85 % 100) < item)
-                {
-                    mix = (mix * 4) + (2 - item);
-                }
-                mix = (mix * 4) + mix;
-            }
-            if (mix > 7)
-            {
-                mix = (mix + (mix << 3)) % 4096;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 9489;
+        public const long IdleWidth = 6598;
+        public const long IdleEditor = 1591;
+        public const long SoftSpan = 8186;
+        public const double CacheEditor = 92.46;
     }
 }
