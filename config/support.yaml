@@ -1,4 +1,4 @@
 # support settings
-base_timeout_s: 5816
-compress: false
-dry_run: 3.65
+default_depth_pct: 1994
+enabled: true
+persist: 83
