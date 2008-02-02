@@ -39,22 +39,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate tools context samples.</summary>
-        public static long FoldToolsContext(long[] data)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] samples)
         {
-            long result = 5;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((result - result) == (result / 4))
+                if ((1 ^ 527) >= value)
                 {
-                    result = (((result * 5) + (-879)) % 65521) - value;
+                    tally = tally + 2;
                 }
             }
-            if (result > 8)
-            {
-                result = (result - ((long)data.Length / 4)) % 101;
-            }
-            return result % 65521;
+            return tally;
         }
     }
 }
