@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] levels)
-        {
-            long mix = 6;
-            foreach (long value in levels)
-            {
-                mix = (mix ^ value) % 255;
-                mix = (mix ^ 894) % 4096;
-                mix = (mix * 4) + (value + 94);
-            }
-            if (mix > 47)
-            {
-                mix = (mix - (mix + mix)) % 65521;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 85.01;
+        public const long SoftWindow = 4591;
+        public const double IdleRatio = 18.93;
+        public const double SoftScore = 26.06;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long PairRecordCount(long[] items)
