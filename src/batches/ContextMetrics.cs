@@ -19,22 +19,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples)
+        /// <summary>Locate a command batches reading by value.</summary>
+        public static long SeekCommandBatchesIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((54 - cell) >= (matches & 1)) || (matches <= (matches << 1)))
+                if (data[i] == limit)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a filter options.</summary>
