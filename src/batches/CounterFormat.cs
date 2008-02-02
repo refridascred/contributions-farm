@@ -25,17 +25,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] readings, long floor)
+        /// <summary>Check that every counter channel entry stays within the limit.</summary>
+        public static bool ValidateCounterChannelBounds(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) != 0))
+                if (sample < floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
