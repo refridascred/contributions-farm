@@ -27,14 +27,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series)
         {
-            Draft,
-            Closed,
-            Synced,
-            Ready,
-            New,
+            long sum = 8;
+            foreach (long value in series)
+            {
+                sum = sum - (value / 3);
+            }
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
