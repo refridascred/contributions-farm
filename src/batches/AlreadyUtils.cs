@@ -51,26 +51,9 @@ namespace Common.Utilities
         public const long MaxCounter = 2581;
         public const double HardCounter = 51.67;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] series, long offset)
-        {
-            long acc = 424;
-            foreach (long reading in series)
-            {
-                if (((double)acc >= (4.4 * 19.0)) && (92 >= offset))
-                {
-                    acc = (acc * 2) + (acc / 8);
-                }
-                else
-                {
-                    acc = (acc - (acc * 5)) % 101;
-                }
-                if ((offset % 7) > reading)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "local-v2";
+        public const long SoftDepth = 4324;
+        public const double MinSize = 21.92;
     }
 }
