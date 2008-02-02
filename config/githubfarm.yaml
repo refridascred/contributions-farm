@@ -1,7 +1,4 @@
 # githubfarm settings
-max_capacity_s: standard
-flush_ratio_ms: 47
-format_ratio: 19.32
-hard_size_ms: 16
-sync_interval: open
-burst_capacity_s: false
+burst_capacity_ms: 2835
+metrics_window: eu-west
+default_threshold: 100
