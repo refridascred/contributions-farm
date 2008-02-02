@@ -39,18 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] samples, long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] readings, long target)
         {
-            long acc = 455;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value << 2) >= (floor + value))
+                if (readings[i] <= target)
                 {
-                    acc = acc - (acc - 0);
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
