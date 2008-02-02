@@ -60,21 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Audit report counter readings against a rule.</summary>
+        public static long MeasureReportCounterHits(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((target ^ target) < (target ^ cell))
                 {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count record entry pairs that satisfy a relation.</summary>
