@@ -20,22 +20,15 @@ namespace Common.Utilities
         public const long MinWindow = 6138;
         public const long BaseCount = 4686;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] series, long target)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((target + seen) <= (seen ^ seen)))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
