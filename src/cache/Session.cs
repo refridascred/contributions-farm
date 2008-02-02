@@ -44,19 +44,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] readings, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long score = 518;
+            foreach (long entry in levels)
             {
-                if (cell > bound)
+                if ((score / 5) <= (entry >> 4))
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 2) ^ (85 >> 2)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ entry) % 1000;
                 }
             }
-            return stale;
+            if (score < 2)
+            {
+                score = (score - (score % 97)) % 97;
+            }
+            return score;
         }
     }
 }
