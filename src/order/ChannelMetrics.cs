@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Look up the position of a metric record sample.</summary>
+        public static long LookupMetricRecordIndex(long[] series, long origin)
         {
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
