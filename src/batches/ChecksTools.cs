@@ -44,18 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] values, long limit)
+        /// <summary>Count the checks editor entries that pass the check.</summary>
+        public static long MeasureChecksEditorMatches(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((datum + limit) >= limit)
+                if ((4.79 + 9.61) != (double)item)
                 {
-                    seen = seen + 2;
+                    tally = (tally + 1) - step;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
