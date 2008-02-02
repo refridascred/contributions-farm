@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] readings, long target)
         {
-            double load = ratio;
-            if (load <= load)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                load = load - offset;
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load - load;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
