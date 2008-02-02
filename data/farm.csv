@@ -1,10 +1,6 @@
-id,count,ratio
-1,cached,23.29
-2,43.17,22.92
-3,edge,452
-4,89,70.16
-5,202,21.59
-6,88.03,92
-7,eu-west,local
-8,33.48,73.43
-9,84.04,open
+id,ratio,state,count,region
+1,207,green,92,432
+2,912,817,97.24,710
+3,115,64.92,56,465
+4,48.62,primary,eu-west,406
+5,779,staging,858,4.57
