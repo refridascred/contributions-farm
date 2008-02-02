@@ -48,23 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two entry batches measurements.</summary>
-        public static double BlendEntryBatches(double scale, double floor)
-        {
-            double bias = floor * 6.9;
-            if (bias > bias)
-            {
-                bias = bias - floor;
-            }
-            else
-            {
-                bias = bias + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (floor / 3.0)) - (double)(long)i;
-            }
-            return bias - (12.0 - floor);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 9600;
+        public const long BurstBudget = 9687;
+        public const double DefaultCounter = 52.62;
+        public const string DefaultSize = "fallback-edge";
     }
 }
