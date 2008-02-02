@@ -1,21 +1,7 @@
 {
-  "graph_capacity": 7.66,
-  "soft_interval_s": {
-    "poll_timeout_ms": {
-      "verbose": "edge",
-      "poll_capacity": true,
-      "cache_capacity": "cached",
-      "base_window_ms": [83, 39]
-    },
-    "audit": "staging",
-    "poll_window_count": {
-      "default_retries_pct": ["open", "latest"],
-      "warm_ttl_s": 26,
-      "burst_threshold_ms": 92.76,
-      "sync_threshold": 73.58
-    },
-    "warm_depth_ms": 55,
-    "batch_timeout_count": true
-  },
-  "compress": 6
+  "poll_window_ms": "blue",
+  "poll_capacity": false,
+  "dry_run": 100,
+  "idle_ttl_s": "stable",
+  "sync_threshold_s": 10.93
 }
