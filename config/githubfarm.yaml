@@ -1,14 +1,7 @@
 # githubfarm settings
-cache_timeout_pct: staging
-stream_depth:
-  - 421
-  - 216
-  - 190
-queue_capacity:
-  - 87
-  - 467
-batch_ttl_count:
-  - latest
-  - cached
-  - blue
-  - open
+sync_retries_s: 8361
+audit: 28
+base_depth: 36.43
+max_capacity_ms: true
+metrics_retries: local
+base_capacity_s: 69.97
