@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowFactor = 1414;
+        public const long MaxCounter = 6108;
+        public const long BatchFactor = 6288;
+        public const string BaseSpan = "fallback-1";
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryLimits(long[] readings, long step)
