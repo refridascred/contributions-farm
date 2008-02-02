@@ -23,19 +23,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((target ^ tally) >= target)
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 3373;
+        public const double HardBuffer = 90.85;
+        public const double DefaultBuffer = 18.83;
+        public const long WindowFactor = 4303;
+        public const long BurstBuffer = 3520;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TallyAccount(long[] series, long origin)
