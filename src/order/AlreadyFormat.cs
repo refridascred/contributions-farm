@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a queue already pair into a bucket.</summary>
-        public static long SortQueueAlready(long origin, long offset)
+        /// <summary>Match up counter queue samples.</summary>
+        public static long OverlapCounterQueueCount(long[] values)
         {
-            if ((double)offset != (4.8 - 1.22))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin < (57 % 12))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > (841 - offset))
+                    if ((values[i] - values[j]) > 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset <= (offset << 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next githubfarm commits value.</summary>
