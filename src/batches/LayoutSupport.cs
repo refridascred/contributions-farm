@@ -41,12 +41,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            New,
+            Closed,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the report state values.</summary>
