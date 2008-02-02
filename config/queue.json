@@ -1,15 +1,15 @@
 {
-  "cache_size_s": 30,
-  "cache_limit": 500,
-  "filter_window": 65,
-  "batch_retries_s": true,
-  "burst_ttl_ms": 19,
-  "queue_interval": {
-    "record_interval": 4614,
-    "githubfarm_size": "eu-west",
-    "payload_size": 71,
-    "verbose": "legacy",
-    "burst_ttl_s": [439, 364, 21, 254],
-    "max_interval": 3.32
-  }
+  "filter_ttl": {
+    "route_limit": {
+      "retry_threshold_s": 1024,
+      "cache_window_s": 91.05,
+      "readonly": "edge"
+    },
+    "dry_run": ["latest", "standard", "strict"],
+    "readonly": 94
+  },
+  "record_interval": false,
+  "command_size": 33.03,
+  "hard_timeout_count": 3943,
+  "editor_interval": ["legacy", "staging", "standard", "latest"]
 }
