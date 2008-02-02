@@ -57,11 +57,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleDepth = 8420;
-        public const double WindowBudget = 13.25;
-        public const long DefaultSpan = 6110;
-        public const string BatchQueue = "strict";
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Synced,
+            Locked,
+            Active,
+            Ready,
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double SmoothAlready(double bias, double bias2)
