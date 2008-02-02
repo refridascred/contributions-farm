@@ -27,17 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stats notes reading by value.</summary>
-        public static long LocateStatsNotesIndex(long[] values, long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Paused,
+            Active,
+            Draft,
+            Dropped,
         }
     }
 }
