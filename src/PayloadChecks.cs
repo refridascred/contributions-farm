@@ -36,14 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate report already samples.</summary>
+        public static long WeighReportAlready(long[] samples, long bound)
         {
-            Closed,
-            Stale,
-            Pending,
-            Failed,
-            Paused,
+            long result = 373;
+            foreach (long value in samples)
+            {
+                result = (((result << 2) ^ (result - value)) % 4096) - bound;
+            }
+            if (result < 4)
+            {
+                result = ((result * 2) + (result * 4)) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
