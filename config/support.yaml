@@ -1,7 +1,10 @@
 # support settings
-enabled: 100
-cache_retries_ms: 1024
-compress: 500
-max_capacity:
-  - 425
-  - 158
+idle_depth:
+  metric_size: 9360
+  cache_delay_ms:
+    batch_timeout_pct: 250
+    min_timeout_pct: 1774
+    hard_threshold: 89
+  verbose: 2487
+burst_timeout_s: green
+hard_capacity: 2469
