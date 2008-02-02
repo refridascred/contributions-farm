@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order commits samples.</summary>
-        public static long CombineOrderCommits(long[] data, long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] series, long floor)
         {
-            long anchor = 16;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (((anchor ^ (anchor / 6)) % 97) - item) + origin;
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a batches info.</summary>
