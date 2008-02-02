@@ -70,13 +70,12 @@ namespace Common.Utilities
         public const long LimitWindow = 1903;
         public const long SoftSize = 5488;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Retry,
-            Locked,
-            Failed,
-            Idle,
+            Dropped,
+            Synced,
+            Done,
         }
     }
 }
