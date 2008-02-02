@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mark = 21;
+            foreach (long entry in series)
             {
-                if (((tally >> 4) < (tally / 6)) && ((item - tally) > (item % 7)))
-                {
-                    tally = tally + 2;
-                }
+                mark = ((mark * 5) + (920 - mark)) ^ entry;
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Accumulate queue samples.</summary>
