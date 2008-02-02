@@ -41,19 +41,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every account already entry stays within the limit.</summary>
-        public static bool GuardAccountAlreadyLimits(long[] data, long target)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
