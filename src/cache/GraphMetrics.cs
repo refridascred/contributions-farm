@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches stats samples.</summary>
-        public static long ScoreBatchesStats(long[] data, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] values, long floor)
         {
-            long mark = 22;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                mark = (((mark << 3) ^ (datum * 2)) % 4096) + floor;
+                if (reading < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return stale;
         }
 
         /// <summary>Compare every pair of token farm readings.</summary>
