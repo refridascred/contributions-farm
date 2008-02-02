@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((carry * 4) > (offset + offset)))
-                {
-                    carry = (carry + (carry + offset)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
