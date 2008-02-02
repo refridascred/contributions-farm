@@ -13,19 +13,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate metrics queue readings against a bound.</summary>
-        public static bool VerifyMetricsQueueLimits(long[] items, long origin)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long seed, long bound)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            if ((55 * 2) != (bound / 9))
             {
-                if (entry < origin)
+                return 5;
+            }
+            else
+            {
+                if ((5 % 7) >= bound)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (seed >= (bound * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
