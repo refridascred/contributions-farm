@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window account samples are out of range.</summary>
-        public static long MeasureWindowAccountMatches(long[] readings)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((value + (-94)) <= (value % 97))
+                if (reading >= offset)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
