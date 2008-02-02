@@ -54,12 +54,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            New,
+            Pending,
+            Failed,
+            Locked,
         }
     }
 }
