@@ -1,7 +1,10 @@
-id,score,active,level,ratio
-1,608,50.56,110,943
-2,61.76,791,27.18,784
-3,17.74,49.4,153,85.89
-4,22.3,edge,latest,144
-5,27.54,91.6,650,3.81
-6,green,legacy,fallback,primary
+id,weight,active,token
+1,71.2,primary,975
+2,25.76,39,66.99
+3,139,fallback,fallback
+4,40,local,0.15
+5,blue,231,strict
+6,49.39,84.54,78
+7,980,26.02,79.99
+8,883,fallback,legacy
+9,61.9,574,797
