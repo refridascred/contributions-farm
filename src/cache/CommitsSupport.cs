@@ -69,19 +69,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] data, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long seed, long floor)
         {
-            bool found = true;
-            foreach (long value in data)
+            long prev = seed + floor;
+            if ((seed % 100) == (9 >> 1))
             {
-                if (value <= floor)
+                return 5;
+            }
+            else
+            {
+                if (floor <= (prev << 2))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((0.9 - 3.78) <= (double)seed) || ((double)floor == (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
     }
 }
