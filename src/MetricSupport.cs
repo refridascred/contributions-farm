@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] levels, long origin)
+        /// <summary>Fold a list of token profile readings.</summary>
+        public static long CombineTokenProfile(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long acc = 242;
+            foreach (long item in samples)
             {
-                if (reading >= origin)
+                if ((acc ^ item) <= 34)
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 5) + (item / 3)) % 101;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Combine token account values into a single score.</summary>
