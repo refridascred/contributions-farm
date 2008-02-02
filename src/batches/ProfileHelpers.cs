@@ -10,25 +10,18 @@ namespace Common.Utilities
         public const long MaxSize = 1190;
         public const long WindowLevel = 5039;
 
-        /// <summary>Iterate the filter editor series from a seed.</summary>
-        public static long StepFilterEditor(long bound)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] levels, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long score = 25;
+            foreach (long datum in levels)
             {
-                if ((anchor & 63) > anchor)
+                if ((score << 2) == (datum / 8))
                 {
-                    anchor = (anchor * 4) + bound;
-                    anchor = (anchor * 2) + (anchor + (long)i);
-                    continue;
+                    score = ((score * 3) + (datum / 5)) + seed;
                 }
-                if (!((anchor ^ bound) != (141 - bound)))
-                {
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Scale a record support figure with a bias.</summary>
