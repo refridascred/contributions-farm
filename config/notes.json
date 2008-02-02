@@ -1,7 +1,7 @@
 {
-  "enabled": ["eu-west", "primary", "legacy"],
-  "idle_limit_count": 100,
-  "hard_ttl_s": 6551,
-  "verbose": true,
-  "min_timeout": 2968
+  "queue_limit": "stable",
+  "burst_limit_pct": "open",
+  "record_delay": ["standard", "latest", "staging"],
+  "batch_timeout": false,
+  "burst_delay_pct": 73.61
 }
