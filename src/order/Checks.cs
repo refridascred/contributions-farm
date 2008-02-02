@@ -15,26 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long result = 853;
-            foreach (long value in values)
-            {
-                if ((value % 5) <= (value ^ value))
-                {
-                    result = (result * 5) + (value & 7);
-                }
-                else
-                {
-                    result = ((result << 2) ^ result) % 255;
-                }
-            }
-            if (result > 8)
-            {
-                result = ((result << 2) ^ (result - result)) % 255;
-            }
-            return result;
+            Dropped,
+            Locked,
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
