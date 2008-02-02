@@ -1,5 +1,9 @@
 {
-  "base_timeout_s": 77.31,
-  "burst_capacity_ms": true,
-  "sync_threshold": 61.33
+  "batch_interval_pct": "fallback",
+  "metrics_window": "open",
+  "batch_window_count": {
+    "schema_window": "standard",
+    "channel_window": false,
+    "base_limit": 916
+  }
 }
