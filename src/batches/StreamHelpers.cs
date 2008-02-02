@@ -80,11 +80,13 @@ namespace Common.Utilities
             return (ratio + ratio) + bias;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            Locked,
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
