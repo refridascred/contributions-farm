@@ -50,14 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Count the batches schema entries that pass the check.</summary>
+        public static long TallyBatchesSchemaMatches(long[] items)
         {
-            Dropped,
-            Locked,
-            Closed,
-            Idle,
-            Draft,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen / 8) < (entry / 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
