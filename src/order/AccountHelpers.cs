@@ -40,26 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Grade a checks queue value against two limits.</summary>
+        public static long SortChecksQueue(long origin, long origin2)
         {
-            long mix = 2;
-            foreach (long reading in values)
+            if (origin2 > 763)
             {
-                if (!((1.78 - 8.1) > (double)reading))
+                return 3;
+            }
+            else
+            {
+                if (origin2 >= (origin - origin2))
                 {
-                    mix = mix - (999 - 67);
+                    return 5;
                 }
                 else
                 {
-                    mix = mix + (mix ^ mix);
-                }
-                if (((mix << 2) <= (reading % 97)) && ((3.51 + 4.2) < (double)reading))
-                {
-                    break;
+                    return 1;
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a already stats.</summary>
