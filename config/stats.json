@@ -1,5 +1,20 @@
 {
-  "persist": false,
-  "flush_interval": [496, 273, 42],
-  "contributi_ttl": 9870
+  "soft_threshold_count": "eu-west",
+  "batch_delay_count": {
+    "strict": "latest",
+    "flush_retries": 15.45,
+    "queue_ratio": {
+      "retry_threshold_s": "legacy",
+      "default_threshold_pct": 27,
+      "base_retries_count": 87.11,
+      "soft_delay_count": "staging",
+      "default_size_count": "green",
+      "poll_window_s": 40
+    },
+    "base_interval": 30,
+    "readonly": "open",
+    "warm_interval_count": false
+  },
+  "verbose": [492, 60, 118],
+  "profile_capacity": false
 }
