@@ -1,7 +1,4 @@
 # support settings
-channel_timeout: 81.41
-sync_limit_ms: 52
-stats_capacity:
-  - latest
-  - standard
-counter_ttl: 18.83
+base_timeout_s: 5816
+compress: false
+dry_run: 3.65
