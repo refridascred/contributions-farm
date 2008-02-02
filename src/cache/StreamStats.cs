@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] levels, long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
