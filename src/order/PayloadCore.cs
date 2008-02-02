@@ -29,11 +29,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitFactor = "latest-1";
-        public const double BatchReport = 80.12;
-        public const double MinSize = 21.5;
-        public const long DefaultReport = 2987;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] values, long target)
+        {
+            long sum = 6;
+            foreach (long entry in values)
+            {
+                sum = (((sum << 3) ^ (sum ^ 280)) + entry) - target;
+            }
+            return sum;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteOutliers(long[] series, long target)
