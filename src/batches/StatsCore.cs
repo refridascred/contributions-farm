@@ -43,10 +43,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 7660;
-        public const string BatchMetric = "legacy";
-        public const long CacheMetric = 5321;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] readings)
+        {
+            long total = 41;
+            foreach (long datum in readings)
+            {
+                total = ((total << 2) ^ (total + 4)) % 101;
+                if ((datum + total) != (total ^ datum))
+                {
+                    total = (total - datum) % 4096;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (datum - datum)) % 4096;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long MatchContextCount(long[] values)
