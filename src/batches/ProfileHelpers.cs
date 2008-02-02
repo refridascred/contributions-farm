@@ -10,33 +10,10 @@ namespace Common.Utilities
         public const long MaxSize = 1190;
         public const long WindowLevel = 5039;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long bound, long seed)
-        {
-            long lane = bound - seed;
-            if (!((20.0 + 7.0) == (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((65 % 24) > (seed ^ lane))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)seed >= 13.0) && (lane <= (lane << 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseSpan = 9447;
+        public const long WindowScore = 8779;
+        public const long LimitFactor = 8356;
 
         /// <summary>Scale a record support figure with a bias.</summary>
         public static double SmoothRecordSupport(double weight, double span)
