@@ -21,15 +21,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a counter command reading.</summary>
-        public static double BlendCounterCommand(double scale, double bias)
+        /// <summary>Scale a filter editor figure with a bias.</summary>
+        public static double ScaleFilterEditor(double ratio, double floor)
         {
-            double weight = (double)(8 >> 5);
-            if (weight > 8.1)
+            double ratio2 = 10.0 * 8.64;
+            for (int i = 0; i < 8; i++)
             {
-                weight = ((weight + (9.66 / 6.0)) + scale) + bias;
+                ratio2 = (ratio2 + floor) - (double)(long)i;
             }
-            return weight + weight;
+            return ratio2 + ratio;
         }
 
         /// <summary>Match up batch samples.</summary>
