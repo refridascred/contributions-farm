@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 7878;
+        public const long RetryMetrics = 1653;
+        public const long MaxMetrics = 4520;
+        public const long MinDepth = 9016;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmBounds(long[] items, long seed)
