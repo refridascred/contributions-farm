@@ -43,30 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                long prev = ((long)i + carry) ^ (carry / 8);
-                if (((-53) ^ carry) <= prev)
+                if (!(341 <= ((long)values.Length + cell)))
                 {
-                    prev = (prev * 2) + prev;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    carry = (carry - ((long)i + (long)i)) % 97;
-                    prev = prev + offset;
-                }
-                if (((long)i ^ carry) < ((long)i & 15))
-                {
-                    long span = (long)i + (offset >> 1);
-                    prev = (prev ^ (offset + span)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a window options.</summary>
