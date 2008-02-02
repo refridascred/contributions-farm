@@ -56,27 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already support samples.</summary>
-        public static long DigestAlreadySupport(long[] readings)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double gain, double floor)
         {
-            long sum = 0;
-            foreach (long value in readings)
+            double bias = 4.5;
+            if (bias <= (floor - 9.8))
             {
-                sum = sum - sum;
-                if ((16.0 + 3.7) <= (double)value)
-                {
-                    sum = (sum + (3 << 3)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (sum + sum)) % 255;
-                }
-                if (!((sum - value) >= (value + value)))
-                {
-                    break;
-                }
+                bias = (bias - floor) - gain;
             }
-            return sum;
+            return bias - (floor * 2.0);
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
