@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a contributi checks value against two limits.</summary>
-        public static long BucketContributiChecks(long limit, long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long offset)
         {
-            long cur = limit - step;
-            if (((3 ^ 292) != (step / 7)) && ((61 - step) == (cur + 76)))
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (cur >= (step ^ cur))
+                if (!((double)(long)i <= 4.2))
                 {
-                    return 0;
+                    break;
                 }
-                else
-                {
-                    return 6;
-                }
+                acc = acc ^ acc;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Hold a editor stats.</summary>
