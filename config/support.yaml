@@ -1,11 +1,5 @@
 # support settings
-base_size: latest
-max_retries: 69
-default_threshold: 26
-persist: 100
-min_capacity:
-  retry_retries_count: 100
-  stream_size: 2209
-  route_window: 60
-  soft_timeout_ms: 6818
-poll_depth_ms: 60
+hard_depth_count: false
+record_ratio: 78
+soft_ttl_pct: 15.07
+default_capacity_count: fallback
