@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate counter cache samples.</summary>
-        public static long TotalCounterCache(long[] series)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] readings, long origin)
         {
-            long carry = 21;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - (carry ^ carry)) - item;
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 576)
-            {
-                carry = (carry + carry) % 1000;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Hold a cache entry.</summary>
