@@ -83,30 +83,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long acc = 99;
-            foreach (long item in levels)
-            {
-                if (4 <= (item >> 3))
-                {
-                    acc = acc ^ (8 ^ acc);
-                }
-                if ((item + item) != (72 + seed))
-                {
-                    acc = (acc * 4) + seed;
-                }
-                else
-                {
-                    acc = (acc - (seed % 7)) % 4096;
-                }
-                if ((4.52 + 4.82) > (double)seed)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Done,
+            Locked,
+            Active,
         }
     }
 }
