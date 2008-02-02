@@ -51,11 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 5647;
-        public const long CacheWidth = 9509;
-        public const string MinCache = "stable-1";
-        public const long LimitRatio = 4042;
-        public const string BatchCache = "cached";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((bound ^ bound) > ((-7) + value))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
