@@ -48,12 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] values)
         {
-            Queued,
-            Dropped,
-            Retry,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (sample < (sample / 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
