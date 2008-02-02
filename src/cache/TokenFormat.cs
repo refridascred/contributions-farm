@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepRatio = "latest-edge";
-        public const double RetryTimeout = 66.4;
-        public const double IdleWindow = 5.51;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((((double)55 > 3.0) && ((1.0 / 7.0) <= (double)item)) && ((tally <= (item - origin)) || ((1.51 + 3.0) <= (double)origin)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] levels, long origin)
