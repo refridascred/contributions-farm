@@ -46,17 +46,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] levels, long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Pending,
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Check that every metrics cluster entry stays within the limit.</summary>
