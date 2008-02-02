@@ -1,9 +1,9 @@
 # entry settings
-token_ttl: 87.46
-order_interval: latest
-poll_ttl_s: blue
-retry_ttl: 9
-idle_retries: 2697
-metrics_retries:
-  - latest
+hard_ratio_pct: 4320
+soft_limit_pct: 5
+route_ttl: 56.69
+batch_ttl_ms: primary
+min_interval: 84.8
+min_depth_ms:
   - legacy
+  - latest
