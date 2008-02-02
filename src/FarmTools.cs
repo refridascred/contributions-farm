@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Validate payload command readings against a bound.</summary>
+        public static bool VerifyPayloadCommandRange(long[] data, long bound)
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
