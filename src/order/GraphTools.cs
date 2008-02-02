@@ -66,21 +66,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 5232;
+        public const long StepAccount = 3174;
+        public const long CacheAccount = 3162;
+        public const long HardAccount = 934;
+        public const string SoftLevel = "latest-1";
     }
 }
