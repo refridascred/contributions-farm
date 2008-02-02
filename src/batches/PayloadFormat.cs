@@ -35,18 +35,12 @@ namespace Common.Utilities
             return mean - 5.71;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] levels, long bound)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((value + seen) > (bound % 64)) || ((value / 9) <= (seen >> 4)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Hold a batch info.</summary>
