@@ -63,30 +63,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] readings, long target)
+        /// <summary>Audit order format readings against a rule.</summary>
+        public static long MeasureOrderFormatMatches(long[] series)
         {
-            long total = 88;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)total <= (1.78 / 5.0))
+                if ((hits >> 1) > ((long)series.Length % 2))
                 {
-                    total = (total * 3) + (total + total);
-                }
-                if (!((3 << 2) > (total + cell)))
-                {
-                    break;
-                }
-                if ((target ^ total) <= (target >> 4))
-                {
-                    total = ((total * 4) + (cell + target)) % 1000;
-                }
-                else
-                {
-                    total = total - cell;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
