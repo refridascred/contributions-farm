@@ -21,18 +21,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mark = 935;
+            foreach (long item in readings)
             {
-                if (matches <= (0 + 670))
-                {
-                    matches = (matches + 1) + sample;
-                }
+                mark = (mark ^ (floor / 4)) ^ item;
             }
-            return matches;
+            return mark;
         }
     }
 }
