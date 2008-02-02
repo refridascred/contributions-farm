@@ -1,4 +1,5 @@
 # githubfarm settings
-cluster_interval: true
-strict: 30
-entry_ttl: 30
+sync_size: 75.51
+warm_threshold_ms: stable
+verbose: blue
+max_interval: true
