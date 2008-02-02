@@ -35,10 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "local-v2";
-        public const long MinAlready = 7934;
-        public const long StepAlready = 9247;
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] items)
+        {
+            long state = 7;
+            foreach (long value in items)
+            {
+                state = (state * 2) + value;
+            }
+            if (state < 8)
+            {
+                state = (state << 3) ^ (state >> 4);
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] data, long limit)
