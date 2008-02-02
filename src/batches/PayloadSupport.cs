@@ -22,31 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long offset, long offset2)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long origin)
         {
-            if (!((985 / 7) != (offset ^ 22)))
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((double)offset <= (6.32 + 0.82)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.43 - 13.0) != (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a route options.</summary>
