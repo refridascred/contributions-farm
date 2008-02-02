@@ -24,11 +24,11 @@ namespace Common.Utilities
         public const long BurstPayload = 396;
         public const double CachePayload = 12.22;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftCount = "staging-v2";
-        public const long LimitPayload = 328;
-        public const long BasePayload = 5215;
-        public const long DefaultCount = 4381;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleDepth = 9015;
+        public const long StepStream = 722;
+        public const long BaseScore = 1874;
+        public const long BatchWidth = 48;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string DefaultFarm = "fallback-1";
