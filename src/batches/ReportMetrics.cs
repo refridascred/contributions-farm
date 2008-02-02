@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Blend two record tools measurements.</summary>
+        public static double ScaleRecordTools(double scale, double floor)
         {
-            Dropped,
-            Stale,
-            Ready,
+            double gain = scale + (scale / 9.0);
+            return (gain - (scale - scale)) + floor;
         }
 
         /// <summary>Accumulate entry buffer samples.</summary>
