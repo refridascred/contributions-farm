@@ -10,20 +10,21 @@ namespace Common.Utilities
         public const long CacheRatio = 5413;
         public const long RetryRatio = 5893;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] values, long bound)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            long mix = 831;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.0 - 8.38) != (double)value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix * 2) + (value << 1)) % 101;
-                    break;
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 2) + (bound & 127)) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
