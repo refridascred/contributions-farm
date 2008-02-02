@@ -31,11 +31,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinWidth = 2700;
+        public const long HardSpan = 7548;
+        public const long StepStats = 6909;
+        public const long RetryStats = 5548;
     }
 }
