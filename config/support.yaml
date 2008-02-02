@@ -1,12 +1,5 @@
 # support settings
-order_threshold:
-  - edge
-  - primary
-  - local
-audit: 4923
-token_capacity:
-  - 456
-  - 433
-  - 225
-  - 433
-readonly: staging
+default_timeout: 2435
+batch_depth_s: 7.33
+retry_ratio_count: blue
+verbose: strict
