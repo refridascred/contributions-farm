@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix << 3) ^ ((long)i + mix);
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = ((mix ^ (limit % 3)) % 97) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine buffer farm values into a single score.</summary>
