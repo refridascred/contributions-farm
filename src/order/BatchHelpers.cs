@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            Locked,
+            Failed,
+            Pending,
         }
 
         /// <summary>Locate a metrics already reading by value.</summary>
