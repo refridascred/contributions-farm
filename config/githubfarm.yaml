@@ -1,19 +1,14 @@
 # githubfarm settings
-soft_depth_count:
-  - 427
-  - 69
-  - 444
-  - 481
-hard_retries_s:
-  - edge
-  - blue
-  - strict
-  - eu-west
-cache_retries_pct: 60
-verbose:
-  - open
-  - strict
-  - edge
-  - strict
-cache_capacity_s: open
-default_depth_count: false
+token_size: 1024
+persist: latest
+context_window:
+  retry_retries_s: 30
+  dry_run: open
+  audit:
+    buffer_capacity: 1024
+    default_timeout_ms: 30
+    dry_run: 565
+    graph_interval: 250
+    flush_timeout_pct: local
+    warm_window_pct: blue
+audit: 98
