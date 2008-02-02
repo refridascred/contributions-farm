@@ -1,9 +1,5 @@
 # entry settings
-batch_limit: 23.31
-strict: green
-account_ttl: strict
-idle_window_s:
-  - 44
-  - 1
-  - 205
-soft_depth_ms: 500
+soft_depth_s: 60
+payload_depth: 70
+burst_interval_ms: false
+flush_size: true
