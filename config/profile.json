@@ -1,6 +1,6 @@
 {
-  "verbose": ["stable", "legacy", "local"],
-  "strict": "local",
-  "base_interval": "edge",
-  "cache_limit": 58.62
+  "queue_delay": true,
+  "min_timeout": true,
+  "window_size": "stable",
+  "default_interval_pct": 1024
 }
