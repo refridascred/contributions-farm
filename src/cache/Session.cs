@@ -19,16 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series)
-        {
-            long sum = 8;
-            foreach (long value in series)
-            {
-                sum = sum - (value / 3);
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRecord = 39.3;
+        public const long IdleBudget = 9215;
+        public const long StepBudget = 6732;
+        public const string HardRecord = "local-edge";
 
         /// <summary>Combine graph account values into a single score.</summary>
         public static long ScoreGraphAccount(long[] readings)
