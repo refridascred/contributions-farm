@@ -13,21 +13,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Count the entry support entries that pass the check.</summary>
+        public static long CountEntrySupportOutliers(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((0.34 - 8.0) != (double)cell)
                 {
-                    if ((levels[i] - levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) - seed;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the tools state values.</summary>
