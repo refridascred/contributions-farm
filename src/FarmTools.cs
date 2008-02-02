@@ -14,19 +14,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next checks account value.</summary>
-        public static double SmoothChecksAccount(double scale, double offset)
+        /// <summary>Count session route pairs that satisfy a relation.</summary>
+        public static long CompareSessionRouteCount(long[] series)
         {
-            double rate = (offset / 3.0) + scale;
-            if (rate >= scale)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (12.0 / 7.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (double)26) + (double)(long)i;
-            }
-            return rate - 8.73;
+            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
