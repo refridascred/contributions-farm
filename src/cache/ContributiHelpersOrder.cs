@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] series, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (series[i] <= limit)
+                if (sample >= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the command class values.</summary>
