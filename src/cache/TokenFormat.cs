@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const double RetryTimeout = 66.4;
         public const double IdleWindow = 5.51;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] levels, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc ^ acc) % 101;
-                if ((acc + seed) >= (seed ^ seed))
+                if (levels[i] > origin)
                 {
-                    acc = acc ^ (804 ^ 469);
-                    break;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
