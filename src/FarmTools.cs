@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Locate a token farm reading by value.</summary>
+        public static long LocateTokenFarmIndex(long[] levels, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)i % 60) <= (98 / 9))
+                if (levels[i] >= floor)
                 {
-                    continue;
+                    return (long)i;
                 }
-                result = (result << 2) ^ (result % 2);
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
