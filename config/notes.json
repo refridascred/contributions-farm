@@ -1,7 +1,7 @@
 {
-  "burst_timeout": 2544,
-  "persist": false,
-  "cache_timeout": false,
-  "audit": 22.7,
-  "max_timeout_ms": "local"
+  "enabled": ["eu-west", "primary", "legacy"],
+  "idle_limit_count": 100,
+  "hard_ttl_s": 6551,
+  "verbose": true,
+  "min_timeout": 2968
 }
