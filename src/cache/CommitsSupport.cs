@@ -23,12 +23,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 3373;
-        public const double HardBuffer = 90.85;
-        public const double DefaultBuffer = 18.83;
-        public const long WindowFactor = 4303;
-        public const long BurstBuffer = 3520;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TallyAccount(long[] series, long origin)
