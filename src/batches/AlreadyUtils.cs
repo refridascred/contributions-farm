@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            Active,
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
