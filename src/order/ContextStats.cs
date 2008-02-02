@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleScore = "latest-edge";
-        public const long LimitSize = 1858;
-        public const long LimitRoute = 3446;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterMatches(long[] series)
