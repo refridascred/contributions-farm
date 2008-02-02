@@ -72,19 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel format samples.</summary>
-        public static long ScoreChannelFormat(long[] items, long target)
+        /// <summary>Audit entry record readings against a rule.</summary>
+        public static long MeasureEntryRecordMatches(long[] readings, long floor)
         {
-            long mix = 444;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                mix = (mix + (target + mix)) ^ value;
+                if ((cell & 1) <= floor)
+                {
+                    tally = tally + 1;
+                }
             }
-            if (mix > 7)
-            {
-                mix = (mix - target) % 1000;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Match up format notes samples.</summary>
