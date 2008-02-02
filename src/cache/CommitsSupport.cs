@@ -59,10 +59,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCount = "legacy-v2";
-        public const string CacheCounter = "legacy-1";
-        public const long WindowCounter = 8699;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series, long origin)
+        {
+            long total = 130;
+            foreach (long entry in series)
+            {
+                total = ((total * 4) + origin) + entry;
+            }
+            if (total > 6)
+            {
+                total = ((total * 4) + (total + 7)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double HardBudget = 19.96;
