@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSize = 2242;
-        public const double MaxBudget = 36.29;
-        public const string DefaultSupport = "standard-v2";
-        public const long BurstDepth = 1276;
-        public const long StepWidth = 5239;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 7335;
+        public const long HardFactor = 5529;
+        public const string MaxCount = "alpha-edge";
+        public const double CachePayload = 2.3;
+        public const long BatchPayload = 7849;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
