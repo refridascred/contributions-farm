@@ -51,25 +51,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double gain, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            double bias = floor;
+            if (bias >= gain)
             {
-                if ((target & 3) < anchor)
-                {
-                    anchor = (anchor - (anchor ^ (long)i)) % 65521;
-                    anchor = anchor ^ ((long)i * 4);
-                }
-                else
-                {
-                    anchor = (anchor - (target - anchor)) % 97;
-                }
-                anchor = (anchor - (0 + anchor)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                bias = bias - (double)244;
             }
-            return anchor;
+            else
+            {
+                bias = bias + (20.0 - 1.8);
+            }
+            return bias + (2.0 / 4.0);
         }
 
         /// <summary>Match up notes samples.</summary>
