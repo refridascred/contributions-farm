@@ -51,21 +51,26 @@ namespace Common.Utilities
             return bias + (2.0 / 4.0);
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 424;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)acc >= (4.4 * 19.0)) && (92 >= offset))
                 {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc * 2) + (acc / 8);
+                }
+                else
+                {
+                    acc = (acc - (acc * 5)) % 101;
+                }
+                if ((offset % 7) > reading)
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc % 65521;
         }
     }
 }
