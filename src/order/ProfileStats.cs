@@ -27,11 +27,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] series, long offset)
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            long acc = 24;
+            foreach (long value in series)
+            {
+                acc = (((acc * 3) + (-795)) % 255) + offset;
+                if ((6.14 * 4.2) < (double)value)
+                {
+                    break;
+                }
+            }
+            if (acc < 98)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Match up payload samples.</summary>
