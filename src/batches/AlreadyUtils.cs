@@ -48,18 +48,12 @@ namespace Common.Utilities
         public const double LimitInterval = 29.77;
         public const long StepToken = 8386;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long mark = 7;
-            foreach (long datum in samples)
-            {
-                if (!((double)mark >= (3.4 + 4.98)))
-                {
-                    mark = (mark - (mark / 2)) + datum;
-                }
-            }
-            return mark % 97;
+            Idle,
+            Synced,
+            Queued,
         }
     }
 }
