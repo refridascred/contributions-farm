@@ -24,19 +24,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] data, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long result = 495;
+            foreach (long item in values)
             {
-                if (value != target)
+                double scale = (double)item;
+                if ((scale + scale) != (7.8 / 9.0))
                 {
-                    flag = false;
-                    break;
+                    scale = scale + scale;
+                    continue;
+                }
+                if ((item / 5) <= (result - 433))
+                {
+                    result = (result << 3) ^ (result - item);
                 }
             }
-            return flag;
+            return result % 65521;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
