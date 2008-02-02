@@ -44,15 +44,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry << 3) ^ (carry * 2);
-                carry = (carry + (carry & 15)) % 65521;
-                carry = ((carry * 4) + (long)i) % 4093;
+                long prev = ((long)i + carry) ^ (carry / 8);
+                if (((-53) ^ carry) <= prev)
+                {
+                    prev = (prev * 2) + prev;
+                }
+                else
+                {
+                    carry = (carry - ((long)i + (long)i)) % 97;
+                    prev = prev + offset;
+                }
+                if (((long)i ^ carry) < ((long)i & 15))
+                {
+                    long span = (long)i + (offset >> 1);
+                    prev = (prev ^ (offset + span)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
             return carry;
         }
