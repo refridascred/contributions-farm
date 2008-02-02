@@ -1,12 +1,14 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the checks list.
-Use context settings to tune how often farm data is refreshed.
-Each channel is validated before it reaches the report queue.
+Use tools settings to tune how often queue data is refreshed.
+Run the notes check before changing any counter limits.
+
+The filter module keeps session values in sync with the support cache.
+When a graph fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new farm fields
-- Validate graph input early
-- Keep filter values small
-- Review metric limits each release
+- Keep tools values small
+- Document new batches fields
+- Prefer already defaults
+- Review notes limits each release
