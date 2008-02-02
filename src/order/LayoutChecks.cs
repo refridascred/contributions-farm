@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer support series from a seed.</summary>
-        public static long StepBufferSupport(long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((origin + total) <= (total + 554))
-                {
-                    total = total ^ origin;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
