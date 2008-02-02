@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Digest a series of command order entries.</summary>
