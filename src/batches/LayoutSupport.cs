@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] readings, long target)
+        /// <summary>Match up already cluster samples.</summary>
+        public static long CompareAlreadyClusterCount(long[] series)
         {
             long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)hits == (19.0 - 0.1)) && ((4.7 * 5.54) > (double)hits))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = ((hits + 1) + item) + target;
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
