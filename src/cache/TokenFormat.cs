@@ -38,19 +38,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double ratio, double offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long offset)
         {
-            double mean = (double)(899 % 16);
-            if (mean > mean)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                mean = (mean + 18.0) - ratio;
+                if (((629 >> 1) < (result - 774)) && ((result - result) >= result))
+                {
+                    result = (result ^ (offset + (long)i)) % 4096;
+                }
+                else
+                {
+                    result = (result + (offset >> 3)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean + (double)0;
-            }
-            return mean + offset;
+            return result;
         }
     }
 }
