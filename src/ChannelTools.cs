@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 2.88;
+        public const long StepInterval = 529;
+        public const long BaseDepth = 3270;
+        public const string CacheChannel = "fallback-v2";
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
