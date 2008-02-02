@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 844;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum - (sum / 8)) ^ sample;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
