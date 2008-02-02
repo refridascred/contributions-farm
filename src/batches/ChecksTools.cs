@@ -45,18 +45,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] items, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long state = 82;
+            foreach (long item in data)
             {
-                if ((46 + 87) >= ((long)items.Length + bound))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                state = (((state + (35 << 3)) % 97) + item) + floor;
             }
-            return hits;
+            return state % 97;
         }
     }
 }
