@@ -1,20 +1,14 @@
 # githubfarm settings
-flush_retries_pct: 34.16
-readonly:
-  - eu-west
-  - local
+cache_timeout_pct: staging
+stream_depth:
+  - 421
+  - 216
+  - 190
+queue_capacity:
+  - 87
+  - 467
+batch_ttl_count:
+  - latest
   - cached
+  - blue
   - open
-cache_delay:
-  cache_capacity_ms: true
-  strict: edge
-  min_capacity: 48
-  idle_delay: 1637
-  editor_size:
-    audit: stable
-    persist: false
-    flush_limit_count: primary
-    dry_run: open
-    idle_retries_pct: 87.24
-    hard_retries_s: strict
-base_delay_ms: 72
