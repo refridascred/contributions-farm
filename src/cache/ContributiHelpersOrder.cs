@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the checks cluster entries that pass the check.</summary>
-        public static long TallyChecksClusterOutliers(long[] items, long target)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)tally > 9.0) || ((601 - (-853)) <= (sample << 3)))
+                if (series[i] <= limit)
                 {
-                    tally = (tally + 2) - target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
