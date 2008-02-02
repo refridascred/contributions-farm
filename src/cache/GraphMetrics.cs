@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] series, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (series[i] >= floor)
+                if ((tally + tally) > tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank entry counter input into a small class.</summary>
