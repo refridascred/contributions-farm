@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] readings)
-        {
-            long mark = 0;
-            foreach (long sample in readings)
-            {
-                mark = ((mark ^ (mark - 6)) % 97) ^ sample;
-            }
-            if (mark > 0)
-            {
-                mark = ((mark << 3) ^ mark) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinBudget = 5823;
+        public const long DefaultToken = 1438;
+        public const long IdleBudget = 4648;
+        public const long StepToken = 1528;
+        public const long HardRatio = 65;
 
         /// <summary>Project the next token cluster value.</summary>
         public static double SmoothTokenCluster(double gain, double floor)
