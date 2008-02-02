@@ -41,18 +41,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] samples)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches >= (sample << 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            Failed,
+            Closed,
+            Active,
         }
     }
 }
