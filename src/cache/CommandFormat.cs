@@ -42,16 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryScore = 9055;
+        public const string BurstReport = "standard-edge";
+        public const long StepFactor = 2781;
+        public const string HardCount = "local";
+        public const long LimitSpan = 263;
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
