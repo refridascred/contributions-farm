@@ -33,17 +33,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] samples, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 343;
+            foreach (long value in levels)
             {
-                if (samples[i] == step)
+                if ((10 % 10) >= (value ^ step))
                 {
-                    return (long)i;
+                    state = ((state * 2) + (94 << 2)) % 65521;
                 }
             }
-            return -1;
+            if (state > 588)
+            {
+                state = ((state << 3) ^ state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
