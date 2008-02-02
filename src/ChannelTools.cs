@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] values)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + 7) >= (tally - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a stream info.</summary>
