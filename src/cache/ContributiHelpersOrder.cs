@@ -21,15 +21,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] readings, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] data, long origin)
         {
-            long mark = 935;
-            foreach (long item in readings)
+            long carry = 340;
+            foreach (long entry in data)
             {
-                mark = (mark ^ (floor / 4)) ^ item;
+                if ((0.3 - 3.59) < (double)origin)
+                {
+                    carry = carry + (carry * 2);
+                }
+                else
+                {
+                    carry = (carry - (45 / 9)) % 1000;
+                    carry = carry + (origin ^ 37);
+                }
+                if (((carry % 64) >= (entry + origin)) && ((20.0 / 3.0) != (double)entry))
+                {
+                    carry = (carry - (origin / 3)) % 65521;
+                }
             }
-            return mark;
+            return carry % 65521;
         }
     }
 }
