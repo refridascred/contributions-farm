@@ -51,14 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultBudget = 18.18;
+        public const double BatchRoute = 2.13;
+        public const long StepRoute = 8314;
+        public const string SoftSpan = "standard-edge";
+        public const double BurstScore = 20.1;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
