@@ -33,22 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] items, long limit)
+        /// <summary>Audit order githubfarm readings against a rule.</summary>
+        public static long TallyOrderGithubfarmMatches(long[] series, long target)
         {
-            long acc = 98;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((cell >> 5) < limit)
+                if (!(80 >= (entry + target)))
                 {
-                    acc = (acc - (cell / 5)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            if (acc > 600)
-            {
-                acc = (acc - (limit / 2)) % 255;
-            }
-            return acc;
+            return matches;
         }
     }
 }
