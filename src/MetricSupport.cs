@@ -32,21 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
