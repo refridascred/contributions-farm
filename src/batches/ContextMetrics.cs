@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
