@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] readings, long bound)
         {
-            Queued,
-            Active,
-            Dropped,
-            Draft,
+            long sum = 6;
+            foreach (long sample in readings)
+            {
+                sum = ((sum ^ (bound * 2)) % 65521) + sample;
+            }
+            if (sum > 93)
+            {
+                sum = (sum + sum) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of command order entries.</summary>
