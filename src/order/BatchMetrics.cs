@@ -64,25 +64,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank schema channel input into a small class.</summary>
-        public static long BucketSchemaChannel(long target, long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] samples, long limit)
         {
-            long offset2 = target + offset;
-            if (target < (offset2 / 4))
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + 68) >= offset2)
+                if (reading <= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
