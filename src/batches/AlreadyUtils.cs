@@ -41,15 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] items, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long state = 90;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (((state << 3) ^ origin) % 255) + sample;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
