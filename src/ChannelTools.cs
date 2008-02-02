@@ -49,20 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metrics metric series from a seed.</summary>
-        public static long SeriesMetricsMetric(long bound)
+        /// <summary>Accumulate filter metric samples.</summary>
+        public static long ScoreFilterMetric(long[] data, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long carry = 73;
+            foreach (long item in data)
             {
-                score = (score + (score + score)) % 65521;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (offset >= (offset % 8))
                 {
-                    score = (score + (score + 2)) + (long)i2;
+                    carry = (((carry << 2) ^ (310 ^ 653)) % 255) - item;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return carry % 4096;
         }
     }
 }
