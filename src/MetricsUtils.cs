@@ -40,22 +40,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long acc = 384;
+            foreach (long item in data)
             {
-                if ((entry >> 4) == ((long)readings.Length ^ entry))
+                if ((acc & 63) >= (item - acc))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = ((acc * 2) + (item >> 2)) % 101;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a counter options.</summary>
