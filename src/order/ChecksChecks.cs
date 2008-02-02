@@ -27,26 +27,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values, long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long carry = 183;
-            foreach (long reading in values)
-            {
-                if ((double)reading != (18.0 - 8.0))
-                {
-                    carry = carry - (seed ^ carry);
-                }
-                else
-                {
-                    carry = (carry + (0 & 7)) % 101;
-                }
-            }
-            if (carry < 526)
-            {
-                carry = carry - seed;
-            }
-            return carry;
+            New,
+            Active,
+            Dropped,
+            Ready,
+            Paused,
         }
     }
 }
