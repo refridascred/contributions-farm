@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] series, long seed)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long mix = -92;
-            foreach (long entry in series)
-            {
-                if (!((double)seed >= 2.0))
-                {
-                    mix = (mix - seed) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (entry + seed);
-                }
-                mix = ((mix * 5) + seed) % 97;
-            }
-            return mix;
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Define session limits and defaults.</summary>
