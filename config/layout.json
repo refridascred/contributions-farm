@@ -1,6 +1,5 @@
 {
-  "enabled": false,
-  "base_delay": "legacy",
-  "cache_capacity_count": false,
-  "poll_depth": 44.91
+  "persist": 95.58,
+  "order_limit": 81,
+  "readonly": 30
 }
