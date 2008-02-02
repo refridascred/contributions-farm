@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every buffer stream entry stays within the limit.</summary>
-        public static bool VerifyBufferStreamLimits(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxCount = 29.15;
+        public const long IdleSpan = 5827;
+        public const long DefaultEntry = 1772;
+        public const long HardLevel = 4979;
+        public const string BurstEntry = "stable-edge";
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
