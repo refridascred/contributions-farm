@@ -14,15 +14,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double bias, double offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double scale = (bias - 9.0) + (offset / 7.0);
-            if (scale < 3.42)
-            {
-                scale = scale + bias;
-            }
-            return scale - (bias * 8.0);
+            Ready,
+            Paused,
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a profile header.</summary>
