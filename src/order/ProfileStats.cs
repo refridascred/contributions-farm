@@ -24,13 +24,11 @@ namespace Common.Utilities
             return mean + (floor * 7.1);
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public string Size { get; set; } = "";
             public long Offset { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
