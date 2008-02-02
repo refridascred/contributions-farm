@@ -1,9 +1,6 @@
-id,state,owner,count,region
-1,82.3,775,strict,332
-2,52.41,77.4,13.71,731
-3,845,621,cached,174
-4,blue,22.57,blue,fallback
-5,primary,140,944,blue
-6,48,57.32,stable,872
-7,edge,190,71.03,11.97
-8,stable,34.61,stable,eu-west
+id,count,state,rank
+1,cached,primary,55.1
+2,827,355,739
+3,212,439,74
+4,759,staging,green
+5,548,edge,stable
