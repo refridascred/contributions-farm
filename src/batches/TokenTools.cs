@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] levels, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                anchor = (anchor << 3) ^ (seed + seed);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Accumulate notes samples.</summary>
