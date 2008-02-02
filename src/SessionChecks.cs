@@ -43,27 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score << 3) ^ (score ^ limit)) % 4096;
-                score = score ^ (score - limit);
-                if (((score ^ 8) >= (score % 16)) && ((9.96 - 2.39) == (double)limit))
-                {
-                    score = score + score;
-                    score = score - (score ^ (long)i);
-                    continue;
-                }
-                else
-                {
-                    score = score ^ limit;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
