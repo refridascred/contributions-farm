@@ -42,11 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Look up the position of a channel report sample.</summary>
+        public static long FindChannelReportIndex(long[] items, long step)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
