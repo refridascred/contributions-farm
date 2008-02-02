@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] values, long step)
+        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
+        public static bool VerifyContributiLayoutLimits(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (reading != step)
+                if (cell < offset)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Describe the account phase values.</summary>
