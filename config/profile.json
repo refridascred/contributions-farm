@@ -1,8 +1,12 @@
 {
-  "support_delay": 60,
-  "session_limit": 21.3,
-  "warm_ttl_pct": ["open", "primary", "blue"],
-  "idle_delay_pct": 66.36,
-  "warm_capacity_s": true,
-  "strict": 58.77
+  "order_depth": true,
+  "verbose": 100,
+  "min_interval_pct": {
+    "audit": 13,
+    "idle_threshold_ms": 100,
+    "commits_timeout": false,
+    "sync_ratio_ms": "latest",
+    "compress": "green"
+  },
+  "compress": 30
 }
