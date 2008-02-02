@@ -14,32 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long step, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long slot = step ^ origin;
-            if (((origin >> 2) <= slot) || ((slot ^ 69) < origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step % 10) < slot)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step << 3) > step) || ((14 + origin) >= (slot + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Pending,
+            Draft,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Check that every batch window entry stays within the limit.</summary>
