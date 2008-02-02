@@ -79,19 +79,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] data, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long state = 23;
+            foreach (long item in series)
             {
-                if (datum > origin)
+                if (((double)state > 3.8) && ((double)item == (1.12 - 1.97)))
                 {
-                    flag = false;
+                    state = ((state << 3) ^ (state ^ item)) % 97;
+                }
+                state = (state ^ item) % 101;
+                if (((601 - item) < state) || ((state << 2) < origin))
+                {
                     break;
                 }
             }
-            return flag;
+            if (state > 88)
+            {
+                state = (state + (origin + state)) % 97;
+            }
+            return state;
         }
     }
 }
