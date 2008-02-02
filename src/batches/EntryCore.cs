@@ -74,21 +74,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -5;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)anchor > (double)sample)
                 {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor - anchor;
+                    anchor = (anchor << 2) ^ (sample - anchor);
+                }
+                if (((anchor * 3) <= (anchor - anchor)) && ((anchor + anchor) <= (anchor ^ anchor)))
+                {
+                    anchor = anchor ^ (anchor - anchor);
                 }
             }
-            return count;
+            return anchor % 4096;
         }
     }
 }
