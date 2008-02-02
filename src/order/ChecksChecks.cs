@@ -14,26 +14,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] samples)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double rate, double floor)
         {
-            long total = 9;
-            foreach (long item in samples)
+            double rate2 = (double)(17 + (-9));
+            if (rate2 >= floor)
             {
-                if ((total % 3) != (total - 143))
-                {
-                    total = (total * 2) + ((-145) % 64);
-                }
-                if ((total / 3) < 25)
-                {
-                    total = (total - (item ^ 69)) % 1000;
-                }
+                rate2 = rate2 + (floor / 5.0);
             }
-            if (total < 509)
-            {
-                total = ((total * 3) + (total + total)) % 65521;
-            }
-            return total;
+            return rate2 - (rate - 1.75);
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
