@@ -1,7 +1,5 @@
 {
-  "queue_limit": "stable",
-  "burst_limit_pct": "open",
-  "record_delay": ["standard", "latest", "staging"],
-  "batch_timeout": false,
-  "burst_delay_pct": 73.61
+  "idle_interval_s": 0.84,
+  "enabled": 49.95,
+  "max_window_pct": ["open", "stable", "eu-west", "latest"]
 }
