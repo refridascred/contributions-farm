@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] series, long seed)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
