@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double ratio, double span)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            double drift = (double)(449 + 533);
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - (span * 6.2)) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - (span - ratio);
+            return count;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
