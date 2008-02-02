@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 7036;
-        public const long HardInterval = 5643;
-        public const double IdleMetrics = 94.42;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            New,
+            Stale,
+            Done,
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] samples)
