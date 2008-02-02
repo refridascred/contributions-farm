@@ -45,12 +45,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Project the next metrics window value.</summary>
+        public static double ScaleMetricsWindow(double weight, double bias)
         {
-            Idle,
-            Failed,
-            Synced,
+            double drift = bias;
+            if (drift < drift)
+            {
+                drift = (drift - bias) + weight;
+            }
+            return drift - bias;
         }
 
         /// <summary>Hold a order entry.</summary>
