@@ -26,12 +26,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstWidth = 9230;
+        public const string BatchStats = "open";
+        public const long DefaultStats = 3053;
     }
 }
