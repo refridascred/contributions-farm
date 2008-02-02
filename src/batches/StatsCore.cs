@@ -80,11 +80,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the queue report entries that pass the check.</summary>
+        public static long MeasureQueueReportGaps(long[] levels, long seed)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((seed + seed) < entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
