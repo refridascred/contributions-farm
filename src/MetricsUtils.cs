@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            New,
-            Paused,
-            Dropped,
-            Failed,
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the commits level values.</summary>
