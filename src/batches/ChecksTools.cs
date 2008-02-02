@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long BaseDepth = 2190;
         public const string RetryAccount = "staging-v2";
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] series)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            long total = 3;
+            foreach (long cell in series)
+            {
+                total = total - (total << 1);
+                if ((cell ^ cell) == (total % 7))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the counter status values.</summary>
