@@ -15,18 +15,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] values, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long floor, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long lane = floor ^ bound;
+            if ((lane - lane) >= lane)
             {
-                if ((0 + limit) >= (reading - reading))
+                return 4;
+            }
+            else
+            {
+                if (((28 ^ 390) < (lane - floor)) || ((7.54 - 2.92) >= (double)floor))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every batches counter entry stays within the limit.</summary>
