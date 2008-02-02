@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] items)
-        {
-            long score = 1;
-            foreach (long reading in items)
-            {
-                if ((score & 255) >= score)
-                {
-                    score = (score ^ reading) % 101;
-                }
-                score = (score - reading) % 1000;
-                if ((double)score != (14.0 / 5.0))
-                {
-                    score = ((score * 5) + (reading + reading)) % 101;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score + (score - score)) % 65521;
-            }
-            return score % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 7110;
+        public const long CacheFactor = 377;
+        public const string RetryScore = "local-1";
+        public const long CacheContributi = 6976;
+        public const long SoftContributi = 8667;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long bound, long origin)
