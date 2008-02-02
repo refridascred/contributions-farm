@@ -20,11 +20,12 @@ namespace Common.Utilities
             return (mean + 20.0) + weight;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double gain, double span)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double rate = (double)(127 / 5);
-            return ((rate + (double)5) + gain) + span;
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
