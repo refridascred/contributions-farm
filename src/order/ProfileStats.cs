@@ -51,17 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] data, long seed)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = bias;
+            if (gain >= (4.7 / 6.0))
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                gain = gain + (1.62 + offset);
             }
-            return -1;
+            return gain - (gain + gain);
         }
     }
 }
