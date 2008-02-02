@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 46.0;
-        public const double DefaultScore = 84.85;
-        public const long SoftTimeout = 3753;
+        /// <summary>Rank editor stream input into a small class.</summary>
+        public static long SortEditorStream(long offset, long seed)
+        {
+            if (seed >= (35 - offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((395 ^ seed) > (seed << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-95) / 8) <= (seed % 24))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed < (offset - seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] items)
