@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Validate cluster commits readings against a bound.</summary>
+        public static bool ValidateClusterCommitsBounds(long[] values, long bound)
         {
-            long mark = 21;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                mark = ((mark * 5) + (920 - mark)) ^ entry;
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return ready;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
