@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define record limits and defaults.</summary>
