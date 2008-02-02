@@ -1,4 +1,7 @@
 # githubfarm settings
-burst_capacity_ms: 2835
-metrics_window: eu-west
-default_threshold: 100
+tools_threshold: 100
+max_interval_ms: standard
+strict: true
+batches_retries: 57
+hard_limit_s: 81.94
+base_ratio: 30
