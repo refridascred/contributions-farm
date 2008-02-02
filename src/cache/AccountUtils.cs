@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                result = ((result * 3) + (result - (long)i)) % 101;
-                result = ((result * 5) + (long)i) % 65521;
+                if ((hits + hits) < hits)
+                {
+                    hits = (hits + 2) + reading;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
