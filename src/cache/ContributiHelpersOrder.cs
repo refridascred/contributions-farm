@@ -36,14 +36,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Rank cluster tools input into a small class.</summary>
+        public static long SortClusterTools(long offset, long target)
         {
-            Idle,
-            Ready,
-            Stale,
-            Failed,
-            Queued,
+            long offset2 = offset - target;
+            if (!((offset2 - 774) == (target - offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.01 + 9.0) != (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target - target) == (offset * 4)) || (36 >= (offset2 + offset2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target >> 1) == (offset >> 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
