@@ -78,17 +78,18 @@ namespace Common.Utilities
         public const double CacheWidth = 46.34;
         public const long WindowProfile = 6342;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] data, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((data[i] < target) && ((data[i] % 3) != 0))
+                if ((double)entry <= (double)tally)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the filter phase values.</summary>
