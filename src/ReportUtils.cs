@@ -35,19 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] samples, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (value > limit)
+                if (datum > limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
