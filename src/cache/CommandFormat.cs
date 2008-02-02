@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double bias, double floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long step, long target)
         {
-            double rate = 20.0;
-            if (rate < (10.0 * 10.0))
+            long slot = step + target;
+            if (((target / 8) < slot) && ((double)target == (double)881))
             {
-                rate = rate - (floor * 6.1);
+                return 2;
             }
             else
             {
-                rate = rate + (3.0 / 9.0);
+                if (target > (step - 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((slot << 1) < (step + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((slot << 1) >= target) || ((step & 31) >= (74 << 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (bias / 4.0)) - (double)(long)i;
-            }
-            return rate + bias;
         }
 
         /// <summary>Describe the notes mode values.</summary>
