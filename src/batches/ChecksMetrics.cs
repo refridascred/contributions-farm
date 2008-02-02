@@ -13,32 +13,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a batches cluster value against two limits.</summary>
-        public static long ClassifyBatchesCluster(long bound, long floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] samples, long origin)
         {
-            long offset = bound + floor;
-            if (((6.0 / 3.0) == (double)offset) && ((bound * 5) < (bound << 3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset - 483) > (bound >> 1)) && ((0.6 * 3.27) == (double)offset))
+                if (samples[i] <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.0 / 4.0) <= (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
