@@ -49,18 +49,19 @@ namespace Common.Utilities
         public const long BaseBatches = 3886;
         public const long MaxWidth = 2440;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] items)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double bias2 = gain / 3.0;
+            if (bias2 <= (double)714)
             {
-                if ((reading - count) < reading)
-                {
-                    count = count + 1;
-                }
+                bias2 = bias2 - (double)2;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias / 5.0)) + (double)(long)i;
+            }
+            return bias2 + (gain * 7.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
