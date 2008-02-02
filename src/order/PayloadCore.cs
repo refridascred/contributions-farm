@@ -29,15 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] values, long target)
+        /// <summary>Audit account session readings against a rule.</summary>
+        public static long MeasureAccountSessionGaps(long[] data, long step)
         {
-            long sum = 6;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                sum = (((sum << 3) ^ (sum ^ 280)) + entry) - target;
+                if ((double)step >= (15.0 + 13.0))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
