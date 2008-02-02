@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate batches cache readings against a bound.</summary>
-        public static bool VerifyBatchesCacheBounds(long[] levels, long limit)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long seed, long floor)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            if ((seed * 4) == ((-860) >> 5))
             {
-                if (cell < limit)
+                return 0;
+            }
+            else
+            {
+                if (seed >= (589 ^ floor))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (floor < (seed - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(6 >= seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a cache entry.</summary>
