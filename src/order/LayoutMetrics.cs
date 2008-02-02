@@ -21,24 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long step, long limit)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            if ((6 >= (limit ^ limit)) && ((step % 12) < limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (336 > (limit - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm route input into a small class.</summary>
