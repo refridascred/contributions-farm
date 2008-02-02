@@ -43,19 +43,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many account record samples are out of range.</summary>
-        public static long CountAccountRecordGaps(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches & 255) < (matches & 15))
-                {
-                    matches = ((matches + 2) - sample) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 7660;
+        public const string BatchMetric = "legacy";
+        public const long CacheMetric = 5321;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LookupChannelIndex(long[] data, long offset)
