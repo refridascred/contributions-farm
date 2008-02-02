@@ -65,12 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] samples, long floor)
         {
-            Retry,
-            Ready,
-            Dropped,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
