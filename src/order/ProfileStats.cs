@@ -16,17 +16,19 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] items, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 33;
+            foreach (long reading in readings)
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ ((long)readings.Length >> 5)) ^ reading;
             }
-            return -1;
+            if (carry < 547)
+            {
+                carry = ((carry * 3) + (carry + carry)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a farm header.</summary>
