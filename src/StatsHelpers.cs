@@ -49,21 +49,24 @@ namespace Common.Utilities
         public const string WindowContext = "latest-1";
         public const long MinDepth = 6685;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((bound / 6) <= bound) && (limit <= (bound >> 5)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit + bound) >= (bound & 7))
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
