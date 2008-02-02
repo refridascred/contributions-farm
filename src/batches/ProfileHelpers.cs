@@ -10,10 +10,26 @@ namespace Common.Utilities
         public const long MaxSize = 1190;
         public const long WindowLevel = 5039;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseSpan = 9447;
-        public const long WindowScore = 8779;
-        public const long LimitFactor = 8356;
+        /// <summary>Iterate the filter editor series from a seed.</summary>
+        public static long StepFilterEditor(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((anchor & 63) > anchor)
+                {
+                    anchor = (anchor * 4) + bound;
+                    anchor = (anchor * 2) + (anchor + (long)i);
+                    continue;
+                }
+                if (!((anchor ^ bound) != (141 - bound)))
+                {
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Scale a record support figure with a bias.</summary>
         public static double SmoothRecordSupport(double weight, double span)
