@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            New,
-            Ready,
-            Idle,
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
