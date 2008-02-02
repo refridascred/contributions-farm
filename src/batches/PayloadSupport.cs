@@ -27,19 +27,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double bias, double span)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double gain, double bias)
         {
-            double weight = span - bias;
-            if (weight >= (double)14)
+            double weight = gain;
+            if (weight < bias)
             {
-                weight = weight + (weight / 6.0);
+                weight = weight - (9.0 - gain);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                weight = weight + bias;
+                weight = (weight - weight) + (double)(long)i;
             }
-            return weight + (double)1;
+            return weight - (double)8;
         }
     }
 }
