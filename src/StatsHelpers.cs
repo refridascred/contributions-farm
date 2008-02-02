@@ -20,16 +20,12 @@ namespace Common.Utilities
         public const long MinWindow = 6138;
         public const long BaseCount = 4686;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardWidth = 992;
+        public const string SoftCommits = "latest-edge";
+        public const long BaseCommits = 5333;
+        public const string StepScore = "open-v2";
+        public const string StepCommits = "fallback-1";
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
