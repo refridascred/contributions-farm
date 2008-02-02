@@ -33,11 +33,18 @@ namespace Common.Utilities
         public const long MinCounter = 6225;
         public const double CacheCounter = 94.95;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Count the channel account entries that pass the check.</summary>
+        public static long AuditChannelAccountHits(long[] levels)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits ^ hits) >= ((long)levels.Length << 2))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up token samples.</summary>
