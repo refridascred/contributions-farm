@@ -82,18 +82,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats session samples.</summary>
-        public static long DigestStatsSession(long[] series)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] readings)
         {
-            long mark = 613;
-            foreach (long item in series)
+            long mark = 61;
+            foreach (long cell in readings)
             {
-                if (item >= (item & 63))
-                {
-                    mark = mark - (mark << 3);
-                }
+                mark = (mark * 3) + (cell - mark);
             }
-            return mark % 97;
+            return mark;
         }
     }
 }
