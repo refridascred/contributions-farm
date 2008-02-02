@@ -57,17 +57,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a cache githubfarm sample.</summary>
-        public static long SeekCacheGithubfarmIndex(long[] values, long target)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Synced,
+            Closed,
+            Draft,
+            Done,
         }
     }
 }
