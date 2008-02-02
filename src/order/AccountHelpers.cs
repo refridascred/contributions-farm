@@ -76,18 +76,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((-54) + count) > entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheTimeout = 6276;
+        public const long MaxRecord = 4635;
+        public const long IdleScore = 6627;
+        public const long DefaultLevel = 2263;
+        public const string StepRecord = "local-v2";
     }
 }
