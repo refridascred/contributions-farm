@@ -13,18 +13,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] values, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long limit, long offset)
         {
-            long mix = -80;
-            foreach (long datum in values)
+            if ((limit + limit) > (9 - (-49)))
             {
-                if (!((526 + 66) != (datum ^ 3)))
+                return 3;
+            }
+            else
+            {
+                if (((limit + offset) == (offset + 4)) && ((double)limit > 4.9))
                 {
-                    mix = ((mix * 4) + (mix + datum)) - limit;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset <= (5.0 + 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((offset + offset) > offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
