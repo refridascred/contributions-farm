@@ -82,10 +82,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 9126;
-        public const long StepInterval = 3126;
-        public const double WindowCluster = 8.75;
-        public const long WindowLevel = 6382;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 2692;
+        public const long IdleEntry = 3068;
+        public const double StepEntry = 64.98;
+        public const long MinEntry = 8689;
     }
 }
