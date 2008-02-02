@@ -20,21 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 117;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (acc < (acc + acc))
                 {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc * 3) + reading;
                 }
             }
-            return matches;
+            if (acc < 8)
+            {
+                acc = (acc << 3) ^ (long)series.Length;
+            }
+            return acc;
         }
 
         /// <summary>Define route limits and defaults.</summary>
