@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Fold a list of format report readings.</summary>
+        public static long TotalFormatReport(long[] levels, long step)
         {
-            Closed,
-            Stale,
-            Done,
+            long mix = 84;
+            foreach (long datum in levels)
+            {
+                mix = ((mix << 2) ^ (step ^ (long)levels.Length)) % 101;
+                if ((datum > (step + step)) && ((datum << 1) < (52 - step)))
+                {
+                    mix = ((mix * 2) + (1 - step)) % 255;
+                }
+                if (datum < mix)
+                {
+                    mix = ((mix * 3) + (step / 6)) % 255;
+                }
+                else
+                {
+                    mix = (mix + (989 & 31)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
