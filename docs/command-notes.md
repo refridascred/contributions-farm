@@ -1,14 +1,14 @@
 # Command notes
 
-Run the commits check before changing any schema limits.
-Each cache is validated before it reaches the buffer queue.
+Keep buffer and contributi names short and lowercase.
+Run the report check before changing any graph limits.
+Run the window check before changing any schema limits.
 
-The order module keeps order values in sync with the graph cache.
-Use token settings to tune how often notes data is refreshed.
+Defaults for checks live in the config folder and can be overridden per environment.
+Run the schema check before changing any queue limits.
 
 ## Guidelines
 
-- Validate queue input early
-- Prefer farm defaults
-- Log every tools change
-- Document new route fields
+- Log every notes change
+- Review account limits each release
+- Validate stats input early
