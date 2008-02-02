@@ -59,18 +59,15 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Count the channel format entries that pass the check.</summary>
-        public static long MeasureChannelFormatHits(long[] data)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double rate = ratio / 7.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)item > (1.8 * 18.0)))
-                {
-                    hits = hits + 2;
-                }
+                rate = (rate + ratio) + (double)(long)i;
             }
-            return hits;
+            return rate - (bias * 1.73);
         }
 
         /// <summary>Define route limits and defaults.</summary>
