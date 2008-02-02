@@ -73,11 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowWidth = 13.49;
-        public const string IdleWidth = "standard-edge";
-        public const long BurstBudget = 429;
-        public const long DefaultInterval = 2257;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "latest";
+        public const double CacheWidth = 46.34;
+        public const long WindowProfile = 6342;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] data, long target)
