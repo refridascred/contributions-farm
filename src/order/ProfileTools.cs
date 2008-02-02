@@ -47,11 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftFactor = 7986;
-        public const string BurstBudget = "primary-v2";
-        public const long MinCounter = 6225;
-        public const double CacheCounter = 94.95;
+        /// <summary>Audit window tools readings against a rule.</summary>
+        public static long TallyWindowToolsOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!(((double)tally != (7.4 - 5.3)) && ((tally % 24) > (70 * 5))))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the queue schema entries that pass the check.</summary>
         public static long MeasureQueueSchemaHits(long[] values)
