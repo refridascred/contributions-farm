@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Digest a series of already githubfarm entries.</summary>
+        public static long TotalAlreadyGithubfarm(long[] series)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            long anchor = 506;
+            foreach (long reading in series)
+            {
+                if ((832 - reading) < ((long)series.Length % 16))
+                {
+                    anchor = anchor + (reading / 4);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
