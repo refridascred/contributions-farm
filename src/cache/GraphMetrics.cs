@@ -22,12 +22,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] readings, long floor)
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell != (2.2 * 13.0))
+                {
+                    count = (count + 2) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up batch samples.</summary>
