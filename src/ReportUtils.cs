@@ -35,15 +35,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next metrics window value.</summary>
-        public static double ScaleMetricsWindow(double weight, double bias)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] samples, long origin)
         {
-            double drift = bias;
-            if (drift < drift)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - bias) + weight;
+                if ((samples[i] <= origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - bias;
+            return -1;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
