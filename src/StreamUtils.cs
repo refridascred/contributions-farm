@@ -13,22 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] data)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = 85;
+            foreach (long datum in samples)
             {
-                if (reading >= (matches + matches))
+                if ((double)result >= (2.6 + 9.84))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (result - ((long)samples.Length + result)) ^ datum;
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a cache route sample.</summary>
