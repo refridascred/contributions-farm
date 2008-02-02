@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double gain, double offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long offset, long step)
         {
-            double bias = gain;
-            if (bias > offset)
+            if (((double)offset > (double)step) && ((double)step <= 11.0))
             {
-                bias = bias - bias;
+                return 6;
             }
-            return bias + (double)51;
+            else
+            {
+                if ((9 + step) == (583 / 6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-5) & 1) < (step << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step - 4) <= (step - offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
