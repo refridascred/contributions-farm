@@ -50,19 +50,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double weight, double span)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double weight2 = (weight / 9.0) * 4.43;
-            if (weight2 <= weight2)
-            {
-                weight2 = (weight2 + (weight2 * 1.0)) - span;
-            }
-            else
-            {
-                weight2 = weight2 - (weight + 5.86);
-            }
-            return weight2 - weight2;
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
