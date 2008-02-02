@@ -40,14 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] readings, long bound)
         {
-            Stale,
-            New,
-            Failed,
-            Retry,
-            Locked,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (sample > (bound * 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
