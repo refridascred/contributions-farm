@@ -1,10 +1,12 @@
 # Command notes
 
-Use format settings to tune how often checks data is refreshed.
-Keep buffer and stats names short and lowercase.
+The profile module keeps editor values in sync with the counter cache.
+The format report groups every metric by commits.
+Use buffer settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Review report limits each release
-- Log every cluster change
-- Prefer stream defaults
+- Log every session change
+- Review notes limits each release
+- Validate filter input early
+- Keep payload values small
