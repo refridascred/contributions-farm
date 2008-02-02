@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the route batches entries that pass the check.</summary>
+        public static long CountRouteBatchesMatches(long[] values, long seed)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((3 % 97) <= value)
+                {
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the command class values.</summary>
