@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] values)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double mean = 4.2 * 9.1;
+            if (mean > mean)
             {
-                if ((5.59 / 9.0) == (double)sample)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = mean + (span - 3.97);
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (weight + span)) - (double)(long)i;
+            }
+            return mean - 5.71;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
