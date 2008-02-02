@@ -55,12 +55,16 @@ namespace Common.Utilities
             return drift + (offset / 9.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultBudget = 18.18;
-        public const double BatchRoute = 2.13;
-        public const long StepRoute = 8314;
-        public const string SoftSpan = "standard-edge";
-        public const double BurstScore = 20.1;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] items, long step)
