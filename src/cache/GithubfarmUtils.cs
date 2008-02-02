@@ -27,10 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 9287;
-        public const long StepSize = 6477;
-        public const double DefaultRecord = 10.47;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Synced,
+            Stale,
+            Retry,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
