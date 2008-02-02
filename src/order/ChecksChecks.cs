@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] data, long limit)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Derive the next buffer farm value from a seed.</summary>
