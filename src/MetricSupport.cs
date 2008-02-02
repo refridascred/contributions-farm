@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token profile readings.</summary>
-        public static long CombineTokenProfile(long[] samples)
+        /// <summary>Look up the position of a format schema sample.</summary>
+        public static long LocateFormatSchemaIndex(long[] readings, long step)
         {
-            long acc = 242;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc ^ item) <= 34)
+                if ((readings[i] < step) && ((readings[i] % 2) == 0))
                 {
-                    acc = ((acc * 5) + (item / 3)) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the window status values.</summary>
