@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "local-edge";
-        public const double MinAccount = 74.62;
-        public const long BaseDepth = 2190;
-        public const string RetryAccount = "staging-v2";
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] series)
