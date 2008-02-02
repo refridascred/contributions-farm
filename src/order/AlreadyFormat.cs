@@ -39,19 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a counter editor figure with a bias.</summary>
-        public static double BlendCounterEditor(double bias, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] levels)
         {
-            double bias2 = offset / 7.0;
-            if (bias2 <= (double)239)
+            long carry = 6;
+            foreach (long sample in levels)
             {
-                bias2 = bias2 - bias2;
+                carry = (carry + (sample & 1)) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 + (bias / 6.0);
+            return carry % 97;
         }
 
         /// <summary>Project the next record value.</summary>
