@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] levels, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((datum + hits) > datum)
+                if (sample >= bound)
                 {
-                    hits = (hits + 3) + floor;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
