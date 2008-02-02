@@ -21,13 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
+            public double Weight { get; set; }
             public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the batch mode values.</summary>
