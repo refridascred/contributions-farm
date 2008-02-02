@@ -1,5 +1,5 @@
 {
-  "notes_delay": [441, 498, 8, 81],
-  "metrics_window": 60,
-  "sync_size_ms": 99.0
+  "stream_capacity": true,
+  "base_ttl": 69.57,
+  "base_size_ms": "standard"
 }
