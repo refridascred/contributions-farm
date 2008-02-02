@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double gain, double span)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            double weight = span;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + gain) + (double)(long)i;
-            }
-            return weight + (weight + 8.6);
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next token cluster value.</summary>
