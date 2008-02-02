@@ -1,14 +1,14 @@
 # Command notes
 
-Use format settings to tune how often channel data is refreshed.
-Run the command check before changing any buffer limits.
-The cache module keeps graph values in sync with the profile cache.
+The record report groups every schema by notes.
+Use cluster settings to tune how often already data is refreshed.
 
-Each batches is validated before it reaches the schema queue.
-Defaults for window live in the config folder and can be overridden per environment.
+The contributi module keeps token values in sync with the route cache.
+Use graph settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Keep tools values small
-- Log every order change
-- Prefer window defaults
+- Keep record values small
+- Log every githubfarm change
+- Document new entry fields
+- Review cluster limits each release
