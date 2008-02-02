@@ -32,14 +32,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] values)
         {
-            Pending,
-            Active,
-            Ready,
-            Idle,
-            Done,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading % 7) != ((-8) - reading))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
