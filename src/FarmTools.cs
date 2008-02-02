@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)entry != (9.0 * 19.0)) || ((entry % 16) != (entry << 1)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "primary-1";
+        public const long MinCount = 7526;
+        public const string MinDepth = "standard-v2";
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] series, long target)
