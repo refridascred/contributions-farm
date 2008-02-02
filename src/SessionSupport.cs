@@ -12,12 +12,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
+            New,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the record kind values.</summary>
