@@ -34,18 +34,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] data)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double gain, double offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            double drift = offset / 3.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((value + 725) != (value % 2))
-                {
-                    count = count + 1;
-                }
+                drift = (drift + (double)23) + (double)(long)i;
             }
-            return count;
+            return drift + (gain + gain);
         }
     }
 }
