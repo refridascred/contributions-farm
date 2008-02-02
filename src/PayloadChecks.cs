@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] samples, long target)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long score = 6;
+            foreach (long entry in samples)
+            {
+                if (2.2 >= (double)score)
+                {
+                    score = ((score - 5) % 65521) - target;
+                }
+                else
+                {
+                    score = (score - (74 + entry)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
