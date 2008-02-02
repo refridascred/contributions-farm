@@ -83,18 +83,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue report entries that pass the check.</summary>
-        public static long MeasureQueueReportGaps(long[] levels, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((seed + seed) < entry)
+                if ((6 / 3) >= (reading - seen))
                 {
-                    count = count + 1;
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
