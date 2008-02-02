@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate stats githubfarm samples.</summary>
-        public static long WeighStatsGithubfarm(long[] data, long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long total = 57;
-            foreach (long item in data)
-            {
-                total = (total - (total >> 1)) - offset;
-                if ((item << 1) != (total * 5))
-                {
-                    total = (total << 3) ^ item;
-                }
-            }
-            if (total > (-982))
-            {
-                total = (total * 4) + 998;
-            }
-            return total;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Project the next token counter value.</summary>
