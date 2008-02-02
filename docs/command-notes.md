@@ -1,12 +1,11 @@
 # Command notes
 
-Keep channel and githubfarm names short and lowercase.
-When a buffer fails, the channel handler retries a few times before giving up.
-Run the editor check before changing any notes limits.
+Defaults for commits live in the config folder and can be overridden per environment.
+When a layout fails, the format handler retries a few times before giving up.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review layout limits each release
-- Validate metrics input early
-- Keep githubfarm values small
-- Document new batch fields
+- Keep commits values small
+- Log every queue change
+- Prefer report defaults
