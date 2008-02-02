@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] levels, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (value >= bound)
+                if (reading < offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
