@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] items, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "cached-v2";
+        public const long IdleBudget = 4526;
+        public const string HardInterval = "latest-v2";
+        public const long IdleSchema = 3311;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] samples)
