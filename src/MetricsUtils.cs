@@ -26,12 +26,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Iterate the queue contributi series from a seed.</summary>
+        public static long SeriesQueueContributi(long origin)
         {
-            Draft,
-            Done,
-            Paused,
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (12.0 > (double)(long)i)
+                {
+                    carry = (carry * 5) + origin;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of token entries.</summary>
