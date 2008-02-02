@@ -23,14 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Paused,
-            Synced,
-            Closed,
-            Draft,
-            Idle,
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the command mode values.</summary>
