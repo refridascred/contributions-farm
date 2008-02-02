@@ -27,19 +27,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] series, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long state = 1;
+            foreach (long item in samples)
             {
-                if (sample > target)
+                if ((state + state) > (state >> 3))
                 {
-                    valid = false;
-                    break;
+                    state = (state << 3) ^ (state ^ item);
                 }
             }
-            return valid;
+            if (state < (-4))
+            {
+                state = (state ^ ((long)samples.Length + 1)) % 97;
+            }
+            return state;
         }
     }
 }
