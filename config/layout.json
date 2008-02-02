@@ -1,5 +1,15 @@
 {
-  "burst_window_ms": false,
-  "retry_depth": 2080,
-  "base_ratio": ["open", "strict"]
+  "soft_window_count": 500,
+  "hard_delay": true,
+  "route_limit": false,
+  "min_ttl_pct": {
+    "dry_run": 622,
+    "readonly": 250,
+    "poll_size_pct": 250,
+    "min_window": 9974,
+    "retry_delay": "cached",
+    "soft_threshold": 66.37
+  },
+  "order_timeout": 60,
+  "batch_threshold_s": 3541
 }
