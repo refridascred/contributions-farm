@@ -55,15 +55,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double gain, double floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double gain2 = gain;
-            if (gain2 <= 4.38)
-            {
-                gain2 = gain2 + 14.0;
-            }
-            return gain2 - (floor * 3.2);
+            Pending,
+            Idle,
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
