@@ -14,13 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] readings, long step)
         {
-            Ready,
-            Draft,
-            Failed,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen << 3) < (seen & 127))
+                {
+                    seen = ((seen + 3) + cell) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats options.</summary>
