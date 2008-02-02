@@ -25,12 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] items, long step)
         {
-            Ready,
-            Retry,
-            Paused,
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a record record.</summary>
