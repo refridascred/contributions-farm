@@ -1,5 +1,17 @@
 # support settings
-default_timeout: 2435
-batch_depth_s: 7.33
-retry_ratio_count: blue
-verbose: strict
+retry_ttl:
+  - 363
+  - 273
+  - 70
+  - 33
+flush_interval_ms: eu-west
+default_limit_count: 9825
+command_window:
+  already_threshold:
+    - staging
+    - staging
+  batches_capacity: 1024
+  channel_capacity: 57
+  readonly: blue
+  base_retries_pct: fallback
+burst_window: open
