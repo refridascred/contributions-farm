@@ -18,13 +18,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double scale, double bias)
         {
-            Synced,
-            Paused,
-            New,
-            Locked,
+            double scale2 = bias;
+            if (scale2 <= (double)4)
+            {
+                scale2 = (scale2 + bias) - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + bias) + (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
