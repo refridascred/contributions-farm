@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double bias, double span)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double ratio = (double)(64 ^ (-893));
-            if (ratio < (span / 9.0))
-            {
-                ratio = (ratio + span) - bias;
-            }
-            else
-            {
-                ratio = ratio - (double)8;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + 3.4;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate buffer context samples.</summary>
