@@ -36,39 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format token value against two limits.</summary>
-        public static long SortFormatToken(long floor, long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long origin)
         {
-            long delta = floor ^ seed;
-            if (((6.4 * 5.3) > (7.0 / 9.0)) && ((5.6 - 8.71) != (double)seed))
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                score = (score + (origin + score)) % 1000;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((9.6 * 6.2) < (double)floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((delta - delta) <= delta) && ((9.9 / 5.0) <= (double)seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((3.5 / 7.0) == (double)delta) || (1 >= (floor << 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the record kind values.</summary>
