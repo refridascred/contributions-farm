@@ -85,12 +85,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] samples, long target)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            long total = 6;
+            foreach (long reading in samples)
+            {
+                total = (((total ^ (total / 8)) % 65521) - reading) - target;
+            }
+            return total;
         }
     }
 }
