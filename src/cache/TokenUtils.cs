@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
