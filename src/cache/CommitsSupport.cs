@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long acc = 8;
-            foreach (long reading in series)
-            {
-                if (reading > (acc >> 4))
-                {
-                    acc = (acc - (acc ^ acc)) % 255;
-                }
-            }
-            if (acc > 887)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc % 65521;
+            Closed,
+            Synced,
+            Locked,
+            Retry,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
