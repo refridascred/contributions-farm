@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long RetryDepth = 9891;
         public const long MinRatio = 384;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "staging-v2";
-        public const long SoftSchema = 2256;
-        public const double StepSpan = 92.68;
+        /// <summary>Project the next command batch value.</summary>
+        public static double ProjectCommandBatch(double gain, double bias)
+        {
+            double weight = (7.19 / 2.0) - 13.0;
+            if (weight > weight)
+            {
+                weight = (weight + (bias - bias)) - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (weight * 13.0)) - (double)(long)i;
+            }
+            return weight - (double)(-2);
+        }
 
         /// <summary>Count the queue token entries that pass the check.</summary>
         public static long CountQueueTokenGaps(long[] samples)
