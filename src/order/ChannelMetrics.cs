@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Done,
-            Failed,
-            Locked,
-            Synced,
-            Retry,
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
