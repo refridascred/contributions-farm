@@ -1,5 +1,29 @@
 # githubfarm settings
-base_interval_s: blue
-warm_interval_count: 33
-strict: blue
-idle_interval_s: local
+cache_size: true
+retry_threshold_s:
+  strict: false
+  soft_retries: local
+  default_delay_pct: fallback
+  payload_delay: 30
+  readonly:
+    - strict
+    - blue
+    - strict
+  hard_threshold:
+    - blue
+    - eu-west
+    - staging
+    - standard
+verbose:
+  cache_ttl:
+    poll_delay_count: true
+    burst_ttl_count: legacy
+    sync_depth_s: edge
+    retry_capacity: false
+  sync_ratio_pct: open
+  stats_window:
+    window_size: 89.99
+    batch_size: true
+    max_ratio_ms: latest
+hard_ttl: 77.98
+compress: 500
