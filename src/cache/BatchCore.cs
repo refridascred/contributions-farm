@@ -45,22 +45,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] readings, long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((((7.08 * 12.0) > (double)reading) || ((double)reading < 3.0)) || ((7 >> 2) != (matches + (long)readings.Length)))
-                {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
