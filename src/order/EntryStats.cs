@@ -40,25 +40,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long step, long origin)
+        /// <summary>Digest a series of stats route entries.</summary>
+        public static long DigestStatsRoute(long[] levels, long origin)
         {
-            long prev = step ^ origin;
-            if ((step << 3) >= (step + step))
+            long carry = -27;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((prev / 3) != (step / 6))
+                if (((sample + origin) >= origin) || ((double)origin == (8.8 / 5.0)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    carry = ((carry * 4) + (0 + carry)) % 4096;
                 }
             }
+            if (carry > 80)
+            {
+                carry = ((carry * 2) + (origin % 7)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
