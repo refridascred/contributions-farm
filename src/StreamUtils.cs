@@ -27,17 +27,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a cache route sample.</summary>
-        public static long SeekCacheRouteIndex(long[] items, long step)
+        /// <summary>Match up already graph samples.</summary>
+        public static long MatchAlreadyGraphCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
