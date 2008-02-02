@@ -1,13 +1,27 @@
 {
-  "strict": true,
-  "schema_depth": "legacy",
-  "route_ttl": 6559,
-  "support_limit": {
-    "batch_timeout": "standard",
-    "max_window_ms": 1024,
-    "cache_retries": 30,
-    "retry_depth": true
+  "poll_window": "cached",
+  "sync_limit": [111, 487, 467, 222],
+  "cache_capacity": {
+    "verbose": {
+      "cache_depth": 48.22,
+      "enabled": "edge",
+      "command_capacity": "legacy",
+      "sync_window": 89.79,
+      "burst_delay_s": "open",
+      "checks_delay": true
+    },
+    "hard_window_pct": true,
+    "default_size_count": ["local", "legacy", "legacy"],
+    "compress": 3.39,
+    "persist": 35.9,
+    "audit": ["blue", "stable", "eu-west"]
   },
-  "command_retries": ["staging", "primary"],
-  "verbose": 16.01
+  "cache_limit": {
+    "persist": "standard",
+    "warm_size_s": 24.85,
+    "dry_run": true,
+    "burst_capacity": 529
+  },
+  "support_limit": "local",
+  "max_depth": 60
 }
