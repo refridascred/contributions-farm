@@ -33,12 +33,27 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Accumulate already support samples.</summary>
+        public static long DigestAlreadySupport(long[] readings)
         {
-            Stale,
-            Active,
-            New,
+            long sum = 0;
+            foreach (long value in readings)
+            {
+                sum = sum - sum;
+                if ((16.0 + 3.7) <= (double)value)
+                {
+                    sum = (sum + (3 << 3)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (sum + sum)) % 255;
+                }
+                if (!((sum - value) >= (value + value)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
