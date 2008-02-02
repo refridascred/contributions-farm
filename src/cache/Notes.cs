@@ -29,18 +29,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchFactor = 3050;
+        public const long BurstSupport = 773;
+        public const long MinSupport = 151;
+        public const long BatchSupport = 6366;
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double gain, double floor)
