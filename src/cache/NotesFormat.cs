@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the cache farm series from a seed.</summary>
-        public static long SeriesCacheFarm(long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] readings, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (bound > (sample ^ bound))
+                {
+                    tally = tally + 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
