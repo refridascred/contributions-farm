@@ -13,23 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long origin, long origin2)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long bound, long step)
         {
-            long delta = origin - origin2;
-            if ((delta & 31) >= (origin2 - origin2))
+            if ((bound ^ bound) >= step)
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((7 - origin) != (delta * 3))
+                if ((-402) <= (bound / 6))
                 {
                     return 1;
                 }
                 else
                 {
-                    return 2;
+                    return 6;
                 }
             }
         }
