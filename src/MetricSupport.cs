@@ -28,19 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] data, long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            New,
+            Draft,
         }
     }
 }
