@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a farm payload sample.</summary>
-        public static long LookupFarmPayloadIndex(long[] data, long target)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Active,
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Iterate the channel profile series from a seed.</summary>
