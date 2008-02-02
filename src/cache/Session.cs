@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Fold a list of stream channel readings.</summary>
+        public static long ScoreStreamChannel(long[] series)
         {
-            long state = 65;
-            foreach (long value in data)
+            long carry = 523;
+            foreach (long cell in series)
             {
-                state = (((state * 2) + (94 / 9)) % 65521) + value;
+                if (((long)series.Length + cell) != (carry * 3))
+                {
+                    carry = carry + (carry + 74);
+                    break;
+                }
+                carry = carry - (carry / 8);
             }
-            return state;
+            if (carry < 5)
+            {
+                carry = (carry ^ carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
