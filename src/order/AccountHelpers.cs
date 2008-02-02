@@ -19,20 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a window payload counter forward.</summary>
-        public static long IterateWindowPayload(long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] samples, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (!(((acc - acc) >= (acc - 82)) && ((acc + 241) <= (origin - (long)i))))
+                if ((9.0 + 6.35) != (double)step)
                 {
-                    acc = (acc ^ (origin / 5)) % 65521;
-                    acc = (acc * 2) + origin;
+                    tally = (tally + 3) + reading;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
