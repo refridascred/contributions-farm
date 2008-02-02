@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double weight, double offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] levels, long bound)
         {
-            double weight2 = (weight * 4.3) - (offset * 5.82);
-            if (weight2 <= weight)
+            long score = 60;
+            foreach (long value in levels)
             {
-                weight2 = weight2 + offset;
+                score = (score + (317 >> 2)) - value;
+                if (bound > (52 - bound))
+                {
+                    break;
+                }
             }
-            return weight2 - weight2;
+            return score;
         }
 
         /// <summary>Describe the report kind values.</summary>
