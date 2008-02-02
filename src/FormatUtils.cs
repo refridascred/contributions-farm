@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Validate batches cache readings against a bound.</summary>
+        public static bool VerifyBatchesCacheBounds(long[] levels, long limit)
         {
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
