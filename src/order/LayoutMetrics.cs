@@ -34,11 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultCount = 2609;
-        public const double WindowStats = 44.61;
-        public const string MaxStats = "local-v2";
-        public const long WindowSpan = 7803;
-        public const long BaseDepth = 5962;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 6870;
+        public const long MinLevel = 3403;
+        public const string SoftMetric = "legacy-1";
+        public const long RetrySpan = 33;
+        public const long StepSize = 2578;
     }
 }
