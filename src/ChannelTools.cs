@@ -68,10 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 62.64;
-        public const string MinToken = "standard-edge";
-        public const long HardToken = 4023;
-        public const long WindowDepth = 277;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
