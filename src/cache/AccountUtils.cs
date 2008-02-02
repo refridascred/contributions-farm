@@ -31,11 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
