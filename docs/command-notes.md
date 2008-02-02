@@ -1,10 +1,14 @@
 # Command notes
 
-Each channel is validated before it reaches the tools queue.
-The batch module keeps entry values in sync with the account cache.
+Run the commits check before changing any schema limits.
+Each cache is validated before it reaches the buffer queue.
+
+The order module keeps order values in sync with the graph cache.
+Use token settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Prefer record defaults
-- Review record limits each release
-- Validate stream input early
+- Validate queue input early
+- Prefer farm defaults
+- Log every tools change
+- Document new route fields
