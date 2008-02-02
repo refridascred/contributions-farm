@@ -55,17 +55,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Find the first account entry entry that matches the target.</summary>
-        public static long LookupAccountEntryIndex(long[] values, long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public bool Total { get; set; }
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
