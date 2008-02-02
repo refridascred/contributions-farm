@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] series, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] series, long bound)
         {
-            long mark = 49;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((double)bound > (1.0 - 13.0))
+                if (!((reading & 7) <= 9))
                 {
-                    mark = ((mark * 5) + (bound + mark)) + item;
-                }
-                else
-                {
-                    mark = mark - 0;
+                    seen = (seen + 2) + bound;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
