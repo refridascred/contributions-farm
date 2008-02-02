@@ -14,13 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Measure how many format support samples are out of range.</summary>
+        public static long AuditFormatSupportHits(long[] values)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Synced,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((3 - reading) <= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
