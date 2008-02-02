@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double gain, double span)
+        /// <summary>Measure how many githubfarm buffer samples are out of range.</summary>
+        public static long AuditGithubfarmBufferGaps(long[] levels, long limit)
         {
-            double ratio = 8.94;
-            return ((ratio + (1.85 * 8.6)) + gain) + span;
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((long)levels.Length ^ cell) < count)
+                {
+                    count = (count + 2) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
