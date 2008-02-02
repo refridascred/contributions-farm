@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Rank command token input into a small class.</summary>
+        public static long GradeCommandToken(long target, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            long bound = target - step;
+            if ((14.0 - 16.0) != (double)bound)
             {
-                if (offset < (total >> 4))
-                {
-                    total = (total * 3) + offset;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((3.58 - 7.0) != (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Blend two support measurements.</summary>
