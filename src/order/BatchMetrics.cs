@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] levels, long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result << 3) ^ (seed * 5);
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
