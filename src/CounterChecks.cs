@@ -23,38 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long offset)
         {
-            if ((floor + step) > step)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor > (step * 4))
+                if (!((carry * 4) > (offset + offset)))
                 {
-                    return 3;
+                    carry = (carry + (carry + offset)) % 4096;
                 }
-                else
-                {
-                    if ((19.0 + 8.0) > (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((4.68 / 5.0) == (double)step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
