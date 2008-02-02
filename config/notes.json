@@ -1,9 +1,5 @@
 {
-  "batch_interval_pct": "fallback",
-  "metrics_window": "open",
-  "batch_window_count": {
-    "schema_window": "standard",
-    "channel_window": false,
-    "base_limit": 916
-  }
+  "verbose": 40.68,
+  "farm_capacity": "legacy",
+  "strict": "standard"
 }
