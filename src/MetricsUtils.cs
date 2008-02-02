@@ -54,13 +54,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            New,
-            Pending,
-            Failed,
-            Locked,
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
