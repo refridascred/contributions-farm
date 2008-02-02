@@ -30,14 +30,16 @@ namespace Common.Utilities
         public const double CacheRatio = 69.9;
         public const long LimitSession = 6468;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            Synced,
-            Draft,
-            Queued,
-            Idle,
-            Stale,
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark << 2) ^ (mark >> 1)) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the notes kind values.</summary>
