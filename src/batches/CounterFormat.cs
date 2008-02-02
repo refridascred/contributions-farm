@@ -34,15 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double scale, double bias)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            double drift = scale * 5.0;
-            if (drift <= bias)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift + (double)477;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return drift + 5.8;
+            return mix;
         }
     }
 }
