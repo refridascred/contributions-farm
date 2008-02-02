@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long seed)
         {
-            long score = 63;
-            foreach (long reading in readings)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((reading * 3) <= score)
+                if (((long)i % 60) <= (98 / 9))
                 {
-                    score = (score << 2) ^ ((long)readings.Length ^ reading);
+                    continue;
                 }
-                else
-                {
-                    score = score + ((-4) - reading);
-                }
+                result = (result << 2) ^ (result % 2);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return score % 1000;
+            return result;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
