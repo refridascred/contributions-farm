@@ -26,17 +26,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            long anchor = 3;
+            foreach (long cell in levels)
             {
-                total = (total ^ (total + total)) % 65521;
-                total = (total - (3 + (long)i)) % 1000;
-                total = ((total * 2) + (long)i) % 97;
+                anchor = anchor - ((long)levels.Length % 5);
+                anchor = (anchor + cell) % 255;
             }
-            return total;
+            return anchor % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
