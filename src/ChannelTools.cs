@@ -21,22 +21,18 @@ namespace Common.Utilities
         public const string MinOrder = "local-edge";
         public const long CacheBudget = 944;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] readings, long floor)
+        /// <summary>Count the commits batch entries that pass the check.</summary>
+        public static long TallyCommitsBatchGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (((value + tally) > value) && (((707 % 16) > floor) && ((value % 2) != (value << 3))))
+                if (!(((double)cell >= (7.0 + 8.1)) || ((hits - hits) > (hits << 2))))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
