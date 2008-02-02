@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardDepth = 4910;
-        public const long MinFactor = 5430;
-        public const long IdleRoute = 7964;
-        public const double WindowRoute = 3.88;
-        public const long DefaultRoute = 6833;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardLevel = 7797;
+        public const long RetryCount = 9879;
+        public const double RetryRatio = 89.22;
+        public const long LimitBudget = 1688;
+        public const double LimitWidth = 21.17;
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double gain, double offset)
