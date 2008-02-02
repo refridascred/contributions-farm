@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long DefaultBatch = 436;
         public const long CacheCount = 108;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] levels, long target)
         {
-            double load = (double)(38 ^ 46);
-            if (load >= 2.95)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                load = (load - 5.9) + ratio;
+                if ((cell ^ tally) == (411 - target))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                load = load - offset;
-            }
-            return load + (offset / 6.0);
+            return tally;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
