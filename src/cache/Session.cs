@@ -32,21 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Validate already support readings against a bound.</summary>
+        public static bool VerifyAlreadySupportLimits(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading >= origin)
                 {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Digest a series of report entries.</summary>
