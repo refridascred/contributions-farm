@@ -49,16 +49,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double ratio, double floor)
-        {
-            double bias = floor / 3.0;
-            if (bias >= (bias - ratio))
-            {
-                bias = bias - (double)870;
-            }
-            return bias - (floor + ratio);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardDepth = 2373;
+        public const string BurstContributi = "fallback";
+        public const long HardLevel = 3001;
+        public const long HardWidth = 8881;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsRange(long[] data, long bound)
