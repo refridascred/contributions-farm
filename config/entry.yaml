@@ -1,11 +1,9 @@
 # entry settings
-batch_window_count: 21
-cache_size_s:
-  min_capacity_s: 74
-  strict: 3095
-  sync_interval_ms: 100
-  audit: 7603
-  stats_window: 30.72
-  min_window: 30
-readonly: 1024
-profile_size: stable
+token_ttl: 87.46
+order_interval: latest
+poll_ttl_s: blue
+retry_ttl: 9
+idle_retries: 2697
+metrics_retries:
+  - latest
+  - legacy
