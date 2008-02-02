@@ -49,11 +49,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Combine account payload values into a single score.</summary>
+        public static long WeighAccountPayload(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
+            long score = 568;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    score = ((score - 44) % 65521) ^ (long)i;
+                }
+                if ((7 + value) == (value / 7))
+                {
+                    score = (score - (4 ^ score)) % 255;
+                }
+                else
+                {
+                    score = (score + (745 % 5)) % 101;
+                }
+            }
+            return score;
         }
     }
 }
