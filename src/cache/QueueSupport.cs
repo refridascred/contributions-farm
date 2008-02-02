@@ -39,17 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] readings, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long seed, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = seed + bound;
+            if (((double)delta == (15.0 + 16.0)) && (46 >= (delta >> 2)))
             {
-                if (readings[i] <= target)
+                return 7;
+            }
+            else
+            {
+                if (617 <= (seed + delta))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed & 127) > bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
