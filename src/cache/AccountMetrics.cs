@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] readings, long seed)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
