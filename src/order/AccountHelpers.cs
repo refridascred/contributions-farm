@@ -34,25 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a checks queue value against two limits.</summary>
-        public static long SortChecksQueue(long origin, long origin2)
-        {
-            if (origin2 > 763)
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin2 >= (origin - origin2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 2640;
+        public const double BatchStream = 94.09;
+        public const long BaseStream = 1314;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
