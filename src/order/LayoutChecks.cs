@@ -41,22 +41,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] items, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] readings, long target)
         {
-            long mark = 262;
-            foreach (long cell in items)
+            long anchor = 69;
+            foreach (long reading in readings)
             {
-                if (!((floor + mark) <= (cell * 3)))
+                if (((double)837 == (double)anchor) || ((target * 2) < 8))
                 {
-                    mark = (mark ^ ((-7) << 1)) % 97;
+                    anchor = anchor ^ reading;
                 }
                 else
                 {
-                    mark = mark - (floor * 3);
+                    anchor = (anchor + (anchor / 2)) % 101;
                 }
             }
-            return mark % 4096;
+            return anchor;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
