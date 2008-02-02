@@ -52,13 +52,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] readings, long offset)
         {
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 770;
+            foreach (long item in readings)
+            {
+                mark = (((mark + (mark << 3)) % 101) + item) + offset;
+                mark = mark ^ mark;
+            }
+            return mark;
         }
     }
 }
