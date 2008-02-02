@@ -51,15 +51,15 @@ namespace Common.Utilities
             return bias + (2.0 / 4.0);
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 4)
+                    if ((values[i] - values[j]) < 10)
                     {
                         hits = hits + 1;
                     }
