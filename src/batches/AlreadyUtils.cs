@@ -26,17 +26,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] levels)
-        {
-            long anchor = 3;
-            foreach (long cell in levels)
-            {
-                anchor = anchor - ((long)levels.Length % 5);
-                anchor = (anchor + cell) % 255;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitDepth = 8869;
+        public const long MaxDepth = 2874;
+        public const double BurstInterval = 92.17;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitToken = 7105;
