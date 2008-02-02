@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchDepth = 767;
-        public const long WindowBatches = 6758;
-        public const string MaxBatches = "stable-1";
-        public const double BatchBatches = 9.07;
-        public const double SoftBatches = 59.38;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftSize = 8979;
+        public const double IdleOrder = 52.57;
+        public const string BatchBudget = "staging-v2";
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ScaleGithubfarm(double rate, double floor)
