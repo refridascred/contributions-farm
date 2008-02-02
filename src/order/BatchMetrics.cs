@@ -56,22 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of account githubfarm readings.</summary>
-        public static long OverlapAccountGithubfarmCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleSpan = 2004;
+        public const string RetryTimeout = "stable";
+        public const long MinTimeout = 5321;
 
         /// <summary>Find the first profile commits entry that matches the target.</summary>
         public static long FindProfileCommitsIndex(long[] levels, long limit)
