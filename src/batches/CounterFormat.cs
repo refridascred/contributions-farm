@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Audit counter metric readings against a rule.</summary>
+        public static long TallyCounterMetricOutliers(long[] series)
         {
-            long carry = 766;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                carry = (carry << 2) ^ carry;
-                if ((datum >= (carry >> 3)) || ((-3) < (datum + carry)))
+                if ((entry - matches) <= matches)
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return carry % 4096;
+            return matches;
         }
     }
 }
