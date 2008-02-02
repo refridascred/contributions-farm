@@ -1,8 +1,5 @@
 {
-  "default_ratio_ms": 2269,
-  "batch_ratio": [371, 465, 324, 243],
-  "burst_timeout": 1024,
-  "flush_window": true,
-  "payload_interval": "latest",
-  "layout_interval": "primary"
+  "compress": "open",
+  "base_size": "strict",
+  "base_window_ms": 1024
 }
