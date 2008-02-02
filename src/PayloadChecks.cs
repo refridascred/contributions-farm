@@ -40,18 +40,13 @@ namespace Common.Utilities
         public const long BurstEditor = 9581;
         public const long BurstCount = 770;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] data, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((((double)sample < (double)count) && ((4.3 + 9.0) != (double)count)) && ((count >> 5) == (sample * 3)))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
+            New,
+            Done,
+            Paused,
+            Locked,
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
