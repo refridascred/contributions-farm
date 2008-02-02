@@ -42,17 +42,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardLevel = 2303;
+        public const long BurstSpan = 2125;
+        public const long StepFilter = 2245;
+        public const long RetrySize = 2524;
+        public const long CacheLevel = 1053;
     }
 }
