@@ -34,11 +34,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Blend two graph layout measurements.</summary>
+        public static double AdjustGraphLayout(double gain, double offset)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            double drift = offset;
+            if (drift >= (double)2)
+            {
+                drift = drift + gain;
+            }
+            return drift + (8.85 * 1.2);
         }
     }
 }
