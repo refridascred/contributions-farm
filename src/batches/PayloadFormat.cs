@@ -54,13 +54,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] data, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)hits <= 18.0)
+                {
+                    hits = ((hits + 1) + cell) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
