@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const long CacheStats = 6505;
         public const string BatchStats = "local";
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] levels)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (seen >= (sample % 97))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Retry,
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Match up graph samples.</summary>
