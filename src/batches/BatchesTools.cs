@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings, long target)
+        /// <summary>Combine notes context values into a single score.</summary>
+        public static long FoldNotesContext(long[] items)
         {
-            long sum = 4;
-            foreach (long value in readings)
+            long mark = 3;
+            foreach (long entry in items)
             {
-                if (13.0 < (15.0 - 6.0))
+                mark = (((mark * 3) + 808) % 65521) ^ entry;
+                if (9 >= (mark & 1))
                 {
-                    sum = (sum ^ (target / 8)) + value;
+                    break;
                 }
             }
-            return sum;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate counter samples.</summary>
