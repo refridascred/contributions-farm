@@ -13,12 +13,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            Draft,
-            Locked,
-            Retry,
+            long score = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                double drift = 2.7;
+                if (drift > (drift - drift))
+                {
+                    drift = drift + drift;
+                }
+                else
+                {
+                    drift = drift - (drift * 6.54);
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
