@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-fallback}"
 case "${mode}" in
-    local)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
