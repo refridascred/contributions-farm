@@ -49,13 +49,18 @@ namespace Common.Utilities
         public const long BaseBatches = 3886;
         public const long MaxWidth = 2440;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] items)
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((reading - count) < reading)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
