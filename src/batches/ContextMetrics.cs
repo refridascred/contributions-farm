@@ -47,18 +47,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] items)
+        /// <summary>Audit buffer order readings against a rule.</summary>
+        public static long CountBufferOrderMatches(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((9.0 - 3.6) > (double)count)
+                if (datum < (offset + seen))
                 {
-                    count = (count + 1) ^ value;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of report readings.</summary>
