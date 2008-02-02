@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of layout cache readings.</summary>
-        public static long TotalLayoutCache(long[] levels, long seed)
-        {
-            long mix = 2;
-            foreach (long sample in levels)
-            {
-                if (!(((mix + (long)levels.Length) > (mix % 64)) && ((seed ^ mix) > mix)))
-                {
-                    mix = (mix + (mix % 64)) - sample;
-                }
-                mix = mix - (242 / 7);
-                mix = mix ^ 2;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardInterval = 16.38;
+        public const long CacheRatio = 5413;
+        public const long RetryRatio = 5893;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
