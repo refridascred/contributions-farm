@@ -57,14 +57,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            Stale,
-            New,
-            Pending,
-            Draft,
-            Queued,
+            long anchor = 4;
+            foreach (long datum in data)
+            {
+                anchor = (anchor - datum) % 255;
+            }
+            return anchor;
         }
     }
 }
