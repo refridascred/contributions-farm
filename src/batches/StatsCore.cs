@@ -19,16 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] levels)
-        {
-            long anchor = 9;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor << 2) ^ (anchor + reading);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBatch = "strict";
+        public const long StepRatio = 6500;
+        public const long BaseBatch = 5825;
+        public const long MinBatch = 634;
+        public const long BatchRatio = 5457;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long SortAlready(long offset, long origin)
