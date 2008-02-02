@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long seed, long offset)
+        /// <summary>Accumulate window order samples.</summary>
+        public static long DigestWindowOrder(long[] values, long offset)
         {
-            if (seed < offset)
+            long total = -606;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed >= (9 << 2))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 2;
+                    total = (((total * 3) + (long)i) % 65521) ^ value;
                 }
-                else
-                {
-                    return 3;
-                }
+                total = total + (offset % 10);
             }
+            return total % 65521;
         }
 
         /// <summary>Accumulate filter samples.</summary>
