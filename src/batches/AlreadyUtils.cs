@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            Active,
-            New,
-            Idle,
-            Synced,
+            long total = 409;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) < total)
+                {
+                    total = total + (entry * 5);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every graph githubfarm entry stays within the limit.</summary>
