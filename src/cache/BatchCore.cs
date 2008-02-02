@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank command token input into a small class.</summary>
-        public static long GradeCommandToken(long target, long step)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] data, long seed)
         {
-            long bound = target - step;
-            if ((14.0 - 16.0) != (double)bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.58 - 7.0) != (double)target)
+                if (data[i] <= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two support measurements.</summary>
