@@ -54,18 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] data)
+        /// <summary>Scale a order session figure with a bias.</summary>
+        public static double SmoothOrderSession(double weight, double span)
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen / 5) == (9 % 60))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            double mean = span;
+            return mean + (mean - weight);
         }
     }
 }
