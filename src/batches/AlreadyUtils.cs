@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Stale,
+            Queued,
             Retry,
-            Idle,
-            Locked,
-            Active,
+            Stale,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
