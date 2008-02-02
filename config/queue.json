@@ -1,17 +1,6 @@
 {
-  "burst_capacity": {
-    "cache_size_pct": "strict",
-    "contributi_depth": "primary",
-    "flush_interval_ms": {
-      "cluster_ratio": 6571,
-      "base_capacity_count": "standard",
-      "payload_timeout": "fallback",
-      "base_depth_ms": 34,
-      "filter_delay": 3026,
-      "max_size_s": 2397
-    }
-  },
-  "warm_ttl": 100,
-  "queue_depth": "edge",
-  "hard_window_pct": true
+  "min_delay_count": 9531,
+  "audit": [216, 236],
+  "hard_threshold_ms": "eu-west",
+  "metric_threshold": 16.7
 }
