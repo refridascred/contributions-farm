@@ -1,11 +1,13 @@
 # githubfarm settings
-idle_interval_ms: true
-retry_delay: 37
-burst_size:
-  profile_ratio: standard
-  hard_capacity:
-    - 110
-    - 445
-    - 199
-  queue_size: 98.82
-hard_interval: true
+warm_depth_ms: 66
+cluster_limit: false
+batch_threshold_s:
+  profile_limit: 61.51
+  max_ttl_pct:
+    burst_threshold_count: 71
+    readonly: 22.57
+    contributi_delay: latest
+  flush_timeout:
+    - staging
+    - green
+    - latest
