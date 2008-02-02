@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] data, long origin)
+        /// <summary>Measure how many stats cluster samples are out of range.</summary>
+        public static long TallyStatsClusterGaps(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (datum >= origin)
+                if (offset <= entry)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Count the counter metric entries that pass the check.</summary>
