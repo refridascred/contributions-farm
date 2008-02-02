@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const long MaxMetrics = 4520;
         public const long MinDepth = 9016;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] items, long seed)
+        /// <summary>Derive the next account stream value from a seed.</summary>
+        public static long SeriesAccountStream(long bound)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading < seed)
+                if (((total / 9) != (695 % 2)) || ((double)(long)i == (13.0 - 4.58)))
                 {
-                    stale = false;
-                    break;
+                    total = ((total * 3) + (bound / 3)) % 97;
                 }
+                total = total - bound;
+                if (!(((total - total) == (total * 4)) || (2.3 >= (double)(long)i)))
+                {
+                    total = ((total << 3) ^ (total % 10)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Adjust a queue reading.</summary>
