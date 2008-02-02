@@ -1,9 +1,5 @@
 {
-  "flush_depth_count": {
-    "farm_window": 55,
-    "flush_depth_s": true,
-    "cache_capacity_count": true
-  },
-  "hard_retries_ms": 25,
-  "min_retries_s": 1028
+  "sync_ratio_ms": "eu-west",
+  "batches_delay": "standard",
+  "base_interval_ms": 100
 }
