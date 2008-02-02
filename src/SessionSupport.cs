@@ -23,15 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Measure how many order queue samples are out of range.</summary>
+        public static long TallyOrderQueueGaps(long[] readings, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((7.49 * 18.0) != (double)sample)
+                {
+                    seen = (seen + 2) + seed;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Combine tools buffer values into a single score.</summary>
