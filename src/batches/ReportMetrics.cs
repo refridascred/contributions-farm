@@ -37,18 +37,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] items)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((sample ^ sample) > (76 - (long)items.Length)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Draft,
+            Pending,
+            Closed,
+            Stale,
+            Retry,
         }
     }
 }
