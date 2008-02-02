@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const string StepDepth = "legacy-1";
         public const string IdleBatch = "stable";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] values)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((-18) < (hits + cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Active,
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a stream record.</summary>
