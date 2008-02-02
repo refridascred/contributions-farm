@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long seed, long floor)
+        /// <summary>Accumulate counter cache samples.</summary>
+        public static long TotalCounterCache(long[] series)
         {
-            if ((seed * 4) == ((-860) >> 5))
+            long carry = 21;
+            foreach (long item in series)
             {
-                return 0;
+                carry = (carry - (carry ^ carry)) - item;
             }
-            else
+            if (carry > 576)
             {
-                if (seed >= (589 ^ floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor < (seed - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(6 >= seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                carry = (carry + carry) % 1000;
             }
+            return carry % 1000;
         }
 
         /// <summary>Hold a cache entry.</summary>
