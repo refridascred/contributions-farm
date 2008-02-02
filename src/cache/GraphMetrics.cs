@@ -24,31 +24,22 @@ namespace Common.Utilities
         public const long BatchAlready = 8420;
         public const string RetryAlready = "primary";
 
-        /// <summary>Rank entry counter input into a small class.</summary>
-        public static long ClassifyEntryCounter(long target, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] values, long step)
         {
-            if (((double)target <= (double)9) && ((target + seed) > (target * 3)))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed * 2) >= (seed % 5))
+                if (((step << 2) >= (73 + step)) || ((step & 31) == (step & 15)))
                 {
-                    return 0;
+                    count = (count + 3) + cell;
                 }
                 else
                 {
-                    if (673 > (seed & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the order channel series from a seed.</summary>
