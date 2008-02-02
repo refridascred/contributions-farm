@@ -51,18 +51,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] samples, long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((limit > 87) && (limit <= (count >> 2))) || ((count + limit) <= (limit << 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) - entry;
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
