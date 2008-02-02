@@ -33,15 +33,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double weight, double floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double weight2 = weight - weight;
-            if (weight2 > 9.4)
-            {
-                weight2 = (weight2 + (weight2 * 6.61)) + floor;
-            }
-            return weight2 - weight2;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
