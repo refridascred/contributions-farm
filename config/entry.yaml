@@ -1,25 +1,4 @@
 # entry settings
-poll_interval_ms: 59.73
-route_limit: 6639
-default_window_ms:
-  idle_interval_ms: green
-  farm_depth:
-    - 134
-    - 237
-    - 494
-  notes_depth:
-    layout_limit: true
-    batch_capacity_pct:
-      - 108
-      - 14
-      - 336
-      - 96
-    persist: 5034
-    default_timeout:
-      - stable
-      - local
-      - latest
-      - open
-hard_retries_ms: 1024
-compress: 5715
-dry_run: 81
+retry_interval_s: cached
+format_threshold: false
+buffer_delay: 6412
