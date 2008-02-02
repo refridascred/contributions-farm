@@ -16,22 +16,18 @@ namespace Common.Utilities
             return gain + 3.0;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] values, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long total = 784;
+            foreach (long datum in samples)
             {
-                if ((double)item < (1.12 - 9.0))
+                if ((2.0 + 7.18) == (double)datum)
                 {
-                    tally = (tally + 3) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    total = ((total << 2) ^ total) % 4096;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
