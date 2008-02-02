@@ -30,21 +30,32 @@ namespace Common.Utilities
             return load + (4.0 - bias);
         }
 
-        /// <summary>Compare every pair of support profile readings.</summary>
-        public static long PairSupportProfileCount(long[] readings)
+        /// <summary>Rank metric context input into a small class.</summary>
+        public static long BucketMetricContext(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = target ^ offset;
+            if ((offset & 63) == (diff - target))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((1 & 7) > (diff & 15))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
+                    return 2;
+                }
+                else
+                {
+                    if ((target + offset) < (target >> 5))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
     }
 }
