@@ -71,12 +71,18 @@ namespace Common.Utilities
         public const long BurstBudget = 429;
         public const long DefaultInterval = 2257;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxWidth = 87.14;
-        public const double BurstSpan = 65.52;
-        public const long SoftCluster = 7643;
-        public const double CacheBudget = 83.69;
-        public const double BatchSpan = 14.93;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
