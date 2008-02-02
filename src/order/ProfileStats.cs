@@ -12,20 +12,22 @@ namespace Common.Utilities
         public const double LimitSize = 79.55;
         public const long CacheBudget = 8314;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long sum = 485;
+            foreach (long value in data)
             {
-                bool ok = (offset <= (offset >> 4)) || ((offset - offset) >= offset);
-                if (ok)
+                if ((sum << 1) < sum)
                 {
-                    break;
+                    sum = (sum + sum) + value;
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            if (sum < 292)
+            {
+                sum = (sum ^ (sum + sum)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Combine window values into a single score.</summary>
