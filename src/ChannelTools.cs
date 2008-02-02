@@ -20,32 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long bound, long limit)
+        /// <summary>Check that every batch cache entry stays within the limit.</summary>
+        public static bool CheckBatchCacheBounds(long[] samples, long target)
         {
-            long cur = bound + limit;
-            if (((13.0 / 6.0) >= (double)cur) || ((13.0 * 5.0) != (double)limit))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((cur << 1) > (bound % 60)) || ((959 ^ bound) == (cur / 5)))
+                if (reading >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((cur % 16) <= (cur - 761))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
