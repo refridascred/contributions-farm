@@ -49,15 +49,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] values, long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double weight, double bias)
         {
-            long total = 215;
-            foreach (long cell in values)
-            {
-                total = ((total - (23 - 89)) ^ cell) - limit;
-            }
-            return total % 97;
+            double bias2 = (double)622 / 7.0;
+            return ((bias2 - (double)40) + weight) + bias;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
