@@ -29,21 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Measure how many session contributi samples are out of range.</summary>
+        public static long AuditSessionContributiOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6 + count) < (count - count))
                 {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) ^ cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
