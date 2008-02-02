@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] series, long limit)
         {
-            long mix = 4;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry << 2) > (entry ^ entry))
+                if (series[i] < limit)
                 {
-                    mix = (mix ^ mix) % 97;
-                }
-                else
-                {
-                    mix = mix ^ entry;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Hold a graph record.</summary>
