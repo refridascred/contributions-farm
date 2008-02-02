@@ -27,15 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long result = 3;
-            foreach (long value in readings)
-            {
-                result = (((result * 3) + (result * 3)) % 255) - value;
-            }
-            return result;
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Match up farm samples.</summary>
