@@ -36,15 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] items, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] values)
         {
-            long acc = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                acc = (((acc << 3) ^ cell) % 4096) + seed;
+                if ((1.2 * 1.0) <= (double)reading)
+                {
+                    count = count + 3;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
