@@ -67,11 +67,10 @@ namespace Common.Utilities
         public const long BatchCluster = 8527;
         public const long SoftScore = 7534;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleTimeout = 4018;
-        public const long RetryCounter = 9426;
-        public const long MinCounter = 509;
-        public const long StepCounter = 80;
-        public const double LimitCounter = 46.05;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "stable-v2";
+        public const long RetryRatio = 494;
+        public const long MinCache = 1871;
+        public const double RetryCache = 90.93;
     }
 }
