@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of format report readings.</summary>
-        public static long TotalFormatReport(long[] levels, long step)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] data, long origin)
         {
-            long mix = 84;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix << 2) ^ (step ^ (long)levels.Length)) % 101;
-                if ((datum > (step + step)) && ((datum << 1) < (52 - step)))
+                if ((data[i] > origin) && ((data[i] % 5) != 0))
                 {
-                    mix = ((mix * 2) + (1 - step)) % 255;
-                }
-                if (datum < mix)
-                {
-                    mix = ((mix * 3) + (step / 6)) % 255;
-                }
-                else
-                {
-                    mix = (mix + (989 & 31)) % 97;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Project the next buffer value.</summary>
