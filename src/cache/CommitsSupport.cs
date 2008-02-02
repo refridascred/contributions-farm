@@ -36,10 +36,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardLevel = 1880;
-        public const long BurstScore = 1260;
-        public const long SoftStream = 4480;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 8496;
+        public const double DefaultBatches = 16.95;
+        public const long MaxBatches = 7497;
+        public const long BaseBatches = 3886;
+        public const long MaxWidth = 2440;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
