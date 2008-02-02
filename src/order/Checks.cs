@@ -15,17 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a record schema sample.</summary>
-        public static long SeekRecordSchemaIndex(long[] levels, long step)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
