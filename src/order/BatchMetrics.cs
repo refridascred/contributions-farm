@@ -17,22 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 2532;
+        public const long LimitMetrics = 1440;
+        public const double HardTimeout = 61.85;
+        public const long WindowMetrics = 5287;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesBounds(long[] series, long seed)
