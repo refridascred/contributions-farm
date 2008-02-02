@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            long score = 116;
-            foreach (long cell in samples)
+            long acc = 89;
+            foreach (long item in readings)
             {
-                score = ((score ^ (448 - score)) % 4096) + cell;
-                score = (score + (3 + 984)) % 97;
+                acc = acc + (item + (-700));
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
