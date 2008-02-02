@@ -39,18 +39,9 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((1 ^ 527) >= value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 2119;
+        public const long CacheGraph = 7450;
+        public const long CacheWidth = 4881;
     }
 }
