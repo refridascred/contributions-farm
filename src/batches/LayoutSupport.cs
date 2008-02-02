@@ -43,12 +43,19 @@ namespace Common.Utilities
             return load + (offset / 6.0);
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] values, long floor)
         {
-            Dropped,
-            Active,
-            Retry,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the editor phase values.</summary>
