@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 11.76;
-        public const string HardScore = "cached-v2";
-        public const long StepLevel = 420;
-        public const double LimitSize = 79.55;
-        public const long CacheBudget = 8314;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TotalMetric(long[] data)
