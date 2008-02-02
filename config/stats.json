@@ -1,22 +1,5 @@
 {
-  "cluster_retries": "staging",
-  "flush_timeout_pct": "staging",
-  "burst_delay_s": {
-    "account_ttl": 1395,
-    "compress": true,
-    "strict": false,
-    "filter_delay": "strict",
-    "idle_limit_pct": {
-      "channel_ttl": 86.46,
-      "idle_limit": "primary",
-      "audit": 48.38,
-      "max_capacity_s": 100,
-      "cache_capacity_pct": 88,
-      "idle_depth_pct": 250
-    },
-    "default_threshold_ms": 60
-  },
-  "persist": "standard",
-  "warm_threshold_ms": "legacy",
-  "enabled": false
+  "base_ratio": "standard",
+  "contributi_delay": 1.87,
+  "context_retries": 29
 }
