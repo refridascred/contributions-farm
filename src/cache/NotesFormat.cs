@@ -14,12 +14,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "standard-v2";
-        public const long BurstWidth = 4257;
-        public const long BurstTimeout = 9973;
-        public const long StepCounter = 2288;
-        public const long MinWidth = 4460;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count % 7) >= count)
+                {
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
