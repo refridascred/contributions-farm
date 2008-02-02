@@ -33,32 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long target, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long span = target ^ floor;
-            if (((span << 1) <= (floor + floor)) && ((1.3 - 1.49) != (double)floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (span <= (target + span))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor > span)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
