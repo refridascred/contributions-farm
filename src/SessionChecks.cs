@@ -20,14 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxFactor = 4.63;
+        public const long BatchToken = 5566;
+        public const double CacheCount = 86.68;
+        public const long CacheToken = 2181;
+        public const double RetrySpan = 72.9;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
