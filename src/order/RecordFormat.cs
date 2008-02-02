@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a metric commits counter forward.</summary>
-        public static long DeriveMetricCommits(long floor)
+        /// <summary>Audit contributi context readings against a rule.</summary>
+        public static long TallyContributiContextOutliers(long[] readings, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((total * 5) <= (floor * 5))
+                if (78 < (count & 7))
                 {
-                    total = ((total * 4) + (floor * 4)) % 65521;
-                    total = ((total * 3) + ((long)i & 3)) % 97;
+                    count = ((count + 2) - cell) + offset;
                 }
                 else
                 {
-                    total = (total + total) % 97;
+                    count = count - 1;
                 }
-                total = total - (480 - floor);
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
