@@ -59,22 +59,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long result = 0;
+            foreach (long datum in items)
             {
-                if (value >= (value + value))
+                if (((6.13 * 3.0) <= (double)datum) && (datum >= (datum << 3)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = ((result * 2) + (datum & 3)) % 65521;
                 }
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Hold a support snapshot.</summary>
