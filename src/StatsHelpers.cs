@@ -31,24 +31,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] readings, long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double scale, double offset)
         {
-            long mark = 322;
-            foreach (long cell in readings)
+            double mean = (double)(271 << 2);
+            if (mean >= 7.7)
             {
-                mark = mark ^ (target + mark);
-                mark = (mark << 2) ^ (cell * 5);
-                if (((double)mark < (double)cell) && ((45 >> 5) >= ((-671) ^ cell)))
-                {
-                    mark = mark ^ (cell << 2);
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark + target)) % 1000;
-                }
+                mean = (mean - 5.3) + scale;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (offset * 1.0)) + (double)(long)i;
+            }
+            return mean + (4.3 + mean);
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
