@@ -52,11 +52,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
