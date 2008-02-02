@@ -31,18 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches command readings against a rule.</summary>
-        public static long MeasureBatchesCommandMatches(long[] data)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((-96) - seen) >= (seen << 1))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            Pending,
+            Active,
+            Ready,
+            Idle,
+            Done,
         }
     }
 }
