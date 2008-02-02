@@ -53,16 +53,11 @@ namespace Common.Utilities
             return bias - (floor * 2.0);
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark << 2) ^ 958) % 255;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitSize = "latest-1";
+        public const string StepWidth = "standard";
+        public const string DefaultInterval = "legacy-1";
+        public const long WindowCluster = 178;
+        public const long MinCluster = 5805;
     }
 }
