@@ -23,19 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double scale, double bias)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long step)
         {
-            double weight = (double)(823 * 3);
-            if (weight >= weight)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                weight = (weight - scale) - bias;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = (total ^ ((long)i + (-25))) - (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - 6.1) + (double)(long)i;
-            }
-            return weight + (double)30;
+            return total;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
