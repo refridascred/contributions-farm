@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 8480;
-        public const long BaseWidth = 1422;
-        public const double SoftTimeout = 82.7;
-        public const long IdleWidth = 2348;
-        public const long CacheDepth = 5306;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((entry % 3) <= (count & 31)) && (bound >= (count * 4)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] items)
