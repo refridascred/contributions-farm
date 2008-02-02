@@ -43,21 +43,13 @@ namespace Common.Utilities
         public const string BaseNotes = "cached-edge";
         public const long BurstNotes = 7198;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
