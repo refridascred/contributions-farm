@@ -33,22 +33,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] levels, long step)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long state = 343;
-            foreach (long value in levels)
-            {
-                if ((10 % 10) >= (value ^ step))
-                {
-                    state = ((state * 2) + (94 << 2)) % 65521;
-                }
-            }
-            if (state > 588)
-            {
-                state = ((state << 3) ^ state) % 97;
-            }
-            return state;
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
