@@ -33,19 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long total = 77;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((7.0 / 4.0) == (double)sample)
                 {
-                    anchor = ((anchor + (anchor + anchor)) % 255) - (long)i2;
+                    total = (total ^ total) % 4096;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            if (total < 492)
+            {
+                total = (total + (total / 2)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Scale a order session figure with a bias.</summary>
