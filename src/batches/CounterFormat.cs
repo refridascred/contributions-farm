@@ -22,15 +22,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] readings)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            foreach (long cell in readings)
             {
-                if ((((-121) & 3) != (sample - sample)) && !((5.23 - 7.4) < (double)sample))
+                if (!((matches + 42) <= (matches + cell)))
                 {
                     matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
