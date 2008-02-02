@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 7335;
-        public const long HardFactor = 5529;
-        public const string MaxCount = "alpha-edge";
-        public const double CachePayload = 2.3;
-        public const long BatchPayload = 7849;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
