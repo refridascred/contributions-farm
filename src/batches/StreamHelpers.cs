@@ -55,18 +55,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] readings)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading / 7) < reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
