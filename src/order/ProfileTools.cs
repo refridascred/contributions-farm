@@ -21,19 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] readings, long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long mix = -80;
+            foreach (long datum in values)
             {
-                if (datum <= bound)
+                if (!((526 + 66) != (datum ^ 3)))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix * 4) + (mix + datum)) - limit;
                 }
             }
-            return ok;
+            return mix % 1000;
         }
 
         /// <summary>Describe the batch mode values.</summary>
