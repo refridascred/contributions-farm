@@ -31,22 +31,23 @@ namespace Common.Utilities
         public const long BatchBudget = 5934;
         public const long BurstBatch = 9084;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] readings)
         {
-            long acc = 521;
-            foreach (long reading in samples)
+            long total = 76;
+            foreach (long datum in readings)
             {
-                if ((reading ^ reading) < reading)
+                total = (total - (total ^ datum)) % 65521;
+                if ((double)total == (3.2 * 14.0))
                 {
-                    acc = acc + acc;
+                    total = (total + (total - total)) % 255;
                 }
             }
-            if (acc > 382)
+            if (total < 1)
             {
-                acc = acc - (acc + acc);
+                total = total ^ total;
             }
-            return acc;
+            return total % 1000;
         }
     }
 }
