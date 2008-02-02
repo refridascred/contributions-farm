@@ -38,10 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardScore = 5771;
-        public const long CacheFarm = 5941;
-        public const long MinFarm = 5785;
-        public const long StepWidth = 4318;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
