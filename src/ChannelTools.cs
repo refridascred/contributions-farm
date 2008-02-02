@@ -21,39 +21,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a batches notes value against two limits.</summary>
-        public static long RankBatchesNotes(long origin, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] values, long floor)
         {
-            long step = origin + offset;
-            if ((double)origin < 8.39)
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4 - origin) >= 618)
+                if ((double)value < 2.14)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 3) >= (step << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (99 >= (step & 255))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = (tally + 1) - floor;
                 }
             }
+            return tally;
         }
     }
 }
