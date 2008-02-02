@@ -20,22 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long offset, long target)
         {
-            long sum = 485;
-            foreach (long value in data)
+            if ((target + target) < (3 - target))
             {
-                if ((sum << 1) < sum)
+                return 6;
+            }
+            else
+            {
+                if (((double)target != (6.29 + 4.86)) && ((offset + target) == (offset >> 2)))
                 {
-                    sum = (sum + sum) + value;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (sum < 292)
-            {
-                sum = (sum ^ (sum + sum)) % 101;
-            }
-            return sum % 1000;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
