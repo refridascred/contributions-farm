@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] values)
+        /// <summary>Validate command batches readings against a bound.</summary>
+        public static bool CheckCommandBatchesBounds(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (value <= (value + value))
+                if (value >= limit)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Roll a account counter forward.</summary>
