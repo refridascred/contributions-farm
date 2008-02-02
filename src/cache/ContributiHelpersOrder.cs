@@ -29,17 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] values, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 245;
+            foreach (long entry in levels)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (85 ^ 256)) - entry;
             }
-            return -1;
+            return carry % 4096;
         }
     }
 }
