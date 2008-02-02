@@ -47,13 +47,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long target)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((target & 3) < anchor)
+                {
+                    anchor = (anchor - (anchor ^ (long)i)) % 65521;
+                    anchor = anchor ^ ((long)i * 4);
+                }
+                else
+                {
+                    anchor = (anchor - (target - anchor)) % 97;
+                }
+                anchor = (anchor - (0 + anchor)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the order metric entries that pass the check.</summary>
