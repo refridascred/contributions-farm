@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8898;
         public const long IdleTimeout = 9332;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Draft,
-            Queued,
-            Retry,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftFactor = 4573;
+        public const long DefaultBudget = 4558;
+        public const long BaseCommits = 1221;
+        public const string CacheFactor = "fallback-v2";
+        public const double DefaultSize = 27.88;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long SortChannel(long origin, long origin2)
