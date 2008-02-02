@@ -1,6 +1,6 @@
-id,state
-1,597
-2,staging
-3,739
-4,88.87
-5,828
+id,owner,rank,active,ratio
+1,92.19,legacy,649,127
+2,98.62,138,103,fallback
+3,674,35.98,blue,7
+4,895,open,204,stable
+5,local,77.03,66.95,77.41
