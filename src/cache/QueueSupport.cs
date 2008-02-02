@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next session profile value from a seed.</summary>
-        public static long DeriveSessionProfile(long origin)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor ^ 5) % 65521;
-                anchor = (anchor ^ (origin + anchor)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
