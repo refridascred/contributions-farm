@@ -40,10 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxDepth = 1009;
-        public const long BurstBatch = 5029;
-        public const long StepSize = 8456;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftLevel = 1415;
+        public const long RetryFactor = 2890;
+        public const long BaseFactor = 5719;
 
         /// <summary>Measure how many farm profile samples are out of range.</summary>
         public static long CountFarmProfileOutliers(long[] readings)
