@@ -35,28 +35,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a editor session pair into a bucket.</summary>
-        public static long GradeEditorSession(long origin, long seed)
+        /// <summary>Rank route metrics input into a small class.</summary>
+        public static long RankRouteMetrics(long seed, long limit)
         {
-            if (seed > (32 % 97))
+            long offset = seed - limit;
+            if ((limit - offset) < (limit & 255))
             {
                 return 7;
             }
             else
             {
-                if (((seed + seed) <= (origin ^ origin)) || (origin < (origin + seed)))
+                if ((limit << 3) > ((-4) / 9))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((seed * 2) <= (origin >> 5))
+                    if (limit >= (seed + offset))
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        return 6;
+                        return 4;
                     }
                 }
             }
