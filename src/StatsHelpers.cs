@@ -52,10 +52,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleInterval = 1411;
-        public const long RetryProfile = 7476;
-        public const double DefaultSpan = 88.92;
-        public const double DefaultProfile = 76.74;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
