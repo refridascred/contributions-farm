@@ -12,11 +12,39 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardCount = 7235;
-        public const double BatchWindow = 26.0;
-        public const long CacheRatio = 2718;
-        public const long MaxWindow = 3036;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long target, long bound)
+        {
+            if (bound <= target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target % 97) != (target - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target ^ target) < bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target > (1.8 - 13.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long limit, long limit2)
