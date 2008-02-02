@@ -69,32 +69,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long seed, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] items)
         {
-            long prev = seed + floor;
-            if ((seed % 100) == (9 >> 1))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor <= (prev << 2))
+                if (!(((entry >> 2) >= tally) || ((14.0 * 0.77) > (double)tally)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((0.9 - 3.78) <= (double)seed) || ((double)floor == (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
