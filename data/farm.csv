@@ -1,7 +1,7 @@
-id,count,score,weight
-1,5,30.36,6.54
-2,47,332,909
-3,554,173,edge
-4,stable,854,staging
-5,344,853,49
-6,71.49,92.06,primary
+id,active,token,score
+1,cached,15.32,503
+2,standard,legacy,54.68
+3,624,strict,199
+4,44.28,open,844
+5,strict,197,staging
+6,14,25.29,120
