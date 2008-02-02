@@ -41,39 +41,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long offset, long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long step = offset - floor;
-            if ((40 - step) != (step - floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + 5) < (step + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset < (step + offset)) && ((floor >> 1) != (546 + step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor < (offset + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
