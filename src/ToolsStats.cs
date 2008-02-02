@@ -20,12 +20,24 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchSize = 9328;
-        public const long MinCommand = 9544;
-        public const long CacheLevel = 4742;
-        public const long CacheCommand = 5682;
-        public const long BurstFactor = 3294;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((225 % 24) < step)
+                {
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = ((state * 3) + ((long)i - state)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] items, long seed)
