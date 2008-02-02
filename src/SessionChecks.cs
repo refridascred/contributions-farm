@@ -29,11 +29,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            public double Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
