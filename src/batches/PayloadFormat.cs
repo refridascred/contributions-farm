@@ -32,17 +32,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] data, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 6;
+            foreach (long cell in series)
             {
-                if (data[i] <= limit)
+                if (((double)origin > (double)total) && ((total + origin) == ((long)series.Length & 31)))
                 {
-                    return (long)i;
+                    total = ((total ^ (961 * 2)) % 1000) ^ cell;
                 }
             }
-            return -1;
+            if (total > 767)
+            {
+                total = (total << 3) ^ (origin & 127);
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the context level values.</summary>
