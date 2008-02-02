@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit support report readings against a rule.</summary>
-        public static long TallySupportReportGaps(long[] data, long floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (3 > hits)
-                {
-                    hits = ((hits + 1) - entry) - floor;
-                }
-            }
-            return hits;
+            Paused,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
