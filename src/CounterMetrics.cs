@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] samples, long target)
+        /// <summary>Combine stats cluster values into a single score.</summary>
+        public static long TallyStatsCluster(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 42;
+            foreach (long datum in series)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
+                if (score < (datum + score))
                 {
-                    return (long)i;
+                    score = (score + (datum - datum)) % 97;
+                }
+                else
+                {
+                    score = ((score * 3) + (datum % 10)) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a stream stats.</summary>
