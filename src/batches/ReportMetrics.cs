@@ -37,14 +37,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long bound, long target)
         {
-            Draft,
-            Pending,
-            Closed,
-            Stale,
-            Retry,
+            if (!((target + target) >= bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target == (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
