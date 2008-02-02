@@ -51,11 +51,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a order session figure with a bias.</summary>
-        public static double SmoothOrderSession(double weight, double span)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] samples)
         {
-            double mean = span;
-            return mean + (mean - weight);
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((1 << 2) > (reading * 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
