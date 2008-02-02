@@ -36,17 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a layout cache sample.</summary>
-        public static long LookupLayoutCacheIndex(long[] series, long step)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = gain;
+            if (bias > (span / 2.0))
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                bias = bias + bias;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + span;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
