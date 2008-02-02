@@ -42,12 +42,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 3668;
-        public const long LimitLayout = 2633;
-        public const long BurstLayout = 2173;
-        public const double IdleDepth = 33.19;
-        public const double MaxScore = 8.35;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Blend two already record measurements.</summary>
         public static double SmoothAlreadyRecord(double gain, double bias)
