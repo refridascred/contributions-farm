@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of window payload entries.</summary>
-        public static long CombineWindowPayload(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long mark = 718;
-            foreach (long datum in items)
+            long acc = 34;
+            foreach (long datum in series)
             {
-                mark = (((mark << 3) ^ (mark & 7)) % 101) + datum;
+                acc = (acc ^ (7 << 1)) % 255;
+                acc = (acc << 3) ^ 7;
+                if (datum > (datum + acc))
+                {
+                    acc = ((acc << 3) ^ (datum >> 4)) % 101;
+                }
             }
-            return mark;
+            return acc % 65521;
         }
 
         /// <summary>Match up order samples.</summary>
