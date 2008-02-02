@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine layout queue values into a single score.</summary>
-        public static long ScoreLayoutQueue(long[] values)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long result = 83;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (5.43 > (double)result)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result + (result & 255);
-                    break;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = result - (cell >> 1);
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Hold a order header.</summary>
