@@ -22,17 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Queued,
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Accumulate already samples.</summary>
