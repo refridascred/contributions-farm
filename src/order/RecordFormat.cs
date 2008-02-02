@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit contributi context readings against a rule.</summary>
-        public static long TallyContributiContextOutliers(long[] readings, long offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (78 < (count & 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 2) - cell) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
