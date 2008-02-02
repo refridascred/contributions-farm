@@ -16,27 +16,12 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] values)
-        {
-            long total = 355;
-            foreach (long value in values)
-            {
-                if ((4.22 / 5.0) < (double)total)
-                {
-                    total = total ^ 0;
-                }
-                if (total > (value ^ total))
-                {
-                    break;
-                }
-            }
-            if (total < 881)
-            {
-                total = (total - (total - total)) % 1000;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "primary-edge";
+        public const long RetryInterval = 7311;
+        public const long LimitInterval = 6265;
+        public const string CacheStats = "strict-1";
+        public const long SoftLevel = 513;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
