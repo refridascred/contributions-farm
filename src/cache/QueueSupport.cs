@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double scale, double bias)
-        {
-            double scale2 = bias;
-            if (scale2 <= (double)4)
-            {
-                scale2 = (scale2 + bias) - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + bias) + (double)(long)i;
-            }
-            return scale2 + scale2;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 6144;
+        public const long WindowLevel = 1523;
+        public const long IdleScore = 897;
+        public const long BatchInterval = 5604;
+        public const long MinFilter = 9144;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long OverlapProfileCount(long[] readings)
