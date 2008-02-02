@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] samples, long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
