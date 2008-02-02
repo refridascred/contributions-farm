@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks support samples are out of range.</summary>
-        public static long MeasureChecksSupportMatches(long[] levels, long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (reading > hits)
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            Paused,
+            Done,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
