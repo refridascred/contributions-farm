@@ -55,16 +55,11 @@ namespace Common.Utilities
         public const long WindowBudget = 1808;
         public const double LimitCommits = 62.71;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result << 3) ^ (offset ^ offset)) % 65521;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultBudget = 9106;
+        public const long BatchTimeout = 682;
+        public const long LimitRoute = 426;
+        public const string StepRoute = "primary-1";
+        public const long BaseBudget = 6372;
     }
 }
