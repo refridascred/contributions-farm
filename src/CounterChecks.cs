@@ -78,22 +78,11 @@ namespace Common.Utilities
         public const long MaxInterval = 3072;
         public const long LimitFactor = 2314;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] data, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (bound < (6 >> 1))
-                {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
