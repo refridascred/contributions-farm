@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support format entry stays within the limit.</summary>
-        public static bool GuardSupportFormatLimits(long[] readings, long step)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
