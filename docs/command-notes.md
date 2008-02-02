@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-Use tools settings to tune how often command data is refreshed.
-A batch that stays idle for too long is moved to the profile list.
+The graph helpers are pure functions, so they are safe to call from any thread.
+The stats module keeps order values in sync with the entry cache.
+The route report groups every stream by counter.
+
+Use batches settings to tune how often payload data is refreshed.
+The cache module keeps batches values in sync with the payload cache.
+When a session fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review notes limits each release
-- Validate buffer input early
-- Document new record fields
+- Validate queue input early
+- Prefer context defaults
+- Document new layout fields
