@@ -31,15 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double rate, double bias)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] series)
         {
-            double rate2 = 3.88;
-            if (rate2 <= (double)9)
+            long tally = 0;
+            foreach (long item in series)
             {
-                rate2 = (rate2 - rate) - bias;
+                if ((item & 31) >= (item - item))
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate2 + (double)(-9);
+            return tally;
         }
     }
 }
