@@ -58,12 +58,13 @@ namespace Common.Utilities
         public const long MinChecks = 6851;
         public const long BaseChecks = 8011;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
     }
 }
