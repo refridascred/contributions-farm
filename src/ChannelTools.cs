@@ -29,21 +29,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Classify a layout record pair into a bucket.</summary>
+        public static long BucketLayoutRecord(long floor, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((7.25 / 7.0) >= (double)floor) || ((limit >> 4) <= (floor ^ limit)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (23 < (floor & 255))
                 {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
