@@ -20,11 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            Dropped,
+            Ready,
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
