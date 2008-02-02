@@ -50,23 +50,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] readings, long target)
-        {
-            long anchor = 69;
-            foreach (long reading in readings)
-            {
-                if (((double)837 == (double)anchor) || ((target * 2) < 8))
-                {
-                    anchor = anchor ^ reading;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor / 2)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheCount = 6126;
+        public const long BurstTimeout = 2843;
+        public const string HardWidth = "latest-1";
+        public const long DefaultFactor = 8802;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] samples, long offset)
