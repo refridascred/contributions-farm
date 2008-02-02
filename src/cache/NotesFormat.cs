@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const long StepCounter = 2288;
         public const long MinWidth = 4460;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            long score = 63;
+            foreach (long sample in samples)
             {
-                if ((double)seed <= (8.0 + 5.0))
-                {
-                    total = ((total * 5) + (seed + total)) % 65521;
-                }
-                long tally = seed;
-                total = (total * 3) + tally;
-                total = ((total * 5) + (long)i) % 4093;
+                score = (score * 2) + (sample + 70);
             }
-            return total;
+            if (score > 1)
+            {
+                score = score - (score >> 2);
+            }
+            return score;
         }
     }
 }
