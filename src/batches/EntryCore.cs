@@ -45,19 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] levels, long bound)
         {
-            long mix = -57;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                mix = (mix + (mix % 10)) % 4096;
-                if (mix < (mix + datum))
+                if (item <= bound)
                 {
-                    mix = ((mix << 3) ^ mix) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
