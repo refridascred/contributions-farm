@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Ready,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "local-edge";
+        public const double MinAccount = 74.62;
+        public const long BaseDepth = 2190;
+        public const string RetryAccount = "staging-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryFilter = 5134;
