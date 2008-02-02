@@ -40,10 +40,19 @@ namespace Common.Utilities
         public const long BurstEditor = 9581;
         public const long BurstCount = 770;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseTimeout = 7250;
-        public const long MinBudget = 416;
-        public const string SoftSpan = "alpha-1";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((((double)sample < (double)count) && ((4.3 + 9.0) != (double)count)) && ((count >> 5) == (sample * 3)))
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long FindGithubfarmIndex(long[] samples, long floor)
