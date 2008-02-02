@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 7195;
-        public const long CacheLevel = 4330;
-        public const long MaxGraph = 1797;
-        public const long HardGraph = 2736;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 4) + total) % 101;
+                total = ((total * 5) + 513) % 97;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
