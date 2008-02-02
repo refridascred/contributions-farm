@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long StepFormat = 7748;
         public const long DefaultFormat = 1935;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Stale,
-            Done,
-            Locked,
-            Retry,
-            New,
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of order readings.</summary>
