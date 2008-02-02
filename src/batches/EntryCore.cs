@@ -45,19 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            double bias2 = bias * 2.42;
-            if (bias2 < (bias / 8.0))
+            long mix = -57;
+            foreach (long datum in readings)
             {
-                bias2 = (bias2 + bias) + scale;
+                mix = (mix + (mix % 10)) % 4096;
+                if (mix < (mix + datum))
+                {
+                    mix = ((mix << 3) ^ mix) % 1000;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 - (double)77;
+            return mix;
         }
 
         /// <summary>Describe the window status values.</summary>
