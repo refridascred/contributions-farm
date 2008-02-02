@@ -37,32 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long target, long target2)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long delta = target + target2;
-            if ((delta ^ target) != (target / 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target2 << 1) == (target2 % 12))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target + delta) > (target * 5)) || ((delta >> 2) >= ((-4) & 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Pending,
+            Synced,
+            Active,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
