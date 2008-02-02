@@ -49,14 +49,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
             Stale,
-            Closed,
-            Ready,
-            Done,
-            Dropped,
+            New,
+            Pending,
+            Draft,
+            Queued,
         }
     }
 }
