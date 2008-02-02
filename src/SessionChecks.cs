@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxFactor = 4.63;
-        public const long BatchToken = 5566;
-        public const double CacheCount = 86.68;
-        public const long CacheToken = 2181;
-        public const double RetrySpan = 72.9;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
