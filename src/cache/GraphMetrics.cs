@@ -41,21 +41,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of token farm readings.</summary>
-        public static long CompareTokenFarmCount(long[] data)
+        /// <summary>Grade a editor already value against two limits.</summary>
+        public static long BucketEditorAlready(long offset, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = offset ^ bound;
+            if ((bound & 127) <= (lane + 9))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((6.8 * 6.07) < (double)offset))
                 {
-                    if ((data[i] ^ data[j]) == 4)
+                    return 8;
+                }
+                else
+                {
+                    if (((double)lane > (1.6 / 5.0)) || ((9 & 15) < bound))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset - 666) != (offset << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
