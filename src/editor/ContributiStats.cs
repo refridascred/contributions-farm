@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long HardRecord = 5783;
         public const string CacheRecord = "primary-edge";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 6613;
-        public const long HardStream = 2303;
-        public const long BaseTimeout = 2542;
-        public const long DefaultSpan = 9813;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long PairChannelCount(long[] data)
