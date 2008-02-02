@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items, long limit)
-        {
-            long mark = 60;
-            foreach (long reading in items)
-            {
-                if (!(reading > (reading - mark)))
-                {
-                    mark = (mark + (60 * 4)) % 255;
-                }
-                if ((1.5 <= (double)reading) && (limit < (mark * 2)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxEditor = "legacy-edge";
+        public const string CacheEditor = "primary-edge";
+        public const long BatchFactor = 5426;
+        public const double DefaultEditor = 70.24;
+        public const long BurstFactor = 9672;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
