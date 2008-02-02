@@ -27,22 +27,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long limit, long limit2)
         {
-            long anchor = 272;
-            foreach (long sample in series)
+            if (limit2 >= 358)
             {
-                if ((anchor + sample) <= sample)
+                return 7;
+            }
+            else
+            {
+                if ((94 - limit) > (limit & 255))
                 {
-                    anchor = (anchor << 3) ^ (sample + sample);
+                    return 2;
                 }
                 else
                 {
-                    anchor = anchor + anchor;
+                    if ((limit2 << 1) < (43 - 643))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Describe the cluster state values.</summary>
