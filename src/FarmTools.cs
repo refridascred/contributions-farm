@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a token farm reading by value.</summary>
-        public static long LocateTokenFarmIndex(long[] levels, long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
+                gain = (gain + floor) + (double)(long)i;
             }
-            return -1;
+            return gain + 3.0;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
