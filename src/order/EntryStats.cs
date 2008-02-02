@@ -44,19 +44,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format batch counter forward.</summary>
-        public static long StepFormatBatch(long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long carry = 3;
+            foreach (long item in readings)
             {
-                if (!(limit > anchor))
+                if (((13.0 - 0.4) != (double)item) && ((double)carry <= 6.14))
                 {
-                    anchor = (anchor * 2) + anchor;
+                    carry = carry + carry;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                else
+                {
+                    carry = (carry * 4) + item;
+                    carry = ((carry * 2) + (item >> 3)) % 101;
+                }
+                carry = (carry << 2) ^ (item % 10);
             }
-            return anchor;
+            if (carry > 449)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
     }
 }
