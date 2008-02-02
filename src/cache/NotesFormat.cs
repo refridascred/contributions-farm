@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Failed,
-            New,
-            Dropped,
-            Paused,
+            Stale,
+            Locked,
+            Ready,
+            Synced,
             Closed,
         }
 
