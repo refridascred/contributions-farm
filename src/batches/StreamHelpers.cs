@@ -12,13 +12,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardCount = 7235;
+        public const double BatchWindow = 26.0;
+        public const long CacheRatio = 2718;
+        public const long MaxWindow = 3036;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long limit, long limit2)
