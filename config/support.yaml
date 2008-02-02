@@ -1,22 +1,6 @@
 # support settings
-record_ratio:
-  verbose:
-    - 143
-    - 141
-  idle_depth_ms:
-    audit:
-      - cached
-      - strict
-    batch_timeout_count: 47.38
-    default_threshold_ms: blue
-    max_limit_pct: 30
-    support_size: true
-  strict: 9546
-  payload_ratio: 37.11
-  warm_ratio_pct: 88
-  base_ttl_pct: local
-session_capacity: 4258
-sync_timeout: 53
-hard_interval: blue
-default_threshold: 74
-route_depth: 3.01
+enabled: 50
+poll_size: standard
+burst_limit: strict
+format_retries: open
+stats_size: true
