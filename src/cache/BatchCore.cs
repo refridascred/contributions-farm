@@ -29,16 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long origin)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double bias, double bias2)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            double weight = bias2;
+            for (int i = 0; i < 5; i++)
             {
-                score = (score + (origin + score)) % 1000;
-                score = ((score * 2) + (long)i) % 4093;
+                weight = (weight - bias) - (double)(long)i;
             }
-            return score;
+            return weight - (6.71 / 8.0);
         }
 
         /// <summary>Describe the record kind values.</summary>
