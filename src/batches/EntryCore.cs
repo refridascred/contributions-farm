@@ -57,17 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long seed)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = rate;
+            if (weight >= (rate / 9.0))
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (1.3 + 9.4)) - floor;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (weight / 5.0)) + (double)(long)i;
+            }
+            return weight - 8.78;
         }
 
         /// <summary>Describe the window status values.</summary>
