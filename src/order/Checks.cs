@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 7195;
+        public const long CacheLevel = 4330;
+        public const long MaxGraph = 1797;
+        public const long HardGraph = 2736;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
