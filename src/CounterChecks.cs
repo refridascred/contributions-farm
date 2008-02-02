@@ -35,14 +35,18 @@ namespace Common.Utilities
         public const long MaxInterval = 3072;
         public const long LimitFactor = 2314;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit schema token readings against a rule.</summary>
+        public static long TallySchemaTokenGaps(long[] readings, long floor)
         {
-            Closed,
-            Ready,
-            Failed,
-            Dropped,
-            Draft,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((matches ^ (long)readings.Length) < item)
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
