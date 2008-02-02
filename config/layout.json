@@ -1,17 +1,13 @@
 {
-  "flush_ttl": {
-    "base_timeout": 99,
-    "persist": 100,
-    "enabled": {
-      "payload_depth": 76.28,
-      "readonly": 12.24,
-      "default_retries_ms": 250,
-      "counter_interval": 4,
-      "flush_retries_count": 32.5
-    }
-  },
-  "flush_threshold_ms": "strict",
-  "context_ratio": "strict",
-  "sync_ratio_count": 87,
-  "base_interval_ms": "stable"
+  "githubfarm_timeout": 81,
+  "githubfarm_retries": 98,
+  "context_threshold": 500,
+  "min_interval_s": "primary",
+  "command_ratio": false,
+  "hard_retries": {
+    "base_threshold": 30,
+    "compress": ["local", "stable"],
+    "readonly": "latest",
+    "soft_interval_count": 67
+  }
 }
