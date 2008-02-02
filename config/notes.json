@@ -1,5 +1,5 @@
 {
-  "flush_window_s": 12.56,
-  "audit": true,
-  "checks_ratio": "standard"
+  "default_timeout_ms": 4796,
+  "default_threshold_count": 5283,
+  "burst_ttl_s": 9525
 }
