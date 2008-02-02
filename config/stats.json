@@ -1,6 +1,5 @@
 {
-  "sync_timeout": "eu-west",
-  "schema_delay": 25.94,
-  "idle_threshold_pct": 66.93,
-  "schema_ttl": true
+  "cache_retries_count": 3720,
+  "default_ttl": false,
+  "hard_ratio": false
 }
