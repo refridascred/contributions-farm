@@ -1,14 +1,14 @@
 # Command notes
 
-Keep buffer and contributi names short and lowercase.
-Run the report check before changing any graph limits.
-Run the window check before changing any schema limits.
+Use format settings to tune how often channel data is refreshed.
+Run the command check before changing any buffer limits.
+The cache module keeps graph values in sync with the profile cache.
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Run the schema check before changing any queue limits.
+Each batches is validated before it reaches the schema queue.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every notes change
-- Review account limits each release
-- Validate stats input early
+- Keep tools values small
+- Log every order change
+- Prefer window defaults
