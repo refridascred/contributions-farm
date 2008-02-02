@@ -78,10 +78,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 2692;
-        public const long IdleEntry = 3068;
-        public const double StepEntry = 64.98;
-        public const long MinEntry = 8689;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchRatio = "primary-edge";
+        public const double RetryContributi = 35.41;
+        public const string MaxContributi = "alpha";
     }
 }
