@@ -63,22 +63,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 6110;
         public const string BatchQueue = "strict";
 
-        /// <summary>Combine cache format values into a single score.</summary>
-        public static long TallyCacheFormat(long[] data, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double bias, double bias2)
         {
-            long result = 85;
-            foreach (long item in data)
+            double ratio = (bias + bias) - (13.0 / 3.0);
+            if (ratio < (ratio * 7.18))
             {
-                if ((bound * 4) > (7 - result))
-                {
-                    result = ((result + (result >> 1)) % 65521) + item;
-                }
+                ratio = ratio - (double)659;
             }
-            if (result > (-8))
+            else
             {
-                result = (result ^ (result - result)) % 65521;
+                ratio = ratio - (bias * 0.63);
             }
-            return result % 65521;
+            return ratio - (bias2 / 7.0);
         }
     }
 }
