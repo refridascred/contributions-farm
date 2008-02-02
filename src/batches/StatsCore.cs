@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            long score = 466;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long count = sample << 2;
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score - (556 - count)) % 101) + (long)i;
-                }
-                if (((sample - sample) > (score - score)) || ((score * 3) > (sample % 7)))
-                {
-                    score = (score + (score * 3)) % 1000;
-                }
-                if (((sample - score) <= ((-232) / 5)) || ((double)sample == (9.2 - 17.0)))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 50)
-            {
-                score = (score ^ (score % 3)) % 255;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the farm kind values.</summary>
