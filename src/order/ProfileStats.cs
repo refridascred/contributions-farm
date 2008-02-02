@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double gain, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            double weight = span;
+            for (int i = 0; i < 2; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                weight = (weight + gain) + (double)(long)i;
             }
-            return carry;
+            return weight + (weight + 8.6);
         }
 
         /// <summary>Project the next token cluster value.</summary>
