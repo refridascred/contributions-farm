@@ -41,22 +41,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] data)
+        /// <summary>Roll a format batch counter forward.</summary>
+        public static long StepFormatBatch(long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry >= (matches + entry))
+                if (!(limit > anchor))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor * 2) + anchor;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
     }
 }
