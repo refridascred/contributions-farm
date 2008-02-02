@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] readings, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (readings[i] <= step)
+                if ((double)matches < (4.14 + 12.0))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + reading) - limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
