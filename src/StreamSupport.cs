@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Roll a tools context counter forward.</summary>
+        public static long DeriveToolsContext(long bound)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-            public double Owner { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of command readings.</summary>
