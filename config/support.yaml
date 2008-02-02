@@ -1,6 +1,5 @@
 # support settings
-enabled: 50
-poll_size: standard
-burst_limit: strict
-format_retries: open
-stats_size: true
+verbose: 9932
+idle_timeout: standard
+readonly: 8.67
+idle_threshold_ms: green
