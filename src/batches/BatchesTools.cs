@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 84.85;
-        public const double SoftChecks = 19.66;
-        public const long RetryChecks = 8218;
-        public const double IdleLevel = 77.33;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((matches << 3) != (matches % 10))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
