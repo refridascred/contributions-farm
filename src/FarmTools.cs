@@ -45,15 +45,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] items, long origin)
         {
-            long acc = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc << 2) ^ (cell >> 4)) % 4096;
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
