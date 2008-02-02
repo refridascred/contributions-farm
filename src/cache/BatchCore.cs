@@ -21,21 +21,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (data[i] <= seed)
                 {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the record kind values.</summary>
