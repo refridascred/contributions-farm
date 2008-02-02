@@ -12,39 +12,22 @@ namespace Common.Utilities
         public const string StepSession = "standard-edge";
         public const long LimitInterval = 4324;
 
-        /// <summary>Grade a already filter value against two limits.</summary>
-        public static long ClassifyAlreadyFilter(long origin, long target)
+        /// <summary>Accumulate entry buffer samples.</summary>
+        public static long ScoreEntryBuffer(long[] data)
         {
-            long gap = origin - target;
-            if (((2.3 + 7.0) == (double)origin) || ((origin & 255) <= origin))
+            long state = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((56 >= target) || (gap >= (origin - gap)))
+                if (((-80) >> 4) >= (value + state))
                 {
-                    return 6;
+                    state = (state ^ (value + value)) % 4096;
                 }
-                else
+                if (state > (value - state))
                 {
-                    if ((8.0 / 2.0) != (double)gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((gap + gap) < origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
