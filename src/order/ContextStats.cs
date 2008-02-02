@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long origin, long floor)
         {
-            Synced,
-            Retry,
-            Idle,
-            Failed,
-            Draft,
+            if ((origin + 52) <= origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)floor < (8.3 - 0.6)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin - origin) == (origin + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin != (5.9 / 2.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up order samples.</summary>
