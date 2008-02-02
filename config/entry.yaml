@@ -1,15 +1,11 @@
 # entry settings
-flush_interval: 1024
-default_threshold_pct: 71.66
-dry_run: 60
-poll_retries_pct:
-  burst_retries: 250
-  warm_timeout_ms: true
-  cache_timeout_pct: edge
-  max_ttl: eu-west
-  warm_limit_s:
-    - 422
-    - 171
-    - 452
-    - 367
-  contributi_interval: 250
+batch_window_count: 21
+cache_size_s:
+  min_capacity_s: 74
+  strict: 3095
+  sync_interval_ms: 100
+  audit: 7603
+  stats_window: 30.72
+  min_window: 30
+readonly: 1024
+profile_size: stable
