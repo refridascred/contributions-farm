@@ -20,16 +20,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long acc = 1;
-            foreach (long sample in samples)
-            {
-                acc = acc + (sample ^ acc);
-                acc = (acc * 3) + (acc / 6);
-            }
-            return acc % 65521;
+            Queued,
+            Ready,
+            Active,
+            Done,
+            Synced,
         }
     }
 }
