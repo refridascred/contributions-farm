@@ -1,11 +1,13 @@
 {
-  "verbose": "staging",
-  "readonly": 8111,
-  "warm_capacity_s": {
-    "soft_size": "open",
-    "readonly": 71,
-    "idle_ttl_count": 8886
+  "sync_retries_ms": [41, 180, 442],
+  "batch_window_s": 79,
+  "strict": {
+    "counter_ratio": 250,
+    "enabled": ["eu-west", "edge", "open"],
+    "batch_threshold_ms": "green",
+    "idle_window_count": true
   },
-  "persist": [290, 161, 275, 387],
-  "strict": 1024
+  "batch_size_s": "green",
+  "cluster_limit": 3993,
+  "base_retries": "edge"
 }
