@@ -50,11 +50,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheCount = 6126;
-        public const long BurstTimeout = 2843;
-        public const string HardWidth = "latest-1";
-        public const long DefaultFactor = 8802;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double offset)
+        {
+            double scale = offset * 6.0;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (offset / 5.0)) + (double)(long)i;
+            }
+            return scale + weight;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] samples, long offset)
