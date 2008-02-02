@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first report stream entry that matches the target.</summary>
-        public static long LookupReportStreamIndex(long[] data, long offset)
+        /// <summary>Find the first context format entry that matches the target.</summary>
+        public static long FindContextFormatIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                if ((readings[i] > floor) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
