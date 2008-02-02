@@ -40,18 +40,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] series, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)seen >= (4.1 + 7.2))
-                {
-                    seen = ((seen + 2) ^ cell) + target;
-                }
-            }
-            return seen;
+            Stale,
+            New,
+            Failed,
+            Retry,
+            Locked,
         }
     }
 }
