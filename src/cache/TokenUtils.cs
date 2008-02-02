@@ -26,18 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] samples, long origin)
-        {
-            long state = 840;
-            foreach (long entry in samples)
-            {
-                if (state >= ((-1) + entry))
-                {
-                    state = ((state << 2) ^ (origin / 9)) % 101;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 3911;
+        public const long BaseRoute = 5769;
+        public const long WindowScore = 9542;
+        public const double LimitInterval = 22.31;
+        public const long DefaultRoute = 3028;
     }
 }
