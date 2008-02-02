@@ -52,10 +52,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardBudget = 19.96;
-        public const long LimitWindow = 1903;
-        public const long SoftSize = 5488;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            New,
+            Pending,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
