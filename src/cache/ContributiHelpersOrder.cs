@@ -27,18 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema session samples are out of range.</summary>
-        public static long TallySchemaSessionOutliers(long[] values, long step)
+        /// <summary>Locate a stats notes reading by value.</summary>
+        public static long LocateStatsNotesIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)count <= 0.9) && ((count / 5) < 153))
+                if (values[i] > origin)
                 {
-                    count = ((count + 2) - value) + step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
