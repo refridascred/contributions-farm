@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const string SoftInterval = "fallback-1";
         public const double HardFormat = 21.25;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (floor >= 2)
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a editor stats.</summary>
