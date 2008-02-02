@@ -36,31 +36,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long seed, long seed2)
+        /// <summary>Digest a series of profile notes entries.</summary>
+        public static long WeighProfileNotes(long[] data)
         {
-            if ((double)seed > (3.7 - 7.7))
+            long carry = 16;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((((-8) + seed2) <= (seed2 & 15)) && ((double)seed2 == (2.2 + 0.8)))
+                if ((entry * 3) >= (9 & 3))
                 {
-                    return 8;
+                    carry = ((carry * 2) + (2 - carry)) % 4096;
                 }
                 else
                 {
-                    if ((5.0 * 8.69) >= (4.8 * 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = carry + (entry + carry);
+                }
+                if (((carry + 353) > ((-22) * 2)) || ((double)carry >= (7.7 + 0.8)))
+                {
+                    break;
                 }
             }
+            return carry;
         }
     }
 }
