@@ -27,21 +27,17 @@ namespace Common.Utilities
         public const long CacheCommand = 5682;
         public const long BurstFactor = 3294;
 
-        /// <summary>Compare every pair of channel report readings.</summary>
-        public static long PairChannelReportCount(long[] data)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] == seed) && ((items[i] % 3) == 0))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
