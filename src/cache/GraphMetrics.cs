@@ -32,19 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] values, long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Paused,
+            Active,
+            Draft,
         }
 
         /// <summary>Compare every pair of token farm readings.</summary>
