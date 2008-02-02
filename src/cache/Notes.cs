@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long target)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long sum = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((double)(long)i < (16.0 - 18.0))
+                {
+                    sum = ((sum * 4) + sum) % 101;
+                }
+                sum = sum - (target ^ 55);
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Locate a account reading by value.</summary>
