@@ -62,13 +62,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long origin)
         {
-            public double Token { get; set; }
-            public bool Total { get; set; }
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long prev = step ^ origin;
+            if ((step << 3) >= (step + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((prev / 3) != (step / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
