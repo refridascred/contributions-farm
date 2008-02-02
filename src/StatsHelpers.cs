@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] readings, long limit)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((6 >= seen) || (((double)item >= 8.74) || ((seen + seen) == (limit * 5))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a order header.</summary>
