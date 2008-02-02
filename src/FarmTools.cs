@@ -36,17 +36,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] values, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 9;
+            foreach (long cell in items)
             {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ (cell >> 4)) % 4096;
             }
-            return -1;
+            return acc;
         }
     }
 }
