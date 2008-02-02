@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] samples)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (value < (seen + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate already support samples.</summary>
