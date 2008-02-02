@@ -18,14 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long origin, long seed)
         {
-            Stale,
-            Closed,
-            Retry,
-            Pending,
-            Locked,
+            if ((double)origin < 5.5)
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed < origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate schema samples.</summary>
