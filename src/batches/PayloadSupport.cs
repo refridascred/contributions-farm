@@ -20,15 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Draft,
+            Stale,
+            Queued,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
