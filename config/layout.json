@@ -1,14 +1,8 @@
 {
-  "persist": 100,
-  "flush_ttl_ms": false,
-  "readonly": {
-    "format_retries": "edge",
-    "idle_capacity": true,
-    "cache_delay": false,
-    "metrics_limit": false,
-    "enabled": 44,
-    "account_timeout": 4503
-  },
-  "session_depth": "fallback",
-  "max_delay_ms": [379, 128, 32]
+  "max_limit_s": "standard",
+  "already_ttl": "cached",
+  "strict": 71.04,
+  "default_interval_s": 15.37,
+  "compress": false,
+  "cache_interval_pct": true
 }
