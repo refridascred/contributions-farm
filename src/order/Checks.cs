@@ -5,33 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] data, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (!(seed > (seed - acc)))
+                if (entry > seed)
                 {
-                    acc = acc - ((long)i & 1);
-                    acc = acc ^ (seed + seed);
+                    found = false;
+                    break;
                 }
-                if (!((double)acc <= 9.09))
-                {
-                    acc = (acc + (acc & 63)) % 101;
-                }
-                else
-                {
-                    acc = (acc * 4) + seed;
-                    acc = acc ^ (acc / 3);
-                }
-                if ((19.0 + 5.6) <= (double)(long)i)
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
