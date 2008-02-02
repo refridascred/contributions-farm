@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] samples)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((count / 4) <= (sample * 5))
+                if (datum <= offset)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Digest a series of profile notes entries.</summary>
