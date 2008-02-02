@@ -27,22 +27,37 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout record pair into a bucket.</summary>
-        public static long BucketLayoutRecord(long floor, long limit)
+        /// <summary>Grade a batches notes value against two limits.</summary>
+        public static long RankBatchesNotes(long origin, long offset)
         {
-            if (((7.25 / 7.0) >= (double)floor) || ((limit >> 4) <= (floor ^ limit)))
+            long step = origin + offset;
+            if ((double)origin < 8.39)
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (23 < (floor & 255))
+                if ((4 - origin) >= 618)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    return 7;
+                    if ((step / 3) >= (step << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (99 >= (step & 255))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
