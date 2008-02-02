@@ -13,15 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double scale, double floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] levels, long target)
         {
-            double scale2 = scale - floor;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = (scale2 + (9.0 + floor)) + (double)(long)i;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 + scale2;
+            return -1;
         }
 
         /// <summary>Hold a profile options.</summary>
