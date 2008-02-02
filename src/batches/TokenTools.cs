@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Done,
-            Active,
-            Synced,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchDepth = 767;
+        public const long WindowBatches = 6758;
+        public const string MaxBatches = "stable-1";
+        public const double BatchBatches = 9.07;
+        public const double SoftBatches = 59.38;
 
         /// <summary>Iterate the channel profile series from a seed.</summary>
         public static long StepChannelProfile(long offset)
