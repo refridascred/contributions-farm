@@ -34,24 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
-            {
-                long cur = mix - (target - mix);
-                if (!((mix + cur) < target))
-                {
-                    cur = (cur + (17 >> 5)) % 255;
-                }
-                else
-                {
-                    cur = cur ^ (long)i;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a order value against two limits.</summary>
