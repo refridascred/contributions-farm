@@ -18,11 +18,12 @@ namespace Common.Utilities
         public const long IdleFilter = 7015;
         public const long DefaultFilter = 3613;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
