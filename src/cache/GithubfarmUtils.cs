@@ -23,14 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Synced,
-            Stale,
-            Retry,
+            New,
             Ready,
-            Paused,
+            Idle,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
