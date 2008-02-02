@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            Draft,
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
