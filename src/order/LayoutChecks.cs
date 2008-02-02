@@ -76,14 +76,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Accumulate stats session samples.</summary>
+        public static long DigestStatsSession(long[] series)
         {
-            Active,
-            Queued,
-            Dropped,
-            Synced,
-            Draft,
+            long mark = 613;
+            foreach (long item in series)
+            {
+                if (item >= (item & 63))
+                {
+                    mark = mark - (mark << 3);
+                }
+            }
+            return mark % 97;
         }
     }
 }
