@@ -31,12 +31,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            Paused,
+            Synced,
+            Active,
+            New,
+            Closed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
