@@ -28,38 +28,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long offset, long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            if ((1.59 + 9.5) == (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset > (offset - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset - 309) >= (offset % 8)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((((-36) >> 5) == (192 + offset)) && ((6.83 - 8.7) <= (double)offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Done,
+            Draft,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
