@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Retry,
-            Stale,
-            Ready,
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of metric entries.</summary>
