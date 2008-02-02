@@ -23,13 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] levels)
         {
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((tally <= (57 % 8)) || ((tally - tally) >= ((long)levels.Length + tally))) || !((datum + 55) > tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
