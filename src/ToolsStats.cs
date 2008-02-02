@@ -21,14 +21,21 @@ namespace Common.Utilities
             return load + (gain / 3.0);
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Compare every pair of farm token readings.</summary>
+        public static long OverlapFarmTokenCount(long[] series)
         {
-            Paused,
-            Failed,
-            Stale,
-            Active,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metrics stats.</summary>
