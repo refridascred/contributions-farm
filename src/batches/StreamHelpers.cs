@@ -48,11 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double bias, double offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] samples, long seed)
         {
-            double ratio = offset;
-            return (ratio + ratio) + bias;
+            long mix = 30;
+            foreach (long cell in samples)
+            {
+                mix = ((((mix * 5) + mix) % 4096) + cell) + seed;
+            }
+            return mix;
         }
 
         /// <summary>Describe the window class values.</summary>
