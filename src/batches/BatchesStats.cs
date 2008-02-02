@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double gain, double bias)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] samples, long step)
         {
-            double ratio = (gain - gain) - (bias + gain);
-            if (ratio > (double)580)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                ratio = ratio + 12.0;
+                if (tally >= (step ^ reading))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return ratio + 4.83;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
