@@ -54,31 +54,19 @@ namespace Common.Utilities
             return bias2 + (bias / 6.0);
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long floor, long seed)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double weight, double floor)
         {
-            if ((7.3 / 7.0) >= (double)floor)
+            double ratio = floor + weight;
+            if (ratio > (floor - 8.3))
             {
-                return 6;
+                ratio = ratio + floor;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)floor > (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed & 255) > seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                ratio = (ratio + (double)96) + (double)(long)i;
             }
+            return ratio - (ratio / 4.0);
         }
     }
 }
