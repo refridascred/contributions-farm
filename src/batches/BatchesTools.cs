@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine notes context values into a single score.</summary>
-        public static long FoldNotesContext(long[] items)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long mark = 3;
-            foreach (long entry in items)
-            {
-                mark = (((mark * 3) + 808) % 65521) ^ entry;
-                if (9 >= (mark & 1))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
