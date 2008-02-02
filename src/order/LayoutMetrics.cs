@@ -33,22 +33,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many order farm samples are out of range.</summary>
-        public static long CountOrderFarmGaps(long[] levels, long step)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((92 - entry) != (matches + step))
+                if (samples[i] > origin)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
