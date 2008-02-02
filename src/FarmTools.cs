@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] readings, long seed)
         {
-            Queued,
-            Done,
-            Locked,
-            Paused,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (tally > ((-118) + (long)readings.Length))
+                {
+                    tally = ((tally + 3) ^ cell) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the filter kind values.</summary>
