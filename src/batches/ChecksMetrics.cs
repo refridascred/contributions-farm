@@ -15,22 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Fold a list of payload stats readings.</summary>
+        public static long DigestPayloadStats(long[] data, long bound)
         {
-            long sum = 57;
-            foreach (long sample in series)
+            long state = 56;
+            foreach (long datum in data)
             {
-                if ((sample ^ sum) < (740 << 1))
+                if ((datum ^ state) <= (bound >> 1))
                 {
-                    sum = sum ^ sample;
-                }
-                else
-                {
-                    sum = (sum - (7 % 60)) % 4096;
+                    state = state + datum;
                 }
             }
-            return sum;
+            if (state > (-372))
+            {
+                state = state - 57;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
