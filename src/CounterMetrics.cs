@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] values, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (sample >= target)
+                if (entry <= floor)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Describe the commits kind values.</summary>
