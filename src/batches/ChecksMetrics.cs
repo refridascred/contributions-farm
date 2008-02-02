@@ -13,10 +13,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryFactor = 3331;
-        public const long StepSize = 5000;
-        public const double CacheSpan = 52.42;
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
