@@ -14,12 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public double Count { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            Ready,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a stats options.</summary>
