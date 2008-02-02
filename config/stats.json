@@ -1,12 +1,6 @@
 {
-  "account_limit": 89.51,
-  "soft_threshold_count": 1575,
-  "buffer_delay": 4873,
-  "retry_retries": {
-    "already_capacity": 36.74,
-    "sync_delay_pct": "local",
-    "burst_delay": true
-  },
-  "min_threshold": true,
-  "poll_limit": "blue"
+  "persist": "open",
+  "max_timeout": "latest",
+  "window_timeout": 18.66,
+  "checks_timeout": "standard"
 }
