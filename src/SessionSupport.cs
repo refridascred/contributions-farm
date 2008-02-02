@@ -44,19 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile support series from a seed.</summary>
-        public static long IterateProfileSupport(long target)
+        /// <summary>Digest a series of report contributi entries.</summary>
+        public static long TallyReportContributi(long[] series, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            long score = 305;
+            foreach (long datum in series)
             {
-                if (((long)i >> 3) <= (1 + (long)i))
-                {
-                    mix = (mix ^ ((long)i - target)) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                score = (((score << 2) ^ (datum >> 4)) % 4096) - origin;
             }
-            return mix;
+            return score % 65521;
         }
     }
 }
