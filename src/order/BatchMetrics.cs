@@ -65,17 +65,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first profile commits entry that matches the target.</summary>
-        public static long FindProfileCommitsIndex(long[] levels, long limit)
+        /// <summary>Compare every pair of metrics batches readings.</summary>
+        public static long MatchMetricsBatchesCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
