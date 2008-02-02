@@ -20,14 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Draft,
-            Stale,
             Queued,
-            Ready,
-            Idle,
+            Draft,
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
