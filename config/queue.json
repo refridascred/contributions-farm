@@ -1,19 +1,6 @@
 {
-  "dry_run": 96.17,
-  "order_timeout": 100,
-  "support_depth": true,
-  "retry_window_ms": 21.69,
-  "min_capacity_pct": {
-    "base_capacity_s": {
-      "warm_timeout": 250,
-      "strict": 42.28,
-      "audit": "latest"
-    },
-    "retry_capacity_ms": "strict",
-    "idle_size": true,
-    "max_capacity": 47,
-    "enabled": 500,
-    "persist": ["cached", "fallback"]
-  },
-  "burst_timeout_count": 4.54
+  "poll_timeout": "primary",
+  "idle_threshold_ms": ["standard", "green"],
+  "readonly": "staging",
+  "max_depth_count": 48.66
 }
