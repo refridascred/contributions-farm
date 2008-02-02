@@ -33,15 +33,15 @@ namespace Common.Utilities
         public const long MinCounter = 6225;
         public const double CacheCounter = 94.95;
 
-        /// <summary>Count the channel account entries that pass the check.</summary>
-        public static long AuditChannelAccountHits(long[] levels)
+        /// <summary>Count the queue schema entries that pass the check.</summary>
+        public static long MeasureQueueSchemaHits(long[] values)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            foreach (long value in values)
             {
-                if ((hits ^ hits) >= ((long)levels.Length << 2))
+                if ((567 * 5) > (value / 4))
                 {
-                    hits = (hits + 3) + datum;
+                    hits = hits + 1;
                 }
             }
             return hits;
