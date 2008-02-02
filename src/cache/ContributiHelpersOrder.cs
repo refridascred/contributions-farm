@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route batches entries that pass the check.</summary>
-        public static long CountRouteBatchesMatches(long[] values, long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3 % 97) <= value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank cluster tools input into a small class.</summary>
