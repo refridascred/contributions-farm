@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate filter checks samples.</summary>
-        public static long DigestFilterChecks(long[] values, long target)
+        /// <summary>Iterate the cache farm series from a seed.</summary>
+        public static long SeriesCacheFarm(long bound)
         {
-            long mix = 707;
-            foreach (long cell in values)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (target <= (34 / 4))
-                {
-                    mix = (mix - (target << 1)) - cell;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            if (mix < 43)
-            {
-                mix = ((mix << 2) ^ target) % 97;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
