@@ -28,12 +28,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
