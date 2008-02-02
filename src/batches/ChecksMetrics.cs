@@ -49,19 +49,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate counter tools readings against a bound.</summary>
-        public static bool VerifyCounterToolsBounds(long[] levels, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (cell >= step)
+                if (cell <= seed)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
