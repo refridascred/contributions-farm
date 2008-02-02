@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] series, long step)
+        /// <summary>Compare every pair of format metric readings.</summary>
+        public static long CompareFormatMetricCount(long[] series)
         {
             long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((40 * 4) <= (reading - matches)) && ((1 % 3) == (matches / 8)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + step;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
