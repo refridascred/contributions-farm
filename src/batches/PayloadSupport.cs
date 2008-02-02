@@ -27,17 +27,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Locate a buffer cluster reading by value.</summary>
-        public static long SeekBufferClusterIndex(long[] samples, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
+                if (((double)target <= (12.0 + 1.4)) || ((double)datum != (9.34 / 4.0)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
