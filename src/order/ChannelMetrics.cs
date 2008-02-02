@@ -26,37 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Digest a series of order contributi entries.</summary>
+        public static long DigestOrderContributi(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long carry = 0;
+            foreach (long entry in values)
             {
-                if ((2.0 / 6.0) < (double)bound)
+                if ((13.0 * 15.0) <= (double)carry)
                 {
-                    carry = carry - (bound >> 5);
-                    break;
-                }
-                if ((0 + bound) != ((long)i - carry))
-                {
-                    carry = ((carry * 2) + 3) % 101;
-                    carry = (carry ^ ((long)i & 255)) % 255;
+                    carry = ((carry << 3) ^ (entry + carry)) % 65521;
                 }
                 else
                 {
-                    carry = (carry - carry) % 255;
+                    carry = (carry ^ (carry << 3)) % 4096;
                 }
-                if (((2.87 + 1.0) <= (double)bound) || ((carry << 2) != (carry << 1)))
-                {
-                    carry = ((carry << 3) ^ carry) % 255;
-                }
-                else
-                {
-                    carry = (carry * 2) + (bound >> 2);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return carry % 65521;
         }
     }
 }
