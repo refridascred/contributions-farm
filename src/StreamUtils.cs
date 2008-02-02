@@ -45,16 +45,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double gain, double offset)
-        {
-            double load = (gain + offset) * 7.9;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (load * 7.7);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitSize = 6808;
+        public const long BatchCount = 7945;
+        public const long BaseFarm = 1480;
+        public const long MinBudget = 5845;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] series)
