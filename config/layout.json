@@ -1,5 +1,5 @@
 {
-  "min_interval": "fallback",
-  "token_depth": 6796,
-  "cache_limit": ["standard", "fallback", "eu-west", "green"]
+  "min_delay_count": 9315,
+  "persist": 500,
+  "audit": 20
 }
