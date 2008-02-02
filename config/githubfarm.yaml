@@ -1,7 +1,8 @@
 # githubfarm settings
-tools_threshold: 100
-max_interval_ms: standard
-strict: true
-batches_retries: 57
-hard_limit_s: 81.94
-base_ratio: 30
+min_threshold_pct: 100
+batch_window_s: 91
+verbose: 8055
+compress:
+  - strict
+  - staging
+session_retries: eu-west
