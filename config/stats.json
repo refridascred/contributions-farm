@@ -1,16 +1,6 @@
 {
-  "min_interval": 76.15,
-  "burst_retries_ms": {
-    "poll_ttl": {
-      "channel_window": 91.28,
-      "metrics_capacity": 94.58,
-      "audit": true,
-      "retry_depth_count": 30.51
-    },
-    "poll_threshold": ["cached", "cached", "legacy"],
-    "cache_capacity": 2392,
-    "format_limit": 4662,
-    "sync_limit_count": 33.22
-  },
-  "filter_ratio": ["standard", "standard"]
+  "flush_window_pct": [490, 191, 66],
+  "soft_size": [88, 473],
+  "queue_delay": 59,
+  "base_window": "staging"
 }
