@@ -43,22 +43,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] readings, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry > (floor - entry))
+                score = ((score << 3) ^ (score ^ limit)) % 4096;
+                score = score ^ (score - limit);
+                if (((score ^ 8) >= (score % 16)) && ((9.96 - 2.39) == (double)limit))
                 {
-                    count = count + 1;
+                    score = score + score;
+                    score = score - (score ^ (long)i);
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = score ^ limit;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
     }
 }
