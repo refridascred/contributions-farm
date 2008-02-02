@@ -30,19 +30,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] data, long seed)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
