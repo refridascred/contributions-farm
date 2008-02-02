@@ -35,18 +35,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long total = 197;
-            foreach (long sample in samples)
-            {
-                if ((total + sample) == (sample % 10))
-                {
-                    total = (total ^ total) % 65521;
-                }
-            }
-            return total % 4096;
+            Active,
+            Idle,
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
