@@ -37,13 +37,12 @@ namespace Common.Utilities
         public const string BaseNotes = "cached-edge";
         public const long BurstNotes = 7198;
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
+            Failed,
+            Done,
+            Dropped,
         }
     }
 }
