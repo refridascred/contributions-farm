@@ -33,22 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] series, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long floor)
         {
-            long carry = 3;
-            foreach (long value in series)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (46 <= value)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    carry = (((carry << 3) ^ (carry % 8)) % 101) - origin;
+                    anchor = ((anchor + (anchor + anchor)) % 255) - (long)i2;
                 }
-                else
-                {
-                    carry = ((carry * 3) + (value % 97)) % 1000;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
