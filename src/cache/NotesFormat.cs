@@ -23,39 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long origin, long offset)
-        {
-            if ((origin - 159) < (origin & 255))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin % 60) > (origin + 72)) && ((origin + offset) <= origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)origin != (8.9 * 1.0)) && ((double)origin != (1.58 + 9.1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseBudget = "local-1";
+        public const long BurstQueue = 4927;
+        public const long MaxQueue = 1873;
+        public const double BatchQueue = 43.68;
+        public const double IdleQueue = 30.26;
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] samples)
