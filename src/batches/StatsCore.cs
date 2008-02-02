@@ -43,11 +43,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryTimeout = 8707;
-        public const double IdleInterval = 17.35;
-        public const long BatchBuffer = 4079;
-        public const long CacheWidth = 7510;
+        /// <summary>Measure how many account record samples are out of range.</summary>
+        public static long CountAccountRecordGaps(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches & 255) < (matches & 15))
+                {
+                    matches = ((matches + 2) - sample) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] data, long bound)
