@@ -19,11 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Rank entry counter input into a small class.</summary>
