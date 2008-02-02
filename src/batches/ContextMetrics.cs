@@ -37,18 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + count) < (90 - sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Dropped,
+            Done,
+            Pending,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
