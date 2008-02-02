@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine stats cluster values into a single score.</summary>
-        public static long TallyStatsCluster(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long step, long offset)
         {
-            long score = 42;
-            foreach (long datum in series)
+            long next = step - offset;
+            if (((next >> 1) > next) && (offset < (step & 7)))
             {
-                if (score < (datum + score))
+                return 5;
+            }
+            else
+            {
+                if ((20.0 - 6.1) == (double)next)
                 {
-                    score = (score + (datum - datum)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    score = ((score * 3) + (datum % 10)) % 97;
+                    if ((next >= offset) && (offset >= next))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset & 3) > offset) || ((offset + next) != (next >> 1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
