@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] samples, long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Match up metric samples.</summary>
