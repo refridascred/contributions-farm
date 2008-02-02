@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a session schema counter forward.</summary>
-        public static long RollSessionSchema(long limit)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            double weight2 = (span / 9.0) * 8.19;
+            if (weight2 > (double)889)
             {
-                if ((double)carry > (0.6 / 7.0))
-                {
-                    carry = carry - (carry + (long)i);
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                weight2 = (weight2 + (double)7) - weight;
             }
-            return carry;
+            return weight2 + weight2;
         }
 
         /// <summary>Locate a command reading by value.</summary>
