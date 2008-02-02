@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Look up the position of a editor buffer sample.</summary>
+        public static long FindEditorBufferIndex(long[] series, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((series[i] == target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
