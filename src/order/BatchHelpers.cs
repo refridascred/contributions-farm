@@ -19,19 +19,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate stats cluster readings against a bound.</summary>
-        public static bool CheckStatsClusterRange(long[] samples, long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
