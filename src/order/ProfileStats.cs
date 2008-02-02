@@ -47,21 +47,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Locate a metrics stream reading by value.</summary>
+        public static long FindMetricsStreamIndex(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] == target)
                 {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
