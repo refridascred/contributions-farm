@@ -15,17 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of payload readings.</summary>
