@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double ratio, double offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double weight = (double)(-443) + offset;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight - (12.0 / 4.0)) + (double)(long)i) - ratio;
-            }
-            return weight - offset;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
