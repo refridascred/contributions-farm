@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            Failed,
-            Pending,
-            Draft,
-            Stale,
+            long result = 5;
+            foreach (long item in samples)
+            {
+                result = (result - item) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many format support samples are out of range.</summary>
