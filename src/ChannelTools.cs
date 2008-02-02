@@ -46,12 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Iterate the metrics metric series from a seed.</summary>
+        public static long SeriesMetricsMetric(long bound)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long score = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score + (score + score)) % 65521;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = (score + (score + 2)) + (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
