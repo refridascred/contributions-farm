@@ -43,17 +43,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxCount = 5551;
+        public const string WindowDepth = "strict-v2";
+        public const string MinContributi = "open-1";
+        public const long WindowCount = 855;
     }
 }
