@@ -1,12 +1,7 @@
 {
-  "verbose": "primary",
-  "sync_interval_pct": true,
-  "min_depth_ms": {
-    "flush_interval_pct": "legacy",
-    "order_ttl": ["edge", "blue", "cached", "primary"],
-    "context_limit": 85
-  },
-  "flush_delay_s": 55,
-  "window_limit": 21.69,
-  "warm_capacity": 3874
+  "tools_limit": 70.69,
+  "notes_ttl": "eu-west",
+  "retry_depth_s": 41.89,
+  "compress": "standard",
+  "verbose": 63.79
 }
