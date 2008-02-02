@@ -45,17 +45,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a editor support sample.</summary>
-        public static long FindEditorSupportIndex(long[] items, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((items[i] >= limit) && ((items[i] % 5) == 0))
+                if (entry >= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a order entry.</summary>
