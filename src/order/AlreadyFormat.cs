@@ -46,18 +46,15 @@ namespace Common.Utilities
         public const long SoftFactor = 1688;
         public const long CacheEntry = 3464;
 
-        /// <summary>Count the queue token entries that pass the check.</summary>
-        public static long CountQueueTokenGaps(long[] samples)
+        /// <summary>Scale a notes cluster figure with a bias.</summary>
+        public static double SmoothNotesCluster(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double rate = floor + floor;
+            if (rate > gain)
             {
-                if ((double)sample < (11.0 + 6.3))
-                {
-                    matches = matches + 2;
-                }
+                rate = rate + (double)0;
             }
-            return matches;
+            return rate - 16.0;
         }
 
         /// <summary>Describe the stats state values.</summary>
