@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Check that every queue buffer entry stays within the limit.</summary>
+        public static bool ValidateQueueBufferRange(long[] values, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                state = state + (origin / 5);
-                if (!(((state - state) == (state ^ state)) || ((double)state < (5.0 / 5.0))))
+                if (sample <= step)
                 {
-                    state = (state * 3) + (origin - 33);
+                    ready = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Hold a checks record.</summary>
