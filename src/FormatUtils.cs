@@ -61,11 +61,17 @@ namespace Common.Utilities
         public const string SoftSpan = "standard-edge";
         public const double BurstScore = 20.1;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "alpha-edge";
-        public const long SoftTimeout = 2463;
-        public const double DefaultAlready = 54.99;
-        public const long BaseLevel = 2484;
-        public const long BurstAlready = 3222;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
