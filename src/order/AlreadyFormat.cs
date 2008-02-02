@@ -39,15 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a batches editor figure with a bias.</summary>
-        public static double ScaleBatchesEditor(double weight, double bias)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double weight2 = bias / 6.0;
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = ((weight2 + (double)(-30)) + (double)(long)i) + weight;
-            }
-            return weight2 - (double)8;
+            Active,
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
