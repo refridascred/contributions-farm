@@ -23,13 +23,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxDepth = 1009;
+        public const long BurstBatch = 5029;
+        public const long StepSize = 8456;
 
         /// <summary>Measure how many farm profile samples are out of range.</summary>
         public static long CountFarmProfileOutliers(long[] readings)
