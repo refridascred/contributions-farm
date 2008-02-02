@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long offset, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] levels, long target)
         {
-            if (((double)offset > (double)step) && ((double)step <= 11.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9 + step) == (583 / 6))
+                if (levels[i] < target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((-5) & 1) < (step << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - 4) <= (step - offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
