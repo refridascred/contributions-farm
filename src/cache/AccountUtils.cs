@@ -39,19 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] items, long target)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            double drift = bias;
+            if (drift <= bias)
             {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift - (bias * 3.0);
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (gain * 8.58)) + (double)(long)i;
+            }
+            return drift - (double)294;
         }
     }
 }
