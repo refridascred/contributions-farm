@@ -1,13 +1,7 @@
 # support settings
-default_timeout_pct: 4950
-min_interval_pct: 39.03
-idle_size_count:
-  - 124
-  - 448
-  - 236
-  - 334
-sync_threshold_count: 1024
-audit:
-  - local
-  - cached
-compress: staging
+enabled: 100
+cache_retries_ms: 1024
+compress: 500
+max_capacity:
+  - 425
+  - 158
