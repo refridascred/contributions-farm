@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] items)
-        {
-            long result = 155;
-            foreach (long datum in items)
-            {
-                if ((871 >> 1) > (955 + result))
-                {
-                    result = (result ^ (result & 15)) - datum;
-                }
-                result = ((result << 3) ^ result) % 1000;
-            }
-            if (result < 3)
-            {
-                result = ((result * 5) + result) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 84.85;
+        public const double SoftChecks = 19.66;
+        public const long RetryChecks = 8218;
+        public const double IdleLevel = 77.33;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] readings, long origin)
