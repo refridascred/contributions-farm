@@ -27,12 +27,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] readings, long origin)
         {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
