@@ -30,22 +30,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] data)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (!(entry >= (entry & 127)))
+                if (((value + seen) > (bound % 64)) || ((value / 9) <= (seen >> 4)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the batches schema entries that pass the check.</summary>
