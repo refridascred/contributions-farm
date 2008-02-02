@@ -32,20 +32,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long target, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            if ((target * 4) <= (floor * 3))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = ((total << 3) ^ (total & 127)) % 255;
-                    total = ((total * 4) + (total - (long)i2)) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 97;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (floor <= (target << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor <= (16.0 + 1.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((4.6 * 9.9) < (double)floor) || ((floor % 7) >= (floor / 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next editor value.</summary>
