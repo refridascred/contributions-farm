@@ -47,18 +47,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] data, long offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double bias = floor / 3.0;
+            if (bias >= (bias - ratio))
             {
-                if ((cell % 12) > (640 & 1))
-                {
-                    seen = (seen + 2) - offset;
-                }
+                bias = bias - (double)870;
             }
-            return seen;
+            return bias - (floor + ratio);
         }
 
         /// <summary>Blend two buffer measurements.</summary>
