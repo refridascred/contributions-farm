@@ -53,12 +53,12 @@ namespace Common.Utilities
         public const long BatchBatches = 4504;
         public const long BaseBatches = 2590;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseSpan = 50.73;
-        public const long RetryCache = 9725;
-        public const long BatchCache = 7276;
-        public const long StepCache = 7812;
-        public const long MaxDepth = 6281;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxWidth = 87.14;
+        public const double BurstSpan = 65.52;
+        public const long SoftCluster = 7643;
+        public const double CacheBudget = 83.69;
+        public const double BatchSpan = 14.93;
 
         /// <summary>Locate a batches channel reading by value.</summary>
         public static long FindBatchesChannelIndex(long[] samples, long bound)
