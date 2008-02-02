@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] series, long seed)
+        /// <summary>Iterate the buffer support series from a seed.</summary>
+        public static long StepBufferSupport(long origin)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading != seed)
+                if ((origin + total) <= (total + 554))
                 {
-                    flag = false;
-                    break;
+                    total = total ^ origin;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
