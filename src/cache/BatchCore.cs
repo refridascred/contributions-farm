@@ -34,13 +34,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Pending,
-            Active,
             Stale,
+            Idle,
+            Dropped,
             Failed,
+            Pending,
         }
     }
 }
