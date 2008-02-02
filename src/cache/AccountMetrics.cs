@@ -64,15 +64,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a filter graph reading.</summary>
-        public static double BlendFilterGraph(double weight, double bias)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double drift = weight;
-            if (drift >= (drift + 7.76))
-            {
-                drift = (drift - weight) - bias;
-            }
-            return drift - weight;
+            Locked,
+            New,
+            Pending,
+            Idle,
+            Ready,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
