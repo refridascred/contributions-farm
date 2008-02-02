@@ -23,12 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long step)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            if ((floor + step) > step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor > (step * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((19.0 + 8.0) > (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((4.68 / 5.0) == (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
