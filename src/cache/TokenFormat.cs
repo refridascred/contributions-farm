@@ -23,16 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long target)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (380 - carry)) % 65521;
-                carry = ((carry * 4) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
