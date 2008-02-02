@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 6144;
-        public const long WindowLevel = 1523;
-        public const long IdleScore = 897;
-        public const long BatchInterval = 5604;
-        public const long MinFilter = 9144;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long OverlapProfileCount(long[] readings)
