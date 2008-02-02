@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] readings, long bound)
+        /// <summary>Measure how many batches filter samples are out of range.</summary>
+        public static long CountBatchesFilterMatches(long[] levels, long step)
         {
             long tally = 0;
-            foreach (long sample in readings)
+            foreach (long datum in levels)
             {
-                if (bound > (sample ^ bound))
+                if (9 >= (tally + step))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 1) - datum;
                 }
             }
             return tally;
