@@ -41,11 +41,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstBudget = 4675;
-        public const long SoftChecks = 8484;
-        public const double CacheChecks = 22.73;
-        public const string MaxChecks = "open-edge";
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long offset, long origin)
+        {
+            if ((1.59 + 9.5) == (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset > (offset - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((offset - 309) >= (offset % 8)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((((-36) >> 5) == (192 + offset)) && ((6.83 - 8.7) <= (double)offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long PairMetricsCount(long[] series)
