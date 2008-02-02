@@ -59,10 +59,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxCount = 5551;
-        public const string WindowDepth = "strict-v2";
-        public const string MinContributi = "open-1";
-        public const long WindowCount = 855;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+        }
     }
 }
