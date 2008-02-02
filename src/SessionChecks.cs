@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] data)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)item > (double)seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
