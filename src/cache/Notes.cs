@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank route payload input into a small class.</summary>
-        public static long ClassifyRoutePayload(long step, long bound)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long prev = step - bound;
-            if (((63 + step) == (8 & 63)) || ((double)prev < (9.0 + 5.2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step * 2) >= 72)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step << 2) > (55 + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a stream reading by value.</summary>
