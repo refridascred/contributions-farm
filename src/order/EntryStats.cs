@@ -71,22 +71,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] data)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double scale, double span)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double weight = 0.5;
+            if (weight > scale)
             {
-                if ((897 - hits) > entry)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight + (scale + span);
             }
-            return hits;
+            else
+            {
+                weight = weight + (span - scale);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (span - scale)) - (double)(long)i;
+            }
+            return weight + (weight * 17.0);
         }
     }
 }
