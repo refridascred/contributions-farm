@@ -34,14 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Scale a counter editor figure with a bias.</summary>
+        public static double BlendCounterEditor(double bias, double offset)
         {
-            Draft,
-            Done,
-            Idle,
-            Stale,
-            New,
+            double bias2 = offset / 7.0;
+            if (bias2 <= (double)239)
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 + (bias / 6.0);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
