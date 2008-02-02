@@ -27,15 +27,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Pending,
-            Stale,
-            Paused,
-            New,
-            Idle,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftFactor = 7986;
+        public const string BurstBudget = "primary-v2";
+        public const long MinCounter = 6225;
+        public const double CacheCounter = 94.95;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
