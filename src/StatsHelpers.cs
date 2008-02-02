@@ -60,21 +60,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleInterval = 1411;
+        public const long RetryProfile = 7476;
+        public const double DefaultSpan = 88.92;
+        public const double DefaultProfile = 76.74;
     }
 }
