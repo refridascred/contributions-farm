@@ -1,8 +1,16 @@
 {
-  "filter_ttl": "eu-west",
-  "githubfarm_timeout": "latest",
-  "batch_timeout_ms": 49.75,
-  "batch_retries_count": 32.78,
-  "token_threshold": 70.36,
-  "burst_capacity_count": ["standard", "stable", "standard", "edge"]
+  "min_interval": 76.15,
+  "burst_retries_ms": {
+    "poll_ttl": {
+      "channel_window": 91.28,
+      "metrics_capacity": 94.58,
+      "audit": true,
+      "retry_depth_count": 30.51
+    },
+    "poll_threshold": ["cached", "cached", "legacy"],
+    "cache_capacity": 2392,
+    "format_limit": 4662,
+    "sync_limit_count": 33.22
+  },
+  "filter_ratio": ["standard", "standard"]
 }
