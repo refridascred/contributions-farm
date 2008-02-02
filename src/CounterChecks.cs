@@ -31,10 +31,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 38.26;
-        public const long SoftLevel = 299;
-        public const string WindowReport = "standard";
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string SoftCount = "staging-v2";
