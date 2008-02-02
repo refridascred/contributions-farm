@@ -48,12 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] samples, long bound)
         {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((bound - hits) >= (entry + 96))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
