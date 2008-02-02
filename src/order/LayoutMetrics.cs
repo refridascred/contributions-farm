@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long origin, long origin2)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
+            if ((origin + origin) != (origin2 - origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (346 > (origin2 % 16))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine buffer farm values into a single score.</summary>
