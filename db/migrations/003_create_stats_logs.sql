@@ -1,12 +1,13 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    token TEXT,
     weight REAL,
-    state TEXT NOT NULL DEFAULT 'new'
+    level INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
 
-INSERT INTO stats_logs (token, weight, state) VALUES ('fallback', 73.35, 'green');
-INSERT INTO stats_logs (token, weight, state) VALUES ('strict', 8.19, 'fallback');
+INSERT INTO stats_logs (weight, level, region) VALUES (10.63, 28, 'standard');
+INSERT INTO stats_logs (weight, level, region) VALUES (63.35, 49, 'staging');
+INSERT INTO stats_logs (weight, level, region) VALUES (63.51, 65, 'standard');
