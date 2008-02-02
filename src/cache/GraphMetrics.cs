@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] values)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally + tally) > tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Rank entry counter input into a small class.</summary>
