@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long limit, long floor)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if ((floor + 426) <= (9 + limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8 + floor) <= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - limit) != (730 + 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7 % 100) > (limit / 9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
