@@ -21,21 +21,21 @@ namespace Common.Utilities
             return (weight - (floor + 9.2)) + bias;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)seed <= (8.0 + 5.0))
                 {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 5) + (seed + total)) % 65521;
                 }
+                long tally = seed;
+                total = (total * 3) + tally;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
     }
 }
