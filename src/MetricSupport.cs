@@ -32,11 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long floor, long bound)
         {
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
+            long cur = floor ^ bound;
+            if (((87 % 12) != (cur + cur)) || ((1.09 / 8.0) < (double)cur))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound < (1.7 * 5.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
