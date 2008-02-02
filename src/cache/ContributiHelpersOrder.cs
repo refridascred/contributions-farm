@@ -27,14 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings, long seed)
         {
-            Idle,
-            Paused,
-            Active,
-            Draft,
-            Dropped,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches % 10) != (value % 8))
+                {
+                    matches = (matches + 3) - seed;
+                }
+            }
+            return matches;
         }
     }
 }
