@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch metrics entries that pass the check.</summary>
-        public static long CountBatchMetricsMatches(long[] items, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((sample + sample) <= (limit ^ limit))
+                if (sample != floor)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
