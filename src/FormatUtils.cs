@@ -51,11 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a queue notes reading.</summary>
-        public static double ProjectQueueNotes(double weight, double floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double mean = (double)914 - (weight / 9.0);
-            return mean + floor;
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a checks stats.</summary>
