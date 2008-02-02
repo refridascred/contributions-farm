@@ -23,11 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
