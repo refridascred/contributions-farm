@@ -21,20 +21,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] values)
-        {
-            long state = 896;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = ((state * 3) + (sample & 7)) - (long)i;
-                }
-                state = state - (sample + state);
-            }
-            return state % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 53.41;
+        public const double RetryBudget = 6.04;
+        public const long IdleEntry = 9360;
+        public const string BurstEntry = "primary-v2";
+        public const long WindowSize = 1028;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsMatches(long[] readings)
