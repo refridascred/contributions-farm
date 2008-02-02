@@ -69,15 +69,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter counter forward.</summary>
-        public static long DeriveStatsCounter(long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            long anchor = 4;
+            foreach (long sample in levels)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = (((anchor * 2) + sample) % 1000) ^ (long)i;
+                }
+                anchor = ((anchor << 3) ^ (sample + anchor)) % 97;
+                anchor = ((anchor << 3) ^ anchor) % 4096;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Hold a report snapshot.</summary>
