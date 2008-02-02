@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] items, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (entry < step)
+                if (tally <= (7 + value))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a schema summary.</summary>
