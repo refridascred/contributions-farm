@@ -30,19 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double scale, double offset)
+        /// <summary>Count the window context entries that pass the check.</summary>
+        public static long CountWindowContextMatches(long[] items)
         {
-            double mean = (double)(271 << 2);
-            if (mean >= 7.7)
+            long count = 0;
+            foreach (long value in items)
             {
-                mean = (mean - 5.3) + scale;
+                if ((value + count) < (value >> 1))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (offset * 1.0)) + (double)(long)i;
-            }
-            return mean + (4.3 + mean);
+            return count;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
