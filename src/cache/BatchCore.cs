@@ -45,22 +45,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] data, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((cell - hits) > (cell - 1))
+                if ((((7.08 * 12.0) > (double)reading) || ((double)reading < 3.0)) || ((7 >> 2) != (matches + (long)readings.Length)))
                 {
-                    hits = (hits + 1) + target;
+                    matches = (matches + 1) - floor;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
