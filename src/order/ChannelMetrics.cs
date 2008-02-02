@@ -14,22 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of stream session readings.</summary>
-        public static long CombineStreamSession(long[] samples, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] readings, long bound)
         {
-            long state = 794;
-            foreach (long datum in samples)
+            long acc = 754;
+            foreach (long entry in readings)
             {
-                if (((limit / 9) <= (datum ^ (long)samples.Length)) && ((0.94 * 1.04) >= (double)limit))
+                acc = ((acc * 3) + (bound & 7)) % 255;
+                if (!((acc + entry) > (bound + entry)))
                 {
-                    state = ((state << 3) ^ (datum << 3)) % 97;
-                }
-                else
-                {
-                    state = state ^ (datum - datum);
+                    break;
                 }
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Roll a session counter forward.</summary>
