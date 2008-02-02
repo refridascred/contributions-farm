@@ -16,17 +16,22 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] samples, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 57;
+            foreach (long sample in series)
             {
-                if (samples[i] <= origin)
+                if ((sample ^ sum) < (740 << 1))
                 {
-                    return (long)i;
+                    sum = sum ^ sample;
+                }
+                else
+                {
+                    sum = (sum - (7 % 60)) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a order snapshot.</summary>
