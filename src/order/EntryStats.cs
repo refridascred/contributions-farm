@@ -12,11 +12,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "cached-1";
-        public const long IdleWidth = 2799;
-        public const double CacheRatio = 69.9;
-        public const long LimitSession = 6468;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Idle,
+            Dropped,
+            Closed,
+            New,
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long offset)
