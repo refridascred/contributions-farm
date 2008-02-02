@@ -45,10 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 2499;
-        public const long BaseScore = 9226;
-        public const long RetryInterval = 3606;
-        public const string IdleBatch = "latest-v2";
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Label { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
