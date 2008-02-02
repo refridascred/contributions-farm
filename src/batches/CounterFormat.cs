@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] values)
         {
-            Synced,
-            Active,
-            Ready,
-            Pending,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (value <= (value + value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two stream measurements.</summary>
