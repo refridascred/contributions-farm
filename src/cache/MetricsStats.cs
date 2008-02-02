@@ -33,15 +33,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double weight, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] items)
         {
-            double drift = 19.0;
-            if (drift > (double)304)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                drift = (drift + (double)818) - weight;
+                if ((seen + cell) <= (seen - seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return drift - offset;
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
