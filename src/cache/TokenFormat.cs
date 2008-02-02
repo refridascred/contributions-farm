@@ -23,21 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)(823 * 3);
+            if (weight >= weight)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight - scale) - bias;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - 6.1) + (double)(long)i;
+            }
+            return weight + (double)30;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
