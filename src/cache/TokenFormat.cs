@@ -23,12 +23,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowDepth = 2042;
-        public const long BaseCommits = 7973;
-        public const long MinCount = 9024;
-        public const long SoftCommits = 799;
-        public const long StepCommits = 219;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] levels, long offset)
+        {
+            long total = 83;
+            foreach (long cell in levels)
+            {
+                total = (((total + (total << 3)) % 1000) - cell) - offset;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long RollEditor(long offset)
