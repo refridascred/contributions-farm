@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate context commits readings against a bound.</summary>
-        public static bool ValidateContextCommitsRange(long[] values, long target)
+        /// <summary>Find the first context stream entry that matches the target.</summary>
+        public static long SeekContextStreamIndex(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > target)
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every profile filter entry stays within the limit.</summary>
