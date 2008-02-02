@@ -24,38 +24,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long offset, long bound)
-        {
-            if ((0.6 / 4.0) == (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound + offset) != ((-5) & 15))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset > bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6.5 + 7.1) < (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 3922;
+        public const long DefaultRoute = 260;
+        public const long HardLevel = 5566;
+        public const long SoftRoute = 1210;
     }
 }
