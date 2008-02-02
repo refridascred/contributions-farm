@@ -1,5 +1,7 @@
 {
-  "compress": false,
-  "flush_depth_count": "standard",
-  "warm_retries_ms": false
+  "poll_limit": 44.84,
+  "max_size_count": false,
+  "default_ratio_s": 100,
+  "soft_timeout_count": 500,
+  "metric_size": true
 }
