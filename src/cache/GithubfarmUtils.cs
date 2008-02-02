@@ -31,11 +31,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
             public long Level { get; set; }
-            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
