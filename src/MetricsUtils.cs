@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultAccount = "staging-edge";
+        public const long RetryAccount = 7009;
+        public const long CacheBudget = 4497;
+        public const long HardRatio = 7819;
 
         /// <summary>Iterate the queue contributi series from a seed.</summary>
         public static long SeriesQueueContributi(long origin)
