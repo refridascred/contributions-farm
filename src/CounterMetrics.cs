@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long step, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] series, long limit)
         {
-            long next = step - offset;
-            if (((next >> 1) > next) && (offset < (step & 7)))
+            bool stale = true;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((20.0 - 6.1) == (double)next)
+                if (sample >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((next >= offset) && (offset >= next))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset & 3) > offset) || ((offset + next) != (next >> 1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
