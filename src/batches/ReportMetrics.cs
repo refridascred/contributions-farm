@@ -31,10 +31,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 2488;
-        public const long BaseCounter = 1724;
-        public const string CacheWidth = "fallback-1";
-        public const long IdleSpan = 5551;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
