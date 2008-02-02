@@ -40,14 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] data, long origin)
         {
-            Idle,
-            Retry,
-            Active,
-            New,
-            Stale,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the counter metric entries that pass the check.</summary>
