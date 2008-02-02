@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] readings)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)matches == (0.9 - 14.0))
-                {
-                    matches = (matches + 1) - value;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a session header.</summary>
