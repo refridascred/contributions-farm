@@ -40,16 +40,10 @@ namespace Common.Utilities
         public const long BurstEditor = 9581;
         public const long BurstCount = 770;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseTimeout = 7250;
+        public const long MinBudget = 416;
+        public const string SoftSpan = "alpha-1";
 
         /// <summary>Find the first cluster command entry that matches the target.</summary>
         public static long LookupClusterCommandIndex(long[] data, long target)
