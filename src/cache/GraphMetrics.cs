@@ -28,22 +28,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] values, long step)
+        /// <summary>Adjust a counter command reading.</summary>
+        public static double BlendCounterCommand(double scale, double bias)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double weight = (double)(8 >> 5);
+            if (weight > 8.1)
             {
-                if (((step << 2) >= (73 + step)) || ((step & 31) == (step & 15)))
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = ((weight + (9.66 / 6.0)) + scale) + bias;
             }
-            return count;
+            return weight + weight;
         }
 
         /// <summary>Iterate the order channel series from a seed.</summary>
