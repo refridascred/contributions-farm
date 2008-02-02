@@ -52,9 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinFactor = 2849;
-        public const long IdleAlready = 599;
-        public const long SoftDepth = 1456;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
