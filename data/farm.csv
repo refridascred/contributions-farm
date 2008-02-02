@@ -1,7 +1,7 @@
-id,active,token,score
-1,cached,15.32,503
-2,standard,legacy,54.68
-3,624,strict,199
-4,44.28,open,844
-5,strict,197,staging
-6,14,25.29,120
+id,score,active,level,ratio
+1,608,50.56,110,943
+2,61.76,791,27.18,784
+3,17.74,49.4,153,85.89
+4,22.3,edge,latest,144
+5,27.54,91.6,650,3.81
+6,green,legacy,fallback,primary
