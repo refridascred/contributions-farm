@@ -46,18 +46,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches metrics entries that pass the check.</summary>
-        public static long AuditBatchesMetricsOutliers(long[] values)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (7.0 < (double)sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Ready,
+            New,
+            Done,
+            Dropped,
         }
     }
 }
