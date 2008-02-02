@@ -28,13 +28,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] levels, long offset)
         {
-            Pending,
-            Paused,
-            Done,
-            Draft,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
