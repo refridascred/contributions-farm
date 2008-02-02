@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] readings)
         {
-            New,
-            Synced,
-            Closed,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((((-121) & 3) != (sample - sample)) && !((5.23 - 7.4) < (double)sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit counter metric readings against a rule.</summary>
