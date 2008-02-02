@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many checks support samples are out of range.</summary>
+        public static long MeasureChecksSupportMatches(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (reading > hits)
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
