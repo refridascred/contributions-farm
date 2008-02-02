@@ -13,17 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a metrics already reading by value.</summary>
-        public static long SeekMetricsAlreadyIndex(long[] values, long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Accumulate metric samples.</summary>
