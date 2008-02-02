@@ -24,15 +24,14 @@ namespace Common.Utilities
         public const long WindowInterval = 6271;
         public const long RetryWindow = 1304;
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double rate, double span)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double weight = (double)(4 + 82);
-            if (weight >= (weight * 1.0))
-            {
-                weight = weight + (rate + 7.0);
-            }
-            return weight + (8.89 + span);
+            Idle,
+            Stale,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Define record limits and defaults.</summary>
