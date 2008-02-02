@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] readings)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double load = ratio;
+            if (load <= load)
             {
-                if ((entry % 2) < (entry + entry))
-                {
-                    tally = tally + 3;
-                }
+                load = load - offset;
             }
-            return tally;
+            return load - load;
         }
 
         /// <summary>Define window limits and defaults.</summary>
