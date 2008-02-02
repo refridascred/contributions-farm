@@ -29,13 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] readings, long limit)
         {
-            Locked,
-            Ready,
-            Retry,
-            Dropped,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
