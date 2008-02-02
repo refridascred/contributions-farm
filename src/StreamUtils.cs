@@ -40,14 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 3303;
+        public const double MinRatio = 36.96;
+        public const long RetryAlready = 8205;
 
         /// <summary>Adjust a filter reading.</summary>
         public static double BlendFilter(double weight, double bias)
