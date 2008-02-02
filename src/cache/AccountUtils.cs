@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a counter already figure with a bias.</summary>
-        public static double BlendCounterAlready(double weight, double span)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] data, long origin)
         {
-            double rate = span;
-            if (rate <= weight)
+            long seen = 0;
+            foreach (long item in data)
             {
-                rate = rate - 5.0;
+                if ((double)item == (double)origin)
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                rate = rate - (1.81 - rate);
-            }
-            return rate - (double)3;
+            return seen;
         }
 
         /// <summary>Compare every pair of support profile readings.</summary>
