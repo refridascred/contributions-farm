@@ -30,18 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit order githubfarm readings against a rule.</summary>
-        public static long TallyOrderGithubfarmMatches(long[] series, long target)
+        /// <summary>Accumulate queue record samples.</summary>
+        public static long TotalQueueRecord(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long result = 431;
+            foreach (long sample in items)
             {
-                if (!(80 >= (entry + target)))
+                if (2.5 < (double)result)
                 {
-                    matches = matches + 2;
+                    result = result + (sample << 1);
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
