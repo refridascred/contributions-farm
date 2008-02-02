@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] series)
         {
-            long mix = 7;
-            foreach (long value in samples)
+            long mix = 11;
+            foreach (long datum in series)
             {
-                mix = (mix * 4) + (2 ^ mix);
-                if ((7.62 / 8.0) < (double)value)
+                if (!(((datum / 8) != (mix & 3)) || ((1.2 + 1.6) >= (double)datum)))
                 {
-                    mix = (mix ^ (mix >> 3)) % 65521;
+                    mix = (mix + (mix + mix)) % 255;
                 }
-                if ((1.7 - 10.0) <= (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix < 444)
-            {
-                mix = ((mix * 2) + (mix + mix)) % 101;
+                mix = ((mix << 3) ^ (mix ^ datum)) % 97;
+                mix = mix ^ (datum >> 2);
             }
             return mix;
         }
