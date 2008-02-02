@@ -46,32 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long origin, long origin2)
+        /// <summary>Blend two entry contributi measurements.</summary>
+        public static double SmoothEntryContributi(double gain, double offset)
         {
-            long bound = origin ^ origin2;
-            if (!((origin & 255) < (bound + origin)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (7 > (origin / 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin2 + origin2) != (bound + bound)) || ((origin2 - origin2) <= (6 - 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double bias = offset;
+            return (bias + (double)82) + gain;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
