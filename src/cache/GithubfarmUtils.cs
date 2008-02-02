@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Queued,
             Pending,
-            New,
-            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define record limits and defaults.</summary>
