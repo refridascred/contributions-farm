@@ -43,15 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double weight, double floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] levels, long step)
         {
-            double mean = (weight * 5.0) * 6.7;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - (floor / 7.0)) + (double)(long)i;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return mean + mean;
+            return -1;
         }
     }
 }
