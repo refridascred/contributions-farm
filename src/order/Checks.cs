@@ -67,14 +67,11 @@ namespace Common.Utilities
         public const long BatchCluster = 8527;
         public const long SoftScore = 7534;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Pending,
-            New,
-            Ready,
-            Active,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleTimeout = 4018;
+        public const long RetryCounter = 9426;
+        public const long MinCounter = 509;
+        public const long StepCounter = 80;
+        public const double LimitCounter = 46.05;
     }
 }
