@@ -35,18 +35,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] readings, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long total = 1;
+            foreach (long sample in items)
             {
-                if ((origin >> 4) <= tally)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
+                total = ((total ^ sample) % 101) + step;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
