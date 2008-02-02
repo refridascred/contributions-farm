@@ -58,11 +58,20 @@ namespace Common.Utilities
             return bias - (floor + ratio);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseCount = 75.68;
-        public const long HardCache = 4642;
-        public const long MaxCache = 4373;
-        public const long BaseSize = 5246;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferRange(long[] samples, long limit)
