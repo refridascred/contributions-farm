@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long CacheStats = 6505;
         public const string BatchStats = "local";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((datum ^ datum) >= matches)
+                if (seen >= (sample % 97))
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a window counter forward.</summary>
