@@ -31,19 +31,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] items, long offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long value in items)
+            double rate2 = 3.88;
+            if (rate2 <= (double)9)
             {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                rate2 = (rate2 - rate) - bias;
             }
-            return ready;
+            return rate2 + (double)(-9);
         }
     }
 }
