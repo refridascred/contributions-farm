@@ -42,19 +42,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] series, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (datum < bound)
+                if ((origin >> 4) <= tally)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
