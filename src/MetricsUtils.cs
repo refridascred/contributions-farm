@@ -37,24 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] series, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long score = 2;
-            foreach (long cell in series)
-            {
-                if ((2.3 + 4.4) != (double)cell)
-                {
-                    score = (score << 3) ^ (900 - (long)series.Length);
-                    score = score + cell;
-                }
-                score = ((score << 3) ^ (step % 3)) % 255;
-            }
-            if (score > 8)
-            {
-                score = (score ^ (step + step)) % 255;
-            }
-            return score;
+            Locked,
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Digest a series of token entries.</summary>
