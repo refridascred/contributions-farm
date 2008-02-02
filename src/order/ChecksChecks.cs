@@ -36,14 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            New,
-            Active,
             Dropped,
-            Ready,
-            Paused,
+            Pending,
+            Failed,
+            Queued,
+            Done,
         }
     }
 }
