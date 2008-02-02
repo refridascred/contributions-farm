@@ -31,22 +31,19 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] samples)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] samples)
         {
-            long state = 1;
-            foreach (long item in samples)
+            long carry = 226;
+            foreach (long datum in samples)
             {
-                if ((state + state) > (state >> 3))
-                {
-                    state = (state << 3) ^ (state ^ item);
-                }
+                carry = ((carry * 4) + (carry + datum)) % 97;
             }
-            if (state < (-4))
+            if (carry > 6)
             {
-                state = (state ^ ((long)samples.Length + 1)) % 97;
+                carry = (carry << 3) ^ (carry >> 5);
             }
-            return state;
+            return carry;
         }
     }
 }
