@@ -42,16 +42,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long floor, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            if (limit <= (limit + limit))
             {
-                state = ((state * 4) + (281 / 3)) % 1000;
-                state = ((state * 5) + (long)i) % 65521;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((double)limit != (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + limit) != (35 - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
