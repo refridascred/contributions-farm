@@ -21,22 +21,12 @@ namespace Common.Utilities
             return load + (gain / 3.0);
         }
 
-        /// <summary>Compare every pair of farm token readings.</summary>
-        public static long OverlapFarmTokenCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 88.09;
+        public const long HardSize = 8157;
+        public const string HardWidth = "standard-v2";
+        public const long HardStream = 2935;
+        public const long RetryLevel = 2232;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
