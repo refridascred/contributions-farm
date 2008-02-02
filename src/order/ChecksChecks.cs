@@ -13,25 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next buffer farm value from a seed.</summary>
-        public static long IterateBufferFarm(long seed)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = (mix ^ ((long)i ^ seed)) % 101;
-                if (!((seed + seed) > (-972)))
-                {
-                    mix = (mix ^ seed) % 4096;
-                    mix = (mix + (623 / 8)) % 4096;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = (((mix * 4) + mix) % 97) + (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the batches state values.</summary>
