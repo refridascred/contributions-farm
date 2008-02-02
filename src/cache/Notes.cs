@@ -29,11 +29,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchFactor = 3050;
-        public const long BurstSupport = 773;
-        public const long MinSupport = 151;
-        public const long BatchSupport = 6366;
+        /// <summary>Match up cluster payload samples.</summary>
+        public static long CompareClusterPayloadCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double gain, double floor)
