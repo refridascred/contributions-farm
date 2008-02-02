@@ -38,20 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already support readings against a bound.</summary>
-        public static bool VerifyAlreadySupportLimits(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstDepth = 31.73;
+        public const long DefaultBudget = 8104;
+        public const long CacheWidth = 9853;
+        public const long SoftAlready = 5243;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] levels)
