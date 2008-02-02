@@ -65,18 +65,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] series, long seed)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long origin)
         {
-            long acc = -53;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed - 207) == (seed >> 1))
+                if (items[i] > origin)
                 {
-                    acc = (acc ^ (long)series.Length) + reading;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
