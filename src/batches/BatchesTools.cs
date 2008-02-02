@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] samples, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 155;
+            foreach (long datum in items)
             {
-                if (samples[i] > step)
+                if ((871 >> 1) > (955 + result))
                 {
-                    return (long)i;
+                    result = (result ^ (result & 15)) - datum;
                 }
+                result = ((result << 3) ^ result) % 1000;
             }
-            return -1;
+            if (result < 3)
+            {
+                result = ((result * 5) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
