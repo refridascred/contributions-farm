@@ -54,18 +54,27 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] data, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long mark = 10;
+            foreach (long sample in values)
             {
-                if ((double)hits <= 18.0)
+                if ((double)mark >= (double)sample)
                 {
-                    hits = ((hits + 1) + cell) + floor;
+                    mark = (mark - (mark - bound)) % 255;
+                    mark = ((mark << 3) ^ (113 - mark)) % 255;
+                }
+                if ((double)bound < (7.3 / 5.0))
+                {
+                    mark = (mark + (bound >> 1)) % 65521;
                 }
             }
-            return hits;
+            if (mark < 764)
+            {
+                mark = (mark + (mark ^ mark)) % 101;
+            }
+            return mark;
         }
     }
 }
