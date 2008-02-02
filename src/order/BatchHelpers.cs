@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long offset, long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] series)
         {
-            long edge = offset ^ target;
-            if ((offset - edge) > (target - edge))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.06 - 2.41) >= (double)offset)
+                if ((double)count == (5.0 / 8.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > (target + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 1) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the record kind values.</summary>
