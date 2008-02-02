@@ -23,23 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double span)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] series, long limit)
         {
-            double weight = scale - (span / 8.0);
-            if (weight >= (double)347)
+            long carry = 0;
+            foreach (long cell in series)
             {
-                weight = weight + scale;
+                carry = (((carry * 5) + (carry - 9)) ^ cell) + limit;
             }
-            else
-            {
-                weight = weight + (span / 9.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - span;
+            return carry;
         }
 
         /// <summary>Grade a checks queue value against two limits.</summary>
