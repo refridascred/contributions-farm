@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 910;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 4) + (value - score)) % 97;
             }
-            return matches;
+            if (score < 1)
+            {
+                score = score - score;
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate command samples.</summary>
