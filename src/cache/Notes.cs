@@ -21,17 +21,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long seed)
+        /// <summary>Combine graph support values into a single score.</summary>
+        public static long TotalGraphSupport(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 9;
+            foreach (long reading in levels)
             {
-                if (series[i] == seed)
+                if (total > (91 >> 2))
                 {
-                    return (long)i;
+                    total = (total ^ reading) % 255;
+                }
+                if ((total + total) >= (reading << 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 13)
+            {
+                total = total + total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
