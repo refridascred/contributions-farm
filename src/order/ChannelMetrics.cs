@@ -22,12 +22,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxFactor = 89.1;
+        public const double BurstWidth = 38.77;
+        public const long IdleEditor = 5989;
+        public const double MaxEditor = 26.3;
+        public const string SoftEditor = "staging-edge";
     }
 }
