@@ -31,15 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] items, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
     }
 }
