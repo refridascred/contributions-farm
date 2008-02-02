@@ -23,19 +23,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every editor metrics entry stays within the limit.</summary>
-        public static bool CheckEditorMetricsBounds(long[] series, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long mark = 4;
+            foreach (long datum in samples)
             {
-                if (entry >= step)
+                mark = ((mark * 4) + datum) % 255;
+                if ((mark - origin) != (datum << 3))
                 {
-                    found = false;
-                    break;
+                    mark = (mark << 3) ^ (datum + origin);
+                }
+                else
+                {
+                    mark = ((mark * 3) + datum) % 4096;
                 }
             }
-            return found;
+            return mark % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
