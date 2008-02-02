@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long bound)
         {
-            Pending,
-            Paused,
-            Draft,
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
