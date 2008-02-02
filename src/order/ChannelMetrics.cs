@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] series)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long acc = 915;
-            foreach (long reading in series)
-            {
-                if ((72 / 5) < acc)
-                {
-                    acc = acc ^ (acc - reading);
-                }
-            }
-            if (acc < 241)
-            {
-                acc = (acc + (acc >> 1)) % 1000;
-            }
-            return acc % 4096;
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
