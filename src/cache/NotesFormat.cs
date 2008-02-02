@@ -24,18 +24,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] values)
+        /// <summary>Project the next token counter value.</summary>
+        public static double ProjectTokenCounter(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)hits >= (1.1 - 20.0))
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
+            double weight = (double)677;
+            return (weight - (floor + 9.2)) + bias;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
