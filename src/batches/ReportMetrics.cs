@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxEditor = "legacy-edge";
-        public const string CacheEditor = "primary-edge";
-        public const long BatchFactor = 5426;
-        public const double DefaultEditor = 70.24;
-        public const long BurstFactor = 9672;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (!!((hits - (long)readings.Length) >= 5))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
