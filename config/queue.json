@@ -1,14 +1,11 @@
 {
-  "strict": 5435,
-  "cache_ttl": {
-    "cache_threshold": ["staging", "eu-west"],
-    "retry_retries": 44,
-    "strict": 53,
-    "compress": ["latest", "fallback", "blue"],
-    "verbose": [244, 484],
-    "enabled": 30
+  "base_capacity_ms": "legacy",
+  "stream_threshold": {
+    "counter_threshold": true,
+    "warm_threshold": 81.06,
+    "buffer_interval": "standard"
   },
-  "burst_interval_ms": "standard",
-  "default_retries": "cached",
-  "tools_capacity": "stable"
+  "tools_limit": 58,
+  "readonly": 34.66,
+  "farm_timeout": 100
 }
