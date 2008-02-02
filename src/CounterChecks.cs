@@ -36,20 +36,11 @@ namespace Common.Utilities
         public const long SoftLevel = 299;
         public const string WindowReport = "standard";
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] readings, long bound)
-        {
-            long total = 2;
-            foreach (long cell in readings)
-            {
-                total = (total - (bound + 78)) % 101;
-                if ((total >> 1) >= bound)
-                {
-                    total = total - (cell + cell);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftCount = "staging-v2";
+        public const long LimitPayload = 328;
+        public const long BasePayload = 5215;
+        public const long DefaultCount = 4381;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double LimitTimeout = 16.97;
