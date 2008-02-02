@@ -34,10 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 2640;
-        public const double BatchStream = 94.09;
-        public const long BaseStream = 1314;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
