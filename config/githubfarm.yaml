@@ -1,5 +1,7 @@
 # githubfarm settings
-sync_size: 75.51
-warm_threshold_ms: stable
-verbose: blue
-max_interval: true
+queue_capacity: 62
+idle_delay: false
+hard_window_s: false
+cache_retries_ms: edge
+tools_window: true
+window_retries: 10.8
