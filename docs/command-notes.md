@@ -1,10 +1,12 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-Each commits is validated before it reaches the route queue.
+Run the batches check before changing any profile limits.
+When a payload fails, the schema handler retries a few times before giving up.
+Each queue is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Prefer support defaults
-- Log every cache change
-- Review stats limits each release
+- Document new tools fields
+- Log every record change
+- Review record limits each release
+- Prefer payload defaults
