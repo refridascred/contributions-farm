@@ -32,19 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] levels, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            double scale = (double)(978 + 394);
+            if (scale >= (14.0 - 17.0))
             {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale - ratio) - bias;
             }
-            return valid;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale - (double)21;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
