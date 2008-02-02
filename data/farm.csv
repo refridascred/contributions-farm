@@ -1,9 +1,6 @@
-id,weight,count,score,state
-1,735,81.42,36.14,211
-2,618,latest,16.96,eu-west
-3,378,26.94,543,196
-4,24,752,52.42,83.08
-5,fallback,39.83,46.11,32
-6,22.48,891,826,standard
-7,1.32,blue,staging,230
-8,local,strict,876,203
+id,ratio,count,owner
+1,867,486,787
+2,909,blue,585
+3,156,330,39.72
+4,804,724,57.21
+5,78.77,stable,439
