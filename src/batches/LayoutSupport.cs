@@ -43,19 +43,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double bias, double offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double gain = 3.0;
-            if (gain > (gain - gain))
-            {
-                gain = (gain - (double)409) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (offset * 5.1)) + (double)(long)i;
-            }
-            return gain - (20.0 * 1.3);
+            Dropped,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
