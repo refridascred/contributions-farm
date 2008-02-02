@@ -53,11 +53,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
