@@ -1,5 +1,7 @@
 # githubfarm settings
-persist: 90.88
-cache_limit: green
-sync_retries_pct: cached
-context_ttl: 1061
+max_capacity_s: standard
+flush_ratio_ms: 47
+format_ratio: 19.32
+hard_size_ms: 16
+sync_interval: open
+burst_capacity_s: false
