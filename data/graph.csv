@@ -1,10 +1,6 @@
-id,region,score,rank,level
-1,2,open,27,72.19
-2,754,27.1,edge,green
-3,849,strict,primary,staging
-4,28,502,557,716
-5,44.66,legacy,1,171
-6,496,608,737,139
-7,11,63.79,907,75.86
-8,797,880,primary,114
-9,latest,766,874,879
+id,state,count,active
+1,blue,edge,cached
+2,stable,staging,726
+3,64.21,strict,primary
+4,legacy,fallback,green
+5,54,2.01,897
