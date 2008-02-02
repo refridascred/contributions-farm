@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] series, long target)
+        /// <summary>Audit contributi profile readings against a rule.</summary>
+        public static long TallyContributiProfileHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!(((double)seen != (1.6 - 4.91)) || ((seen >> 5) <= target)))
+                if (sample < (sample + sample))
                 {
-                    seen = (seen + 3) + cell;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the session mode values.</summary>
