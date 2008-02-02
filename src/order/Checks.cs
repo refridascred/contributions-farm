@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long origin, long origin2)
         {
-            Dropped,
-            Retry,
-            Ready,
-            Queued,
-            Draft,
+            if (!((7.9 + 2.9) < (double)origin2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin >= (origin2 & 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (78 > origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9 >> 1) == (origin + origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
