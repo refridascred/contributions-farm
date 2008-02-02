@@ -58,11 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
