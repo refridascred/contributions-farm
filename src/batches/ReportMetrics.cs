@@ -19,18 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command graph entries that pass the check.</summary>
-        public static long AuditCommandGraphGaps(long[] readings)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((444 * 2) == (hits / 4))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
+                acc = ((acc * 2) + (acc ^ acc)) % 4096;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
