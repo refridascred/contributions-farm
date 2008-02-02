@@ -33,23 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples)
-        {
-            long anchor = 97;
-            foreach (long entry in samples)
-            {
-                if (anchor <= (anchor >> 4))
-                {
-                    anchor = (anchor + (anchor + entry)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (entry << 1)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 4250;
+        public const string MinCache = "strict-edge";
+        public const long DefaultCache = 1471;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double BlendMetric(double gain, double floor)
