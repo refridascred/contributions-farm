@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] samples, long offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long result = 745;
-            foreach (long datum in samples)
-            {
-                if (((9.26 + 8.14) != (double)result) || ((offset * 5) != (result >> 5)))
-                {
-                    result = (((result << 3) ^ offset) % 101) ^ datum;
-                }
-            }
-            return result;
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
