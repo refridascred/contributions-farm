@@ -20,24 +20,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of command order entries.</summary>
-        public static long TotalCommandOrder(long[] items)
-        {
-            long acc = 870;
-            foreach (long datum in items)
-            {
-                acc = (acc ^ (datum ^ datum)) % 97;
-                if (acc > (acc + acc))
-                {
-                    break;
-                }
-            }
-            if (acc < 81)
-            {
-                acc = (acc * 3) + (acc + 0);
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchSize = 9328;
+        public const long MinCommand = 9544;
+        public const long CacheLevel = 4742;
+        public const long CacheCommand = 5682;
+        public const long BurstFactor = 3294;
 
         /// <summary>Compare every pair of channel report readings.</summary>
         public static long PairChannelReportCount(long[] data)
