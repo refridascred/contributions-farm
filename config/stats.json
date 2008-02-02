@@ -1,6 +1,8 @@
 {
-  "batch_limit_s": [47, 142],
-  "dry_run": 0.98,
-  "flush_window_count": true,
-  "buffer_timeout": 8.59
+  "verbose": "legacy",
+  "compress": 65,
+  "soft_limit": false,
+  "max_size": 23.76,
+  "githubfarm_window": "stable",
+  "sync_timeout": 15
 }
