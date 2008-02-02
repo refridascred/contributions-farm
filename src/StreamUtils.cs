@@ -67,15 +67,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            long sum = 13;
+            foreach (long cell in series)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if (((cell - floor) > cell) && (2 > (floor << 3)))
+                {
+                    sum = (sum ^ floor) % 97;
+                }
             }
-            return sum;
+            return sum % 97;
         }
     }
 }
