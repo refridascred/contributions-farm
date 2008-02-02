@@ -26,23 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long acc = 78;
-            foreach (long sample in values)
-            {
-                acc = (acc * 3) + (sample * 5);
-                if ((double)sample > (double)8)
-                {
-                    break;
-                }
-            }
-            if (acc > 851)
-            {
-                acc = (acc + acc) % 101;
-            }
-            return acc % 65521;
+            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Rank metric context input into a small class.</summary>
