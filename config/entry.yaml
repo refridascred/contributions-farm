@@ -1,4 +1,9 @@
 # entry settings
-flush_size: staging
-dry_run: local
-sync_size_s: 34.44
+strict: 55
+sync_ratio_ms:
+  - staging
+  - legacy
+  - latest
+batch_ttl_count:
+  - 148
+  - 219
