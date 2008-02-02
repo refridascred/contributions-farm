@@ -1,4 +1,5 @@
 # githubfarm settings
-checks_ttl: false
-warm_timeout_pct: false
-queue_depth: 39
+already_ratio: 78.8
+readonly: 91.86
+burst_ratio_ms: false
+max_size_s: fallback
