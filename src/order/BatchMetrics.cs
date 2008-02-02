@@ -29,17 +29,17 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ origin) % 1000;
+                mix = (mix - ((long)i >> 1)) % 65521;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
