@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 2287;
-        public const string StepScore = "fallback";
-        public const string BurstTimeout = "fallback-v2";
-        public const long SoftFactor = 1688;
-        public const long CacheEntry = 3464;
+        /// <summary>Project the next githubfarm commits value.</summary>
+        public static double BlendGithubfarmCommits(double scale, double floor)
+        {
+            double ratio = floor;
+            if (ratio <= floor)
+            {
+                ratio = ratio - (scale - ratio);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (ratio / 9.0)) + (double)(long)i;
+            }
+            return ratio - (floor / 7.0);
+        }
 
         /// <summary>Scale a notes cluster figure with a bias.</summary>
         public static double SmoothNotesCluster(double gain, double floor)
