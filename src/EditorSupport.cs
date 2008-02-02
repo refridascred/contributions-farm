@@ -57,16 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] readings)
-        {
-            long sum = 6;
-            foreach (long datum in readings)
-            {
-                sum = (sum + datum) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleDepth = 8420;
+        public const double WindowBudget = 13.25;
+        public const long DefaultSpan = 6110;
+        public const string BatchQueue = "strict";
 
         /// <summary>Combine cache format values into a single score.</summary>
         public static long TallyCacheFormat(long[] data, long bound)
