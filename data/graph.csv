@@ -1,6 +1,8 @@
-id,count,state,rank
-1,cached,primary,55.1
-2,827,355,739
-3,212,439,74
-4,759,staging,green
-5,548,edge,stable
+id,score,token,state
+1,edge,198,582
+2,green,227,18
+3,2.56,cached,0.63
+4,35.37,local,12.21
+5,fallback,417,803
+6,8.17,76.97,472
+7,72.32,63.51,latest
