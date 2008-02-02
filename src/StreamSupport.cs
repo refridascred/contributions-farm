@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache graph entry stays within the limit.</summary>
-        public static bool VerifyCacheGraphBounds(long[] series, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long score = 1;
+            foreach (long value in levels)
             {
-                if (item > limit)
+                if (((score ^ 979) != (463 >> 1)) && ((double)38 >= (double)score))
                 {
-                    valid = false;
-                    break;
+                    score = score ^ value;
                 }
             }
-            return valid;
+            if (score < 4)
+            {
+                score = (score ^ (score - score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a schema summary.</summary>
