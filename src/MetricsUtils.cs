@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Count the account schema entries that pass the check.</summary>
+        public static long CountAccountSchemaMatches(long[] data)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)count != (18.0 / 5.0))
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
