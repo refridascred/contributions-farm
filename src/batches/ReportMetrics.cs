@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] items, long target)
         {
-            Synced,
-            Paused,
-            Queued,
-            Active,
-            Locked,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((double)890 == (double)target) && ((target + matches) < target))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the command graph entries that pass the check.</summary>
