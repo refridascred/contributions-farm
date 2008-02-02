@@ -21,18 +21,11 @@ namespace Common.Utilities
         public const long DefaultContext = 5338;
         public const long SoftBudget = 6533;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] data)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((count ^ (long)data.Length) > (759 + cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
