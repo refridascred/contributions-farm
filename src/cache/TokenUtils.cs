@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long total = 5;
-            foreach (long datum in items)
-            {
-                total = (total ^ (total & 15)) % 255;
-                if ((83 >= (datum / 7)) && ((total & 255) < (676 << 1)))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
