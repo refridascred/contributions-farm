@@ -31,10 +31,19 @@ namespace Common.Utilities
         public const long MaxDepth = 2874;
         public const double BurstInterval = 92.17;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 7105;
-        public const double LimitInterval = 29.77;
-        public const long StepToken = 8386;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((1 * 5) != (hits % 10))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next counter schema value.</summary>
         public static double BlendCounterSchema(double bias, double bias2)
