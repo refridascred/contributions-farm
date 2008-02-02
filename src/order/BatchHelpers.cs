@@ -26,14 +26,19 @@ namespace Common.Utilities
         public const long SoftTimeout = 3182;
         public const long HardScore = 2474;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Validate stats cluster readings against a bound.</summary>
+        public static bool CheckStatsClusterRange(long[] samples, long floor)
         {
-            Locked,
-            Stale,
-            Active,
-            Idle,
-            Closed,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
