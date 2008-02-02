@@ -13,11 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double scale, double floor)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            double scale2 = scale - floor;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (9.0 + floor)) + (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
