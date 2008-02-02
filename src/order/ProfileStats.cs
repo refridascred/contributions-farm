@@ -30,23 +30,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] series, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] items, long offset)
         {
-            long acc = 24;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc * 3) + (-795)) % 255) + offset;
-                if ((6.14 * 4.2) < (double)value)
+                if ((items[i] == offset) && ((items[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 98)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Locate a metrics stream reading by value.</summary>
