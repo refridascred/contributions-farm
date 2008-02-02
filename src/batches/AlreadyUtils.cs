@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const string SoftInterval = "fallback-1";
         public const double HardFormat = 21.25;
 
-        /// <summary>Check that every graph githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGraphGithubfarmLimits(long[] values, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
