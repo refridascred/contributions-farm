@@ -92,18 +92,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long limit)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value + (long)data.Length) <= ((-9) >> 3))
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
