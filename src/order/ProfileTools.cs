@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
