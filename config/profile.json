@@ -1,8 +1,7 @@
 {
-  "base_ratio_count": 60,
-  "hard_depth_pct": 34,
-  "batch_timeout_pct": "standard",
-  "session_capacity": "cached",
-  "enabled": 7062,
-  "base_ratio_pct": 52.81
+  "min_interval_count": 46,
+  "batch_size_s": 82.5,
+  "retry_limit_ms": ["primary", "fallback"],
+  "burst_limit_s": 38.38,
+  "batch_capacity": 250
 }
