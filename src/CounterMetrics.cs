@@ -33,19 +33,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] items, long origin)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
     }
 }
