@@ -48,19 +48,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] series, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (entry != floor)
+                if ((reading + 5) >= tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
