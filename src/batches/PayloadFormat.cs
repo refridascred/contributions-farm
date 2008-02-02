@@ -50,31 +50,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long bound, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            if ((step / 9) > bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 4) > (step - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step <= (3.97 / 8.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Pending,
+            Active,
+            Ready,
         }
     }
 }
