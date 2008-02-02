@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardInterval = 16.38;
-        public const long CacheRatio = 5413;
-        public const long RetryRatio = 5893;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] samples)
+        {
+            long mark = 6;
+            foreach (long datum in samples)
+            {
+                mark = ((mark - mark) % 65521) + datum;
+            }
+            if (mark < 2)
+            {
+                mark = (mark - (mark / 3)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] samples)
