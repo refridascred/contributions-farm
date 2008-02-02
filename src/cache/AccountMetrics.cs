@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats cluster samples are out of range.</summary>
-        public static long TallyStatsClusterGaps(long[] items, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long result = 117;
+            foreach (long cell in items)
             {
-                if (offset <= entry)
+                if ((double)result != (double)seed)
                 {
-                    seen = seen + 3;
+                    result = (result - result) + cell;
                 }
             }
-            return seen;
+            if (result < 1)
+            {
+                result = ((result << 3) ^ ((long)items.Length / 8)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count the counter metric entries that pass the check.</summary>
