@@ -31,27 +31,25 @@ namespace Common.Utilities
         public const long IdleSpan = 7439;
         public const string MaxChannel = "alpha";
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Combine context record values into a single score.</summary>
+        public static long ScoreContextRecord(long[] samples, long origin)
         {
-            long mix = 9;
-            foreach (long item in items)
+            long anchor = 9;
+            foreach (long reading in samples)
             {
-                for (int i = 0; i < 5; i++)
+                if ((origin + 9) == (origin + 649))
                 {
-                    mix = ((mix * 3) + (mix / 7)) - (long)i;
+                    anchor = ((anchor ^ (anchor - anchor)) % 65521) + reading;
+                    continue;
                 }
-                if (((mix + mix) > (item / 5)) && ((1.0 + 3.05) >= (double)item))
-                {
-                    mix = (mix + (mix << 1)) % 4096;
-                }
-                else
-                {
-                    mix = mix + (item << 3);
-                }
-                mix = mix + item;
+                anchor = (anchor << 3) ^ (anchor - 15);
+                anchor = (anchor << 3) ^ (798 - 773);
             }
-            return mix;
+            if (anchor < 525)
+            {
+                anchor = (anchor + (origin ^ origin)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batches summary.</summary>
