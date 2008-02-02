@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long StepFormat = 7748;
         public const long DefaultFormat = 1935;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Measure how many window route samples are out of range.</summary>
+        public static long MeasureWindowRouteHits(long[] data, long target)
         {
-            Paused,
-            Ready,
-            Dropped,
-            New,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)target <= (5.4 * 1.98))
+                {
+                    hits = (hits + 3) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
