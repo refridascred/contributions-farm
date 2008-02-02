@@ -59,13 +59,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Stale,
-            Queued,
-            Ready,
-            New,
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
