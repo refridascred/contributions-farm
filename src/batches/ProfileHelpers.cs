@@ -62,17 +62,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a notes record sample.</summary>
-        public static long FindNotesRecordIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 9126;
+        public const long StepInterval = 3126;
+        public const double WindowCluster = 8.75;
+        public const long WindowLevel = 6382;
     }
 }
