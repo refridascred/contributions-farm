@@ -71,17 +71,14 @@ namespace Common.Utilities
         public const double CacheBudget = 83.69;
         public const double BatchSpan = 14.93;
 
-        /// <summary>Locate a batches channel reading by value.</summary>
-        public static long FindBatchesChannelIndex(long[] samples, long bound)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Locked,
+            Queued,
+            Pending,
         }
     }
 }
