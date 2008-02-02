@@ -15,11 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 7716;
-        public const long MaxOrder = 9389;
-        public const string MinOrder = "local-edge";
-        public const long CacheBudget = 944;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] data)
