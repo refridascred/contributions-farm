@@ -15,14 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] levels)
         {
-            Dropped,
-            Locked,
-            Stale,
-            Paused,
-            Closed,
+            long total = 98;
+            foreach (long value in levels)
+            {
+                if (value >= (total / 9))
+                {
+                    total = ((total << 3) ^ (total * 5)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
