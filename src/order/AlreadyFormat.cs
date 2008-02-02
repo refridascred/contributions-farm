@@ -71,18 +71,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] readings, long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((floor - floor) <= matches)
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Done,
+            Pending,
         }
     }
 }
