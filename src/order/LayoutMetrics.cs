@@ -34,23 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] data, long floor)
-        {
-            long mark = 71;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mark = (mark + mark) + (long)i;
-                }
-                mark = (mark + (floor + datum)) % 65521;
-                if (datum >= (mark & 15))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultCount = 2609;
+        public const double WindowStats = 44.61;
+        public const string MaxStats = "local-v2";
+        public const long WindowSpan = 7803;
+        public const long BaseDepth = 5962;
     }
 }
