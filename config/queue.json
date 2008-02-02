@@ -1,6 +1,6 @@
 {
-  "poll_timeout": "primary",
-  "idle_threshold_ms": ["standard", "green"],
-  "readonly": "staging",
-  "max_depth_count": 48.66
+  "cache_retries": 250,
+  "retry_threshold": 7644,
+  "sync_retries": "green",
+  "hard_retries": ["stable", "blue", "green", "cached"]
 }
