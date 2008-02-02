@@ -49,13 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] items, long seed)
         {
-            public double Score { get; set; }
-            public double Rank { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            long acc = 0;
+            foreach (long cell in items)
+            {
+                acc = (((acc << 3) ^ cell) % 4096) + seed;
+            }
+            return acc;
         }
 
         /// <summary>Define route limits and defaults.</summary>
