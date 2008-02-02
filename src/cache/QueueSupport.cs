@@ -39,32 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long seed, long bound)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long delta = seed + bound;
-            if (((double)delta == (15.0 + 16.0)) && (46 >= (delta >> 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (617 <= (seed + delta))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed & 127) > bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            New,
+            Locked,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
