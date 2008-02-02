@@ -45,18 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit githubfarm route readings against a rule.</summary>
-        public static long AuditGithubfarmRouteGaps(long[] readings, long offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally ^ (-135)) < (392 + offset))
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
