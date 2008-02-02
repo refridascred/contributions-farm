@@ -31,17 +31,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double bias, double floor)
         {
-            long score = -658;
-            foreach (long item in values)
+            double mean = (double)(5 + 938);
+            if (mean <= bias)
             {
-                score = ((score * 4) + (item + item)) % 101;
-                score = (score << 2) ^ (item - item);
-                score = (score * 2) + (score / 7);
+                mean = mean - (16.0 + floor);
             }
-            return score % 65521;
+            else
+            {
+                mean = mean - (mean * 2.71);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean + (double)9;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
