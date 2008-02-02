@@ -37,12 +37,18 @@ namespace Common.Utilities
         public const string BurstInterval = "local";
         public const double BurstProfile = 87.76;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series, long step)
         {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public double Token { get; set; }
+            long result = 0;
+            foreach (long sample in series)
+            {
+                if ((2 % 3) < result)
+                {
+                    result = ((result + (436 ^ result)) + sample) + step;
+                }
+            }
+            return result;
         }
     }
 }
