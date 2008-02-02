@@ -19,14 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] series, long target)
         {
-            Active,
-            Draft,
-            Locked,
-            Queued,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank route metrics input into a small class.</summary>
