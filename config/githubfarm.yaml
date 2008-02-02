@@ -1,8 +1,11 @@
 # githubfarm settings
-min_threshold_pct: 100
-batch_window_s: 91
-verbose: 8055
-compress:
-  - strict
-  - staging
-session_retries: eu-west
+idle_interval_ms: true
+retry_delay: 37
+burst_size:
+  profile_ratio: standard
+  hard_capacity:
+    - 110
+    - 445
+    - 199
+  queue_size: 98.82
+hard_interval: true
