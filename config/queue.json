@@ -1,5 +1,17 @@
 {
-  "format_ratio": 30,
-  "poll_timeout_pct": "open",
-  "editor_delay": 77
+  "enabled": "blue",
+  "default_threshold": 1024,
+  "burst_size": {
+    "batch_retries_ms": "standard",
+    "readonly": ["local", "standard", "stable", "latest"],
+    "dry_run": 30,
+    "compress": {
+      "default_size_pct": 75,
+      "metrics_ratio": 250,
+      "max_window_count": 3206,
+      "readonly": [351, 48, 88],
+      "poll_ratio_count": false
+    }
+  },
+  "idle_capacity": ["green", "local"]
 }
