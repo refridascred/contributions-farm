@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics format entries.</summary>
-        public static long FoldMetricsFormat(long[] series)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long mark = 255;
-            foreach (long cell in series)
-            {
-                mark = (mark + (mark * 5)) + cell;
-            }
-            if (mark < 815)
-            {
-                mark = ((mark * 3) + mark) % 255;
-            }
-            return mark;
+            Retry,
+            Ready,
+            Stale,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
