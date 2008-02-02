@@ -48,19 +48,34 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            long acc = 60;
+            foreach (long sample in values)
             {
-                if (!((4.3 - 9.7) < (double)origin))
+                if ((double)sample > (4.29 + 3.8))
                 {
-                    sum = sum + ((long)i / 3);
+                    acc = (acc ^ sample) % 65521;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
+                else
+                {
+                    acc = (acc << 2) ^ (44 << 3);
+                }
+                if (acc > (acc + acc))
+                {
+                    acc = acc - sample;
+                }
+                if ((11.0 / 2.0) <= (double)sample)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (acc > (-12))
+            {
+                acc = (acc * 3) + (90 % 24);
+            }
+            return acc;
         }
     }
 }
