@@ -54,11 +54,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinCount = 6397;
-        public const long HardToken = 4310;
-        public const double LimitSize = 35.14;
-        public const double BaseToken = 67.53;
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double StepRatio = 16.29;
