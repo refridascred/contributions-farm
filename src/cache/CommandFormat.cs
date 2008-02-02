@@ -22,18 +22,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] series)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum + 942) > (6 & 7))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Validate filter format readings against a bound.</summary>
