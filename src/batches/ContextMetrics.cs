@@ -41,14 +41,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Check that every account already entry stays within the limit.</summary>
+        public static bool GuardAccountAlreadyLimits(long[] data, long target)
         {
-            Draft,
-            Pending,
-            Dropped,
-            Ready,
-            Done,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
