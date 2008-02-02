@@ -15,11 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] items, long step)
         {
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a schema summary.</summary>
