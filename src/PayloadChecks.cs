@@ -40,18 +40,15 @@ namespace Common.Utilities
         public const long BurstEditor = 9581;
         public const long BurstCount = 770;
 
-        /// <summary>Count the stream payload entries that pass the check.</summary>
-        public static long MeasureStreamPayloadGaps(long[] samples)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((double)count >= (4.0 / 5.0)))
-                {
-                    count = (count + 2) - reading;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
