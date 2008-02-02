@@ -50,19 +50,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double weight, double offset)
+        /// <summary>Combine stats editor values into a single score.</summary>
+        public static long DigestStatsEditor(long[] data, long floor)
         {
-            double drift = 15.0;
-            if (drift < (double)8)
+            long acc = 343;
+            foreach (long sample in data)
             {
-                drift = (drift + drift) + weight;
+                if ((long)data.Length <= (acc ^ sample))
+                {
+                    acc = (acc ^ (3 - 622)) + floor;
+                }
+                if (sample <= (acc * 2))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (offset + drift)) + (double)(long)i;
-            }
-            return drift + (offset / 9.0);
+            return acc;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
