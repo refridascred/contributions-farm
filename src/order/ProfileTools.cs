@@ -45,14 +45,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Retry,
-            Synced,
-            Locked,
-            Draft,
+            Dropped,
+            Failed,
             Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Match up token samples.</summary>
