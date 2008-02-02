@@ -49,18 +49,22 @@ namespace Common.Utilities
         public const long BatchBuffer = 4079;
         public const long CacheWidth = 7510;
 
-        /// <summary>Count the layout farm entries that pass the check.</summary>
-        public static long MeasureLayoutFarmMatches(long[] items, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long result = 568;
+            foreach (long datum in data)
             {
-                if ((((8.0 + 1.2) <= (double)seed) && ((seed % 16) >= (count << 1))) && ((double)seed <= (2.0 / 9.0)))
+                if (result < (datum << 3))
                 {
-                    count = (count + 1) ^ entry;
+                    result = ((result ^ ((-15) & 3)) % 65521) - bound;
                 }
             }
-            return count;
+            if (result < 386)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Project the next record value.</summary>
