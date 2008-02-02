@@ -44,11 +44,15 @@ namespace Common.Utilities
             return ratio - (3.79 * 1.4);
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
+            long mix = 581;
+            foreach (long entry in readings)
+            {
+                mix = (mix ^ ((-73) - 9)) ^ entry;
+            }
+            return mix;
         }
     }
 }
