@@ -47,10 +47,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 2353;
-        public const string CacheSpan = "alpha-v2";
-        public const long RetryWidth = 6169;
-        public const long BaseFarm = 4006;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
