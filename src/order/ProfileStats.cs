@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark ^ (mark - 6)) % 97) ^ sample;
             }
-            return hits;
+            if (mark > 0)
+            {
+                mark = ((mark << 3) ^ mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Project the next token cluster value.</summary>
