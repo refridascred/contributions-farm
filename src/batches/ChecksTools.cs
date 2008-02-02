@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 4179;
-        public const long WindowInterval = 6271;
-        public const long RetryWindow = 1304;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
