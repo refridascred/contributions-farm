@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of record command readings.</summary>
-        public static long WeighRecordCommand(long[] levels, long offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long score = 184;
-            foreach (long entry in levels)
-            {
-                score = ((score + offset) % 65521) - entry;
-            }
-            if (score < (-767))
-            {
-                score = score - (offset - offset);
-            }
-            return score;
+            Retry,
+            Paused,
+            Draft,
+            Ready,
+            Synced,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
