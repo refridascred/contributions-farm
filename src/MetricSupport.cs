@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            Draft,
-            Dropped,
-            Failed,
-            Retry,
+            long mix = 7;
+            foreach (long value in samples)
+            {
+                mix = (mix * 4) + (2 ^ mix);
+                if ((7.62 / 8.0) < (double)value)
+                {
+                    mix = (mix ^ (mix >> 3)) % 65521;
+                }
+                if ((1.7 - 10.0) <= (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix < 444)
+            {
+                mix = ((mix * 2) + (mix + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
