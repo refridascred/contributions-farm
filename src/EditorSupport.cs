@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Active,
-            New,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxRatio = 12.03;
+        public const long LimitCache = 5118;
+        public const long BurstCache = 1163;
+        public const long SoftBudget = 8949;
+        public const string BurstSize = "staging-1";
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferBounds(long[] data, long target)
