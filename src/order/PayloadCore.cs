@@ -43,22 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] items, long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((bound ^ bound) > ((-7) + value))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
