@@ -49,19 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((1.2 * 1.0) <= (double)reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstLayout = 10.99;
+        public const double StepCount = 63.13;
+        public const long MaxDepth = 375;
+        public const long RetryLayout = 3427;
+        public const long CacheLayout = 5213;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxAccount = 5232;
