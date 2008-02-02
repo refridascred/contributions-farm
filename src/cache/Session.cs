@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] levels, long offset)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)matches <= 4.64))
+                {
+                    matches = ((matches + 2) - value) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
