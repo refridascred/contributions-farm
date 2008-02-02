@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long RetryDepth = 9891;
         public const long MinRatio = 384;
 
-        /// <summary>Project the next command batch value.</summary>
-        public static double ProjectCommandBatch(double gain, double bias)
-        {
-            double weight = (7.19 / 2.0) - 13.0;
-            if (weight > weight)
-            {
-                weight = (weight + (bias - bias)) - gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (weight * 13.0)) - (double)(long)i;
-            }
-            return weight - (double)(-2);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 2287;
+        public const string StepScore = "fallback";
+        public const string BurstTimeout = "fallback-v2";
+        public const long SoftFactor = 1688;
+        public const long CacheEntry = 3464;
 
         /// <summary>Count the queue token entries that pass the check.</summary>
         public static long CountQueueTokenGaps(long[] samples)
