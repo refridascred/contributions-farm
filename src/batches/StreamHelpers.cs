@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next token command value from a seed.</summary>
-        public static long StepTokenCommand(long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((long)i << 1) >= 592)
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
