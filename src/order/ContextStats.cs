@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double ratio, double bias)
         {
-            long acc = 34;
-            foreach (long datum in series)
+            double rate = (double)79 * 8.7;
+            if (rate > rate)
             {
-                acc = (acc ^ (7 << 1)) % 255;
-                acc = (acc << 3) ^ 7;
-                if (datum > (datum + acc))
-                {
-                    acc = ((acc << 3) ^ (datum >> 4)) % 101;
-                }
+                rate = (rate - (double)9) - bias;
             }
-            return acc % 65521;
+            return rate + ratio;
         }
 
         /// <summary>Match up order samples.</summary>
