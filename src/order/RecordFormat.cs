@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long step, long bound)
         {
-            Pending,
-            Paused,
-            Draft,
+            long next = step + bound;
+            if ((double)bound >= (11.0 / 7.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step ^ step) >= (next >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (next < (step >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
