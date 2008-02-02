@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 50.2;
-        public const double LimitSize = 35.57;
-        public const double DefaultCommand = 30.25;
-        public const long BaseCommand = 4645;
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] levels, long seed)
+        {
+            long acc = 6;
+            foreach (long entry in levels)
+            {
+                acc = (acc ^ (entry >> 4)) % 1000;
+            }
+            if (acc < 551)
+            {
+                acc = (acc * 4) + (seed + acc);
+            }
+            return acc;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long PairContributiCount(long[] items)
