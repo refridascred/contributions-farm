@@ -17,15 +17,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double bias, double span)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            double scale = span + (bias * 4.0);
-            if (scale <= scale)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + (double)2;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - span;
+            return seen;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
