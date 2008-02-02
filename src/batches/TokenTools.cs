@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] values, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] data, long offset)
         {
-            long state = 3;
-            foreach (long value in values)
+            long total = 384;
+            foreach (long value in data)
             {
-                state = (state - (target - state)) ^ value;
+                total = (((total + total) % 101) - value) - offset;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
