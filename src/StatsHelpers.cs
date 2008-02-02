@@ -23,13 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
