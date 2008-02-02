@@ -36,11 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinSpan = 3145;
-        public const long CacheWidth = 1678;
-        public const long BaseOrder = 3929;
-        public const string BaseDepth = "alpha-v2";
-        public const long MinFactor = 9627;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
