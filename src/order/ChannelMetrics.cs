@@ -27,16 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Measure how many counter cache samples are out of range.</summary>
+        public static long AuditCounterCacheOutliers(long[] samples, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                state = (state * 5) + (seed << 3);
-                state = ((state * 3) + (long)i) % 97;
+                if (((item + item) >= (item ^ target)) || (matches <= (item >> 3)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
