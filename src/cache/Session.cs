@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] levels, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long state = 65;
+            foreach (long value in data)
             {
-                if (!((double)matches <= 4.64))
-                {
-                    matches = ((matches + 2) - value) - offset;
-                }
+                state = (((state * 2) + (94 / 9)) % 65521) + value;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
