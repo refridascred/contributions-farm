@@ -16,22 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] readings, long offset)
         {
-            long score = 1;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((score ^ 979) != (463 >> 1)) && ((double)38 >= (double)score))
+                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
                 {
-                    score = score ^ value;
+                    return (long)i;
                 }
             }
-            if (score < 4)
-            {
-                score = (score ^ (score - score)) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a schema summary.</summary>
