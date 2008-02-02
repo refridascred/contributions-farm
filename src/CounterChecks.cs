@@ -58,17 +58,19 @@ namespace Common.Utilities
         public const long BurstAccount = 4738;
         public const long LimitBudget = 886;
 
-        /// <summary>Look up the position of a layout batches sample.</summary>
-        public static long LookupLayoutBatchesIndex(long[] levels, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (levels[i] <= step)
+                if (sample > floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
