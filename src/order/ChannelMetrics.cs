@@ -13,18 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] samples)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((377 >> 5) == (hits << 2)) && !((71 + value) >= 553))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a route snapshot.</summary>
