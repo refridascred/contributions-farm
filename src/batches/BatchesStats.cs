@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the buffer batch series from a seed.</summary>
-        public static long StepBufferBatch(long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] levels, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            long anchor = 6;
+            foreach (long cell in levels)
             {
-                anchor = anchor - (876 ^ 54);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (origin < anchor)
+                {
+                    anchor = (anchor + (cell * 4)) % 65521;
+                    anchor = ((anchor * 3) + anchor) % 1000;
+                }
+                if ((double)origin <= 10.0)
+                {
+                    anchor = ((anchor << 2) ^ (cell - (long)levels.Length)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + (cell - origin)) % 1000;
+                }
             }
-            return anchor;
+            if (anchor > 0)
+            {
+                anchor = anchor - ((long)levels.Length >> 4);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
