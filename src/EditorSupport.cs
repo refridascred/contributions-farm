@@ -44,31 +44,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long origin, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series, long bound)
         {
-            if (!(68 < (origin ^ origin)))
+            long carry = 14;
+            foreach (long reading in series)
             {
-                return 1;
+                carry = ((((carry * 4) + (carry / 5)) % 97) - reading) - bound;
             }
-            else
-            {
-                if (origin >= (origin + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin << 3) <= (bound >> 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
