@@ -1,7 +1,9 @@
-id,level,state,label
-1,blue,386,eu-west
-2,53.52,311,3.54
-3,222,73.75,47
-4,451,90.11,staging
-5,438,stable,813
-6,68,673,719
+id,ratio,label
+1,242,54.21
+2,326,eu-west
+3,primary,fallback
+4,10.14,6.55
+5,596,703
+6,95.15,57.07
+7,71.02,cached
+8,529,27.81
