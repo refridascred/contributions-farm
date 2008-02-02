@@ -1,17 +1,6 @@
 {
-  "max_timeout": [83, 296, 487],
-  "audit": 0.16,
-  "warm_delay_s": "primary",
-  "context_delay": {
-    "soft_ttl": 20,
-    "enabled": 83,
-    "filter_threshold": {
-      "payload_capacity": 63.39,
-      "flush_depth_s": ["cached", "strict", "fallback", "primary"],
-      "contributi_delay": "green",
-      "flush_limit": 100,
-      "max_interval_count": 69
-    },
-    "report_timeout": ["legacy", "stable", "stable"]
-  }
+  "verbose": 60,
+  "enabled": "standard",
+  "max_timeout_count": "blue",
+  "cache_threshold_s": 42
 }
