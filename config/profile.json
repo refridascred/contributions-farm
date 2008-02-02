@@ -1,6 +1,11 @@
 {
-  "batch_capacity": "fallback",
-  "poll_capacity_ms": ["eu-west", "legacy", "stable", "green"],
-  "channel_limit": 35.17,
-  "counter_timeout": true
+  "compress": 250,
+  "soft_capacity": "standard",
+  "strict": {
+    "token_ratio": "strict",
+    "format_retries": 100,
+    "channel_depth": 35,
+    "base_window_s": 9.45,
+    "max_delay_count": true
+  }
 }
