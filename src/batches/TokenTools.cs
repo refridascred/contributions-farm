@@ -53,12 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] items, long floor)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
