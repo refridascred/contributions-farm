@@ -24,10 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 3922;
-        public const long DefaultRoute = 260;
-        public const long HardLevel = 5566;
-        public const long SoftRoute = 1210;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((hits + (long)data.Length) != (62 & 3)) && ((8.91 + 7.2) <= (double)item))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
