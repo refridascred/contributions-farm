@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] values, long seed)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally - 423) <= (545 - value))
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Combine editor record values into a single score.</summary>
