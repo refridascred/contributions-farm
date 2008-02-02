@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Active,
             Done,
-            Closed,
+            Failed,
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
