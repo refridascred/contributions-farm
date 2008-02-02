@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
+            Retry,
+            Pending,
             Dropped,
-            New,
-            Paused,
-            Draft,
         }
 
         /// <summary>Accumulate buffer context samples.</summary>
