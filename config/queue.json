@@ -1,8 +1,21 @@
 {
-  "commits_window": [462, 139, 292],
-  "readonly": ["open", "primary"],
-  "command_ratio": true,
-  "batches_interval": 56.28,
-  "burst_ratio_ms": false,
-  "retry_ratio_s": 60
+  "graph_capacity": 7.66,
+  "soft_interval_s": {
+    "poll_timeout_ms": {
+      "verbose": "edge",
+      "poll_capacity": true,
+      "cache_capacity": "cached",
+      "base_window_ms": [83, 39]
+    },
+    "audit": "staging",
+    "poll_window_count": {
+      "default_retries_pct": ["open", "latest"],
+      "warm_ttl_s": 26,
+      "burst_threshold_ms": 92.76,
+      "sync_threshold": 73.58
+    },
+    "warm_depth_ms": 55,
+    "batch_timeout_count": true
+  },
+  "compress": 6
 }
