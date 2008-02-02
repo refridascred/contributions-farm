@@ -55,17 +55,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] series, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 354;
+            foreach (long datum in items)
             {
-                if (series[i] < bound)
+                if ((mark >> 1) <= (datum * 4))
                 {
-                    return (long)i;
+                    mark = (mark ^ (227 & 255)) % 101;
+                }
+                else
+                {
+                    mark = (mark - mark) % 255;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
     }
 }
