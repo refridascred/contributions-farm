@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine commits batch values into a single score.</summary>
-        public static long FoldCommitsBatch(long[] data)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long mix = 73;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 2) + (mix / 4)) % 101;
-                mix = ((mix << 3) ^ (mix - 2)) % 255;
-                mix = (mix ^ entry) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix < 7)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a stream stats.</summary>
