@@ -1,7 +1,9 @@
-id,active,state,level,region
-1,2.1,fallback,latest,139
-2,47.64,18,72.68,427
-3,green,79.89,19.55,86.94
-4,735,strict,699,blue
-5,cached,799,718,60.2
-6,597,708,fallback,36.07
+id,region,owner,ratio,score
+1,668,staging,56.84,585
+2,local,831,626,280
+3,26,6.48,49.43,latest
+4,fallback,593,stable,0.54
+5,23.62,eu-west,73.4,staging
+6,primary,edge,152,latest
+7,586,997,276,staging
+8,63.83,standard,108,49.7
