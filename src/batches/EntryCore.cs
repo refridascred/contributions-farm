@@ -46,15 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] readings, long seed)
+        /// <summary>Measure how many report tools samples are out of range.</summary>
+        public static long TallyReportToolsGaps(long[] samples)
         {
-            long mark = 82;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                mark = ((mark << 3) ^ (seed ^ mark)) ^ datum;
+                if ((7 <= value) || ((5 & 7) <= (count ^ count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Describe the notes mode values.</summary>
