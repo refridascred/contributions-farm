@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] series, long limit)
+        /// <summary>Measure how many notes tools samples are out of range.</summary>
+        public static long TallyNotesToolsGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (sample >= limit)
+                if ((seen & 127) > value)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
