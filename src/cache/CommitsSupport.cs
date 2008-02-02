@@ -41,16 +41,14 @@ namespace Common.Utilities
         public const long BurstScore = 1260;
         public const long SoftStream = 4480;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] levels, long limit)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long state = 976;
-            foreach (long value in levels)
-            {
-                state = ((state << 3) ^ (limit + limit)) - value;
-                state = (state + (state % 100)) % 1000;
-            }
-            return state;
+            Stale,
+            Ready,
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
