@@ -47,13 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Synced,
-            Ready,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLevel = 70.39;
+        public const double BatchLayout = 92.64;
+        public const long CacheInterval = 4511;
+        public const double MaxBudget = 39.82;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
