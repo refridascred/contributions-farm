@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for item in open staging; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-COMMAND_LIMIT=167
+COMMAND_LIMIT=307
 log "limit is ${COMMAND_LIMIT}"
