@@ -1,7 +1,6 @@
 {
-  "min_interval_count": 46,
-  "batch_size_s": 82.5,
-  "retry_limit_ms": ["primary", "fallback"],
-  "burst_limit_s": 38.38,
-  "batch_capacity": 250
+  "batch_capacity": "fallback",
+  "poll_capacity_ms": ["eu-west", "legacy", "stable", "green"],
+  "channel_limit": 35.17,
+  "counter_timeout": true
 }
