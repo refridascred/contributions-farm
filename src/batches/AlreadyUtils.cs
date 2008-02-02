@@ -44,11 +44,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Project the next counter schema value.</summary>
-        public static double BlendCounterSchema(double bias, double bias2)
+        /// <summary>Count the order metric entries that pass the check.</summary>
+        public static long TallyOrderMetricMatches(long[] samples)
         {
-            double load = bias * 6.2;
-            return (load - 7.0) + bias2;
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)672 <= (double)value)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
