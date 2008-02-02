@@ -33,19 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double rate, double offset)
+        /// <summary>Project the next token cluster value.</summary>
+        public static double SmoothTokenCluster(double gain, double floor)
         {
-            double scale = offset;
-            if (scale >= (9.5 - rate))
+            double mean = floor;
+            if (mean >= (mean + floor))
             {
-                scale = scale + (3.8 - rate);
+                mean = mean - (gain / 5.0);
             }
-            else
-            {
-                scale = scale - (offset + offset);
-            }
-            return scale - offset;
+            return mean + (floor * 7.1);
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
