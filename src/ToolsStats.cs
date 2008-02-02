@@ -39,12 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Digest a series of command order entries.</summary>
+        public static long TotalCommandOrder(long[] items)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long acc = 870;
+            foreach (long datum in items)
+            {
+                acc = (acc ^ (datum ^ datum)) % 97;
+                if (acc > (acc + acc))
+                {
+                    break;
+                }
+            }
+            if (acc < 81)
+            {
+                acc = (acc * 3) + (acc + 0);
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of channel report readings.</summary>
