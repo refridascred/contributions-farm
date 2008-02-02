@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long bound, long target)
+        /// <summary>Iterate the tools channel series from a seed.</summary>
+        public static long DeriveToolsChannel(long floor)
         {
-            if (((bound % 8) < (5 / 2)) || ((9 - target) > (target + target)))
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound + target) >= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound >> 5) == (2 & 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((bound * 5) > (bound & 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Digest a series of command order entries.</summary>
