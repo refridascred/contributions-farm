@@ -92,14 +92,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Draft,
-            Closed,
-            Locked,
-            Queued,
-            Pending,
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
