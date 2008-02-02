@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] readings, long offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] series, long bound)
         {
-            long carry = 38;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + ((-3) >> 4)) - item;
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 36)
-            {
-                carry = ((carry << 2) ^ (offset - 91)) % 65521;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a cluster options.</summary>
