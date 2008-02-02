@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count order already pairs that satisfy a relation.</summary>
-        public static long MatchOrderAlreadyCount(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)sample > (double)seen)
                 {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of metrics format entries.</summary>
