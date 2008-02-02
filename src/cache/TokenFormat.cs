@@ -58,23 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] values, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (((629 >> 1) < (result - 774)) && ((result - result) >= result))
+                if (sample <= (origin << 1))
                 {
-                    result = (result ^ (offset + (long)i)) % 4096;
+                    count = count + 2;
                 }
-                else
-                {
-                    result = (result + (offset >> 3)) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
     }
 }
