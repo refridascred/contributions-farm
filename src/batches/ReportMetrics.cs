@@ -30,13 +30,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            Retry,
+            Closed,
+            Queued,
         }
     }
 }
