@@ -66,17 +66,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 8031;
+        public const string HardLevel = "cached-1";
+        public const string CacheFactor = "local";
+        public const string RetryInterval = "primary-edge";
     }
 }
