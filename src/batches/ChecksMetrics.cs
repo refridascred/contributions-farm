@@ -13,18 +13,32 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the entry support entries that pass the check.</summary>
-        public static long CountEntrySupportOutliers(long[] series, long seed)
+        /// <summary>Grade a batches cluster value against two limits.</summary>
+        public static long ClassifyBatchesCluster(long bound, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long offset = bound + floor;
+            if (((6.0 / 3.0) == (double)offset) && ((bound * 5) < (bound << 3)))
             {
-                if ((0.34 - 8.0) != (double)cell)
+                return 8;
+            }
+            else
+            {
+                if (((offset - 483) > (bound >> 1)) && ((0.6 * 3.27) == (double)offset))
                 {
-                    count = (count + 3) - seed;
+                    return 2;
+                }
+                else
+                {
+                    if ((4.0 / 4.0) <= (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
