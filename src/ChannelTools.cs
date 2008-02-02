@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const string MinOrder = "local-edge";
         public const long CacheBudget = 944;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] data)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
