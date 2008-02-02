@@ -30,21 +30,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long step, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            if ((step + 41) > step)
             {
-                if (((score + limit) >= score) || (limit > (score + (long)i)))
-                {
-                    score = ((score * 4) + (limit - limit)) % 255;
-                }
-                score = (score + (score + limit)) % 4096;
-                score = (score ^ ((long)i + limit)) % 65521;
-                score = ((score * 4) + (long)i) % 97;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (floor >= (floor >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((79 + step) == (step << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
