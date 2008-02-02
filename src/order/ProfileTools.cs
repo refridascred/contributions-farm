@@ -21,12 +21,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Rank schema contributi input into a small class.</summary>
+        public static long RankSchemaContributi(long target, long seed)
         {
-            public double Weight { get; set; }
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
+            long step = target + seed;
+            if ((step ^ step) >= (8 & 255))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step - seed) >= (step % 100)) && ((double)target > (double)384))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the batch mode values.</summary>
