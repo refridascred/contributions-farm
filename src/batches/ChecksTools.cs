@@ -22,14 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Active,
-            Dropped,
-            Paused,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 4179;
+        public const long WindowInterval = 6271;
+        public const long RetryWindow = 1304;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutBounds(long[] data, long origin)
