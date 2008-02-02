@@ -45,18 +45,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] items, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((2.44 <= (double)target) || (((7.8 + 6.49) <= (double)(long)items.Length) && ((matches << 1) != (value & 31))))
+                mix = (mix << 3) ^ (mix * 3);
+                if (!((mix + mix) > (mix + seed)))
                 {
-                    matches = matches + 1;
+                    long offset = (seed & 3) * 3;
+                    mix = (mix << 3) ^ (offset - mix);
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
     }
 }
