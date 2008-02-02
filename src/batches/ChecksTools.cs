@@ -44,15 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] data, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] values, long limit)
         {
-            long state = 82;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                state = (((state + (35 << 3)) % 97) + item) + floor;
+                if ((datum + limit) >= limit)
+                {
+                    seen = seen + 2;
+                }
             }
-            return state % 97;
+            return seen;
         }
     }
 }
