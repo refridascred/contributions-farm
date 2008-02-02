@@ -36,13 +36,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the order metric entries that pass the check.</summary>
