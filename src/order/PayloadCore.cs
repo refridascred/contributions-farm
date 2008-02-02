@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] samples, long floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == floor)
+                if ((samples[i] > target) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
