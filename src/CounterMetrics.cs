@@ -20,14 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Draft,
-            Pending,
-            Active,
-            Paused,
+            Stale,
+            Failed,
             Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Measure how many farm profile samples are out of range.</summary>
