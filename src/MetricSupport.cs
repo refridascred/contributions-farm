@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long origin, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long limit, long offset)
         {
-            long gap = origin ^ target;
-            if ((7 % 24) <= gap)
+            if (((offset << 2) < (offset - limit)) || ((double)offset == (12.0 * 15.0)))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((origin << 2) < (4 % 100))
+                if (offset > (offset - offset))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((origin ^ (-828)) < (27 & 15))
+                    if ((508 * 4) <= limit)
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        if (!((gap >> 1) < target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 8;
                     }
                 }
             }
