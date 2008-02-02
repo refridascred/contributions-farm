@@ -1,13 +1,17 @@
 # support settings
-retry_size: 32
-poll_ttl_count: strict
-warm_timeout:
-  - 12
-  - 312
-  - 380
-  - 226
-compress: green
-counter_threshold:
-  - local
-  - green
-  - local
+burst_depth_s:
+  - 153
+  - 103
+context_limit:
+  - 260
+  - 383
+poll_limit_s:
+  - 167
+  - 286
+audit:
+  retry_delay: 5062
+  batch_retries_count: staging
+  flush_window: primary
+  idle_interval_ms: 83.49
+  idle_limit: 100
+  retry_ratio: eu-west
