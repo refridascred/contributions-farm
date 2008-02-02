@@ -1,6 +1,7 @@
 {
-  "verbose": 60,
-  "enabled": "standard",
-  "max_timeout_count": "blue",
-  "cache_threshold_s": 42
+  "burst_timeout": 2544,
+  "persist": false,
+  "cache_timeout": false,
+  "audit": 22.7,
+  "max_timeout_ms": "local"
 }
