@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values, long step)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long score = 64;
-            foreach (long item in values)
-            {
-                score = ((score ^ (item - score)) % 255) - step;
-            }
-            if (score < 3)
-            {
-                score = ((score * 2) + (score >> 1)) % 101;
-            }
-            return score;
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
