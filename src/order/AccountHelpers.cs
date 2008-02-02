@@ -39,18 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] levels)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading > (double)hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
