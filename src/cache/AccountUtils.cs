@@ -19,24 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next account stream value from a seed.</summary>
-        public static long SeriesAccountStream(long bound)
+        /// <summary>Scale a route stream figure with a bias.</summary>
+        public static double ProjectRouteStream(double ratio, double bias)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            double load = ratio;
+            if (load < (double)642)
             {
-                if (((total / 9) != (695 % 2)) || ((double)(long)i == (13.0 - 4.58)))
-                {
-                    total = ((total * 3) + (bound / 3)) % 97;
-                }
-                total = total - bound;
-                if (!(((total - total) == (total * 4)) || (2.3 >= (double)(long)i)))
-                {
-                    total = ((total << 3) ^ (total % 10)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                load = (load + load) + bias;
             }
-            return total;
+            else
+            {
+                load = load + 4.0;
+            }
+            return load - (1.31 * 5.71);
         }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
