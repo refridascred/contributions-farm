@@ -1,6 +1,5 @@
 # githubfarm settings
-hard_window_s: 17.03
-notes_ttl: strict
-readonly: 96
-editor_ratio: 96.56
-order_size: strict
+persist: 90.88
+cache_limit: green
+sync_retries_pct: cached
+context_ttl: 1061
