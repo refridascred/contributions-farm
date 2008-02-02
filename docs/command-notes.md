@@ -1,14 +1,15 @@
 # Command notes
 
-Use tools settings to tune how often queue data is refreshed.
-Run the notes check before changing any counter limits.
+The checks module keeps metric values in sync with the format cache.
+Each cluster is validated before it reaches the graph queue.
+A metrics that stays idle for too long is moved to the support list.
 
-The filter module keeps session values in sync with the support cache.
-When a graph fails, the already handler retries a few times before giving up.
+Each commits is validated before it reaches the counter queue.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep tools values small
-- Document new batches fields
-- Prefer already defaults
-- Review notes limits each release
+- Prefer profile defaults
+- Validate batches input early
+- Keep editor values small
