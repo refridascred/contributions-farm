@@ -1,5 +1,14 @@
 {
-  "compress": "open",
-  "base_size": "strict",
-  "base_window_ms": 1024
+  "base_limit_pct": "strict",
+  "audit": true,
+  "warm_threshold_pct": {
+    "poll_depth_ms": 14.82,
+    "batch_capacity_pct": [460, 194, 389, 231],
+    "verbose": 1024,
+    "persist": 250,
+    "default_retries": "fallback"
+  },
+  "entry_ttl": 250,
+  "max_size_pct": "blue",
+  "sync_ratio_ms": 50.47
 }
