@@ -79,18 +79,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] samples, long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long limit)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((seen % 97) > (item + 94)) || !((seed + seed) != ((-48) - seed)))
-                {
-                    seen = seen + 1;
-                }
+                mark = ((mark << 2) ^ 958) % 255;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
