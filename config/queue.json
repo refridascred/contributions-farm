@@ -1,13 +1,14 @@
 {
-  "strict": true,
-  "batch_window": 61,
-  "poll_timeout_count": 29,
-  "burst_limit": {
-    "channel_threshold": 63.96,
-    "idle_ratio_pct": "cached",
-    "window_threshold": 2.69,
-    "readonly": 7687
+  "soft_ttl": ["eu-west", "eu-west"],
+  "audit": 8656,
+  "idle_ttl": "strict",
+  "editor_depth": {
+    "batch_window": 250,
+    "counter_limit": "open",
+    "verbose": 8886,
+    "max_depth_s": true,
+    "cache_limit_s": "staging",
+    "metrics_retries": "staging"
   },
-  "min_window": 500,
-  "cache_depth_ms": false
+  "dry_run": 56.23
 }
