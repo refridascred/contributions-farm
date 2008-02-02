@@ -31,23 +31,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + reading) == (reading + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryScore = 7285;
+        public const long SoftWidth = 4850;
+        public const long BaseBudget = 2723;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
