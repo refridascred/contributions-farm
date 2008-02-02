@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxWidth = 1229;
-        public const string DefaultStats = "open-v2";
-        public const long CacheStats = 6505;
-        public const string BatchStats = "local";
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
