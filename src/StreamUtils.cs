@@ -71,12 +71,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
