@@ -23,12 +23,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] samples, long origin)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 2) != 0))
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
