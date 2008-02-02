@@ -1,6 +1,5 @@
 {
-  "burst_timeout_pct": true,
-  "retry_threshold": false,
-  "hard_window_pct": 93.77,
-  "token_depth": 73.13
+  "cache_retries_pct": "primary",
+  "poll_timeout_pct": 30,
+  "graph_ttl": 76
 }
