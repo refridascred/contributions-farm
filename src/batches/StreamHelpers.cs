@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor entry samples are out of range.</summary>
-        public static long TallyEditorEntryGaps(long[] samples)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((8 + hits) < (sample / 4)) && ((sample % 64) <= sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Closed,
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Accumulate schema samples.</summary>
