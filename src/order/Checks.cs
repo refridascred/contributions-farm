@@ -33,13 +33,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long target, long floor)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            long span = target ^ floor;
+            if (((span << 1) <= (floor + floor)) && ((1.3 - 1.49) != (double)floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (span <= (target + span))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor > span)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
