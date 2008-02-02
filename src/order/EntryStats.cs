@@ -42,24 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] levels, long origin)
         {
-            long result = 46;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((result + result) < (4 / 7))
+                if (((13.0 + 0.53) == (double)matches) || (((88 << 1) > (origin << 3)) && ((1 ^ matches) != (matches >> 5))))
                 {
-                    long edge = result;
-                    result = (result * 4) + (edge ^ item);
-                }
-                result = (result + (701 % 64)) % 4096;
-                if ((result + result) <= (item / 4))
-                {
-                    result = result + (752 << 3);
+                    matches = (matches + 3) + sample;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
