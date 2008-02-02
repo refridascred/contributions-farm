@@ -12,10 +12,39 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 8278;
-        public const double DefaultLevel = 26.0;
-        public const long IdleFactor = 6199;
+        /// <summary>Classify a entry farm pair into a bucket.</summary>
+        public static long ClassifyEntryFarm(long step, long target)
+        {
+            if ((target << 2) == (step + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((209 + step) <= (target + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target < step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((5 ^ target) != (838 << 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double ProjectCommits(double gain, double span)
