@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] readings, long bound)
         {
-            long sum = 844;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum - (sum / 8)) ^ sample;
+                if ((readings[i] > bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
