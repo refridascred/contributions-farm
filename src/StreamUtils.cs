@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] values, long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long sum = 84;
-            foreach (long cell in values)
-            {
-                sum = (sum + (cell >> 4)) - seed;
-            }
-            if (sum < 54)
-            {
-                sum = sum - 62;
-            }
-            return sum;
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
