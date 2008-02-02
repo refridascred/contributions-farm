@@ -40,17 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] series, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((series[i] == offset) && ((series[i] % 2) != 0))
+                if (entry < floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
