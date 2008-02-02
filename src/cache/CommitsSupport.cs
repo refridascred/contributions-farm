@@ -42,12 +42,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 8496;
-        public const double DefaultBatches = 16.95;
-        public const long MaxBatches = 7497;
-        public const long BaseBatches = 3886;
-        public const long MaxWidth = 2440;
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ScaleQueue(double gain, double bias)
