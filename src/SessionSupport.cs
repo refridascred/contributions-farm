@@ -12,18 +12,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many order queue samples are out of range.</summary>
-        public static long TallyOrderQueueGaps(long[] readings, long seed)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((7.49 * 18.0) != (double)sample)
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
