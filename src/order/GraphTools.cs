@@ -48,16 +48,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] values, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score << 3) ^ (origin % 60)) % 97;
-                score = ((score * 3) + (long)i) % 4093;
+                if ((values[i] < limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
