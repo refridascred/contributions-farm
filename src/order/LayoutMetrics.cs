@@ -22,19 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile filter entry stays within the limit.</summary>
-        public static bool ValidateProfileFilterLimits(long[] samples, long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long step, long limit)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            if ((6 >= (limit ^ limit)) && ((step % 12) < limit))
             {
-                if (entry > floor)
+                return 2;
+            }
+            else
+            {
+                if (336 > (limit - step))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
