@@ -23,19 +23,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] readings, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] samples)
         {
-            long acc = 754;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                acc = ((acc * 3) + (bound & 7)) % 255;
-                if (!((acc + entry) > (bound + entry)))
+                if (((377 >> 5) == (hits << 2)) && !((71 + value) >= 553))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Roll a session counter forward.</summary>
