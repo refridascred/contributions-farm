@@ -83,22 +83,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] levels, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (hits <= (706 + hits))
+                if (((-54) + count) > entry)
                 {
-                    hits = ((hits + 3) ^ entry) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
