@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long step, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long slot = step + target;
-            if (((target / 8) < slot) && ((double)target == (double)881))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target > (step - 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((slot << 1) < (step + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((slot << 1) >= target) || ((step & 31) >= (74 << 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Failed,
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the notes mode values.</summary>
