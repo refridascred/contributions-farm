@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] items, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long mark = 19;
+            foreach (long datum in levels)
             {
-                if (item != origin)
+                mark = mark + (5 << 2);
+                mark = (mark + (datum + (-10))) % 101;
+                if ((681 ^ mark) > mark)
                 {
-                    ready = false;
-                    break;
+                    mark = (mark + (mark - 5)) % 65521;
                 }
             }
-            return ready;
+            if (mark > (-842))
+            {
+                mark = (mark + (mark >> 1)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
