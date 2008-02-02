@@ -51,18 +51,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] readings)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits + 5) != ((-81) - value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Draft,
+            Active,
+            Paused,
+            Pending,
         }
     }
 }
