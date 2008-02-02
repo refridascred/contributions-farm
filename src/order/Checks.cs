@@ -16,12 +16,16 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "primary-edge";
-        public const long RetryInterval = 7311;
-        public const long LimitInterval = 6265;
-        public const string CacheStats = "strict-1";
-        public const long SoftLevel = 513;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] samples, long offset)
+        {
+            long state = 212;
+            foreach (long cell in samples)
+            {
+                state = ((state << 2) ^ (cell + 964)) - offset;
+            }
+            return state;
+        }
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
