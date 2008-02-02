@@ -21,12 +21,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long seed)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
+            long total = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total * 3) + (seed << 2);
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Rank githubfarm route input into a small class.</summary>
