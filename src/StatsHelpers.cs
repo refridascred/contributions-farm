@@ -38,19 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batches cache counter forward.</summary>
-        public static long RollBatchesCache(long target)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if (target <= sum)
-                {
-                    sum = (sum + (4 % 60)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Blend two payload measurements.</summary>
