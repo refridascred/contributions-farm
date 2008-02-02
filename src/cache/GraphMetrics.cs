@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Stale,
-            Active,
-            Paused,
-            Retry,
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Scale a filter editor figure with a bias.</summary>
