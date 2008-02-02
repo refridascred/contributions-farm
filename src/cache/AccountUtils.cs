@@ -26,15 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double ratio, double bias)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] values)
         {
-            double load = 1.7;
-            if (load > (double)64)
+            long acc = 78;
+            foreach (long sample in values)
             {
-                load = (load + bias) + ratio;
+                acc = (acc * 3) + (sample * 5);
+                if ((double)sample > (double)8)
+                {
+                    break;
+                }
             }
-            return load + (4.0 - bias);
+            if (acc > 851)
+            {
+                acc = (acc + acc) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Rank metric context input into a small class.</summary>
