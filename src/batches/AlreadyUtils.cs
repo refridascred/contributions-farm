@@ -44,18 +44,11 @@ namespace Common.Utilities
         public const double LimitInterval = 29.77;
         public const long StepToken = 8386;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] levels, long target)
+        /// <summary>Project the next counter schema value.</summary>
+        public static double BlendCounterSchema(double bias, double bias2)
         {
-            long state = -103;
-            foreach (long datum in levels)
-            {
-                if (!((19.0 + 1.0) != (double)datum))
-                {
-                    state = state + (target << 1);
-                }
-            }
-            return state;
+            double load = bias * 6.2;
+            return (load - 7.0) + bias2;
         }
     }
 }
