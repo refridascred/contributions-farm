@@ -32,18 +32,15 @@ namespace Common.Utilities
         public const long StepSize = 6477;
         public const double DefaultRecord = 10.47;
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample % 24) == (matches - (-50)))
                 {
-                    if ((data[i] ^ data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
