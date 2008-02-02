@@ -49,18 +49,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] series)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((long)series.Length >= 88)
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the queue kind values.</summary>
