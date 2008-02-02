@@ -1,21 +1,6 @@
 {
-  "editor_limit": true,
-  "base_interval": true,
-  "order_ttl": "standard",
-  "flush_interval": {
-    "compress": 99,
-    "hard_ttl_ms": false,
-    "idle_interval": 31.92,
-    "enabled": {
-      "soft_ttl": false,
-      "min_window_count": ["cached", "blue"],
-      "burst_size_s": "strict",
-      "route_limit": 22,
-      "batches_threshold": "fallback",
-      "poll_size_count": true
-    },
-    "base_limit_s": "strict"
-  },
-  "hard_limit_count": false,
-  "route_depth": 46.58
+  "verbose": ["stable", "legacy", "local"],
+  "strict": "local",
+  "base_interval": "edge",
+  "cache_limit": 58.62
 }
