@@ -64,21 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Check that every metrics cluster entry stays within the limit.</summary>
+        public static bool VerifyMetricsClusterLimits(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value != target)
                 {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
