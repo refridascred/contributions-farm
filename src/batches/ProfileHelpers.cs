@@ -25,13 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long bound, long seed)
         {
-            Paused,
-            Idle,
-            Locked,
-            Draft,
+            long lane = bound - seed;
+            if (!((20.0 + 7.0) == (double)bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((65 % 24) > (seed ^ lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)seed >= 13.0) && (lane <= (lane << 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools mode values.</summary>
