@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Compare every pair of counter contributi readings.</summary>
+        public static long CompareCounterContributiCount(long[] items)
         {
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
