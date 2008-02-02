@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Roll a session schema counter forward.</summary>
+        public static long RollSessionSchema(long limit)
         {
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)carry > (0.6 / 7.0))
+                {
+                    carry = carry - (carry + (long)i);
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Locate a command reading by value.</summary>
