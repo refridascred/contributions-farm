@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] readings, long bound)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] readings, long limit)
         {
-            long sum = 6;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum ^ (bound * 2)) % 65521) + sample;
+                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 93)
-            {
-                sum = (sum + sum) % 4096;
-            }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
