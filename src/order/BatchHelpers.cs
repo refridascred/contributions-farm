@@ -23,19 +23,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a schema queue figure with a bias.</summary>
-        public static double BlendSchemaQueue(double rate, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] items)
         {
-            double scale = 1.3 - bias;
-            if (scale >= rate)
+            long count = 0;
+            foreach (long entry in items)
             {
-                scale = scale + bias;
+                if ((6 - entry) < entry)
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                scale = scale - (9.04 - scale);
-            }
-            return scale + (16.0 / 6.0);
+            return count;
         }
     }
 }
