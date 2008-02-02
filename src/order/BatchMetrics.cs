@@ -58,16 +58,11 @@ namespace Common.Utilities
             return bias - (floor + ratio);
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double gain, double floor)
-        {
-            double gain2 = (double)(388 & 31);
-            if (gain2 < gain)
-            {
-                gain2 = (gain2 + 2.7) + floor;
-            }
-            return gain2 - (double)(-182);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseCount = 75.68;
+        public const long HardCache = 4642;
+        public const long MaxCache = 4373;
+        public const long BaseSize = 5246;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferRange(long[] samples, long limit)
