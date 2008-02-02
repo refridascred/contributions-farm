@@ -20,23 +20,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] samples)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long acc = 1;
+            foreach (long sample in samples)
             {
-                if ((double)425 <= (double)step)
-                {
-                    carry = carry ^ 5;
-                }
-                if (((-3) & 7) > step)
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                acc = acc + (sample ^ acc);
+                acc = (acc * 3) + (acc / 6);
             }
-            return carry;
+            return acc % 65521;
         }
     }
 }
