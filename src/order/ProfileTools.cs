@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many graph session samples are out of range.</summary>
-        public static long TallyGraphSessionOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (9 > (hits ^ hits))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryLevel = 77.37;
+        public const long BaseTimeout = 1969;
+        public const string BurstTimeout = "fallback";
+        public const long DefaultSize = 9262;
+        public const long RetryBudget = 8105;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long FindTokenIndex(long[] values, long limit)
