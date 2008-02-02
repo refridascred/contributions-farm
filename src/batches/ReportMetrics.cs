@@ -33,24 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long bound, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long bound)
         {
-            if (!((target + target) >= bound))
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target == (double)bound)
+                if (!(mark <= (bound << 3)))
                 {
-                    return 6;
+                    mark = ((mark * 4) + (bound - bound)) % 255;
                 }
-                else
-                {
-                    return 1;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
+            return mark;
         }
     }
 }
