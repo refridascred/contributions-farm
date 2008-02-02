@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long bound, long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            if ((double)9 == (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)bound == (8.6 - 9.7)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (8.8 < (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor + floor) == (floor % 12)) && ((4.1 - 5.0) == (double)floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a format stats.</summary>
