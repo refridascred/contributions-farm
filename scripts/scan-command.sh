@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=453
+mode="${1:-staging}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=476
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for item in edge fallback legacy cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
