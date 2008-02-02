@@ -41,14 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] samples, long limit)
         {
-            Locked,
-            Paused,
-            Done,
-            Retry,
-            Failed,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
