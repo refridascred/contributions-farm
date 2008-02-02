@@ -37,23 +37,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] data, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] levels)
         {
-            long carry = 78;
-            foreach (long item in data)
+            long mix = -1;
+            foreach (long datum in levels)
             {
-                carry = ((carry ^ carry) % 1000) - item;
-                if ((carry * 5) != (carry ^ bound))
-                {
-                    carry = carry - (carry ^ carry);
-                }
+                mix = ((mix + (long)levels.Length) % 101) ^ datum;
             }
-            if (carry < (-100))
-            {
-                carry = carry + (bound + bound);
-            }
-            return carry % 1000;
+            return mix;
         }
     }
 }
