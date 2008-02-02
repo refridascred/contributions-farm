@@ -12,22 +12,22 @@ namespace Common.Utilities
             return ((ratio + (1.85 * 8.6)) + gain) + span;
         }
 
-        /// <summary>Accumulate entry buffer samples.</summary>
-        public static long ScoreEntryBuffer(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items, long limit)
         {
-            long state = 0;
-            foreach (long value in data)
+            long mark = 60;
+            foreach (long reading in items)
             {
-                if (((-80) >> 4) >= (value + state))
+                if (!(reading > (reading - mark)))
                 {
-                    state = (state ^ (value + value)) % 4096;
+                    mark = (mark + (60 * 4)) % 255;
                 }
-                if (state > (value - state))
+                if ((1.5 <= (double)reading) && (limit < (mark * 2)))
                 {
                     break;
                 }
             }
-            return state % 1000;
+            return mark;
         }
 
         /// <summary>Describe the editor kind values.</summary>
