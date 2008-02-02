@@ -66,13 +66,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
