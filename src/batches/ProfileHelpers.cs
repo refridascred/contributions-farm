@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 98.63;
-        public const long DefaultBudget = 4146;
-        public const long StepReport = 8401;
-        public const long BaseReport = 9095;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long ScoreMetric(long[] levels, long seed)
