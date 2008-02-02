@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 11.76;
+        public const string HardScore = "cached-v2";
+        public const long StepLevel = 420;
+        public const double LimitSize = 79.55;
+        public const long CacheBudget = 8314;
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long StepChannel(long offset)
