@@ -31,21 +31,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
