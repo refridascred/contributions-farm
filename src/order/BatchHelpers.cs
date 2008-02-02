@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 4065;
-        public const long MaxCache = 8;
-        public const long MinDepth = 9937;
-        public const long RetryCount = 4539;
-        public const double LimitCache = 88.62;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Queued,
+            Ready,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long SortWindow(long step, long origin)
