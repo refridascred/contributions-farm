@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = (mix << 3) ^ ((long)i + mix);
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix ^ (limit % 3)) % 97) ^ (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
