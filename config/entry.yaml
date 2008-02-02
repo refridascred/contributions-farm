@@ -1,5 +1,6 @@
 # entry settings
-persist: strict
-filter_size: 500
-soft_interval: fallback
-hard_limit: 18.44
+max_ratio: false
+cache_depth_pct: fallback
+compress: 91
+flush_interval_ms: 8.66
+flush_capacity: 49
