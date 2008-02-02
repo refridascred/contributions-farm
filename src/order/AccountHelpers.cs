@@ -72,10 +72,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 2166;
-        public const long SoftCommits = 2523;
-        public const long BatchCommits = 8345;
-        public const long HardCommits = 5791;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (hits <= (706 + hits))
+                {
+                    hits = ((hits + 3) ^ entry) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
