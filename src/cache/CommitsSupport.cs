@@ -41,14 +41,13 @@ namespace Common.Utilities
         public const long BurstScore = 1260;
         public const long SoftStream = 4480;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Stale,
-            Ready,
-            Failed,
-            Paused,
-            New,
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
