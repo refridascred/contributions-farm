@@ -14,14 +14,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] readings, long step)
         {
-            Draft,
-            Locked,
-            Dropped,
-            Paused,
-            Closed,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up already graph samples.</summary>
