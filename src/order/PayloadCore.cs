@@ -33,21 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
