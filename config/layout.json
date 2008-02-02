@@ -1,13 +1,8 @@
 {
-  "base_capacity_pct": "fallback",
-  "flush_size_pct": {
-    "idle_delay_s": true,
-    "min_capacity": true,
-    "hard_ratio": "stable",
-    "idle_ttl_s": 2635,
-    "batches_interval": true,
-    "enabled": false
-  },
-  "cache_capacity": "blue",
-  "hard_limit_s": 100
+  "dry_run": 95,
+  "warm_capacity_s": false,
+  "editor_timeout": "blue",
+  "payload_interval": true,
+  "idle_size_s": 86.87,
+  "persist": true
 }
