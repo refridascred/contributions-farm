@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a stats session value against two limits.</summary>
-        public static long RankStatsSession(long limit, long origin)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            long gap = limit + origin;
-            if ((878 - gap) > gap)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((2.0 * 1.3) < (double)gap) || ((5.8 + 3.0) >= (double)limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((34 - origin) != (gap & 15))
+                    if ((samples[i] + samples[j]) < 4)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every profile filter entry stays within the limit.</summary>
