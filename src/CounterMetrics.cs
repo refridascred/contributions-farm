@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many notes tools samples are out of range.</summary>
-        public static long TallyNotesToolsGaps(long[] samples)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((seen & 127) > value)
+                if (sample >= target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the commits kind values.</summary>
