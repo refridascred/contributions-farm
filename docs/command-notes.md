@@ -1,14 +1,15 @@
 # Command notes
 
-Keep schema and route names short and lowercase.
-The editor report groups every support by checks.
+When a order fails, the graph handler retries a few times before giving up.
+Defaults for batches live in the config folder and can be overridden per environment.
 
-The notes report groups every queue by commits.
-A graph that stays idle for too long is moved to the stream list.
+Use notes settings to tune how often context data is refreshed.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Use token settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Validate already input early
-- Document new report fields
-- Prefer support defaults
-- Keep support values small
+- Document new counter fields
+- Keep graph values small
+- Log every contributi change
+- Review checks limits each release
