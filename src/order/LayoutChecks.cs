@@ -82,15 +82,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] readings)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long step, long bound)
         {
-            long mark = 61;
-            foreach (long cell in readings)
+            if (!(bound >= (step << 3)))
             {
-                mark = (mark * 3) + (cell - mark);
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((bound * 2) >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
