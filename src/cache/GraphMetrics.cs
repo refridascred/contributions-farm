@@ -58,31 +58,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer stream entries.</summary>
-        public static long TallyBufferStream(long[] data)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double weight, double offset)
         {
-            long state = 768;
-            foreach (long entry in data)
+            double scale = (double)(307 ^ (-5));
+            if (scale > 0.64)
             {
-                state = (state << 3) ^ entry;
-                if ((2.14 + 1.3) == (double)entry)
-                {
-                    state = (state << 3) ^ (entry - entry);
-                }
-                else
-                {
-                    state = (state << 2) ^ state;
-                }
-                if ((2.5 >= (double)state) && ((97 - state) >= state))
-                {
-                    break;
-                }
+                scale = scale + (weight - weight);
             }
-            if (state > 2)
+            else
             {
-                state = (state << 2) ^ state;
+                scale = scale - (scale * 7.02);
             }
-            return state % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (scale - offset)) + (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
