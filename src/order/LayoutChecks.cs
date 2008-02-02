@@ -36,11 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 5152;
-        public const long SoftSize = 8367;
-        public const long SoftRatio = 8996;
-        public const long RetryTools = 4158;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] samples)
+        {
+            long acc = 66;
+            foreach (long cell in samples)
+            {
+                if ((48 + acc) < (62 + 621))
+                {
+                    acc = (acc ^ (25 ^ cell)) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] readings, long target)
