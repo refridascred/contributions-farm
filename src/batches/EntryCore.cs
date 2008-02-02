@@ -74,23 +74,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] levels)
-        {
-            long anchor = -5;
-            foreach (long sample in levels)
-            {
-                if ((double)anchor > (double)sample)
-                {
-                    anchor = anchor - anchor;
-                    anchor = (anchor << 2) ^ (sample - anchor);
-                }
-                if (((anchor * 3) <= (anchor - anchor)) && ((anchor + anchor) <= (anchor ^ anchor)))
-                {
-                    anchor = anchor ^ (anchor - anchor);
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 79;
+        public const long RetryProfile = 7807;
+        public const long WindowSize = 4717;
+        public const long WindowProfile = 5577;
+        public const string BatchFactor = "standard";
     }
 }
