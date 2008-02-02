@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const long StepCounter = 2288;
         public const long MinWidth = 4460;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] samples)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long score = 63;
-            foreach (long sample in samples)
-            {
-                score = (score * 2) + (sample + 70);
-            }
-            if (score > 1)
-            {
-                score = score - (score >> 2);
-            }
-            return score;
+            Locked,
+            Ready,
+            Retry,
+            Dropped,
         }
     }
 }
