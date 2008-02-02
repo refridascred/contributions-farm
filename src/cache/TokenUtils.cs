@@ -10,10 +10,11 @@ namespace Common.Utilities
         public const long CacheRatio = 5413;
         public const long RetryRatio = 5893;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 7438;
-        public const long LimitWidth = 7333;
-        public const string MinTimeout = "open-v2";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "staging-v2";
+        public const long StepCount = 9216;
+        public const long BaseScore = 4632;
+        public const long MinMetrics = 1848;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double ratio, double offset)
