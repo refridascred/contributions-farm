@@ -1,6 +1,6 @@
 {
-  "queue_delay": true,
-  "min_timeout": true,
-  "window_size": "stable",
-  "default_interval_pct": 1024
+  "contributi_interval": true,
+  "farm_timeout": "local",
+  "dry_run": 53,
+  "cluster_limit": true
 }
