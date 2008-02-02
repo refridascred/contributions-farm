@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long HardDepth = 7004;
         public const long LimitEntry = 6325;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] samples, long seed)
         {
-            Locked,
-            Queued,
-            Synced,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
