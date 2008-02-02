@@ -12,12 +12,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardLevel = 7797;
-        public const long RetryCount = 9879;
-        public const double RetryRatio = 89.22;
-        public const long LimitBudget = 1688;
-        public const double LimitWidth = 21.17;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
