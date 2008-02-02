@@ -51,19 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double rate, double floor)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double scale, double bias)
         {
-            double weight = rate;
-            if (weight >= (rate / 9.0))
+            double bias2 = bias * 2.42;
+            if (bias2 < (bias / 8.0))
             {
-                weight = (weight + (1.3 + 9.4)) - floor;
+                bias2 = (bias2 + bias) + scale;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                weight = (weight - (weight / 5.0)) + (double)(long)i;
+                bias2 = bias2 + bias;
             }
-            return weight - 8.78;
+            return bias2 - (double)77;
         }
 
         /// <summary>Describe the window status values.</summary>
