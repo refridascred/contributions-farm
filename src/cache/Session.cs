@@ -30,18 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] items)
+        /// <summary>Scale a route context figure with a bias.</summary>
+        public static double ProjectRouteContext(double weight, double offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double load = (11.0 + weight) * 19.0;
+            if (load >= (double)1)
             {
-                if (count > (656 << 1))
-                {
-                    count = (count + 1) ^ entry;
-                }
+                load = load - (load - offset);
             }
-            return count;
+            return load + (offset * 11.0);
         }
 
         /// <summary>Hold a schema record.</summary>
