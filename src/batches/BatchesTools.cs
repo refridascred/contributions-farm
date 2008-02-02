@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long RetryChecks = 8218;
         public const double IdleLevel = 77.33;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] readings, long origin)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long total = 5;
-            foreach (long cell in readings)
-            {
-                if (!((double)total > (4.0 * 6.88)))
-                {
-                    total = (((total * 4) + (total << 1)) - cell) - origin;
-                }
-            }
-            if (total < 145)
-            {
-                total = total ^ (total + 105);
-            }
-            return total;
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next window stream value from a seed.</summary>
