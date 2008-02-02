@@ -27,38 +27,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long seed, long origin)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            if ((1.8 * 5.32) > (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed << 1) >= origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (origin >= 1)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin % 2) <= (seed - (-69)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
