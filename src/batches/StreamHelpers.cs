@@ -87,21 +87,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 62;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum + datum) < (datum - total))
                 {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total + total) % 1000;
+                }
+                else
+                {
+                    total = ((total << 3) ^ 33) % 1000;
                 }
             }
-            return seen;
+            if (total > 95)
+            {
+                total = (total * 4) + (origin * 5);
+            }
+            return total;
         }
     }
 }
