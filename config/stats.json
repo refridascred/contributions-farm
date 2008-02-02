@@ -1,24 +1,6 @@
 {
-  "soft_window_s": {
-    "hard_depth_ms": 28,
-    "audit": "staging",
-    "hard_interval_s": false,
-    "batch_delay": 67.18,
-    "commits_ttl": 96
-  },
-  "default_ttl_pct": "standard",
-  "strict": {
-    "burst_window_ms": 4051,
-    "compress": {
-      "account_timeout": 28,
-      "flush_ratio_pct": 33,
-      "burst_timeout_s": "strict",
-      "strict": true,
-      "warm_capacity_count": false,
-      "warm_threshold": 9694
-    },
-    "burst_depth_count": 2843,
-    "verbose": 3000
-  },
-  "compress": ["cached", "strict"]
+  "sync_timeout": "eu-west",
+  "schema_delay": 25.94,
+  "idle_threshold_pct": 66.93,
+  "schema_ttl": true
 }
