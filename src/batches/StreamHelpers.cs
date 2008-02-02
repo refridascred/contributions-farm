@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next token command value from a seed.</summary>
