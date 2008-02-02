@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitRatio = 68.68;
-        public const long BatchAlready = 8420;
-        public const string RetryAlready = "primary";
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Stale,
+            Active,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileHits(long[] values, long step)
