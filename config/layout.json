@@ -1,5 +1,5 @@
 {
-  "default_limit_s": 6635,
-  "payload_capacity": "eu-west",
-  "max_timeout": 1059
+  "burst_window_ms": false,
+  "retry_depth": 2080,
+  "base_ratio": ["open", "strict"]
 }
