@@ -32,13 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Accumulate batches stats samples.</summary>
+        public static long ScoreBatchesStats(long[] data, long floor)
         {
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
+            long mark = 22;
+            foreach (long datum in data)
+            {
+                mark = (((mark << 3) ^ (datum * 2)) % 4096) + floor;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of token farm readings.</summary>
