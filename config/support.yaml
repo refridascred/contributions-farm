@@ -1,6 +1,14 @@
 # support settings
-base_limit_count: 30
-contributi_ratio: 74.3
-audit: latest
-idle_retries_count: false
-base_ttl_s: true
+dry_run: 1297
+min_ratio_s:
+  - green
+  - local
+  - local
+  - local
+command_delay: 7641
+farm_depth:
+  - legacy
+  - staging
+  - blue
+checks_ratio: 50.35
+default_depth: true
