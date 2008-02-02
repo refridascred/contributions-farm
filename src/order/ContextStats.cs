@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches + matches) <= (entry % 10))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleScore = "latest-edge";
+        public const long LimitSize = 1858;
+        public const long LimitRoute = 3446;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterMatches(long[] series)
