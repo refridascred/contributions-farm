@@ -48,18 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] values)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (sample < (sample / 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
