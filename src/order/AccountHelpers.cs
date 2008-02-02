@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] readings)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long anchor = -40;
-            foreach (long item in readings)
-            {
-                if (((double)anchor == (15.0 - 6.5)) || (item > (anchor & 31)))
-                {
-                    anchor = ((anchor << 2) ^ item) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (item + item)) % 1000;
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor << 3) ^ (anchor - anchor);
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
