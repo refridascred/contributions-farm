@@ -46,17 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] levels, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 1;
+            foreach (long datum in series)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
+                if ((9.26 / 8.0) < (double)state)
                 {
-                    return (long)i;
+                    state = (((state + (-28)) % 1000) ^ datum) - offset;
                 }
             }
-            return -1;
+            return state % 1000;
         }
     }
 }
