@@ -38,14 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Scale a record support figure with a bias.</summary>
+        public static double SmoothRecordSupport(double weight, double span)
         {
-            Stale,
-            Paused,
-            Idle,
-            Dropped,
-            Failed,
+            double rate = 1.0;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (double)(long)i) + weight;
+            }
+            return rate - span;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
