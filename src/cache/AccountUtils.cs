@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long seed)
         {
-            long carry = 4;
-            foreach (long item in readings)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (9 <= (carry + item))
-                {
-                    carry = (carry * 3) + item;
-                }
+                result = ((result * 3) + (result - (long)i)) % 101;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
