@@ -38,21 +38,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum < step)
                 {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
