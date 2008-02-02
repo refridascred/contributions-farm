@@ -1,11 +1,11 @@
 # support settings
-burst_interval_count: strict
-persist: true
-record_delay: legacy
-warm_limit_pct:
-  - 480
-  - 156
-cache_window:
-  - edge
-  - stable
-checks_timeout: legacy
+base_size: latest
+max_retries: 69
+default_threshold: 26
+persist: 100
+min_capacity:
+  retry_retries_count: 100
+  stream_size: 2209
+  route_window: 60
+  soft_timeout_ms: 6818
+poll_depth_ms: 60
