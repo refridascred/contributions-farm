@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double ratio, double floor)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] values, long target)
         {
-            double gain = ratio;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + floor) + (double)(long)i;
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return gain + 3.0;
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
