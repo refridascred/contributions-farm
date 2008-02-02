@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstDepth = 9223;
-        public const long BurstEditor = 298;
-        public const long StepSpan = 584;
-        public const long SoftEditor = 7453;
-        public const long BurstFactor = 9845;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxLevel = 42.8;
+        public const double BatchFactor = 91.54;
+        public const string MinStats = "primary";
 
         /// <summary>Project the next checks value.</summary>
         public static double ProjectChecks(double bias, double span)
