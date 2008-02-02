@@ -48,18 +48,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] samples, long limit)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches - 9) >= (78 % 100))
-                {
-                    matches = ((matches + 1) + reading) + limit;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
