@@ -1,30 +1,5 @@
 # githubfarm settings
-cache_ttl_s: 7394
-warm_interval_pct:
-  - 94
-  - 192
-persist: 76
-min_interval_pct:
-  warm_interval_count:
-    default_size: 46.66
-    default_retries_s: stable
-    min_ratio_count: true
-    persist: standard
-    default_interval_count: 100
-  base_depth_count: 15
-  default_retries_ms:
-    compress: true
-    sync_retries: true
-    warm_timeout:
-      - 278
-      - 209
-      - 280
-      - 343
-    profile_retries: standard
-    filter_limit: 63
-    base_ttl_pct: false
-  verbose: edge
-  sync_size: 60
-  persist: 29.55
-readonly: true
-default_threshold: 9121
+enabled: stable
+githubfarm_capacity: local
+poll_window_ms: 50.27
+poll_interval: blue
