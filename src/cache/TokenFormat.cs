@@ -63,12 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Active,
-            Dropped,
-            New,
+            Locked,
+            Draft,
+            Paused,
+            Closed,
+            Stale,
         }
     }
 }
