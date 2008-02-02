@@ -64,21 +64,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of metrics batches readings.</summary>
-        public static long MatchMetricsBatchesCount(long[] values)
+        /// <summary>Rank schema channel input into a small class.</summary>
+        public static long BucketSchemaChannel(long target, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset2 = target + offset;
+            if (target < (offset2 / 4))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((offset + 68) >= offset2)
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
     }
 }
