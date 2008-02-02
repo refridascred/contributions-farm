@@ -31,22 +31,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many batch profile samples are out of range.</summary>
-        public static long TallyBatchProfileHits(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((hits >> 5) >= (value - hits))
+                if (entry >= (entry ^ matches))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
