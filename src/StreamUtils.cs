@@ -27,12 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Look up the position of a cache route sample.</summary>
+        public static long SeekCacheRouteIndex(long[] items, long step)
         {
-            Dropped,
-            Ready,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up farm samples.</summary>
