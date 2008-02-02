@@ -1,15 +1,8 @@
 {
-  "flush_depth_pct": {
-    "poll_capacity_count": false,
-    "filter_depth": 1933,
-    "support_depth": 27,
-    "base_window_pct": false,
-    "audit": "edge",
-    "warm_capacity_count": 500
-  },
-  "cache_delay": 250,
-  "cache_size_count": true,
-  "default_ratio": "staging",
-  "entry_interval": [268, 414, 499, 274],
-  "base_retries": 38.37
+  "idle_threshold_pct": true,
+  "flush_size": "open",
+  "readonly": "edge",
+  "compress": "edge",
+  "retry_retries_ms": 2739,
+  "batch_window_ms": 93.22
 }
