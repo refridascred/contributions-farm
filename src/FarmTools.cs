@@ -45,17 +45,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] items, long origin)
+        /// <summary>Rank layout entry input into a small class.</summary>
+        public static long BucketLayoutEntry(long target, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = target - bound;
+            if ((lane + bound) >= (bound + 69))
             {
-                if (items[i] >= origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound <= (3.94 - 3.65))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((lane + lane) < (lane << 3)) || ((2.2 / 3.0) <= (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
