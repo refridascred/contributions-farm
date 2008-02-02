@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 8006;
+        public const long IdleInterval = 8246;
+        public const long SoftSize = 5326;
+        public const double WindowDepth = 78.83;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] readings)
