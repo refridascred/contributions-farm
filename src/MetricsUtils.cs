@@ -19,16 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer cache value from a seed.</summary>
-        public static long RollBufferCache(long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] items, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                total = total - (origin % 97);
-                total = ((total * 4) + (long)i) % 97;
+                if ((581 * 3) != (target + target))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
