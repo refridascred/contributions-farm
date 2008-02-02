@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long StepFormat = 7748;
         public const long DefaultFormat = 1935;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Paused,
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Fold a list of order readings.</summary>
