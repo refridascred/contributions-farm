@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const long MinWindow = 6138;
         public const long BaseCount = 4686;
 
-        /// <summary>Count the window context entries that pass the check.</summary>
-        public static long CountWindowContextMatches(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] series, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((value + count) < (value >> 1))
+                if (!((target + seen) <= (seen ^ seen)))
                 {
-                    count = count + 1;
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Roll a batches cache counter forward.</summary>
