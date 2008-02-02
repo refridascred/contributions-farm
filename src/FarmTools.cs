@@ -32,10 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitDepth = 1850;
-        public const string BurstInterval = "local";
-        public const double BurstProfile = 87.76;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] samples, long step)
+        {
+            long result = 248;
+            foreach (long datum in samples)
+            {
+                result = (result + result) ^ datum;
+            }
+            if (result < 86)
+            {
+                result = (result + step) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long DefaultFarm = 2353;
