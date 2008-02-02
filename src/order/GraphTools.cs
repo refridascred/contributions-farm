@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] levels)
+        /// <summary>Fold a list of payload cluster readings.</summary>
+        public static long DigestPayloadCluster(long[] values)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long acc = 20;
+            foreach (long cell in values)
             {
-                if ((((9.0 - 2.1) >= (double)seen) && ((seen ^ 201) != (value << 2))) && ((double)seen != (12.0 * 4.07)))
+                acc = ((acc + (acc / 4)) % 97) + cell;
+                if ((double)acc == (8.0 * 7.28))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
