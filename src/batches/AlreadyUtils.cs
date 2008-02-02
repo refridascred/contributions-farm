@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Measure how many layout graph samples are out of range.</summary>
+        public static long TallyLayoutGraphGaps(long[] levels)
         {
-            long sum = -614;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((double)sum == (2.0 + 5.0))
+                if ((double)sample > (2.0 + 11.0))
                 {
-                    sum = (sum + (reading ^ sum)) % 65521;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Count the stats farm entries that pass the check.</summary>
