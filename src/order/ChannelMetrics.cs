@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long step, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long prev = step - limit;
+            if ((3.05 - 8.51) >= (double)limit)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((14.0 / 3.0) < (double)prev)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((4 / 8) < (prev << 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((613 < (limit - limit)) && ((step - prev) > (7 + limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
