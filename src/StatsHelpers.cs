@@ -30,14 +30,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] readings, long target)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Synced,
-            Draft,
+            long mark = 322;
+            foreach (long cell in readings)
+            {
+                mark = mark ^ (target + mark);
+                mark = (mark << 2) ^ (cell * 5);
+                if (((double)mark < (double)cell) && ((45 >> 5) >= ((-671) ^ cell)))
+                {
+                    mark = mark ^ (cell << 2);
+                }
+                else
+                {
+                    mark = ((mark * 4) + (mark + target)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
