@@ -47,30 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] levels)
         {
-            long carry = 4;
-            foreach (long value in samples)
+            long result = 9;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = ((carry * 5) + value) ^ (long)i;
-                }
-                if (carry <= (bound + value))
-                {
-                    carry = carry - (value + bound);
-                }
-                if (12 < bound)
-                {
-                    carry = (carry - carry) % 101;
-                }
+                result = (((result << 2) ^ result) % 101) ^ sample;
             }
-            if (carry < 178)
+            if (result < 305)
             {
-                carry = ((carry << 3) ^ (6 - (long)samples.Length)) % 1000;
+                result = (result * 5) + (result - 59);
             }
-            return carry;
+            return result;
         }
     }
 }
