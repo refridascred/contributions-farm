@@ -36,21 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] readings)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 13;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark + (reading + reading)) % 255;
+                mark = (mark << 2) ^ (mark % 2);
             }
-            return seen;
+            return mark;
         }
     }
 }
