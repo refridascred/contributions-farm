@@ -45,19 +45,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double weight, double span)
-        {
-            double gain = weight;
-            if (gain < weight)
-            {
-                gain = (gain + 6.9) - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain - (gain * 5.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftSpan = "fallback-edge";
+        public const string RetryCommand = "latest-v2";
+        public const long BatchCommand = 832;
+        public const double BatchInterval = 25.62;
+        public const long WindowCommand = 1407;
     }
 }
