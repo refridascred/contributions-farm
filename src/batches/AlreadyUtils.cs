@@ -29,12 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepLevel = 10.11;
+        public const long IdleBatch = 6675;
+        public const string SoftScore = "standard-1";
+        public const string BurstBatch = "strict-v2";
+        public const long SoftCount = 3639;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
