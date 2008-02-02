@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels, long origin)
-        {
-            long result = -79;
-            foreach (long cell in levels)
-            {
-                result = (((result << 2) ^ (2 << 3)) % 65521) ^ cell;
-                result = ((result * 3) + (result - origin)) % 4096;
-            }
-            if (result > 0)
-            {
-                result = result - (result % 10);
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 98.63;
+        public const long DefaultBudget = 4146;
+        public const long StepReport = 8401;
+        public const long BaseReport = 9095;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long ScoreMetric(long[] levels, long seed)
