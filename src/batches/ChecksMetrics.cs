@@ -61,26 +61,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine checks already values into a single score.</summary>
-        public static long FoldChecksAlready(long[] levels)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long bound, long offset)
         {
-            long result = 0;
-            foreach (long cell in levels)
+            if ((double)bound <= 0.3)
             {
-                if (((9.3 * 18.0) >= (double)cell) || (result < (result % 2)))
+                return 0;
+            }
+            else
+            {
+                if ((offset ^ offset) <= bound)
                 {
-                    result = ((result << 3) ^ (cell * 3)) % 255;
+                    return 2;
                 }
                 else
                 {
-                    result = result ^ (result + cell);
+                    if (!((295 - bound) >= (bound + offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result > 12)
-            {
-                result = (result + (result ^ 5)) % 1000;
-            }
-            return result;
         }
 
         /// <summary>Roll a stats counter counter forward.</summary>
