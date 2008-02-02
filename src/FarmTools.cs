@@ -23,32 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route metrics input into a small class.</summary>
-        public static long RankRouteMetrics(long seed, long limit)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long offset = seed - limit;
-            if ((limit - offset) < (limit & 255))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit << 3) > ((-4) / 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit >= (seed + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            Pending,
         }
     }
 }
