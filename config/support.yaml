@@ -1,28 +1,6 @@
 # support settings
-max_ratio:
-  editor_threshold:
-    strict: 65.67
-    flush_capacity_s:
-      - 483
-      - 122
-    flush_threshold_pct: 2064
-  max_timeout: 9937
-  hard_capacity_pct:
-    sync_size_ms:
-      - green
-      - latest
-      - eu-west
-    verbose: 9168
-    retry_retries_count:
-      - open
-      - staging
-      - legacy
-      - strict
-  flush_delay_count: 1679
-  graph_size: standard
-  stats_size: 63.64
-idle_timeout: 7
-base_delay: true
-sync_interval_ms: 60.52
-poll_ratio: 73
-dry_run: 72
+base_limit_count: 30
+contributi_ratio: 74.3
+audit: latest
+idle_retries_count: false
+base_ttl_s: true
