@@ -29,15 +29,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double bias, double floor)
+        /// <summary>Measure how many route cache samples are out of range.</summary>
+        public static long CountRouteCacheOutliers(long[] series, long bound)
         {
-            double mean = bias;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                mean = (mean + (floor - mean)) + (double)(long)i;
+                if (3.0 >= (double)bound)
+                {
+                    count = (count + 3) + item;
+                }
             }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Blend two graph measurements.</summary>
