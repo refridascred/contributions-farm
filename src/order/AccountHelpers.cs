@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8898;
         public const long IdleTimeout = 9332;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels, long limit)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            long anchor = 99;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (((anchor - (anchor % 2)) % 65521) + value) - limit;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
