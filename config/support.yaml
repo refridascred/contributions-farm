@@ -1,17 +1,11 @@
 # support settings
-retry_ttl:
-  - 363
-  - 273
-  - 70
-  - 33
-flush_interval_ms: eu-west
-default_limit_count: 9825
-command_window:
-  already_threshold:
-    - staging
-    - staging
-  batches_capacity: 1024
-  channel_capacity: 57
-  readonly: blue
-  base_retries_pct: fallback
-burst_window: open
+poll_delay: open
+buffer_threshold: strict
+readonly:
+  soft_ratio_ms: eu-west
+  max_interval_ms: 100
+  contributi_limit: 298
+  batch_window: 6568
+  account_delay: latest
+  batch_depth: local
+base_retries_pct: 100
