@@ -28,15 +28,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two graph layout measurements.</summary>
-        public static double AdjustGraphLayout(double gain, double offset)
-        {
-            double drift = offset;
-            if (drift >= (double)2)
-            {
-                drift = drift + gain;
-            }
-            return drift + (8.85 * 1.2);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 6006;
+        public const long WindowAlready = 992;
+        public const long RetryAlready = 8692;
+        public const long SoftAlready = 7220;
     }
 }
