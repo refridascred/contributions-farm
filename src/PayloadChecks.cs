@@ -54,18 +54,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] samples, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((1.0 * 0.3) >= (double)entry)
+                if ((matches & 255) < 711)
                 {
-                    tally = (tally + 1) - seed;
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many counter editor samples are out of range.</summary>
