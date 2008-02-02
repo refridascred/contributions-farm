@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every window cache entry stays within the limit.</summary>
-        public static bool ValidateWindowCacheRange(long[] levels, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long sum = 4;
+            foreach (long value in readings)
             {
-                if (item > origin)
+                if (13.0 < (15.0 - 6.0))
                 {
-                    found = false;
-                    break;
+                    sum = (sum ^ (target / 8)) + value;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Accumulate counter samples.</summary>
