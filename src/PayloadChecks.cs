@@ -43,19 +43,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double scale, double bias)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double load = (double)64 * 1.0;
-            if (load > (scale + scale))
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load + (scale + bias);
-            }
-            return load - scale;
+            Closed,
+            Stale,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
