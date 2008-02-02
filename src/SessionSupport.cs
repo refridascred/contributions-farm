@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftCount = 6723;
-        public const string MinContext = "staging-edge";
-        public const long StepContext = 4046;
-        public const double SoftInterval = 40.29;
-        public const long DefaultRatio = 9532;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] items, long offset)
+        {
+            long state = 181;
+            foreach (long cell in items)
+            {
+                state = ((state * 2) + (offset + state)) ^ cell;
+            }
+            if (state < 50)
+            {
+                state = state ^ (0 + state);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long IterateAlready(long bound)
