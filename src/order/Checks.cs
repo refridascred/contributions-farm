@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            Dropped,
+            Retry,
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Look up the position of a record schema sample.</summary>
