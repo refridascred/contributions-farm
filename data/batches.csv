@@ -1,7 +1,10 @@
-id,score,ratio,label
-1,84.19,177,625
-2,82.41,fallback,85.77
-3,eu-west,730,956
-4,753,standard,560
-5,89.09,fallback,51.61
-6,587,fallback,cached
+id,count,state
+1,primary,standard
+2,37,560
+3,92,cached
+4,legacy,local
+5,818,997
+6,70.73,471
+7,963,local
+8,628,cached
+9,346,69
