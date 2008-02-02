@@ -1,6 +1,24 @@
 # githubfarm settings
-batch_threshold_s: true
-min_ratio_count: 5975
-schema_ratio: strict
-burst_ratio_pct: staging
-min_depth: 38.85
+batch_retries_ms:
+  persist: 6004
+  burst_timeout: 30.64
+  soft_interval_count: 100
+  default_delay_ms: 20.59
+  verbose:
+    - blue
+    - strict
+    - open
+    - open
+  enabled:
+    - legacy
+    - cached
+min_retries:
+  - cached
+  - stable
+  - standard
+base_limit_pct: 55
+flush_limit: local
+flush_ratio_s:
+  retry_delay: latest
+  strict: 6316
+  hard_interval_pct: 100
