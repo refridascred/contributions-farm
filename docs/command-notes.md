@@ -1,11 +1,10 @@
 # Command notes
 
-The queue report groups every editor by command.
-The command report groups every githubfarm by queue.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Each commits is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Log every order change
-- Prefer channel defaults
-- Review commits limits each release
-- Keep order values small
+- Prefer support defaults
+- Log every cache change
+- Review stats limits each release
