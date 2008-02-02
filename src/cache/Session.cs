@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] readings, long target)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long mark = 648;
-            foreach (long entry in readings)
-            {
-                if ((double)target < (8.35 + 5.62))
-                {
-                    mark = (mark + (mark + entry)) % 1000;
-                }
-            }
-            return mark;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
