@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] values)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample > (double)seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a schema header.</summary>
