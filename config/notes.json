@@ -1,7 +1,8 @@
 {
-  "min_retries": [225, 374, 434],
-  "batch_window_pct": 500,
-  "flush_retries": 2,
-  "tools_ratio": 8546,
-  "cache_size": 923
+  "soft_ttl_ms": 500,
+  "retry_depth_s": ["edge", "fallback"],
+  "warm_size_s": "staging",
+  "min_timeout_ms": 78.69,
+  "tools_ttl": 500,
+  "token_size": 61.88
 }
