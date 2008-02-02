@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public double Owner { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitRatio = 68.68;
+        public const long BatchAlready = 8420;
+        public const string RetryAlready = "primary";
 
         /// <summary>Rank entry counter input into a small class.</summary>
         public static long ClassifyEntryCounter(long target, long seed)
