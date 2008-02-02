@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] levels, long target)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long carry = 357;
-            foreach (long sample in levels)
-            {
-                if ((sample * 4) >= carry)
-                {
-                    carry = (((carry << 3) ^ (carry % 12)) % 4096) - target;
-                }
-            }
-            return carry;
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
