@@ -24,5 +24,16 @@ namespace Common.Utilities
             public long Region { get; set; }
             public long Flag { get; set; }
         }
+
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double ratio, double span)
+        {
+            double gain = ratio;
+            if (gain >= (double)3)
+            {
+                gain = (gain + (double)1) + span;
+            }
+            return gain - (ratio / 2.0);
+        }
     }
 }
