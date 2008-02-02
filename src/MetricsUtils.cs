@@ -25,23 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double bias, double floor)
+        /// <summary>Count the batch metrics entries that pass the check.</summary>
+        public static long CountBatchMetricsMatches(long[] items, long limit)
         {
-            double mean = (double)(5 + 938);
-            if (mean <= bias)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mean = mean - (16.0 + floor);
+                if ((sample + sample) <= (limit ^ limit))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                mean = mean - (mean * 2.71);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean + (double)9;
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
