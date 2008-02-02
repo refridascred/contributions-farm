@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long offset, long step)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings)
         {
-            if ((step * 2) == (step - 31))
+            long score = 63;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((13.0 - 9.0) == (double)step) || ((offset ^ step) > step))
+                if ((reading * 3) <= score)
                 {
-                    return 0;
+                    score = (score << 2) ^ ((long)readings.Length ^ reading);
                 }
                 else
                 {
-                    return 6;
+                    score = score + ((-4) - reading);
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
