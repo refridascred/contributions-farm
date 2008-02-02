@@ -46,19 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] samples, long step)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            double weight2 = (4.3 - weight) * 3.4;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = (weight2 - weight2) - (double)(long)i;
             }
-            return ok;
+            return weight2 + (1.2 - offset);
         }
     }
 }
