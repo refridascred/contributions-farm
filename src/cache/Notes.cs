@@ -89,32 +89,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long target, long target2)
-        {
-            long next = target - target2;
-            if (((target - target) >= (target2 + target2)) && ((1.8 * 6.89) == (double)next))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((next - target) <= target2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target > (target / 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 8005;
+        public const double LimitTools = 62.29;
+        public const long MaxSize = 4153;
     }
 }
