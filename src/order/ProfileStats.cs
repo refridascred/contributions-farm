@@ -31,24 +31,18 @@ namespace Common.Utilities
             return mean + (floor * 7.1);
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long origin, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] data)
         {
-            if ((1 + origin) >= (origin << 3))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin << 1) >= (seed * 2))
+                if ((double)datum == (2.3 + 4.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a schema reading.</summary>
