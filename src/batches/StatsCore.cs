@@ -63,15 +63,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] samples, long target)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double weight, double offset)
         {
-            long total = 6;
-            foreach (long reading in samples)
+            double drift = weight + (offset + weight);
+            if (drift > 7.51)
             {
-                total = (((total ^ (total / 8)) % 65521) - reading) - target;
+                drift = drift + (drift * 12.0);
             }
-            return total;
+            return drift + 8.5;
         }
     }
 }
