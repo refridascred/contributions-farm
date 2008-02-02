@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double ratio, double offset)
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            double weight = (double)(-443) + offset;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight - (12.0 / 4.0)) + (double)(long)i) - ratio;
+            }
+            return weight - offset;
         }
 
         /// <summary>Blend two schema measurements.</summary>
