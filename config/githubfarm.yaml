@@ -1,15 +1,19 @@
 # githubfarm settings
-batch_timeout_pct: 60
-route_size: 30
-idle_window_pct: 500
-retry_timeout_count: staging
-flush_timeout_pct:
-  base_window: 8.54
-  support_retries: false
-  base_timeout_ms: 8688
-  batch_retries: 28.04
-  min_size_count:
-    - 311
-    - 141
-    - 325
-    - 429
+soft_depth_count:
+  - 427
+  - 69
+  - 444
+  - 481
+hard_retries_s:
+  - edge
+  - blue
+  - strict
+  - eu-west
+cache_retries_pct: 60
+verbose:
+  - open
+  - strict
+  - edge
+  - strict
+cache_capacity_s: open
+default_depth_count: false
