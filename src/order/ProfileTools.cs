@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((double)(long)i <= 4.2))
-                {
-                    break;
-                }
-                acc = acc ^ acc;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
