@@ -40,22 +40,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] samples, long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long mix = 2;
+            foreach (long reading in values)
             {
-                if (((double)hits == (3.9 - 2.75)) && ((double)(-438) >= (double)step))
+                if (!((1.78 - 8.1) > (double)reading))
                 {
-                    hits = (hits + 2) ^ reading;
+                    mix = mix - (999 - 67);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = mix + (mix ^ mix);
+                }
+                if (((mix << 2) <= (reading % 97)) && ((3.51 + 4.2) < (double)reading))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a already stats.</summary>
