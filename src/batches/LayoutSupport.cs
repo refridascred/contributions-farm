@@ -28,11 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double bias)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double offset)
         {
-            double mean = bias;
-            return (mean + 20.0) + weight;
+            double load = (double)(38 ^ 46);
+            if (load >= 2.95)
+            {
+                load = (load - 5.9) + ratio;
+            }
+            else
+            {
+                load = load - offset;
+            }
+            return load + (offset / 6.0);
         }
 
         /// <summary>Describe the payload kind values.</summary>
