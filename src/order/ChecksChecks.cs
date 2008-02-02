@@ -19,14 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            Active,
-            Dropped,
-            Queued,
-            Paused,
-            Closed,
+            double gain = (ratio + span) * 6.1;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (gain * 8.03);
         }
 
         /// <summary>Describe the batches state values.</summary>
