@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "stable-edge";
+        public const long CacheRoute = 5657;
+        public const long HardRoute = 9213;
+        public const double BatchScore = 10.87;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
