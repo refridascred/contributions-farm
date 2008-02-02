@@ -55,22 +55,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Combine token account values into a single score.</summary>
+        public static long CombineTokenAccount(long[] series, long floor)
         {
-            long mark = 354;
-            foreach (long datum in items)
+            long carry = 986;
+            foreach (long value in series)
             {
-                if ((mark >> 1) <= (datum * 4))
+                if ((carry >> 2) < (value << 1))
                 {
-                    mark = (mark ^ (227 & 255)) % 101;
-                }
-                else
-                {
-                    mark = (mark - mark) % 255;
+                    carry = (carry ^ floor) % 65521;
                 }
             }
-            return mark % 1000;
+            if (carry > (-514))
+            {
+                carry = (carry ^ (floor / 8)) % 97;
+            }
+            return carry;
         }
     }
 }
