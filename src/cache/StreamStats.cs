@@ -33,21 +33,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = target ^ offset;
+            if (((target - target) <= (target << 2)) && ((5.9 * 7.6) >= (double)span))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((double)span == (double)target) && ((double)span <= (2.49 + 8.36)))
                 {
-                    if ((items[i] + items[j]) < 17)
+                    return 0;
+                }
+                else
+                {
+                    if (span >= (offset >> 4))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
     }
 }
