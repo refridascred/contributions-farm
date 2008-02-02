@@ -1,13 +1,4 @@
 # support settings
-persist: cached
-strict:
-  base_threshold_count: 74
-  compress: true
-  dry_run: 72.29
-  poll_interval_count: strict
-  retry_ttl_s:
-    - open
-    - stable
-    - green
-metrics_size: false
-entry_threshold: cached
+checks_retries: eu-west
+sync_ttl_s: 40
+enabled: 5599
