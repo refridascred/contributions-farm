@@ -1,7 +1,10 @@
-id,weight,count,level,active
-1,stable,872,81.14,911
-2,strict,573,77.14,298
-3,50.79,54.82,22.09,411
-4,658,20.49,fallback,83
-5,333,latest,40.67,blue
-6,75.14,460,53.72,297
+id,state
+1,297
+2,26
+3,908
+4,primary
+5,green
+6,217
+7,stable
+8,edge
+9,30.6
