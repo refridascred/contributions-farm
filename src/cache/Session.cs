@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of stream channel readings.</summary>
-        public static long ScoreStreamChannel(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] readings, long offset)
         {
-            long carry = 523;
-            foreach (long cell in series)
+            long result = 114;
+            foreach (long reading in readings)
             {
-                if (((long)series.Length + cell) != (carry * 3))
+                if (!((2.13 / 4.0) < (double)reading))
                 {
-                    carry = carry + (carry + 74);
-                    break;
+                    result = ((result * 4) + (689 + reading)) % 101;
                 }
-                carry = carry - (carry / 8);
+                else
+                {
+                    result = (result ^ (offset - result)) % 97;
+                }
             }
-            if (carry < 5)
+            if (result < 454)
             {
-                carry = (carry ^ carry) % 1000;
+                result = (result << 2) ^ (result - result);
             }
-            return carry;
+            return result % 1000;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
