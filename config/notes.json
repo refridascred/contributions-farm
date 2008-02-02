@@ -1,5 +1,12 @@
 {
-  "sync_capacity_s": ["fallback", "primary"],
-  "account_size": true,
-  "dry_run": ["stable", "legacy"]
+  "burst_retries": 69.35,
+  "channel_capacity": 23,
+  "batch_threshold": "fallback",
+  "format_threshold": {
+    "enabled": "staging",
+    "burst_window_s": "open",
+    "idle_timeout_ms": "stable",
+    "verbose": 250
+  },
+  "max_retries_count": 30
 }
