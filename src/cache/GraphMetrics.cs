@@ -47,19 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] levels)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mark = 7;
-            foreach (long value in levels)
-            {
-                mark = (mark * 2) + value;
-                if ((value ^ mark) < 1)
-                {
-                    mark = (mark + (-1)) % 97;
-                }
-            }
-            return mark;
+            Synced,
+            Paused,
+            Ready,
         }
     }
 }
