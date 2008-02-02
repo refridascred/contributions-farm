@@ -33,12 +33,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitCount = 1720;
-        public const double HardEditor = 40.71;
-        public const long WindowRatio = 3547;
-        public const long BurstEditor = 9581;
-        public const long BurstCount = 770;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double rate, double offset)
+        {
+            double rate2 = 3.7;
+            if (rate2 > (rate2 / 5.0))
+            {
+                rate2 = (rate2 + rate2) - rate;
+            }
+            else
+            {
+                rate2 = rate2 + (double)47;
+            }
+            return rate2 - (offset - 3.26);
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
