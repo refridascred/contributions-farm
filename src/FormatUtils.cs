@@ -58,11 +58,12 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
