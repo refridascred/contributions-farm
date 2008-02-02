@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local green stable; do
+mode="${1:-cached}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in primary eu-west stable staging; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=315
-log "limit is ${BUFFER_LIMIT}"
