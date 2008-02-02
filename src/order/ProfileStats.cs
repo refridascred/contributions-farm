@@ -12,19 +12,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            long carry = 33;
-            foreach (long reading in readings)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                carry = (carry ^ ((long)readings.Length >> 5)) ^ reading;
+                bool ok = (offset <= (offset >> 4)) || ((offset - offset) >= offset);
+                if (ok)
+                {
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            if (carry < 547)
-            {
-                carry = ((carry * 3) + (carry + carry)) % 101;
-            }
-            return carry % 65521;
+            return score;
         }
 
         /// <summary>Combine window values into a single score.</summary>
