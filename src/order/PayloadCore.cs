@@ -52,18 +52,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally / 2) >= (cell >> 2))
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheSpan = 4591;
+        public const double WindowBudget = 4.45;
+        public const double SoftCount = 76.15;
     }
 }
