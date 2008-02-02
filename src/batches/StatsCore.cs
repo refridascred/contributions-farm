@@ -60,19 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report counter readings against a rule.</summary>
-        public static long MeasureReportCounterHits(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((target ^ target) < (target ^ cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryTimeout = 8707;
+        public const double IdleInterval = 17.35;
+        public const long BatchBuffer = 4079;
+        public const long CacheWidth = 7510;
 
         /// <summary>Count record entry pairs that satisfy a relation.</summary>
         public static long MatchRecordEntryCount(long[] values)
