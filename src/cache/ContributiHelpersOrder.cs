@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] samples, long seed)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
