@@ -41,13 +41,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data, long step)
         {
-            Synced,
-            Queued,
-            Paused,
-            Retry,
+            long state = 805;
+            foreach (long datum in data)
+            {
+                if ((datum << 1) >= (datum % 8))
+                {
+                    state = state ^ (step << 2);
+                }
+            }
+            if (state > 95)
+            {
+                state = (state + state) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
