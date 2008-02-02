@@ -55,11 +55,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] data, long limit)
         {
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)seen > (double)entry)
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many token githubfarm samples are out of range.</summary>
