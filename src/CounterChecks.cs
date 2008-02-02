@@ -23,22 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] levels)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((tally <= (57 % 8)) || ((tally - tally) >= ((long)levels.Length + tally))) || !((datum + 55) > tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Queued,
+            Active,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
