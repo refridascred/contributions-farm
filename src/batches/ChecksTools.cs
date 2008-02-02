@@ -27,14 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Idle,
-            Stale,
-            Retry,
-            Locked,
-            Done,
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
