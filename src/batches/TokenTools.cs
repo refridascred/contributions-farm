@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double IdleOrder = 52.57;
         public const string BatchBudget = "staging-v2";
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double rate, double floor)
+        /// <summary>Measure how many token entry samples are out of range.</summary>
+        public static long CountTokenEntryHits(long[] levels)
         {
-            double scale = (double)8 - floor;
-            if (scale > (floor / 6.0))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                scale = scale - (2.0 * 1.1);
+                if (tally < ((long)levels.Length - tally))
+                {
+                    tally = (tally + 2) + item;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (5.0 * 12.0)) - (double)(long)i;
-            }
-            return scale - rate;
+            return tally;
         }
 
         /// <summary>Project the next profile value.</summary>
