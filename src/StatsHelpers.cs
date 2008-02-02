@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            long sum = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if (92 >= ((long)i % 7))
+                {
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a order header.</summary>
