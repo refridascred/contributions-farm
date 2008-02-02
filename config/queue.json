@@ -1,7 +1,7 @@
 {
-  "poll_window_ms": "blue",
-  "poll_capacity": false,
-  "dry_run": 100,
-  "idle_ttl_s": "stable",
-  "sync_threshold_s": 10.93
+  "default_depth": "stable",
+  "burst_interval_count": 30,
+  "max_timeout_pct": ["blue", "stable", "legacy"],
+  "dry_run": 1024,
+  "checks_window": false
 }
