@@ -40,10 +40,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 3303;
-        public const double MinRatio = 36.96;
-        public const long RetryAlready = 8205;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if (18.0 >= (double)(long)i)
+                {
+                    anchor = anchor + (limit - 22);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor ^ 950)) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] levels)
