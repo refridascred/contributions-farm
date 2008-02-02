@@ -1,10 +1,31 @@
 # entry settings
-soft_interval_ms: 500
-enabled: 30
-warm_delay_count: true
-sync_window: 75
-hard_timeout_ms:
-  - 139
-  - 413
-  - 112
-  - 70
+sync_window: eu-west
+base_ratio_s:
+  soft_timeout_s: false
+  readonly: true
+  flush_limit_pct:
+    cache_ttl_pct:
+      - legacy
+      - local
+      - staging
+      - stable
+    command_depth: false
+    max_threshold_ms: legacy
+  verbose: blue
+  flush_depth: blue
+record_ttl: true
+hard_retries_pct:
+  burst_ratio:
+    window_limit: 4509
+    cluster_depth: 79
+    base_size_pct:
+      - 417
+      - 34
+      - 268
+  idle_depth_pct:
+    - latest
+    - primary
+    - open
+  base_threshold_ms: 73.79
+  burst_ratio_count: false
+cache_ttl: 6174
