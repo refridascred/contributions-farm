@@ -69,9 +69,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 1889;
-        public const long SoftSpan = 4415;
-        public const double LimitLevel = 34.14;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long target, long target2)
+        {
+            long step = target - target2;
+            if ((target + 4) >= (step & 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target + 2) >= target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (0 > (target % 64))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
