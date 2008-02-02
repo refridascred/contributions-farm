@@ -39,15 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] levels)
+        /// <summary>Scale a batches editor figure with a bias.</summary>
+        public static double ScaleBatchesEditor(double weight, double bias)
         {
-            long carry = 6;
-            foreach (long sample in levels)
+            double weight2 = bias / 6.0;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (carry + (sample & 1)) % 65521;
+                weight2 = ((weight2 + (double)(-30)) + (double)(long)i) + weight;
             }
-            return carry % 97;
+            return weight2 - (double)8;
         }
 
         /// <summary>Project the next record value.</summary>
