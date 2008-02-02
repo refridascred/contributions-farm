@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit report queue readings against a rule.</summary>
-        public static long MeasureReportQueueGaps(long[] values)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long anchor = -40;
+            foreach (long item in readings)
             {
-                if ((double)sample > (8.0 - 2.0))
+                if (((double)anchor == (15.0 - 6.5)) || (item > (anchor & 31)))
                 {
-                    hits = hits + 1;
+                    anchor = ((anchor << 2) ^ item) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (item + item)) % 1000;
                 }
             }
-            return hits;
+            if (anchor > 2)
+            {
+                anchor = (anchor << 3) ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
