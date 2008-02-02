@@ -34,18 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] data, long target)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)hits >= (6.0 - 19.0)) || (((8.8 * 14.0) >= (double)sample) || ((2.7 - 6.0) > (double)sample)))
-                {
-                    hits = (hits + 2) - target;
-                }
+                total = (total ^ (total + total)) % 65521;
+                total = (total - (3 + (long)i)) % 1000;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
