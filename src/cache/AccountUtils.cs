@@ -31,18 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] series)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item & 31) >= (item - item))
-                {
-                    tally = tally + 1;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
     }
 }
