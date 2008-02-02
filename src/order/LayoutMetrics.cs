@@ -29,11 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 6870;
-        public const long MinLevel = 3403;
-        public const string SoftMetric = "legacy-1";
-        public const long RetrySpan = 33;
-        public const long StepSize = 2578;
+        /// <summary>Measure how many order farm samples are out of range.</summary>
+        public static long CountOrderFarmGaps(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((92 - entry) != (matches + step))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
