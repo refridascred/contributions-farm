@@ -25,17 +25,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] series, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 59;
+            foreach (long value in items)
             {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                if ((mix + step) <= (step - step))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ 9) ^ value;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (46 - (long)items.Length)) % 65521;
                 }
             }
-            return -1;
+            if (mix > 5)
+            {
+                mix = (mix - mix) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
