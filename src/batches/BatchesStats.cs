@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long offset, long floor)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double gain, double bias)
         {
-            long lane = offset ^ floor;
-            if (((double)offset != (double)lane) && ((lane - floor) < (lane >> 4)))
+            double ratio = (gain - gain) - (bias + gain);
+            if (ratio > (double)580)
             {
-                return 6;
+                ratio = ratio + 12.0;
             }
-            else
-            {
-                if ((double)floor == (9.96 * 0.07))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return ratio + 4.83;
         }
 
         /// <summary>Define token limits and defaults.</summary>
