@@ -49,12 +49,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 8134;
-        public const long MinWidth = 6539;
-        public const string RetryWidth = "fallback-1";
-        public const long CacheWidth = 867;
-        public const long WindowSession = 7825;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values, long limit)
+        {
+            long total = 215;
+            foreach (long cell in values)
+            {
+                total = ((total - (23 - 89)) ^ cell) - limit;
+            }
+            return total % 97;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long ScoreToken(long[] series, long floor)
