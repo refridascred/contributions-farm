@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] series, long floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
