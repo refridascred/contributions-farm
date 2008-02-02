@@ -35,18 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] data, long bound)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading <= bound) && (((double)bound < (8.0 + 4.0)) || ((781 * 2) < (matches - bound))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
