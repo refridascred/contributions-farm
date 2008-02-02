@@ -47,11 +47,22 @@ namespace Common.Utilities
         public const double CacheChecks = 22.73;
         public const string MaxChecks = "open-edge";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitScore = "standard-edge";
-        public const double SoftCount = 54.45;
-        public const long BatchBatches = 4504;
-        public const long BaseBatches = 2590;
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxWidth = 87.14;
