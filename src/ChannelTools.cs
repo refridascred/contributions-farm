@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] items, long origin)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every batch cache entry stays within the limit.</summary>
