@@ -43,19 +43,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] series, long limit)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            double load = (double)64 * 1.0;
+            if (load > (scale + scale))
             {
-                if (datum != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - load;
             }
-            return stale;
+            else
+            {
+                load = load + (scale + bias);
+            }
+            return load - scale;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
