@@ -39,17 +39,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] items, long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Failed,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
