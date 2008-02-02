@@ -29,18 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] data)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (7 <= matches)
+                if (values[i] < target)
                 {
-                    matches = (matches + 1) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
