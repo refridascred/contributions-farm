@@ -1,12 +1,8 @@
 {
-  "order_depth": true,
-  "verbose": 100,
-  "min_interval_pct": {
-    "audit": 13,
-    "idle_threshold_ms": 100,
-    "commits_timeout": false,
-    "sync_ratio_ms": "latest",
-    "compress": "green"
-  },
-  "compress": 30
+  "min_retries_s": ["green", "local"],
+  "soft_size_s": "fallback",
+  "min_limit_count": 92,
+  "cache_ratio_count": 4290,
+  "audit": "blue",
+  "retry_interval": "local"
 }
