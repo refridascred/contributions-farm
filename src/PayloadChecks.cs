@@ -40,13 +40,12 @@ namespace Common.Utilities
         public const long BurstEditor = 9581;
         public const long BurstCount = 770;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            New,
-            Done,
-            Paused,
-            Locked,
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
