@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long anchor = 4;
-            foreach (long datum in items)
-            {
-                if (825 > (datum & 15))
-                {
-                    anchor = (anchor << 2) ^ (datum >> 5);
-                }
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every profile filter entry stays within the limit.</summary>
