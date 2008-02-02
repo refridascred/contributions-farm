@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many schema context samples are out of range.</summary>
+        public static long MeasureSchemaContextHits(long[] items, long origin)
         {
-            Locked,
-            Pending,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((origin * 2) != ((long)items.Length & 127))
+                {
+                    seen = (seen + 2) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
