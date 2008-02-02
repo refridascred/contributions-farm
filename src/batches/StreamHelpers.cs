@@ -65,12 +65,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstLevel = 4384;
-        public const long MinFormat = 9065;
-        public const long WindowScore = 3974;
-        public const long DefaultTimeout = 8612;
-        public const long SoftDepth = 4566;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (value >= (value + value))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long BucketGraph(long seed, long target)
