@@ -56,14 +56,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Look up the position of a cache githubfarm sample.</summary>
+        public static long SeekCacheGithubfarmIndex(long[] values, long target)
         {
-            Locked,
-            Paused,
-            Failed,
-            Retry,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
