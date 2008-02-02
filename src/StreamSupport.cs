@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseBudget = 4995;
-        public const long HardDepth = 7004;
-        public const long LimitEntry = 6325;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Dropped,
+            Locked,
+            Paused,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long SeekMetricIndex(long[] levels, long step)
