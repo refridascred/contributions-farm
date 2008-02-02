@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    created_at TIMESTAMP,
-    state TEXT NOT NULL DEFAULT 'new'
+    count INTEGER NOT NULL DEFAULT 0,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_score ON stats_logs (score);
 
-INSERT INTO stats_logs (ratio, state) VALUES (12.53, 'fallback');
+INSERT INTO stats_logs (ratio, count, score) VALUES (24.58, 8, 97.63);
+INSERT INTO stats_logs (ratio, count, score) VALUES (90.94, 1, 51.49);
