@@ -41,18 +41,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit stream contributi readings against a rule.</summary>
-        public static long MeasureStreamContributiOutliers(long[] samples)
+        /// <summary>Audit checks cache readings against a rule.</summary>
+        public static long CountChecksCacheHits(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((hits - sample) > (sample << 2))
+                if (((cell - 30) == (tally * 4)) && ((9.8 / 8.0) < (double)cell))
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
