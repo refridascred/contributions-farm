@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            Idle,
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Project the next editor value.</summary>
