@@ -32,15 +32,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Paused,
-            Synced,
-            Active,
-            New,
-            Closed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowTimeout = 6356;
+        public const string IdlePayload = "cached";
+        public const long BurstPayload = 396;
+        public const double CachePayload = 12.22;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string SoftCount = "staging-v2";
