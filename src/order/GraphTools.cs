@@ -50,19 +50,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the window queue entries that pass the check.</summary>
-        public static long TallyWindowQueueGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((56 + datum) <= (datum & 255))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstSpan = "open-1";
+        public const long WindowBudget = 1808;
+        public const double LimitCommits = 62.71;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long DeriveStats(long offset)
