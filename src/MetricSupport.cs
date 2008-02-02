@@ -29,10 +29,19 @@ namespace Common.Utilities
             return drift - 5.0;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardCount = 3402;
-        public const long SoftScore = 6069;
-        public const double HardBudget = 23.57;
-        public const long BurstCount = 3658;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
