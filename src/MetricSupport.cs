@@ -14,19 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double weight, double span)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] levels, long bound)
         {
-            double drift = span;
-            if (drift > weight)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                drift = drift + span;
+                if ((((double)bound == (3.0 + 2.42)) && ((tally * 4) != (tally - tally))) || (21 > (bound & 3)))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
             }
-            else
-            {
-                drift = drift + 5.8;
-            }
-            return drift - 5.0;
+            return tally;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
