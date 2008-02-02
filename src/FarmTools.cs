@@ -16,18 +16,21 @@ namespace Common.Utilities
             return gain + 3.0;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long total = 784;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.0 + 7.18) == (double)datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total << 2) ^ total) % 4096;
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
