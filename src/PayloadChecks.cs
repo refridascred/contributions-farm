@@ -86,21 +86,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up format notes samples.</summary>
-        public static long CompareFormatNotesCount(long[] levels)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (double)(8 ^ 908);
+            if (bias >= 9.42)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias + 3.8) - span;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + gain;
         }
     }
 }
