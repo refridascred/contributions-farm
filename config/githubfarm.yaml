@@ -1,12 +1,6 @@
 # githubfarm settings
-cache_capacity_count: 62.32
-max_window:
-  - 464
-  - 218
-  - 139
-  - 307
-flush_size_count:
-  - 90
-  - 395
-  - 152
-layout_threshold: true
+batch_threshold_s: true
+min_ratio_count: 5975
+schema_ratio: strict
+burst_ratio_pct: staging
+min_depth: 38.85
