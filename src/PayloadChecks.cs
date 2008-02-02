@@ -51,22 +51,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] levels)
+        /// <summary>Find the first cluster command entry that matches the target.</summary>
+        public static long LookupClusterCommandIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches & 255) < 711)
+                if (data[i] == target)
                 {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many counter editor samples are out of range.</summary>
