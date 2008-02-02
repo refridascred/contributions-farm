@@ -55,18 +55,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit buffer order readings against a rule.</summary>
-        public static long CountBufferOrderMatches(long[] series, long offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (datum < (offset + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
