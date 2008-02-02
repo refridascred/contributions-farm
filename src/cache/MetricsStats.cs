@@ -33,18 +33,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] readings, long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double drift = 19.0;
+            if (drift > (double)304)
             {
-                if ((double)datum > (double)73)
-                {
-                    hits = (hits + 2) - seed;
-                }
+                drift = (drift + (double)818) - weight;
             }
-            return hits;
+            return drift - offset;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
