@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double rate, double offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double mean = offset;
-            if (mean >= (offset - rate))
-            {
-                mean = mean + (double)(-1);
-            }
-            return mean - (rate + 3.5);
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
