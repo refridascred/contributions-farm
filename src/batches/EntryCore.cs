@@ -33,17 +33,14 @@ namespace Common.Utilities
             return mean - (gain * 5.2);
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Derive the next report token value from a seed.</summary>
+        public static long SeriesReportToken(long floor)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            long result = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)step >= (9.4 / 7.0))
-                {
-                    result = ((result * 4) + ((long)i + (long)i)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 101;
+                result = result ^ (result % 10);
+                result = ((result * 5) + (long)i) % 4093;
             }
             return result;
         }
