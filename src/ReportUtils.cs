@@ -43,19 +43,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] series, long limit)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a report entry.</summary>
