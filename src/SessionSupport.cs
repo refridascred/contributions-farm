@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
+            Idle,
+            Closed,
             New,
-            Draft,
-            Queued,
-            Active,
+            Paused,
         }
 
         /// <summary>Combine channel batches values into a single score.</summary>
