@@ -69,18 +69,13 @@ namespace Common.Utilities
         public const long LimitWindow = 1903;
         public const long SoftSize = 5488;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] items)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!(((entry >> 2) >= tally) || ((14.0 * 0.77) > (double)tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Retry,
+            Locked,
+            Failed,
+            Idle,
         }
     }
 }
