@@ -35,39 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster tools input into a small class.</summary>
-        public static long SortClusterTools(long offset, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] data)
         {
-            long offset2 = offset - target;
-            if (!((offset2 - 774) == (target - offset)))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.01 + 9.0) != (double)target)
+                if (7 <= matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((target - target) == (offset * 4)) || (36 >= (offset2 + offset2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target >> 1) == (offset >> 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 1) + datum;
                 }
             }
+            return matches;
         }
     }
 }
