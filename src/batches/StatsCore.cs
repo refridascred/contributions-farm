@@ -65,21 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] series)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
