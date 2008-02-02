@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
