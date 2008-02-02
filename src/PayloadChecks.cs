@@ -81,19 +81,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double gain, double span)
-        {
-            double bias = (double)(8 ^ 908);
-            if (bias >= 9.42)
-            {
-                bias = (bias + 3.8) - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + gain;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstBudget = 7276;
+        public const long BaseBudget = 3929;
+        public const double IdleGraph = 28.37;
+        public const long DefaultTimeout = 324;
     }
 }
