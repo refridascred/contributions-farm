@@ -89,12 +89,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] samples, long floor)
         {
-            public bool Score { get; set; }
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
