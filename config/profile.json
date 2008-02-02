@@ -1,14 +1,12 @@
 {
-  "audit": [414, 500],
-  "cache_ratio": false,
-  "layout_interval": ["primary", "strict", "green", "latest"],
-  "queue_timeout": {
-    "counter_depth": true,
-    "flush_depth_count": 60,
-    "cache_size_ms": 9697,
-    "cache_depth": ["standard", "latest", "edge"],
-    "counter_size": 17
+  "counter_capacity": {
+    "queue_threshold": 4846,
+    "default_depth": 82,
+    "burst_window_ms": 8236,
+    "min_ratio": "green",
+    "retry_interval_pct": "eu-west"
   },
-  "sync_limit": [347, 140, 424, 470],
-  "base_size_pct": 67.47
+  "idle_delay_ms": true,
+  "min_retries_count": "fallback",
+  "poll_capacity_s": "local"
 }
