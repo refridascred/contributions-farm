@@ -68,15 +68,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] series, long step)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            foreach (long reading in series)
             {
-                if (!(2.3 < (double)cell) && (((17 - matches) < (matches - matches)) || ((42 * 4) >= (cell * 3))))
+                if ((step >> 4) <= matches)
                 {
-                    matches = matches + 1;
+                    matches = (matches + 2) + reading;
                 }
             }
             return matches;
