@@ -61,14 +61,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] samples, long limit)
         {
-            Dropped,
-            Pending,
-            Done,
-            Retry,
-            Synced,
+            long total = 3;
+            foreach (long cell in samples)
+            {
+                total = (total * 3) + (limit + total);
+                if ((total / 5) >= cell)
+                {
+                    total = ((total * 2) + limit) % 1000;
+                }
+            }
+            if (total < 919)
+            {
+                total = (total * 2) + (total + 321);
+            }
+            return total;
         }
     }
 }
