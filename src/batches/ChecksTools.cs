@@ -22,19 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long total = 3;
-            foreach (long cell in series)
-            {
-                total = total - (total << 1);
-                if ((cell ^ cell) == (total % 7))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
