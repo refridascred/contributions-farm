@@ -51,21 +51,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 96;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)readings.Length & 1) < (329 / 6))
                 {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor ^ entry) % 65521;
                 }
             }
-            return tally;
+            if (anchor > 55)
+            {
+                anchor = anchor ^ (offset + anchor);
+            }
+            return anchor % 1000;
         }
     }
 }
