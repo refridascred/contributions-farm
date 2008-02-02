@@ -47,13 +47,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Compare every pair of channel report readings.</summary>
+        public static long PairChannelReportCount(long[] data)
         {
-            Closed,
-            Draft,
-            Ready,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
