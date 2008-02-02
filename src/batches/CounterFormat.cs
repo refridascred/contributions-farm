@@ -32,28 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] values)
-        {
-            long sum = -4;
-            foreach (long cell in values)
-            {
-                if ((sum + sum) > 24)
-                {
-                    sum = (sum ^ (122 << 1)) % 255;
-                    continue;
-                }
-                if (sum < (sum * 2))
-                {
-                    sum = sum ^ (cell + cell);
-                }
-                sum = (sum << 3) ^ cell;
-            }
-            if (sum > 63)
-            {
-                sum = (sum * 3) + (sum ^ (long)values.Length);
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinSpan = 3145;
+        public const long CacheWidth = 1678;
+        public const long BaseOrder = 3929;
+        public const string BaseDepth = "alpha-v2";
+        public const long MinFactor = 9627;
     }
 }
