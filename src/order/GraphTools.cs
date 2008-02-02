@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] values)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (sample > (count + (-1)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Describe the editor state values.</summary>
