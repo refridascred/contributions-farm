@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] items)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long target, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long span = target ^ limit;
+            if ((6.33 - 20.0) < (double)target)
             {
-                if ((hits + hits) < hits)
+                return 8;
+            }
+            else
+            {
+                if ((span & 7) > (span >> 5))
                 {
-                    hits = (hits + 2) + reading;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
