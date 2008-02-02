@@ -29,11 +29,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseFactor = 94.45;
-        public const long DefaultCounter = 405;
-        public const long DefaultFactor = 8111;
-        public const string StepWidth = "standard-v2";
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] readings, long step)
+        {
+            long total = 8;
+            foreach (long value in readings)
+            {
+                if ((5.1 + 17.0) != (double)total)
+                {
+                    total = total + value;
+                }
+                else
+                {
+                    total = (total - step) % 255;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportOutliers(long[] items)
