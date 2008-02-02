@@ -28,14 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowDepth = 4477;
+        public const string DefaultNotes = "legacy-1";
+        public const string BaseNotes = "cached-edge";
+        public const long BurstNotes = 7198;
 
         /// <summary>Validate filter format readings against a bound.</summary>
         public static bool VerifyFilterFormatLimits(long[] readings, long seed)
