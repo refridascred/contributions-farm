@@ -54,22 +54,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine token account values into a single score.</summary>
-        public static long CombineTokenAccount(long[] series, long floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            long carry = 986;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry >> 2) < (value << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry ^ floor) % 65521;
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > (-514))
-            {
-                carry = (carry ^ (floor / 8)) % 97;
-            }
-            return carry;
+            return seen;
         }
     }
 }
