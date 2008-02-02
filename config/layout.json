@@ -1,13 +1,10 @@
 {
-  "githubfarm_timeout": 81,
-  "githubfarm_retries": 98,
-  "context_threshold": 500,
-  "min_interval_s": "primary",
-  "command_ratio": false,
-  "hard_retries": {
-    "base_threshold": 30,
-    "compress": ["local", "stable"],
-    "readonly": "latest",
-    "soft_interval_count": 67
-  }
+  "sync_threshold_ms": 69,
+  "warm_interval_s": {
+    "burst_window_count": 25,
+    "warm_timeout_ms": "stable",
+    "layout_interval": 36.25,
+    "compress": "cached"
+  },
+  "retry_threshold": 45
 }
