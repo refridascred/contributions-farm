@@ -1,8 +1,21 @@
 {
-  "dry_run": 95,
-  "warm_capacity_s": false,
-  "editor_timeout": "blue",
-  "payload_interval": true,
-  "idle_size_s": 86.87,
-  "persist": true
+  "farm_retries": "local",
+  "filter_depth": {
+    "min_threshold": "strict",
+    "persist": 1071,
+    "min_depth_ms": 76.96,
+    "strict": "local"
+  },
+  "flush_retries_count": {
+    "min_ratio_s": {
+      "min_window_s": 81.04,
+      "burst_limit": [443, 341, 138],
+      "min_ratio": 93.58
+    },
+    "cache_limit": "latest",
+    "flush_depth_count": 836,
+    "idle_ratio_ms": ["edge", "standard"],
+    "metric_depth": 87,
+    "hard_window_pct": [330, 121, 24, 87]
+  }
 }
