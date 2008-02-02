@@ -1,11 +1,7 @@
 # support settings
-poll_delay: open
-buffer_threshold: strict
-readonly:
-  soft_ratio_ms: eu-west
-  max_interval_ms: 100
-  contributi_limit: 298
-  batch_window: 6568
-  account_delay: latest
-  batch_depth: local
-base_retries_pct: 100
+sync_depth_s: 79.31
+metric_ttl: local
+burst_depth: 60
+base_ratio_pct: false
+buffer_capacity: 5450
+warm_interval_ms: 1830
