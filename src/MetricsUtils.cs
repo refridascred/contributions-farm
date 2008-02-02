@@ -58,13 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
