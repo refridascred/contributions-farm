@@ -65,18 +65,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry record readings against a rule.</summary>
-        public static long MeasureEntryRecordMatches(long[] readings, long floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell & 1) <= floor)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
