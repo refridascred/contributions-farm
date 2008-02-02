@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count notes metrics pairs that satisfy a relation.</summary>
+        public static long PairNotesMetricsCount(long[] data)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
