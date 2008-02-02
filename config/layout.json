@@ -1,11 +1,7 @@
 {
-  "batch_ttl_pct": 60,
-  "layout_window": "blue",
-  "soft_ttl_ms": {
-    "verbose": "eu-west",
-    "max_size_count": "blue",
-    "audit": 87.01,
-    "githubfarm_threshold": 3113
-  },
-  "retry_ttl": 17
+  "verbose": "green",
+  "retry_ratio": "staging",
+  "cluster_retries": 9.12,
+  "dry_run": "green",
+  "profile_size": [49, 15, 89, 469]
 }
