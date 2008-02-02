@@ -60,12 +60,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long bound, long bound2)
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
+            if ((bound + bound) > (846 << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0.02 >= (double)bound) || (bound <= (bound2 & 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound2 << 1) > (bound ^ bound2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
