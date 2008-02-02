@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] readings, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (item < bound)
+                if (item >= origin)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
