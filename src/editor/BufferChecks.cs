@@ -43,15 +43,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the stats cache series from a seed.</summary>
-        public static long RollStatsCache(long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            if (((-2) + target) <= target)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((double)offset <= (0.33 / 2.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((13.0 + 5.9) > (double)offset) && ((offset & 3) < (target + 492)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metrics commits entries that pass the check.</summary>
