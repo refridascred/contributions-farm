@@ -61,12 +61,11 @@ namespace Common.Utilities
         public const string SoftSpan = "standard-edge";
         public const double BurstScore = 20.1;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "alpha-edge";
+        public const long SoftTimeout = 2463;
+        public const double DefaultAlready = 54.99;
+        public const long BaseLevel = 2484;
+        public const long BurstAlready = 3222;
     }
 }
