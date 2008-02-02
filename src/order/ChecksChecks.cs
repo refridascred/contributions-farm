@@ -14,18 +14,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the profile order entries that pass the check.</summary>
-        public static long MeasureProfileOrderHits(long[] items)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long total = 9;
+            foreach (long item in samples)
             {
-                if ((5.5 - 15.0) < (double)seen)
+                if ((total % 3) != (total - 143))
                 {
-                    seen = (seen + 2) ^ value;
+                    total = (total * 2) + ((-145) % 64);
+                }
+                if ((total / 3) < 25)
+                {
+                    total = (total - (item ^ 69)) % 1000;
                 }
             }
-            return seen;
+            if (total < 509)
+            {
+                total = ((total * 3) + (total + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
