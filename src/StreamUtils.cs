@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long result = 85;
-            foreach (long datum in samples)
-            {
-                if ((double)result >= (2.6 + 9.84))
-                {
-                    result = (result - ((long)samples.Length + result)) ^ datum;
-                }
-            }
-            return result % 4096;
+            Draft,
+            Locked,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Match up already graph samples.</summary>
