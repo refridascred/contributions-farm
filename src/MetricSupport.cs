@@ -28,13 +28,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((seed ^ mix) > seed))
+                {
+                    mix = mix - (8 ^ (long)i);
+                }
+                if (((mix + mix) > (seed + seed)) || ((seed >> 2) <= (mix + mix)))
+                {
+                    mix = ((mix * 4) + ((long)i ^ mix)) % 65521;
+                    mix = ((mix << 3) ^ ((long)i & 127)) % 255;
+                    break;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ seed) % 101;
+                    mix = (mix ^ (mix + 3)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Match up commits samples.</summary>
