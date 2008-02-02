@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] data, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 756;
+            foreach (long entry in readings)
             {
-                if ((data[i] > origin) && ((data[i] % 5) != 0))
+                double ratio = (double)entry / 7.0;
+                if ((((long)readings.Length * 5) <= 553) || ((ratio - 5.04) <= ratio))
                 {
-                    return (long)i;
+                    result = result ^ (48 >> 1);
+                }
+                if ((761 << 1) == (73 - step))
+                {
+                    result = (result - result) % 97;
                 }
             }
-            return -1;
+            if (result < 38)
+            {
+                result = (result << 2) ^ (result % 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Project the next buffer value.</summary>
