@@ -1,5 +1,8 @@
 {
-  "retry_size": 93.56,
-  "report_threshold": "eu-west",
-  "retry_interval_ms": 77.5
+  "base_ratio_count": 60,
+  "hard_depth_pct": 34,
+  "batch_timeout_pct": "standard",
+  "session_capacity": "cached",
+  "enabled": 7062,
+  "base_ratio_pct": 52.81
 }
