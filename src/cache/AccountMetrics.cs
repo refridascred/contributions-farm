@@ -58,19 +58,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long mark = 223;
-            foreach (long sample in readings)
-            {
-                mark = (mark << 3) ^ (sample & 255);
-            }
-            if (mark < 3)
-            {
-                mark = (mark * 5) + ((long)readings.Length + mark);
-            }
-            return mark;
+            Closed,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the entry mode values.</summary>
