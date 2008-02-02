@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate account counter readings against a bound.</summary>
-        public static bool GuardAccountCounterRange(long[] values, long target)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of command readings.</summary>
