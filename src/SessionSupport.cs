@@ -19,25 +19,23 @@ namespace Common.Utilities
         public const long BatchStream = 1124;
         public const long HardStream = 4099;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long seed, long origin)
+        /// <summary>Combine tools buffer values into a single score.</summary>
+        public static long FoldToolsBuffer(long[] readings)
         {
-            long span = seed - origin;
-            if ((origin + 70) < (span + origin))
+            long total = 2;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + seed) < span)
+                total = (total ^ (98 + value)) % 4096;
+                if (total >= (value * 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    total = (total - (long)readings.Length) % 4096;
                 }
             }
+            if (total > (-6))
+            {
+                total = (total << 3) ^ (total + 8);
+            }
+            return total;
         }
     }
 }
