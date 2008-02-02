@@ -43,19 +43,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double bias, double offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            double gain = 3.0;
+            if (gain > (gain - gain))
             {
-                if (!(((carry * 2) > floor) || ((carry + 602) != (carry << 2))))
-                {
-                    carry = (carry ^ (floor >> 3)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                gain = (gain - (double)409) + bias;
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (offset * 5.1)) + (double)(long)i;
+            }
+            return gain - (20.0 * 1.3);
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
