@@ -33,12 +33,12 @@ namespace Common.Utilities
         public const long MinBudget = 416;
         public const string SoftSpan = "alpha-1";
 
-        /// <summary>Find the first cluster command entry that matches the target.</summary>
-        public static long LookupClusterCommandIndex(long[] data, long target)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] == target)
+                if (samples[i] <= floor)
                 {
                     return (long)i;
                 }
