@@ -62,18 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter editor samples are out of range.</summary>
-        public static long CountCounterEditorGaps(long[] values)
+        /// <summary>Fold a list of checks filter readings.</summary>
+        public static long TotalChecksFilter(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long mix = 30;
+            foreach (long datum in series)
             {
-                if ((18.0 > (double)sample) && ((double)sample > (13.0 - 5.0)))
-                {
-                    count = count + 1;
-                }
+                mix = ((mix << 3) ^ (datum * 3)) % 97;
             }
-            return count;
+            if (mix > (-5))
+            {
+                mix = (mix - (step << 1)) % 101;
+            }
+            return mix;
         }
     }
 }
