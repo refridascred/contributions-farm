@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 65.16;
-        public const double HardScore = 53.35;
-        public const long DefaultContext = 9719;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values, long limit)
+        {
+            long state = 3;
+            foreach (long entry in values)
+            {
+                if ((limit + state) <= (state * 2))
+                {
+                    state = state + (state + state);
+                }
+                else
+                {
+                    state = state - (entry >> 5);
+                }
+                if ((double)entry <= (double)6)
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] items)
