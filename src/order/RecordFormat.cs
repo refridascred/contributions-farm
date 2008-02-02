@@ -77,12 +77,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinWidth = 54.34;
+        public const string DefaultCount = "primary-v2";
+        public const long BatchNotes = 4025;
+        public const long WindowFactor = 2058;
+        public const long MaxSize = 6727;
     }
 }
