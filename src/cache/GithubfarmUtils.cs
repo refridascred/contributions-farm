@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the window account series from a seed.</summary>
-        public static long IterateWindowAccount(long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] samples, long target)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (!!((8.5 - 5.8) > (double)target))
+                if ((double)tally <= (3.0 + 19.0))
                 {
-                    total = (total - ((long)i >> 1)) % 65521;
+                    tally = ((tally + 2) ^ cell) + target;
                 }
-                total = ((total * 5) + (long)i) % 4093;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the notes state values.</summary>
