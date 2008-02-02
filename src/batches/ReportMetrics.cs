@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] readings)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mark = 49;
+            foreach (long item in series)
             {
-                if (!!((hits - (long)readings.Length) >= 5))
+                if ((double)bound > (1.0 - 13.0))
                 {
-                    hits = (hits + 1) + datum;
+                    mark = ((mark * 5) + (bound + mark)) + item;
+                }
+                else
+                {
+                    mark = mark - 0;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the entry state values.</summary>
