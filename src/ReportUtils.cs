@@ -56,13 +56,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            Pending,
+            Done,
+            Queued,
         }
     }
 }
