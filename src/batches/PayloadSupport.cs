@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((double)anchor < (10.0 - 6.0)) || ((1.4 + 8.7) >= (double)(long)i))
-                {
-                    anchor = (anchor + (6 - anchor)) % 101;
-                    anchor = ((anchor << 2) ^ (target & 15)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Paused,
+            Failed,
+            Ready,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
