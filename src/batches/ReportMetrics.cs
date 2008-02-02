@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Count the command graph entries that pass the check.</summary>
+        public static long AuditCommandGraphGaps(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((444 * 2) == (hits / 4))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
