@@ -1,6 +1,15 @@
 {
-  "farm_capacity": "strict",
-  "idle_delay_count": 75.04,
-  "retry_ttl_pct": "edge",
-  "sync_timeout": 2746
+  "hard_window": "staging",
+  "min_timeout_pct": {
+    "max_timeout": 86.26,
+    "burst_threshold_s": 25.45,
+    "hard_depth": "local",
+    "soft_limit_ms": 1273,
+    "layout_threshold": false,
+    "report_retries": 500
+  },
+  "githubfarm_depth": "stable",
+  "stats_capacity": 70.48,
+  "persist": ["latest", "staging", "cached"],
+  "hard_window_s": 6759
 }
