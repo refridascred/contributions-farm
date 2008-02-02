@@ -44,14 +44,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long limit)
         {
-            New,
-            Closed,
-            Paused,
-            Active,
-            Synced,
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the report state values.</summary>
