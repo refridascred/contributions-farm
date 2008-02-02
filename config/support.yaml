@@ -1,5 +1,4 @@
 # support settings
-readonly: 84
-max_delay_ms: 38.01
-sync_window: 24.28
-poll_limit_ms: primary
+cache_delay: 6776
+sync_interval_ms: latest
+max_threshold: staging
