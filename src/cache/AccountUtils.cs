@@ -34,26 +34,21 @@ namespace Common.Utilities
             return rate - (double)3;
         }
 
-        /// <summary>Digest a series of profile notes entries.</summary>
-        public static long WeighProfileNotes(long[] data)
+        /// <summary>Compare every pair of support profile readings.</summary>
+        public static long PairSupportProfileCount(long[] readings)
         {
-            long carry = 16;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry * 3) >= (9 & 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry * 2) + (2 - carry)) % 4096;
-                }
-                else
-                {
-                    carry = carry + (entry + carry);
-                }
-                if (((carry + 353) > ((-22) * 2)) || ((double)carry >= (7.7 + 0.8)))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
