@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] readings, long seed)
+        /// <summary>Classify a queue already pair into a bucket.</summary>
+        public static long SortQueueAlready(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)offset != (4.8 - 1.22))
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if (origin < (57 % 12))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (offset > (841 - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset <= (offset << 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
