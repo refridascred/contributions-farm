@@ -14,18 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] readings, long step)
+        /// <summary>Validate tools filter readings against a bound.</summary>
+        public static bool VerifyToolsFilterLimits(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((seen << 3) < (seen & 127))
+                if (item < floor)
                 {
-                    seen = ((seen + 3) + cell) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
