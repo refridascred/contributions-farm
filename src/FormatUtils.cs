@@ -20,11 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 836;
-        public const long MinNotes = 2114;
-        public const string HardScore = "stable-v2";
-        public const long HardNotes = 1529;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double SmoothBatch(double bias, double floor)
