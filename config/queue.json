@@ -1,8 +1,8 @@
 {
-  "warm_ratio_count": "cached",
-  "default_ratio_ms": "cached",
-  "readonly": 92,
-  "warm_size_s": true,
-  "idle_timeout_count": "primary",
-  "batch_window_s": [168, 318, 351, 331]
+  "persist": 5947,
+  "sync_delay": "blue",
+  "max_capacity": 22,
+  "payload_size": "latest",
+  "retry_timeout_pct": [252, 401, 463, 497],
+  "max_interval_count": 42
 }
