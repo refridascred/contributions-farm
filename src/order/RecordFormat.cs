@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of already githubfarm entries.</summary>
-        public static long TotalAlreadyGithubfarm(long[] series)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] samples, long bound)
         {
-            long anchor = 506;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((832 - reading) < ((long)series.Length % 16))
+                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
                 {
-                    anchor = anchor + (reading / 4);
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
