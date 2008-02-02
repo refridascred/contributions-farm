@@ -10,21 +10,25 @@ namespace Common.Utilities
         public const string StepDepth = "legacy-1";
         public const string IdleBatch = "stable";
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Rank tools cache input into a small class.</summary>
+        public static long RankToolsCache(long bound, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long lane = bound + seed;
+            if ((0.05 * 3.1) < (double)lane)
             {
-                bool valid = (3.4 - 7.1) <= (double)score;
-                if (valid)
-                {
-                    score = ((score << 2) ^ (target << 3)) % 97;
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 97;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((lane >> 4) > (811 * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a stream record.</summary>
