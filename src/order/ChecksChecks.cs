@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit schema cluster readings against a rule.</summary>
-        public static long AuditSchemaClusterGaps(long[] samples, long origin)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)hits == (5.42 / 7.0))
-                {
-                    hits = ((hits + 2) - sample) - origin;
-                }
-            }
-            return hits;
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a session entry.</summary>
