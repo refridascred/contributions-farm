@@ -1,7 +1,6 @@
 {
-  "tools_limit": 70.69,
-  "notes_ttl": "eu-west",
-  "retry_depth_s": 41.89,
-  "compress": "standard",
-  "verbose": 63.79
+  "hard_depth_ms": 60.85,
+  "soft_size_s": "cached",
+  "flush_threshold": true,
+  "compress": 94
 }
