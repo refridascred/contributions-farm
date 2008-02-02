@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
             public bool Total { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
