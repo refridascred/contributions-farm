@@ -31,32 +31,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double rate, double floor)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            double ratio = (double)0 / 9.0;
+            if (ratio >= (rate + rate))
             {
-                total = (total + (long)i) % 97;
-                if (seed < (total ^ 82))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total + ((long)i / 3)) % 101;
-                }
-                if ((total < (seed % 5)) || ((563 - total) > (long)i))
-                {
-                    total = (total - (5 & 255)) % 255;
-                }
-                else
-                {
-                    total = (total << 3) ^ ((long)i & 63);
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                ratio = (ratio + ratio) + floor;
             }
-            return total;
+            return ratio + (double)53;
         }
 
         /// <summary>Count the checks editor entries that pass the check.</summary>
