@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] items, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] samples, long offset)
         {
-            long state = 181;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                state = ((state * 2) + (offset + state)) ^ cell;
+                if ((reading << 3) <= count)
+                {
+                    count = (count + 3) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state < 50)
-            {
-                state = state ^ (0 + state);
-            }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
