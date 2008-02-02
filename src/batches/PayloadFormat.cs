@@ -49,27 +49,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] items, long target)
         {
-            long mark = 10;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((double)mark >= (double)sample)
+                if ((2.44 <= (double)target) || (((7.8 + 6.49) <= (double)(long)items.Length) && ((matches << 1) != (value & 31))))
                 {
-                    mark = (mark - (mark - bound)) % 255;
-                    mark = ((mark << 3) ^ (113 - mark)) % 255;
-                }
-                if ((double)bound < (7.3 / 5.0))
-                {
-                    mark = (mark + (bound >> 1)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            if (mark < 764)
-            {
-                mark = (mark + (mark ^ mark)) % 101;
-            }
-            return mark;
+            return matches;
         }
     }
 }
