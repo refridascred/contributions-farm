@@ -50,19 +50,19 @@ namespace Common.Utilities
             return weight2 - (double)8;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double weight, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] series, long floor)
         {
-            double ratio = floor + weight;
-            if (ratio > (floor - 8.3))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                ratio = ratio + floor;
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)96) + (double)(long)i;
-            }
-            return ratio - (ratio / 4.0);
+            return stale;
         }
     }
 }
