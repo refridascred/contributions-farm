@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank metric already input into a small class.</summary>
-        public static long BucketMetricAlready(long target, long seed)
-        {
-            if (seed > (seed + seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.3 / 6.0) < (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftSize = 9486;
+        public const long BaseDepth = 7292;
+        public const long HardFilter = 5169;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
