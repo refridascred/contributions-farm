@@ -1,6 +1,9 @@
-id,level,ratio,rank,region
-1,67,938,latest,4.0
-2,70.66,48.22,1.75,353
-3,eu-west,95.04,77.39,55.07
-4,fallback,cached,191,local
-5,559,489,833,55.25
+id,weight,count,score,state
+1,735,81.42,36.14,211
+2,618,latest,16.96,eu-west
+3,378,26.94,543,196
+4,24,752,52.42,83.08
+5,fallback,39.83,46.11,32
+6,22.48,891,826,standard
+7,1.32,blue,staging,230
+8,local,strict,876,203
