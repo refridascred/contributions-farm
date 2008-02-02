@@ -21,12 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTools = 5.98;
-        public const double HardTimeout = 55.1;
-        public const string WindowDepth = "latest";
-        public const long RetryTools = 4120;
-        public const double LimitBudget = 2.57;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public bool Token { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double ratio, double offset)
