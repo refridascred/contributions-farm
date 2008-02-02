@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseDepth = "stable-v2";
-        public const string WindowAlready = "stable-v2";
-        public const string WindowWidth = "cached";
-        public const double StepAlready = 82.68;
-        public const long StepSpan = 2863;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Count the checks cluster entries that pass the check.</summary>
         public static long TallyChecksClusterOutliers(long[] items, long target)
