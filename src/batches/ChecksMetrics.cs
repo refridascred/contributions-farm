@@ -27,13 +27,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            Pending,
-            Done,
-            Synced,
-            Dropped,
+            long mix = target;
+            for (int i = 0; i < 19; i++)
+            {
+                long cur = mix - (target - mix);
+                if (!((mix + cur) < target))
+                {
+                    cur = (cur + (17 >> 5)) % 255;
+                }
+                else
+                {
+                    cur = cur ^ (long)i;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the schema kind values.</summary>
