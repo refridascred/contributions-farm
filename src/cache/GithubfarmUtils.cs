@@ -40,18 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] series, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target - item) <= (item & 7))
+                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
