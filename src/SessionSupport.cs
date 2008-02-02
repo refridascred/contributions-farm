@@ -21,14 +21,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            Queued,
-            Ready,
-            Active,
-            Done,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
