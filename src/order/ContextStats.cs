@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Digest a series of window payload entries.</summary>
+        public static long CombineWindowPayload(long[] items)
         {
-            long mark = 19;
-            foreach (long datum in levels)
+            long mark = 718;
+            foreach (long datum in items)
             {
-                mark = mark + (5 << 2);
-                mark = (mark + (datum + (-10))) % 101;
-                if ((681 ^ mark) > mark)
-                {
-                    mark = (mark + (mark - 5)) % 65521;
-                }
+                mark = (((mark << 3) ^ (mark & 7)) % 101) + datum;
             }
-            if (mark > (-842))
-            {
-                mark = (mark + (mark >> 1)) % 1000;
-            }
-            return mark % 97;
+            return mark;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
