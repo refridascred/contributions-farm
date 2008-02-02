@@ -1,6 +1,13 @@
 {
-  "cache_retries": 250,
-  "retry_threshold": 7644,
-  "sync_retries": "green",
-  "hard_retries": ["stable", "blue", "green", "cached"]
+  "strict": true,
+  "batch_window": 61,
+  "poll_timeout_count": 29,
+  "burst_limit": {
+    "channel_threshold": 63.96,
+    "idle_ratio_pct": "cached",
+    "window_threshold": 2.69,
+    "readonly": 7687
+  },
+  "min_window": 500,
+  "cache_depth_ms": false
 }
