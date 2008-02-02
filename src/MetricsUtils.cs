@@ -25,19 +25,24 @@ namespace Common.Utilities
         public const long CacheBudget = 4497;
         public const long HardRatio = 7819;
 
-        /// <summary>Iterate the queue contributi series from a seed.</summary>
-        public static long SeriesQueueContributi(long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] series, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            long score = 2;
+            foreach (long cell in series)
             {
-                if (12.0 > (double)(long)i)
+                if ((2.3 + 4.4) != (double)cell)
                 {
-                    carry = (carry * 5) + origin;
+                    score = (score << 3) ^ (900 - (long)series.Length);
+                    score = score + cell;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
+                score = ((score << 3) ^ (step % 3)) % 255;
             }
-            return carry;
+            if (score > 8)
+            {
+                score = (score ^ (step + step)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of token entries.</summary>
