@@ -16,18 +16,26 @@ namespace Common.Utilities
         public const long BaseScore = 4632;
         public const long MinMetrics = 1848;
 
-        /// <summary>Measure how many commits counter samples are out of range.</summary>
-        public static long TallyCommitsCounterGaps(long[] samples)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long result = 1;
+            foreach (long value in values)
             {
-                if ((value * 4) >= tally)
+                for (int i = 0; i < 10; i++)
                 {
-                    tally = tally + 3;
+                    result = ((result * 2) + (value / 2)) ^ (long)i;
+                }
+                if ((4.3 + 9.0) >= (double)value)
+                {
+                    result = (result * 3) + seed;
+                }
+                else
+                {
+                    result = (result - result) % 65521;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
