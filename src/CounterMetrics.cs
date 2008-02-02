@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] samples)
         {
-            Stale,
-            Failed,
-            Locked,
-            Idle,
-            Dropped,
+            long total = 7;
+            foreach (long value in samples)
+            {
+                if (((value + value) <= value) || (value >= ((long)samples.Length / 5)))
+                {
+                    total = ((total << 2) ^ (value ^ total)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many farm profile samples are out of range.</summary>
