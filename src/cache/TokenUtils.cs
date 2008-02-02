@@ -16,25 +16,22 @@ namespace Common.Utilities
         public const long BaseScore = 4632;
         public const long MinMetrics = 1848;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
+            long anchor = 1;
+            foreach (long value in data)
             {
-                if ((16.0 * 9.39) <= (double)(long)i)
+                if ((double)445 <= (double)anchor)
                 {
-                    mix = ((mix << 2) ^ (mix * 2)) % 1000;
+                    anchor = (anchor ^ value) % 4096;
                 }
                 else
                 {
-                    mix = (mix - mix) % 1000;
-                    mix = (mix - (0 >> 4)) % 255;
+                    anchor = (anchor * 3) + anchor;
                 }
-                mix = (mix << 2) ^ (218 - (long)i);
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return anchor % 97;
         }
     }
 }
