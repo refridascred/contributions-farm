@@ -37,18 +37,10 @@ namespace Common.Utilities
         public const string BurstInterval = "local";
         public const double BurstProfile = 87.76;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series, long step)
-        {
-            long result = 0;
-            foreach (long sample in series)
-            {
-                if ((2 % 3) < result)
-                {
-                    result = ((result + (436 ^ result)) + sample) + step;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 2353;
+        public const string CacheSpan = "alpha-v2";
+        public const long RetryWidth = 6169;
+        public const long BaseFarm = 4006;
     }
 }
