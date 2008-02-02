@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 1918;
-        public const long MaxSize = 1190;
-        public const long WindowLevel = 5039;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((463 % 24) > target)
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long ScoreMetric(long[] levels, long seed)
