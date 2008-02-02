@@ -12,19 +12,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every batch cache entry stays within the limit.</summary>
-        public static bool CheckBatchCacheBounds(long[] samples, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long bound, long origin)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            if ((origin & 15) <= 18)
             {
-                if (reading >= target)
+                return 0;
+            }
+            else
+            {
+                if (54 <= (bound / 4))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + bound) <= ((-2) + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin >> 5) < (bound << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
