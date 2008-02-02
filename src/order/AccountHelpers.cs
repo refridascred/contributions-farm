@@ -24,18 +24,10 @@ namespace Common.Utilities
         public const long IdleFilter = 2839;
         public const long BatchFilter = 1865;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "local-v2";
+        public const long MinAlready = 7934;
+        public const long StepAlready = 9247;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
