@@ -33,14 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Draft,
-            Locked,
-            Failed,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 34.06;
+        public const string LimitScore = "cached-edge";
+        public const string DefaultRatio = "stable-v2";
     }
 }
