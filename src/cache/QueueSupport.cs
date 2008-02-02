@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 1768;
-        public const long BatchEntry = 9652;
-        public const long IdleBudget = 4176;
-        public const long BurstScore = 5360;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] samples, long floor)
+        {
+            long acc = 455;
+            foreach (long value in samples)
+            {
+                if ((value << 2) >= (floor + value))
+                {
+                    acc = acc - (acc - 0);
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
