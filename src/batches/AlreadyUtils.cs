@@ -52,19 +52,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] levels, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long mark = 7;
+            foreach (long datum in samples)
             {
-                if (entry <= target)
+                if (!((double)mark >= (3.4 + 4.98)))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark - (mark / 2)) + datum;
                 }
             }
-            return stale;
+            return mark % 97;
         }
     }
 }
