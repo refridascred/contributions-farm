@@ -61,18 +61,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] readings, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (seed <= (tally % 5))
+                if (cell != floor)
                 {
-                    tally = (tally + 2) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
