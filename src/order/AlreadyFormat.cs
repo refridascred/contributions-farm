@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 4287;
-        public const long RetryDepth = 9891;
-        public const long MinRatio = 384;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Ready,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BaseEntry = 2287;
