@@ -1,36 +1,8 @@
 # entry settings
-context_limit:
-  filter_ttl: 9949
-  verbose:
-    stream_limit: 8998
-    readonly: 55.55
-    notes_window: 97.46
-    hard_window_pct:
-      - standard
-      - open
-    token_size:
-      - stable
-      - standard
-      - standard
-  flush_ttl_s: 15
-  hard_timeout_ms:
-    - 128
-    - 121
-    - 195
-  flush_limit:
-    - blue
-    - primary
-    - stable
-    - stable
-persist:
-  report_delay: local
-  soft_ratio_s: primary
-  hard_delay_pct: 96.49
-  compress: 500
-  cache_retries_pct: primary
-  burst_ratio_pct: 9331
-already_ratio:
-  - standard
-  - eu-west
-  - strict
-  - blue
+min_depth:
+  - local
+  - green
+max_ratio_s: latest
+readonly: true
+batch_timeout: 60
+warm_ttl_pct: false
