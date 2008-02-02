@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] readings, long seed)
+        /// <summary>Adjust a window channel reading.</summary>
+        public static double ProjectWindowChannel(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 3.0 * 5.3;
+            if (mean > mean)
             {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (15.0 / 2.0)) - weight;
             }
-            return -1;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (span - span);
         }
 
         /// <summary>Describe the editor class values.</summary>
