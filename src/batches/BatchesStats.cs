@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values, long limit)
+        /// <summary>Iterate the buffer batch series from a seed.</summary>
+        public static long StepBufferBatch(long floor)
         {
-            long score = 4;
-            foreach (long value in values)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (17.0 > (double)score)
-                {
-                    score = (score - (score + limit)) % 4096;
-                    score = ((score << 2) ^ limit) % 65521;
-                    continue;
-                }
-                if ((1.62 + 19.0) == (double)value)
-                {
-                    score = ((score * 4) + (53 + limit)) % 65521;
-                }
+                anchor = anchor - (876 ^ 54);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
