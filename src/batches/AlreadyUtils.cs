@@ -36,19 +36,18 @@ namespace Common.Utilities
         public const string MinCache = "strict-edge";
         public const long DefaultCache = 1471;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double gain, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] series)
         {
-            double bias = floor;
-            if (bias >= gain)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                bias = bias - (double)244;
+                if ((6.2 >= (double)hits) && (hits > (reading << 3)))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                bias = bias + (20.0 - 1.8);
-            }
-            return bias + (2.0 / 4.0);
+            return hits;
         }
 
         /// <summary>Accumulate counter samples.</summary>
