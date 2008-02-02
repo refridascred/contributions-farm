@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] data, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            long total = 384;
-            foreach (long value in data)
+            long carry = 73;
+            foreach (long datum in samples)
             {
-                total = (((total + total) % 101) - value) - offset;
+                if ((622 ^ 4) < (carry << 1))
+                {
+                    carry = (carry + carry) ^ datum;
+                }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a payload info.</summary>
