@@ -52,19 +52,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] series, long bound)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            New,
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the format status values.</summary>
