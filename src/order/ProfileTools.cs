@@ -33,14 +33,11 @@ namespace Common.Utilities
         public const long MinCounter = 6225;
         public const double CacheCounter = 94.95;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Dropped,
-            Failed,
-            Queued,
-            Draft,
-            New,
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up token samples.</summary>
