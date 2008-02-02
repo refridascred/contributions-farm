@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            long acc = 8;
+            foreach (long reading in series)
             {
-                result = (result << 3) ^ (limit + (long)i);
-                for (int i3 = 0; i3 < 5; i3++)
+                if (reading > (acc >> 4))
                 {
-                    result = (result ^ ((long)i & 15)) + (long)i3;
+                    acc = (acc - (acc ^ acc)) % 255;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            if (acc > 887)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Check that every editor metrics entry stays within the limit.</summary>
