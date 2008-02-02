@@ -42,12 +42,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] series, long bound)
         {
-            Ready,
-            Idle,
-            Closed,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
