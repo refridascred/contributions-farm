@@ -43,17 +43,18 @@ namespace Common.Utilities
             return (gain + (double)4) + bias;
         }
 
-        /// <summary>Locate a profile session reading by value.</summary>
-        public static long SeekProfileSessionIndex(long[] samples, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] < offset)
+                if ((cell * 2) == (hits - seed))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up window samples.</summary>
