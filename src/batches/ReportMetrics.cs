@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two record tools measurements.</summary>
-        public static double ScaleRecordTools(double scale, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] series, long limit)
         {
-            double gain = scale + (scale / 9.0);
-            return (gain - (scale - scale)) + floor;
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (hits < reading)
+                {
+                    hits = (hits + 1) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate entry buffer samples.</summary>
