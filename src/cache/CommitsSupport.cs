@@ -43,18 +43,13 @@ namespace Common.Utilities
             return (gain + (double)4) + bias;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] samples, long seed)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 2) == (hits - seed))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Match up window samples.</summary>
