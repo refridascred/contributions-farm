@@ -47,19 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window tools readings against a rule.</summary>
-        public static long TallyWindowToolsOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!(((double)tally != (7.4 - 5.3)) && ((tally % 24) > (70 * 5))))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSize = 4369;
+        public const double IdleInterval = 36.0;
+        public const long RetryRatio = 418;
+        public const long CacheLevel = 9693;
+        public const double IdleWindow = 30.32;
 
         /// <summary>Count the queue schema entries that pass the check.</summary>
         public static long MeasureQueueSchemaHits(long[] values)
