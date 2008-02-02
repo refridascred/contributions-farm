@@ -32,18 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] readings, long offset)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry / 2) <= (entry << 3))
+                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
                 {
-                    hits = (hits + 2) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
