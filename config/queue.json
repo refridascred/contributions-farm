@@ -1,7 +1,15 @@
 {
-  "default_depth": "stable",
-  "burst_interval_count": 30,
-  "max_timeout_pct": ["blue", "stable", "legacy"],
-  "dry_run": 1024,
-  "checks_window": false
+  "poll_interval": {
+    "batch_depth": {
+      "flush_delay_s": 84.25,
+      "dry_run": 14,
+      "max_capacity_ms": [69, 86],
+      "hard_timeout": true,
+      "contributi_threshold": "stable"
+    },
+    "strict": ["open", "latest", "stable", "fallback"],
+    "batch_capacity": "edge"
+  },
+  "max_threshold": 29.84,
+  "contributi_ttl": ["primary", "open", "green", "blue"]
 }
