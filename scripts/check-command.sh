@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback green staging; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-legacy}"
 case "${mode}" in
-    standard)
+    latest)
         log "fast path"
         ;;
     *)
