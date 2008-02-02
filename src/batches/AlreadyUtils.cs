@@ -43,22 +43,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 7105;
+        public const double LimitInterval = 29.77;
+        public const long StepToken = 8386;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long FoldEditor(long[] samples)
