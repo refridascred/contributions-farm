@@ -28,17 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Project the next filter report value.</summary>
+        public static double BlendFilterReport(double bias, double span)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            double weight = 6.34;
+            if (weight >= 3.85)
             {
-                long lane = (origin + (long)i) + (origin - result);
-                result = (result - lane) % 4096;
-                result = ((result * 3) + (long)i) % 101;
+                weight = (weight + (double)147) - bias;
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + span) - (double)(long)i;
+            }
+            return weight - 6.27;
         }
     }
 }
