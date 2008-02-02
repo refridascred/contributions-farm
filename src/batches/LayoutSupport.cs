@@ -48,12 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Dropped,
-            Done,
-            Stale,
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
