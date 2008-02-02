@@ -27,34 +27,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] readings)
         {
-            long acc = 60;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sample > (4.29 + 3.8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc ^ sample) % 65521;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (44 << 3);
-                }
-                if (acc > (acc + acc))
-                {
-                    acc = acc - sample;
-                }
-                if ((11.0 / 2.0) <= (double)sample)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc > (-12))
-            {
-                acc = (acc * 3) + (90 % 24);
-            }
-            return acc;
+            return seen;
         }
     }
 }
