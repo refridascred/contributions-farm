@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long HardDepth = 7004;
         public const long LimitEntry = 6325;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] samples, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Locked,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
