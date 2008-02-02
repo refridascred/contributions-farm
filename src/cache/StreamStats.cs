@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetrySize = "legacy-edge";
-        public const long BurstScore = 7623;
-        public const string BurstFactor = "strict-v2";
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordRange(long[] levels, long bound)
