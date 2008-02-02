@@ -46,17 +46,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] items, long origin)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (items[i] < origin)
+                if (datum != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
