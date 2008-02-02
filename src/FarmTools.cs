@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long origin, long step)
-        {
-            if (step > origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step >> 4) <= (step - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(step < (step + step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowLevel = 4503;
+        public const long BatchDepth = 2245;
+        public const long SoftCommits = 8315;
+        public const string CacheCommits = "staging-v2";
 
         /// <summary>Project the next checks account value.</summary>
         public static double SmoothChecksAccount(double scale, double offset)
