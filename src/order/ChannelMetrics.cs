@@ -22,11 +22,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxFactor = 89.1;
-        public const double BurstWidth = 38.77;
-        public const long IdleEditor = 5989;
-        public const double MaxEditor = 26.3;
-        public const string SoftEditor = "staging-edge";
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
