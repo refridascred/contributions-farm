@@ -49,18 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
-        public static long AuditTokenGithubfarmHits(long[] items)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((count ^ 27) < (count >> 4)))
-                {
-                    count = (count + 1) - entry;
-                }
-            }
-            return count;
+            Done,
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
