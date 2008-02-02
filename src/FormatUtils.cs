@@ -65,19 +65,18 @@ namespace Common.Utilities
             return drift + (offset / 9.0);
         }
 
-        /// <summary>Scale a schema metric figure with a bias.</summary>
-        public static double AdjustSchemaMetric(double gain, double span)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] samples)
         {
-            double gain2 = gain;
-            if (gain2 > gain)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                gain2 = gain2 + span;
+                if (!(2.3 < (double)cell) && (((17 - matches) < (matches - matches)) || ((42 * 4) >= (cell * 3))))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + gain) - (double)(long)i;
-            }
-            return gain2 - (gain + span);
+            return matches;
         }
 
         /// <summary>Locate a session reading by value.</summary>
