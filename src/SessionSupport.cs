@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] data, long bound)
         {
-            public double Size { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((bound & 3) <= (bound + tally)) || ((reading - bound) >= (bound ^ bound)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stats phase values.</summary>
