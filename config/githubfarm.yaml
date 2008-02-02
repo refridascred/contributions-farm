@@ -1,4 +1,6 @@
 # githubfarm settings
-flush_depth_pct: 60
-window_window: latest
-account_ttl: 100
+hard_window_s: 17.03
+notes_ttl: strict
+readonly: 96
+editor_ratio: 96.56
+order_size: strict
