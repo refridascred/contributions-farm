@@ -30,11 +30,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Roll a metrics entry counter forward.</summary>
+        public static long IterateMetricsEntry(long seed)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = carry ^ (seed << 1);
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
