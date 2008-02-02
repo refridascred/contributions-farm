@@ -19,21 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor record values into a single score.</summary>
-        public static long WeighEditorRecord(long[] data, long step)
-        {
-            long anchor = -7;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = (anchor - (anchor % 10)) ^ (long)i;
-                }
-                anchor = (anchor << 3) ^ (step - 296);
-                anchor = anchor + (reading * 3);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 7142;
+        public const long SoftBudget = 8275;
+        public const long BaseCache = 3382;
+        public const double BaseCount = 73.55;
+        public const double StepFactor = 5.84;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double BlendSupport(double bias, double span)
