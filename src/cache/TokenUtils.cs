@@ -16,22 +16,18 @@ namespace Common.Utilities
         public const long BaseScore = 4632;
         public const long MinMetrics = 1848;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Measure how many commits counter samples are out of range.</summary>
+        public static long TallyCommitsCounterGaps(long[] samples)
         {
-            long anchor = 1;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((double)445 <= (double)anchor)
+                if ((value * 4) >= tally)
                 {
-                    anchor = (anchor ^ value) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + anchor;
+                    tally = tally + 3;
                 }
             }
-            return anchor % 97;
+            return tally;
         }
     }
 }
