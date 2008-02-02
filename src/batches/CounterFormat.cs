@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 8006;
-        public const long IdleInterval = 8246;
-        public const long SoftSize = 5326;
-        public const double WindowDepth = 78.83;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long limit, long floor)
+        {
+            if ((floor + 426) <= (9 + limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((8 + floor) <= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - limit) != (730 + 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7 % 100) > (limit / 9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] readings)
