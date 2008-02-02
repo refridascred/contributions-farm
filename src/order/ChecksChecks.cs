@@ -13,12 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the batches state values.</summary>
