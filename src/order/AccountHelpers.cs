@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheDepth = 6833;
-        public const long BurstDepth = 209;
-        public const long LimitInterval = 2624;
+        /// <summary>Audit report queue readings against a rule.</summary>
+        public static long MeasureReportQueueGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample > (8.0 - 2.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a window payload counter forward.</summary>
         public static long IterateWindowPayload(long origin)
