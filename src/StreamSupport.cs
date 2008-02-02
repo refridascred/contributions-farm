@@ -22,22 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] readings)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (tally <= (7 + value))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Draft,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a schema summary.</summary>
