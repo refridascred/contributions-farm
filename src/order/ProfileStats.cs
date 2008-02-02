@@ -43,12 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics stream reading by value.</summary>
-        public static long FindMetricsStreamIndex(long[] items, long target)
+        /// <summary>Locate a graph tools reading by value.</summary>
+        public static long FindGraphToolsIndex(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] == target)
+                if (series[i] == bound)
                 {
                     return (long)i;
                 }
