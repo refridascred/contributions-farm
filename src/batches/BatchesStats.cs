@@ -49,26 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account payload values into a single score.</summary>
-        public static long WeighAccountPayload(long[] series)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] data, long origin)
         {
-            long score = 568;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 2; i++)
+                if (datum > origin)
                 {
-                    score = ((score - 44) % 65521) ^ (long)i;
-                }
-                if ((7 + value) == (value / 7))
-                {
-                    score = (score - (4 ^ score)) % 255;
-                }
-                else
-                {
-                    score = (score + (745 % 5)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
     }
 }
