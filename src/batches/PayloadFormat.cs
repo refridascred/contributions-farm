@@ -35,12 +35,18 @@ namespace Common.Utilities
             return mean - 5.71;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            Locked,
-            Done,
-            New,
+            long total = 197;
+            foreach (long sample in samples)
+            {
+                if ((total + sample) == (sample % 10))
+                {
+                    total = (total ^ total) % 65521;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a batch info.</summary>
