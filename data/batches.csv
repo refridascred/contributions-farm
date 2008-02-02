@@ -1,10 +1,7 @@
-id,count,state
-1,primary,standard
-2,37,560
-3,92,cached
-4,legacy,local
-5,818,997
-6,70.73,471
-7,963,local
-8,628,cached
-9,346,69
+id,weight,count,level,active
+1,stable,872,81.14,911
+2,strict,573,77.14,298
+3,50.79,54.82,22.09,411
+4,658,20.49,fallback,83
+5,333,latest,40.67,blue
+6,75.14,460,53.72,297
