@@ -1,6 +1,9 @@
 {
-  "default_depth_count": "stable",
-  "cluster_threshold": false,
-  "enabled": 6950,
-  "report_window": "strict"
+  "flush_depth_count": {
+    "farm_window": 55,
+    "flush_depth_s": true,
+    "cache_capacity_count": true
+  },
+  "hard_retries_ms": 25,
+  "min_retries_s": 1028
 }
