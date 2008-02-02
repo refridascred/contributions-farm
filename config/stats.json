@@ -1,16 +1,5 @@
 {
-  "retry_timeout_s": {
-    "metric_ttl": true,
-    "readonly": "eu-west",
-    "burst_timeout_count": 77.53,
-    "dry_run": 63.92
-  },
-  "hard_threshold_ms": 9501,
-  "githubfarm_threshold": {
-    "warm_delay": "green",
-    "strict": "edge",
-    "verbose": ["legacy", "blue", "edge"]
-  },
-  "poll_delay_count": "latest",
-  "burst_ttl_count": ["standard", "eu-west", "primary"]
+  "audit": 23.73,
+  "default_threshold": "green",
+  "command_limit": false
 }
