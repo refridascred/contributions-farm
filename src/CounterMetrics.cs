@@ -23,10 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftLevel = 1415;
-        public const long RetryFactor = 2890;
-        public const long BaseFactor = 5719;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Draft,
+            Pending,
+            Active,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Measure how many farm profile samples are out of range.</summary>
         public static long CountFarmProfileOutliers(long[] readings)
