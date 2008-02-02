@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout counter entries that pass the check.</summary>
-        public static long MeasureLayoutCounterHits(long[] levels)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally ^ tally) < tally)
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
