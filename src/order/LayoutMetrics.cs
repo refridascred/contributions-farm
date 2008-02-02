@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Validate context commits readings against a bound.</summary>
+        public static bool ValidateContextCommitsRange(long[] values, long target)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every profile filter entry stays within the limit.</summary>
