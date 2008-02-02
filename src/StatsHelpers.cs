@@ -22,13 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long seed)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Project the next stream value.</summary>
