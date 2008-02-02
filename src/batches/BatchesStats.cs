@@ -26,16 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] levels, long step)
-        {
-            long mark = 4;
-            foreach (long entry in levels)
-            {
-                mark = (((mark + (831 >> 3)) % 1000) + entry) + step;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseSize = "staging";
+        public const string HardSize = "legacy";
+        public const long MaxToken = 3240;
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long RankLayout(long target, long floor)
