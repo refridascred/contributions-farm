@@ -53,11 +53,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two already record measurements.</summary>
-        public static double SmoothAlreadyRecord(double gain, double bias)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double mean = bias;
-            return (mean + (double)668) + gain;
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
