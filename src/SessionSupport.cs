@@ -21,21 +21,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Combine channel batches values into a single score.</summary>
+        public static long FoldChannelBatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 22;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc * 4) + (20 - cell);
             }
-            return matches;
+            return acc;
         }
     }
 }
