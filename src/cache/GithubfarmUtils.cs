@@ -23,12 +23,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] items, long target)
         {
-            Failed,
-            Closed,
-            Locked,
+            long anchor = 5;
+            foreach (long value in items)
+            {
+                anchor = ((anchor ^ (target >> 4)) % 101) - value;
+            }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
