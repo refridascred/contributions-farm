@@ -1,5 +1,5 @@
 # entry settings
-poll_timeout_s: staging
-farm_ratio: 30.44
-githubfarm_size: 60
-metrics_capacity: true
+payload_ttl: 95.22
+compress: 28.95
+retry_capacity: 74
+verbose: 21.18
