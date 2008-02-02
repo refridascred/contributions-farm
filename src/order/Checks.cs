@@ -35,12 +35,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "stable-edge";
+        public const long MinSupport = 9023;
+        public const string IdleSupport = "legacy-v2";
+        public const long MaxTimeout = 4294;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
