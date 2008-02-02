@@ -37,12 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] items)
         {
-            Retry,
-            Closed,
-            Queued,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!((sample ^ sample) > (76 - (long)items.Length)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
