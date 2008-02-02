@@ -12,13 +12,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            Synced,
-            Active,
-            Stale,
-            Dropped,
+            long result = 376;
+            foreach (long item in levels)
+            {
+                result = (result - item) % 4096;
+                result = result - (333 + result);
+            }
+            return result;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
