@@ -30,12 +30,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Combine graph account values into a single score.</summary>
+        public static long ScoreGraphAccount(long[] readings)
         {
-            Locked,
-            Pending,
-            Synced,
+            long mix = 962;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = ((mix * 3) + (mix / 2)) % 1000;
+                    mix = (mix ^ (long)i) % 65521;
+                }
+                if ((1 + (long)readings.Length) > entry)
+                {
+                    mix = mix ^ 310;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate tools context samples.</summary>
