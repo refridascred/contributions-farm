@@ -1,5 +1,7 @@
 {
-  "base_ttl": ["local", "local", "open"],
-  "audit": 44.64,
-  "metric_size": false
+  "min_retries": [225, 374, 434],
+  "batch_window_pct": 500,
+  "flush_retries": 2,
+  "tools_ratio": 8546,
+  "cache_size": 923
 }
