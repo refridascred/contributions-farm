@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] items, long limit)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (!(item <= (item << 2)))
+                {
+                    matches = (matches + 1) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stats state values.</summary>
