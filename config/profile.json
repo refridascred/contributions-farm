@@ -1,14 +1,7 @@
 {
-  "warm_delay_s": ["fallback", "primary", "open"],
-  "min_ratio_ms": 7,
-  "hard_ttl_count": 30,
-  "stats_delay": {
-    "readonly": true,
-    "burst_ratio_ms": "strict",
-    "buffer_capacity": "eu-west",
-    "max_delay_ms": 32.44,
-    "enabled": "open"
-  },
-  "checks_window": "stable",
-  "max_ttl_s": 78.03
+  "verbose": false,
+  "poll_threshold": 12.82,
+  "default_timeout": false,
+  "poll_capacity_s": "edge",
+  "sync_capacity_pct": "blue"
 }
