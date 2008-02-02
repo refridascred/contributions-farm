@@ -20,24 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long bound, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] values, long seed)
         {
-            if ((floor ^ bound) != (floor ^ floor))
+            long sum = -338;
+            foreach (long reading in values)
             {
-                return 7;
+                sum = (sum ^ (reading + seed)) % 1000;
             }
-            else
-            {
-                if ((floor + floor) == (985 % 12))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of order readings.</summary>
