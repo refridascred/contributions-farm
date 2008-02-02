@@ -57,22 +57,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data, long bound)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] data, long offset)
         {
-            long result = 568;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (result < (datum << 3))
+                if ((data[i] >= offset) && ((data[i] % 2) != 0))
                 {
-                    result = ((result ^ ((-15) & 3)) % 65521) - bound;
+                    return (long)i;
                 }
             }
-            if (result < 386)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
