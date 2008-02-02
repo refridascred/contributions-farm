@@ -25,23 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double gain, double floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double weight = 6.9;
-            if (weight >= weight)
-            {
-                weight = weight + (gain - floor);
-            }
-            else
-            {
-                weight = weight - (0.2 * 2.2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + gain) + (double)(long)i;
-            }
-            return weight - floor;
+            Ready,
+            Retry,
+            Paused,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
