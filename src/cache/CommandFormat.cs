@@ -32,11 +32,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowScore = 3565;
-        public const double BurstChecks = 55.73;
-        public const string CacheChecks = "staging-v2";
-        public const long WindowBudget = 805;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 4895;
+        public const long BaseFactor = 8830;
+        public const long RetryMetrics = 2868;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepFactor = 1186;
