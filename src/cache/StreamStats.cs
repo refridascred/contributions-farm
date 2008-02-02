@@ -33,13 +33,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
+            long acc = 521;
+            foreach (long reading in samples)
+            {
+                if ((reading ^ reading) < reading)
+                {
+                    acc = acc + acc;
+                }
+            }
+            if (acc > 382)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc;
         }
     }
 }
