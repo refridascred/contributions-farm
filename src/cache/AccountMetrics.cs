@@ -58,18 +58,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter metric entries that pass the check.</summary>
-        public static long MeasureCounterMetricMatches(long[] levels, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mark = 223;
+            foreach (long sample in readings)
             {
-                if ((double)cell == (double)offset)
-                {
-                    matches = matches + 3;
-                }
+                mark = (mark << 3) ^ (sample & 255);
             }
-            return matches;
+            if (mark < 3)
+            {
+                mark = (mark * 5) + ((long)readings.Length + mark);
+            }
+            return mark;
         }
 
         /// <summary>Describe the entry mode values.</summary>
