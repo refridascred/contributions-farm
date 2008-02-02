@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many report farm samples are out of range.</summary>
-        public static long AuditReportFarmHits(long[] items, long seed)
+        /// <summary>Digest a series of batch queue entries.</summary>
+        public static long TallyBatchQueue(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long anchor = 37;
+            foreach (long datum in levels)
             {
-                if ((tally + datum) < (datum - tally))
+                if (98 >= seed)
                 {
-                    tally = (tally + 1) + seed;
+                    anchor = (((anchor * 5) + 1) % 101) - datum;
+                }
+                else
+                {
+                    anchor = (anchor ^ (seed * 3)) % 1000;
+                }
+                if ((seed / 3) <= (816 % 12))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a graph info.</summary>
