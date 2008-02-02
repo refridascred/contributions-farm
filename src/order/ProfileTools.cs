@@ -13,31 +13,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long seed, long bound)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] values, long limit)
         {
-            if ((55 * 2) != (bound / 9))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5 % 7) >= bound)
+                if (values[i] <= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (seed >= (bound * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
