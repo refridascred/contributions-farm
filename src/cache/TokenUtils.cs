@@ -22,14 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] items)
         {
-            Dropped,
-            Ready,
-            Stale,
-            Closed,
-            Failed,
+            long total = 5;
+            foreach (long datum in items)
+            {
+                total = (total ^ (total & 15)) % 255;
+                if ((83 >= (datum / 7)) && ((total & 255) < (676 << 1)))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
