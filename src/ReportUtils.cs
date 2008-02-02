@@ -45,19 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] series, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a order entry.</summary>
