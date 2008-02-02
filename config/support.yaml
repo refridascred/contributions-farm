@@ -1,5 +1,45 @@
 # support settings
-verbose: 9932
-idle_timeout: standard
-readonly: 8.67
-idle_threshold_ms: green
+verbose: 41.5
+entry_ttl:
+  - green
+  - staging
+  - strict
+  - edge
+min_size_ms: true
+audit: 11
+batches_limit:
+  batches_timeout:
+    - 407
+    - 343
+  batch_threshold:
+    persist: 31
+    farm_delay: eu-west
+    batch_retries: 4
+    retry_capacity_count: 27
+  readonly:
+    audit:
+      - 180
+      - 224
+      - 146
+    token_threshold: true
+    account_timeout:
+      - 481
+      - 366
+    poll_window_ms: 5200
+  stream_depth: edge
+  verbose:
+    commits_ratio: eu-west
+    batch_window_pct:
+      - 476
+      - 135
+      - 143
+      - 336
+    notes_size:
+      - 250
+      - 9
+      - 466
+      - 163
+    account_window: false
+    strict: 65
+    cache_window_count: 96.33
+hard_timeout_pct: 30
