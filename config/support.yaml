@@ -1,23 +1,7 @@
 # support settings
-idle_threshold_ms: false
-persist: 57
-compress: 2.87
-max_interval_count: true
-window_interval:
-  compress:
-    cache_limit: 34.96
-    retry_ratio_count: true
-    strict: 100
-    sync_capacity_ms: 18
-    burst_ratio: 38.54
-    payload_window: 71.0
-  retry_depth_count: local
-  channel_timeout:
-    batch_retries: legacy
-    enabled: false
-    retry_timeout_count: stable
-    filter_retries: 77.82
-    hard_window_s:
-      - strict
-      - latest
-    default_limit_ms: 70
+account_interval: green
+audit: strict
+already_size: 4123
+sync_ttl_count: 60.2
+hard_capacity_s: local
+flush_interval_pct: 2.18
