@@ -37,14 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            Pending,
-            Synced,
-            Active,
-            Dropped,
-            Queued,
+            long score = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((score - score) < (target % 97)))
+                {
+                    score = ((score << 3) ^ (9 - 772)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
