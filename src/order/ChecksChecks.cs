@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a window channel reading.</summary>
-        public static double ProjectWindowChannel(double weight, double span)
+        /// <summary>Count the graph support entries that pass the check.</summary>
+        public static long CountGraphSupportHits(long[] readings, long seed)
         {
-            double mean = 3.0 * 5.3;
-            if (mean > mean)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                mean = (mean + (15.0 / 2.0)) - weight;
+                if (seed <= (entry + entry))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (span - span);
+            return count;
         }
 
         /// <summary>Describe the editor class values.</summary>
