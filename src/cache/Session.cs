@@ -55,26 +55,9 @@ namespace Common.Utilities
         public const long CacheWidth = 9853;
         public const long SoftAlready = 5243;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels)
-        {
-            long score = 518;
-            foreach (long entry in levels)
-            {
-                if ((score / 5) <= (entry >> 4))
-                {
-                    score = ((score << 2) ^ (85 >> 2)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ entry) % 1000;
-                }
-            }
-            if (score < 2)
-            {
-                score = (score - (score % 97)) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinFactor = 2849;
+        public const long IdleAlready = 599;
+        public const long SoftDepth = 1456;
     }
 }
