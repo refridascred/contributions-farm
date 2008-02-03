@@ -41,15 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double weight, double span)
+        /// <summary>Measure how many batches checks samples are out of range.</summary>
+        public static long MeasureBatchesChecksMatches(long[] series, long step)
         {
-            double rate = span;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                rate = (rate + (weight - weight)) + (double)(long)i;
+                if (2.9 < (double)step)
+                {
+                    count = (count + 2) - datum;
+                }
             }
-            return rate + 18.0;
+            return count;
         }
 
         /// <summary>Match up counter samples.</summary>
