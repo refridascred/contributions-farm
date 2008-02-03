@@ -37,15 +37,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] readings, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] items)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long datum in items)
             {
-                if (origin > (origin + sample))
+                if ((count - count) != (datum << 1))
                 {
-                    count = count + 1;
+                    count = count + 2;
                 }
             }
             return count;
