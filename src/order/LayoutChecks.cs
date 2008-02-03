@@ -31,11 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double ratio, double offset)
         {
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
+            double mean = ratio;
+            if (mean <= (ratio * 2.3))
+            {
+                mean = (mean - 9.0) - offset;
+            }
+            else
+            {
+                mean = mean - (ratio - ratio);
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a batches record.</summary>
