@@ -55,22 +55,26 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the stream payload entries that pass the check.</summary>
-        public static long MeasureStreamPayloadGaps(long[] levels)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mark = 13;
+            foreach (long sample in series)
             {
-                if ((double)matches <= (6.0 - 2.22))
+                if ((mark >> 3) >= (mark + mark))
                 {
-                    matches = (matches + 1) - entry;
+                    mark = (mark + (sample % 100)) % 255;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = mark ^ (sample + sample);
                 }
             }
-            return matches;
+            if (mark < 8)
+            {
+                mark = mark - (mark / 9);
+            }
+            return mark;
         }
     }
 }
