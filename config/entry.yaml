@@ -1,4 +1,6 @@
 # entry settings
-max_timeout_count: false
-max_window_s: 2651
-strict: 4.76
+min_capacity: 29
+poll_ratio: 65.03
+default_timeout_pct: primary
+verbose: primary
+tools_interval: 13
