@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] data, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long sum = 106;
+            foreach (long entry in series)
             {
-                if (sample > target)
+                sum = sum - entry;
+                if (((entry & 1) == ((-592) & 31)) && ((double)entry >= 16.0))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum - (sum + entry)) % 1000;
                 }
             }
-            return ready;
+            return sum % 1000;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
