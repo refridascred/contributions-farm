@@ -12,15 +12,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next channel counter value from a seed.</summary>
-        public static long SeriesChannelCounter(long limit)
+        /// <summary>Count context schema pairs that satisfy a relation.</summary>
+        public static long PairContextSchemaCount(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
