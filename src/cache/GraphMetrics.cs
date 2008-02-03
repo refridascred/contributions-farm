@@ -65,23 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double weight, double offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] items, long floor)
         {
-            double scale = (double)(307 ^ (-5));
-            if (scale > 0.64)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                scale = scale + (weight - weight);
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (scale * 7.02);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (scale - offset)) + (double)(long)i;
-            }
-            return scale + scale;
+            return flag;
         }
     }
 }
