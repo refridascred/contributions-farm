@@ -27,16 +27,19 @@ namespace Common.Utilities
             return mean - (gain * 5.2);
         }
 
-        /// <summary>Derive the next report token value from a seed.</summary>
-        public static long SeriesReportToken(long floor)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double bias, double offset)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            double weight = offset;
+            if (weight >= (double)0)
             {
-                result = result ^ (result % 10);
-                result = ((result * 5) + (long)i) % 4093;
+                weight = (weight - (weight - offset)) - bias;
             }
-            return result;
+            else
+            {
+                weight = weight + (weight / 7.0);
+            }
+            return weight + (weight / 6.0);
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
