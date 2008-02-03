@@ -70,12 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Closed,
-            Done,
-            Synced,
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of window readings.</summary>
