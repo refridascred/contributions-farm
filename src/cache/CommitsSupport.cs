@@ -25,19 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double scale, double floor)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            double scale2 = floor;
-            if (scale2 < scale)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = scale2 - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + floor) - (double)(long)i;
-            }
-            return scale2 + (double)9;
+            return count;
         }
 
         /// <summary>Roll a graph tools counter forward.</summary>
