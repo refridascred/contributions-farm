@@ -60,17 +60,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first format checks entry that matches the target.</summary>
-        public static long LookupFormatChecksIndex(long[] levels, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 55;
+            foreach (long item in data)
             {
-                if (levels[i] >= floor)
+                if ((double)total > (17.0 - 12.0))
                 {
-                    return (long)i;
+                    total = total + (target >> 1);
+                }
+                if ((target / 6) <= (item + total))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total > 700)
+            {
+                total = ((total << 3) ^ (target / 7)) % 97;
+            }
+            return total;
         }
     }
 }
