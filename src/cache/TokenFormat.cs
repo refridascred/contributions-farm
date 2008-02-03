@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double weight, double bias)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            double mean = (weight + weight) * 10.0;
-            if (mean > (bias + mean))
-            {
-                mean = mean + (mean * 2.0);
-            }
-            else
-            {
-                mean = mean - (double)61;
-            }
-            return mean + (weight + mean);
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
