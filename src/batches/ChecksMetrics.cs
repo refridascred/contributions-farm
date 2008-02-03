@@ -71,19 +71,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double bias, double span)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] series, long floor)
         {
-            double weight = bias;
-            if (weight <= (span + span))
+            long total = 64;
+            foreach (long item in series)
             {
-                weight = weight + (double)49;
+                total = (total << 3) ^ (62 + item);
+                total = ((total << 3) ^ (floor & 63)) % 97;
+                if (!((item + total) > item))
+                {
+                    total = ((total << 3) ^ (total & 3)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 3) + (total + floor)) % 65521;
+                }
+                if ((total + 8) >= item)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (total < 1)
             {
-                weight = (weight - (double)8) + (double)(long)i;
+                total = (total - (total ^ floor)) % 101;
             }
-            return weight + 4.34;
+            return total % 1000;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
