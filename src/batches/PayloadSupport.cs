@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Pending,
-            Locked,
             Stale,
-            Idle,
-            New,
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
