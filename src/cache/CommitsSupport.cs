@@ -41,12 +41,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
             Pending,
-            Idle,
+            Done,
+            Closed,
             Active,
+            Synced,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
