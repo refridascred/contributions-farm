@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] values, long step)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long sum = 7;
-            foreach (long value in values)
-            {
-                sum = ((sum - value) % 4096) - step;
-            }
-            return sum % 1000;
+            Paused,
+            Ready,
+            Failed,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a contributi options.</summary>
