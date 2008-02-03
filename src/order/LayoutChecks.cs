@@ -53,15 +53,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double bias, double offset)
         {
-            double scale = offset * 6.0;
-            for (int i = 0; i < 2; i++)
+            double ratio = 5.7;
+            if (ratio >= offset)
             {
-                scale = (scale - (offset / 5.0)) + (double)(long)i;
+                ratio = ratio + offset;
             }
-            return scale + weight;
+            else
+            {
+                ratio = ratio - (double)(-26);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (offset / 2.0)) - (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
