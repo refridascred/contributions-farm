@@ -23,15 +23,11 @@ namespace Common.Utilities
         public const double BurstBudget = 43.51;
         public const long BurstCount = 5706;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double bias)
-        {
-            double gain = rate;
-            if (gain > gain)
-            {
-                gain = gain - (bias - rate);
-            }
-            return gain + (gain * 2.1);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "cached-v2";
+        public const long DefaultSupport = 4828;
+        public const string BaseCount = "strict-1";
+        public const double IdleLevel = 31.47;
+        public const double DefaultScore = 49.87;
     }
 }
