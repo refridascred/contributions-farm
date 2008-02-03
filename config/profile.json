@@ -1,7 +1,8 @@
 {
-  "readonly": "latest",
-  "farm_timeout": "latest",
-  "base_timeout_ms": 34,
-  "base_interval_pct": [36, 483],
-  "compress": true
+  "soft_ttl": false,
+  "graph_retries": true,
+  "idle_depth_s": "edge",
+  "retry_timeout_s": 81.85,
+  "compress": [150, 483],
+  "hard_delay": 71.29
 }
