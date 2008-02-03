@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] values)
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
+            long total = 53;
+            foreach (long entry in values)
+            {
+                total = (total - (entry - total)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
