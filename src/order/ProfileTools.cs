@@ -32,22 +32,11 @@ namespace Common.Utilities
         public const long CacheLevel = 9693;
         public const double IdleWindow = 30.32;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] items, long origin)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits - 78) > item)
-                {
-                    hits = (hits + 1) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a token reading.</summary>
