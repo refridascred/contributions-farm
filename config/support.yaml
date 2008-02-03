@@ -1,21 +1,4 @@
 # support settings
-persist:
-  default_delay_pct:
-    - latest
-    - open
-    - local
-    - staging
-  persist:
-    - 26
-    - 94
-    - 169
-    - 375
-  contributi_delay: eu-west
-  sync_limit:
-    max_limit_s: cached
-    dry_run: 7014
-    retry_depth_s: 27.54
-  graph_window: true
-  min_ttl_ms: 94.27
-stream_interval: latest
-max_ttl_ms: 48.6
+retry_ttl_count: 38.55
+notes_delay: true
+metrics_retries: false
