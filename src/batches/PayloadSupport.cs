@@ -22,16 +22,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate route cluster samples.</summary>
-        public static long TallyRouteCluster(long[] samples, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long acc = -67;
-            foreach (long sample in samples)
+            long result = 52;
+            foreach (long cell in samples)
             {
-                acc = ((acc << 2) ^ (sample + target)) % 4096;
-                acc = (acc + (target / 5)) % 1000;
+                long offset = cell;
+                result = result ^ (offset / 7);
+                result = (result + (result + cell)) % 101;
             }
-            return acc;
+            return result;
         }
     }
 }
