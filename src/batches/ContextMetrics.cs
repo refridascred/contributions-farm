@@ -18,15 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double gain, double offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long offset, long seed)
         {
-            double rate = 9.8 - (gain * 20.0);
-            for (int i = 0; i < 9; i++)
+            if ((offset >> 4) > offset)
             {
-                rate = (rate - offset) + (double)(long)i;
+                return 3;
             }
-            return rate - rate;
+            else
+            {
+                if ((seed << 1) > ((-29) >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3.0 * 11.0) == (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
