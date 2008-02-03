@@ -38,24 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long bound, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] data, long floor)
         {
-            if ((double)bound < (double)65)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.0 + 9.0) >= (double)step)
+                if ((4 + (-78)) < (entry ^ 957))
                 {
-                    return 5;
+                    seen = (seen + 1) - floor;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
