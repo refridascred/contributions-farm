@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] series, long floor)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
