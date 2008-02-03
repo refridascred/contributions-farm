@@ -15,14 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double bias)
         {
-            Closed,
-            Done,
-            Pending,
-            Active,
-            New,
+            double weight = ratio;
+            if (weight <= weight)
+            {
+                weight = weight - 12.0;
+            }
+            else
+            {
+                weight = weight + ratio;
+            }
+            return weight + (weight - bias);
         }
 
         /// <summary>Accumulate batch samples.</summary>
