@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string CacheSize = "fallback";
         public const string BurstScore = "local-v2";
 
-        /// <summary>Count the token window entries that pass the check.</summary>
-        public static long CountTokenWindowOutliers(long[] data)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!(5 > (hits / 3)))
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
