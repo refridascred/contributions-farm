@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] readings, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            if ((bound + bound) == (70 + seed))
             {
-                if (value >= (1 ^ value))
+                return 6;
+            }
+            else
+            {
+                if ((seed / 8) >= seed)
                 {
-                    hits = (hits + 3) + step;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound >> 4) <= (seed + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
