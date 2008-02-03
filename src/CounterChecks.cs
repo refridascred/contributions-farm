@@ -62,12 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a format notes sample.</summary>
