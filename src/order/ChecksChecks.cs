@@ -32,19 +32,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] levels, long target)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Retry,
+            Failed,
+            Queued,
+            Active,
         }
     }
 }
