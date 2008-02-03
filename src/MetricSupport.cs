@@ -55,38 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long origin, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] items, long bound)
         {
-            if ((9.4 * 9.1) >= (double)offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin < 10.0)
+                if (items[i] <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset >= (offset / 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin - 85) >= 98)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
