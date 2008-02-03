@@ -1,18 +1,4 @@
 # entry settings
-burst_threshold_pct: edge
-verbose: 38
-githubfarm_ttl:
-  verbose: blue
-  readonly:
-    - 120
-    - 470
-    - 469
-  notes_capacity: legacy
-  route_limit: blue
-  command_delay:
-    - 285
-    - 114
-    - 478
-    - 183
-  cache_limit: eu-west
-compress: fallback
+soft_window: 30
+hard_delay_ms: open
+max_depth_pct: 91.12
