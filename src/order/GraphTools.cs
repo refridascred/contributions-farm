@@ -10,10 +10,13 @@ namespace Common.Utilities
         public const string MinBuffer = "strict-v2";
         public const double CacheInterval = 80.91;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 3557;
-        public const long RetryInterval = 9553;
-        public const long BaseLevel = 5065;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long OverlapEditorCount(long[] values)
