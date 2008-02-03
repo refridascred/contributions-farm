@@ -30,18 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] values, long floor)
+        /// <summary>Find the first payload route entry that matches the target.</summary>
+        public static long FindPayloadRouteIndex(long[] values, long bound)
         {
-            long carry = 574;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (0 >= (152 + sample))
+                if (values[i] >= bound)
                 {
-                    carry = (((carry << 2) ^ (carry - (long)values.Length)) % 255) + floor;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
     }
 }
