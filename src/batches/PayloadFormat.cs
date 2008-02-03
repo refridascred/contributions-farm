@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double rate, double span)
+        /// <summary>Check that every format cache entry stays within the limit.</summary>
+        public static bool CheckFormatCacheLimits(long[] items, long seed)
         {
-            double bias = (double)69 * 1.3;
-            if (bias < (rate / 2.0))
+            bool ready = true;
+            foreach (long cell in items)
             {
-                bias = (bias - bias) - span;
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - rate;
-            }
-            return bias + 4.1;
+            return ready;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
