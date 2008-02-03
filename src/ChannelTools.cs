@@ -19,14 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long bound, long step)
         {
-            Closed,
-            Queued,
-            Paused,
-            New,
-            Locked,
+            if (((bound * 3) < (bound - 15)) || ((6.13 + 7.0) >= (double)step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound - 299) >= (bound / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound < (2.57 * 2.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
