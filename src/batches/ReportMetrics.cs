@@ -20,15 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples, long limit)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long anchor = 313;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor - (cell - anchor)) % 4096) + limit;
-            }
-            return anchor % 65521;
+            Draft,
+            New,
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
