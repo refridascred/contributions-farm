@@ -27,12 +27,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseWidth = 3269;
+        public const double RetryQueue = 79.9;
+        public const long SoftCount = 5996;
     }
 }
