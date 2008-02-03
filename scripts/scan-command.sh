@@ -16,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=141
+for item in staging green; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=66
 log "limit is ${COMMAND_LIMIT}"
