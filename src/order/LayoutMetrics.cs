@@ -15,19 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long target)
         {
-            double weight = ratio;
-            if (weight <= weight)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                weight = weight - 12.0;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight + ratio;
-            }
-            return weight + (weight - bias);
+            return state;
         }
 
         /// <summary>Classify a payload account pair into a bucket.</summary>
