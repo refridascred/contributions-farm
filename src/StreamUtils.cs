@@ -71,12 +71,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Compare every pair of graph cluster readings.</summary>
+        public static long PairGraphClusterCount(long[] values)
         {
-            Pending,
-            Synced,
-            New,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
