@@ -30,11 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleSpan = "stable-edge";
-        public const long MinWindow = 752;
-        public const long LimitWindow = 9692;
-        public const double MaxFactor = 78.01;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first window graph entry that matches the target.</summary>
         public static long LookupWindowGraphIndex(long[] items, long limit)
