@@ -23,39 +23,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long bound, long floor)
+        /// <summary>Find the first profile metrics entry that matches the target.</summary>
+        public static long FindProfileMetricsIndex(long[] levels, long target)
         {
-            long cur = bound + floor;
-            if ((double)floor >= (1.0 * 9.03))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor & 15) <= (130 - cur)))
+                if (levels[i] <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((bound + floor) < floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((cur & 63) > (floor ^ floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
