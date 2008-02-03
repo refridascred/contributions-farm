@@ -50,18 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long sum = 689;
+            foreach (long cell in items)
             {
-                if (!((84 * 2) != (tally - tally)))
-                {
-                    tally = (tally + 3) + entry;
-                }
+                sum = ((sum << 3) ^ (limit << 2)) - cell;
             }
-            return tally;
+            if (sum < 300)
+            {
+                sum = sum + (limit >> 4);
+            }
+            return sum % 65521;
         }
     }
 }
