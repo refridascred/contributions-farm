@@ -62,13 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Count the filter contributi entries that pass the check.</summary>
+        public static long CountFilterContributiMatches(long[] levels, long offset)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!((value <= offset) && (count >= (521 + value))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
