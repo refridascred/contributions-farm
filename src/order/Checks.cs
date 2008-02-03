@@ -12,12 +12,38 @@ namespace Common.Utilities
         public const long SoftSupport = 3573;
         public const double HardWidth = 4.8;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long step)
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            if (step > (step + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound ^ bound) <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((9.92 * 3.67) >= (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + bound) != (step ^ 87))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of queue counter readings.</summary>
