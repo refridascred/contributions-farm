@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a farm queue value against two limits.</summary>
-        public static long BucketFarmQueue(long target, long limit)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long diff = target - limit;
-            if ((limit + limit) == (target & 31))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target - 86) < (diff ^ limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((target * 2) > (limit * 3)) && ((target - diff) >= (diff + target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((target - diff) >= diff) || (458 <= diff))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
