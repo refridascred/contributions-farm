@@ -28,21 +28,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] <= step) && ((series[i] % 3) == 0))
                 {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
