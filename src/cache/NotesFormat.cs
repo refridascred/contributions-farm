@@ -33,17 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a commits window reading by value.</summary>
-        public static long LocateCommitsWindowIndex(long[] levels, long limit)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Queued,
+            Paused,
+            Locked,
         }
     }
 }
