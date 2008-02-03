@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 7767;
+        public const long LimitSize = 7569;
+        public const string BurstInterval = "strict-edge";
 
         /// <summary>Rank route batches input into a small class.</summary>
         public static long RankRouteBatches(long origin, long origin2)
