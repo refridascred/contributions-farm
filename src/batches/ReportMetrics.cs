@@ -30,23 +30,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] data, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            long acc = 3;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc * 5) + (value + step);
-                if ((step - value) != (value * 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < (-6))
-            {
-                acc = (acc + (759 - acc)) % 4096;
-            }
-            return acc;
+            return seen;
         }
     }
 }
