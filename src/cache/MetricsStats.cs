@@ -43,12 +43,12 @@ namespace Common.Utilities
         public const long LimitWindow = 9692;
         public const double MaxFactor = 78.01;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] samples, long offset)
+        /// <summary>Find the first window graph entry that matches the target.</summary>
+        public static long LookupWindowGraphIndex(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] > offset)
+                if ((items[i] == limit) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
