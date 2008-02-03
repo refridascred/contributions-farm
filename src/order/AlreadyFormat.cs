@@ -43,32 +43,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long floor, long bound)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            long next = floor - bound;
-            if (next <= (floor >> 2))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound - 4) > (bound & 31))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)next <= 11.0)
+                    if ((series[i] ^ series[j]) < 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
