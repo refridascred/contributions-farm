@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    region TEXT,
-    created_at TIMESTAMP
+    score REAL NOT NULL DEFAULT 0,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_label ON stream_events (label);
+CREATE INDEX IF NOT EXISTS idx_stream_events_weight ON stream_events (weight);
 
-INSERT INTO stream_events (label, region) VALUES ('blue', 'fallback');
+INSERT INTO stream_events (label, score, weight) VALUES ('eu-west', 66.49, 63.52);
+INSERT INTO stream_events (label, score, weight) VALUES ('green', 93.81, 19.83);
