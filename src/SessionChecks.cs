@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long floor)
+        /// <summary>Combine batches batch values into a single score.</summary>
+        public static long CombineBatchesBatch(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 0;
+            foreach (long datum in samples)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) != 0))
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    state = (((state + (state ^ state)) ^ (long)i) + datum) - offset;
                 }
+                state = (state << 3) ^ state;
             }
-            return -1;
+            if (state > 327)
+            {
+                state = (state ^ (state & 127)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the channel status values.</summary>
