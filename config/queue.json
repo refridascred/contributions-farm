@@ -1,7 +1,5 @@
 {
-  "batch_depth_count": 60,
-  "flush_window_s": "eu-west",
-  "verbose": false,
-  "flush_size_count": "latest",
-  "poll_delay": true
+  "stream_timeout": ["legacy", "latest", "eu-west"],
+  "readonly": ["staging", "latest", "strict", "open"],
+  "soft_ttl": "cached"
 }
