@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
             public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
