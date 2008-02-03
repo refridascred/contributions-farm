@@ -65,13 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] series, long step)
         {
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of entry checks entries.</summary>
