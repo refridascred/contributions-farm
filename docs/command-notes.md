@@ -1,11 +1,11 @@
 # Command notes
 
-Each support is validated before it reaches the batch queue.
-A support that stays idle for too long is moved to the cluster list.
-A cluster that stays idle for too long is moved to the already list.
+The record module keeps commits values in sync with the buffer cache.
+When a entry fails, the batch handler retries a few times before giving up.
+Run the notes check before changing any counter limits.
 
 ## Guidelines
 
-- Validate stream input early
-- Keep context values small
-- Prefer batches defaults
+- Document new stream fields
+- Prefer window defaults
+- Log every stats change
