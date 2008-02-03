@@ -22,18 +22,10 @@ namespace Common.Utilities
         public const long MinLevel = 5816;
         public const long IdleAccount = 1355;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] readings, long origin)
-        {
-            long acc = 47;
-            foreach (long value in readings)
-            {
-                if ((3.96 / 4.0) != (double)origin)
-                {
-                    acc = (((acc * 3) + (acc & 7)) % 101) ^ value;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepSpan = 7127;
+        public const long IdleLevel = 215;
+        public const double LimitTimeout = 81.33;
+        public const long LimitContributi = 484;
     }
 }
