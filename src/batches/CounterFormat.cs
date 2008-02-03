@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 5237;
-        public const string StepContext = "strict-1";
-        public const long DefaultFactor = 2094;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long IterateNotes(long target)
