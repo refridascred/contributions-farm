@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Validate context window readings against a bound.</summary>
+        public static bool GuardContextWindowRange(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= limit)
                 {
-                    if ((levels[i] ^ levels[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define window limits and defaults.</summary>
