@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] series, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score + origin) < (982 + origin))
+                if (series[i] < seed)
                 {
-                    score = (score - score) % 4096;
-                    score = score ^ (score << 2);
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Adjust a graph reading.</summary>
