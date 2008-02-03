@@ -46,23 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double bias, double offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double ratio = 5.7;
-            if (ratio >= offset)
-            {
-                ratio = ratio + offset;
-            }
-            else
-            {
-                ratio = ratio - (double)(-26);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (offset / 2.0)) - (double)(long)i;
-            }
-            return ratio - bias;
+            Idle,
+            Closed,
+            Failed,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
