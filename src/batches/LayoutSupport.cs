@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleSize = 2669;
-        public const long WindowPayload = 8322;
-        public const long RetrySpan = 2107;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadOutliers(long[] levels, long target)
