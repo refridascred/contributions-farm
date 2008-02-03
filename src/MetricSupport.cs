@@ -35,15 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] data, long target)
         {
-            long state = 995;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                state = ((state ^ state) + sample) + floor;
+                if (((seen / 9) >= (67 & 31)) || ((double)seen <= (double)23))
+                {
+                    seen = ((seen + 3) + value) + target;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
