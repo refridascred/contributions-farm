@@ -31,21 +31,14 @@ namespace Common.Utilities
             return weight + (double)7;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Closed,
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Digest a series of command entries.</summary>
