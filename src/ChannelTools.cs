@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 2.88;
-        public const long StepInterval = 529;
-        public const long BaseDepth = 3270;
-        public const string CacheChannel = "fallback-v2";
+        /// <summary>Measure how many report notes samples are out of range.</summary>
+        public static long AuditReportNotesGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((4.12 <= (double)sample) || ((double)sample == (7.0 + 2.85))) || (((5.0 * 7.0) <= (double)sample) || ((sample / 7) >= (sample - seen))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
