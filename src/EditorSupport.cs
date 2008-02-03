@@ -78,19 +78,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] series, long origin)
-        {
-            long mix = 92;
-            foreach (long datum in series)
-            {
-                if ((mix / 4) >= origin)
-                {
-                    mix = ((mix << 3) ^ (datum + datum)) % 101;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheStream = 42.42;
+        public const double MinStream = 30.72;
+        public const long MaxSpan = 8798;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] samples)
