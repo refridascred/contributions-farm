@@ -61,14 +61,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Draft,
-            Locked,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 2892;
+        public const long BatchDepth = 1053;
+        public const double HardSpan = 12.4;
+        public const string HardScore = "primary-1";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultAlready = 2814;
