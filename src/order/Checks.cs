@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long origin, long origin2)
-        {
-            if (!((7.9 + 2.9) < (double)origin2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin >= (origin2 & 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (78 > origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((9 >> 1) == (origin + origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 110;
+        public const double DefaultSpan = 88.31;
+        public const string WindowSupport = "primary-v2";
+        public const long SoftSupport = 3573;
+        public const double HardWidth = 4.8;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
