@@ -17,18 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstInterval = 7044;
+        public const string MaxCommits = "primary-edge";
+        public const long LimitCommits = 4807;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinScore = 9396;
