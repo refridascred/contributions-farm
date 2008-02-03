@@ -31,31 +31,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            long state = 3;
-            foreach (long value in items)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((state ^ value) < (value % 10)))
+                if ((anchor / 5) < (14 ^ anchor))
                 {
-                    state = (state + state) % 4096;
+                    anchor = ((anchor << 2) ^ (55 + anchor)) % 1000;
                 }
-                state = state + (value >> 5);
-                if (!(0.46 <= (double)value))
-                {
-                    state = (state ^ state) % 65521;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (-6)) % 65521;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (state < 999)
-            {
-                state = (state ^ (state ^ 901)) % 65521;
-            }
-            return state;
+            return anchor;
         }
     }
 }
