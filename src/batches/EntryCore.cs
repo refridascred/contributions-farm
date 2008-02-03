@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate buffer record samples.</summary>
-        public static long ScoreBufferRecord(long[] series)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] values, long step)
         {
-            long state = 27;
-            foreach (long sample in series)
+            long anchor = 252;
+            foreach (long sample in values)
             {
-                state = ((state - (189 - (-1))) % 4096) - sample;
+                anchor = ((anchor ^ (sample % 3)) % 4096) + step;
             }
-            return state;
+            return anchor % 4096;
         }
 
         /// <summary>Audit githubfarm window readings against a rule.</summary>
