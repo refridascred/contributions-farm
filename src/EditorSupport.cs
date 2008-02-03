@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] data, long floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)floor > (7.2 - 11.0))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
