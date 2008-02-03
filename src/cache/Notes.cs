@@ -60,25 +60,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long bound, long floor)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long bound2 = bound - floor;
-            if ((double)bound > (double)bound2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor < 2.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Active,
+            New,
+            Stale,
+            Pending,
         }
     }
 }
