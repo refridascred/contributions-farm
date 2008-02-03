@@ -1,6 +1,5 @@
 {
-  "strict": 1024,
-  "idle_retries_ms": "legacy",
-  "route_size": 500,
-  "enabled": 1138
+  "retry_delay_count": 38.01,
+  "sync_window": "edge",
+  "filter_capacity": [484, 44, 100, 330]
 }
