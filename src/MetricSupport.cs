@@ -21,13 +21,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double weight, double offset)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            double scale = (double)(18 + 98);
+            for (int i = 0; i < 9; i++)
+            {
+                scale = ((scale + weight) + (double)(long)i) - offset;
+            }
+            return scale + 16.0;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
