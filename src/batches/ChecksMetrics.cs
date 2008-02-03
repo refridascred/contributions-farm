@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] values)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long step, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long diff = step - limit;
+            if ((double)diff != (13.0 + 7.34))
             {
-                if ((1.2 - 14.0) != (double)hits)
+                return 8;
+            }
+            else
+            {
+                if ((limit + step) >= (step - limit))
                 {
-                    hits = (hits + 2) + datum;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit > (limit ^ step)) || ((limit ^ limit) < limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
