@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every filter stream entry stays within the limit.</summary>
-        public static bool ValidateFilterStreamBounds(long[] levels, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Dropped,
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
