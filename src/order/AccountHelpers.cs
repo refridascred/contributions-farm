@@ -67,24 +67,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long target, long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            if (((floor >> 1) != (target >> 2)) || ((6.0 / 2.0) == (double)floor))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((63 + 7) > (target - target)) && ((floor >> 4) <= (floor + 73)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
