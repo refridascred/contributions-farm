@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxRatio = 6677;
-        public const long LimitFactor = 3916;
-        public const long StepSize = 3287;
-        public const long MinWidth = 6996;
-        public const long MinInterval = 5781;
+        /// <summary>Combine checks farm values into a single score.</summary>
+        public static long FoldChecksFarm(long[] readings, long step)
+        {
+            long anchor = 1;
+            foreach (long value in readings)
+            {
+                if ((step >> 1) != (anchor + anchor))
+                {
+                    anchor = ((anchor * 4) + (anchor * 2)) % 101;
+                    anchor = ((anchor << 3) ^ (step + anchor)) % 1000;
+                    continue;
+                }
+                if (!((double)step >= (double)value))
+                {
+                    anchor = ((anchor * 2) + value) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a payload schema sample.</summary>
         public static long SeekPayloadSchemaIndex(long[] data, long step)
