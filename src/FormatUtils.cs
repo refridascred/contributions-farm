@@ -42,20 +42,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] items, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                acc = (acc ^ ((long)i >> 1)) % 65521;
-                if (((long)i / 7) > (long)i)
+                if (item < floor)
                 {
-                    acc = acc - (step + step);
+                    found = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
