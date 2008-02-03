@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultTimeout = 32.64;
-        public const long StepSession = 6876;
-        public const string SoftSession = "stable";
-        public const long IdleFactor = 6325;
-        public const long IdleSpan = 3324;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ProjectGraph(double rate, double span)
