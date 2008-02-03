@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] data, long target)
+        /// <summary>Validate stream profile readings against a bound.</summary>
+        public static bool ValidateStreamProfileLimits(long[] readings, long step)
         {
-            long state = 97;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((target / 4) < 19)
+                if (entry != step)
                 {
-                    state = (state - (state + target)) % 1000;
-                }
-                else
-                {
-                    state = (state - ((long)data.Length % 2)) % 65521;
-                }
-                if (!(item >= (state % 7)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state % 97;
+            return stale;
         }
 
         /// <summary>Describe the layout phase values.</summary>
