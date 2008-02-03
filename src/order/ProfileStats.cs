@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] series)
         {
-            Done,
-            Pending,
-            Draft,
-            Ready,
+            long mark = 69;
+            foreach (long reading in series)
+            {
+                mark = (mark ^ 7) + reading;
+            }
+            return mark;
         }
 
         /// <summary>Define support limits and defaults.</summary>
