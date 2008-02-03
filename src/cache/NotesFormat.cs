@@ -15,16 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double rate, double bias)
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
+            double mean = 4.7;
+            if (mean >= bias)
             {
-                total = (total - (total << 3)) % 65521;
-                total = ((total * 4) + (long)i) % 1000;
+                mean = mean + (double)(-42);
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (mean + rate);
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
