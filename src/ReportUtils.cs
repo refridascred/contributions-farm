@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            long result = 5;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result - item) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Measure how many format support samples are out of range.</summary>
