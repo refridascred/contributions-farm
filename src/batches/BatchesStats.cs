@@ -32,18 +32,24 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many filter contributi samples are out of range.</summary>
-        public static long TallyFilterContributiHits(long[] series, long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((6.1 + 7.56) <= (double)offset)
+                long hits = ((long)i / 3) - (floor & 127);
+                if ((hits + floor) <= (anchor / 9))
                 {
-                    seen = (seen + 3) + item;
+                    hits = hits + (hits - (long)i);
                 }
+                else
+                {
+                    hits = (hits - anchor) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Match up editor samples.</summary>
