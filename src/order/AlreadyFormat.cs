@@ -43,13 +43,32 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long floor, long bound)
         {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
+            long next = floor - bound;
+            if (next <= (floor >> 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound - 4) > (bound & 31))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)next <= 11.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
