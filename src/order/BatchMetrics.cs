@@ -65,21 +65,12 @@ namespace Common.Utilities
         public const string MinFactor = "latest-edge";
         public const long MaxTools = 1063;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
