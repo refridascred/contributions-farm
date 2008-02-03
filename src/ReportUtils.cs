@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate report batches samples.</summary>
-        public static long ScoreReportBatches(long[] items, long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double bias, double span)
         {
-            long carry = 89;
-            foreach (long entry in items)
-            {
-                carry = ((carry << 2) ^ entry) % 1000;
-                carry = ((carry * 4) + (977 ^ entry)) % 65521;
-                carry = (carry << 3) ^ (carry ^ 0);
-            }
-            if (carry > 4)
-            {
-                carry = (carry << 2) ^ (origin & 7);
-            }
-            return carry;
+            double drift = span;
+            return drift - bias;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
