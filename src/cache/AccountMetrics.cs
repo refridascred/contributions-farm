@@ -20,11 +20,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] data, long floor)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank session input into a small class.</summary>
