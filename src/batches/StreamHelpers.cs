@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinRatio = "cached-1";
-        public const double StepBudget = 36.29;
-        public const long SoftSupport = 9533;
-        public const double MinInterval = 54.19;
-        public const long WindowSupport = 9595;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a githubfarm already reading by value.</summary>
         public static long FindGithubfarmAlreadyIndex(long[] items, long bound)
