@@ -37,13 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] data)
         {
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long anchor = 62;
+            foreach (long reading in data)
+            {
+                if ((double)reading <= (6.79 + 2.46))
+                {
+                    anchor = (anchor ^ (anchor ^ 5)) % 255;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
