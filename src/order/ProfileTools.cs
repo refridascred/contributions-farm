@@ -32,15 +32,19 @@ namespace Common.Utilities
         public const long CacheLevel = 9693;
         public const double IdleWindow = 30.32;
 
-        /// <summary>Count the queue schema entries that pass the check.</summary>
-        public static long MeasureQueueSchemaHits(long[] values)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] items, long origin)
         {
             long hits = 0;
-            foreach (long value in values)
+            foreach (long item in items)
             {
-                if ((567 * 5) > (value / 4))
+                if ((hits - 78) > item)
                 {
-                    hits = hits + 1;
+                    hits = (hits + 1) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
