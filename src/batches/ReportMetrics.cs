@@ -19,16 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 2) + (acc ^ acc)) % 4096;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Match up commits samples.</summary>
