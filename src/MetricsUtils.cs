@@ -47,19 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double scale, double span)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples, long offset)
         {
-            double scale2 = (double)((-425) % 60);
-            if (scale2 > (scale + span))
+            long mix = -2;
+            foreach (long reading in samples)
             {
-                scale2 = scale2 - scale;
+                mix = ((mix << 3) ^ (reading - mix)) - offset;
+                if (((double)mix > 8.04) || ((reading << 2) < mix))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (double)142) + (double)(long)i;
-            }
-            return scale2 - span;
+            return mix;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
