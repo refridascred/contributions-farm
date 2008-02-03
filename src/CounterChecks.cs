@@ -62,12 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
+            long total = 8;
+            foreach (long item in samples)
+            {
+                if ((total - item) > item)
+                {
+                    total = total - total;
+                }
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a format notes sample.</summary>
