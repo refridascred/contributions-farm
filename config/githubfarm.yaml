@@ -1,16 +1,12 @@
 # githubfarm settings
-dry_run: 250
-channel_capacity: latest
-editor_delay: true
-min_ratio_pct: 82.98
-batch_limit_count:
-  compress: strict
-  default_size: local
-  idle_retries_s:
-    default_depth_count: standard
-    verbose: 30.67
-    poll_interval_count: primary
-    audit:
-      - 56
-      - 334
-    already_limit: 8
+retry_capacity_count: 18
+hard_retries_ms: eu-west
+batches_window:
+  - primary
+  - standard
+  - latest
+strict: 20.45
+batch_threshold_pct:
+  - 332
+  - 395
+  - 13
