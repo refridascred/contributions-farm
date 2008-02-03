@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long CacheMetrics = 2724;
         public const double MaxFactor = 85.46;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total + (total + origin)) % 101;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 8187;
+        public const long BaseAlready = 8566;
+        public const long HardSpan = 523;
+        public const long RetryInterval = 535;
+        public const string MinAlready = "fallback-v2";
 
         /// <summary>Count the metrics buffer entries that pass the check.</summary>
         public static long MeasureMetricsBufferHits(long[] readings)
