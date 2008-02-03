@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const string BatchRatio = "primary-1";
         public const long BatchLevel = 948;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheRatio = 87.01;
-        public const double RetryWindow = 36.5;
-        public const double LimitScore = 4.04;
-        public const string StepWindow = "staging-edge";
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double weight, double bias)
+        {
+            double mean = (weight + weight) * 10.0;
+            if (mean > (bias + mean))
+            {
+                mean = mean + (mean * 2.0);
+            }
+            else
+            {
+                mean = mean - (double)61;
+            }
+            return mean + (weight + mean);
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long TotalFormat(long[] items)
