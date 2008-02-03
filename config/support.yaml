@@ -1,10 +1,6 @@
 # support settings
-idle_ttl: 53.35
-soft_retries_ms:
-  - local
-  - latest
-  - local
-audit: 250
-base_interval_pct: 500
-poll_retries_s: 9835
-report_interval: 84
+poll_ratio_count: false
+support_ttl: 3302
+account_capacity: standard
+base_ttl_s: 5.51
+payload_capacity: fallback
