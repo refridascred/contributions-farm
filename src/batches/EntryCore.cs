@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = state ^ ((long)i * 3);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Adjust a buffer schema reading.</summary>
