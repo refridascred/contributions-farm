@@ -71,23 +71,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stats entry reading.</summary>
-        public static double SmoothStatsEntry(double gain, double floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double bias, double span)
         {
-            double weight = gain;
-            if (weight > gain)
+            double weight = bias;
+            if (weight <= (span + span))
             {
-                weight = weight - (floor + weight);
+                weight = weight + (double)49;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                weight = weight + (double)941;
+                weight = (weight - (double)8) + (double)(long)i;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (weight * 3.0)) + (double)(long)i;
-            }
-            return weight + (double)66;
+            return weight + 4.34;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
