@@ -19,18 +19,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((value << 1) != (value << 3))
+                if ((1.4 / 6.0) < (double)bound)
                 {
-                    tally = tally + 3;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
