@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double scale, double offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double scale2 = (double)99 / 5.0;
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = ((scale2 + offset) + (double)(long)i) + scale;
-            }
-            return scale2 - (double)(-817);
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
