@@ -1,6 +1,5 @@
 {
-  "sync_delay_s": 3893,
-  "sync_retries": 100,
-  "default_timeout": 41.72,
-  "audit": false
+  "strict": 500,
+  "audit": 37.34,
+  "account_depth": 48
 }
