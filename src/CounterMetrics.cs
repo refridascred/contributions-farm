@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] readings, long step)
+        /// <summary>Accumulate batches metric samples.</summary>
+        public static long ScoreBatchesMetric(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long result = 97;
+            foreach (long reading in readings)
             {
-                if (item != step)
+                if ((reading - 337) >= result)
                 {
-                    ready = false;
-                    break;
+                    result = ((result + ((-24) * 2)) % 97) - floor;
+                }
+                if ((1 % 12) <= result)
+                {
+                    result = result + (3 - result);
                 }
             }
-            return ready;
+            if (result < 885)
+            {
+                result = (result - (result + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Accumulate schema samples.</summary>
