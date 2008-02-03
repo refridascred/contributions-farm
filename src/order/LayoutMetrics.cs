@@ -34,18 +34,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] items, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((3.27 / 6.0) == (double)sample)
                 {
-                    if ((levels[i] - levels[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) - floor;
                 }
             }
             return seen;
