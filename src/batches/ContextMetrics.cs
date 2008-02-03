@@ -53,9 +53,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxDepth = 5459;
-        public const string MinSpan = "stable-edge";
-        public const long BaseCache = 6602;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] levels)
+        {
+            long carry = 92;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = ((carry << 2) ^ (datum - 192)) - (long)i;
+                }
+                carry = ((carry * 5) + (datum << 2)) % 255;
+                if ((datum + 8) > (carry + datum))
+                {
+                    break;
+                }
+            }
+            if (carry < (-805))
+            {
+                carry = ((carry << 2) ^ (carry ^ 5)) % 255;
+            }
+            return carry % 97;
+        }
     }
 }
