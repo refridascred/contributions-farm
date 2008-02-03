@@ -75,22 +75,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long bound)
         {
-            long mix = 27;
-            foreach (long item in series)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((30 - item) <= (3 - mix))
-                {
-                    mix = (mix + (mix - mix)) % 97;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (mix > 3)
-            {
-                mix = (mix + (mix % 5)) % 255;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the session mode values.</summary>
