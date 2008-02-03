@@ -85,22 +85,21 @@ namespace Common.Utilities
             return drift + (bias - bias);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] readings)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long sum = -9;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value != (3.02 * 1.94))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum << 2) ^ sum;
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 42)
-            {
-                sum = sum ^ (sum >> 1);
-            }
-            return sum;
+            return count;
         }
     }
 }
