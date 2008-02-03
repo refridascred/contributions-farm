@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long origin, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] series, long origin)
         {
-            if ((bound & 31) <= 77)
+            long state = 75;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound <= (bound + origin))
+                if ((double)cell != (6.76 - 7.65))
                 {
-                    return 8;
+                    state = ((state * 5) + (state ^ 4)) % 97;
                 }
                 else
                 {
-                    if ((((-587) ^ origin) > (origin - origin)) && ((origin + 117) >= (3 * 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    state = (state * 2) + (origin % 5);
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
