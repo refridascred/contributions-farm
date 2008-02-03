@@ -1,4 +1,7 @@
 # support settings
-readonly: false
-account_delay: standard
-audit: 63.05
+poll_delay: edge
+readonly:
+  - 146
+  - 353
+  - 352
+default_depth: primary
