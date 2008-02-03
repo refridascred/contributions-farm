@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 4949;
-        public const string StepCommits = "staging-1";
-        public const long MinCommits = 4151;
-        public const double RetryFactor = 51.57;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] samples, long seed)
