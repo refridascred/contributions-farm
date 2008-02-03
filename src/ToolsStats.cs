@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 25.51;
-        public const double MaxTimeout = 25.26;
-        public const long MinOrder = 1450;
-        public const long RetryOrder = 2327;
+        /// <summary>Compare every pair of layout already readings.</summary>
+        public static long MatchLayoutAlreadyCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricOutliers(long[] readings)
