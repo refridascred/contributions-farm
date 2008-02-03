@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 8358;
+        public const double BaseInterval = 75.88;
+        public const double CacheQueue = 10.76;
+        public const long HardQueue = 6165;
+        public const double RetryWidth = 72.24;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesBounds(long[] readings, long limit)
