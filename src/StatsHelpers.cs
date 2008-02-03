@@ -40,12 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            Draft,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Adjust a session reading.</summary>
