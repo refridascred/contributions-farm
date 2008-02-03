@@ -38,12 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
