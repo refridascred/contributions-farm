@@ -46,17 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first already record entry that matches the target.</summary>
-        public static long FindAlreadyRecordIndex(long[] levels, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) == 0))
+                if ((double)cell != (1.16 + 16.0))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
