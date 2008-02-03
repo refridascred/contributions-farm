@@ -39,15 +39,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] items, long seed)
         {
-            double weight2 = (4.3 - weight) * 3.4;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = (weight2 - weight2) - (double)(long)i;
+                if ((items[i] == seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + (1.2 - offset);
+            return -1;
         }
     }
 }
