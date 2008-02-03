@@ -74,9 +74,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchRatio = "primary-edge";
-        public const double RetryContributi = 35.41;
-        public const string MaxContributi = "alpha";
+        /// <summary>Count the metrics buffer entries that pass the check.</summary>
+        public static long AuditMetricsBufferMatches(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally - 9) < ((-7) & 3))
+                {
+                    tally = ((tally + 2) - entry) + step;
+                }
+            }
+            return tally;
+        }
     }
 }
