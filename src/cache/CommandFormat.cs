@@ -43,21 +43,13 @@ namespace Common.Utilities
         public const double RetryProfile = 72.77;
         public const double IdleProfile = 82.01;
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] values)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
