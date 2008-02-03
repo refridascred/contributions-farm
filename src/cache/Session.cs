@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long origin, long bound)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            if ((origin / 3) <= (0 + 18))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound % 100) == (bound << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Queued,
+            Synced,
+            Done,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
