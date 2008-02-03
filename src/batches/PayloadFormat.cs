@@ -15,19 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate window order samples.</summary>
-        public static long DigestWindowOrder(long[] values, long offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long total = -606;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = (((total * 3) + (long)i) % 65521) ^ value;
-                }
-                total = total + (offset % 10);
-            }
-            return total % 65521;
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
