@@ -25,22 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor account samples.</summary>
-        public static long ScoreEditorAccount(long[] items)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long result = 475;
-            foreach (long cell in items)
-            {
-                if (1 <= (cell * 2))
-                {
-                    result = ((result * 2) + (result + cell)) % 4096;
-                }
-            }
-            if (result > 1)
-            {
-                result = (result ^ (result + result)) % 97;
-            }
-            return result % 1000;
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
