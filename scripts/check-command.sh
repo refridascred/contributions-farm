@@ -7,14 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in standard edge stable; do
+for item in cached stable blue; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=421
-log "limit is ${COMMAND_LIMIT}"
