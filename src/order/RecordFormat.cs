@@ -53,13 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Count the cache batch entries that pass the check.</summary>
+        public static long MeasureCacheBatchOutliers(long[] items, long floor)
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)floor >= 3.77)
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
