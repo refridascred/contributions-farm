@@ -36,22 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats tools entries.</summary>
-        public static long TotalStatsTools(long[] samples)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long mix = 797;
-            foreach (long cell in samples)
-            {
-                if ((mix - mix) >= (mix + cell))
-                {
-                    mix = mix ^ (cell ^ mix);
-                }
-            }
-            if (mix > 2)
-            {
-                mix = (mix - (mix - mix)) % 65521;
-            }
-            return mix % 65521;
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
