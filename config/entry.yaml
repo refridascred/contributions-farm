@@ -1,13 +1,10 @@
 # entry settings
-idle_capacity:
-  session_window: 27
-  readonly: 17
-  flush_threshold: 18.8
-verbose: false
-soft_window_count: 52.68
-burst_limit: 47.27
-soft_delay_pct:
-  - legacy
-  - cached
-  - legacy
-  - edge
+persist:
+  idle_size: standard
+  flush_ttl_s: false
+  batch_ratio: 73.44
+  flush_window_ms: 64
+  hard_interval: false
+  order_ratio: 37
+base_threshold: false
+soft_limit_ms: cached
