@@ -1,9 +1,19 @@
 # support settings
-githubfarm_limit: 3.11
-readonly: edge
-hard_depth:
-  batch_size: stable
-  compress: open
-  default_ttl_ms: 7401
-burst_depth_pct: 65.74
-counter_interval: blue
+compress: local
+retry_threshold:
+  - green
+  - latest
+  - primary
+  - stable
+dry_run: local
+base_size_ms:
+  hard_ratio_count: primary
+  verbose:
+    - staging
+    - primary
+    - green
+    - eu-west
+  idle_window_ms: 100
+  batches_interval: edge
+  report_ttl: false
+  compress: 8251
