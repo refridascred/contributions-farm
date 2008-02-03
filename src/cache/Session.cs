@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinDepth = 43.36;
-        public const string StepOrder = "latest-v2";
-        public const long WindowTimeout = 1945;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item > (8.0 + 15.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheBudget = 4263;
