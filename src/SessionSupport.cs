@@ -28,18 +28,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((count - count) > offset)
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepDepth = 2802;
+        public const double LimitDepth = 97.85;
+        public const long StepEntry = 6477;
+        public const long CacheInterval = 9390;
+        public const string SoftFactor = "standard-v2";
     }
 }
