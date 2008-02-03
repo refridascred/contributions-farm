@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    strict)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,9 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict standard stable latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-
-COMMAND_LIMIT=26
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
