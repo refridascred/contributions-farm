@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] series, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (((origin ^ cell) <= origin) || ((seen & 63) != ((long)series.Length % 10)))
+                if (value != target)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
