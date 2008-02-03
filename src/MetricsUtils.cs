@@ -24,17 +24,19 @@ namespace Common.Utilities
             return load - (load - scale);
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] readings, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                result = (result * 4) + ((long)i * 5);
-                result = (result - (offset + result)) % 65521;
-                result = ((result * 4) + (long)i) % 65521;
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
