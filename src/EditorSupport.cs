@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] series, long offset)
         {
-            long sum = 7;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > (datum * 2))
+                if (series[i] < offset)
                 {
-                    sum = ((sum << 3) ^ (datum + datum)) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (datum >> 4)) % 4096;
+                    return (long)i;
                 }
             }
-            if (sum < 4)
-            {
-                sum = (sum ^ (sum ^ 0)) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine record session values into a single score.</summary>
