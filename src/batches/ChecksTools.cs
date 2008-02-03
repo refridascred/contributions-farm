@@ -36,22 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] series, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] samples, long step)
         {
-            long total = 98;
-            foreach (long entry in series)
+            long carry = -6;
+            foreach (long cell in samples)
             {
-                if (total > (559 * 2))
+                if ((carry >> 3) == (cell << 2))
                 {
-                    total = total ^ seed;
-                }
-                else
-                {
-                    total = (total * 2) + (entry + total);
+                    carry = carry - carry;
                 }
             }
-            return total % 65521;
+            if (carry < 458)
+            {
+                carry = (carry - (carry - step)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
