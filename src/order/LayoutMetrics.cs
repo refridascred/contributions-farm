@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            long mix = 343;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mix - mix) > mix)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix - (entry % 8);
-                }
-                if ((entry * 2) >= mix)
-                {
-                    break;
+                    if ((readings[i] + readings[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 746)
-            {
-                mix = (mix + (mix / 7)) % 255;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Blend two stats command measurements.</summary>
