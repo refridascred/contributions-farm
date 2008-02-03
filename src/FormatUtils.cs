@@ -91,25 +91,17 @@ namespace Common.Utilities
         public const long MaxFactor = 7490;
         public const string HardAlready = "primary-1";
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long target, long offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] levels, long offset)
         {
-            long span = target ^ offset;
-            if (((target & 3) > (offset ^ 15)) || ((target >> 1) > (span >> 1)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6 << 1) == (target + offset))
+                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
