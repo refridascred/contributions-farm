@@ -24,13 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] levels)
         {
-            Done,
-            Closed,
-            Locked,
-            Stale,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (entry < (count / 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two support measurements.</summary>
