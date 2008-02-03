@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] levels)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double gain = weight;
+            if (gain < floor)
             {
-                if (!((double)entry < (6.0 * 8.11)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain - (double)976;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain + 17.0;
         }
 
         /// <summary>Count batches tools pairs that satisfy a relation.</summary>
