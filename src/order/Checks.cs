@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const long SoftSupport = 3573;
         public const double HardWidth = 4.8;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] items)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = bias;
+            if (bias2 < (double)2)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = (bias2 - 1.4) + scale;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias - bias2)) + (double)(long)i;
+            }
+            return bias2 - 7.2;
         }
 
         /// <summary>Count cluster session pairs that satisfy a relation.</summary>
