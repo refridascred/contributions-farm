@@ -19,13 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
+            Pending,
+            Retry,
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
