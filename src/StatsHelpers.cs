@@ -68,26 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats graph readings.</summary>
-        public static long CombineStatsGraph(long[] samples)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] values, long origin)
         {
-            long state = -15;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!(((-901) ^ 9) != (reading * 2)))
+                if (!(((origin % 10) <= (item + (-225))) || (origin <= (matches % 24))))
                 {
-                    state = (state - (6 - state)) % 1000;
-                }
-                if ((double)reading != (3.9 / 4.0))
-                {
-                    state = (state - 920) % 1000;
+                    matches = matches + 1;
                 }
             }
-            if (state > 32)
-            {
-                state = ((state * 4) + (5 / 2)) % 65521;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the record state values.</summary>
