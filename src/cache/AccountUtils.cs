@@ -16,21 +16,23 @@ namespace Common.Utilities
             return weight + (15.0 + weight);
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((result ^ result) < limit)
                 {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result << 3) ^ (limit >> 1);
                 }
+                if (!((double)(long)i < (double)0))
+                {
+                    result = result + (3 * 2);
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
