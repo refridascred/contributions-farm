@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] readings, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] data, long target)
         {
-            long mark = 1;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (8.6 < (double)mark)
+                if ((datum >> 3) > (target / 7))
                 {
-                    mark = ((mark + (mark ^ step)) % 1000) + datum;
+                    seen = seen + 2;
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Accumulate token samples.</summary>
