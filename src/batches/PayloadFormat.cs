@@ -36,24 +36,14 @@ namespace Common.Utilities
         public const long HardRoute = 2105;
         public const long IdleRatio = 908;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long step, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            if ((double)seed >= (7.24 / 5.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 1) > (step % 12))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Pending,
+            Idle,
+            Queued,
+            Paused,
+            Draft,
         }
     }
 }
