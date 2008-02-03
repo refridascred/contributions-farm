@@ -16,10 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 7153;
-        public const string RetryReport = "strict-edge";
-        public const double CacheReport = 43.49;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] items, long seed)
