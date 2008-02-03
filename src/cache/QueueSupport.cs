@@ -24,23 +24,18 @@ namespace Common.Utilities
             return ratio + (double)59;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (!((step + step) < total))
+                if ((sample + sample) > tally)
                 {
-                    total = (total - (step & 255)) % 65521;
+                    tally = tally + 3;
                 }
-                else
-                {
-                    total = (total * 2) + ((long)i + total);
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
     }
 }
