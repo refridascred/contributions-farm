@@ -1,6 +1,5 @@
 {
-  "readonly": "staging",
-  "batch_threshold_pct": "legacy",
-  "idle_delay": ["fallback", "local", "eu-west", "eu-west"],
-  "warm_window": 43
+  "metrics_limit": 2777,
+  "strict": 8.48,
+  "verbose": false
 }
