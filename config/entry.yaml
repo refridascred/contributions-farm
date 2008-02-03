@@ -1,4 +1,10 @@
 # entry settings
-verbose: 74
-retry_retries_s: strict
-soft_ratio: strict
+max_timeout_count: 500
+contributi_window: 64.64
+sync_retries_count: green
+min_depth:
+  - edge
+  - fallback
+  - green
+  - fallback
+persist: edge
