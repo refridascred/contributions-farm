@@ -13,14 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Dropped,
-            Locked,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinDepth = 43.36;
+        public const string StepOrder = "latest-v2";
+        public const long WindowTimeout = 1945;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheBudget = 4263;
