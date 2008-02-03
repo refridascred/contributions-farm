@@ -16,20 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every graph checks entry stays within the limit.</summary>
-        public static bool GuardGraphChecksRange(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 3761;
+        public const long MaxFilter = 1321;
+        public const long BatchSize = 6714;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string BatchSupport = "cached-v2";
