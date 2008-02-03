@@ -23,17 +23,26 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] data, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 98;
+            foreach (long datum in samples)
             {
-                if (data[i] < step)
+                if ((7 >> 5) > (state + datum))
                 {
-                    return (long)i;
+                    state = (state * 5) + (0 + state);
+                }
+                else
+                {
+                    state = ((state * 3) + (state % 7)) % 255;
+                }
+                if (((12 << 2) != (datum % 60)) || ((state + state) <= state))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of token payload readings.</summary>
