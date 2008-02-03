@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Check that every context cache entry stays within the limit.</summary>
+        public static bool ValidateContextCacheBounds(long[] samples, long target)
         {
-            public double Count { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
