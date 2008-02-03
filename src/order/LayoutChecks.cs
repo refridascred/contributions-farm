@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 8358;
-        public const double BaseInterval = 75.88;
-        public const double CacheQueue = 10.76;
-        public const long HardQueue = 6165;
-        public const double RetryWidth = 72.24;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleLevel = 4213;
+        public const long MaxCluster = 3883;
+        public const long StepWidth = 1693;
+        public const string LimitCluster = "cached-v2";
+        public const double MaxFactor = 77.48;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesBounds(long[] readings, long limit)
