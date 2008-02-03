@@ -27,12 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Blend two stats command measurements.</summary>
+        public static double ProjectStatsCommand(double gain, double offset)
         {
-            Done,
-            Failed,
-            Synced,
+            double drift = gain - (gain * 5.3);
+            if (drift > 10.0)
+            {
+                drift = drift + (drift * 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (offset + gain)) - (double)(long)i;
+            }
+            return drift - (double)138;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
