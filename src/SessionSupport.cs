@@ -29,17 +29,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] levels, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 36;
+            foreach (long value in levels)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                total = ((total ^ (36 + 892)) + value) + limit;
             }
-            return -1;
+            return total % 65521;
         }
     }
 }
