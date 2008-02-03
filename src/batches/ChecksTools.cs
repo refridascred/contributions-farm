@@ -14,17 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] values, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (values[i] > origin)
+                if ((matches % 24) > (matches * 2))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a queue summary.</summary>
