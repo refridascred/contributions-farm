@@ -1,18 +1,6 @@
 {
-  "cache_retries_s": "stable",
-  "already_interval": "strict",
-  "max_capacity_ms": "stable",
-  "payload_threshold": "eu-west",
-  "queue_interval": {
-    "format_depth": {
-      "retry_window_count": "standard",
-      "readonly": 1006,
-      "max_limit_pct": 8
-    },
-    "hard_timeout": 30.26,
-    "burst_interval_s": 100,
-    "window_limit": ["cached", "edge", "open", "fallback"],
-    "batch_window_pct": true
-  },
-  "layout_threshold": [166, 70]
+  "counter_limit": "primary",
+  "entry_depth": "legacy",
+  "hard_limit": ["green", "blue"],
+  "verbose": false
 }
