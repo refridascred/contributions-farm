@@ -56,17 +56,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a account cache sample.</summary>
-        public static long FindAccountCacheIndex(long[] series, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (series[i] == offset)
+                if ((double)16 <= (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
