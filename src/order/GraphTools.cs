@@ -24,16 +24,14 @@ namespace Common.Utilities
         public const long StepPayload = 6701;
         public const double BatchRatio = 23.28;
 
-        /// <summary>Derive the next queue route value from a seed.</summary>
-        public static long IterateQueueRoute(long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark * 3) + mark;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Synced,
+            Active,
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
