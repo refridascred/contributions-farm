@@ -13,11 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRecord = 39.3;
-        public const long IdleBudget = 9215;
-        public const long StepBudget = 6732;
-        public const string HardRecord = "local-edge";
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine graph account values into a single score.</summary>
         public static long ScoreGraphAccount(long[] readings)
