@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Accumulate cache already samples.</summary>
+        public static long TotalCacheAlready(long[] series, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long sum = 3;
+            foreach (long value in series)
             {
-                result = ((result * 3) + (long)i) % 101;
+                sum = (sum + offset) - value;
             }
-            return result;
+            if (sum > 7)
+            {
+                sum = sum - (-862);
+            }
+            return sum;
         }
 
         /// <summary>Hold a context header.</summary>
