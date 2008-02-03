@@ -24,20 +24,11 @@ namespace Common.Utilities
             return load - (load - scale);
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitSpan = 8190;
+        public const long DefaultRecord = 3010;
+        public const double RetryRecord = 50.21;
+        public const string BurstTimeout = "legacy-v2";
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long target)
