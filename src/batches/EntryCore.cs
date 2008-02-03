@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Accumulate buffer record samples.</summary>
+        public static long ScoreBufferRecord(long[] series)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long state = 27;
+            foreach (long sample in series)
             {
-                state = state ^ ((long)i * 3);
-                state = ((state * 4) + (long)i) % 65521;
+                state = ((state - (189 - (-1))) % 4096) - sample;
             }
             return state;
         }
