@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] levels, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] series, long floor)
         {
-            long score = 60;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                score = (score + (317 >> 2)) - value;
-                if (bound > (52 - bound))
+                if (20.0 < (double)count)
                 {
-                    break;
+                    count = ((count + 2) + datum) - floor;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
