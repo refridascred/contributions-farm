@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] data, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((result * 5) >= (29 >> 1))
+                if (((91 + step) > (value & 63)) || ((step + step) >= (value - tally)))
                 {
-                    result = ((result * 4) + (result / 9)) % 1000;
+                    tally = tally + 1;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the filter phase values.</summary>
