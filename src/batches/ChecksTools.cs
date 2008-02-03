@@ -20,20 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate metric cluster samples.</summary>
-        public static long TotalMetricCluster(long[] levels, long origin)
+        /// <summary>Derive the next channel counter value from a seed.</summary>
+        public static long SeriesChannelCounter(long limit)
         {
-            long total = 66;
-            foreach (long value in levels)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                total = (total ^ (origin >> 3)) ^ value;
-                total = (total << 3) ^ (origin ^ total);
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (total > 2)
-            {
-                total = total + (origin + total);
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
