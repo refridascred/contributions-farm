@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a record entry pair into a bucket.</summary>
-        public static long GradeRecordEntry(long seed, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            if (((limit + 7) == (seed >> 1)) && (((-896) + seed) < (seed << 1)))
+            long result = 239;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.38 - 9.5) <= (double)limit)
+                if (((long)items.Length & 3) >= item)
                 {
-                    return 3;
+                    result = ((result << 3) ^ item) % 4096;
                 }
                 else
                 {
-                    return 4;
+                    result = result - ((-7) - item);
                 }
             }
+            if (result < 168)
+            {
+                result = ((result << 3) ^ ((-27) + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
