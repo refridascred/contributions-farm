@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] levels)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long target, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long next = target ^ offset;
+            if ((next * 4) >= (offset - target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset + offset) == (360 % 2))
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
+                    return 2;
+                }
+                else
+                {
+                    if (((6.82 / 7.0) > (double)target) || (4.0 >= (double)target))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((next - offset) > target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
