@@ -13,18 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the token schema entries that pass the check.</summary>
-        public static long TallyTokenSchemaOutliers(long[] readings)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((0.7 - 8.36) < (double)datum) && (count < ((-5) << 1)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
