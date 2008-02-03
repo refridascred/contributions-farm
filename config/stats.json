@@ -1,14 +1,7 @@
 {
-  "warm_size": [89, 470, 140],
-  "graph_size": false,
-  "batch_depth_pct": ["standard", "standard", "open"],
-  "graph_limit": {
-    "notes_interval": 43.77,
-    "max_threshold": ["latest", "staging", "eu-west"],
-    "format_timeout": 66,
-    "retry_depth_count": "blue",
-    "idle_capacity_ms": 95,
-    "idle_limit_count": 27
-  },
-  "account_window": 76
+  "buffer_limit": 30,
+  "cache_delay": 56,
+  "report_delay": "green",
+  "token_ttl": "staging",
+  "cache_limit": ["open", "standard", "staging", "green"]
 }
