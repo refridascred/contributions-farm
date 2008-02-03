@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Measure how many queue window samples are out of range.</summary>
+        public static long CountQueueWindowGaps(long[] samples)
         {
-            Stale,
-            Draft,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (((double)item <= (6.0 / 4.0)) && ((tally / 6) <= item))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a profile entry.</summary>
