@@ -42,11 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardSpan = 5850;
-        public const long DefaultCount = 6070;
-        public const long StepCount = 2783;
-        public const long HardScore = 4365;
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmBounds(long[] data, long bound)
