@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a entry layout counter forward.</summary>
-        public static long RollEntryLayout(long origin)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                long prev = origin;
-                state = ((state * 5) + (state - state)) % 65521;
-                if (prev < ((long)i * 5))
-                {
-                    prev = prev ^ state;
-                    state = (state * 4) + state;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
