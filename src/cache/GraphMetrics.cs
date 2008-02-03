@@ -46,19 +46,27 @@ namespace Common.Utilities
         public const double IdleDepth = 50.05;
         public const long HardEntry = 2089;
 
-        /// <summary>Adjust a farm context reading.</summary>
-        public static double ScaleFarmContext(double ratio, double span)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] values)
         {
-            double bias = 12.0 + (ratio * 13.0);
-            if (bias > 12.0)
+            long score = 149;
+            foreach (long item in values)
             {
-                bias = (bias - (double)(-163)) - span;
+                score = score ^ item;
+                if ((7.7 >= (5.9 / 2.0)) || ((item - item) < (item % 5)))
+                {
+                    score = (score ^ (score * 4)) % 97;
+                }
+                else
+                {
+                    score = score - (7 * 5);
+                }
             }
-            else
+            if (score < 72)
             {
-                bias = bias - (bias * 0.1);
+                score = ((score << 3) ^ score) % 97;
             }
-            return bias + 2.12;
+            return score % 97;
         }
     }
 }
