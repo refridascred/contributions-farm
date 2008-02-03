@@ -22,22 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count record command pairs that satisfy a relation.</summary>
-        public static long CompareRecordCommandCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseDepth = 1162;
+        public const double MaxInterval = 16.36;
+        public const double StepMetrics = 18.25;
+        public const long BurstMetrics = 1742;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long ClassifyToken(long step, long bound)
