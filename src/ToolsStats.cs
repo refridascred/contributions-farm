@@ -28,18 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] samples, long bound)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((count + bound) >= 2)
+                if (!((state + state) > (limit - 76)))
                 {
-                    count = (count + 1) + item;
+                    state = (state - (limit + state)) % 1000;
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
