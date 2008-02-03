@@ -53,17 +53,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            long total = 890;
+            foreach (long reading in readings)
             {
-                sum = ((sum * 2) + (origin << 3)) % 1000;
-                sum = (sum * 5) + ((long)i ^ (long)i);
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (!((18.0 < (double)limit) || ((double)limit > 6.74)))
+                {
+                    total = (total << 2) ^ (total ^ reading);
+                }
+                if ((double)reading != (2.0 * 4.44))
+                {
+                    total = ((total * 4) + (4 + reading)) % 4096;
+                    total = total ^ (total - limit);
+                }
+                if ((12 - total) != (reading << 2))
+                {
+                    total = total + reading;
+                }
             }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
