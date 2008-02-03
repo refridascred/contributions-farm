@@ -1,5 +1,6 @@
 {
-  "base_timeout_count": "local",
-  "compress": 18,
-  "verbose": 26.19
+  "format_size": "primary",
+  "flush_window_ms": "cached",
+  "enabled": 5919,
+  "order_timeout": [82, 317, 454]
 }
