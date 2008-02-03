@@ -54,22 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values, long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long total = 626;
-            foreach (long entry in values)
-            {
-                if ((entry >= (long)values.Length) || ((origin + origin) != (origin % 10)))
-                {
-                    total = (total + origin) % 65521;
-                }
-            }
-            if (total < 5)
-            {
-                total = (total << 3) ^ (442 - 865);
-            }
-            return total % 4096;
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
