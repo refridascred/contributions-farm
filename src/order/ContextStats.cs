@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const double HardDepth = 49.47;
         public const long BaseAlready = 4772;
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Rank entry route input into a small class.</summary>
+        public static long RankEntryRoute(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((bound / 3) == (step % 12)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (step >= (bound % 100))
                 {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two support measurements.</summary>
