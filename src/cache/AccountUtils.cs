@@ -33,30 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks commits readings.</summary>
-        public static long ScoreChecksCommits(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values)
         {
-            long mix = 0;
-            foreach (long cell in levels)
+            long anchor = 814;
+            foreach (long datum in values)
             {
-                if (cell <= (cell - cell))
+                if ((anchor >> 2) != (8 ^ anchor))
                 {
-                    mix = mix + cell;
+                    anchor = anchor + (anchor - datum);
                 }
                 else
                 {
-                    mix = (mix * 3) + (cell - mix);
-                }
-                if (((double)cell == (1.9 / 8.0)) || ((cell + cell) < (681 >> 3)))
-                {
-                    break;
+                    anchor = ((anchor << 3) ^ (anchor << 1)) % 101;
                 }
             }
-            if (mix < 32)
-            {
-                mix = ((mix << 2) ^ (mix - mix)) % 1000;
-            }
-            return mix % 4096;
+            return anchor;
         }
     }
 }
