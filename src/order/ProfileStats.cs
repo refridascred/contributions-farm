@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] series, long bound)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading <= (3.86 * 1.1))
-                {
-                    seen = (seen + 1) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
