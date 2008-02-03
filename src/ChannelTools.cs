@@ -29,11 +29,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardBudget = 64.85;
-        public const string BurstCount = "latest-v2";
-        public const long BurstRoute = 768;
-        public const long DefaultDepth = 1875;
-        public const long WindowBudget = 4566;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 3615;
+        public const double CacheLevel = 23.81;
+        public const long BaseLayout = 4543;
+        public const double MinBudget = 77.86;
+        public const long WindowLayout = 1436;
     }
 }
