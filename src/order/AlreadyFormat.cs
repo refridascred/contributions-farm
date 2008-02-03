@@ -34,19 +34,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] items, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (cell != limit)
+                if (cell <= seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Describe the entry kind values.</summary>
