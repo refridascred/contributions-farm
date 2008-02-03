@@ -1,11 +1,10 @@
 # support settings
-batch_size:
-  filter_size: false
-  layout_capacity: latest
-  graph_interval: 5834
-soft_timeout_count: false
-min_capacity_s: primary
-window_ttl: standard
-layout_threshold:
-  - 132
-  - 258
+strict: blue
+batch_delay_pct:
+  poll_timeout_pct: green
+  verbose: stable
+  flush_limit_pct: false
+  dry_run: 10
+soft_size_pct: 2611
+hard_delay_s: false
+channel_interval: standard
