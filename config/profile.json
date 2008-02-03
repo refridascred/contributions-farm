@@ -1,12 +1,6 @@
 {
-  "soft_depth": "blue",
-  "support_interval": {
-    "soft_depth": true,
-    "sync_threshold_pct": "legacy",
-    "route_delay": "strict",
-    "max_delay_pct": "fallback"
-  },
-  "hard_timeout_ms": "standard",
-  "base_ttl": 97,
-  "sync_ttl_count": false
+  "flush_delay": "green",
+  "dry_run": ["fallback", "latest", "blue"],
+  "enabled": 86,
+  "poll_ttl": 79.94
 }
