@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] readings, long seed)
+        /// <summary>Fold a list of session cache readings.</summary>
+        public static long ScoreSessionCache(long[] readings)
         {
-            long mix = 80;
-            foreach (long entry in readings)
+            long carry = 25;
+            foreach (long cell in readings)
             {
-                mix = ((mix << 2) ^ seed) + entry;
+                carry = (carry - cell) % 255;
             }
-            if (mix < 370)
-            {
-                mix = (mix ^ (mix * 5)) % 97;
-            }
-            return mix;
+            return carry % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
