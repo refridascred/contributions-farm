@@ -1,5 +1,19 @@
 {
-  "soft_threshold_count": "cached",
-  "flush_retries_count": false,
-  "verbose": 4420
+  "burst_size_ms": {
+    "batch_capacity": {
+      "batch_timeout": "latest",
+      "checks_retries": 1024,
+      "max_threshold_ms": 96.66,
+      "burst_retries_pct": false,
+      "enabled": 28,
+      "burst_ratio": 12.83
+    },
+    "cache_capacity_ms": "open",
+    "entry_ratio": false
+  },
+  "filter_interval": [415, 256, 428],
+  "batch_depth_ms": "latest",
+  "stream_threshold": "primary",
+  "stream_capacity": false,
+  "soft_depth_count": 7596
 }
