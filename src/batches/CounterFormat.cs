@@ -20,18 +20,16 @@ namespace Common.Utilities
             return ratio - (3.39 + offset);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] series, long offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((11.0 <= (double)offset) || ((double)item == (double)hits))
-                {
-                    hits = hits + 2;
-                }
+                sum = sum ^ (target / 9);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
