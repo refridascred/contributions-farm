@@ -28,19 +28,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double gain, double span)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double drift = span;
-            if (drift >= (double)23)
-            {
-                drift = drift - 0.2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + gain;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
