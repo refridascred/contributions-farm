@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] items, long origin)
         {
-            long mix = 33;
-            foreach (long reading in items)
+            long mark = 5;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 6; i++)
+                if (origin > (origin - mark))
                 {
-                    mix = (mix + (reading * 3)) ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (mix - (long)i2) % 1000;
-                }
-                mix = mix - (mix + (-29));
-                if ((11.0 + 4.0) <= (double)reading)
-                {
-                    break;
+                    mark = ((mark - mark) % 1000) - value;
                 }
             }
-            if (mix < 76)
-            {
-                mix = (mix * 3) + (mix * 4);
-            }
-            return mix % 4096;
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
