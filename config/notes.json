@@ -1,6 +1,15 @@
 {
-  "strict": "green",
-  "retry_capacity_pct": "legacy",
-  "warm_threshold_s": 45.3,
-  "route_retries": 89.25
+  "cache_threshold_ms": [491, 66, 495, 369],
+  "cache_retries": {
+    "base_limit_pct": 18,
+    "warm_threshold": false,
+    "enabled": "cached",
+    "retry_ratio": 41.95,
+    "poll_retries": 43,
+    "warm_ttl": [62, 186, 65]
+  },
+  "sync_capacity_pct": ["staging", "latest", "cached", "green"],
+  "contributi_size": [45, 27],
+  "max_window_ms": "strict",
+  "flush_window_count": "primary"
 }
