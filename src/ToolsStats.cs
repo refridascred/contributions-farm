@@ -52,13 +52,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 7955;
+        public const long BaseDepth = 9357;
+        public const long StepDepth = 4196;
+        public const long WindowSize = 9173;
+        public const double HardBatches = 23.93;
 
         /// <summary>Iterate the graph command series from a seed.</summary>
         public static long SeriesGraphCommand(long seed)
