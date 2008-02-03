@@ -30,12 +30,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] data, long offset)
         {
-            Pending,
-            Idle,
-            Locked,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (value < (count - value))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
         }
     }
 }
