@@ -13,11 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 2532;
-        public const long LimitMetrics = 1440;
-        public const double HardTimeout = 61.85;
-        public const long WindowMetrics = 5287;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Synced,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Count batch batches pairs that satisfy a relation.</summary>
         public static long PairBatchBatchesCount(long[] levels)
