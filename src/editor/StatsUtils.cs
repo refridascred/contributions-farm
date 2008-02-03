@@ -29,17 +29,12 @@ namespace Common.Utilities
         public const long BurstRatio = 3529;
         public const string WindowToken = "strict-1";
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long seed)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
