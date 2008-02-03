@@ -55,29 +55,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long origin, long limit)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long origin, long offset)
         {
-            long prev = origin - limit;
-            if ((double)origin >= 2.42)
+            if ((9.4 * 9.1) >= (double)offset)
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if (!((1.2 * 8.5) > (double)origin))
+                if ((double)origin < 10.0)
                 {
                     return 1;
                 }
                 else
                 {
-                    if ((prev * 3) <= (limit & 15))
+                    if (offset >= (offset / 6))
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 6;
+                        if ((origin - 85) >= 98)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
