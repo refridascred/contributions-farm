@@ -47,17 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] samples, long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Queued,
+            Stale,
+            Draft,
+            Failed,
         }
     }
 }
