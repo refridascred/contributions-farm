@@ -67,18 +67,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of graph batches entries.</summary>
-        public static long WeighGraphBatches(long[] samples)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long mix = 1;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mix < (datum / 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix << 2) ^ mix) % 101;
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
