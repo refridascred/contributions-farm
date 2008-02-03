@@ -1,19 +1,12 @@
 {
-  "base_timeout": {
-    "compress": "green",
-    "profile_retries": "stable",
-    "default_retries": 97,
-    "persist": 93,
-    "account_capacity": "blue"
+  "persist": {
+    "notes_delay": [11, 97],
+    "retry_window_s": ["strict", "open", "blue", "staging"],
+    "idle_interval_pct": 2050,
+    "hard_delay_ms": true,
+    "max_limit_ms": false
   },
-  "audit": 90.81,
-  "warm_retries_s": "primary",
-  "retry_window_count": 79.68,
-  "min_retries_count": {
-    "enabled": "primary",
-    "hard_ttl_pct": "green",
-    "cache_timeout_count": true,
-    "account_timeout": true
-  },
-  "soft_depth_count": 70.93
+  "soft_retries": true,
+  "hard_window": false,
+  "session_ratio": false
 }
