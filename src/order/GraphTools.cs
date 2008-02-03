@@ -34,13 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 1335;
+        public const long RetrySize = 181;
+        public const long MinCommits = 5263;
+        public const string WindowCount = "staging";
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] readings, long origin)
