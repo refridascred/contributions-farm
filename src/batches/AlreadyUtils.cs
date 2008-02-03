@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseSpan = "alpha-v2";
+        public const long BurstInterval = 5207;
+        public const long StepRecord = 70;
+        public const long HardRecord = 6355;
+        public const long BaseRecord = 7872;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double BatchLevel = 20.39;
