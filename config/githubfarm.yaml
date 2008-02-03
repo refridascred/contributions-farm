@@ -1,8 +1,6 @@
 # githubfarm settings
-batch_ttl: 33.73
-session_retries: true
-entry_ttl: 6508
-strict:
-  - 321
-  - 332
-contributi_window: legacy
+record_ttl: true
+default_ratio_ms:
+  - 133
+  - 5
+soft_capacity: 250
