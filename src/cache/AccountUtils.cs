@@ -21,10 +21,32 @@ namespace Common.Utilities
         public const string RetryPayload = "cached";
         public const long BurstTimeout = 4288;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSpan = 3218;
-        public const long HardWidth = 5579;
-        public const long MaxBudget = 614;
-        public const string RetryWindow = "open-1";
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long target, long seed)
+        {
+            long diff = target ^ seed;
+            if (((double)971 <= (double)target) || (diff > (seed + seed)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((82 + diff) >= (seed * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed << 2) == (target << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
