@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
