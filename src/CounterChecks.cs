@@ -68,24 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile buffer value against two limits.</summary>
-        public static long SortProfileBuffer(long seed, long limit)
+        /// <summary>Count the schema checks entries that pass the check.</summary>
+        public static long AuditSchemaChecksMatches(long[] items)
         {
-            if (((double)31 < (double)seed) || ((seed ^ 9) <= (seed % 16)))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((53 + seed) <= seed) || ((double)limit < (9.96 / 4.0)))
+                if ((77 >> 4) < hits)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 2) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
