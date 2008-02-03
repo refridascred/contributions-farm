@@ -55,18 +55,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] readings)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)matches == (8.7 + 1.4)) && ((double)sample > 1.55))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
