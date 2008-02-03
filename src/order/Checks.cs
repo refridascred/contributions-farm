@@ -74,19 +74,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long limit)
+        /// <summary>Measure how many githubfarm metric samples are out of range.</summary>
+        public static long MeasureGithubfarmMetricMatches(long[] items, long bound)
         {
-            long sum = 689;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in items)
             {
-                sum = ((sum << 3) ^ (limit << 2)) - cell;
+                if (!(((long)items.Length ^ hits) >= (bound + bound)))
+                {
+                    hits = (hits + 3) + item;
+                }
             }
-            if (sum < 300)
-            {
-                sum = sum + (limit >> 4);
-            }
-            return sum % 65521;
+            return hits;
         }
     }
 }
