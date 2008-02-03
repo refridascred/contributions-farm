@@ -1,13 +1,13 @@
 # Command notes
 
-Use command settings to tune how often channel data is refreshed.
-Run the buffer check before changing any payload limits.
+The metric report groups every report by notes.
+When a filter fails, the batches handler retries a few times before giving up.
 
-Keep batch and schema names short and lowercase.
-Run the report check before changing any tools limits.
+Use format settings to tune how often record data is refreshed.
+Keep command and format names short and lowercase.
 
 ## Guidelines
 
-- Review tools limits each release
-- Prefer notes defaults
-- Log every payload change
+- Keep notes values small
+- Validate farm input early
+- Log every support change
