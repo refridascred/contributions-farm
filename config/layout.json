@@ -1,6 +1,5 @@
 {
-  "max_delay_count": "edge",
-  "warm_retries": true,
-  "warm_size_ms": 20.29,
-  "idle_interval_ms": 500
+  "sync_threshold_s": "primary",
+  "payload_capacity": ["eu-west", "eu-west", "fallback", "standard"],
+  "min_size": 500
 }
