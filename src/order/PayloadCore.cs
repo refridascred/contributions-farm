@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] levels, long seed)
+        /// <summary>Locate a editor report reading by value.</summary>
+        public static long LookupEditorReportIndex(long[] data, long limit)
         {
-            long acc = 6;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc ^ (entry >> 4)) % 1000;
+                if ((data[i] >= limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 551)
-            {
-                acc = (acc * 4) + (seed + acc);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a batches header.</summary>
