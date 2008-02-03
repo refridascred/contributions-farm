@@ -35,18 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] data, long target)
+        /// <summary>Validate counter batches readings against a bound.</summary>
+        public static bool CheckCounterBatchesBounds(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (((seen / 9) >= (67 & 31)) || ((double)seen <= (double)23))
+                if (reading <= limit)
                 {
-                    seen = ((seen + 3) + value) + target;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
