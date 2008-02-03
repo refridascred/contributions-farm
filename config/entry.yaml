@@ -1,4 +1,14 @@
 # entry settings
-soft_window: 30
-hard_delay_ms: open
-max_depth_pct: 91.12
+burst_depth: false
+hard_retries_s: 85
+idle_retries_count:
+  compress: 1024
+  soft_timeout_count: 47
+  enabled:
+    stream_interval:
+      - 70
+      - 60
+    hard_delay_ms: 1024
+    strict: 250
+    channel_threshold: green
+    min_depth: 9650
