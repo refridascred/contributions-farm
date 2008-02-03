@@ -22,22 +22,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order batches samples.</summary>
-        public static long FoldOrderBatches(long[] data, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            long total = 130;
-            foreach (long item in data)
+            long anchor = 66;
+            foreach (long entry in levels)
             {
-                if (total >= offset)
+                if (258 < anchor)
                 {
-                    total = ((total - ((long)data.Length * 3)) % 97) - item;
+                    anchor = (anchor << 3) ^ (anchor - anchor);
                 }
                 else
                 {
-                    total = (total + (total & 7)) % 255;
+                    anchor = ((anchor * 2) + (anchor + entry)) % 101;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = ((anchor ^ (10 / 4)) % 4096) + (long)i;
+                    anchor = anchor - anchor;
+                }
+                if ((entry & 255) <= (entry << 1))
+                {
+                    anchor = (anchor - (6 >> 4)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (anchor * 2);
                 }
             }
-            return total % 1000;
+            return anchor;
         }
 
         /// <summary>Fold a list of stream cache readings.</summary>
