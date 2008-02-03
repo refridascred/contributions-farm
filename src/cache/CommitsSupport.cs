@@ -53,16 +53,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format payload counter forward.</summary>
-        public static long SeriesFormatPayload(long floor)
+        /// <summary>Grade a format record value against two limits.</summary>
+        public static long SortFormatRecord(long step, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long diff = step - floor;
+            if (!((step + diff) == (floor - diff)))
             {
-                anchor = anchor + floor;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((diff + floor) == ((-32) + diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((964 ^ diff) == (diff / 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits phase values.</summary>
