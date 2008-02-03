@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] series, long floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            long acc = 793;
-            foreach (long cell in series)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                acc = acc ^ (77 + floor);
-                if (!((acc + 52) == (cell & 255)))
-                {
-                    break;
-                }
+                mark = ((mark << 2) ^ ((long)i / 3)) % 1000;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the queue class values.</summary>
