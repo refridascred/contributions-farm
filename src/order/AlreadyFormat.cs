@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheRatio = 2567;
-        public const long DefaultContext = 2129;
-        public const string RetryContext = "stable-1";
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long RollChecks(long step)
