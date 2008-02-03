@@ -34,12 +34,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheInterval = 4059;
-        public const string HardLevel = "legacy-1";
-        public const long BatchLayout = 6003;
-        public const double RetryLayout = 86.98;
-        public const long CacheBudget = 8821;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string LimitChannel = "primary-1";
