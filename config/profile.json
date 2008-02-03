@@ -1,6 +1,6 @@
 {
-  "graph_size": "fallback",
-  "session_ratio": true,
-  "githubfarm_capacity": false,
-  "batch_delay": true
+  "readonly": "cached",
+  "dry_run": "fallback",
+  "format_capacity": 25.23,
+  "soft_interval": 250
 }
