@@ -1,6 +1,4 @@
 # entry settings
-max_ratio: false
-cache_depth_pct: fallback
-compress: 91
-flush_interval_ms: 8.66
-flush_capacity: 49
+max_retries_ms: fallback
+enabled: 74.79
+warm_timeout: legacy
