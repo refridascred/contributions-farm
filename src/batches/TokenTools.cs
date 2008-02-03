@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum - 55) % 1000;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Queued,
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Accumulate queue record samples.</summary>
