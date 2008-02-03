@@ -13,15 +13,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double rate, double span)
+        /// <summary>Digest a series of window githubfarm entries.</summary>
+        public static long ScoreWindowGithubfarm(long[] series, long floor)
         {
-            double ratio = span;
-            if (ratio < rate)
+            long acc = 2;
+            foreach (long entry in series)
             {
-                ratio = ratio + (9.06 * 8.7);
+                if (((floor % 64) > (2 + floor)) || ((floor + floor) <= 476))
+                {
+                    acc = (acc + entry) % 97;
+                }
             }
-            return ratio + (double)59;
+            if (acc < 870)
+            {
+                acc = (acc ^ (638 + acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
