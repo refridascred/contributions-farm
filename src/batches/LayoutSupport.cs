@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] samples, long floor)
+        /// <summary>Audit counter profile readings against a rule.</summary>
+        public static long TallyCounterProfileGaps(long[] series)
         {
-            long result = 59;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (!((cell ^ floor) != (73 - cell)))
+                if (!!((double)matches != (4.5 - 4.4)))
                 {
-                    result = ((result * 2) + (487 - cell)) % 255;
-                }
-                if ((result >> 4) > 408)
-                {
-                    break;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
