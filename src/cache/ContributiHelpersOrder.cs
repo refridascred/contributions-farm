@@ -27,23 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] samples, long seed)
         {
-            long result = 2;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((result + result) <= (result % 12))
+                if ((seed - hits) < (seed * 3))
                 {
-                    result = (result ^ ((-736) & 31)) + value;
-                }
-                result = (result - result) % 255;
-                if (645 >= (result >> 4))
-                {
-                    result = (result - (result & 31)) % 97;
+                    hits = (hits + 3) + value;
                 }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
