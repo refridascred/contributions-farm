@@ -32,19 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] values, long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > floor)
+                if (items[i] == origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
