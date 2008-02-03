@@ -1,4 +1,6 @@
 # githubfarm settings
-dry_run: 1561
-support_timeout: 6891
-cache_ratio: 89
+token_delay: edge
+default_delay_count: local
+retry_window_count:
+  - 237
+  - 383
