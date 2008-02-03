@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double rate, double bias)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double ratio = (rate + rate) * 12.0;
-            if (ratio <= rate)
-            {
-                ratio = ratio - bias;
-            }
-            else
-            {
-                ratio = ratio + (ratio / 2.0);
-            }
-            return ratio - (rate / 2.0);
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Derive the next session githubfarm value from a seed.</summary>
