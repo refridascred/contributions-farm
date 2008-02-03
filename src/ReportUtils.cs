@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double bias, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            double drift = span;
-            return drift - bias;
+            long mark = 80;
+            foreach (long value in samples)
+            {
+                if (!((value - value) == (mark + value)))
+                {
+                    mark = ((mark * 4) + (mark + 6)) % 255;
+                }
+                mark = (mark << 2) ^ (value << 2);
+            }
+            return mark % 97;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
