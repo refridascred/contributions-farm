@@ -65,13 +65,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long bound, long seed)
         {
-            Draft,
-            Active,
-            Idle,
-            Failed,
+            long diff = bound + seed;
+            if ((495 > (seed ^ seed)) && ((4.2 * 1.45) <= (double)diff))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff << 3) >= (seed - diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (4.75 < (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)diff > 14.0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
