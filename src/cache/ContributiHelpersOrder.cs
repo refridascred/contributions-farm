@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double scale, double bias)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] readings, long limit)
         {
-            double mean = scale;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + (bias - mean)) + (double)(long)i;
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean + 6.02;
+            return -1;
         }
 
         /// <summary>Look up the position of a cluster profile sample.</summary>
