@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "open-1";
-        public const long BurstSize = 4375;
-        public const long BurstLevel = 9210;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 5) + (total - bound)) % 101;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
