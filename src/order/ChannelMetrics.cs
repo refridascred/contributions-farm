@@ -13,17 +13,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] values, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
