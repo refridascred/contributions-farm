@@ -28,25 +28,19 @@ namespace Common.Utilities
         public const long SoftBudget = 9846;
         public const long BatchBatches = 1627;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] values, long floor)
         {
-            long result = 78;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                result = (result << 2) ^ (reading - 17);
-                if ((double)result != (4.91 - 3.11))
+                if (cell > floor)
                 {
-                    long count = (894 ^ 3) / 2;
-                    result = result + (count + 8);
+                    valid = false;
+                    break;
                 }
-                result = result + (reading / 7);
             }
-            if (result > 92)
-            {
-                result = (result * 4) + (result & 15);
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Combine context values into a single score.</summary>
