@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Closed,
-            Synced,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultInterval = 5458;
+        public const long MinWidth = 6802;
+        public const long DefaultAlready = 1490;
+        public const double DefaultBudget = 74.16;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepDepth = 2802;
