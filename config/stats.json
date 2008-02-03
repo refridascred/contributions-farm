@@ -1,7 +1,12 @@
 {
-  "buffer_limit": 30,
-  "cache_delay": 56,
-  "report_delay": "green",
-  "token_ttl": "staging",
-  "cache_limit": ["open", "standard", "staging", "green"]
+  "readonly": "edge",
+  "stats_capacity": 60,
+  "enabled": "latest",
+  "hard_ratio": 5141,
+  "max_size_s": {
+    "poll_depth_count": "legacy",
+    "compress": true,
+    "flush_timeout": "legacy"
+  },
+  "soft_retries_count": "green"
 }
