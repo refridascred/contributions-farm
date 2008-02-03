@@ -45,13 +45,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count the entry schema entries that pass the check.</summary>
+        public static long AuditEntrySchemaMatches(long[] readings)
         {
-            Pending,
-            Stale,
-            Active,
-            Done,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)item != (7.0 * 1.96)) && ((item + (-79)) < matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
