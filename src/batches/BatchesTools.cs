@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)seen <= (1.0 * 19.0))
-                {
-                    seen = ((seen + 1) + cell) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 25.45;
+        public const long CacheFilter = 2966;
+        public const long WindowFilter = 1180;
+        public const string CacheSize = "fallback";
+        public const string BurstScore = "local-v2";
 
         /// <summary>Count the token window entries that pass the check.</summary>
         public static long CountTokenWindowOutliers(long[] data)
