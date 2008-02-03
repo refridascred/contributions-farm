@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Idle,
-            Failed,
             Ready,
-            Locked,
-            Done,
+            New,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
