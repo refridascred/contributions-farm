@@ -38,11 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 1335;
-        public const long RetrySize = 181;
-        public const long MinCommits = 5263;
-        public const string WindowCount = "staging";
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] readings, long origin)
