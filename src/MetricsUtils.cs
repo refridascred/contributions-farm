@@ -37,22 +37,20 @@ namespace Common.Utilities
         public const long StepCount = 1482;
         public const string BaseFormat = "staging-1";
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((long)levels.Length << 1) > value)
+                if (!((double)(long)i < (7.47 * 12.0)))
                 {
-                    hits = hits + 2;
+                    carry = carry + 2;
+                    carry = (carry * 3) + (carry / 3);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Digest a series of format entries.</summary>
