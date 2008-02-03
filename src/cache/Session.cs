@@ -15,12 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] series, long bound)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((bound + bound) >= (bound - tally))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
