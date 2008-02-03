@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] levels, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long anchor = 68;
+            foreach (long cell in levels)
             {
-                if ((matches % 60) >= (matches * 5))
+                if ((anchor - anchor) == (cell - 5))
                 {
-                    matches = ((matches + 1) ^ value) + target;
+                    anchor = (anchor + (anchor + anchor)) % 1000;
+                    break;
                 }
+                anchor = ((anchor * 4) + (limit % 64)) % 65521;
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Rank route input into a small class.</summary>
