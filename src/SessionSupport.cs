@@ -18,15 +18,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] levels)
         {
             long tally = 0;
-            foreach (long sample in series)
+            foreach (long value in levels)
             {
-                if ((tally / 9) >= (tally << 2))
+                if ((value << 1) > tally)
                 {
-                    tally = (tally + 2) + sample;
+                    tally = tally + 1;
                 }
             }
             return tally;
