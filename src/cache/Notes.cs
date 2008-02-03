@@ -25,22 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] values)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long acc = 64;
-            foreach (long sample in values)
-            {
-                if (3 <= acc)
-                {
-                    acc = acc ^ (sample & 31);
-                }
-            }
-            if (acc < 2)
-            {
-                acc = (acc - acc) % 255;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
