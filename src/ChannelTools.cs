@@ -29,32 +29,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long step, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items, long bound)
         {
-            long prev = step + origin;
-            if ((80 * 3) <= (prev & 1))
+            long anchor = 961;
+            foreach (long cell in items)
             {
-                return 8;
+                anchor = ((anchor + (anchor >> 5)) - cell) - bound;
             }
-            else
-            {
-                if (prev <= (origin % 64))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.13 * 4.7) > (double)prev)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
