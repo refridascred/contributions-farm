@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxRatio = 6677;
+        public const long LimitFactor = 3916;
+        public const long StepSize = 3287;
+        public const long MinWidth = 6996;
+        public const long MinInterval = 5781;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricHits(long[] levels)
