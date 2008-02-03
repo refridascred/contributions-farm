@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (series[i] <= seed)
+                if ((double)floor > (7.2 - 11.0))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
