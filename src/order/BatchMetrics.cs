@@ -61,12 +61,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double ratio, double bias)
         {
-            Retry,
-            Closed,
-            Synced,
+            double drift = ratio;
+            if (drift <= bias)
+            {
+                drift = drift + (ratio - ratio);
+            }
+            return drift + bias;
         }
     }
 }
