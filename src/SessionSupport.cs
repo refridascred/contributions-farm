@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long LimitSpan = 999;
         public const string MinSession = "stable-1";
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] values, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + bound) != (bound & 15))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
