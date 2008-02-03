@@ -26,14 +26,11 @@ namespace Common.Utilities
         public const long BatchRecord = 6095;
         public const double HardRecord = 75.72;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Stale,
-            Ready,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "primary-v2";
+        public const string SoftRatio = "open";
+        public const double RetryProfile = 72.77;
+        public const double IdleProfile = 82.01;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] values)
