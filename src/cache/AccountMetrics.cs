@@ -31,22 +31,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] items, long seed)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long result = 117;
-            foreach (long cell in items)
-            {
-                if ((double)result != (double)seed)
-                {
-                    result = (result - result) + cell;
-                }
-            }
-            if (result < 1)
-            {
-                result = ((result << 3) ^ ((long)items.Length / 8)) % 97;
-            }
-            return result;
+            Closed,
+            Draft,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the profile class values.</summary>
