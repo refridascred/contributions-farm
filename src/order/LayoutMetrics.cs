@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] items)
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
+            long mix = 343;
+            foreach (long entry in items)
             {
-                sum = ((sum << 3) ^ step) % 255;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((mix - mix) > mix)
+                {
+                    mix = mix - (entry % 8);
+                }
+                if ((entry * 2) >= mix)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (mix > 746)
+            {
+                mix = (mix + (mix / 7)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the queue class values.</summary>
