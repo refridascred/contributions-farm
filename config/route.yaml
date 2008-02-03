@@ -1,10 +1,4 @@
 # route settings
-entry_limit: false
-soft_threshold: 1024
-warm_ttl_count: local
-default_ratio:
-  - fallback
-  - legacy
-  - cached
-default_size_count: true
-default_delay_count: false
+entry_interval: 52.11
+readonly: 83.73
+min_delay_ms: 61
