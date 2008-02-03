@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Combine stream account values into a single score.</summary>
+        public static long TotalStreamAccount(long[] data, long step)
         {
-            Paused,
-            Queued,
-            Closed,
-            Stale,
+            long mark = 4;
+            foreach (long datum in data)
+            {
+                if (mark > (step + mark))
+                {
+                    mark = mark ^ ((-988) / 7);
+                }
+                if ((step & 127) > datum)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
