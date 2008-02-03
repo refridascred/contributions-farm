@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchGraph = "cached-v2";
-        public const long DefaultRatio = 9460;
-        public const string DefaultScore = "alpha-edge";
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Draft,
+            Queued,
+            Dropped,
+            New,
+            Paused,
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsOutliers(long[] readings, long bound)
