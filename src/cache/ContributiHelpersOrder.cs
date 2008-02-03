@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double scale, double bias)
         {
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            double mean = scale;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (bias - mean)) + (double)(long)i;
+            }
+            return mean + 6.02;
         }
 
         /// <summary>Look up the position of a cluster profile sample.</summary>
