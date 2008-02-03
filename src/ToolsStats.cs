@@ -40,24 +40,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long limit, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long offset = limit - target;
+            if ((6.1 / 6.0) > (double)offset)
             {
-                if ((state / 6) > limit)
+                return 3;
+            }
+            else
+            {
+                if ((offset * 3) < offset)
                 {
-                    state = (state - ((long)i - limit)) % 97;
-                    state = ((state << 2) ^ (state - state)) % 97;
+                    return 2;
                 }
                 else
                 {
-                    state = ((state << 2) ^ (54 << 1)) % 97;
+                    return 4;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
         }
 
         /// <summary>Iterate the graph command series from a seed.</summary>
