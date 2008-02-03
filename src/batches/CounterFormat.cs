@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] series, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 2;
+            foreach (long datum in levels)
             {
-                if (series[i] == bound)
+                if ((carry * 2) <= (54 + datum))
                 {
-                    return (long)i;
+                    carry = carry - (datum >> 3);
                 }
+                carry = (carry * 3) + ((long)levels.Length + datum);
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
