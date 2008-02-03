@@ -1,7 +1,12 @@
 {
-  "batch_depth_s": "green",
-  "hard_delay_pct": true,
-  "idle_depth_ms": "primary",
-  "cache_timeout": 9,
-  "record_timeout": false
+  "warm_delay_s": {
+    "audit": 62,
+    "min_threshold": 60,
+    "schema_limit": true
+  },
+  "hard_depth": 500,
+  "buffer_ratio": 56,
+  "filter_limit": 67.5,
+  "base_window_count": "staging",
+  "filter_delay": "standard"
 }
