@@ -1,15 +1,7 @@
 {
-  "profile_timeout": 2147,
-  "sync_ttl": {
-    "verbose": 100,
-    "warm_limit_pct": true,
-    "default_retries_ms": [33, 389],
-    "burst_depth": ["stable", "eu-west", "standard"],
-    "cluster_window": [338, 405, 303],
-    "min_limit": false
-  },
-  "sync_size_pct": 2867,
-  "default_depth": "blue",
-  "graph_window": 62.83,
-  "audit": 4068
+  "report_interval": "staging",
+  "min_ttl_pct": "open",
+  "default_capacity_ms": [416, 14],
+  "warm_ratio": ["primary", "blue"],
+  "burst_capacity": 250
 }
