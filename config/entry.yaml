@@ -1,13 +1,4 @@
 # entry settings
-batches_delay: true
-entry_threshold: cached
-idle_interval_ms: true
-min_delay_pct:
-  soft_timeout_s: eu-west
-  dry_run: 52.19
-  idle_window: fallback
-  enabled: 30
-idle_threshold_ms: 3045
-commits_limit:
-  - latest
-  - fallback
+max_interval: true
+max_depth: 95
+poll_interval_ms: edge
