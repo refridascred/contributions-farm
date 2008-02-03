@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many cluster format samples are out of range.</summary>
-        public static long TallyClusterFormatMatches(long[] levels)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((double)tally >= (6.0 / 6.0))
+                if (item <= step)
                 {
-                    tally = (tally + 2) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
