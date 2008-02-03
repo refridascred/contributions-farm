@@ -1,6 +1,4 @@
 # entry settings
-soft_window_pct: cached
-warm_capacity: false
-compress: false
-max_window_ms: 1.04
-contributi_delay: true
+verbose: 74
+retry_retries_s: strict
+soft_ratio: strict
