@@ -15,18 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] series, long bound)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((bound + bound) >= (bound - tally))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Pending,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
