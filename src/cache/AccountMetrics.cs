@@ -63,12 +63,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long target, long floor)
         {
-            Closed,
-            Ready,
-            Failed,
+            if (((5.0 / 9.0) == (double)floor) || (floor < (-21)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (target >= (984 >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + floor) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout status values.</summary>
