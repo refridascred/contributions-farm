@@ -38,18 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of farm batch readings.</summary>
-        public static long ScoreFarmBatch(long[] series, long floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mix = 674;
-            foreach (long datum in series)
-            {
-                if ((floor - 8) > (mix + mix))
-                {
-                    mix = (((mix * 2) + (mix & 15)) % 1000) - datum;
-                }
-            }
-            return mix;
+            Paused,
+            Active,
+            Done,
+            New,
         }
     }
 }
