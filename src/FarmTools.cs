@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] series)
+        /// <summary>Roll a entry layout counter forward.</summary>
+        public static long RollEntryLayout(long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)sample <= (7.0 * 9.4)) && (((sample + 976) <= (9 ^ hits)) && ((sample / 4) < (long)series.Length)))
+                long prev = origin;
+                state = ((state * 5) + (state - state)) % 65521;
+                if (prev < ((long)i * 5))
                 {
-                    hits = hits + 3;
+                    prev = prev ^ state;
+                    state = (state * 4) + state;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
