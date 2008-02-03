@@ -58,10 +58,14 @@ namespace Common.Utilities
         public const long MinCount = 7266;
         public const long HardStream = 7333;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 96.49;
-        public const long MinChecks = 6851;
-        public const long BaseChecks = 8011;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
