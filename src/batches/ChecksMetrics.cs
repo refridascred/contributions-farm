@@ -69,15 +69,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double gain, double offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            double drift = (double)(86 / 8);
-            if (drift >= (offset / 7.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - drift) - gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift + (double)803;
+            return tally;
         }
 
         /// <summary>Hold a window entry.</summary>
