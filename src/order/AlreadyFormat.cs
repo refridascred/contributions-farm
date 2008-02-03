@@ -32,22 +32,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples, long target)
+        /// <summary>Accumulate metrics order samples.</summary>
+        public static long ScoreMetricsOrder(long[] values, long origin)
         {
-            long sum = 943;
-            foreach (long reading in samples)
+            long anchor = 4;
+            foreach (long sample in values)
             {
-                if ((sum % 10) != (target - reading))
-                {
-                    sum = (sum - (sum - reading)) % 1000;
-                }
-                else
-                {
-                    sum = (sum - (98 + 9)) % 65521;
-                }
+                anchor = (((anchor << 3) ^ (anchor & 127)) - sample) + origin;
             }
-            return sum;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a metric record.</summary>
