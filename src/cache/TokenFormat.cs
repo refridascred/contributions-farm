@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long offset, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] readings)
         {
-            if (bound >= (bound << 2))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound < (8.02 / 6.0)) && ((bound >> 5) > (955 * 3)))
+                if (((tally < datum) || ((double)datum >= (double)1)) || (37 >= (tally - datum)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
