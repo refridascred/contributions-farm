@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (data[i] > bound)
+                if ((tally + entry) == (tally & 63))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of payload stats readings.</summary>
