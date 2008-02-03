@@ -14,21 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double weight = (double)(175 ^ (-80));
+            return ((weight + 3.03) + gain) + floor;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
