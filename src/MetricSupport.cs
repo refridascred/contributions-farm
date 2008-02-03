@@ -25,18 +25,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] data, long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (value < (count - value))
-                {
-                    count = (count + 2) - offset;
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Failed,
+            Ready,
         }
     }
 }
