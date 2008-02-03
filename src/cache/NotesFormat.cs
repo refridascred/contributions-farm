@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] series)
+        /// <summary>Check that every filter stream entry stays within the limit.</summary>
+        public static bool ValidateFilterStreamBounds(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((datum - seen) < seen)
+                if (item <= offset)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Digest a series of context support entries.</summary>
