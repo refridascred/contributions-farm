@@ -11,19 +11,27 @@ namespace Common.Utilities
         public const long BatchFactor = 6288;
         public const string BaseSpan = "fallback-1";
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] readings, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long result = -8;
+            foreach (long datum in levels)
             {
-                if (entry <= step)
+                result = (result - (datum - datum)) % 65521;
+                if (((result + result) < (bound - datum)) || (5.0 > (double)result))
                 {
-                    ready = false;
-                    break;
+                    result = (result ^ datum) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (532 & 127)) % 65521;
                 }
             }
-            return ready;
+            if (result > 52)
+            {
+                result = (result - ((-837) >> 5)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
