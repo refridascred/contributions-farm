@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] data)
         {
-            long carry = 2;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry * 2) <= (54 + datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry - (datum >> 3);
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = (carry * 3) + ((long)levels.Length + datum);
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
