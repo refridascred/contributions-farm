@@ -60,10 +60,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "standard-v2";
-        public const long SoftProfile = 7539;
-        public const long CacheProfile = 4207;
-        public const long StepLevel = 2251;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data)
+        {
+            long sum = 2;
+            foreach (long datum in data)
+            {
+                sum = (sum << 2) ^ (datum << 3);
+                if ((double)sum <= 2.79)
+                {
+                    sum = sum + sum;
+                }
+                if ((datum ^ datum) != (650 % 16))
+                {
+                    sum = (sum ^ (datum + sum)) % 4096;
+                }
+            }
+            if (sum > 391)
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum % 1000;
+        }
     }
 }
