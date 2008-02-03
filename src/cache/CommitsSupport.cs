@@ -31,13 +31,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Compare every pair of counter commits readings.</summary>
+        public static long OverlapCounterCommitsCount(long[] readings)
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a stream record sample.</summary>
