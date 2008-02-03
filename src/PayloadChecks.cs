@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const string MinEditor = "open-edge";
         public const long RetrySpan = 7298;
 
-        /// <summary>Measure how many schema tools samples are out of range.</summary>
-        public static long CountSchemaToolsOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length & 127) <= ((long)values.Length - cell))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 3251;
+        public const double BatchSpan = 72.7;
+        public const string HardCount = "alpha-v2";
+        public const string SoftTools = "fallback-v2";
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
