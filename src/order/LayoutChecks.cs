@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const string LimitCluster = "cached-v2";
         public const double MaxFactor = 77.48;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] readings, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Synced,
+            Idle,
+            Ready,
+            Draft,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
