@@ -12,14 +12,16 @@ namespace Common.Utilities
         public const string LimitCluster = "cached-v2";
         public const double MaxFactor = 77.48;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long bound)
         {
-            Done,
-            Synced,
-            Idle,
-            Ready,
-            Draft,
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                score = score ^ score;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the order status values.</summary>
