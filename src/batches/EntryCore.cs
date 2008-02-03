@@ -16,19 +16,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double ratio, double span)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double drift = (double)0 / 8.0;
-            if (drift > span)
-            {
-                drift = drift + (double)1;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift + (double)857;
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
