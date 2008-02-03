@@ -50,21 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of session token readings.</summary>
-        public static long MatchSessionTokenCount(long[] items)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = weight;
+            if (weight2 < (weight2 / 2.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight2 = (weight2 - (19.0 * 12.0)) - span;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - weight2) + (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
