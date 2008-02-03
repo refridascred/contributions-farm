@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Fold a list of command entry readings.</summary>
+        public static long TotalCommandEntry(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 5;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (acc * 2) + (entry / 4);
+                if (!((60 * 2) > (bound ^ acc)))
                 {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 3) ^ (entry * 4)) % 255;
+                }
+                if ((double)entry < (5.7 + 0.17))
+                {
+                    acc = (acc - (acc - bound)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (entry - bound)) % 1000;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Blend two stats command measurements.</summary>
