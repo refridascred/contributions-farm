@@ -26,32 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long target, long limit)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double weight, double span)
         {
-            long diff = target - limit;
-            if ((4.4 - 7.42) >= (double)diff)
+            double rate = span;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                rate = (rate - (weight - span)) + (double)(long)i;
             }
-            else
-            {
-                if ((limit ^ target) <= (62 * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target << 3) < 3)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return rate + (double)0;
         }
     }
 }
