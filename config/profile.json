@@ -1,6 +1,7 @@
 {
-  "flush_delay": "green",
-  "dry_run": ["fallback", "latest", "blue"],
-  "enabled": 86,
-  "poll_ttl": 79.94
+  "idle_timeout_pct": 9566,
+  "stream_threshold": 250,
+  "warm_size": 1024,
+  "warm_ratio_pct": ["latest", "eu-west", "local", "standard"],
+  "window_delay": 41.1
 }
