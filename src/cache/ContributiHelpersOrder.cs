@@ -17,19 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every contributi format entry stays within the limit.</summary>
-        public static bool GuardContributiFormatBounds(long[] series, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long result = 2;
+            foreach (long value in series)
             {
-                if (datum > limit)
+                if ((result + result) <= (result % 12))
                 {
-                    stale = false;
-                    break;
+                    result = (result ^ ((-736) & 31)) + value;
+                }
+                result = (result - result) % 255;
+                if (645 >= (result >> 4))
+                {
+                    result = (result - (result & 31)) % 97;
                 }
             }
-            return stale;
+            return result % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
