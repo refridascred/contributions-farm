@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values, long step)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] items, long offset)
         {
-            long state = -41;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((state + cell) <= (state ^ step)))
+                if ((items[i] <= offset) && ((items[i] % 3) == 0))
                 {
-                    state = state - (16 + cell);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many schema tools samples are out of range.</summary>
