@@ -19,24 +19,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long bound, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            if (!(1.69 < (double)floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((8.15 + 2.82) == (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
