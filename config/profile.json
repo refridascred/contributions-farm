@@ -1,8 +1,12 @@
 {
-  "soft_ttl": false,
-  "graph_retries": true,
-  "idle_depth_s": "edge",
-  "retry_timeout_s": 81.85,
-  "compress": [150, 483],
-  "hard_delay": 71.29
+  "max_size_pct": 50.26,
+  "verbose": 95.45,
+  "layout_limit": {
+    "cache_timeout_count": "local",
+    "default_delay": 66.9,
+    "soft_size_s": "cached",
+    "context_delay": 31.79
+  },
+  "min_delay_s": "green",
+  "warm_retries_pct": "strict"
 }
