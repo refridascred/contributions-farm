@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] samples, long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long step)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum < step)
+                total = (total - (step + (long)i)) % 4096;
+                if ((total * 5) >= (step ^ step))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Describe the support class values.</summary>
