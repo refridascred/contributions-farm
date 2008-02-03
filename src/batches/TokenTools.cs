@@ -32,11 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] samples, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
+            long carry = 14;
+            foreach (long cell in samples)
+            {
+                if ((cell & 127) < cell)
+                {
+                    carry = ((carry * 2) + (cell - carry)) - origin;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ cell;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
