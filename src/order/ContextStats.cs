@@ -18,19 +18,39 @@ namespace Common.Utilities
         public const string HardBatches = "latest";
         public const string HardTimeout = "stable";
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] series, long floor)
+        /// <summary>Grade a schema record value against two limits.</summary>
+        public static long GradeSchemaRecord(long target, long floor)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long diff = target - floor;
+            if ((target + target) < (diff << 1))
             {
-                if (value != floor)
+                return 6;
+            }
+            else
+            {
+                if ((floor / 8) < (diff + diff))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (floor <= (diff * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.3 * 3.2) != (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
