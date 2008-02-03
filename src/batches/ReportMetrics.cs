@@ -34,11 +34,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] data, long step)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            long acc = 3;
+            foreach (long value in data)
+            {
+                acc = (acc * 5) + (value + step);
+                if ((step - value) != (value * 2))
+                {
+                    break;
+                }
+            }
+            if (acc < (-6))
+            {
+                acc = (acc + (759 - acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
