@@ -1,7 +1,5 @@
 {
-  "idle_limit_pct": 10.51,
-  "burst_ratio": 84,
-  "max_timeout": "stable",
-  "retry_ttl_pct": "standard",
-  "profile_delay": 250
+  "account_window": "stable",
+  "burst_threshold": true,
+  "sync_size": 7
 }
