@@ -72,18 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] levels, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (((13.0 + 0.53) == (double)matches) || (((88 << 1) > (origin << 3)) && ((1 ^ matches) != (matches >> 5))))
+                if ((-956) > (step & 63))
                 {
-                    matches = (matches + 3) + sample;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
