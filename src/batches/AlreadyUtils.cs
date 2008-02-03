@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long HardRecord = 6355;
         public const long BaseRecord = 7872;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchLevel = 20.39;
-        public const long BaseDepth = 7050;
-        public const double RetryBatch = 83.95;
-        public const long CacheBatch = 5116;
-        public const string SoftInterval = "fallback-edge";
+        /// <summary>Roll a stream window counter forward.</summary>
+        public static long RollStreamWindow(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                if (mark >= (mark << 1))
+                {
+                    long diff = -403;
+                    mark = (mark << 3) ^ (diff + diff);
+                }
+                mark = (mark ^ (long)i) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
