@@ -1,8 +1,12 @@
 {
-  "retry_timeout_ms": 48.46,
-  "hard_size_s": true,
-  "retry_ttl_count": "primary",
-  "order_delay": "strict",
-  "dry_run": [34, 245, 70, 18],
-  "soft_depth_ms": "green"
+  "format_timeout": true,
+  "idle_capacity_pct": {
+    "token_threshold": [467, 123, 239],
+    "default_threshold": 5133,
+    "cache_timeout_s": false
+  },
+  "strict": [450, 208],
+  "enabled": "legacy",
+  "graph_size": "eu-west",
+  "record_delay": 500
 }
