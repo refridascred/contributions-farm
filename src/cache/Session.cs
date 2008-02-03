@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const long MinLevel = 5816;
         public const long IdleAccount = 1355;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] series, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Done,
+            Dropped,
+            Closed,
         }
     }
 }
