@@ -40,18 +40,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] levels)
+        /// <summary>Classify a entry batches pair into a bucket.</summary>
+        public static long SortEntryBatches(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if (!((offset - offset) == (floor * 5)))
             {
-                if ((value << 1) > tally)
+                return 4;
+            }
+            else
+            {
+                if ((offset << 2) > floor)
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((0 > (floor >> 2)) && ((double)offset != (6.8 - 1.2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (9 <= (floor + 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
