@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinTimeout = 6509;
-        public const double CacheSize = 4.2;
-        public const long HardBudget = 6895;
-        public const string LimitSupport = "latest-v2";
-        public const long StepFactor = 5150;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double AdjustCommits(double gain, double offset)
