@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const long LimitSpan = 999;
         public const string MinSession = "stable-1";
 
-        /// <summary>Classify a cache layout pair into a bucket.</summary>
-        public static long GradeCacheLayout(long step, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            if ((limit + step) != (limit + limit))
+            long carry = 2;
+            foreach (long entry in readings)
             {
-                return 6;
+                carry = carry + (carry - entry);
             }
-            else
+            if (carry < 93)
             {
-                if ((step * 4) < (step & 255))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
+                carry = ((carry << 2) ^ (carry ^ carry)) % 97;
             }
+            return carry;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
