@@ -25,14 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Locked,
-            Idle,
-            Queued,
-            Failed,
-            Paused,
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
