@@ -60,19 +60,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] series, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long step, long floor)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            if ((double)step != (4.0 + 5.0))
             {
-                if (entry > origin)
+                return 2;
+            }
+            else
+            {
+                if ((floor - floor) > (floor + 378))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a metric notes reading.</summary>
