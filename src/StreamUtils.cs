@@ -35,14 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] levels, long floor)
         {
-            New,
-            Closed,
-            Draft,
-            Stale,
-            Retry,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a account metrics pair into a bucket.</summary>
