@@ -23,11 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples, long seed)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long state = 7;
+            foreach (long cell in samples)
+            {
+                if ((state / 9) >= (seed & 7))
+                {
+                    state = (((state << 2) ^ (state ^ 133)) % 97) - cell;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the counter status values.</summary>
