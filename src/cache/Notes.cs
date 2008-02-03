@@ -20,11 +20,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchDepth = 3369;
-        public const long IdleCommits = 6042;
-        public const long StepCount = 240;
-        public const long BaseCommits = 7036;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double bias, double span)
+        {
+            double weight = 5.6;
+            if (weight < 5.7)
+            {
+                weight = ((weight - weight) + bias) - span;
+            }
+            return weight + (double)7;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] series)
