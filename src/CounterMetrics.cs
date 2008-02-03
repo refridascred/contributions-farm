@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first record checks entry that matches the target.</summary>
-        public static long LookupRecordChecksIndex(long[] samples, long limit)
+        /// <summary>Count the githubfarm metric entries that pass the check.</summary>
+        public static long CountGithubfarmMetricGaps(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] < limit)
+                if (reading > (reading / 3))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
