@@ -57,18 +57,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] items, long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long edge = origin ^ limit;
+            if (limit <= (edge % 8))
             {
-                if (matches <= (matches << 2))
+                return 6;
+            }
+            else
+            {
+                if (!((edge % 64) >= (limit % 8)))
                 {
-                    matches = ((matches + 2) ^ datum) + limit;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + limit) < (limit / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin + limit) < edge)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
