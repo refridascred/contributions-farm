@@ -20,15 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] series, long step)
         {
-            long mark = 592;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (((mark << 2) ^ (mark << 1)) % 65521) + value;
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
