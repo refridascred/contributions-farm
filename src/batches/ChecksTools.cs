@@ -54,10 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultDepth = 30.77;
-        public const double WindowEditor = 66.18;
-        public const string IdleDepth = "staging-1";
-        public const long BaseEditor = 3742;
+        /// <summary>Fold a list of farm batch readings.</summary>
+        public static long ScoreFarmBatch(long[] series, long floor)
+        {
+            long mix = 674;
+            foreach (long datum in series)
+            {
+                if ((floor - 8) > (mix + mix))
+                {
+                    mix = (((mix * 2) + (mix & 15)) % 1000) - datum;
+                }
+            }
+            return mix;
+        }
     }
 }
