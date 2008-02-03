@@ -33,11 +33,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheBudget = 61.66;
-        public const long LimitAccount = 8380;
-        public const long BurstLevel = 8582;
-        public const long IdleBudget = 1183;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Paused,
+            New,
+            Draft,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double BlendToken(double bias, double floor)
