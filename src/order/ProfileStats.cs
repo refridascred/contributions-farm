@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] data, long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                acc = acc + (floor - acc);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
