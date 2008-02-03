@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Grade a editor notes value against two limits.</summary>
+        public static long BucketEditorNotes(long offset, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long bound = offset ^ target;
+            if (bound > target)
             {
-                sum = (sum * 2) + sum;
-                sum = ((sum * 2) + (long)i) % 97;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (target >= (target ^ bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
