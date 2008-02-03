@@ -30,12 +30,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double gain, double offset)
         {
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
+            double load = gain;
+            if (load < (gain * 7.0))
+            {
+                load = (load + load) - offset;
+            }
+            else
+            {
+                load = load - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load * 9.0)) + (double)(long)i;
+            }
+            return load + gain;
         }
     }
 }
