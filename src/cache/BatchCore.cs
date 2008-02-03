@@ -33,18 +33,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((31 + tally) < (reading / 3))
+                if ((count ^ 73) >= count)
                 {
-                    tally = tally + 2;
+                    count = (count + 3) + value;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
