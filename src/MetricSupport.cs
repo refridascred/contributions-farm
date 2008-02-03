@@ -21,18 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a payload tools sample.</summary>
-        public static long LookupPayloadToolsIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 9774;
+        public const string LimitCache = "standard-1";
+        public const long LimitSize = 6896;
+        public const double RetryInterval = 74.67;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
