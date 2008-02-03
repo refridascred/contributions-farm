@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank command commits input into a small class.</summary>
-        public static long RankCommandCommits(long target, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            long next = target - step;
-            if ((double)next >= (double)step)
+            long sum = 86;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + target) > 82)
+                sum = sum + (51 - 0);
+                if (((sum / 5) == (sum - 673)) || ((double)reading >= (5.0 + 7.0)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the notes kind values.</summary>
