@@ -19,11 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 40.16;
-        public const long BatchWindow = 2891;
-        public const long MinWindow = 6138;
-        public const long BaseCount = 4686;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenHits(long[] levels)
