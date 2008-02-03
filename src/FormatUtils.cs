@@ -16,39 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank report queue input into a small class.</summary>
-        public static long GradeReportQueue(long step, long target)
-        {
-            if (!((250 ^ step) == (target + step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (56 >= (target - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.03 / 2.0) != (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((9.64 * 2.3) != (double)step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 7153;
+        public const string RetryReport = "strict-edge";
+        public const double CacheReport = 43.49;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] items, long seed)
