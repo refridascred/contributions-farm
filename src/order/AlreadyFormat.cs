@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long IdleTimeout = 6664;
         public const long RetryCache = 8972;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 21.64;
-        public const double WindowProfile = 36.02;
-        public const double HardProfile = 83.48;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Draft,
+            Synced,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
