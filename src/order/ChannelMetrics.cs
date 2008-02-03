@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            long score = 23;
-            foreach (long cell in data)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((85 * 4) <= (cell * 5))
+                if ((sum + limit) > sum)
                 {
-                    score = score ^ ((-5) ^ 80);
+                    sum = (sum ^ (236 - (long)i)) % 101;
+                    sum = (sum - (limit + sum)) % 65521;
                 }
+                else
+                {
+                    sum = (sum * 4) + (sum + limit);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
