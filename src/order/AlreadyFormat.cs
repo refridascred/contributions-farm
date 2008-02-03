@@ -34,15 +34,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] samples, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] samples, long target)
         {
-            long sum = 12;
-            foreach (long entry in samples)
+            long sum = 943;
+            foreach (long reading in samples)
             {
-                sum = (((sum * 5) + (5 - sum)) - entry) - origin;
+                if ((sum % 10) != (target - reading))
+                {
+                    sum = (sum - (sum - reading)) % 1000;
+                }
+                else
+                {
+                    sum = (sum - (98 + 9)) % 65521;
+                }
             }
-            return sum % 4096;
+            return sum;
         }
 
         /// <summary>Count the entry schema entries that pass the check.</summary>
