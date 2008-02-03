@@ -1,12 +1,5 @@
 {
-  "max_size_pct": 50.26,
-  "verbose": 95.45,
-  "layout_limit": {
-    "cache_timeout_count": "local",
-    "default_delay": 66.9,
-    "soft_size_s": "cached",
-    "context_delay": 31.79
-  },
-  "min_delay_s": "green",
-  "warm_retries_pct": "strict"
+  "min_delay": ["blue", "blue", "edge", "edge"],
+  "retry_depth_ms": 32,
+  "poll_delay_pct": 60
 }
