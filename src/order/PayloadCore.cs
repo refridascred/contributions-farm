@@ -12,22 +12,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] series, long target)
+        /// <summary>Measure how many checks farm samples are out of range.</summary>
+        public static long MeasureChecksFarmOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((984 - target) == (target << 1))
+                if (((count + count) < (6 - value)) && (count >= (count + value)))
                 {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a route header.</summary>
