@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels, long seed)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long acc = 2;
-            foreach (long item in levels)
-            {
-                acc = (acc + (89 + acc)) % 4096;
-                if ((seed & 7) < item)
-                {
-                    acc = acc + seed;
-                }
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
