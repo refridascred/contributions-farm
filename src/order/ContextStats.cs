@@ -53,15 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next already commits value from a seed.</summary>
-        public static long DeriveAlreadyCommits(long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
