@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Rank command commits input into a small class.</summary>
+        public static long RankCommandCommits(long target, long step)
         {
-            Paused,
-            Draft,
-            Active,
+            long next = target - step;
+            if ((double)next >= (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + target) > 82)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
