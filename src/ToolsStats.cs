@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Idle,
-            New,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 25.51;
+        public const double MaxTimeout = 25.26;
+        public const long MinOrder = 1450;
+        public const long RetryOrder = 2327;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricOutliers(long[] readings)
