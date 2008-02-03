@@ -19,11 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSpan = 3866;
-        public const long StepInterval = 4406;
-        public const double RetryCache = 28.87;
-        public const long MaxCache = 3606;
+        /// <summary>Accumulate queue graph samples.</summary>
+        public static long CombineQueueGraph(long[] values, long step)
+        {
+            long mix = 776;
+            foreach (long datum in values)
+            {
+                mix = ((mix + (mix + datum)) % 4096) + step;
+            }
+            if (mix < 35)
+            {
+                mix = mix + 33;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
