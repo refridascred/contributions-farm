@@ -32,16 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] readings, long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] data, long limit)
         {
-            long score = 83;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                score = (score << 3) ^ entry;
-                score = ((score * 3) + (step + step)) % 4096;
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score % 4096;
+            return ok;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
