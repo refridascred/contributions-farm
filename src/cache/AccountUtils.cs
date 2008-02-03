@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] values)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double weight, double span)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double load = 4.6;
+            if (load < weight)
             {
-                if (tally < (tally << 3))
-                {
-                    tally = (tally + 2) + value;
-                }
+                load = load - (span / 7.0);
             }
-            return tally;
+            return load + (6.42 * 4.0);
         }
 
         /// <summary>Define route limits and defaults.</summary>
