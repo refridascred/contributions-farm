@@ -1,7 +1,12 @@
 # entry settings
-readonly: 100
-warm_limit: primary
-audit: 14
-hard_size: primary
-sync_window_s: primary
-burst_timeout_s: 9720
+checks_window: false
+burst_ttl_s: cached
+default_limit: true
+idle_depth:
+  dry_run: cached
+  cache_window: 59.48
+  audit: 12.79
+  cache_interval: latest
+  sync_ratio: green
+batch_interval: 30
+enabled: local
