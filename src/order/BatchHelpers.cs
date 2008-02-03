@@ -29,23 +29,9 @@ namespace Common.Utilities
         public const long DefaultSpan = 5157;
         public const string MaxQueue = "latest-v2";
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] items, long step)
-        {
-            long result = 6;
-            foreach (long value in items)
-            {
-                result = (result - ((-976) / 8)) % 97;
-                if (66 >= (value + step))
-                {
-                    result = (result << 2) ^ (value + result);
-                }
-            }
-            if (result > 93)
-            {
-                result = (result * 3) + (long)items.Length;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitScore = 4635;
+        public const long CacheFactor = 2447;
+        public const long MaxSupport = 4177;
     }
 }
