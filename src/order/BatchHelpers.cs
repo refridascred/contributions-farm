@@ -20,21 +20,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 5157;
         public const string MaxQueue = "latest-v2";
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((samples[i] < step) && ((samples[i] % 5) != 0))
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
