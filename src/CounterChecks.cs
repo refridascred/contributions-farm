@@ -35,18 +35,18 @@ namespace Common.Utilities
         public const long BurstPayload = 396;
         public const double CachePayload = 12.22;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (!((382 + 2) <= (hits * 3)))
+                if (((entry ^ entry) >= ((-5) % 97)) || ((seen - 4) != (entry * 4)))
                 {
-                    hits = (hits + 2) - sample;
+                    seen = (seen + 1) - offset;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
