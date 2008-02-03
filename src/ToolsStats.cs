@@ -25,19 +25,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] readings, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
