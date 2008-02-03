@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] data, long limit)
+        /// <summary>Fold a list of stats token readings.</summary>
+        public static long CombineStatsToken(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long state = 6;
+            foreach (long entry in readings)
             {
-                if (reading > limit)
+                if (1 < (seed - state))
                 {
-                    flag = false;
-                    break;
+                    state = ((state + (87 / 2)) % 101) ^ entry;
+                }
+                else
+                {
+                    state = state + (875 + 292);
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
