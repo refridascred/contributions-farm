@@ -1,5 +1,13 @@
 {
-  "farm_depth": ["blue", "green", "staging"],
-  "batch_retries_ms": "legacy",
-  "strict": 75.18
+  "verbose": 83.4,
+  "already_interval": {
+    "graph_interval": 66.34,
+    "batch_limit": ["cached", "local", "edge"],
+    "profile_threshold": ["open", "cached", "staging"],
+    "warm_timeout_pct": "green",
+    "cache_delay_s": 44,
+    "dry_run": "standard"
+  },
+  "retry_timeout": "primary",
+  "default_limit": 79.65
 }
