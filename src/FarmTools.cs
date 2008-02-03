@@ -12,39 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long step, long bound)
-        {
-            if (bound < (step % 16))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5.8 * 7.0) == (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound == (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound > step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSpan = 3866;
+        public const long StepInterval = 4406;
+        public const double RetryCache = 28.87;
+        public const long MaxCache = 3606;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
