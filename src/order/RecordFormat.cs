@@ -31,21 +31,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = 3.1;
+            if (ratio <= (floor * 7.2))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + bias;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + (bias - bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + floor) - (double)(long)i;
+            }
+            return ratio - (ratio - floor);
         }
 
         /// <summary>Hold a queue stats.</summary>
