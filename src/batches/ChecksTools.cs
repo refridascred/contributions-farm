@@ -33,12 +33,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long bound, long origin)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            if (((bound + origin) != (origin >> 3)) || ((double)bound < (5.8 / 4.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin >= 894)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Locate a metric reading by value.</summary>
