@@ -14,31 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long step, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] readings)
         {
-            if (!((floor % 3) >= step))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step >= (6.0 * 2.8))
+                if ((count / 8) >= (entry << 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step >= (step << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
