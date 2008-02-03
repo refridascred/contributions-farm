@@ -13,12 +13,39 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftWidth = 4648;
-        public const long LimitSize = 2812;
-        public const double MinFactor = 95.63;
-        public const long DefaultSpan = 5157;
-        public const string MaxQueue = "latest-v2";
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long floor, long seed)
+        {
+            if ((723 & 7) > (seed / 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor > 8.75)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor & 63) < (floor * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor < 5.4)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] samples, long step)
