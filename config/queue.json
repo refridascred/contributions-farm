@@ -1,7 +1,19 @@
 {
-  "report_interval": "staging",
-  "min_ttl_pct": "open",
-  "default_capacity_ms": [416, 14],
-  "warm_ratio": ["primary", "blue"],
-  "burst_capacity": 250
+  "enabled": true,
+  "strict": {
+    "graph_window": 1243,
+    "default_ratio_s": 85.26,
+    "dry_run": ["legacy", "eu-west", "eu-west", "eu-west"],
+    "cache_retries_s": 500,
+    "session_threshold": true,
+    "base_retries_s": 30
+  },
+  "route_delay": {
+    "payload_size": 51.94,
+    "notes_threshold": 63,
+    "flush_ttl": 40.1
+  },
+  "poll_timeout_pct": 7302,
+  "tools_ratio": [173, 38, 329],
+  "cluster_threshold": false
 }
