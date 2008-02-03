@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every context cache entry stays within the limit.</summary>
-        public static bool ValidateContextCacheBounds(long[] samples, long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            if (bound >= (bound << 2))
             {
-                if (datum > target)
+                return 0;
+            }
+            else
+            {
+                if (((double)bound < (8.02 / 6.0)) && ((bound >> 5) > (955 * 3)))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
