@@ -1,9 +1,6 @@
 {
-  "hard_timeout_count": {
-    "verbose": true,
-    "sync_window_ms": true,
-    "soft_delay_pct": "strict"
-  },
-  "verbose": 60.46,
-  "flush_delay_pct": 74
+  "strict": "fallback",
+  "soft_limit_ms": 33.01,
+  "flush_capacity_ms": 50,
+  "enabled": "strict"
 }
