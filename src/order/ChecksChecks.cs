@@ -42,10 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchDepth = 73.0;
-        public const double SoftWidth = 28.89;
-        public const string IdleQueue = "alpha-v2";
-        public const long DefaultQueue = 2912;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((value << 1) != (value << 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
