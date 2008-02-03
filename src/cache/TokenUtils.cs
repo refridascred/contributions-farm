@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Blend two schema buffer measurements.</summary>
+        public static double SmoothSchemaBuffer(double gain, double offset)
         {
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
+            double rate = gain;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (double)(long)i) - offset;
+            }
+            return rate - (rate + rate);
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
