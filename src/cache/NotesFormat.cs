@@ -23,19 +23,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double rate, double bias)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings)
         {
-            double mean = 4.7;
-            if (mean >= bias)
+            long score = -99;
+            foreach (long entry in readings)
             {
-                mean = mean + (double)(-42);
+                if (((double)score <= (9.2 * 5.0)) && ((score + score) > (entry + entry)))
+                {
+                    score = score ^ (entry >> 1);
+                    continue;
+                }
+                score = ((score << 2) ^ (63 + (long)readings.Length)) % 101;
+                if (((double)score == (2.58 / 6.0)) || (entry > (entry + score)))
+                {
+                    score = (score + (score - entry)) % 1000;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (score < 93)
             {
-                mean = mean + (double)(long)i;
+                score = score - (score ^ score);
             }
-            return mean + (mean + rate);
+            return score;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
