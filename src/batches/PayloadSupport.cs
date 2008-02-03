@@ -20,21 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] samples, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor << 2) ^ (anchor % 2)) % 1000;
-                if (((anchor - (long)i) != (long)i) || ((origin ^ origin) == (origin - 49)))
+                if (sample > floor)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                anchor = (anchor + (origin + (-897))) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
