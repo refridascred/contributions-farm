@@ -34,11 +34,24 @@ namespace Common.Utilities
         public const long StepCount = 1482;
         public const string BaseFormat = "staging-1";
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long limit, long limit2)
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            if (5.0 < (double)limit2)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit2 & 127) < (591 - limit2)) && ((limit / 4) != (limit2 ^ limit2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a order record.</summary>
