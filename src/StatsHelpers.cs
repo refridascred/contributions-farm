@@ -34,39 +34,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long target, long target2)
-        {
-            if ((target >= target2) && ((2.4 + 1.0) != (double)target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((target + 9) < (8 ^ target2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((69 << 3) > target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((3.44 / 7.0) == (double)target) && ((60 - target2) > (730 ^ target)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 7925;
+        public const double BaseDepth = 1.55;
+        public const long CacheLevel = 5403;
+        public const double StepRatio = 7.48;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long origin, long floor)
