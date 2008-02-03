@@ -49,14 +49,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Draft,
-            New,
-            Locked,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxDepth = 5459;
+        public const string MinSpan = "stable-edge";
+        public const long BaseCache = 6602;
     }
 }
