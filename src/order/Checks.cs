@@ -48,18 +48,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] values)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long anchor = 303;
+            foreach (long value in levels)
             {
-                if ((double)cell != (1.16 + 16.0))
+                if (!(6.72 < (double)value))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor ^ (anchor - anchor)) - limit;
+                }
+                else
+                {
+                    anchor = anchor ^ (value >> 3);
+                }
+                if ((9.8 - 5.09) > (double)anchor)
+                {
+                    anchor = (anchor - (value - value)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - (40 + 831)) % 101;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Accumulate commits samples.</summary>
