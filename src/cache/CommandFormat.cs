@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] samples, long target)
+        /// <summary>Grade a farm queue value against two limits.</summary>
+        public static long BucketFarmQueue(long target, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = target - limit;
+            if ((limit + limit) == (target & 31))
             {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((target - 86) < (diff ^ limit))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((target * 2) > (limit * 3)) && ((target - diff) >= (diff + target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((target - diff) >= diff) || (458 <= diff))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
