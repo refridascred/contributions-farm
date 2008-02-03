@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long WindowFactor = 5980;
         public const long IdleDepth = 1326;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Count the token window entries that pass the check.</summary>
+        public static long CountTokenWindowOutliers(long[] data)
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!(5 > (hits / 3)))
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next window stream value from a seed.</summary>
