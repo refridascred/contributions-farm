@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] items, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value < (offset << 3)) || ((offset + count) != (value << 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
