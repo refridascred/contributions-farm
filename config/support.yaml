@@ -1,4 +1,19 @@
 # support settings
-commits_retries: true
-order_timeout: cached
-soft_depth: 500
+batch_limit_s: 59.35
+filter_timeout:
+  sync_interval_count:
+    editor_retries: 73.69
+    report_ratio: 30
+    cluster_size: 41
+    hard_timeout_count: false
+  idle_ttl_s: 1024
+  cache_depth_count: standard
+  compress: open
+cache_size: blue
+idle_ratio:
+  - 151
+  - 418
+idle_delay_count:
+  - 187
+  - 430
+flush_delay: latest
