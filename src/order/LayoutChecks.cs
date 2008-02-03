@@ -45,17 +45,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a context cache reading by value.</summary>
-        public static long LookupContextCacheIndex(long[] data, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a window options.</summary>
