@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] levels, long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((origin << 3) < 83)
-                {
-                    hits = (hits + 3) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Digest a series of token entries.</summary>
