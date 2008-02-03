@@ -1,5 +1,4 @@
 # support settings
-retry_ratio: latest
-cluster_ttl: cached
-metric_threshold: false
-checks_retries: 95
+batch_window_count: true
+channel_size: true
+base_limit_pct: standard
