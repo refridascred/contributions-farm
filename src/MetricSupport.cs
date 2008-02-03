@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double weight, double offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] values, long seed)
         {
-            double gain = 5.2;
-            if (gain > (weight * 18.0))
+            long matches = 0;
+            foreach (long item in values)
             {
-                gain = gain - offset;
+                if ((item - 2) <= (item + (-7)))
+                {
+                    matches = (matches + 3) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                gain = gain - (double)9;
-            }
-            return gain + (offset * 4.89);
+            return matches;
         }
 
         /// <summary>Hold a queue stats.</summary>
