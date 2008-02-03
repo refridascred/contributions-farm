@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] series, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] levels)
         {
-            long anchor = 1;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                anchor = (anchor * 5) + sample;
-                if (5 < anchor)
+                if ((item >> 1) <= (matches >> 2))
                 {
-                    anchor = (anchor + step) % 65521;
-                }
-                if ((((-6) - (long)series.Length) >= step) || ((sample ^ step) <= sample))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
