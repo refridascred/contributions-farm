@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double weight, double floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double bias, double bias2)
         {
-            double bias = (double)(748 * 4);
-            if (bias < (bias * 4.7))
+            double scale = (double)(6 * 4);
+            if (scale >= (scale - bias2))
             {
-                bias = bias - floor;
+                scale = scale - (scale / 4.0);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                bias = bias + weight;
+                scale = (scale + (0.18 * 9.0)) + (double)(long)i;
             }
-            return bias - (floor + 10.0);
+            return scale - bias;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
