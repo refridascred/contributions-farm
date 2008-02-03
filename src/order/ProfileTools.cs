@@ -65,11 +65,12 @@ namespace Common.Utilities
             return mean + 9.27;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepSpan = 8763;
-        public const long BurstMetrics = 7460;
-        public const double BatchMetrics = 71.88;
-        public const long StepBudget = 3397;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long SeekChannelIndex(long[] values, long limit)
