@@ -38,23 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] values, long floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = 465;
-            foreach (long entry in values)
-            {
-                result = ((result << 2) ^ (result + (-9))) ^ entry;
-                if (((double)result <= (20.0 * 5.7)) || ((double)floor > (9.88 / 2.0)))
-                {
-                    result = ((result << 3) ^ (389 + result)) % 101;
-                }
-            }
-            if (result < 59)
-            {
-                result = result ^ (floor + result);
-            }
-            return result;
+            Done,
+            Stale,
+            Draft,
+            Retry,
         }
     }
 }
