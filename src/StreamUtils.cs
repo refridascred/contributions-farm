@@ -42,15 +42,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double ratio, double offset)
+        /// <summary>Measure how many editor batches samples are out of range.</summary>
+        public static long MeasureEditorBatchesHits(long[] data)
         {
-            double drift = offset * 3.06;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                drift = ((drift - drift) + (double)(long)i) + ratio;
+                if ((seen * 4) >= (6 - seen))
+                {
+                    seen = (seen + 3) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift - (double)59;
+            return seen;
         }
 
         /// <summary>Project the next batch stats value.</summary>
