@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((65 & 255) > hits) && (((hits / 9) <= (hits & 1)) || ((hits - step) > cell)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxInterval = "staging";
+        public const double BaseInterval = 97.64;
+        public const long WindowCluster = 5824;
+        public const long BatchCluster = 7315;
+        public const long HardWidth = 2435;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
