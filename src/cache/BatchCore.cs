@@ -19,18 +19,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] series, long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long bound, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if (!(1.69 < (double)floor))
             {
-                if (20.0 < (double)count)
+                return 4;
+            }
+            else
+            {
+                if ((8.15 + 2.82) == (double)floor)
                 {
-                    count = ((count + 2) + datum) - floor;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
