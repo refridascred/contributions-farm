@@ -56,18 +56,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long sum = 562;
+            foreach (long entry in values)
             {
-                if ((double)16 <= (double)matches)
-                {
-                    matches = (matches + 2) ^ sample;
-                }
+                sum = ((sum - ((long)values.Length & 7)) % 65521) ^ entry;
             }
-            return matches;
+            if (sum > 480)
+            {
+                sum = (sum - target) % 65521;
+            }
+            return sum;
         }
     }
 }
