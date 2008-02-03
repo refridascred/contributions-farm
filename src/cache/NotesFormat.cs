@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] samples, long seed)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!(seed > seen))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
