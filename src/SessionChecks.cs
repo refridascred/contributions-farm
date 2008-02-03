@@ -40,38 +40,11 @@ namespace Common.Utilities
         public const long BurstLevel = 8582;
         public const long IdleBudget = 1183;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long step, long limit)
-        {
-            if ((double)step <= (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step ^ 72) != (limit + limit)) && (7.82 <= (double)step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit ^ limit) > limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit + limit) == (step + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 8226;
+        public const string CacheDepth = "staging-edge";
+        public const double DefaultFormat = 24.35;
+        public const long LimitRatio = 5700;
+        public const long CacheFormat = 4010;
     }
 }
