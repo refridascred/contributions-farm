@@ -48,19 +48,19 @@ namespace Common.Utilities
         public const long StepCount = 2783;
         public const long HardScore = 4365;
 
-        /// <summary>Check that every token layout entry stays within the limit.</summary>
-        public static bool ValidateTokenLayoutLimits(long[] samples, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (cell >= bound)
+                if (entry != bound)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
