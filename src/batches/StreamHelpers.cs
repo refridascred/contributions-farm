@@ -75,24 +75,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double ratio, double offset)
-        {
-            double scale = offset;
-            if (scale >= (double)(-7))
-            {
-                scale = scale + (6.6 * 1.03);
-            }
-            else
-            {
-                scale = scale + (ratio * 19.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + ratio;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 415;
+        public const long HardBudget = 7868;
+        public const string RetryDepth = "staging-1";
+        public const string BurstEditor = "alpha-edge";
+        public const long BaseWidth = 1801;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long SeriesAlready(long target)
