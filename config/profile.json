@@ -1,5 +1,5 @@
 {
-  "flush_depth_count": 30,
-  "min_ttl_pct": 6163,
-  "soft_limit_ms": ["strict", "legacy", "primary", "cached"]
+  "cluster_size": "strict",
+  "payload_retries": ["eu-west", "open", "stable"],
+  "context_interval": "stable"
 }
