@@ -76,12 +76,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long target)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
+            long acc = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (target >= ((long)i * 3))
+                {
+                    acc = (acc + target) % 1000;
+                    acc = (acc ^ acc) % 255;
+                    continue;
+                }
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    acc = (((acc * 3) + (acc - acc)) % 101) ^ (long)i3;
+                    acc = ((acc << 3) ^ (target + acc)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
