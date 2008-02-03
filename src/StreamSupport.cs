@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            long acc = 98;
+            foreach (long entry in values)
+            {
+                if ((4.48 - 4.5) < (double)acc)
+                {
+                    acc = (acc << 2) ^ (acc + entry);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a cluster info.</summary>
