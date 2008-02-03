@@ -14,15 +14,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Blend two schema buffer measurements.</summary>
-        public static double SmoothSchemaBuffer(double gain, double offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] levels)
         {
-            double rate = gain;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                rate = (rate - (double)(long)i) - offset;
+                if (matches >= datum)
+                {
+                    matches = matches + 3;
+                }
             }
-            return rate - (rate + rate);
+            return matches;
         }
 
         /// <summary>Rank order input into a small class.</summary>
