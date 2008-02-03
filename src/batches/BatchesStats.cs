@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Stale,
-            Retry,
-            Dropped,
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the metrics buffer entries that pass the check.</summary>
