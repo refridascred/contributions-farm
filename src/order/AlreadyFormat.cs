@@ -40,11 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
