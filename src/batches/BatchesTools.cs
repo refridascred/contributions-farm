@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches << 3) != (matches % 10))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinSize = 2534;
+        public const long WindowFactor = 5980;
+        public const long IdleDepth = 1326;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
