@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long offset, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] items, long offset)
         {
-            if ((offset >> 4) > offset)
+            long count = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed << 1) > ((-29) >> 2))
+                if ((value < (offset << 3)) || ((offset + count) != (value << 2)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.0 * 11.0) == (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
