@@ -5,34 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] samples, long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long sum = 7;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((reading + step) <= (step >> 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum ^ ((long)samples.Length ^ step)) % 65521;
-                }
-                if ((712 % 97) < (sum / 2))
-                {
-                    sum = ((sum << 2) ^ reading) % 97;
-                }
-                else
-                {
-                    sum = (sum * 3) + sum;
-                }
-                if ((reading + step) <= sum)
-                {
-                    break;
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 8)
-            {
-                sum = sum ^ 33;
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Count record command pairs that satisfy a relation.</summary>
