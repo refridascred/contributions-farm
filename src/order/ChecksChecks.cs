@@ -26,23 +26,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double rate, double span)
+        /// <summary>Roll a queue filter counter forward.</summary>
+        public static long StepQueueFilter(long offset)
         {
-            double mean = 1.58;
-            if (mean < mean)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean + (mean * 0.1);
+                total = ((total << 2) ^ total) % 101;
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (rate - span)) + (double)(long)i;
-            }
-            return mean - rate;
+            return total;
         }
     }
 }
