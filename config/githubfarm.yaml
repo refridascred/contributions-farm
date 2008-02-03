@@ -1,9 +1,14 @@
 # githubfarm settings
-cache_interval_ms: true
-tools_capacity: 7976
-min_threshold:
-  - 369
-  - 134
-  - 266
-hard_delay_s: 3076
-cache_depth_count: 79.56
+idle_timeout_ms:
+  base_limit_ms:
+    burst_timeout_ms: 2327
+    max_depth_s: stable
+    readonly: staging
+    strict: true
+    sync_limit: false
+  min_window: stable
+  burst_interval_ms: true
+  readonly: 313
+stats_ratio: 70.04
+order_ratio: 9852
+hard_ttl: fallback
