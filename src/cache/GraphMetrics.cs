@@ -20,13 +20,11 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryWidth = 482;
+        public const string MinRatio = "stable-edge";
+        public const long MinInterval = 6594;
+        public const long StepCount = 1426;
 
         /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
         public static long AuditGithubfarmClusterOutliers(long[] samples, long step)
