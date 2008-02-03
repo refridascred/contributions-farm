@@ -27,15 +27,16 @@ namespace Common.Utilities
         public const long StepPayload = 6701;
         public const double BatchRatio = 23.28;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Derive the next queue route value from a seed.</summary>
+        public static long IterateQueueRoute(long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                mark = (mark * 3) + mark;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
