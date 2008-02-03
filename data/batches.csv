@@ -1,9 +1,7 @@
-id,token,level,rank
-1,930,primary,blue
-2,88.84,78.98,386
-3,633,standard,167
-4,2.31,81.25,staging
-5,63.92,680,64.89
-6,primary,fallback,12.19
-7,421,legacy,legacy
-8,69,277,22.42
+id,owner,ratio,level,region
+1,407,634,43,latest
+2,91,800,legacy,797
+3,462,524,10.44,primary
+4,168,49,316,380
+5,17.0,54.19,17.43,83.04
+6,96.29,open,768,9.17
