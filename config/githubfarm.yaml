@@ -1,9 +1,13 @@
 # githubfarm settings
-compress:
-  profile_ttl: 20.23
-  order_interval: false
-  token_limit: 77.12
-  farm_window: standard
-default_timeout_pct: stable
-verbose: 78
-poll_limit_count: false
+enabled:
+  idle_size_ms: 31.63
+  soft_window_count:
+    - 362
+    - 448
+    - 492
+    - 84
+  cache_ttl_pct: latest
+payload_window: 100
+retry_size_count: 6
+entry_capacity: 100
+soft_ttl: 93.61
