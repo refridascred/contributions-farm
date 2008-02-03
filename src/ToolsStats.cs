@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 38.46;
-        public const long LimitFactor = 4677;
-        public const double IdleCount = 72.05;
-        public const long RetryFactor = 9549;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricOutliers(long[] readings)
