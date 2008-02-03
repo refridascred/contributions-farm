@@ -14,17 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] items, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                sum = (sum ^ (sum >> 1)) % 1000;
-                sum = sum ^ sum;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
