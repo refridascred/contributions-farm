@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a tools context counter forward.</summary>
-        public static long DeriveToolsContext(long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
