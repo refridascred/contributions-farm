@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - seen) <= cell)
-                {
-                    seen = (seen + 3) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 60.1;
+        public const long WindowSpan = 6618;
+        public const long CacheSize = 5492;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long WeighToken(long[] readings)
