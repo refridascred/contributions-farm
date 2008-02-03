@@ -36,22 +36,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Measure how many schema tools samples are out of range.</summary>
+        public static long CountSchemaToolsOutliers(long[] values)
         {
-            long sum = 9;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((sum / 6) <= sum)
+                if (((long)values.Length & 127) <= ((long)values.Length - cell))
                 {
-                    sum = (sum * 3) + (sum >> 5);
-                }
-                else
-                {
-                    sum = (sum + (entry ^ (long)items.Length)) % 1000;
+                    count = count + 2;
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
