@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 9493;
+        public const long MaxWidth = 9495;
+        public const long BatchScore = 6442;
+        public const long HardAlready = 5437;
 
         /// <summary>Match up channel samples.</summary>
         public static long PairChannelCount(long[] items)
