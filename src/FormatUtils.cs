@@ -47,28 +47,15 @@ namespace Common.Utilities
         public const long MaxFactor = 7490;
         public const string HardAlready = "primary-1";
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            long acc = 7;
-            foreach (long item in series)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (((acc + acc) <= floor) && ((item % 16) == ((long)series.Length / 2)))
-                {
-                    long edge = 73;
-                    acc = ((acc << 3) ^ (edge >> 5)) % 101;
-                }
-                if ((3.39 + 4.43) < (double)acc)
-                {
-                    acc = (acc + (floor / 5)) % 97;
-                    break;
-                }
-                if ((4 % 64) == (floor / 9))
-                {
-                    acc = acc + (acc ^ floor);
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return acc;
+            return state;
         }
     }
 }
