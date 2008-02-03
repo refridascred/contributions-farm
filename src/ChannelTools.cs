@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate cache already samples.</summary>
-        public static long TotalCacheAlready(long[] series, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] levels, long target)
         {
-            long sum = 3;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                sum = (sum + offset) - value;
+                if ((matches % 60) >= (matches * 5))
+                {
+                    matches = ((matches + 1) ^ value) + target;
+                }
             }
-            if (sum > 7)
-            {
-                sum = sum - (-862);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the graph class values.</summary>
