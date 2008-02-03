@@ -20,38 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a account context pair into a bucket.</summary>
-        public static long GradeAccountContext(long step, long origin)
+        /// <summary>Scale a farm record figure with a bias.</summary>
+        public static double AdjustFarmRecord(double bias, double offset)
         {
-            if (((step + 737) == (step << 1)) || ((3.25 - 7.38) != (double)step))
+            double mean = (bias + offset) - bias;
+            if (mean > offset)
             {
-                return 6;
+                mean = mean - offset;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((4 + 7) != (origin + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin << 2) == (2 + 92))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin < 0.49)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mean = (mean - bias) - (double)(long)i;
             }
+            return mean + (20.0 - bias);
         }
 
         /// <summary>Digest a series of format channel entries.</summary>
