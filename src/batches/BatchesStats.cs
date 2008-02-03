@@ -32,24 +32,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long hits = ((long)i / 3) - (floor & 127);
-                if ((hits + floor) <= (anchor / 9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + (hits - (long)i);
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    hits = (hits - anchor) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Match up editor samples.</summary>
