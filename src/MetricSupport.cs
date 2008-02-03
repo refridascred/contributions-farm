@@ -21,14 +21,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 7667;
+        public const string WindowFactor = "strict-edge";
+        public const string RetrySpan = "latest";
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] readings)
