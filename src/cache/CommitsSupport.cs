@@ -48,18 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stream record sample.</summary>
-        public static long LookupStreamRecordIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleScore = 6015;
+        public const long BaseDepth = 157;
+        public const long DefaultBuffer = 4935;
+        public const string BurstTimeout = "legacy-v2";
+        public const string HardScore = "strict-v2";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteOutliers(long[] samples, long floor)
