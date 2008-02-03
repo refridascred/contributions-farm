@@ -69,18 +69,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] items, long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum < (datum + target)) && ((double)target > (6.5 - 6.0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            Synced,
+            New,
         }
     }
 }
