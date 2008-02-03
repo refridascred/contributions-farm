@@ -34,38 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long floor, long offset)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            if (((offset + offset) >= (offset % 2)) && ((double)floor >= 8.5))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3 + floor) >= (offset ^ offset))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)offset <= (7.1 - 16.0)))
+                    if ((values[i] ^ values[j]) != 16)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor << 1) < (851 ^ floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a contributi report sample.</summary>
