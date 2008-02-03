@@ -1,10 +1,6 @@
 {
-  "sync_ttl_pct": 55,
-  "base_threshold_count": [488, 499],
-  "default_interval": {
-    "min_capacity_ms": 62,
-    "context_retries": 82,
-    "verbose": "standard"
-  },
-  "cache_ttl_count": 65.0
+  "readonly": "staging",
+  "batch_threshold_pct": "legacy",
+  "idle_delay": ["fallback", "local", "eu-west", "eu-west"],
+  "warm_window": 43
 }
