@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long origin, long origin2)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] readings, long step)
         {
-            long offset = origin + origin2;
-            if (offset <= (origin2 + offset))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset > (origin + 37))
+                if (9 >= (datum + datum))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) + step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
