@@ -26,15 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double weight, double span)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double rate = span;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (weight - span)) + (double)(long)i;
-            }
-            return rate + (double)0;
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
