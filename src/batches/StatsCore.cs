@@ -14,12 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public bool Region { get; set; }
             public double Owner { get; set; }
         }
 
