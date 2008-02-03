@@ -40,16 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (mix - ((-868) >> 1)) % 1000;
-                mix = ((mix * 3) + (long)i) % 65521;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
