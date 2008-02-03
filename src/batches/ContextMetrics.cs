@@ -29,12 +29,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 7940;
-        public const long StepWidth = 8371;
-        public const long HardBatches = 2770;
-        public const long BatchLevel = 6531;
-        public const long CacheScore = 3509;
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesMatches(long[] data, long offset)
