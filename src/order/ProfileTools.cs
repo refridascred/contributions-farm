@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryLevel = 77.37;
-        public const long BaseTimeout = 1969;
-        public const string BurstTimeout = "fallback";
-        public const long DefaultSize = 9262;
-        public const long RetryBudget = 8105;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] items, long floor)
+        {
+            long mix = 836;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = (mix - (mix - (long)i)) % 1000;
+                    mix = (mix + (datum - floor)) % 65521;
+                }
+                mix = (mix - mix) % 4096;
+                if ((9.91 + 8.08) < (double)(long)items.Length)
+                {
+                    mix = (mix * 2) + (floor ^ mix);
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long FindTokenIndex(long[] values, long limit)
