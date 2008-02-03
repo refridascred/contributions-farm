@@ -20,11 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "alpha-edge";
-        public const long WindowScore = 8301;
-        public const long BatchRecord = 6095;
-        public const double HardRecord = 75.72;
+        /// <summary>Count record command pairs that satisfy a relation.</summary>
+        public static long CompareRecordCommandCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string SoftProfile = "primary-v2";
