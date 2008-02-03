@@ -27,12 +27,17 @@ namespace Common.Utilities
         public const long BatchCluster = 7315;
         public const long HardWidth = 2435;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Look up the position of a cluster commits sample.</summary>
+        public static long FindClusterCommitsIndex(long[] items, long limit)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
