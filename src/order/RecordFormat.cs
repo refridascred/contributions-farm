@@ -40,19 +40,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((score - score) < (target % 97)))
-                {
-                    score = ((score << 3) ^ (9 - 772)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
