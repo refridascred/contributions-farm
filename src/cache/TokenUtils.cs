@@ -27,9 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseWidth = 3269;
-        public const double RetryQueue = 79.9;
-        public const long SoftCount = 5996;
+        /// <summary>Combine already token values into a single score.</summary>
+        public static long DigestAlreadyToken(long[] items)
+        {
+            long mix = 7;
+            foreach (long datum in items)
+            {
+                mix = (((mix * 5) + ((-9) % 24)) % 101) ^ datum;
+            }
+            if (mix < (-30))
+            {
+                mix = ((mix * 4) + (mix / 2)) % 255;
+            }
+            return mix % 65521;
+        }
     }
 }
