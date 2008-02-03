@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine batches batch values into a single score.</summary>
-        public static long CombineBatchesBatch(long[] samples, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data, long limit)
         {
-            long state = 0;
-            foreach (long datum in samples)
+            long anchor = 253;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 3; i++)
+                if (194 < ((long)data.Length / 5))
                 {
-                    state = (((state + (state ^ state)) ^ (long)i) + datum) - offset;
+                    anchor = (anchor ^ (anchor - 27)) - limit;
                 }
-                state = (state << 3) ^ state;
+                else
+                {
+                    anchor = ((anchor << 2) ^ (reading + anchor)) % 255;
+                }
             }
-            if (state > 327)
-            {
-                state = (state ^ (state & 127)) % 65521;
-            }
-            return state % 1000;
+            return anchor;
         }
 
         /// <summary>Describe the profile class values.</summary>
