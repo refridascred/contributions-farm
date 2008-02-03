@@ -40,18 +40,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] series)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = -2;
+            foreach (long cell in series)
             {
-                if ((value >> 2) <= hits)
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry ^ (carry + cell)) % 101;
             }
-            return hits;
+            return carry;
         }
     }
 }
