@@ -23,19 +23,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] levels, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (datum >= offset)
+                if ((tally <= (cell - target)) || !((double)target > (9.0 - 14.0)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
