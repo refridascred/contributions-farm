@@ -42,38 +42,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long seed, long offset)
+        /// <summary>Check that every layout schema entry stays within the limit.</summary>
+        public static bool GuardLayoutSchemaRange(long[] data, long origin)
         {
-            if ((9.2 + 3.0) != (double)offset)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0 + seed) >= seed)
+                if (reading > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset <= seed) || ((98 + seed) >= (91 % 8)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset >= (offset % 64))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
