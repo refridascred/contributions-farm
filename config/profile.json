@@ -1,6 +1,13 @@
 {
-  "persist": "green",
-  "enabled": 45.45,
-  "audit": 91,
-  "min_ratio": ["standard", "primary"]
+  "batch_ratio": 250,
+  "githubfarm_depth": true,
+  "cache_ttl": {
+    "support_depth": 26.38,
+    "farm_ratio": ["cached", "cached", "open"],
+    "base_timeout_count": 63.02,
+    "flush_ratio": 1024,
+    "notes_ratio": true
+  },
+  "idle_limit": 1115,
+  "editor_threshold": ["edge", "primary"]
 }
