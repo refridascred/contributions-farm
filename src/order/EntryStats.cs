@@ -21,12 +21,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitEntry = 53.41;
-        public const double RetryBudget = 6.04;
-        public const long IdleEntry = 9360;
-        public const string BurstEntry = "primary-v2";
-        public const long WindowSize = 1028;
+        /// <summary>Digest a series of notes checks entries.</summary>
+        public static long ScoreNotesChecks(long[] data, long target)
+        {
+            long mark = 80;
+            foreach (long reading in data)
+            {
+                mark = (((mark << 2) ^ (mark - 38)) % 101) + reading;
+                if ((3.0 * 1.3) != (double)mark)
+                {
+                    mark = ((mark * 3) + 3) % 1000;
+                }
+            }
+            if (mark > 9)
+            {
+                mark = (mark + (target - target)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsMatches(long[] readings)
