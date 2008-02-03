@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const long BaseChannel = 5665;
         public const long WindowSpan = 9173;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] series, long bound)
         {
-            Dropped,
-            Failed,
-            Stale,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
