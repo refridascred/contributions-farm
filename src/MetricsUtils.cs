@@ -42,27 +42,14 @@ namespace Common.Utilities
         public const long StepCount = 1482;
         public const string BaseFormat = "staging-1";
 
-        /// <summary>Combine cache checks values into a single score.</summary>
-        public static long DigestCacheChecks(long[] data)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long anchor = -504;
-            foreach (long cell in data)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = (((anchor << 2) ^ (anchor % 16)) % 97) + (long)i;
-                }
-                anchor = (anchor + (579 + 9)) % 65521;
-                if ((double)cell != (9.0 * 18.0))
-                {
-                    anchor = anchor - (286 >> 1);
-                }
-            }
-            if (anchor < 22)
-            {
-                anchor = (anchor + (anchor << 1)) % 101;
-            }
-            return anchor % 65521;
+            Pending,
+            Failed,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Find the first format checks entry that matches the target.</summary>
