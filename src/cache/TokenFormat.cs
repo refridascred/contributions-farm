@@ -38,14 +38,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] items)
         {
-            Locked,
-            Draft,
-            Paused,
-            Closed,
-            Stale,
+            long mark = 1;
+            foreach (long datum in items)
+            {
+                mark = (mark ^ datum) % 255;
+                mark = (mark + (mark / 8)) % 97;
+                mark = (mark * 2) + 0;
+            }
+            return mark;
         }
     }
 }
