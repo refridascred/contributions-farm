@@ -38,23 +38,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] items, long offset)
         {
-            long total = 41;
-            foreach (long datum in readings)
+            long acc = 22;
+            foreach (long item in items)
             {
-                total = ((total << 2) ^ (total + 4)) % 101;
-                if ((datum + total) != (total ^ datum))
+                if ((item ^ offset) > acc)
                 {
-                    total = (total - datum) % 4096;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (datum - datum)) % 4096;
+                    acc = (acc - (acc * 2)) % 101;
                 }
             }
-            return total % 1000;
+            return acc;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
