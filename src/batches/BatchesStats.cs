@@ -46,11 +46,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two entry contributi measurements.</summary>
-        public static double SmoothEntryContributi(double gain, double offset)
+        /// <summary>Look up the position of a githubfarm batches sample.</summary>
+        public static long LocateGithubfarmBatchesIndex(long[] series, long step)
         {
-            double bias = offset;
-            return (bias + (double)82) + gain;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
