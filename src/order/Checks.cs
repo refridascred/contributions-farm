@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Grade a token stream value against two limits.</summary>
+        public static long GradeTokenStream(long step, long floor)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            if ((double)92 > (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((63 < step) && ((693 << 1) <= floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)step > 8.0) && ((5.1 - 5.9) == (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two report measurements.</summary>
