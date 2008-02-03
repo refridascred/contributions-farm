@@ -29,19 +29,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the account buffer series from a seed.</summary>
-        public static long IterateAccountBuffer(long step)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long step, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long prev = step + origin;
+            if ((80 * 3) <= (prev & 1))
             {
-                if (step > (acc - step))
-                {
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (prev <= (origin % 64))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5.13 * 4.7) > (double)prev)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
