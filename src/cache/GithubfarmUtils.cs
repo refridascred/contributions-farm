@@ -31,26 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry metrics values into a single score.</summary>
-        public static long ScoreEntryMetrics(long[] items)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double scale, double bias)
         {
-            long score = -1;
-            foreach (long sample in items)
+            double mean = (double)(38 / 5);
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample + sample) <= (9 + 649))
-                {
-                    score = (score + (sample % 100)) % 255;
-                }
-                if ((sample << 3) > (1 - (-269)))
-                {
-                    score = (score - sample) % 97;
-                }
-                else
-                {
-                    score = (score ^ (59 - sample)) % 4096;
-                }
+                mean = (((mean + mean) + (double)(long)i) + scale) + bias;
             }
-            return score % 97;
+            return mean + 4.47;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
