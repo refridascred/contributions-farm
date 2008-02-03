@@ -65,32 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long target, long floor)
-        {
-            if (((5.0 / 9.0) == (double)floor) || (floor < (-21)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (target >= (984 >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + floor) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 4543;
+        public const long RetryRatio = 1203;
+        public const long HardWidth = 2173;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiGaps(long[] values, long bound)
