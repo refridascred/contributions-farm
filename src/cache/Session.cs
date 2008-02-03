@@ -18,30 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long step, long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long limit, long origin)
         {
-            long step2 = step - origin;
-            if ((origin % 12) > (step2 * 4))
+            long slot = limit ^ origin;
+            if ((374 / 3) < (limit * 3))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (origin >= (step - step2))
+                if ((slot << 3) <= 4)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if ((origin % 8) == (step >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 2;
                 }
             }
         }
