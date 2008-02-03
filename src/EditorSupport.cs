@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] series, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long limit, long limit2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (limit < limit2)
             {
-                if (series[i] < offset)
+                return 1;
+            }
+            else
+            {
+                if ((9.7 - 1.57) > 3.4)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (limit >= (limit ^ limit2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine record session values into a single score.</summary>
