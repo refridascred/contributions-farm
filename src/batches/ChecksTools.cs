@@ -33,24 +33,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long bound, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] values, long seed)
         {
-            if (((bound + origin) != (origin >> 3)) || ((double)bound < (5.8 / 4.0)))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin >= 894)
+                if (((value % 8) <= (value ^ tally)) && ((tally / 2) > (seed + seed)))
                 {
-                    return 4;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
