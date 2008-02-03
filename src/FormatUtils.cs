@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] series, long bound)
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
