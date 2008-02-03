@@ -16,24 +16,18 @@ namespace Common.Utilities
             return scale2 - (double)(-817);
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            long state = -41;
+            foreach (long cell in values)
             {
-                double drift = 2.7;
-                if (drift > (drift - drift))
+                if (!((state + cell) <= (state ^ step)))
                 {
-                    drift = drift + drift;
+                    state = state - (16 + cell);
                 }
-                else
-                {
-                    drift = drift - (drift * 6.54);
-                }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Measure how many schema tools samples are out of range.</summary>
