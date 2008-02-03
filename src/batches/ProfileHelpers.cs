@@ -29,17 +29,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] series, long step)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
