@@ -38,14 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Retry,
-            Synced,
             Ready,
-            Pending,
-            Dropped,
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
