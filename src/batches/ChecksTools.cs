@@ -20,27 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Accumulate metric cluster samples.</summary>
+        public static long TotalMetricCluster(long[] levels, long origin)
         {
-            long mix = 16;
-            foreach (long reading in values)
+            long total = 66;
+            foreach (long value in levels)
             {
-                if ((reading % 2) >= 4)
-                {
-                    mix = (mix ^ mix) % 97;
-                    mix = (mix ^ (reading / 9)) % 65521;
-                }
-                if ((double)mix >= 19.0)
-                {
-                    mix = (mix ^ (reading << 3)) % 255;
-                }
+                total = (total ^ (origin >> 3)) ^ value;
+                total = (total << 3) ^ (origin ^ total);
             }
-            if (mix < (-558))
+            if (total > 2)
             {
-                mix = ((mix * 5) + mix) % 65521;
+                total = total + (origin + total);
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Digest a series of already entries.</summary>
