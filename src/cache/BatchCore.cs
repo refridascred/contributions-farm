@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] values, long bound)
+        /// <summary>Compare every pair of record account readings.</summary>
+        public static long CompareRecordAccountCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Blend two checks batch measurements.</summary>
