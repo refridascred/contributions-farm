@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-primary}"
 case "${mode}" in
-    latest)
+    primary)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,12 @@ case "${mode}" in
         ;;
 esac
 
+for item in fallback green; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
