@@ -1,15 +1,21 @@
 # githubfarm settings
-compress: latest
-idle_timeout_s:
-  min_capacity_ms:
-    batch_ratio_pct: 250
-    hard_interval: false
-    base_timeout: 14.47
-    metrics_size: 8.8
-    burst_interval_pct: 64.27
-  soft_limit_ms: 250
-  base_ratio_count: 74
-hard_threshold_s: 16.68
-notes_interval: 1024
-soft_interval_s: blue
-warm_interval_s: 60
+batch_depth_count:
+  min_capacity_count: true
+  flush_delay:
+    min_capacity_count: 86
+    poll_retries_ms: open
+    min_ratio_ms: 500
+    commits_capacity: standard
+    strict:
+      - green
+      - local
+      - stable
+      - local
+  queue_capacity: fallback
+  max_ttl: 62.0
+  idle_timeout_ms: local
+  strict: 100
+cache_delay_ms: edge
+sync_retries: 40
+flush_capacity_count: 75.3
+hard_threshold_count: 21
