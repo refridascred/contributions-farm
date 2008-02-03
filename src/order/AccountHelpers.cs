@@ -41,23 +41,10 @@ namespace Common.Utilities
         public const double LimitInterval = 64.62;
         public const string SoftAlready = "primary-edge";
 
-        /// <summary>Count the stream notes entries that pass the check.</summary>
-        public static long TallyStreamNotesGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally + reading) == (reading - reading))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftScore = 2633;
+        public const long BaseEntry = 3885;
+        public const long LimitEntry = 2174;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] items)
