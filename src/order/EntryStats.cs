@@ -32,12 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long step)
         {
-            Closed,
-            Dropped,
-            Retry,
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
