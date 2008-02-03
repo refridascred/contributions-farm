@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] readings, long limit)
         {
-            Queued,
-            Failed,
-            Stale,
-            Done,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
