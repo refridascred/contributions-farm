@@ -1,7 +1,12 @@
 {
-  "hard_interval_s": "stable",
-  "warm_depth_s": 59.29,
-  "soft_delay_s": 4.34,
-  "enabled": "local",
-  "default_delay": false
+  "soft_depth": "blue",
+  "support_interval": {
+    "soft_depth": true,
+    "sync_threshold_pct": "legacy",
+    "route_delay": "strict",
+    "max_delay_pct": "fallback"
+  },
+  "hard_timeout_ms": "standard",
+  "base_ttl": 97,
+  "sync_ttl_count": false
 }
