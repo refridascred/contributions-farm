@@ -43,13 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Retry,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowSize = 553;
+        public const long DefaultEntry = 5923;
+        public const double IdleDepth = 50.05;
+        public const long HardEntry = 2089;
 
         /// <summary>Adjust a farm context reading.</summary>
         public static double ScaleFarmContext(double ratio, double span)
