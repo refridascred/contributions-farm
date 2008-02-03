@@ -19,12 +19,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Compare every pair of token buffer readings.</summary>
+        public static long MatchTokenBufferCount(long[] levels)
         {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
