@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (9 >= (datum + datum))
-                {
-                    matches = (matches + 1) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinCache = "primary-v2";
+        public const long BurstCache = 5364;
+        public const long IdleTimeout = 6664;
+        public const long RetryCache = 8972;
 
         /// <summary>Combine route entry values into a single score.</summary>
         public static long DigestRouteEntry(long[] samples, long limit)
