@@ -88,39 +88,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long seed, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] readings)
         {
-            long span = seed + offset;
-            if (span > (seed & 63))
+            long sum = -9;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((span / 9) > seed)
+                if ((double)value != (3.02 * 1.94))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((13.0 + 0.63) == (double)span)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((12 ^ span) < 2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = (sum << 2) ^ sum;
                 }
             }
+            if (sum > 42)
+            {
+                sum = sum ^ (sum >> 1);
+            }
+            return sum;
         }
     }
 }
