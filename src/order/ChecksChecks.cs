@@ -17,19 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long result = 9;
-            foreach (long reading in items)
-            {
-                result = result - (result & 15);
-                if ((reading / 7) > (reading % 2))
-                {
-                    result = ((result * 2) + (result - result)) % 101;
-                }
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
