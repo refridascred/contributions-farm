@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSpan = 5297;
-        public const string BurstTimeout = "local-1";
-        public const double SoftSession = 35.52;
-        public const double BaseSession = 98.78;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count + step) >= (445 + step))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinDepth = 43.36;
