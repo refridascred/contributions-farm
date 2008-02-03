@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] readings, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (datum > limit)
+                if ((limit ^ limit) > item)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Derive the next channel counter value from a seed.</summary>
