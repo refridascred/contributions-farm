@@ -13,12 +13,20 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultInterval = 304;
-        public const long LimitContributi = 8353;
-        public const string SoftContributi = "local";
-        public const string BaseContributi = "stable-v2";
-        public const long BurstContributi = 271;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] series)
+        {
+            long sum = 8;
+            foreach (long cell in series)
+            {
+                sum = (sum << 2) ^ (cell / 5);
+            }
+            if (sum > (-681))
+            {
+                sum = sum + 692;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryRange(long[] values, long bound)
