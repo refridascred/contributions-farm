@@ -45,34 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seed - mark) > mark)
+                acc = (acc ^ ((long)i >> 1)) % 65521;
+                if (((long)i / 7) > (long)i)
                 {
-                    long seen = (seed - seed) + (seed ^ seed);
-                    mark = mark + (seen ^ seed);
+                    acc = acc - (step + step);
                 }
-                else
-                {
-                    mark = mark - (mark + mark);
-                }
-                if (!((double)mark <= (double)seed))
-                {
-                    mark = (mark ^ (mark - seed)) % 1000;
-                    mark = (mark << 3) ^ seed;
-                }
-                if ((((-27) + (long)i) <= (seed + (long)i)) || ((double)mark > (double)(long)i))
-                {
-                    mark = mark - seed;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the route level values.</summary>
