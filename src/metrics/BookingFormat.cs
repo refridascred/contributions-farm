@@ -17,10 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstScore = 9926;
-        public const long RetryFactor = 5965;
-        public const string MaxRatio = "cached-v2";
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
         public static long CountFormatGithubfarmHits(long[] readings, long bound)
