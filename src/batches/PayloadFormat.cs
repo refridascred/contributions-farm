@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long BaseChannel = 5665;
         public const long WindowSpan = 9173;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] series, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
