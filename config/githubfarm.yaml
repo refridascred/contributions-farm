@@ -1,5 +1,16 @@
 # githubfarm settings
-burst_ratio_s: 30
-enabled: 500
-persist: local
-warm_interval_count: 475
+dry_run: 250
+channel_capacity: latest
+editor_delay: true
+min_ratio_pct: 82.98
+batch_limit_count:
+  compress: strict
+  default_size: local
+  idle_retries_s:
+    default_depth_count: standard
+    verbose: 30.67
+    poll_interval_count: primary
+    audit:
+      - 56
+      - 334
+    already_limit: 8
