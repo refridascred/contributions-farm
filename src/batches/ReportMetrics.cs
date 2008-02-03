@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long step)
         {
-            New,
-            Pending,
-            Locked,
-            Ready,
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
