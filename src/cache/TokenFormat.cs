@@ -23,13 +23,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public double Count { get; set; }
-            public bool Size { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the account tools entries that pass the check.</summary>
