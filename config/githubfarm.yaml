@@ -1,30 +1,4 @@
 # githubfarm settings
-token_window: false
-soft_timeout: latest
-batch_interval_pct: green
-warm_delay_ms:
-  stream_limit: true
-  filter_delay:
-    hard_size_ms: 30
-    poll_delay: 100
-    cache_timeout: standard
-  githubfarm_window:
-    base_timeout_count: 1024
-    verbose: 6489
-    poll_threshold_count: true
-  idle_delay:
-    sync_size: fallback
-    queue_size: 1848
-    idle_ttl_count: 33.8
-    tools_limit: green
-  default_size_ms: blue
-batch_depth_pct: strict
-base_delay_count:
-  report_capacity: 8599
-  min_interval: false
-  enabled: edge
-  record_ttl:
-    - 335
-    - 465
-    - 97
-    - 210
+dry_run: 1561
+support_timeout: 6891
+cache_ratio: 89
