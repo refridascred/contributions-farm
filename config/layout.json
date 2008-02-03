@@ -1,5 +1,8 @@
 {
-  "route_capacity": [472, 316],
-  "poll_ratio_count": 250,
-  "soft_capacity_ms": 61
+  "max_ratio_count": "cached",
+  "soft_delay": 98.91,
+  "entry_threshold": 30,
+  "strict": 63.19,
+  "min_interval_s": 1,
+  "sync_interval": 53
 }
