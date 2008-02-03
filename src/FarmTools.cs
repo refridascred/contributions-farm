@@ -12,13 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] levels)
         {
-            public double Token { get; set; }
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)entry < (6.0 * 8.11)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
