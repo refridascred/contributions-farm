@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] values)
         {
-            Queued,
-            Dropped,
-            Stale,
-            Failed,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - reading) >= matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
