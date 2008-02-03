@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a githubfarm buffer counter forward.</summary>
-        public static long SeriesGithubfarmBuffer(long floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] values, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark ^ ((long)i + floor)) % 97;
-                mark = ((mark << 3) ^ (floor << 1)) % 101;
-                mark = (mark ^ ((long)i / 2)) % 65521;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a layout stats.</summary>
