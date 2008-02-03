@@ -1,6 +1,8 @@
-id,count,active,rank,weight
-1,814,955,338,168
-2,10.06,local,733,cached
-3,79.73,stable,eu-west,836
-4,97.0,27.55,81.58,stable
-5,local,fallback,44.14,primary
+id,count
+1,201
+2,standard
+3,12.41
+4,87.02
+5,63.4
+6,edge
+7,fallback
