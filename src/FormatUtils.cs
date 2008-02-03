@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] samples, long seed)
+        /// <summary>Audit payload already readings against a rule.</summary>
+        public static long CountPayloadAlreadyHits(long[] samples, long step)
         {
-            long sum = -160;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                sum = ((sum - (sum - seed)) % 101) + value;
+                if ((sample < (step / 6)) && ((double)step == (8.0 * 6.6)))
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a metric options.</summary>
