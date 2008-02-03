@@ -26,30 +26,22 @@ namespace Common.Utilities
         public const long MinWindow = 6138;
         public const long BaseCount = 4686;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] values, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] levels)
         {
-            long carry = 508;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (!((double)origin <= (1.01 * 18.0)))
+                if (!(count < (count / 5)) && !(((long)levels.Length / 8) >= (item >> 5)))
                 {
-                    carry = (carry << 2) ^ (carry + carry);
-                }
-                if ((sample + carry) >= (sample ^ origin))
-                {
-                    carry = (carry + (carry << 3)) % 97;
+                    count = count + 1;
                 }
                 else
                 {
-                    carry = ((carry * 3) + origin) % 255;
+                    count = count - 1;
                 }
             }
-            if (carry > 82)
-            {
-                carry = ((carry << 3) ^ 8) % 97;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a notes record.</summary>
