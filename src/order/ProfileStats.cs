@@ -53,22 +53,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] values, long origin)
+        /// <summary>Look up the position of a contributi report sample.</summary>
+        public static long FindContributiReportIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches + item) > (origin + matches))
+                if (levels[i] < limit)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
