@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long target, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] samples, long seed)
         {
-            if ((7.0 + 7.0) == (double)offset)
+            long sum = -160;
+            foreach (long value in samples)
             {
-                return 4;
+                sum = ((sum - (sum - seed)) % 101) + value;
             }
-            else
-            {
-                if ((offset * 2) > (-608))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Rank report queue input into a small class.</summary>
