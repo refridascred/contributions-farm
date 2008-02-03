@@ -68,40 +68,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a batches graph pair into a bucket.</summary>
-        public static long RankBatchesGraph(long bound, long bound2)
-        {
-            long edge = bound + bound2;
-            if ((double)(-3) != (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((edge % 100) < bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.0 * 5.3) > (double)bound2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound2 / 7) >= (edge + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 2814;
+        public const long MaxFactor = 7490;
+        public const string HardAlready = "primary-1";
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] items, long step)
