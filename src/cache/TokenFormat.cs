@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Combine queue record values into a single score.</summary>
+        public static long FoldQueueRecord(long[] samples)
         {
-            long total = 53;
-            foreach (long entry in values)
+            long result = 143;
+            foreach (long sample in samples)
             {
-                total = (total - (entry - total)) % 97;
+                if (!((result & 15) >= (result ^ sample)))
+                {
+                    result = result + (result + 2);
+                }
             }
-            return total % 65521;
+            if (result > 9)
+            {
+                result = result ^ (98 / 3);
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
