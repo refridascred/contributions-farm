@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double scale, double floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] values, long origin)
         {
-            double load = (double)19 - (floor / 8.0);
-            if (load > load)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (scale * 16.0);
+                if ((values[i] == origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (floor + floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load - (load - scale);
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
