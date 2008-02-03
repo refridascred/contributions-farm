@@ -23,18 +23,17 @@ namespace Common.Utilities
             return ratio + (double)59;
         }
 
-        /// <summary>Audit order checks readings against a rule.</summary>
-        public static long TallyOrderChecksMatches(long[] items)
+        /// <summary>Locate a counter payload reading by value.</summary>
+        public static long LocateCounterPayloadIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)(long)items.Length >= (9.83 / 9.0)) && ((seen >> 2) < 9))
+                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
                 {
-                    seen = (seen + 2) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
