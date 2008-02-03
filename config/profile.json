@@ -1,7 +1,7 @@
 {
-  "compress": "eu-west",
-  "enabled": 2483,
-  "min_size": ["legacy", "edge"],
-  "support_limit": 1024,
-  "audit": 60
+  "batch_depth_s": "green",
+  "hard_delay_pct": true,
+  "idle_depth_ms": "primary",
+  "cache_timeout": 9,
+  "record_timeout": false
 }
