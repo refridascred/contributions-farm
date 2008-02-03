@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of window githubfarm entries.</summary>
-        public static long ScoreWindowGithubfarm(long[] series, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] data)
         {
-            long acc = 2;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((floor % 64) > (2 + floor)) || ((floor + floor) <= 476))
+                if (((seen - seen) != (seen % 5)) && (((cell - 4) <= (669 / 7)) && ((cell / 9) < (cell - (-5)))))
                 {
-                    acc = (acc + entry) % 97;
+                    seen = seen + 2;
                 }
             }
-            if (acc < 870)
-            {
-                acc = (acc ^ (638 + acc)) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
