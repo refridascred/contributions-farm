@@ -66,24 +66,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the queue batches series from a seed.</summary>
-        public static long DeriveQueueBatches(long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double ratio, double bias)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            double weight = (bias - 4.58) + bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(((long)i + (long)i) == (181 & 31)))
-                {
-                    mix = mix ^ (long)i;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ ((long)i + 75);
-                    mix = (mix + (offset - offset)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                weight = ((weight - (weight + bias)) + (double)(long)i) + ratio;
             }
-            return mix;
+            return weight + (double)75;
         }
     }
 }
