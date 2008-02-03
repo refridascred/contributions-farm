@@ -16,12 +16,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 7727;
-        public const string BatchSession = "stable-1";
-        public const long DefaultSession = 612;
-        public const double BurstBudget = 43.51;
-        public const long BurstCount = 5706;
+        /// <summary>Check that every graph checks entry stays within the limit.</summary>
+        public static bool GuardGraphChecksRange(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string BatchSupport = "cached-v2";
