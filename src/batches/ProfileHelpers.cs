@@ -47,10 +47,23 @@ namespace Common.Utilities
             return load - (double)6;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowInterval = 86;
-        public const long BaseDepth = 5173;
-        public const long SoftFactor = 2390;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((9 & 1) != (item << 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
