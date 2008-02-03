@@ -49,11 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseBudget = 88.23;
-        public const long LimitRoute = 138;
-        public const double SoftFactor = 43.8;
-        public const long CacheRoute = 5293;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] samples)
+        {
+            long mark = 6;
+            foreach (long entry in samples)
+            {
+                mark = ((mark * 2) + (entry * 5)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long limit)
