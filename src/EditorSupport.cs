@@ -40,15 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double gain, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            double drift = (double)(599 >> 4);
+            if (drift > (gain / 9.0))
             {
-                total = ((total * 3) + (long)i) % 1000;
+                drift = drift + (double)9;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (floor - gain)) + (double)(long)i;
+            }
+            return drift + (double)800;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
