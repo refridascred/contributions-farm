@@ -29,18 +29,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate queue record samples.</summary>
-        public static long TotalQueueRecord(long[] items)
+        /// <summary>Roll a entry graph counter forward.</summary>
+        public static long RollEntryGraph(long seed)
         {
-            long result = 431;
-            foreach (long sample in items)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (2.5 < (double)result)
+                if (mix >= (mix + (long)i))
                 {
-                    result = result + (sample << 1);
+                    mix = mix - (mix << 1);
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
     }
 }
