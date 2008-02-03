@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double ratio, double span)
-        {
-            double rate = 1.62;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (((rate + rate) + (double)(long)i) + ratio) - span;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseInterval = 7752;
+        public const long IdleScore = 1689;
+        public const long StepScore = 6848;
+        public const double LimitWidth = 22.37;
+        public const long WindowInterval = 5489;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheBudget = 4263;
