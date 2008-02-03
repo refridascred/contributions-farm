@@ -1,16 +1,11 @@
 {
-  "audit": {
-    "retry_capacity": "cached",
-    "base_ratio_s": {
-      "dry_run": 10,
-      "flush_ratio": ["legacy", "strict"],
-      "flush_ttl_ms": true,
-      "stream_limit": 72.65
-    },
-    "dry_run": ["cached", "stable", "legacy", "blue"],
-    "default_window": 20.63
-  },
-  "tools_retries": "cached",
-  "session_size": 61.7,
-  "cache_size_count": true
+  "verbose": "cached",
+  "soft_limit_ms": true,
+  "graph_limit": 5317,
+  "default_ratio_ms": {
+    "schema_timeout": 5970,
+    "strict": "legacy",
+    "audit": 60,
+    "base_capacity": 30
+  }
 }
