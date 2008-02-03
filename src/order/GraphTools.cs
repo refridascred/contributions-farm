@@ -19,11 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long sum = 37;
+            foreach (long datum in levels)
+            {
+                sum = (sum - 0) % 101;
+                sum = (sum * 3) + (63 % 12);
+                if ((sum & 15) >= (datum + datum))
+                {
+                    break;
+                }
+            }
+            if (sum < 16)
+            {
+                sum = ((sum * 5) + (sum / 7)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
