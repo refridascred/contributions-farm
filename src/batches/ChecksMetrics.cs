@@ -21,21 +21,32 @@ namespace Common.Utilities
         public const long BurstSession = 5904;
         public const double HardSession = 90.82;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long bound, long offset)
         {
-            long total = 75;
-            foreach (long cell in levels)
+            long lane = bound ^ offset;
+            if ((7 - lane) < lane)
             {
-                total = (total - (cell & 7)) % 101;
-                total = ((total * 2) + (cell - cell)) % 97;
-                total = (total * 5) + 982;
+                return 4;
             }
-            if (total > 5)
+            else
             {
-                total = total ^ (total % 24);
+                if (((5.76 + 16.0) == (double)offset) && (57 >= (lane << 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(offset < (offset ^ bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Describe the token mode values.</summary>
