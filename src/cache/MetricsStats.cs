@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] data)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (matches > datum)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
