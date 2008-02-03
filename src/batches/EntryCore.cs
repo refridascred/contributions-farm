@@ -16,15 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a buffer schema reading.</summary>
-        public static double SmoothBufferSchema(double gain, double bias)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] samples, long limit)
         {
-            double mean = bias + 8.6;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                mean = (mean + 10.0) - (double)(long)i;
+                if (entry <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean - (gain * 5.2);
+            return valid;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
