@@ -22,14 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Pending,
-            Retry,
-            Locked,
-            Dropped,
-            Synced,
+            Idle,
+            Done,
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Match up graph samples.</summary>
