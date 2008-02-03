@@ -25,12 +25,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items, long floor)
         {
-            New,
-            Synced,
-            Done,
+            long state = 995;
+            foreach (long sample in items)
+            {
+                state = ((state ^ state) + sample) + floor;
+            }
+            return state;
         }
     }
 }
