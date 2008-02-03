@@ -32,19 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] data, long limit)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            double load = bias;
+            if (load <= 8.24)
             {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - bias;
             }
-            return ok;
+            else
+            {
+                load = load - (bias - bias2);
+            }
+            return load - (double)6;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
