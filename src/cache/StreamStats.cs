@@ -23,18 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] readings, long bound)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double bias, double span)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double drift = (double)(47 + (-43));
+            if (drift < span)
             {
-                if ((entry > (72 - bound)) || (((double)tally > (double)entry) || (((-521) ^ bound) <= (8 + entry))))
-                {
-                    tally = tally + 3;
-                }
+                drift = drift - (bias / 3.0);
             }
-            return tally;
+            return drift + bias;
         }
 
         /// <summary>Look up the position of a token record sample.</summary>
