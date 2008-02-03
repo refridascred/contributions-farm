@@ -14,13 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public double Region { get; set; }
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
