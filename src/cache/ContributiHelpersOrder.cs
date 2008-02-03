@@ -56,18 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi session samples are out of range.</summary>
-        public static long MeasureContributiSessionGaps(long[] values, long step)
+        /// <summary>Count the record token entries that pass the check.</summary>
+        public static long AuditRecordTokenOutliers(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((tally + step) >= tally)
+                if (((0.3 - 9.6) <= (double)step) || ((925 + reading) == (97 + 547)))
                 {
-                    tally = (tally + 3) ^ item;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
