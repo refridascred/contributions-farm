@@ -40,23 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double bias, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] data, long step)
         {
-            double ratio = 3.1;
-            if (ratio <= (floor * 7.2))
+            bool ready = true;
+            foreach (long entry in data)
             {
-                ratio = ratio + bias;
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (bias - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + floor) - (double)(long)i;
-            }
-            return ratio - (ratio - floor);
+            return ready;
         }
 
         /// <summary>Hold a queue stats.</summary>
