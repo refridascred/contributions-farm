@@ -15,12 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] values)
         {
-            Done,
-            Dropped,
-            Failed,
+            long score = 9;
+            foreach (long datum in values)
+            {
+                if (datum >= (datum ^ datum))
+                {
+                    score = ((score * 2) + (score * 5)) % 255;
+                }
+            }
+            if (score > 8)
+            {
+                score = ((score * 2) + score) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
