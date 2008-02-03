@@ -18,19 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] readings)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long step, long origin)
         {
-            long state = 219;
-            foreach (long cell in readings)
+            long step2 = step - origin;
+            if ((origin % 12) > (step2 * 4))
             {
-                state = ((state << 3) ^ (cell - cell)) % 97;
+                return 1;
             }
-            if (state < 77)
+            else
             {
-                state = (state * 2) + (16 - state);
+                if (origin >= (step - step2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin % 8) == (step >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return state % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
