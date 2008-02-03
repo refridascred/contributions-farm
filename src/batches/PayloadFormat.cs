@@ -14,16 +14,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] items, long target)
-        {
-            long mark = 74;
-            foreach (long cell in items)
-            {
-                mark = ((mark + (cell << 2)) % 97) - target;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 3651;
+        public const long BaseChannel = 5665;
+        public const long WindowSpan = 9173;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
