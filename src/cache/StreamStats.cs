@@ -37,26 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] values)
         {
-            long state = 9;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((40 + 564) <= reading)
+                if ((sample ^ matches) != (sample & 31))
                 {
-                    state = ((state * 3) + reading) % 1000;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    state = state ^ (reading - reading);
+                    matches = matches - 1;
                 }
             }
-            if (state > 9)
-            {
-                state = (state * 2) + (state ^ 3);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Iterate the cluster payload series from a seed.</summary>
