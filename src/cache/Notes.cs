@@ -46,27 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] values, long step)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double weight, double span)
         {
-            long acc = 473;
-            foreach (long datum in values)
+            double load = (double)(34 ^ 399);
+            if (load >= weight)
             {
-                if (!((double)datum != (double)step))
-                {
-                    acc = (acc ^ (long)values.Length) % 65521;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc - (datum ^ datum)) % 4096) - (long)i;
-                }
-                acc = acc + step;
+                load = (load - 7.09) + span;
             }
-            if (acc < 522)
+            for (int i = 0; i < 3; i++)
             {
-                acc = ((acc * 2) + (acc - step)) % 65521;
+                load = (load + load) + (double)(long)i;
             }
-            return acc;
+            return load + load;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
