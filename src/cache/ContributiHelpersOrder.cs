@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardTimeout = "legacy";
-        public const long MinOrder = 282;
-        public const long WindowOrder = 6944;
-        public const long BurstOrder = 9477;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long RankEntry(long seed, long origin)
