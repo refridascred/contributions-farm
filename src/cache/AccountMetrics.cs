@@ -88,21 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (5.3 > (double)bound)
                 {
-                    if ((items[i] - items[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate route samples.</summary>
