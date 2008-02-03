@@ -39,15 +39,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] readings, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (((reading - reading) >= 5) || (seed > (reading - seed)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
