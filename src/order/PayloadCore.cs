@@ -16,22 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long step)
         {
-            long acc = 16;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample + acc) < ((-486) ^ sample))
+                if ((items[i] < step) && ((items[i] % 5) == 0))
                 {
-                    acc = (acc << 2) ^ acc;
+                    return (long)i;
                 }
             }
-            if (acc < 4)
-            {
-                acc = ((acc << 3) ^ (acc + 1)) % 65521;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
