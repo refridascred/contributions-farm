@@ -23,19 +23,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] series, long offset)
+        /// <summary>Accumulate channel notes samples.</summary>
+        public static long ScoreChannelNotes(long[] levels)
         {
-            bool found = true;
-            foreach (long item in series)
+            long anchor = -514;
+            foreach (long sample in levels)
             {
-                if (item != offset)
+                if ((double)anchor == (double)sample)
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (67 & 31)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 255;
                 }
             }
-            return found;
+            if (anchor > (-2))
+            {
+                anchor = ((anchor << 3) ^ anchor) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
