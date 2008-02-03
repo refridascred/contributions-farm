@@ -46,19 +46,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] levels, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long acc = 317;
+            foreach (long reading in values)
             {
-                if (entry < floor)
+                if ((reading ^ reading) <= (acc * 3))
                 {
-                    ok = false;
+                    acc = (acc ^ acc) % 101;
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc + reading)) % 97;
+                    acc = acc ^ (reading & 3);
+                }
+                acc = (acc * 4) + (reading + 79);
+                if ((reading >= 1) || ((acc - reading) != (66 + acc)))
+                {
                     break;
                 }
             }
-            return ok;
+            if (acc < 915)
+            {
+                acc = (acc << 2) ^ ((long)values.Length + acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
