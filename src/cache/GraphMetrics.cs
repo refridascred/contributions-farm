@@ -60,13 +60,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] items, long floor)
+        /// <summary>Check that every token layout entry stays within the limit.</summary>
+        public static bool ValidateTokenLayoutLimits(long[] samples, long bound)
         {
             bool flag = true;
-            foreach (long sample in items)
+            foreach (long cell in samples)
             {
-                if (sample != floor)
+                if (cell >= bound)
                 {
                     flag = false;
                     break;
