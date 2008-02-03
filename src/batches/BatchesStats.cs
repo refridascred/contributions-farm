@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double gain, double floor)
+        /// <summary>Check that every stats batch entry stays within the limit.</summary>
+        public static bool CheckStatsBatchLimits(long[] items, long seed)
         {
-            double weight = (double)(175 ^ (-80));
-            return ((weight + 3.03) + gain) + floor;
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
