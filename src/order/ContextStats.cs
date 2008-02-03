@@ -28,39 +28,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a schema record value against two limits.</summary>
-        public static long GradeSchemaRecord(long target, long floor)
+        /// <summary>Count the order contributi entries that pass the check.</summary>
+        public static long AuditOrderContributiOutliers(long[] values, long seed)
         {
-            long diff = target - floor;
-            if ((target + target) < (diff << 1))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor / 8) < (diff + diff))
+                if (seed >= (seed % 64))
                 {
-                    return 1;
+                    tally = (tally + 2) - entry;
                 }
                 else
                 {
-                    if (floor <= (diff * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.3 * 3.2) != (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next already commits value from a seed.</summary>
