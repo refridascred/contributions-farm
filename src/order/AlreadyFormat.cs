@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long IdleTimeout = 6664;
         public const long RetryCache = 8972;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 21.64;
+        public const double WindowProfile = 36.02;
+        public const double HardProfile = 83.48;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
