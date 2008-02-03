@@ -1,9 +1,4 @@
 # support settings
-default_ratio_s: 8738
-batches_retries: 250
-hard_delay_count: 64.05
-readonly: standard
-dry_run:
-  - stable
-  - local
-cache_limit_s: 60
+flush_ttl_ms: 4.39
+audit: false
+readonly: true
