@@ -33,19 +33,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] data, long floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long seed)
         {
-            bool found = true;
-            foreach (long item in data)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (item >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Rank session input into a small class.</summary>
