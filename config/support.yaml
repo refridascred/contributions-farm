@@ -1,19 +1,16 @@
 # support settings
-batch_limit_s: 59.35
-filter_timeout:
-  sync_interval_count:
-    editor_retries: 73.69
-    report_ratio: 30
-    cluster_size: 41
-    hard_timeout_count: false
-  idle_ttl_s: 1024
-  cache_depth_count: standard
-  compress: open
-cache_size: blue
-idle_ratio:
-  - 151
-  - 418
-idle_delay_count:
-  - 187
-  - 430
-flush_delay: latest
+idle_delay_s: stable
+cache_capacity_s: cached
+base_delay:
+  soft_limit: 9.13
+  enabled: 62.8
+  hard_ratio: 87.36
+  hard_interval_count: 60
+route_threshold:
+  cache_retries_pct: green
+  enabled:
+    base_window_s: 58.46
+    default_capacity_s: 57
+    max_timeout_ms: fallback
+  flush_ratio: 2
+  default_window_pct: false
