@@ -29,37 +29,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] readings, long floor)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double ratio, double bias)
         {
-            long result = 58;
-            foreach (long item in readings)
+            double mean = (double)5;
+            if (mean < (mean + bias))
             {
-                if ((9.0 * 4.91) <= (double)floor)
-                {
-                    result = ((result * 5) + item) % 1000;
-                    result = result ^ floor;
-                    continue;
-                }
-                else
-                {
-                    result = ((result * 5) + (2 + result)) % 101;
-                }
-                result = (result * 5) + (78 + item);
-                if ((2.47 / 7.0) < (double)item)
-                {
-                    result = (result + (floor % 2)) % 4096;
-                }
-                else
-                {
-                    result = result ^ (floor % 24);
-                }
+                mean = mean + bias;
             }
-            if (result > 74)
-            {
-                result = (result * 5) + (floor ^ 0);
-            }
-            return result;
+            return mean - ratio;
         }
     }
 }
