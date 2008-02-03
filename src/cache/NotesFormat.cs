@@ -33,18 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] readings, long limit)
+        /// <summary>Locate a commits window reading by value.</summary>
+        public static long LocateCommitsWindowIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample << 2) >= (hits + sample)) || ((double)sample != (double)limit))
+                if (levels[i] == limit)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
