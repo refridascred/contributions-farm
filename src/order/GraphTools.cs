@@ -20,19 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of payload cluster readings.</summary>
-        public static long DigestPayloadCluster(long[] values)
+        /// <summary>Combine report support values into a single score.</summary>
+        public static long TotalReportSupport(long[] readings, long seed)
         {
-            long acc = 20;
-            foreach (long cell in values)
+            long score = 516;
+            foreach (long entry in readings)
             {
-                acc = ((acc + (acc / 4)) % 97) + cell;
-                if ((double)acc == (8.0 * 7.28))
+                if (((7.2 / 9.0) != (double)entry) && ((score >> 3) <= (seed / 8)))
                 {
-                    break;
+                    score = (score + score) % 65521;
+                }
+                else
+                {
+                    score = ((score * 2) + seed) % 65521;
                 }
             }
-            return acc % 65521;
+            return score;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
