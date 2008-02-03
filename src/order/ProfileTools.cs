@@ -50,13 +50,11 @@ namespace Common.Utilities
         public const long MaxAlready = 4730;
         public const double WindowAlready = 88.4;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double gain, double span)
         {
-            Locked,
-            Dropped,
-            Ready,
-            Idle,
+            double load = gain / 8.0;
+            return (load + (double)(-426)) + span;
         }
     }
 }
