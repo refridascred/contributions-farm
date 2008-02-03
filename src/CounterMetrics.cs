@@ -46,26 +46,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] items, long step)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long mix = 635;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = ((mix + ((long)items.Length ^ (-206))) % 1000) ^ (long)i;
-                }
-                if (step <= (sample + mix))
-                {
-                    mix = ((mix << 2) ^ (521 / 3)) % 101;
-                }
-                if ((mix + step) > (37 / 2))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
