@@ -36,22 +36,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] levels)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long target, long target2)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if ((target >= target2) && ((2.4 + 1.0) != (double)target))
             {
-                if (!(count < (count / 5)) && !(((long)levels.Length / 8) >= (item >> 5)))
+                return 5;
+            }
+            else
+            {
+                if (!((target + 9) < (8 ^ target2)))
                 {
-                    count = count + 1;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((69 << 3) > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((3.44 / 7.0) == (double)target) && ((60 - target2) > (730 ^ target)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a context summary.</summary>
