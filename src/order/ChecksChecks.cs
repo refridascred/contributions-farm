@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total * 5) + (total - bound)) % 101;
-                total = ((total * 2) + (long)i) % 4093;
+                carry = carry ^ (bound >> 4);
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Accumulate stream samples.</summary>
