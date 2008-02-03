@@ -42,18 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] data, long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((tally + datum) >= (bound + 269))
-                {
-                    tally = tally + 2;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Check that every token layout entry stays within the limit.</summary>
