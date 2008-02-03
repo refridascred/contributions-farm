@@ -25,39 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long bound, long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long diff = bound + floor;
-            if (((floor - floor) > (diff + bound)) && ((double)diff < (double)1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((floor * 5) >= (diff / 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound != (4.6 * 5.6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((diff + floor) == (bound % 2)) && (7.5 <= (double)diff))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
