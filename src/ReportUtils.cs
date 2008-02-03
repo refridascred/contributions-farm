@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] data, long offset)
         {
-            Queued,
-            Closed,
-            Idle,
-            Ready,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count farm batches pairs that satisfy a relation.</summary>
