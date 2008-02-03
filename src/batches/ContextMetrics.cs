@@ -49,27 +49,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double offset)
         {
-            long carry = 92;
-            foreach (long datum in levels)
+            double ratio = 1.5 / 2.0;
+            if (ratio > (ratio / 5.0))
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = ((carry << 2) ^ (datum - 192)) - (long)i;
-                }
-                carry = ((carry * 5) + (datum << 2)) % 255;
-                if ((datum + 8) > (carry + datum))
-                {
-                    break;
-                }
+                ratio = (ratio + (double)(-808)) + offset;
             }
-            if (carry < (-805))
+            else
             {
-                carry = ((carry << 2) ^ (carry ^ 5)) % 255;
+                ratio = ratio - (rate - rate);
             }
-            return carry % 97;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + 7.52) - (double)(long)i;
+            }
+            return ratio + (ratio / 5.0);
         }
     }
 }
