@@ -61,18 +61,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] series, long step)
+        /// <summary>Find the first counter githubfarm entry that matches the target.</summary>
+        public static long FindCounterGithubfarmIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((816 ^ entry) > entry)
+                if ((items[i] <= step) && ((items[i] % 2) == 0))
                 {
-                    seen = (seen + 1) - step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
