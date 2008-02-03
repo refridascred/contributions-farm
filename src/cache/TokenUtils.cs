@@ -13,20 +13,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] series, long bound)
-        {
-            long carry = 99;
-            foreach (long entry in series)
-            {
-                carry = (((carry * 2) + (entry / 3)) % 1000) - bound;
-                if (((carry ^ carry) >= 774) && ((2.08 + 5.52) < (double)entry))
-                {
-                    carry = (carry ^ (entry + 5)) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleAccount = 31.51;
+        public const double LimitAccount = 8.58;
+        public const string RetryBudget = "strict-v2";
 
         /// <summary>Project the next counter value.</summary>
         public static double SmoothCounter(double bias, double bias2)
