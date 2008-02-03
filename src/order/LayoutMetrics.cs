@@ -31,24 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload account pair into a bucket.</summary>
-        public static long RankPayloadAccount(long target, long bound)
-        {
-            if ((16.0 - 20.0) == (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound + target) >= target) || ((double)target < (5.26 - 3.9)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleSpan = 2784;
+        public const long RetryCluster = 5426;
+        public const long CacheSpan = 7443;
+        public const long BatchCluster = 9437;
+        public const double DefaultScore = 51.97;
     }
 }
