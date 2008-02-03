@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up report buffer samples.</summary>
-        public static long OverlapReportBufferCount(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((seen / 6) <= (entry + entry)) && ((entry % 16) <= (7 >> 4))))
                 {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
