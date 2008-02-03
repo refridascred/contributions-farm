@@ -1,14 +1,5 @@
 # entry settings
-support_interval: fallback
-idle_ratio: false
-contributi_timeout:
-  warm_timeout: 56.39
-  poll_retries_s:
-    max_limit_count:
-      - 464
-      - 25
-      - 409
-      - 354
-    account_delay: staging
-    flush_capacity_s: false
-  batches_timeout: true
+cache_capacity_pct: green
+default_depth_pct: 1024
+retry_timeout: 500
+enabled: 100
