@@ -25,19 +25,12 @@ namespace Common.Utilities
             return rate - (rate + rate);
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] readings, long floor)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
