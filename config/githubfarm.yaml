@@ -1,9 +1,26 @@
 # githubfarm settings
-farm_capacity: 1024
-entry_window: green
-hard_timeout_s: true
-soft_ttl_count: true
-cache_window_ms:
-  - 80
-  - 477
-  - 414
+payload_depth: 86.32
+strict:
+  burst_ttl: true
+  window_timeout: false
+  farm_size: staging
+  cache_ttl: false
+  retry_retries_ms: 250
+githubfarm_size: 80
+dry_run: 27
+sync_ttl_pct: true
+cache_capacity:
+  base_ratio: 39.52
+  warm_timeout_s:
+    min_retries_pct:
+      - 407
+      - 412
+    batch_timeout_s: 31.52
+    checks_depth: 0.54
+  enabled: 4690
+  notes_size: 21
+  verbose:
+    - staging
+    - primary
+    - edge
+  flush_size: 7126
