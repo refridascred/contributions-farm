@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowInterval = 5765;
-        public const double RetryInterval = 17.08;
-        public const string RetryGithubfarm = "alpha-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "open-1";
+        public const long BurstSize = 4375;
+        public const long BurstLevel = 9210;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
