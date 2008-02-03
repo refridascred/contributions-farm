@@ -35,38 +35,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank route batches input into a small class.</summary>
-        public static long RankRouteBatches(long origin, long origin2)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            if (!((double)origin2 <= (12.0 + 17.0)))
+            long result = 9;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 % 60) >= (65 * 2))
+                if (41 <= (result ^ 0))
                 {
-                    return 4;
+                    result = (result + (result / 6)) % 97;
                 }
-                else
+                if (((result + cell) < (result + 0)) && ((double)result >= (7.22 * 7.57)))
                 {
-                    if (!((origin2 + origin2) > (581 + origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin2 == (8.26 / 2.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            if (result > 33)
+            {
+                result = (result - (result << 2)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
