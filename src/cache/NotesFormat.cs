@@ -30,18 +30,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the stream editor entries that pass the check.</summary>
-        public static long AuditStreamEditorMatches(long[] samples)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8 / 9) <= (value + hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
