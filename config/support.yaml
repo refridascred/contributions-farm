@@ -1,6 +1,13 @@
 # support settings
-poll_ratio_count: false
-support_ttl: 3302
-account_capacity: standard
-base_ttl_s: 5.51
-payload_capacity: fallback
+dry_run: open
+burst_size:
+  hard_interval:
+    - 331
+    - 76
+  default_ratio_count: 500
+  tools_interval: 1024
+buffer_size:
+  - blue
+  - eu-west
+compress: 47
+batch_ttl_s: stable
