@@ -43,12 +43,23 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 9704;
-        public const long DefaultDepth = 9314;
-        public const long SoftWidth = 8185;
-        public const long MaxAlready = 4730;
-        public const double WindowAlready = 88.4;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((1.0 * 5.2) >= (5.7 / 9.0))
+                {
+                    tally = (tally + 1) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ProjectQueue(double gain, double span)
