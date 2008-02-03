@@ -34,19 +34,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] levels, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long sum = 12;
+            foreach (long entry in samples)
             {
-                if (cell <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (((sum * 5) + (5 - sum)) - entry) - origin;
             }
-            return valid;
+            return sum % 4096;
         }
 
         /// <summary>Describe the entry kind values.</summary>
