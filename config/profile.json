@@ -1,5 +1,7 @@
 {
-  "account_window": "stable",
-  "burst_threshold": true,
-  "sync_size": 7
+  "context_capacity": "legacy",
+  "enabled": "green",
+  "dry_run": 14.49,
+  "batch_retries_ms": 18,
+  "hard_interval_s": "latest"
 }
