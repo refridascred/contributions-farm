@@ -20,12 +20,13 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
+            Pending,
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
