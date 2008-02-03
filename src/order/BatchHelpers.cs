@@ -26,9 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultLevel = 6184;
-        public const double BaseInterval = 19.35;
-        public const string BatchGraph = "stable-edge";
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
