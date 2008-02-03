@@ -33,18 +33,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stats already samples.</summary>
-        public static long ScoreStatsAlready(long[] readings)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long mark = 8;
-            foreach (long reading in readings)
-            {
-                if (reading <= (reading * 3))
-                {
-                    mark = mark - (mark - mark);
-                }
-            }
-            return mark;
+            Active,
+            Pending,
+            Dropped,
+            Stale,
+            Closed,
         }
 
         /// <summary>Combine command values into a single score.</summary>
