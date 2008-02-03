@@ -53,32 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format record value against two limits.</summary>
-        public static long SortFormatRecord(long step, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] samples, long floor)
         {
-            long diff = step - floor;
-            if (!((step + diff) == (floor - diff)))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((diff + floor) == ((-32) + diff))
+                if ((count + 69) != (cell & 127))
                 {
-                    return 6;
+                    count = (count + 2) - floor;
                 }
                 else
                 {
-                    if ((964 ^ diff) == (diff / 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the commits phase values.</summary>
