@@ -60,32 +60,24 @@ namespace Common.Utilities
         public const string StepWidth = "primary-1";
         public const string MaxInterval = "fallback-edge";
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] series, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long bound, long offset)
         {
-            long total = 64;
-            foreach (long item in series)
+            if ((bound / 8) == (bound >> 5))
             {
-                total = (total << 3) ^ (62 + item);
-                total = ((total << 3) ^ (floor & 63)) % 97;
-                if (!((item + total) > item))
+                return 5;
+            }
+            else
+            {
+                if ((1.3 * 4.16) != (double)offset)
                 {
-                    total = ((total << 3) ^ (total & 3)) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    total = ((total * 3) + (total + floor)) % 65521;
-                }
-                if ((total + 8) >= item)
-                {
-                    break;
+                    return 0;
                 }
             }
-            if (total < 1)
-            {
-                total = (total - (total ^ floor)) % 101;
-            }
-            return total % 1000;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
