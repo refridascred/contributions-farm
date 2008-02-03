@@ -45,18 +45,31 @@ namespace Common.Utilities
         public const long MaxInterval = 3072;
         public const long LimitFactor = 2314;
 
-        /// <summary>Audit schema token readings against a rule.</summary>
-        public static long TallySchemaTokenGaps(long[] readings, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long step, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((double)floor > (12.0 + 17.0))
             {
-                if ((matches ^ (long)readings.Length) < item)
+                return 7;
+            }
+            else
+            {
+                if (floor >= (floor ^ step))
                 {
-                    matches = (matches + 1) + floor;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor < (0.97 * 20.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
