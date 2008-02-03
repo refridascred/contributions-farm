@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a cluster profile sample.</summary>
+        public static long LookupClusterProfileIndex(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] <= seed)
+                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
