@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long bound, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels, long seed)
         {
-            if ((double)bound != (5.9 - 0.59))
+            long acc = 2;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound - 67) != (step & 127)))
+                acc = (acc + (89 + acc)) % 4096;
+                if ((seed & 7) < item)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    acc = acc + seed;
                 }
             }
+            return acc;
         }
 
         /// <summary>Describe the session level values.</summary>
