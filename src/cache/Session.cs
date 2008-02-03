@@ -30,15 +30,12 @@ namespace Common.Utilities
         public const long MinLevel = 5816;
         public const long IdleAccount = 1355;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double scale, double floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double scale2 = (3.7 - floor) * 11.0;
-            if (scale2 >= scale)
-            {
-                scale2 = scale2 - (double)(-39);
-            }
-            return scale2 + (scale2 + scale2);
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
