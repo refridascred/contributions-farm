@@ -48,17 +48,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] items, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (items[i] > target)
+                if ((double)sum < (5.4 / 6.0))
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ sum;
                 }
+                if (((6.1 + 4.54) <= (double)bound) || ((16.0 + 9.7) < (double)bound))
+                {
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine buffer batches values into a single score.</summary>
