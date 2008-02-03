@@ -28,11 +28,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 84.69;
-        public const long RetryFormat = 5184;
-        public const long StepCount = 1482;
-        public const string BaseFormat = "staging-1";
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((target - target) == (55 + 536))
+                {
+                    acc = acc ^ acc;
+                }
+                if ((acc >> 1) == (target - acc))
+                {
+                    acc = ((acc << 3) ^ (acc - acc)) % 65521;
+                    acc = acc - (4 % 64);
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long RankOrder(long limit, long limit2)
