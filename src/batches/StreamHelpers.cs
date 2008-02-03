@@ -48,15 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] samples, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long mix = 30;
-            foreach (long cell in samples)
-            {
-                mix = ((((mix * 5) + mix) % 4096) + cell) + seed;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
