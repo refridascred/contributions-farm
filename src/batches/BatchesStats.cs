@@ -47,27 +47,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] series, long origin)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            long state = 23;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)state > 3.8) && ((double)item == (1.12 - 1.97)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state << 3) ^ (state ^ item)) % 97;
-                }
-                state = (state ^ item) % 101;
-                if (((601 - item) < state) || ((state << 2) < origin))
-                {
-                    break;
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > 88)
-            {
-                state = (state + (origin + state)) % 97;
-            }
-            return state;
+            return tally;
         }
     }
 }
