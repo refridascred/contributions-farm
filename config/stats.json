@@ -1,11 +1,13 @@
 {
-  "verbose": "cached",
-  "soft_limit_ms": true,
-  "graph_limit": 5317,
-  "default_ratio_ms": {
-    "schema_timeout": 5970,
-    "strict": "legacy",
-    "audit": 60,
-    "base_capacity": 30
-  }
+  "min_limit_count": {
+    "persist": 500,
+    "max_delay_s": [378, 373, 32],
+    "poll_depth_pct": 10.4,
+    "command_threshold": true,
+    "min_retries": "strict"
+  },
+  "metrics_ttl": 500,
+  "persist": "legacy",
+  "burst_timeout_pct": false,
+  "poll_interval_count": 6447
 }
