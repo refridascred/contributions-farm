@@ -1,5 +1,11 @@
 # entry settings
-batch_window_count: cached
-readonly: 80.74
-flush_ratio: 4870
-soft_ratio_ms: true
+burst_delay_count: 17.21
+batch_depth_pct: false
+max_size: cached
+soft_threshold_ms: 59.81
+context_window:
+  - 157
+  - 381
+  - 74
+  - 445
+idle_size_ms: 91
