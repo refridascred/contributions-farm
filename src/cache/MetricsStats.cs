@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two token batch measurements.</summary>
-        public static double SmoothTokenBatch(double weight, double span)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long seed)
         {
-            double rate = (double)(285 - 453);
-            if (rate <= span)
+            bool ok = true;
+            foreach (long value in series)
             {
-                rate = (rate - (span * 9.0)) + weight;
+                if (value >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate + span;
+            return ok;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
