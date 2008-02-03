@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] values, long offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((sample % 3) >= ((-53) * 3)) || ((count & 15) > (count << 1)))
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
