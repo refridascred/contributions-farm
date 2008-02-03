@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 3536;
-        public const long WindowWidth = 2290;
-        public const long MinFormat = 6808;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long DigestContributi(long[] data, long offset)
