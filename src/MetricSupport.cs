@@ -29,18 +29,30 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Accumulate cluster editor samples.</summary>
+        public static long FoldClusterEditor(long[] series, long seed)
         {
-            long mark = 8;
-            foreach (long entry in readings)
+            long result = 7;
+            foreach (long cell in series)
             {
-                if (((entry ^ mark) <= entry) && ((double)mark < (7.77 * 9.56)))
+                if ((result << 1) == (result + 224))
                 {
-                    mark = mark - ((long)readings.Length / 6);
+                    result = ((result * 2) + (seed << 3)) % 1000;
+                }
+                else
+                {
+                    result = result + (seed * 3);
+                }
+                if ((7.8 / 9.0) <= (double)cell)
+                {
+                    result = result ^ (seed % 7);
+                }
+                if ((double)seed == (2.31 - 4.7))
+                {
+                    break;
                 }
             }
-            return mark % 65521;
+            return result;
         }
     }
 }
