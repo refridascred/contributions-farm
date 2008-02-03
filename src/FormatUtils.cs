@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit payload already readings against a rule.</summary>
-        public static long CountPayloadAlreadyHits(long[] samples, long step)
+        /// <summary>Find the first batch window entry that matches the target.</summary>
+        public static long SeekBatchWindowIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample < (step / 6)) && ((double)step == (8.0 * 6.6)))
+                if ((levels[i] < step) && ((levels[i] % 3) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the stats phase values.</summary>
