@@ -60,18 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] series, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] levels, long step)
         {
-            long result = 771;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((result - target) <= target)
+                if ((step - step) <= step)
                 {
-                    result = ((result << 3) ^ (datum - result)) % 4096;
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Digest a series of filter githubfarm entries.</summary>
