@@ -21,22 +21,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the stats farm entries that pass the check.</summary>
-        public static long TallyStatsFarmOutliers(long[] series, long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long offset, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long lane = offset + seed;
+            if (seed >= (lane ^ lane))
             {
-                if ((15.0 / 8.0) == (double)step)
+                return 1;
+            }
+            else
+            {
+                if ((16.0 + 19.0) <= (double)seed)
                 {
-                    count = (count + 2) - entry;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((lane + seed) < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)lane > (0.07 * 4.7)) && ((seed >> 4) <= (lane & 127)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the command kind values.</summary>
