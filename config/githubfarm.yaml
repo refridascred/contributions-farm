@@ -1,7 +1,11 @@
 # githubfarm settings
-editor_size: 92.52
-cache_limit: false
-burst_window_s: open
-batch_ratio_ms: false
-already_capacity: strict
-token_limit: blue
+record_delay: false
+contributi_retries:
+  counter_window: legacy
+  retry_ttl_pct: 30.15
+  audit: 4.14
+  flush_window_ms: 84.57
+strict:
+  - 60
+  - 151
+  - 93
