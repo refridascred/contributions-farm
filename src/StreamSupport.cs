@@ -30,17 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] series, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 574;
+            foreach (long sample in values)
             {
-                if (series[i] > step)
+                if (0 >= (152 + sample))
                 {
-                    return (long)i;
+                    carry = (((carry << 2) ^ (carry - (long)values.Length)) % 255) + floor;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
     }
 }
