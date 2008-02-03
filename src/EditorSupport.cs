@@ -70,13 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 3104;
+        public const double BurstQueue = 77.31;
+        public const long MaxQueue = 3102;
+        public const long HardWidth = 1027;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] samples)
