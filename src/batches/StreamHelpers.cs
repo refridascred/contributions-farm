@@ -92,13 +92,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Locked,
-            Retry,
-            Failed,
-            Draft,
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
     }
 }
