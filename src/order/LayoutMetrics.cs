@@ -41,11 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleSpan = 2784;
-        public const long RetryCluster = 5426;
-        public const long CacheSpan = 7443;
-        public const long BatchCluster = 9437;
-        public const double DefaultScore = 51.97;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((55 + item) >= (seen - item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
