@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const long MinLevel = 5816;
         public const long IdleAccount = 1355;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] data)
         {
-            Failed,
-            New,
-            Done,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample >= 7.5)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
