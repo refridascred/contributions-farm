@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] readings, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every contributi format entry stays within the limit.</summary>
