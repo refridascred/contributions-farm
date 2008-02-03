@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] values, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long acc = 793;
+            foreach (long cell in series)
             {
-                if ((double)origin > (6.0 * 8.33))
+                acc = acc ^ (77 + floor);
+                if (!((acc + 52) == (cell & 255)))
                 {
-                    tally = (tally + 1) - reading;
+                    break;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Accumulate window samples.</summary>
