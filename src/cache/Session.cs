@@ -24,14 +24,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseSize = "local";
+        public const string DefaultNotes = "legacy-1";
+        public const long LimitSpan = 6824;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] series, long floor)
