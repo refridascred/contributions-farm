@@ -49,19 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] levels, long target)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            double bias2 = 3.4 - bias;
+            if (bias2 < 2.58)
             {
-                if (datum > target)
-                {
-                    found = false;
-                    break;
-                }
+                bias2 = bias2 - (ratio + 3.0);
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - (9.0 - bias)) + (double)(long)i;
+            }
+            return bias2 + (double)8;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
