@@ -27,18 +27,17 @@ namespace Common.Utilities
             return (weight + 9.05) + span;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Locate a githubfarm buffer reading by value.</summary>
+        public static long LocateGithubfarmBufferIndex(long[] values, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark ^ (mark & 15)) % 97;
-                mark = mark - (long)i;
-                mark = mark ^ (mark - mark);
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
