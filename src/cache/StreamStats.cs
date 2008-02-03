@@ -33,15 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double gain, double bias)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] readings, long origin)
         {
-            double mean = (double)8 / 6.0;
-            if (mean <= mean)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                mean = (mean + (bias / 4.0)) + gain;
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean - bias;
+            return found;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
