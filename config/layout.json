@@ -1,8 +1,5 @@
 {
-  "idle_interval_ms": 100,
-  "report_window": 47.62,
-  "queue_retries": 37.45,
-  "checks_capacity": 6050,
-  "session_timeout": 500,
-  "command_retries": "strict"
+  "soft_threshold_count": "cached",
+  "flush_retries_count": false,
+  "verbose": 4420
 }
