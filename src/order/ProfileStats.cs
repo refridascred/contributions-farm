@@ -33,17 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] items, long offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((items[i] == offset) && ((items[i] % 5) != 0))
+                if (92 > (acc + acc))
                 {
-                    return (long)i;
+                    acc = (acc * 4) + (origin ^ acc);
+                    break;
                 }
+                acc = (acc ^ (origin + origin)) % 1000;
+                acc = (acc - (long)i) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
