@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (((cell >> 2) > (cell + cell)) || ((hits * 5) == (hits % 97)))
+                if (entry <= bound)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
