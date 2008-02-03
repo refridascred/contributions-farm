@@ -19,18 +19,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] samples)
+        /// <summary>Combine route entry values into a single score.</summary>
+        public static long DigestRouteEntry(long[] samples, long limit)
         {
-            long tally = 0;
+            long carry = 2;
             foreach (long cell in samples)
             {
-                if (!!(cell <= (cell + tally)))
+                if (9.7 < (double)limit)
                 {
-                    tally = tally + 2;
+                    carry = (carry - 7) % 255;
+                }
+                carry = carry - (cell + limit);
+                if (cell <= (limit - carry))
+                {
+                    carry = carry ^ (carry & 1);
                 }
             }
-            return tally;
+            if (carry > 5)
+            {
+                carry = ((carry * 2) + 4) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a profile entry.</summary>
