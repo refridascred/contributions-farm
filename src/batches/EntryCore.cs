@@ -23,17 +23,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Look up the position of a profile commits sample.</summary>
-        public static long SeekProfileCommitsIndex(long[] samples, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the farm mode values.</summary>
