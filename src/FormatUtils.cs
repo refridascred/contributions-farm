@@ -50,11 +50,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinDepth = 5673;
-        public const long StepProfile = 7436;
-        public const long SoftFactor = 2042;
-        public const double BatchInterval = 19.34;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftTimeout = "local-v2";
+        public const long HardSpan = 4558;
+        public const double CacheTimeout = 19.41;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultAlready = 2814;
