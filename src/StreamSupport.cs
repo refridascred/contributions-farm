@@ -21,11 +21,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
+            New,
+            Active,
+            Synced,
+            Pending,
         }
     }
 }
