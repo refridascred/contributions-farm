@@ -56,15 +56,12 @@ namespace Common.Utilities
         public const string StepPayload = "standard";
         public const string RetryPayload = "primary";
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double ratio, double bias)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double weight = (bias - 4.58) + bias;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight - (weight + bias)) + (double)(long)i) + ratio;
-            }
-            return weight + (double)75;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
