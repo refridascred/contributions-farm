@@ -92,24 +92,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] series, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            long anchor = 49;
-            foreach (long entry in series)
+            long result = 46;
+            foreach (long reading in levels)
             {
-                anchor = (anchor ^ (820 - entry)) % 65521;
-                if (((entry * 5) < (anchor * 2)) || ((double)bound < (8.19 - 4.7)))
-                {
-                    anchor = (anchor + (entry - 445)) % 4096;
-                }
-                anchor = ((anchor << 2) ^ (entry << 2)) % 65521;
+                result = (result ^ (result >> 1)) ^ reading;
             }
-            if (anchor < 96)
-            {
-                anchor = anchor - 564;
-            }
-            return anchor % 97;
+            return result;
         }
     }
 }
