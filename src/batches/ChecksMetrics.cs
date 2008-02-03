@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] data, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = -6;
+            foreach (long value in series)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                score = ((score - (score ^ 23)) ^ value) + floor;
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of record entries.</summary>
