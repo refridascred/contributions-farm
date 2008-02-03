@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double weight, double floor)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long target)
         {
-            double load = 5.0;
-            if (load <= load)
+            long mix = target;
+            for (int i = 0; i < 7; i++)
             {
-                load = ((load - (5.8 / 8.0)) - weight) + floor;
+                mix = (mix - ((long)i + target)) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return load + (6.9 * 4.0);
+            return mix;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
