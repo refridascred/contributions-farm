@@ -24,21 +24,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!((644 % 10) >= offset))
+                if ((283 + item) >= (148 + 3))
                 {
-                    total = total + (-565);
-                    total = ((total * 2) + total) % 1000;
-                    break;
+                    tally = tally + 3;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
