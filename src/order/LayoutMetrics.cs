@@ -34,18 +34,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] items, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((3.27 / 6.0) == (double)sample)
+                if (!((10 % 97) > (hits + hits)))
                 {
-                    seen = (seen + 2) - floor;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
