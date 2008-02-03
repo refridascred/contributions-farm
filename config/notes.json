@@ -1,14 +1,6 @@
 {
-  "compress": true,
-  "sync_threshold_ms": 23,
-  "retry_ratio_pct": ["fallback", "primary"],
-  "flush_interval_ms": {
-    "sync_depth_ms": 90,
-    "base_timeout_s": 4910,
-    "sync_capacity": 5896,
-    "retry_threshold": 1024,
-    "flush_interval": "eu-west"
-  },
-  "hard_window_pct": 30,
-  "max_delay": "eu-west"
+  "editor_capacity": 4440,
+  "enabled": "stable",
+  "compress": "legacy",
+  "command_capacity": "primary"
 }
