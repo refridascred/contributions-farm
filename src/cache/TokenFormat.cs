@@ -21,18 +21,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] items, long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (!((39 / 6) == (bound >> 1)))
+                if (datum < limit)
                 {
-                    tally = (tally + 3) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
