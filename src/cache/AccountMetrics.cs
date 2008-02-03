@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] readings, long seed)
+        /// <summary>Compare every pair of notes batch readings.</summary>
+        public static long MatchNotesBatchCount(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the token kind values.</summary>
