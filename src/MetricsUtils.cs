@@ -56,18 +56,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools commits entries that pass the check.</summary>
-        public static long AuditToolsCommitsGaps(long[] values)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double scale, double span)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double scale2 = (double)((-425) % 60);
+            if (scale2 > (scale + span))
             {
-                if ((13.0 * 0.46) == (double)seen)
-                {
-                    seen = (seen + 2) ^ datum;
-                }
+                scale2 = scale2 - scale;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (double)142) + (double)(long)i;
+            }
+            return scale2 - span;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
