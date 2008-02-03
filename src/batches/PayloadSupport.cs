@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate stats commits readings against a bound.</summary>
-        public static bool VerifyStatsCommitsBounds(long[] items, long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of stream cache readings.</summary>
