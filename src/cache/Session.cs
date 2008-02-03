@@ -28,13 +28,17 @@ namespace Common.Utilities
         public const string DefaultNotes = "legacy-1";
         public const long LimitSpan = 6824;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Find the first token session entry that matches the target.</summary>
+        public static long FindTokenSessionIndex(long[] readings, long step)
         {
-            Synced,
-            Retry,
-            New,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
