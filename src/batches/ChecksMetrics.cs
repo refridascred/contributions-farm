@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] values)
-        {
-            long acc = 94;
-            foreach (long cell in values)
-            {
-                if (!((double)acc == (9.0 + 16.0)))
-                {
-                    acc = (acc - cell) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 7.22;
+        public const long BatchSession = 2150;
+        public const long IdleSession = 4575;
+        public const long BurstSession = 5904;
+        public const double HardSession = 90.82;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TotalRecord(long[] levels)
