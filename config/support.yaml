@@ -1,48 +1,6 @@
 # support settings
-persist:
-  editor_ratio: fallback
-  warm_limit_pct:
-    poll_retries_ms: 20
-    route_limit: 75
-    verbose: 60
-    flush_depth: true
-    retry_size_s: 17
-    default_threshold_ms:
-      - 229
-      - 13
-      - 269
-  already_capacity:
-    sync_retries: 100
-    strict:
-      - legacy
-      - edge
-    readonly: 30
-    idle_ttl_pct:
-      - stable
-      - staging
-    burst_threshold_pct:
-      - 147
-      - 215
-    format_depth: 2340
-  max_retries_ms: false
-window_ratio:
-  - cached
-  - legacy
-  - fallback
-min_timeout: 80.93
-default_limit_count:
-  - 128
-  - 362
-  - 282
-poll_depth:
-  verbose:
-    batches_delay: 7408
-    retry_ttl: true
-    idle_timeout_count: local
-    persist: false
-    filter_threshold: primary
-  filter_ttl: true
-  poll_timeout_s: 11.23
-  max_interval: stable
-  cache_limit: 95
-burst_timeout: 84.01
+order_retries: 7922
+audit: eu-west
+max_size_s: cached
+max_timeout_pct: staging
+githubfarm_retries: 92.08
