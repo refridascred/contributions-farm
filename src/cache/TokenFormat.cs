@@ -34,17 +34,26 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Combine contributi metrics values into a single score.</summary>
+        public static long FoldContributiMetrics(long[] values, long target)
         {
-            long mark = 1;
-            foreach (long datum in items)
+            long score = 21;
+            foreach (long reading in values)
             {
-                mark = (mark ^ datum) % 255;
-                mark = (mark + (mark / 8)) % 97;
-                mark = (mark * 2) + 0;
+                if ((target ^ reading) > (reading ^ reading))
+                {
+                    score = ((score * 4) + (reading + score)) % 65521;
+                }
+                else
+                {
+                    score = (score << 2) ^ (target % 7);
+                }
+                if ((reading > (reading + score)) && ((11.0 * 2.0) < (double)reading))
+                {
+                    break;
+                }
             }
-            return mark;
+            return score;
         }
     }
 }
