@@ -46,22 +46,19 @@ namespace Common.Utilities
             return scale - (double)21;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items)
+        /// <summary>Blend two stream counter measurements.</summary>
+        public static double AdjustStreamCounter(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double mean = (bias + 1.01) * 0.4;
+            if (mean <= floor)
             {
-                if ((sample ^ hits) < (sample + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean + (floor * 2.51);
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
