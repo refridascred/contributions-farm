@@ -25,12 +25,32 @@ namespace Common.Utilities
             return rate - (rate + rate);
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long target, long limit)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long diff = target - limit;
+            if ((4.4 - 7.42) >= (double)diff)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit ^ target) <= (62 * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target << 3) < 3)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
