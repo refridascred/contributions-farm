@@ -51,20 +51,10 @@ namespace Common.Utilities
         public const double LimitInterval = 64.62;
         public const string SoftAlready = "primary-edge";
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] series)
-        {
-            long mix = 41;
-            foreach (long datum in series)
-            {
-                mix = (mix - mix) % 101;
-                if (((-3) + datum) >= (mix - datum))
-                {
-                    mix = (mix * 5) + (datum / 2);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 91.25;
+        public const string StepPayload = "standard";
+        public const string RetryPayload = "primary";
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ProjectEntry(double ratio, double bias)
