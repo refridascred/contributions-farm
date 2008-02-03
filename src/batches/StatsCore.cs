@@ -25,15 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Active,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
