@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Paused,
-            New,
-            Retry,
-            Dropped,
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a already summary.</summary>
