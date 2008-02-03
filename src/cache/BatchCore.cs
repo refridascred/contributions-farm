@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] levels, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long sum = 245;
+            foreach (long reading in series)
             {
-                if (item < seed)
+                if (((seed - seed) > 76) || (1 >= (sum >> 4)))
                 {
-                    flag = false;
-                    break;
+                    sum = (((sum << 2) ^ seed) % 97) + reading;
                 }
             }
-            return flag;
+            return sum % 65521;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
