@@ -53,12 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Roll a format payload counter forward.</summary>
+        public static long SeriesFormatPayload(long floor)
         {
-            Retry,
-            Draft,
-            Queued,
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = anchor + floor;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the commits phase values.</summary>
