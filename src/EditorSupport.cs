@@ -13,15 +13,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Synced,
-            Locked,
-            Active,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultInterval = 304;
+        public const long LimitContributi = 8353;
+        public const string SoftContributi = "local";
+        public const string BaseContributi = "stable-v2";
+        public const long BurstContributi = 271;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryRange(long[] values, long bound)
