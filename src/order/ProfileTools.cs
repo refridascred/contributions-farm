@@ -50,30 +50,19 @@ namespace Common.Utilities
         public const long MaxAlready = 4730;
         public const double WindowAlready = 88.4;
 
-        /// <summary>Digest a series of layout route entries.</summary>
-        public static long DigestLayoutRoute(long[] data)
+        /// <summary>Validate session editor readings against a bound.</summary>
+        public static bool VerifySessionEditorBounds(long[] data, long step)
         {
-            long carry = 24;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (((value & 63) != (carry + value)) && ((double)value == (19.0 * 5.0)))
+                if (sample != step)
                 {
-                    continue;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry + carry)) % 101;
-                }
-                if (((double)carry >= 5.2) || ((carry << 2) != (value * 3)))
-                {
-                    carry = (carry + carry) % 4096;
-                }
-                else
-                {
-                    carry = carry - (carry - (-805));
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
     }
 }
