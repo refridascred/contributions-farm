@@ -41,19 +41,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] levels)
         {
-            long anchor = 32;
-            foreach (long datum in items)
+            long carry = 9;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor << 2) ^ (6 * 3)) + datum;
+                carry = (carry - cell) % 65521;
+                carry = (carry ^ (carry * 5)) % 97;
+                if (((846 + cell) > (carry * 4)) || (carry > (62 - 642)))
+                {
+                    carry = carry ^ (carry % 16);
+                }
             }
-            if (anchor > (-79))
-            {
-                anchor = anchor ^ (anchor - anchor);
-            }
-            return anchor % 4096;
+            return carry % 4096;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
