@@ -51,18 +51,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload window entries that pass the check.</summary>
-        public static long TallyPayloadWindowMatches(long[] samples)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long step, long limit)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            if ((double)step <= (double)limit)
             {
-                if ((cell * 5) < cell)
+                return 7;
+            }
+            else
+            {
+                if (((step ^ 72) != (limit + limit)) && (7.82 <= (double)step))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit ^ limit) > limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + limit) == (step + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
