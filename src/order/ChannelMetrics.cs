@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Locate a githubfarm window reading by value.</summary>
+        public static long FindGithubfarmWindowIndex(long[] levels, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sum + limit) > sum)
+                if (levels[i] <= offset)
                 {
-                    sum = (sum ^ (236 - (long)i)) % 101;
-                    sum = (sum - (limit + sum)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum * 4) + (sum + limit);
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
