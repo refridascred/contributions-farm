@@ -61,14 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinDepth = 75.92;
+        public const string IdleFactor = "strict-edge";
+        public const long RetryDepth = 147;
+        public const long MaxRecord = 1776;
 
         /// <summary>Adjust a session reading.</summary>
         public static double BlendSession(double bias, double span)
