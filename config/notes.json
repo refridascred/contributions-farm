@@ -1,8 +1,8 @@
 {
-  "cache_interval": 11,
-  "flush_retries_count": 7244,
-  "context_ratio": 1874,
-  "cache_delay_ms": 1024,
-  "idle_threshold_ms": 68.63,
-  "notes_size": 69.46
+  "readonly": false,
+  "compress": 50.45,
+  "sync_threshold_ms": 60,
+  "max_retries_count": "fallback",
+  "base_ttl_ms": false,
+  "editor_interval": "latest"
 }
