@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchDepth = 9649;
+        public const long MaxSupport = 7157;
+        public const long MaxScore = 3336;
+        public const string StepCount = "open-edge";
+        public const long IdleSupport = 4404;
 
         /// <summary>Derive the next session githubfarm value from a seed.</summary>
         public static long IterateSessionGithubfarm(long seed)
