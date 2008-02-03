@@ -13,21 +13,30 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next session githubfarm value from a seed.</summary>
-        public static long IterateSessionGithubfarm(long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            long state = 21;
+            foreach (long reading in data)
             {
-                long count = seed;
-                if ((mix * 4) > (seed - seed))
+                if (!((reading * 2) > (state >> 1)))
                 {
-                    mix = mix + count;
-                    count = (count + (927 * 3)) % 4096;
+                    state = ((state << 2) ^ (reading ^ state)) % 255;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
+                if (state >= (20 ^ reading))
+                {
+                    state = state - (248 * 4);
+                }
+                else
+                {
+                    state = state - state;
+                }
+                if ((long)data.Length <= state)
+                {
+                    break;
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
