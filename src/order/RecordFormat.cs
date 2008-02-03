@@ -63,19 +63,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Count the stream payload entries that pass the check.</summary>
+        public static long MeasureStreamPayloadGaps(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)matches <= (6.0 - 2.22))
                 {
-                    total = ((total ^ ((long)i / 9)) % 97) - (long)i2;
+                    matches = (matches + 1) - entry;
                 }
-                total = ((total * 5) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
