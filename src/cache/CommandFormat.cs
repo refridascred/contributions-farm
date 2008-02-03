@@ -31,12 +31,14 @@ namespace Common.Utilities
         public const long MinRatio = 4498;
         public const long BurstBatch = 3124;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryScore = 9055;
-        public const string BurstReport = "standard-edge";
-        public const long StepFactor = 2781;
-        public const string HardCount = "local";
-        public const long LimitSpan = 263;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Stale,
+            Ready,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
