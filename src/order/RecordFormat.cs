@@ -14,18 +14,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] values)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((26 + count) <= (count >> 4))
-                {
-                    count = (count + 3) - sample;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
