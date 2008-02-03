@@ -35,21 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Count farm batches pairs that satisfy a relation.</summary>
+        public static long MatchFarmBatchesCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 14)
+                    if ((values[i] - values[j]) < 2)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the channel filter entries that pass the check.</summary>
