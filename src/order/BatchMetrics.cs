@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Measure how many cluster format samples are out of range.</summary>
+        public static long TallyClusterFormatMatches(long[] levels)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)tally >= (6.0 / 6.0))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the filter level values.</summary>
