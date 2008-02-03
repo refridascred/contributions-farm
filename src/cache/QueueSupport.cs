@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double gain, double span)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double drift = span;
+            for (int i = 0; i < 5; i++)
             {
-                if (((seen - seen) != (seen % 5)) && (((cell - 4) <= (669 / 7)) && ((cell / 9) < (cell - (-5)))))
-                {
-                    seen = seen + 2;
-                }
+                drift = (drift - (gain * 2.38)) + (double)(long)i;
             }
-            return seen;
+            return drift - span;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
