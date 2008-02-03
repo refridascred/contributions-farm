@@ -28,26 +28,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine contributi metrics values into a single score.</summary>
-        public static long FoldContributiMetrics(long[] values, long target)
-        {
-            long score = 21;
-            foreach (long reading in values)
-            {
-                if ((target ^ reading) > (reading ^ reading))
-                {
-                    score = ((score * 4) + (reading + score)) % 65521;
-                }
-                else
-                {
-                    score = (score << 2) ^ (target % 7);
-                }
-                if ((reading > (reading + score)) && ((11.0 * 2.0) < (double)reading))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxSpan = 1358;
+        public const long BurstReport = 5969;
+        public const long HardDepth = 3146;
+        public const string MinReport = "cached-edge";
     }
 }
