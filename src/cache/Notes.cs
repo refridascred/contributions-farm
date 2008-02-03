@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long floor)
         {
-            Queued,
-            Paused,
-            Pending,
-            Idle,
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum * 2) + sum;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
