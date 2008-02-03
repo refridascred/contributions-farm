@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] samples, long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Combine report support values into a single score.</summary>
