@@ -32,15 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
