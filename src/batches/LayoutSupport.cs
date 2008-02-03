@@ -67,15 +67,11 @@ namespace Common.Utilities
         public const long IdleFactor = 6418;
         public const long RetryContext = 4140;
 
-        /// <summary>Digest a series of filter githubfarm entries.</summary>
-        public static long TotalFilterGithubfarm(long[] levels)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long sum = 700;
-            foreach (long item in levels)
-            {
-                sum = (sum ^ (item << 1)) % 4096;
-            }
-            return sum;
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
