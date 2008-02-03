@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            Failed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the queue phase values.</summary>
