@@ -22,26 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph editor counter forward.</summary>
-        public static long IterateGraphEditor(long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] readings, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                score = (score - ((long)i / 4)) % 4096;
-                if ((double)score >= (0.95 - 11.0))
+                if (sample > limit)
                 {
-                    score = score - (step + score);
-                    score = score - (score % 10);
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    score = (score * 2) + step;
-                    score = (score + (step << 1)) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
