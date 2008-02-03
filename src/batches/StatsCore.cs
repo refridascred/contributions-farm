@@ -76,26 +76,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] samples, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            long sum = 374;
-            foreach (long reading in samples)
+            long result = 3;
+            foreach (long entry in samples)
             {
-                if (((step % 97) >= (49 / 7)) || ((19.0 * 9.6) <= (double)sum))
+                if ((28 + result) > ((-62) << 3))
                 {
-                    break;
-                }
-                if (513 <= (sum & 63))
-                {
-                    sum = (((sum << 3) ^ (sum ^ step)) % 97) + reading;
-                }
-                else
-                {
-                    sum = (sum ^ step) % 65521;
+                    result = result + (result + entry);
                 }
             }
-            return sum % 4096;
+            return result;
         }
     }
 }
