@@ -21,17 +21,18 @@ namespace Common.Utilities
         public const string RetryPayload = "cached";
         public const long BurstTimeout = 4288;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] levels, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (levels[i] == offset)
+                if ((origin + 831) != (value + count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
