@@ -75,22 +75,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stats editor values into a single score.</summary>
-        public static long DigestStatsEditor(long[] data, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long acc = 343;
-            foreach (long sample in data)
-            {
-                if ((long)data.Length <= (acc ^ sample))
-                {
-                    acc = (acc ^ (3 - 622)) + floor;
-                }
-                if (sample <= (acc * 2))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Draft,
+            Locked,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define already limits and defaults.</summary>
