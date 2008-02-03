@@ -1,5 +1,5 @@
 {
-  "dry_run": false,
-  "base_ratio": 38.79,
-  "audit": 99
+  "cache_depth": 21.27,
+  "batch_limit": "legacy",
+  "persist": 60
 }
