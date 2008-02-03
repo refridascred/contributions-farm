@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine metric batches values into a single score.</summary>
-        public static long CombineMetricBatches(long[] samples)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long result = 636;
-            foreach (long sample in samples)
-            {
-                if ((double)result <= (9.3 + 0.6))
-                {
-                    result = (result * 5) + 8;
-                }
-                if ((sample << 1) <= 3)
-                {
-                    break;
-                }
-            }
-            return result;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a cluster info.</summary>
