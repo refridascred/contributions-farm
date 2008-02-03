@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] samples, long bound)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound + cell) <= (bound + tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
