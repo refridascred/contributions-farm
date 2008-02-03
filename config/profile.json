@@ -1,8 +1,6 @@
 {
-  "max_interval": 20.27,
-  "dry_run": ["strict", "primary", "edge"],
-  "batches_depth": true,
-  "strict": 30,
-  "flush_limit_pct": 81.77,
-  "flush_capacity_s": false
+  "order_capacity": 24,
+  "batch_ttl_ms": false,
+  "profile_interval": "edge",
+  "base_timeout_count": true
 }
