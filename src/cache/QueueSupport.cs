@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next payload record value from a seed.</summary>
-        public static long SeriesPayloadRecord(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = (mix + (bound + bound)) % 1000;
-                mix = (mix - (mix - (long)i)) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultTimeout = 32.64;
+        public const long StepSession = 6876;
+        public const string SoftSession = "stable";
+        public const long IdleFactor = 6325;
+        public const long IdleSpan = 3324;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ProjectGraph(double rate, double span)
