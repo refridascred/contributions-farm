@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "latest-1";
-        public const long WindowTimeout = 4146;
-        public const long DefaultRatio = 1428;
-        public const string SoftScore = "local";
-        public const long CacheSize = 2161;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long MatchToolsCount(long[] levels)
