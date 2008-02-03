@@ -29,19 +29,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] levels, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long carry = 27;
+            foreach (long reading in values)
             {
-                if (sample > origin)
+                if ((carry % 8) != (reading + 940))
                 {
-                    stale = false;
-                    break;
+                    carry = carry + (carry & 7);
                 }
             }
-            return stale;
+            if (carry < 3)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry;
         }
     }
 }
