@@ -19,35 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Validate stats commits readings against a bound.</summary>
+        public static bool VerifyStatsCommitsBounds(long[] items, long offset)
         {
-            long anchor = 66;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (258 < anchor)
+                if (cell < offset)
                 {
-                    anchor = (anchor << 3) ^ (anchor - anchor);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor + entry)) % 101;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = ((anchor ^ (10 / 4)) % 4096) + (long)i;
-                    anchor = anchor - anchor;
-                }
-                if ((entry & 255) <= (entry << 1))
-                {
-                    anchor = (anchor - (6 >> 4)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (anchor * 2);
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Fold a list of stream cache readings.</summary>
