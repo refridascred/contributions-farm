@@ -1,6 +1,21 @@
 {
-  "burst_retries": 2,
-  "warm_threshold_count": 5180,
-  "cache_ratio": true,
-  "strict": false
+  "audit": 34.66,
+  "max_timeout_count": {
+    "base_limit_pct": 60,
+    "batch_size": 35.0,
+    "payload_depth": 18,
+    "enabled": "green",
+    "sync_interval_count": {
+      "graph_retries": 86.29,
+      "idle_threshold_pct": "local",
+      "burst_ratio": false,
+      "burst_size_count": "blue",
+      "checks_delay": "blue",
+      "profile_capacity": "staging"
+    },
+    "soft_depth_count": 4092
+  },
+  "persist": false,
+  "cluster_threshold": ["latest", "edge", "cached", "stable"],
+  "metric_capacity": false
 }
