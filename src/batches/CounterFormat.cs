@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ratio - (3.39 + offset);
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] series, long offset)
         {
-            Retry,
-            New,
-            Active,
-            Locked,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((11.0 <= (double)offset) || ((double)item == (double)hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
