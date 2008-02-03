@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 6843;
-        public const long WindowBudget = 9107;
-        public const long BaseRatio = 7413;
-        public const long MaxSize = 9671;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum / 5) != (count + 311))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate contributi command readings against a bound.</summary>
         public static bool CheckContributiCommandBounds(long[] series, long seed)
