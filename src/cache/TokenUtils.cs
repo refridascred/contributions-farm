@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long floor, long seed)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] levels, long bound)
         {
-            long step = floor + seed;
-            if (((-9) * 5) == (floor & 15))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor / 2) >= (floor ^ 4)) && (76 < step))
+                if (levels[i] < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed / 4) > 85)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.8 * 3.2) >= (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
