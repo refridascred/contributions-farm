@@ -17,18 +17,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metrics contributi entries that pass the check.</summary>
-        public static long CountMetricsContributiOutliers(long[] items, long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((0.15 / 8.0) > (double)floor)
+                if ((((long)i ^ 72) != (total + total)) || (((long)i << 3) > (limit + (long)i)))
                 {
-                    seen = (seen + 1) - datum;
+                    total = total - ((long)i - total);
                 }
+                else
+                {
+                    total = (total ^ (long)i) % 101;
+                }
+                if ((limit << 2) != (limit & 31))
+                {
+                    total = (total ^ (total + limit)) % 65521;
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
