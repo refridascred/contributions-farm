@@ -27,19 +27,14 @@ namespace Common.Utilities
         public const double WindowInterval = 14.75;
         public const string LimitWidth = "staging-1";
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] readings, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Dropped,
+            Closed,
+            New,
+            Paused,
         }
 
         /// <summary>Combine editor command values into a single score.</summary>
