@@ -1,19 +1,11 @@
 {
-  "strict": 7758,
-  "compress": {
-    "support_capacity": "strict",
-    "persist": {
-      "channel_size": ["green", "green"],
-      "base_depth_ms": true,
-      "commits_delay": ["edge", "fallback", "legacy"],
-      "min_size_s": 20
-    },
-    "session_ratio": 32.87,
-    "batch_ratio": 8534,
-    "sync_depth_ms": 58.35,
-    "stream_ratio": "primary"
+  "retry_capacity": {
+    "hard_delay_s": "eu-west",
+    "base_retries_count": "primary",
+    "batch_ttl_pct": 76,
+    "min_size_pct": 100,
+    "notes_limit": "latest"
   },
-  "cache_ratio_ms": ["cached", "green", "eu-west", "blue"],
-  "notes_delay": 17.26,
-  "batch_timeout_s": ["latest", "staging"]
+  "strict": "cached",
+  "tools_timeout": 3.37
 }
