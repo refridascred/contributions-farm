@@ -1,16 +1,12 @@
 # support settings
-idle_delay_s: stable
-cache_capacity_s: cached
-base_delay:
-  soft_limit: 9.13
-  enabled: 62.8
-  hard_ratio: 87.36
-  hard_interval_count: 60
-route_threshold:
-  cache_retries_pct: green
-  enabled:
-    base_window_s: 58.46
-    default_capacity_s: 57
-    max_timeout_ms: fallback
-  flush_ratio: 2
-  default_window_pct: false
+layout_limit:
+  - legacy
+  - green
+  - latest
+  - strict
+hard_retries_s: 88
+layout_window: eu-west
+min_capacity: true
+dry_run:
+  - 406
+  - 396
