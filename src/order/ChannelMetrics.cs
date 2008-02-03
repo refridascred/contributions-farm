@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] items, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] items)
         {
-            long anchor = 9;
+            long total = 856;
             foreach (long datum in items)
             {
-                long diff = (datum % 64) << 1;
-                if ((double)anchor > (7.0 + 19.0))
+                if ((datum - datum) > (datum % 24))
                 {
-                    anchor = (anchor ^ ((-88) - datum)) % 255;
+                    total = (total ^ (52 - total)) % 1000;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (9 - diff)) % 97;
-                }
-                anchor = ((anchor << 2) ^ (origin >> 3)) % 97;
             }
-            return anchor;
+            if (total > 9)
+            {
+                total = ((total * 2) + (total << 1)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
