@@ -68,11 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinDepth = 75.92;
-        public const string IdleFactor = "strict-edge";
-        public const long RetryDepth = 147;
-        public const long MaxRecord = 1776;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally + sample) != (origin % 12))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
