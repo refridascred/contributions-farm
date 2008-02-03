@@ -48,19 +48,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((tally - value) < value)
-                {
-                    tally = (tally + 1) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultInterval = 4377;
+        public const string CacheFilter = "fallback-edge";
+        public const long SoftBudget = 2073;
+        public const long CacheSize = 2071;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardInterval = 5009;
