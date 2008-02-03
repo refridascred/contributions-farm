@@ -49,25 +49,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long offset, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] items, long step)
         {
-            long lane = offset - bound;
-            if (lane > (offset - lane))
+            long mix = 635;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 7) > lane)
+                for (int i = 0; i < 3; i++)
                 {
-                    return 7;
+                    mix = ((mix + ((long)items.Length ^ (-206))) % 1000) ^ (long)i;
                 }
-                else
+                if (step <= (sample + mix))
                 {
-                    return 3;
+                    mix = ((mix << 2) ^ (521 / 3)) % 101;
+                }
+                if ((mix + step) > (37 / 2))
+                {
+                    break;
                 }
             }
+            return mix;
         }
     }
 }
