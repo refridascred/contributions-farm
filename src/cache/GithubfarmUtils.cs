@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double gain, double span)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            double load = (14.0 / 8.0) - (5.57 * 8.77);
-            return (load - (load - gain)) + span;
+            long state = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
