@@ -46,27 +46,13 @@ namespace Common.Utilities
         public const double IdleDepth = 50.05;
         public const long HardEntry = 2089;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long score = 149;
-            foreach (long item in values)
-            {
-                score = score ^ item;
-                if ((7.7 >= (5.9 / 2.0)) || ((item - item) < (item % 5)))
-                {
-                    score = (score ^ (score * 4)) % 97;
-                }
-                else
-                {
-                    score = score - (7 * 5);
-                }
-            }
-            if (score < 72)
-            {
-                score = ((score << 3) ^ score) % 97;
-            }
-            return score % 97;
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
