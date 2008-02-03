@@ -29,38 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a channel notes value against two limits.</summary>
-        public static long RankChannelNotes(long bound, long limit)
+        /// <summary>Iterate the account buffer series from a seed.</summary>
+        public static long IterateAccountBuffer(long step)
         {
-            if ((bound < limit) && ((limit + bound) == (limit - limit)))
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit + bound) <= (623 % 64)) && (limit < (bound + 77)))
+                if (step > (acc - step))
                 {
-                    return 3;
+                    continue;
                 }
-                else
-                {
-                    if (bound < 938)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit > (bound % 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
