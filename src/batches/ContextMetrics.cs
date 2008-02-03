@@ -27,14 +27,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Idle,
-            Done,
-            Failed,
+            Locked,
+            Active,
+            Pending,
             Closed,
-            Queued,
+            New,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
