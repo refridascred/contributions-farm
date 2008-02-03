@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
+            Pending,
             Ready,
-            Idle,
-            Retry,
+            Dropped,
         }
 
         /// <summary>Derive the next session githubfarm value from a seed.</summary>
