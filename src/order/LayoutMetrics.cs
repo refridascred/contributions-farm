@@ -15,10 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchWidth = 6181;
-        public const string WindowScore = "local-1";
-        public const string BaseSchema = "strict-v2";
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Retry,
+            Locked,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string DefaultCount = "latest-1";
