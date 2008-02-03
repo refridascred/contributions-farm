@@ -39,13 +39,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long score = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Match up context account samples.</summary>
