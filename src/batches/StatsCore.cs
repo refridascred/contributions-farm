@@ -29,13 +29,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double bias, double floor)
         {
-            Active,
-            Dropped,
-            Paused,
-            Draft,
+            double weight = 18.0;
+            if (weight > (double)11)
+            {
+                weight = ((weight + 7.5) + bias) - floor;
+            }
+            return weight + (double)513;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
