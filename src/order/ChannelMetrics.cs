@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            long total = 856;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum - datum) > (datum % 24))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total ^ (52 - total)) % 1000;
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 9)
-            {
-                total = ((total * 2) + (total << 1)) % 255;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
