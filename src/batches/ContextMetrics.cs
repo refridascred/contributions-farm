@@ -26,15 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Ready,
-            Retry,
-            Active,
-            Locked,
-            New,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 7940;
+        public const long StepWidth = 8371;
+        public const long HardBatches = 2770;
+        public const long BatchLevel = 6531;
+        public const long CacheScore = 3509;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] data)
