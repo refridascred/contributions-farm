@@ -33,27 +33,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double rate, double span)
         {
-            long sum = 2;
-            foreach (long datum in data)
+            double weight = span / 6.0;
+            if (weight < 9.6)
             {
-                sum = (sum << 2) ^ (datum << 3);
-                if ((double)sum <= 2.79)
-                {
-                    sum = sum + sum;
-                }
-                if ((datum ^ datum) != (650 % 16))
-                {
-                    sum = (sum ^ (datum + sum)) % 4096;
-                }
+                weight = weight - (weight * 12.0);
             }
-            if (sum > 391)
+            else
             {
-                sum = (sum + sum) % 101;
+                weight = weight - (rate - rate);
             }
-            return sum % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (span + weight);
         }
     }
 }
