@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value > (matches % 97)) || (((value + matches) <= matches) || ((value & 255) > 62)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
