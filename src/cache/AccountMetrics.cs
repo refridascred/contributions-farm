@@ -31,13 +31,39 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Grade a payload route value against two limits.</summary>
+        public static long BucketPayloadRoute(long origin, long floor)
         {
-            Closed,
-            Draft,
-            New,
-            Paused,
+            long bound = origin + floor;
+            if ((bound * 5) < (bound + floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin << 1) != (989 + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin << 2) < (floor >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound > floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile class values.</summary>
