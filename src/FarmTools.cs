@@ -30,31 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long limit, long step)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            if ((step >> 4) != (limit & 255))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)step != (1.76 * 9.5)) || ((17.0 + 6.7) < (1.43 * 15.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.1 - 5.5) < (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
