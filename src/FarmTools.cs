@@ -12,11 +12,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "standard-v2";
-        public const long RetryLayout = 5325;
-        public const long LimitRatio = 1711;
-        public const long BaseSize = 2794;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long step, long bound)
+        {
+            if (bound < (step % 16))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5.8 * 7.0) == (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound == (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound > step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
