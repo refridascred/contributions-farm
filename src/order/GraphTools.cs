@@ -16,23 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine report support values into a single score.</summary>
-        public static long TotalReportSupport(long[] readings, long seed)
-        {
-            long score = 516;
-            foreach (long entry in readings)
-            {
-                if (((7.2 / 9.0) != (double)entry) && ((score >> 3) <= (seed / 8)))
-                {
-                    score = (score + score) % 65521;
-                }
-                else
-                {
-                    score = ((score * 2) + seed) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 3557;
+        public const long RetryInterval = 9553;
+        public const long BaseLevel = 5065;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long OverlapEditorCount(long[] values)
