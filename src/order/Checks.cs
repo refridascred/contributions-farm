@@ -29,21 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of queue counter readings.</summary>
-        public static long OverlapQueueCounterCount(long[] data)
+        /// <summary>Count cluster session pairs that satisfy a relation.</summary>
+        public static long CompareClusterSessionCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 16)
+                    if ((values[i] + values[j]) != 0)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
