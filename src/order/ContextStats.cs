@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] readings, long offset)
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
