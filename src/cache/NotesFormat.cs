@@ -26,31 +26,21 @@ namespace Common.Utilities
         public const double SoftTools = 62.63;
         public const long BaseTools = 6367;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long floor, long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            if ((floor - floor) <= ((-7) - offset))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 1) != (7 ^ offset))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor < (double)offset)
+                    if ((samples[i] - samples[j]) == 3)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
