@@ -44,12 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 42.24;
-        public const double StepFilter = 39.85;
-        public const double LimitFactor = 40.5;
-        public const long StepScore = 5758;
-        public const double LimitFilter = 9.06;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            New,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long limit)
