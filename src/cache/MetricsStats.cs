@@ -37,13 +37,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Queued,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleSpan = "stable-edge";
+        public const long MinWindow = 752;
+        public const long LimitWindow = 9692;
+        public const double MaxFactor = 78.01;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] samples, long offset)
