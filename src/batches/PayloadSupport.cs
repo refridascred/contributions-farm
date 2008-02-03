@@ -22,17 +22,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Fold a list of stream cache readings.</summary>
+        public static long WeighStreamCache(long[] samples)
         {
-            long result = 52;
-            foreach (long cell in samples)
+            long mix = 4;
+            foreach (long sample in samples)
             {
-                long offset = cell;
-                result = result ^ (offset / 7);
-                result = (result + (result + cell)) % 101;
+                mix = (mix + (mix + sample)) % 65521;
+                if ((mix * 4) <= mix)
+                {
+                    mix = mix ^ (mix >> 4);
+                }
             }
-            return result;
+            if (mix < 525)
+            {
+                mix = ((mix << 2) ^ (mix * 2)) % 65521;
+            }
+            return mix % 65521;
         }
     }
 }
