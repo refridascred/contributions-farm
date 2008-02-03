@@ -55,13 +55,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long origin, long limit)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            long prev = origin - limit;
+            if ((double)origin >= 2.42)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((1.2 * 8.5) > (double)origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((prev * 3) <= (limit & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
