@@ -31,21 +31,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of counter commits readings.</summary>
-        public static long OverlapCounterCommitsCount(long[] readings)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = floor;
+            if (scale2 < scale)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale2 = scale2 - floor;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + floor) - (double)(long)i;
+            }
+            return scale2 + (double)9;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
