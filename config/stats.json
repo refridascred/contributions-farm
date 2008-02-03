@@ -1,6 +1,29 @@
 {
-  "min_capacity_count": "green",
-  "format_limit": 97,
-  "retry_interval": 11,
-  "soft_depth": "stable"
+  "compress": {
+    "min_limit_count": "strict",
+    "payload_interval": {
+      "cache_threshold": false,
+      "dry_run": false,
+      "channel_delay": 49.14,
+      "persist": "primary",
+      "hard_ttl": true
+    },
+    "compress": false,
+    "max_ttl": false,
+    "format_window": [44, 214]
+  },
+  "audit": true,
+  "verbose": {
+    "retry_threshold": [320, 356, 270, 125],
+    "max_timeout": false,
+    "poll_depth_count": {
+      "soft_retries_s": "legacy",
+      "max_size_ms": true,
+      "hard_limit_ms": "legacy",
+      "min_ttl_pct": [200, 479, 74],
+      "idle_threshold": false,
+      "idle_ratio_s": 5236
+    }
+  },
+  "max_ratio_s": true
 }
