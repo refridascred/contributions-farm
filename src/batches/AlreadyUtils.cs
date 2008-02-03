@@ -21,17 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] items, long target)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
