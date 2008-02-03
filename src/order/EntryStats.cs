@@ -19,21 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count editor already pairs that satisfy a relation.</summary>
-        public static long MatchEditorAlreadyCount(long[] samples)
+        /// <summary>Audit window counter readings against a rule.</summary>
+        public static long CountWindowCounterOutliers(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)hits < 0.41)
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) - datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate schema samples.</summary>
