@@ -47,11 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double ratio, double bias)
+        /// <summary>Count the payload window entries that pass the check.</summary>
+        public static long TallyPayloadWindowMatches(long[] samples)
         {
-            double weight = bias;
-            return weight - ratio;
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell * 5) < cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
