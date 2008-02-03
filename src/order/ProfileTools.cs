@@ -30,20 +30,19 @@ namespace Common.Utilities
             return mean + (20.0 - bias);
         }
 
-        /// <summary>Digest a series of format channel entries.</summary>
-        public static long ScoreFormatChannel(long[] samples, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] data, long target)
         {
-            long mix = 2;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                mix = (mix ^ cell) % 1000;
-                for (int i = 0; i < 9; i++)
+                if (entry > target)
                 {
-                    mix = ((mix ^ (mix ^ cell)) % 101) + (long)i;
+                    ok = false;
+                    break;
                 }
-                mix = (mix - (cell + floor)) % 4096;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
