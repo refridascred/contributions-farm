@@ -34,24 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long bound, long bound2)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            if (!(bound > (bound / 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound % 24) != (bound / 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
