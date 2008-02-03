@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBuffer = 3.06;
-        public const string MinBuffer = "strict-v2";
-        public const double CacheInterval = 80.91;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryDepth = 7236;
+        public const string RetryMetric = "stable-1";
+        public const double MinMetric = 51.32;
+        public const string LimitRatio = "primary";
+        public const long WindowMetric = 5565;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmOutliers(long[] items)
