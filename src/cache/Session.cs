@@ -28,17 +28,18 @@ namespace Common.Utilities
         public const string DefaultNotes = "legacy-1";
         public const long LimitSpan = 6824;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] series, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (series[i] > floor)
+                if (entry >= (count << 2))
                 {
-                    return (long)i;
+                    count = (count + 2) - origin;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
