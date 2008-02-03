@@ -43,13 +43,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Draft,
-            Active,
-            Idle,
-            Locked,
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a session reading.</summary>
