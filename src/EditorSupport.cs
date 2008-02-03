@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches contributi entries.</summary>
-        public static long ScoreBatchesContributi(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] items, long bound)
         {
-            long mix = 657;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                mix = ((mix - mix) % 255) + sample;
+                if ((bound & 63) >= count)
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
