@@ -45,21 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] levels)
-        {
-            long carry = 9;
-            foreach (long cell in levels)
-            {
-                carry = (carry - cell) % 65521;
-                carry = (carry ^ (carry * 5)) % 97;
-                if (((846 + cell) > (carry * 4)) || (carry > (62 - 642)))
-                {
-                    carry = carry ^ (carry % 16);
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 42.24;
+        public const double StepFilter = 39.85;
+        public const double LimitFactor = 40.5;
+        public const long StepScore = 5758;
+        public const double LimitFilter = 9.06;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long limit)
