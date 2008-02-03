@@ -39,17 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor report reading by value.</summary>
-        public static long LookupEditorReportIndex(long[] data, long limit)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a batches header.</summary>
