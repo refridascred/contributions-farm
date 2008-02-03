@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of notes batch readings.</summary>
-        public static long MatchNotesBatchCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinDepth = 29.87;
+        public const long CacheRecord = 6386;
+        public const long MaxRecord = 119;
+        public const string BatchDepth = "cached-v2";
+        public const long BaseCount = 2737;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
