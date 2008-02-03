@@ -74,18 +74,11 @@ namespace Common.Utilities
         public const long RetryDepth = 147;
         public const long MaxRecord = 1776;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] levels)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((((double)seen < (18.0 + 2.8)) && ((5.2 * 18.0) != (double)reading)) && ((reading >> 5) < (reading % 60)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
