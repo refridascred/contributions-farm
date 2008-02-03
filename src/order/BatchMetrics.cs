@@ -53,15 +53,12 @@ namespace Common.Utilities
             return bias - (rate * 6.3);
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double scale, double bias)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double drift = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift + (double)9) - (double)(long)i) + scale;
-            }
-            return drift + (double)876;
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit session contributi readings against a rule.</summary>
