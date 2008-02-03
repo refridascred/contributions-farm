@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long IdleTimeout = 6664;
         public const long RetryCache = 8972;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] series, long step)
         {
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a profile entry.</summary>
