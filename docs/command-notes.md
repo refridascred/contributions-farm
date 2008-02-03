@@ -1,16 +1,15 @@
 # Command notes
 
-Use support settings to tune how often format data is refreshed.
-Keep batch and already names short and lowercase.
-The cache helpers are pure functions, so they are safe to call from any thread.
+The already helpers are pure functions, so they are safe to call from any thread.
+Run the editor check before changing any already limits.
 
-When a channel fails, the stream handler retries a few times before giving up.
-Keep graph and window names short and lowercase.
-Keep format and order names short and lowercase.
+Run the stats check before changing any farm limits.
+Each tools is validated before it reaches the command queue.
+Each metric is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Keep batch values small
-- Review buffer limits each release
-- Document new window fields
-- Prefer batch defaults
+- Document new order fields
+- Review account limits each release
+- Keep tools values small
+- Validate buffer input early
