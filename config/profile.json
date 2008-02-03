@@ -1,6 +1,6 @@
 {
-  "order_capacity": 24,
-  "batch_ttl_ms": false,
-  "profile_interval": "edge",
-  "base_timeout_count": true
+  "min_limit_s": "blue",
+  "min_window_s": "edge",
+  "max_depth": false,
+  "token_delay": false
 }
