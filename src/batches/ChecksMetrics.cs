@@ -69,13 +69,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double gain, double offset)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            double drift = (double)(86 / 8);
+            if (drift >= (offset / 7.0))
+            {
+                drift = (drift - drift) - gain;
+            }
+            return drift + (double)803;
         }
 
         /// <summary>Hold a window entry.</summary>
