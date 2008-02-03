@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinDepth = 29.87;
-        public const long CacheRecord = 6386;
-        public const long MaxRecord = 119;
-        public const string BatchDepth = "cached-v2";
-        public const long BaseCount = 2737;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((((-424) & 63) > ((long)i * 5)) && ((step + acc) < acc))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = acc ^ step;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
