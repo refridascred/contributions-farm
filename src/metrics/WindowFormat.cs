@@ -19,26 +19,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] data, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long seed, long seed2)
         {
-            long state = 6;
-            foreach (long cell in data)
+            long bound = seed ^ seed2;
+            if (seed2 < (seed2 << 2))
             {
-                if ((state + 4) != (state + 68))
+                return 2;
+            }
+            else
+            {
+                if ((bound >> 3) < (seed + seed2))
                 {
-                    state = ((state * 3) + (cell - cell)) - bound;
+                    return 6;
                 }
                 else
                 {
-                    state = (state - (19 << 1)) % 65521;
+                    if ((17 * 2) < (seed2 / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)44 != (double)seed2) || ((seed & 3) >= (seed2 * 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (state > 765)
-            {
-                state = (state - state) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
