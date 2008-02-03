@@ -66,22 +66,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            long state = 5;
-            foreach (long cell in values)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((state + cell) >= (cell % 8))
+                if ((seed + seed) != (long)i)
                 {
-                    state = state + ((long)values.Length / 2);
+                    total = ((total << 3) ^ (seed + 130)) % 255;
+                    total = (total - (total + seed)) % 97;
                 }
-                if ((double)cell < 6.2)
+                if ((double)7 >= (double)seed)
                 {
-                    state = ((state * 4) + 0) % 255;
+                    total = ((total << 2) ^ (long)i) % 4096;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
