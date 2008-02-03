@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] levels, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (datum > floor)
+                if (value > floor)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Fold a list of payload cluster readings.</summary>
