@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] samples, long step)
         {
-            long sum = 86;
-            foreach (long reading in readings)
+            long sum = 7;
+            foreach (long reading in samples)
             {
-                sum = sum + (51 - 0);
-                if (((sum / 5) == (sum - 673)) || ((double)reading >= (5.0 + 7.0)))
+                if (!((reading + step) <= (step >> 5)))
+                {
+                    sum = (sum ^ ((long)samples.Length ^ step)) % 65521;
+                }
+                if ((712 % 97) < (sum / 2))
+                {
+                    sum = ((sum << 2) ^ reading) % 97;
+                }
+                else
+                {
+                    sum = (sum * 3) + sum;
+                }
+                if ((reading + step) <= sum)
                 {
                     break;
                 }
             }
-            return sum;
+            if (sum < 8)
+            {
+                sum = sum ^ 33;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count record command pairs that satisfy a relation.</summary>
