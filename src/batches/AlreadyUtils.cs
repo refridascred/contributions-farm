@@ -21,39 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long offset, long seed)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] items, long target)
         {
-            long lane = offset + seed;
-            if (seed >= (lane ^ lane))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((16.0 + 19.0) <= (double)seed)
+                if (items[i] > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((lane + seed) < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)lane > (0.07 * 4.7)) && ((seed >> 4) <= (lane & 127)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command kind values.</summary>
