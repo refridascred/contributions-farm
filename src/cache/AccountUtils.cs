@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] items, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] values)
         {
-            long mark = 5;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (origin > (origin - mark))
+                if (tally < (tally << 3))
                 {
-                    mark = ((mark - mark) % 1000) - value;
+                    tally = (tally + 2) + value;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
