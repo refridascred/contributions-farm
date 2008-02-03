@@ -29,19 +29,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] samples, long seed)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            double gain = floor / 6.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (datum <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = ((gain - (gain - floor)) + (double)(long)i) - ratio;
             }
-            return ready;
+            return gain + (double)(-786);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
