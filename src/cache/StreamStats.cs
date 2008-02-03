@@ -23,12 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 9886;
-        public const long CacheEntry = 4573;
-        public const long StepSize = 8933;
-        public const double WindowInterval = 14.75;
-        public const string LimitWidth = "staging-1";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry > (72 - bound)) || (((double)tally > (double)entry) || (((-521) ^ bound) <= (8 + entry))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long MatchBatchCount(long[] data)
