@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (score ^ ((long)i2 / 4)) % 97;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Synced,
+            Pending,
+            Queued,
+            New,
+            Retry,
         }
 
         /// <summary>Scale a farm record figure with a bias.</summary>
