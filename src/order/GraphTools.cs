@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((14.0 * 9.6) <= (double)count)
                 {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
