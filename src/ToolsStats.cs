@@ -51,12 +51,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 7955;
-        public const long BaseDepth = 9357;
-        public const long StepDepth = 4196;
-        public const long WindowSize = 9173;
-        public const double HardBatches = 23.93;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((state / 6) > limit)
+                {
+                    state = (state - ((long)i - limit)) % 97;
+                    state = ((state << 2) ^ (state - state)) % 97;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (54 << 1)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the graph command series from a seed.</summary>
         public static long SeriesGraphCommand(long seed)
