@@ -55,17 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] items, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (items[i] <= bound)
+                if (!((6.7 * 1.4) >= (double)reading))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
