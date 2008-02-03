@@ -36,13 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
