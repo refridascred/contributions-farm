@@ -58,18 +58,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit token channel readings against a rule.</summary>
-        public static long MeasureTokenChannelOutliers(long[] values)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((7.91 + 0.7) < (double)cell) && (hits >= (cell & 255)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Match up account samples.</summary>
