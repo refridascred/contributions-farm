@@ -31,21 +31,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up commits contributi samples.</summary>
-        public static long OverlapCommitsContributiCount(long[] samples)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = rate;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = ((scale - (double)(-937)) + (double)(long)i) - floor;
             }
-            return count;
+            return scale - 2.08;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
