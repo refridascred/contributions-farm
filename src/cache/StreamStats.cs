@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a batch token value against two limits.</summary>
-        public static long GradeBatchToken(long offset, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] samples, long limit)
         {
-            if ((double)seed <= (12.0 * 7.5))
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset << 1) > (offset >> 1))
+                if (item <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset < (4.8 - 9.99))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed > (6.2 - 14.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the metric class values.</summary>
