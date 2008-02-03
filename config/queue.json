@@ -1,6 +1,10 @@
 {
-  "idle_capacity_s": 48.49,
-  "readonly": true,
-  "enabled": 46.1,
-  "hard_ttl": 21.96
+  "base_capacity_ms": 53.53,
+  "verbose": "green",
+  "farm_ratio": ["primary", "primary", "stable", "legacy"],
+  "window_size": {
+    "warm_timeout_pct": false,
+    "batch_size_ms": 66.44,
+    "account_ratio": ["open", "cached"]
+  }
 }
