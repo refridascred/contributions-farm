@@ -68,16 +68,11 @@ namespace Common.Utilities
             return ratio + (double)70;
         }
 
-        /// <summary>Roll a githubfarm buffer counter forward.</summary>
-        public static long IterateGithubfarmBuffer(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepSpan = 8763;
+        public const long BurstMetrics = 7460;
+        public const double BatchMetrics = 71.88;
+        public const long StepBudget = 3397;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long SeekChannelIndex(long[] values, long limit)
