@@ -27,18 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] items, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((reading % 100) > (count ^ offset))
+                if (tally >= (tally + entry))
                 {
-                    count = count + 2;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
