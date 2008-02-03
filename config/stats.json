@@ -1,6 +1,7 @@
 {
-  "cache_retries": 30,
-  "soft_limit_ms": "latest",
-  "max_threshold_ms": ["fallback", "green", "staging", "strict"],
-  "payload_depth": 37.21
+  "idle_ttl": 8864,
+  "persist": false,
+  "cache_limit_pct": 84.84,
+  "max_capacity_pct": true,
+  "hard_retries_pct": "fallback"
 }
