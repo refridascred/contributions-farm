@@ -1,5 +1,6 @@
 {
-  "cache_capacity_count": [409, 458, 189],
-  "support_retries": 1024,
-  "poll_ttl": "edge"
+  "burst_retries": 2,
+  "warm_threshold_count": 5180,
+  "cache_ratio": true,
+  "strict": false
 }
