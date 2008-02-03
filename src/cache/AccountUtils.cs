@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Blend two graph batches measurements.</summary>
+        public static double BlendGraphBatches(double bias, double bias2)
         {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double weight = (double)(40 - 618);
+            if (weight > (bias2 - bias))
+            {
+                weight = weight + weight;
+            }
+            return weight + (15.0 + weight);
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
