@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long step, long limit)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long diff = step - limit;
-            if ((double)diff != (13.0 + 7.34))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + step) >= (step - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit > (limit ^ step)) || ((limit ^ limit) < limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Closed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define session limits and defaults.</summary>
