@@ -5,27 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate context account samples.</summary>
-        public static long TallyContextAccount(long[] levels, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            long mix = 6;
-            foreach (long cell in levels)
+            long sum = 7;
+            foreach (long datum in values)
             {
-                if ((double)cell > (18.0 - 3.8))
+                if (datum > (datum * 2))
                 {
-                    break;
+                    sum = ((sum << 3) ^ (datum + datum)) % 255;
                 }
-                mix = (mix - step) % 65521;
-                if (((step << 3) != (step & 63)) || (cell < (step ^ step)))
+                else
                 {
-                    break;
+                    sum = ((sum << 3) ^ (datum >> 4)) % 4096;
                 }
             }
-            if (mix < 15)
+            if (sum < 4)
             {
-                mix = ((mix * 5) + (mix + step)) % 4096;
+                sum = (sum ^ (sum ^ 0)) % 65521;
             }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
