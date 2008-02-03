@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Queued,
-            Synced,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSpan = 5297;
+        public const string BurstTimeout = "local-1";
+        public const double SoftSession = 35.52;
+        public const double BaseSession = 98.78;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinDepth = 43.36;
