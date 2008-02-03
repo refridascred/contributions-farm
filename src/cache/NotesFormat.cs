@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double ratio, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] values, long offset)
         {
-            double rate = (double)(82 % 5);
-            if (rate > (bias - rate))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                rate = (rate + (double)3) - ratio;
+                if ((cell - seen) <= cell)
+                {
+                    seen = (seen + 3) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return rate - 8.4;
+            return seen;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
