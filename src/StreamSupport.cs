@@ -38,10 +38,22 @@ namespace Common.Utilities
             return bias2 + (bias2 / 9.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitScore = 1792;
-        public const long MaxFactor = 3055;
-        public const long WindowRatio = 6312;
-        public const long DefaultPayload = 7655;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] samples, long floor)
+        {
+            long state = 181;
+            foreach (long datum in samples)
+            {
+                if (((datum << 3) <= (54 / 5)) || ((178 + floor) != (floor % 5)))
+                {
+                    state = (state << 2) ^ (long)samples.Length;
+                }
+            }
+            if (state < 3)
+            {
+                state = ((state << 2) ^ (floor + floor)) % 101;
+            }
+            return state;
+        }
     }
 }
