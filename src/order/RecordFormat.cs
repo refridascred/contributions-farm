@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
+            Paused,
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a stats record.</summary>
