@@ -21,12 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Look up the position of a route contributi sample.</summary>
+        public static long LocateRouteContributiIndex(long[] series, long bound)
         {
-            Pending,
-            Dropped,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up cluster payload samples.</summary>
