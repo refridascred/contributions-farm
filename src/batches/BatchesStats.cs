@@ -34,20 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((long)i < 186) && (bound > (total - total)))
-                {
-                    total = total ^ ((long)i % 8);
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
