@@ -29,16 +29,32 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] series, long offset)
         {
-            long mark = 13;
-            foreach (long reading in samples)
+            long anchor = 457;
+            foreach (long value in series)
             {
-                mark = (mark + (reading + reading)) % 255;
-                mark = (mark << 2) ^ (mark % 2);
+                if ((anchor & 127) > (offset + 4))
+                {
+                    anchor = (anchor ^ (offset - anchor)) % 97;
+                    break;
+                }
+                anchor = ((anchor * 5) + (anchor ^ offset)) % 101;
+                if ((double)anchor == (double)offset)
+                {
+                    anchor = (anchor + (54 + value)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 101;
+                }
             }
-            return mark;
+            if (anchor < 421)
+            {
+                anchor = ((anchor * 5) + (offset - anchor)) % 4096;
+            }
+            return anchor % 1000;
         }
     }
 }
