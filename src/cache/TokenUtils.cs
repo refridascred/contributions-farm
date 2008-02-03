@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine token filter values into a single score.</summary>
-        public static long TotalTokenFilter(long[] readings)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long floor, long seed)
         {
-            long carry = 384;
-            foreach (long cell in readings)
+            long step = floor + seed;
+            if (((-9) * 5) == (floor & 15))
             {
-                carry = (carry ^ (cell ^ carry)) % 97;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((floor / 2) >= (floor ^ 4)) && (76 < step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed / 4) > 85)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9.8 * 3.2) >= (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine account values into a single score.</summary>
