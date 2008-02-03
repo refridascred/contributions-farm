@@ -41,19 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] levels, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] items)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long anchor = 32;
+            foreach (long datum in items)
             {
-                if (item <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (6 * 3)) + datum;
             }
-            return flag;
+            if (anchor > (-79))
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
