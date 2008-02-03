@@ -1,14 +1,8 @@
 {
-  "persist": {
-    "channel_retries": true,
-    "persist": 83.88,
-    "channel_interval": ["stable", "open", "open", "legacy"]
-  },
-  "cache_ttl": 7.75,
-  "warm_size_count": 4254,
-  "max_depth": {
-    "compress": 4699,
-    "checks_delay": "standard",
-    "burst_delay": ["staging", "cached", "blue", "local"]
-  }
+  "soft_retries": "legacy",
+  "profile_interval": false,
+  "compress": 51,
+  "warm_window_count": 15,
+  "audit": true,
+  "hard_limit_pct": 68.58
 }
