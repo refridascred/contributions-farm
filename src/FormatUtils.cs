@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long seed, long offset)
+        /// <summary>Rank queue commits input into a small class.</summary>
+        public static long BucketQueueCommits(long limit, long floor)
         {
-            if (!((seed & 15) != (seed + offset)))
+            if ((limit & 31) <= (769 - floor))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((double)offset < (1.6 / 2.0))
+                if ((floor / 8) >= limit)
                 {
                     return 7;
                 }
                 else
                 {
-                    return 8;
+                    if ((limit / 6) != ((-883) + 437))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
