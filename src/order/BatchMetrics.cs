@@ -73,21 +73,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Combine metrics editor values into a single score.</summary>
+        public static long DigestMetricsEditor(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 20;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (acc + (sample / 5)) % 255;
+                acc = acc ^ (sample ^ (-84));
             }
-            return count;
+            return acc;
         }
     }
 }
