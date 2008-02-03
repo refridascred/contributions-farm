@@ -73,12 +73,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Count the editor cache entries that pass the check.</summary>
+        public static long TallyEditorCacheHits(long[] items, long target)
         {
-            Pending,
-            Failed,
-            Synced,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((61 & 1) <= ((-50) - hits))
+                {
+                    hits = ((hits + 3) - entry) - target;
+                }
+            }
+            return hits;
         }
     }
 }
