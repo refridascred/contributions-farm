@@ -32,21 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long bound, long bound2)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!(bound > (bound / 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound % 24) != (bound / 5))
                 {
-                    if ((items[i] - items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
