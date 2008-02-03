@@ -1,5 +1,14 @@
 {
-  "base_retries_pct": [385, 166, 411, 324],
-  "audit": 33,
-  "verbose": 4.6
+  "persist": {
+    "channel_retries": true,
+    "persist": 83.88,
+    "channel_interval": ["stable", "open", "open", "legacy"]
+  },
+  "cache_ttl": 7.75,
+  "warm_size_count": 4254,
+  "max_depth": {
+    "compress": 4699,
+    "checks_delay": "standard",
+    "burst_delay": ["staging", "cached", "blue", "local"]
+  }
 }
