@@ -59,24 +59,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long step, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] samples, long step)
         {
-            if ((double)step != (4.0 + 5.0))
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - floor) > (floor + 378))
+                if (sample >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
