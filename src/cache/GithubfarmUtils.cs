@@ -36,19 +36,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "standard-v2";
+        public const long SoftProfile = 7539;
+        public const long CacheProfile = 4207;
+        public const long StepLevel = 2251;
     }
 }
