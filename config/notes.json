@@ -1,5 +1,6 @@
 {
-  "flush_interval_count": 7424,
-  "layout_interval": 85.87,
-  "flush_delay_pct": 82.56
+  "base_ttl": [90, 293],
+  "profile_ratio": 4536,
+  "burst_depth": 77.63,
+  "flush_ratio_pct": 3674
 }
