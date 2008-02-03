@@ -14,19 +14,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every payload notes entry stays within the limit.</summary>
-        public static bool ValidatePayloadNotesBounds(long[] data, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long floor, long target)
         {
-            bool found = true;
-            foreach (long datum in data)
+            if ((target ^ 69) == (target + target))
             {
-                if (datum < floor)
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= (double)floor)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)target != (15.0 - 3.3)) || ((target - target) > (target & 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
