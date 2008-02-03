@@ -43,19 +43,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double bias, double floor)
+        /// <summary>Derive the next queue report value from a seed.</summary>
+        public static long RollQueueReport(long step)
         {
-            double weight = (double)5 - bias;
-            if (weight < (double)3)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                weight = (weight - (double)413) - floor;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (weight - bias);
+            return result;
         }
     }
 }
