@@ -1,5 +1,7 @@
 {
-  "max_timeout": 1.48,
-  "batch_retries_count": "fallback",
-  "min_timeout": "standard"
+  "readonly": "latest",
+  "farm_timeout": "latest",
+  "base_timeout_ms": 34,
+  "base_interval_pct": [36, 483],
+  "compress": true
 }
