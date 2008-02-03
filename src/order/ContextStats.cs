@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const double HardDepth = 49.47;
         public const long BaseAlready = 4772;
 
-        /// <summary>Rank entry route input into a small class.</summary>
-        public static long RankEntryRoute(long step, long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            if (!((bound / 3) == (step % 12)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (step >= (bound % 100))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two support measurements.</summary>
