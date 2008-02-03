@@ -26,13 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long step)
         {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public bool Label { get; set; }
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
