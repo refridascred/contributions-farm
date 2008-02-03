@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepScore = "cached";
+        public const long SoftBudget = 9846;
+        public const long BatchBatches = 1627;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long SeekMetricIndex(long[] values, long floor)
