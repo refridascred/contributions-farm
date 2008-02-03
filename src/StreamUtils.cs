@@ -81,18 +81,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit account schema readings against a rule.</summary>
-        public static long CountAccountSchemaHits(long[] items, long floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value + matches) == (matches / 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) + floor;
+                    if ((series[i] - series[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
