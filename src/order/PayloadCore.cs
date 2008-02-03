@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Iterate the format report series from a seed.</summary>
+        public static long RollFormatReport(long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            long result = floor;
+            for (int i = 0; i < 23; i++)
             {
-                mix = (mix - ((long)i + target)) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
