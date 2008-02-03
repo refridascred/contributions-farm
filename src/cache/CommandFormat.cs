@@ -20,21 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                score = score + score;
-                if ((double)score <= (8.9 * 13.0))
-                {
-                    score = (score - ((long)i - bound)) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "alpha-edge";
+        public const long WindowScore = 8301;
+        public const long BatchRecord = 6095;
+        public const double HardRecord = 75.72;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
