@@ -74,31 +74,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            long score = 32;
-            foreach (long entry in values)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                score = (score + (score % 12)) % 4096;
-                if ((score % 64) == ((long)values.Length >> 2))
-                {
-                    score = score - (score << 3);
-                }
-                else
-                {
-                    score = ((score * 4) + (score + entry)) % 4096;
-                }
-                if ((entry + score) >= (score - score))
-                {
-                    score = (score + 57) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (entry >> 3)) % 255;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
     }
 }
