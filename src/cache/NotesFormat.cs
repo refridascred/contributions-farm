@@ -27,21 +27,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Accumulate editor account samples.</summary>
+        public static long ScoreEditorAccount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 475;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (1 <= (cell * 2))
                 {
-                    if ((samples[i] - samples[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result * 2) + (result + cell)) % 4096;
                 }
             }
-            return matches;
+            if (result > 1)
+            {
+                result = (result ^ (result + result)) % 97;
+            }
+            return result % 1000;
         }
     }
 }
