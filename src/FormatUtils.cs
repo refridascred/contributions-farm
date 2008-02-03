@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] series, long bound)
+        /// <summary>Find the first batch stats entry that matches the target.</summary>
+        public static long FindBatchStatsIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] > bound)
+                if (readings[i] > origin)
                 {
                     return (long)i;
                 }
