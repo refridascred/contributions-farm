@@ -29,18 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((bound ^ bound) >= 4) && ((38 + tally) != (datum / 8)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 15.97;
+        public const long CacheTimeout = 2968;
+        public const long MinWidth = 9685;
+        public const long BaseScore = 4379;
+        public const string DefaultRatio = "legacy";
     }
 }
