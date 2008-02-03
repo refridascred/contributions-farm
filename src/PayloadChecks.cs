@@ -41,11 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchDepth = 9028;
-        public const long BaseTimeout = 1504;
-        public const string WindowSize = "legacy-edge";
-        public const string DefaultCommits = "open-1";
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Retry,
+            Synced,
+            Ready,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
