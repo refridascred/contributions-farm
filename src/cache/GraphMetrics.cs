@@ -28,17 +28,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] data, long target)
+        /// <summary>Audit account window readings against a rule.</summary>
+        public static long AuditAccountWindowHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (data[i] > target)
+                if ((count + count) <= (14 + count))
                 {
-                    return (long)i;
+                    count = (count + 1) - reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
