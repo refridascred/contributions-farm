@@ -50,15 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double ratio, double bias)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double scale = 2.0 + bias;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale + (0.74 * 5.82);
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Rank schema input into a small class.</summary>
