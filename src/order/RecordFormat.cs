@@ -14,31 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long floor, long target)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            if ((target ^ 69) == (target + target))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (double)floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)target != (15.0 - 3.3)) || ((target - target) > (target & 3)))
+                    if ((levels[i] + levels[j]) != 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
