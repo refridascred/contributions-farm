@@ -1,8 +1,7 @@
 # entry settings
-max_capacity_s: 613
-max_limit_s:
-  - 369
-  - 358
-report_retries: 6538
-readonly: fallback
-default_depth_count: 74.79
+max_retries_count: fallback
+sync_ttl_ms: false
+burst_ttl_ms: false
+soft_window_ms: 60
+default_retries: false
+default_ratio: 100
