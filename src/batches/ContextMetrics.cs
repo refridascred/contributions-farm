@@ -65,11 +65,23 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] values, long seed)
         {
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
+            long result = -602;
+            foreach (long datum in values)
+            {
+                result = ((result << 2) ^ (2 - datum)) % 101;
+                if (!((8 ^ 271) < (387 + result)))
+                {
+                    break;
+                }
+            }
+            if (result > (-23))
+            {
+                result = ((result * 5) + seed) % 1000;
+            }
+            return result;
         }
     }
 }
