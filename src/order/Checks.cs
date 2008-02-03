@@ -12,38 +12,21 @@ namespace Common.Utilities
         public const long SoftSupport = 3573;
         public const double HardWidth = 4.8;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long step)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] items)
         {
-            if (step > (step + step))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound ^ bound) <= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((9.92 * 3.67) >= (double)step))
+                    if ((items[i] - items[j]) < 14)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + bound) != (step ^ 87))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of queue counter readings.</summary>
