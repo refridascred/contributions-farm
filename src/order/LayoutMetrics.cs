@@ -24,10 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultCount = "latest-1";
-        public const string BatchFactor = "cached-1";
-        public const double StepSize = 88.75;
-        public const double HardEditor = 12.95;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] levels, long bound)
+        {
+            long acc = 386;
+            foreach (long reading in levels)
+            {
+                acc = acc + (bound << 3);
+                if (((20.0 + 6.3) < (double)reading) && ((double)acc < 3.3))
+                {
+                    acc = (acc - (bound ^ bound)) % 101;
+                }
+            }
+            return acc % 65521;
+        }
     }
 }
