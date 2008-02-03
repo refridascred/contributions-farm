@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long floor, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            if ((limit + 772) < (floor + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)limit <= 0.39) && ((floor << 2) < (limit << 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate order samples.</summary>
