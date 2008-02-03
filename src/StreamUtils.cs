@@ -54,31 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values, long origin)
         {
-            long carry = 301;
-            foreach (long entry in levels)
+            long total = 626;
+            foreach (long entry in values)
             {
-                if ((entry * 5) != (22 >> 1))
+                if ((entry >= (long)values.Length) || ((origin + origin) != (origin % 10)))
                 {
-                    carry = carry ^ (entry - (-25));
-                }
-                carry = (carry << 3) ^ (entry + carry);
-                if ((carry / 3) < (long)levels.Length)
-                {
-                    carry = (carry ^ entry) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry << 1)) % 255;
-                }
-                if (!(carry >= 86))
-                {
-                    break;
+                    total = (total + origin) % 65521;
                 }
             }
-            return carry;
+            if (total < 5)
+            {
+                total = (total << 3) ^ (442 - 865);
+            }
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
