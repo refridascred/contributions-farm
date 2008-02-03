@@ -34,18 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long state = 7;
-            foreach (long item in readings)
-            {
-                if ((item + item) == (item - state))
-                {
-                    state = state ^ (state & 1);
-                }
-            }
-            return state;
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
