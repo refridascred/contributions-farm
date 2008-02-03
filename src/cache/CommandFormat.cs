@@ -37,11 +37,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftProfile = "primary-v2";
-        public const string SoftRatio = "open";
-        public const double RetryProfile = 72.77;
-        public const double IdleProfile = 82.01;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long step, long bound)
+        {
+            long diff = step ^ bound;
+            if ((step + diff) > bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff + step) <= diff)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + step) == (step + diff))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
