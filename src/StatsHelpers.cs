@@ -67,19 +67,18 @@ namespace Common.Utilities
         public const long RetryDepth = 147;
         public const long MaxRecord = 1776;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double bias, double span)
+        /// <summary>Measure how many session stats samples are out of range.</summary>
+        public static long CountSessionStatsGaps(long[] samples, long step)
         {
-            double ratio = span * 2.2;
-            if (ratio < span)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                ratio = ratio + (8.1 * 4.0);
+                if ((double)cell != (double)step)
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - bias) - (double)(long)i;
-            }
-            return ratio + (double)98;
+            return matches;
         }
     }
 }
