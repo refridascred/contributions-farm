@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] levels, long floor)
+        /// <summary>Blend two token batch measurements.</summary>
+        public static double SmoothTokenBatch(double weight, double span)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double rate = (double)(285 - 453);
+            if (rate <= span)
             {
-                if ((585 >= (datum ^ floor)) || (((double)datum >= (1.0 + 9.2)) || (303 <= floor)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = (rate - (span * 9.0)) + weight;
             }
-            return seen;
+            return rate + span;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
