@@ -20,11 +20,13 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryWidth = 482;
-        public const string MinRatio = "stable-edge";
-        public const long MinInterval = 6594;
-        public const long StepCount = 1426;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
+        }
 
         /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
         public static long AuditGithubfarmClusterOutliers(long[] samples, long step)
