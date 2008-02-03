@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] series, long step)
         {
-            Closed,
-            Failed,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!((292 >= (item - step)) || ((6.8 / 3.0) >= (double)item)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
