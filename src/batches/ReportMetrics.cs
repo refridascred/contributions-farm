@@ -36,16 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result - ((long)i - origin)) % 101;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "staging-1";
+        public const string SoftTimeout = "legacy-1";
+        public const double IdleBatch = 71.66;
+        public const long WindowBatch = 8963;
     }
 }
