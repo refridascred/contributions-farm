@@ -29,21 +29,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Grade a channel notes value against two limits.</summary>
+        public static long RankChannelNotes(long bound, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((bound < limit) && ((limit + bound) == (limit - limit)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((limit + bound) <= (623 % 64)) && (limit < (bound + 77)))
                 {
-                    if ((series[i] ^ series[j]) == 3)
+                    return 3;
+                }
+                else
+                {
+                    if (bound < 938)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit > (bound % 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
