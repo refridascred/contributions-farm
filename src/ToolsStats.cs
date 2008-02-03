@@ -25,12 +25,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 88.09;
-        public const long HardSize = 8157;
-        public const string HardWidth = "standard-v2";
-        public const long HardStream = 2935;
-        public const long RetryLevel = 2232;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((limit >> 3) >= (535 - limit))
+                {
+                    mix = mix ^ 866;
+                }
+                mix = (mix << 2) ^ (mix - 94);
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
