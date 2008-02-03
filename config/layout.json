@@ -1,22 +1,5 @@
 {
-  "min_interval_s": "green",
-  "sync_limit": {
-    "audit": {
-      "support_delay": [277, 341, 174],
-      "tools_capacity": [196, 363, 498],
-      "base_window": 1769,
-      "compress": true
-    },
-    "cache_window_count": "green",
-    "idle_threshold_count": {
-      "verbose": "latest",
-      "persist": 250,
-      "cluster_limit": 6964,
-      "route_ratio": "primary",
-      "min_size_s": 47
-    },
-    "cache_window": 1418,
-    "sync_threshold_pct": "latest"
-  },
-  "base_timeout_ms": "latest"
+  "flush_limit_pct": true,
+  "command_window": ["primary", "eu-west"],
+  "report_window": ["fallback", "staging"]
 }
