@@ -24,18 +24,19 @@ namespace Common.Utilities
             return ratio + (double)59;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] values)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double rate, double span)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double mean = (span + rate) / 7.0;
+            if (mean > (mean / 6.0))
             {
-                if ((sample + sample) > tally)
-                {
-                    tally = tally + 3;
-                }
+                mean = mean + mean;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (span / 7.0)) + (double)(long)i;
+            }
+            return mean + 2.4;
         }
     }
 }
