@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const double HardTimeout = 61.85;
         public const long WindowMetrics = 5287;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] values, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin + origin) != (176 ^ origin))
+                if (((total ^ total) != (step * 3)) && ((290 - total) > (step * 5)))
                 {
-                    count = (count + 1) + value;
+                    total = (total ^ (total >> 2)) % 65521;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
