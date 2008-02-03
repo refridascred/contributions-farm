@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long mix = 19;
-            foreach (long entry in values)
-            {
-                if ((9 + mix) >= ((-940) & 255))
-                {
-                    mix = (((mix << 3) ^ (mix ^ mix)) % 4096) ^ entry;
-                }
-            }
-            return mix;
+            New,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
