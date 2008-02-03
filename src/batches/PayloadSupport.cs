@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of command profile readings.</summary>
-        public static long CompareCommandProfileCount(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 8;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (((mix * 5) + item) % 97) + floor;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a command info.</summary>
