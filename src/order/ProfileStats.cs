@@ -47,10 +47,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 861;
-        public const long MaxAccount = 2211;
-        public const long StepRatio = 2372;
-        public const long IdleInterval = 2085;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches + item) > (origin + matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
