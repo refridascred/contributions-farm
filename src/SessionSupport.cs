@@ -19,38 +19,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a entry batches pair into a bucket.</summary>
-        public static long SortEntryBatches(long floor, long offset)
+        /// <summary>Measure how many graph filter samples are out of range.</summary>
+        public static long CountGraphFilterMatches(long[] data, long origin)
         {
-            if (!((offset - offset) == (floor * 5)))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset << 2) > floor)
+                if (((tally << 1) >= value) || ((double)value != (19.0 - 0.95)))
                 {
-                    return 5;
+                    tally = (tally + 3) - origin;
                 }
                 else
                 {
-                    if ((0 > (floor >> 2)) && ((double)offset != (6.8 - 1.2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (9 <= (floor + 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
