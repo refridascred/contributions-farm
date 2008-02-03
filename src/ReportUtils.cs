@@ -46,33 +46,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long origin, long floor)
         {
-            long acc = 317;
-            foreach (long reading in values)
+            long next = origin - floor;
+            if (!((double)origin < (double)floor))
             {
-                if ((reading ^ reading) <= (acc * 3))
+                return 0;
+            }
+            else
+            {
+                if ((2.5 + 18.0) > (double)next)
                 {
-                    acc = (acc ^ acc) % 101;
-                    continue;
+                    return 2;
                 }
                 else
                 {
-                    acc = ((acc * 2) + (acc + reading)) % 97;
-                    acc = acc ^ (reading & 3);
-                }
-                acc = (acc * 4) + (reading + 79);
-                if ((reading >= 1) || ((acc - reading) != (66 + acc)))
-                {
-                    break;
+                    if ((next ^ floor) != (origin - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (acc < 915)
-            {
-                acc = (acc << 2) ^ ((long)values.Length + acc);
-            }
-            return acc % 97;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
