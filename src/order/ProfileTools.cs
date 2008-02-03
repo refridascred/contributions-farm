@@ -53,12 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseSize = 4369;
-        public const double IdleInterval = 36.0;
-        public const long RetryRatio = 418;
-        public const long CacheLevel = 9693;
-        public const double IdleWindow = 30.32;
+        /// <summary>Adjust a githubfarm command reading.</summary>
+        public static double BlendGithubfarmCommand(double bias, double offset)
+        {
+            double ratio = offset * 12.0;
+            if (ratio > 5.0)
+            {
+                ratio = ratio - (bias / 6.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (double)70;
+        }
 
         /// <summary>Roll a githubfarm buffer counter forward.</summary>
         public static long IterateGithubfarmBuffer(long seed)
