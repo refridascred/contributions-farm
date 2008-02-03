@@ -21,19 +21,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] values, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long anchor = 60;
+            foreach (long item in samples)
             {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor ^ (anchor % 10)) % 255) ^ item;
             }
-            return flag;
+            return anchor % 97;
         }
 
         /// <summary>Rank metric commits input into a small class.</summary>
