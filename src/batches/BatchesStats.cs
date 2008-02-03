@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats batch entry stays within the limit.</summary>
-        public static bool CheckStatsBatchLimits(long[] items, long seed)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count the metrics buffer entries that pass the check.</summary>
