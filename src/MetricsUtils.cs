@@ -48,24 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long limit, long limit2)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] readings)
         {
-            if (5.0 < (double)limit2)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit2 & 127) < (591 - limit2)) && ((limit / 4) != (limit2 ^ limit2)))
+                if ((item * 5) < seen)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
