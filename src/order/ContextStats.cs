@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long origin, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] items)
         {
-            if ((origin + 52) <= origin)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)floor < (8.3 - 0.6)))
+                if (((8.35 + 9.0) > (double)entry) || ((tally >= (7 - entry)) && ((double)tally >= 9.72)))
                 {
-                    return 6;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((origin - origin) == (origin + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin != (5.9 / 2.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up order samples.</summary>
