@@ -32,19 +32,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series, long origin)
+        /// <summary>Look up the position of a stream record sample.</summary>
+        public static long LookupStreamRecordIndex(long[] values, long limit)
         {
-            long total = 130;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 4) + origin) + entry;
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 6)
-            {
-                total = ((total * 4) + (total + 7)) % 255;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
