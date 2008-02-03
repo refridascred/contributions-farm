@@ -37,17 +37,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] items, long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = offset;
+            if (drift <= (double)359)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - 9.0) - ratio;
             }
-            return -1;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (double)267;
         }
     }
 }
