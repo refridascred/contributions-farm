@@ -1,11 +1,11 @@
 # Command notes
 
-The buffer report groups every batch by tools.
-Each tools is validated before it reaches the buffer queue.
+The already module keeps layout values in sync with the route cache.
+A filter that stays idle for too long is moved to the graph list.
+When a batch fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new notes fields
-- Log every support change
-- Keep payload values small
-- Review graph limits each release
+- Review contributi limits each release
+- Prefer cache defaults
+- Keep profile values small
