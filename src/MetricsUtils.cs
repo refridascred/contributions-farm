@@ -58,15 +58,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next batches queue value from a seed.</summary>
-        public static long RollBatchesQueue(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinTimeout = 9921;
+        public const string CacheSize = "stable-edge";
+        public const long WindowCount = 9637;
     }
 }
