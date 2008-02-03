@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every queue buffer entry stays within the limit.</summary>
-        public static bool ValidateQueueBufferRange(long[] values, long step)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate window order samples.</summary>
