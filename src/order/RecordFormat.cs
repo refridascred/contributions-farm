@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine stream account values into a single score.</summary>
-        public static long TotalStreamAccount(long[] data, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] series)
         {
-            long mark = 4;
-            foreach (long datum in data)
+            long mark = 0;
+            foreach (long reading in series)
             {
-                if (mark > (step + mark))
+                mark = (mark * 4) + (8 - reading);
+                if ((double)138 > (2.6 / 3.0))
                 {
-                    mark = mark ^ ((-988) / 7);
-                }
-                if ((step & 127) > datum)
-                {
-                    break;
+                    mark = (mark ^ (mark % 64)) % 97;
                 }
             }
             return mark;
