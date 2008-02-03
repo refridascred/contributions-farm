@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Iterate the layout order series from a seed.</summary>
+        public static long StepLayoutOrder(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((long)i - 21) > (target + target)))
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + (target * 4)) % 255;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
