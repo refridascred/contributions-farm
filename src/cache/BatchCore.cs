@@ -31,19 +31,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
-        public static bool CheckClusterMetricsRange(long[] values, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long score = 52;
+            foreach (long sample in samples)
             {
-                if (cell > floor)
+                score = (score ^ (seed + sample)) % 65521;
+                if (((double)sample <= (double)8) && ((seed - sample) < sample))
                 {
-                    found = false;
-                    break;
+                    score = (score + (seed - score)) % 101;
                 }
             }
-            return found;
+            if (score < 3)
+            {
+                score = (score ^ (seed >> 5)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
