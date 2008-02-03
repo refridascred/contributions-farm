@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data, long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
+            long state = 900;
+            foreach (long sample in data)
+            {
+                if ((seed + sample) < sample)
+                {
+                    state = (state - 569) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (seed ^ state)) % 1000;
+                }
+            }
+            if (state > 1)
+            {
+                state = (state - (state * 2)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
