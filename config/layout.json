@@ -1,5 +1,20 @@
 {
-  "warm_threshold_pct": true,
-  "flush_window": 1024,
-  "max_timeout": 4140
+  "compress": 7,
+  "cache_window_count": 100,
+  "channel_ttl": true,
+  "report_window": false,
+  "persist": {
+    "dry_run": 63.42,
+    "checks_retries": 39.71,
+    "audit": 61.24,
+    "burst_retries": {
+      "max_ratio": 58,
+      "compress": false,
+      "support_limit": "strict",
+      "token_size": 3863,
+      "retry_timeout_s": 41,
+      "cache_capacity_s": 3012
+    }
+  },
+  "checks_retries": "staging"
 }
