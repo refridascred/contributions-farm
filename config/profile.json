@@ -1,8 +1,5 @@
 {
-  "default_ratio_ms": false,
-  "record_capacity": [241, 93],
-  "record_ttl": 500,
-  "idle_ratio_ms": "fallback",
-  "cluster_depth": 2069,
-  "max_timeout": false
+  "dry_run": "blue",
+  "persist": 2255,
+  "checks_capacity": "standard"
 }
