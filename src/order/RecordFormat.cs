@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits ^ bound) <= (hits / 6))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 3861;
+        public const double CacheLayout = 23.96;
+        public const double MaxLayout = 5.98;
+        public const long RetrySpan = 6876;
+        public const double BurstCount = 95.42;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
