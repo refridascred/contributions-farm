@@ -40,15 +40,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next queue report value from a seed.</summary>
-        public static long RollQueueReport(long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((value >> 2) <= hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
