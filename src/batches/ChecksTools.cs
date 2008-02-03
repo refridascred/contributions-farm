@@ -54,18 +54,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((bound % 10) != (bound + hits))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultDepth = 30.77;
+        public const double WindowEditor = 66.18;
+        public const string IdleDepth = "staging-1";
+        public const long BaseEditor = 3742;
     }
 }
