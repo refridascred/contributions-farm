@@ -35,23 +35,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the order contributi entries that pass the check.</summary>
-        public static long AuditOrderContributiOutliers(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (seed >= (seed % 64))
-                {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 4281;
+        public const double BatchSpan = 11.88;
+        public const double CacheFormat = 85.77;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
