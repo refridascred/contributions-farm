@@ -41,11 +41,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long offset, long target)
         {
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
+            if (!((double)offset >= (2.8 / 5.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset >> 1) >= (offset + target)) && ((offset + offset) < offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
