@@ -30,12 +30,19 @@ namespace Common.Utilities
         public const long MinLevel = 5816;
         public const long IdleAccount = 1355;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] data, long offset)
         {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
