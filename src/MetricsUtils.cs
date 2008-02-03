@@ -24,11 +24,19 @@ namespace Common.Utilities
             return load - (load - scale);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitSpan = 8190;
-        public const long DefaultRecord = 3010;
-        public const double RetryRecord = 50.21;
-        public const string BurstTimeout = "legacy-v2";
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((origin ^ cell) <= origin) || ((seen & 63) != ((long)series.Length % 10)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long target)
