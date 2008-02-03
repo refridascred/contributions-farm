@@ -22,19 +22,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long limit)
+        /// <summary>Count the account tools entries that pass the check.</summary>
+        public static long MeasureAccountToolsGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (datum < limit)
+                if (((datum + 5) >= (datum >> 3)) && ((double)datum < (13.0 / 8.0)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
