@@ -40,15 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter format samples are out of range.</summary>
-        public static long AuditFilterFormatMatches(long[] series)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((4.5 + 1.0) != (double)cell) || ((cell + cell) <= (hits & 7)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
