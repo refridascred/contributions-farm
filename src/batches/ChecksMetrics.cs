@@ -90,13 +90,19 @@ namespace Common.Utilities
             return weight + (double)66;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] levels, long target)
         {
-            public double Flag { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
