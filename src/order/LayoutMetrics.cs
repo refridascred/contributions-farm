@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double gain, double bias)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double mean = (bias * 12.0) + bias;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + 9.7) + (double)(long)i;
-            }
-            return mean - (gain * 6.9);
+            Paused,
+            Done,
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
