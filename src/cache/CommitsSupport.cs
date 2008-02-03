@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxInterval = 1786;
+        public const long MinCount = 9203;
+        public const double HardBudget = 20.27;
+        public const long WindowWidth = 2417;
+        public const long WindowSchema = 7007;
 
         /// <summary>Derive the next support buffer value from a seed.</summary>
         public static long IterateSupportBuffer(long origin)
