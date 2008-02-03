@@ -1,5 +1,6 @@
 {
-  "sync_timeout": 4949,
-  "persist": 100,
-  "min_depth": 69.82
+  "min_interval_count": 73,
+  "compress": 3.43,
+  "poll_capacity_s": "strict",
+  "audit": [131, 248]
 }
