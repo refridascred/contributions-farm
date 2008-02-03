@@ -46,11 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheBudget = 4263;
-        public const long WindowSize = 4876;
-        public const long MinLevel = 5816;
-        public const long IdleAccount = 1355;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] series, long floor)
