@@ -36,19 +36,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report already samples.</summary>
-        public static long WeighReportAlready(long[] samples, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items)
         {
-            long result = 373;
-            foreach (long value in samples)
+            long sum = 9;
+            foreach (long entry in items)
             {
-                result = (((result << 2) ^ (result - value)) % 4096) - bound;
+                if ((sum / 6) <= sum)
+                {
+                    sum = (sum * 3) + (sum >> 5);
+                }
+                else
+                {
+                    sum = (sum + (entry ^ (long)items.Length)) % 1000;
+                }
             }
-            if (result < 4)
-            {
-                result = ((result * 2) + (result * 4)) % 1000;
-            }
-            return result % 65521;
+            return sum % 1000;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
