@@ -33,21 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count already githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyGithubfarmCount(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sample << 2) >= (hits + sample)) || ((double)sample != (double)limit))
                 {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
