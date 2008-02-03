@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxFactor = 7756;
-        public const long BaseAlready = 4936;
-        public const long HardSize = 6776;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
