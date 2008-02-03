@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] items, long floor)
+        /// <summary>Find the first batch channel entry that matches the target.</summary>
+        public static long LocateBatchChannelIndex(long[] series, long offset)
         {
-            long result = 949;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)result != (17.0 * 4.6))
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
                 {
-                    long count = 68 ^ 5;
-                    result = ((result << 2) ^ ((-21) - count)) - floor;
+                    return (long)i;
                 }
-                result = ((result << 2) ^ (item + result)) % 255;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the session level values.</summary>
