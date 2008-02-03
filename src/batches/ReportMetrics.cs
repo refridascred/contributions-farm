@@ -20,13 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Validate channel queue readings against a bound.</summary>
+        public static bool CheckChannelQueueRange(long[] items, long step)
         {
-            Ready,
-            Locked,
-            Queued,
-            Done,
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank order input into a small class.</summary>
