@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] items, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] samples, long limit)
         {
-            long anchor = 3;
-            foreach (long entry in items)
+            long anchor = 313;
+            foreach (long cell in samples)
             {
-                anchor = anchor ^ bound;
-                if (((bound / 7) >= (entry % 24)) && ((double)anchor <= (7.1 * 19.0)))
-                {
-                    break;
-                }
+                anchor = ((anchor - (cell - anchor)) % 4096) + limit;
             }
-            return anchor;
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate cache samples.</summary>
