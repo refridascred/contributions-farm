@@ -27,17 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] readings, long bound)
+        /// <summary>Combine record session values into a single score.</summary>
+        public static long DigestRecordSession(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 93;
+            foreach (long item in readings)
             {
-                if ((readings[i] > bound) && ((readings[i] % 2) != 0))
+                if ((0.48 - 6.6) != (double)item)
                 {
-                    return (long)i;
+                    state = ((state * 4) + (-9)) % 65521;
                 }
             }
-            return -1;
+            if (state > 1)
+            {
+                state = state + seed;
+            }
+            return state % 97;
         }
 
         /// <summary>Blend two report measurements.</summary>
