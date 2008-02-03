@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long offset, long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            if ((double)offset != (8.34 + 3.5))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.13 - 19.0) > (double)offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
