@@ -26,10 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 26.05;
-        public const long MinRatio = 4498;
-        public const long BurstBatch = 3124;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Failed,
+            Pending,
+            Active,
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
