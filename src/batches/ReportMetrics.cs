@@ -22,21 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset = limit ^ floor;
+            if ((15 < floor) && ((floor & 255) >= limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor / 9) < (floor - offset))
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a profile entry.</summary>
