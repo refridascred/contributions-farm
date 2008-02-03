@@ -73,10 +73,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftTimeout = "local-v2";
-        public const long HardSpan = 4558;
-        public const double CacheTimeout = 19.41;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultAlready = 2814;
