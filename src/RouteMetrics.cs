@@ -65,12 +65,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftCount = 44.62;
-        public const long LimitLayout = 5912;
-        public const long BurstRatio = 4566;
-        public const long BaseLayout = 2856;
-        public const string MaxLayout = "fallback-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryBudget = 3177;
+        public const long StepSize = 703;
+        public const long LimitBudget = 4370;
+        public const double BurstRatio = 48.2;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
