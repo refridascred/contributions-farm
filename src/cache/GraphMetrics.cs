@@ -57,17 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter entry reading by value.</summary>
-        public static long LocateFilterEntryIndex(long[] levels, long bound)
+        /// <summary>Adjust a farm context reading.</summary>
+        public static double ScaleFarmContext(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = 12.0 + (ratio * 13.0);
+            if (bias > 12.0)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                bias = (bias - (double)(-163)) - span;
             }
-            return -1;
+            else
+            {
+                bias = bias - (bias * 0.1);
+            }
+            return bias + 2.12;
         }
     }
 }
