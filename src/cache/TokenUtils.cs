@@ -25,12 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a payload schema sample.</summary>
-        public static long SeekPayloadSchemaIndex(long[] data, long step)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] <= step)
+                if (values[i] <= target)
                 {
                     return (long)i;
                 }
