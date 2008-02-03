@@ -1,7 +1,6 @@
 {
-  "already_size": true,
-  "idle_ratio_count": ["cached", "legacy", "cached"],
-  "base_size_ms": 1024,
-  "batch_size": 1563,
-  "max_threshold": 2018
+  "githubfarm_interval": ["local", "strict", "eu-west"],
+  "stats_timeout": true,
+  "hard_size": [340, 467],
+  "sync_delay_s": 78
 }
