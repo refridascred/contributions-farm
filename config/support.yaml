@@ -1,5 +1,9 @@
 # support settings
-commits_window: 69.89
-batch_threshold_pct: 250
-metric_depth: 6953
-persist: false
+githubfarm_limit: 3.11
+readonly: edge
+hard_depth:
+  batch_size: stable
+  compress: open
+  default_ttl_ms: 7401
+burst_depth_pct: 65.74
+counter_interval: blue
