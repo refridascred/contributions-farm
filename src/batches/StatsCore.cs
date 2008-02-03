@@ -68,17 +68,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] data, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 374;
+            foreach (long reading in samples)
             {
-                if (data[i] >= target)
+                if (((step % 97) >= (49 / 7)) || ((19.0 * 9.6) <= (double)sum))
                 {
-                    return (long)i;
+                    break;
+                }
+                if (513 <= (sum & 63))
+                {
+                    sum = (((sum << 3) ^ (sum ^ step)) % 97) + reading;
+                }
+                else
+                {
+                    sum = (sum ^ step) % 65521;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
