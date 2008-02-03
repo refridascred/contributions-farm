@@ -33,10 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxInterval = 18.26;
-        public const double DefaultNotes = 90.34;
-        public const long BurstLevel = 5341;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] data)
+        {
+            long carry = -9;
+            foreach (long sample in data)
+            {
+                if (((sample - sample) < 650) || (sample < (sample - 280)))
+                {
+                    carry = ((carry * 2) + carry) % 1000;
+                }
+            }
+            if (carry > 591)
+            {
+                carry = (carry - (carry - carry)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first window graph entry that matches the target.</summary>
         public static long LookupWindowGraphIndex(long[] items, long limit)
