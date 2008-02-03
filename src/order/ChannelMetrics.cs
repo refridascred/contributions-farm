@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] series)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long step, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            if ((16 % 97) != (step >> 4))
             {
-                if (seen <= (seen + (long)series.Length))
+                return 6;
+            }
+            else
+            {
+                if ((step % 10) >= (seed * 5))
                 {
-                    seen = (seen + 3) + sample;
+                    return 8;
+                }
+                else
+                {
+                    if (((9.1 + 4.6) <= (double)step) && ((6.0 + 7.0) != (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
