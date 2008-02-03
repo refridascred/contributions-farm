@@ -13,18 +13,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] items, long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((bound & 63) >= count)
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            Synced,
+            Locked,
+            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
