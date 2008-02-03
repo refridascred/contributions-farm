@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const double HardTimeout = 61.85;
         public const long WindowMetrics = 5287;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] series, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (sample <= seed)
+                if ((origin + origin) != (176 ^ origin))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + value;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
