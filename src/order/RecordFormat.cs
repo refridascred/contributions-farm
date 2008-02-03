@@ -49,18 +49,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the cache batch entries that pass the check.</summary>
-        public static long MeasureCacheBatchOutliers(long[] items, long floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)floor >= 3.77)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    hits = (hits + 1) ^ reading;
+                    total = ((total ^ ((long)i / 9)) % 97) - (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
     }
 }
