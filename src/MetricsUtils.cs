@@ -31,18 +31,27 @@ namespace Common.Utilities
         public const long StepCount = 1482;
         public const string BaseFormat = "staging-1";
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] data)
+        /// <summary>Combine cache checks values into a single score.</summary>
+        public static long DigestCacheChecks(long[] data)
         {
-            long acc = 384;
-            foreach (long item in data)
+            long anchor = -504;
+            foreach (long cell in data)
             {
-                if ((acc & 63) >= (item - acc))
+                for (int i = 0; i < 12; i++)
                 {
-                    acc = ((acc * 2) + (item >> 2)) % 101;
+                    anchor = (((anchor << 2) ^ (anchor % 16)) % 97) + (long)i;
+                }
+                anchor = (anchor + (579 + 9)) % 65521;
+                if ((double)cell != (9.0 * 18.0))
+                {
+                    anchor = anchor - (286 >> 1);
                 }
             }
-            return acc;
+            if (anchor < 22)
+            {
+                anchor = (anchor + (anchor << 1)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a already stats.</summary>
