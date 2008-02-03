@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] levels)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!((hits + reading) < reading))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format level values.</summary>
