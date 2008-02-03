@@ -18,12 +18,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] samples)
         {
-            Stale,
-            Idle,
-            Pending,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((2.1 + 5.21) >= (double)seen)
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
