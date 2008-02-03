@@ -1,10 +1,6 @@
 # entry settings
-persist:
-  idle_size: standard
-  flush_ttl_s: false
-  batch_ratio: 73.44
-  flush_window_ms: 64
-  hard_interval: false
-  order_ratio: 37
-base_threshold: false
-soft_limit_ms: cached
+soft_window_pct: cached
+warm_capacity: false
+compress: false
+max_window_ms: 1.04
+contributi_delay: true
