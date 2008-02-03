@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Combine filter commits values into a single score.</summary>
+        public static long TallyFilterCommits(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long anchor = 570;
+            foreach (long item in levels)
+            {
+                if ((0.5 - 7.0) > (double)item)
+                {
+                    anchor = (anchor << 3) ^ ((long)levels.Length * 4);
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (long)levels.Length;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count context schema pairs that satisfy a relation.</summary>
