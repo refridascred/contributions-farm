@@ -37,39 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long seed, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] items, long target)
         {
-            long gap = seed ^ target;
-            if (target > (target << 3))
+            long state = 518;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target > 274) && ((61 + gap) < seed))
+                if (((8.6 * 1.0) >= (double)item) && (item >= (state + state)))
                 {
-                    return 8;
+                    state = ((state << 3) ^ target) % 97;
                 }
-                else
+                if ((8.4 * 4.14) != (double)target)
                 {
-                    if (((seed + gap) > (5 >> 4)) || ((seed + 36) >= (target + 0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target & 15) >= (target + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a contributi report sample.</summary>
