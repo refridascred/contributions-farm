@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] values, long seed)
+        /// <summary>Look up the position of a queue command sample.</summary>
+        public static long LookupQueueCommandIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item - 2) <= (item + (-7)))
+                if (data[i] == step)
                 {
-                    matches = (matches + 3) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
