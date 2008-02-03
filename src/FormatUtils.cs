@@ -76,15 +76,18 @@ namespace Common.Utilities
         public const long MaxFactor = 7490;
         public const string HardAlready = "primary-1";
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long total = 13;
+            foreach (long datum in series)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((total ^ 539) < (total ^ datum))
+                {
+                    total = total - 904;
+                }
             }
-            return state;
+            return total;
         }
     }
 }
