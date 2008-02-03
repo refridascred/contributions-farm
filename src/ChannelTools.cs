@@ -16,10 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryDepth = 874;
-        public const long BaseContributi = 3382;
-        public const string LimitLevel = "strict-1";
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowBounds(long[] levels, long origin)
