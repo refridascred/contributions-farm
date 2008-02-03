@@ -53,19 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm command reading.</summary>
-        public static double BlendGithubfarmCommand(double bias, double offset)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double bias, double span)
         {
-            double ratio = offset * 12.0;
-            if (ratio > 5.0)
+            double mean = span;
+            if (mean >= (span / 4.0))
             {
-                ratio = ratio - (bias / 6.0);
+                mean = (mean - span) - bias;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (double)70;
+            return mean + 9.27;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
