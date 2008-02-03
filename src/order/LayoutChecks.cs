@@ -58,24 +58,18 @@ namespace Common.Utilities
         public const string StepProfile = "strict-1";
         public const double DefaultProfile = 69.51;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long step, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] levels, long offset)
         {
-            if (!(bound >= (step << 3)))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 2) >= bound)
+                if (offset > (offset % 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 3) + entry;
                 }
             }
+            return hits;
         }
     }
 }
