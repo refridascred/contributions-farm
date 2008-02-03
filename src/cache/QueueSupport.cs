@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((score + origin) < (982 + origin))
                 {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - score) % 4096;
+                    score = score ^ (score << 2);
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Adjust a graph reading.</summary>
