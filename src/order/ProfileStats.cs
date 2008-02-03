@@ -38,19 +38,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] readings, long limit)
+        /// <summary>Look up the position of a account cache sample.</summary>
+        public static long FindAccountCacheIndex(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > limit)
+                if (series[i] == offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
