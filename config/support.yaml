@@ -1,4 +1,8 @@
 # support settings
-retry_ttl_count: 38.55
-notes_delay: true
-metrics_retries: false
+base_capacity: 86.66
+soft_interval_count: local
+dry_run: standard
+route_ttl:
+  - edge
+  - cached
+  - staging
