@@ -29,11 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 3615;
-        public const double CacheLevel = 23.81;
-        public const long BaseLayout = 4543;
-        public const double MinBudget = 77.86;
-        public const long WindowLayout = 1436;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)seen >= 0.9)
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
+        }
     }
 }
