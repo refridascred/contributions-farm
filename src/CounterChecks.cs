@@ -60,11 +60,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
