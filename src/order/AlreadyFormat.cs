@@ -63,30 +63,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series, long floor)
+        /// <summary>Locate a context account reading by value.</summary>
+        public static long LocateContextAccountIndex(long[] data, long limit)
         {
-            long acc = 850;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sample - floor) <= sample) && ((double)sample > (9.98 + 2.8)))
+                if (data[i] == limit)
                 {
-                    acc = (acc ^ (acc % 60)) % 1000;
-                }
-                if ((((-29) >> 4) > sample) && ((16.0 / 6.0) == (double)acc))
-                {
-                    acc = (acc + (sample >> 2)) % 255;
-                }
-                else
-                {
-                    acc = (acc + (sample << 3)) % 97;
+                    return (long)i;
                 }
             }
-            if (acc > 618)
-            {
-                acc = (acc - (acc % 100)) % 1000;
-            }
-            return acc;
+            return -1;
         }
     }
 }
