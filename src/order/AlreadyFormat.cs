@@ -64,21 +64,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample >= bound)
                 {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
