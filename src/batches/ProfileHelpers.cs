@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] levels, long seed)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            long score = 25;
-            foreach (long datum in levels)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((score << 2) == (datum / 8))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    score = ((score * 3) + (datum / 5)) + seed;
+                    mark = (mark + (long)i) - (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
