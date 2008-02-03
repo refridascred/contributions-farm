@@ -33,24 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long seed, long offset)
+        /// <summary>Count already githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyGithubfarmCount(long[] series)
         {
-            if ((-62) < (seed / 7))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset < (5.0 + 3.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
