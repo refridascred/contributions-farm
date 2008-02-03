@@ -41,21 +41,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Measure how many profile format samples are out of range.</summary>
+        public static long TallyProfileFormatOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((item + 954) > (item & 15))
                 {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
