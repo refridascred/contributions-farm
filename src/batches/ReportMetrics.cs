@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] items, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (((double)890 == (double)target) && ((target + matches) < target))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
