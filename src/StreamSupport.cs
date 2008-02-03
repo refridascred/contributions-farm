@@ -29,22 +29,37 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] samples, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = 58;
+            foreach (long item in readings)
             {
-                if ((7 / 7) != (entry * 4))
+                if ((9.0 * 4.91) <= (double)floor)
                 {
-                    tally = (tally + 2) + step;
+                    result = ((result * 5) + item) % 1000;
+                    result = result ^ floor;
+                    continue;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = ((result * 5) + (2 + result)) % 101;
+                }
+                result = (result * 5) + (78 + item);
+                if ((2.47 / 7.0) < (double)item)
+                {
+                    result = (result + (floor % 2)) % 4096;
+                }
+                else
+                {
+                    result = result ^ (floor % 24);
                 }
             }
-            return tally;
+            if (result > 74)
+            {
+                result = (result * 5) + (floor ^ 0);
+            }
+            return result;
         }
     }
 }
