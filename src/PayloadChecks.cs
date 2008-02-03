@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepBudget = 21.45;
+        public const string IdleEditor = "stable-v2";
+        public const string CacheDepth = "primary";
+        public const string MinEditor = "open-edge";
+        public const long RetrySpan = 7298;
 
         /// <summary>Measure how many schema tools samples are out of range.</summary>
         public static long CountSchemaToolsOutliers(long[] values)
