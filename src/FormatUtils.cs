@@ -42,18 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] items)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)seen < (6.4 + 14.0))
-                {
-                    seen = (seen + 3) + reading;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
