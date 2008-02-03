@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)(long)i < (16.0 - 18.0))
-                {
-                    sum = ((sum * 4) + sum) % 101;
-                }
-                sum = sum - (target ^ 55);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a route contributi sample.</summary>
