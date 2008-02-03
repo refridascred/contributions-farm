@@ -23,23 +23,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double weight, double span)
-        {
-            double gain = span;
-            if (gain >= 5.0)
-            {
-                gain = (gain - (span - span)) + weight;
-            }
-            else
-            {
-                gain = gain + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + span;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepScore = 6.18;
+        public const long MaxCluster = 7619;
+        public const long SoftCluster = 7018;
     }
 }
