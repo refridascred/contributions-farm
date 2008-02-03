@@ -35,19 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter batches readings against a bound.</summary>
-        public static bool CheckCounterBatchesBounds(long[] samples, long limit)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            double drift = bias;
+            if (drift <= (double)2)
             {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift - 9.2) - ratio;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)83) + (double)(long)i;
+            }
+            return drift + (double)(-90);
         }
     }
 }
