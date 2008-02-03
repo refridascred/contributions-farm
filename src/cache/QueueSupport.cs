@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] series, long seed)
+        /// <summary>Derive the next payload record value from a seed.</summary>
+        public static long SeriesPayloadRecord(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
+                mix = (mix + (bound + bound)) % 1000;
+                mix = (mix - (mix - (long)i)) % 97;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Adjust a graph reading.</summary>
