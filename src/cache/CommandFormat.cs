@@ -35,27 +35,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine record payload values into a single score.</summary>
-        public static long TallyRecordPayload(long[] readings, long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] items, long target)
         {
-            long mark = 1;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark << 3) ^ sample) % 65521;
-                if ((origin + mark) <= origin)
+                if ((items[i] > target) && ((items[i] % 5) == 0))
                 {
-                    mark = mark + (mark + origin);
-                }
-                if (((12 << 1) >= (mark << 2)) && ((6.48 / 8.0) < (double)sample))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 956)
-            {
-                mark = mark + origin;
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
