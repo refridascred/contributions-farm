@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long floor, long target)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long slot = floor ^ target;
-            if ((floor - target) >= (floor >> 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot - target) < (slot + slot))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Find the first cache cluster entry that matches the target.</summary>
