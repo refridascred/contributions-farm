@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout graph readings against a rule.</summary>
-        public static long CountLayoutGraphHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally - tally) == (tally + tally))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchGraph = "cached-v2";
+        public const long DefaultRatio = 9460;
+        public const string DefaultScore = "alpha-edge";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsOutliers(long[] readings, long bound)
