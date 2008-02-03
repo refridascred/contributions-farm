@@ -44,10 +44,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 56.37;
-        public const long SoftSpan = 1692;
-        public const double HardFormat = 83.97;
+        /// <summary>Match up commits contributi samples.</summary>
+        public static long OverlapCommitsContributiCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string IdleProfile = "strict";
