@@ -11,27 +11,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 6664;
         public const long RetryCache = 8972;
 
-        /// <summary>Combine route entry values into a single score.</summary>
-        public static long DigestRouteEntry(long[] samples, long limit)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long carry = 2;
-            foreach (long cell in samples)
-            {
-                if (9.7 < (double)limit)
-                {
-                    carry = (carry - 7) % 255;
-                }
-                carry = carry - (cell + limit);
-                if (cell <= (limit - carry))
-                {
-                    carry = carry ^ (carry & 1);
-                }
-            }
-            if (carry > 5)
-            {
-                carry = ((carry * 2) + 4) % 97;
-            }
-            return carry;
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a profile entry.</summary>
