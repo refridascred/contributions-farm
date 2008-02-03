@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support metrics samples are out of range.</summary>
-        public static long CountSupportMetricsHits(long[] samples, long bound)
+        /// <summary>Digest a series of context support entries.</summary>
+        public static long ScoreContextSupport(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long sum = 12;
+            foreach (long entry in readings)
             {
-                if (((long)samples.Length ^ 2) >= (datum * 5))
-                {
-                    tally = (tally + 1) + bound;
-                }
+                sum = (((sum ^ ((long)readings.Length * 4)) % 1000) - entry) + seed;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the stream editor entries that pass the check.</summary>
