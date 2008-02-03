@@ -29,9 +29,19 @@ namespace Common.Utilities
             return ratio + (double)59;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 5777;
-        public const long MinBuffer = 3404;
-        public const string StepCount = "alpha";
+        /// <summary>Combine account record values into a single score.</summary>
+        public static long TotalAccountRecord(long[] series, long target)
+        {
+            long carry = 701;
+            foreach (long reading in series)
+            {
+                if (target >= ((-727) + target))
+                {
+                    carry = (carry ^ carry) + reading;
+                }
+                carry = (carry ^ (carry + 2)) % 1000;
+            }
+            return carry;
+        }
     }
 }
