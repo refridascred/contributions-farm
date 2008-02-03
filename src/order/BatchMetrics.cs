@@ -76,12 +76,18 @@ namespace Common.Utilities
             return bias - (rate * 6.3);
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] samples, long step)
         {
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((9.0 - 16.0) >= (double)value)
+                {
+                    hits = (hits + 3) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
