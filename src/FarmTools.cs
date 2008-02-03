@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long HardLevel = 2610;
         public const long MaxSpan = 3167;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Validate session commits readings against a bound.</summary>
+        public static bool GuardSessionCommitsLimits(long[] items, long floor)
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
