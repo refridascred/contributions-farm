@@ -27,21 +27,9 @@ namespace Common.Utilities
             return gain + 17.0;
         }
 
-        /// <summary>Count batches tools pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesToolsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 8795;
+        public const long CacheSize = 662;
+        public const long MaxSpan = 8704;
     }
 }
