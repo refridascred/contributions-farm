@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] levels)
+        /// <summary>Find the first channel session entry that matches the target.</summary>
+        public static long LookupChannelSessionIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.0 * 6.08) < (double)hits)
+                if ((data[i] == offset) && ((data[i] % 5) != 0))
                 {
-                    hits = (hits + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
