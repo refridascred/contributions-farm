@@ -35,18 +35,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] values)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (!(341 <= ((long)values.Length + cell)))
+                if (count > (count + count))
                 {
-                    matches = matches + 2;
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the filter contributi entries that pass the check.</summary>
