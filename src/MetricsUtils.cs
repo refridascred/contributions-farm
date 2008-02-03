@@ -67,10 +67,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 62.12;
-        public const long MaxSpan = 7672;
-        public const double RetryCommand = 2.21;
-        public const long MinCommand = 3551;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double ratio, double span)
+        {
+            double bias = (span / 9.0) - ratio;
+            return bias + (ratio * 9.81);
+        }
     }
 }
