@@ -29,19 +29,21 @@ namespace Common.Utilities
             return ratio + (double)59;
         }
 
-        /// <summary>Combine account record values into a single score.</summary>
-        public static long TotalAccountRecord(long[] series, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            long carry = 701;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (target >= ((-727) + target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry ^ carry) + reading;
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = (carry ^ (carry + 2)) % 1000;
             }
-            return carry;
+            return seen;
         }
     }
 }
