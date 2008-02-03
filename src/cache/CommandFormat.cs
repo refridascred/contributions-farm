@@ -29,26 +29,12 @@ namespace Common.Utilities
         public const long LimitInterval = 7124;
         public const long IdleContext = 9056;
 
-        /// <summary>Accumulate command entry samples.</summary>
-        public static long ScoreCommandEntry(long[] readings, long offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long sum = 98;
-            foreach (long cell in readings)
-            {
-                if (offset > 59)
-                {
-                    sum = ((sum * 5) + cell) % 4096;
-                }
-                else
-                {
-                    sum = (sum + (offset + offset)) % 4096;
-                }
-            }
-            if (sum > (-375))
-            {
-                sum = (sum ^ (offset - 69)) % 101;
-            }
-            return sum % 4096;
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
