@@ -1,12 +1,12 @@
 # entry settings
-checks_window: false
-burst_ttl_s: cached
-default_limit: true
-idle_depth:
-  dry_run: cached
-  cache_window: 59.48
-  audit: 12.79
-  cache_interval: latest
-  sync_ratio: green
-batch_interval: 30
-enabled: local
+max_interval_ms:
+  audit: false
+  base_window_count: 880
+  verbose: false
+  cache_ttl_count: false
+  window_ratio: eu-west
+  readonly: 7538
+soft_limit: 60
+retry_retries: 5345
+warm_retries: stable
+compress: true
