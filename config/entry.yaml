@@ -1,10 +1,11 @@
 # entry settings
-farm_ttl: false
-enabled: green
-warm_limit_pct: 5231
-idle_depth:
-  persist: false
-  notes_ttl: 43.58
-  warm_timeout_count: 30
-  burst_delay: 30
-  checks_timeout: true
+audit: true
+cache_window_pct: 1
+sync_retries: false
+strict:
+  - 426
+  - 80
+  - 178
+  - 217
+cache_depth_pct: local
+command_ratio: 5.64
