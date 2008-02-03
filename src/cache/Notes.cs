@@ -55,19 +55,25 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long bound, long floor)
         {
-            long mix = 7;
-            foreach (long entry in data)
+            long bound2 = bound - floor;
+            if ((double)bound > (double)bound2)
             {
-                mix = ((mix - 35) % 255) + entry;
+                return 6;
             }
-            if (mix > 3)
+            else
             {
-                mix = ((mix * 5) + 15) % 101;
+                if ((double)floor < 2.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return mix % 1000;
         }
     }
 }
