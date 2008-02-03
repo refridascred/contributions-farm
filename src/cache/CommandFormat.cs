@@ -26,12 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
+            Paused,
+            Draft,
+            Closed,
+            Done,
             Failed,
-            Pending,
-            Active,
         }
 
         /// <summary>Describe the format state values.</summary>
