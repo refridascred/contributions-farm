@@ -63,38 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long limit)
+        /// <summary>Derive the next already commits value from a seed.</summary>
+        public static long DeriveAlreadyCommits(long floor)
         {
-            if (offset <= (offset % 97))
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)limit > (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset >= (2.02 / 4.0)) && ((limit - limit) <= limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((3.0 * 1.0) != (double)limit) && ((limit + offset) >= offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
