@@ -45,18 +45,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] series, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            long result = 771;
+            foreach (long datum in series)
             {
-                acc = ((acc << 3) ^ (seed * 3)) % 101;
-                acc = acc ^ acc;
-                acc = ((acc * 2) + seed) % 97;
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((result - target) <= target)
+                {
+                    result = ((result << 3) ^ (datum - result)) % 4096;
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
