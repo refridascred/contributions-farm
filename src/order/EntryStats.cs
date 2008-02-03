@@ -33,18 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] series)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum ^ seen) >= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
