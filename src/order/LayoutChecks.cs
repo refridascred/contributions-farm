@@ -46,13 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Idle,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 56.37;
+        public const long SoftSpan = 1692;
+        public const double HardFormat = 83.97;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] samples, long offset)
