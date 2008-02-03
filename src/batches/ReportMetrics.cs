@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] items, long bound)
         {
-            Draft,
-            New,
-            Idle,
-            Failed,
-            Retry,
+            long carry = 6;
+            foreach (long cell in items)
+            {
+                if ((double)carry <= (double)cell)
+                {
+                    carry = (((carry << 3) ^ (94 & 15)) % 1000) - bound;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
