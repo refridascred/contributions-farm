@@ -1,6 +1,12 @@
 # entry settings
-min_capacity: 29
-poll_ratio: 65.03
-default_timeout_pct: primary
-verbose: primary
-tools_interval: 13
+cache_threshold_pct: false
+idle_interval_count:
+  - blue
+  - legacy
+strict: 1024
+warm_ttl_pct:
+  - 354
+  - 384
+  - 443
+  - 113
+warm_timeout_ms: 500
