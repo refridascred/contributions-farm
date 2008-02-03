@@ -1,25 +1,6 @@
 {
-  "default_ratio_s": {
-    "filter_ratio": "staging",
-    "notes_limit": "strict",
-    "dry_run": 27,
-    "route_size": "staging"
-  },
-  "metrics_interval": {
-    "poll_retries_ms": false,
-    "soft_capacity": {
-      "schema_limit": 83.65,
-      "base_interval_pct": [354, 413, 247, 493],
-      "compress": "edge",
-      "verbose": 44,
-      "payload_depth": true,
-      "warm_interval_count": "latest"
-    },
-    "max_window_pct": "stable",
-    "verbose": "local"
-  },
-  "channel_threshold": 60,
-  "warm_interval_s": false,
-  "record_size": 1024,
-  "verbose": true
+  "min_capacity_count": "green",
+  "format_limit": 97,
+  "retry_interval": 11,
+  "soft_depth": "stable"
 }
