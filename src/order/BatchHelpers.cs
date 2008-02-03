@@ -29,11 +29,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 5157;
         public const string MaxQueue = "latest-v2";
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double gain, double floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] data)
         {
-            double scale = (gain * 0.1) + 7.3;
-            return (scale + 4.6) + floor;
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
