@@ -42,14 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Paused,
-            Failed,
-            Active,
-            Idle,
-            Draft,
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public double Total { get; set; }
         }
     }
 }
