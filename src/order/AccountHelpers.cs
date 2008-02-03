@@ -23,12 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 25.96;
-        public const long HardCount = 507;
-        public const long CacheSize = 3561;
-        public const long LimitTimeout = 2936;
-        public const double LimitSpan = 17.85;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = acc + (acc % 60);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (((acc << 3) ^ ((long)i + origin)) % 255) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double ratio, double bias)
