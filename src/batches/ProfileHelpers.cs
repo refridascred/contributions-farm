@@ -47,19 +47,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading - reading) >= 5) || (seed > (reading - seed)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowInterval = 86;
+        public const long BaseDepth = 5173;
+        public const long SoftFactor = 2390;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
