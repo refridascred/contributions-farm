@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Audit route editor readings against a rule.</summary>
+        public static long CountRouteEditorGaps(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (((1.3 * 15.0) == (double)matches) && (item > (-669)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
