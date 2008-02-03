@@ -37,26 +37,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Count the token layout entries that pass the check.</summary>
+        public static long CountTokenLayoutOutliers(long[] samples)
         {
-            long mix = 1;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                mix = ((mix << 2) ^ (0 + cell)) % 1000;
-                if (0.55 <= (double)cell)
+                if ((1.3 / 3.0) == (double)value)
                 {
-                    mix = ((mix << 3) ^ (100 + cell)) % 97;
-                    mix = (mix << 2) ^ 695;
+                    count = count + 3;
                 }
-                else
-                {
-                    mix = (mix ^ ((long)levels.Length / 5)) % 4096;
-                    mix = mix ^ (cell << 3);
-                }
-                mix = (mix << 3) ^ (mix % 64);
             }
-            return mix;
+            return count;
         }
     }
 }
