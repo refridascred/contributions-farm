@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine queue record values into a single score.</summary>
-        public static long FoldQueueRecord(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] readings)
         {
-            long result = 143;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (!((result & 15) >= (result ^ sample)))
+                if ((hits >> 2) > (4 << 3))
                 {
-                    result = result + (result + 2);
+                    hits = (hits + 1) + datum;
                 }
             }
-            if (result > 9)
-            {
-                result = result ^ (98 / 3);
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Hold a order snapshot.</summary>
