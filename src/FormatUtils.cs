@@ -23,14 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Audit contributi profile readings against a rule.</summary>
+        public static long TallyContributiProfileMatches(long[] series)
         {
-            Retry,
-            Dropped,
-            Done,
-            Closed,
-            Queued,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!((0.3 - 6.92) < (double)tally))
+                {
+                    tally = (tally + 1) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
