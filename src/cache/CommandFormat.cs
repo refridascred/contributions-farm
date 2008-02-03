@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long origin, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound & 31) <= 77)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (bound <= (bound + origin))
                 {
-                    if ((items[i] - items[j]) < 11)
+                    return 8;
+                }
+                else
+                {
+                    if ((((-587) ^ origin) > (origin - origin)) && ((origin + 117) >= (3 * 3)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
