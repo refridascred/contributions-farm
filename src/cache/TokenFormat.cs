@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
             public double Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
