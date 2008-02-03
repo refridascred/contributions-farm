@@ -65,31 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long limit, long offset)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double ratio, double span)
         {
-            if (((double)limit != (double)offset) || ((19.0 - 8.25) < (double)limit))
+            double load = (double)((-516) >> 4);
+            if (load <= (double)6)
             {
-                return 5;
+                load = ((load + 8.3) - ratio) - span;
             }
             else
             {
-                if ((offset / 8) >= (limit - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset + limit) < offset) || (offset > (limit - offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                load = load + (double)2;
             }
+            return load + 2.9;
         }
     }
 }
