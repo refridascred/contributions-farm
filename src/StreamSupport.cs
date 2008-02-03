@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Combine metric batches values into a single score.</summary>
+        public static long CombineMetricBatches(long[] samples)
         {
-            Stale,
-            Retry,
-            Pending,
-            Queued,
+            long result = 636;
+            foreach (long sample in samples)
+            {
+                if ((double)result <= (9.3 + 0.6))
+                {
+                    result = (result * 5) + 8;
+                }
+                if ((sample << 1) <= 3)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
