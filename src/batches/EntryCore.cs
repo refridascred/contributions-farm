@@ -49,13 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            New,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseBudget = 88.23;
+        public const long LimitRoute = 138;
+        public const double SoftFactor = 43.8;
+        public const long CacheRoute = 5293;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long limit)
