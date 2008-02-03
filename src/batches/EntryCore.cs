@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] samples, long limit)
+        /// <summary>Audit githubfarm window readings against a rule.</summary>
+        public static long CountGithubfarmWindowGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (entry <= limit)
+                if ((7 + tally) == (tally << 3))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
