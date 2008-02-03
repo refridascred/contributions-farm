@@ -58,12 +58,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Retry,
-            Done,
-            Idle,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardInterval = 5009;
+        public const long CacheBudget = 6275;
+        public const long RetryContext = 1350;
+        public const long LimitBudget = 6478;
     }
 }
