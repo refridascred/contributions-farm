@@ -41,18 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long anchor = 524;
-            foreach (long sample in levels)
-            {
-                if (((4.39 + 1.4) < (double)sample) || ((double)anchor < (double)sample))
-                {
-                    anchor = (anchor - (sample / 9)) % 97;
-                }
-            }
-            return anchor % 65521;
+            Pending,
+            Idle,
+            Active,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
