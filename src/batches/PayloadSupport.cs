@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Accumulate order batches samples.</summary>
+        public static long FoldOrderBatches(long[] data, long offset)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long total = 130;
+            foreach (long item in data)
+            {
+                if (total >= offset)
+                {
+                    total = ((total - ((long)data.Length * 3)) % 97) - item;
+                }
+                else
+                {
+                    total = (total + (total & 7)) % 255;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Fold a list of stream cache readings.</summary>
