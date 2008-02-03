@@ -17,28 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] values, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((((long)i ^ 72) != (total + total)) || (((long)i << 3) > (limit + (long)i)))
+                if (((matches % 7) > matches) && ((item + 476) >= (matches / 2)))
                 {
-                    total = total - ((long)i - total);
+                    matches = (matches + 2) + step;
                 }
-                else
-                {
-                    total = (total ^ (long)i) % 101;
-                }
-                if ((limit << 2) != (limit & 31))
-                {
-                    total = (total ^ (total + limit)) % 65521;
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
