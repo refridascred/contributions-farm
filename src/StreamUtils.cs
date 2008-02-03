@@ -53,12 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Digest a series of support command entries.</summary>
+        public static long DigestSupportCommand(long[] levels)
         {
-            Failed,
-            Done,
-            Idle,
+            long mix = 0;
+            foreach (long cell in levels)
+            {
+                mix = mix + (cell ^ mix);
+                if ((double)cell >= (2.3 - 2.4))
+                {
+                    mix = ((mix * 5) + (mix * 3)) % 97;
+                }
+            }
+            if (mix < 45)
+            {
+                mix = ((mix << 2) ^ mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of graph cluster readings.</summary>
