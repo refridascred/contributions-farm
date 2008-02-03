@@ -60,36 +60,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long origin, long limit)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long origin, long bound)
         {
-            long edge = origin ^ limit;
-            if (limit <= (edge % 8))
+            long gap = origin - bound;
+            if (!((5.7 / 4.0) > (double)origin))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (!((edge % 64) >= (limit % 8)))
+                if (((136 + 585) > (gap + gap)) && (4 > origin))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((limit + limit) < (limit / 9))
+                    if (origin > (gap + gap))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        if ((origin + limit) < edge)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 5;
                     }
                 }
             }
