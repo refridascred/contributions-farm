@@ -23,21 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] < target)
                 {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
