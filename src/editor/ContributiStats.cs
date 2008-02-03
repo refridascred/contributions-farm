@@ -44,13 +44,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            Done,
+            Draft,
+            Pending,
+            Retry,
+            Closed,
         }
     }
 }
