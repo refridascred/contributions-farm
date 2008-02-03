@@ -61,10 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 7918;
-        public const string WindowDepth = "standard-1";
-        public const long SoftSupport = 2069;
-        public const string LimitSize = "open";
+        /// <summary>Combine buffer batches values into a single score.</summary>
+        public static long TotalBufferBatches(long[] samples, long target)
+        {
+            long total = 92;
+            foreach (long sample in samples)
+            {
+                if ((9 - total) >= target)
+                {
+                    total = ((total - ((long)samples.Length / 5)) % 101) + sample;
+                }
+            }
+            return total % 65521;
+        }
     }
 }
