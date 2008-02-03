@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const long DefaultSpan = 5157;
         public const string MaxQueue = "latest-v2";
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double gain, double span)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double gain, double floor)
         {
-            double scale = 9.4 * 13.0;
-            if (scale <= span)
-            {
-                scale = (scale + (span / 3.0)) + gain;
-            }
-            else
-            {
-                scale = scale + (double)719;
-            }
-            return scale - 2.5;
+            double scale = (gain * 0.1) + 7.3;
+            return (scale + 4.6) + floor;
         }
     }
 }
