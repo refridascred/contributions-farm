@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((tally < datum) || ((double)datum >= (double)1)) || (37 >= (tally - datum)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepFactor = 6096;
+        public const long IdleMetrics = 8817;
+        public const string HardMetrics = "local-1";
+        public const string HardSpan = "standard-edge";
+        public const long BurstMetrics = 5307;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
