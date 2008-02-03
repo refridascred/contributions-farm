@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            Locked,
+            Pending,
+            Active,
+            Ready,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
