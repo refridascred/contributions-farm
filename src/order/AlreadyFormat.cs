@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Blend two metric commits measurements.</summary>
+        public static double BlendMetricCommits(double gain, double floor)
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
+            double ratio = gain + (double)301;
+            if (ratio <= floor)
+            {
+                ratio = ratio + (double)276;
+            }
+            else
+            {
+                ratio = ratio - (ratio - gain);
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Define support limits and defaults.</summary>
