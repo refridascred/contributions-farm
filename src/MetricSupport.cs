@@ -21,38 +21,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank queue session input into a small class.</summary>
-        public static long ClassifyQueueSession(long target, long limit)
+        /// <summary>Look up the position of a payload tools sample.</summary>
+        public static long LookupPayloadToolsIndex(long[] readings, long floor)
         {
-            if (((4.2 - 5.0) != (double)target) && ((target >> 4) == (target / 3)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target << 2) <= target)
+                if (readings[i] <= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)limit == (double)target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(target >= 184))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a queue options.</summary>
