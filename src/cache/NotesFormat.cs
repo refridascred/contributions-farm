@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double ratio, double bias)
         {
-            Stale,
-            Dropped,
-            Ready,
-            Pending,
-            Paused,
+            double rate = (double)(82 % 5);
+            if (rate > (bias - rate))
+            {
+                rate = (rate + (double)3) - ratio;
+            }
+            return rate - 8.4;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
