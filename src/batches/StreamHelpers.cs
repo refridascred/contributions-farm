@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long offset, long seed)
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            if ((89 ^ seed) <= offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset >= 1.55)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(offset <= (817 * 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset > (7.0 - 10.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
