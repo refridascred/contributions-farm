@@ -14,24 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series)
+        /// <summary>Match up report record samples.</summary>
+        public static long PairReportRecordCount(long[] readings)
         {
-            long total = 120;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum + datum) < (datum + 917))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total - (total % 8);
-                    continue;
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = total - datum;
             }
-            if (total > 950)
-            {
-                total = total + (349 % 3);
-            }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
