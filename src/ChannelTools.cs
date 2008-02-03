@@ -19,14 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Ready,
-            Dropped,
-            Locked,
-            Retry,
             Closed,
+            Queued,
+            Paused,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a queue header.</summary>
