@@ -51,17 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks session value from a seed.</summary>
-        public static long IterateChecksSession(long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long target)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                total = (total - 6) % 1000;
-                total = total - 0;
-                total = ((total * 4) + (long)i) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return total;
+            return acc;
         }
     }
 }
