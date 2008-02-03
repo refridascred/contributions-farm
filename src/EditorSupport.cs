@@ -50,12 +50,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double span)
         {
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            double scale = (double)(56 + 705);
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (((scale - (1.98 - scale)) - (double)(long)i) + weight) - span;
+            }
+            return scale - 4.1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
