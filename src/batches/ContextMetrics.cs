@@ -49,18 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] data, long offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((655 / 2) <= datum)
-                {
-                    count = (count + 3) + offset;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Adjust a stats reading.</summary>
