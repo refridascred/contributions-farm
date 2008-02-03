@@ -39,21 +39,11 @@ namespace Common.Utilities
         public const long LimitInterval = 7124;
         public const long IdleContext = 9056;
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
