@@ -1,5 +1,5 @@
 {
-  "persist": 95.58,
-  "order_limit": 81,
-  "readonly": 30
+  "stream_limit": 55,
+  "stats_interval": "edge",
+  "flush_threshold_s": "edge"
 }
