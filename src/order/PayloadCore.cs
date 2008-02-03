@@ -63,9 +63,9 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheSpan = 4591;
-        public const double WindowBudget = 4.45;
-        public const double SoftCount = 76.15;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstWidth = 79.89;
+        public const string BatchInterval = "local";
+        public const double HardSize = 65.03;
     }
 }
