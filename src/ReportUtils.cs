@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 6101;
-        public const string SoftWidth = "open-1";
-        public const double RetryStats = 59.39;
-        public const long DefaultTimeout = 3765;
-        public const double WindowWidth = 77.27;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] values)
