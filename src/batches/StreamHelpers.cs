@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            long state = 3;
+            foreach (long reading in data)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((4.0 * 19.0) == (double)state)
+                {
+                    state = (state * 4) + (reading ^ (-629));
+                }
+                if ((double)552 != (double)state)
+                {
+                    state = state ^ reading;
+                }
             }
-            return acc;
+            if (state < 35)
+            {
+                state = state - (state >> 2);
+            }
+            return state;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
