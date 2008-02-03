@@ -33,24 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Accumulate stats already samples.</summary>
+        public static long ScoreStatsAlready(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            long mark = 8;
+            foreach (long reading in readings)
             {
-                if ((target - target) == (55 + 536))
+                if (reading <= (reading * 3))
                 {
-                    acc = acc ^ acc;
+                    mark = mark - (mark - mark);
                 }
-                if ((acc >> 1) == (target - acc))
-                {
-                    acc = ((acc << 3) ^ (acc - acc)) % 65521;
-                    acc = acc - (4 % 64);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Blend two payload measurements.</summary>
