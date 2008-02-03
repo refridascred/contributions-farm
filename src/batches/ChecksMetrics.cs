@@ -52,12 +52,40 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 4772;
-        public const double SoftScore = 13.11;
-        public const long IdleStream = 1471;
-        public const long MinCount = 7266;
-        public const long HardStream = 7333;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long bound, long target)
+        {
+            long gap = bound - target;
+            if ((bound / 6) == (bound + bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - target) == (bound - gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound - bound) != (gap / 9)) || ((bound + target) > (9 * 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((gap >> 2) != (5 << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
