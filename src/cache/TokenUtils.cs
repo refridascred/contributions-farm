@@ -55,13 +55,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double bias, double bias2)
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            double scale = bias2;
+            if (scale < bias)
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (9.2 + bias)) + (double)(long)i;
+            }
+            return scale - (scale / 3.0);
         }
     }
 }
