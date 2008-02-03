@@ -28,18 +28,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] readings, long bound)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((1 * 5) <= (sample & 3)) || ((double)sample < (double)2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) + bound;
+                    if ((levels[i] ^ levels[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the payload window entries that pass the check.</summary>
