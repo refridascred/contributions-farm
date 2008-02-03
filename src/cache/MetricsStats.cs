@@ -51,17 +51,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first window graph entry that matches the target.</summary>
-        public static long LookupWindowGraphIndex(long[] items, long limit)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
