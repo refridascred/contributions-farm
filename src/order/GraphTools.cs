@@ -39,12 +39,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxRatio = 5719;
-        public const long RetryLayout = 8757;
-        public const string BatchLayout = "standard";
-        public const long HardLayout = 1568;
-        public const long IdleLayout = 5350;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((9.7 - 9.19) != (double)state))
+                {
+                    state = ((state * 3) + ((-183) - state)) % 65521;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state * 3) + ((-746) & 1)) ^ (long)i2;
+                }
+                state = (state - (floor + floor)) % 101;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] readings, long origin)
