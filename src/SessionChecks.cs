@@ -24,18 +24,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] samples)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((283 + item) >= (148 + 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Failed,
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
