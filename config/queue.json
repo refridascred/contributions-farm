@@ -1,6 +1,24 @@
 {
-  "max_size": 62.74,
-  "max_timeout_count": "standard",
-  "cache_timeout_pct": 1113,
-  "min_limit": 43
+  "profile_timeout": [433, 340],
+  "min_retries_s": 69.98,
+  "warm_window_s": 6250,
+  "max_window": 500,
+  "sync_timeout_pct": {
+    "min_depth": false,
+    "enabled": 23,
+    "readonly": {
+      "hard_timeout": false,
+      "poll_timeout_pct": 1286,
+      "soft_timeout_ms": "cached"
+    },
+    "idle_threshold_count": 75.53,
+    "compress": 92.74,
+    "order_interval": {
+      "checks_timeout": "cached",
+      "token_interval": 34.09,
+      "warm_threshold_s": false,
+      "farm_limit": 59.84,
+      "window_delay": 100
+    }
+  }
 }
