@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] readings, long step)
+        /// <summary>Validate metrics tools readings against a bound.</summary>
+        public static bool VerifyMetricsToolsRange(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (readings[i] < step)
+                if (sample > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
