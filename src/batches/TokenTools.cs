@@ -15,37 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long floor, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long origin, long seed)
         {
-            long next = floor - seed;
-            if (((8.0 + 2.43) >= (double)seed) && ((100 - next) >= (571 + 738)))
+            if ((origin / 7) >= seed)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((3.65 + 19.0) < (double)next)
+                if ((origin & 255) >= seed)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if (((8 + floor) == (663 + 71)) || ((double)seed < (1.12 - 0.03)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor / 7) > floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
