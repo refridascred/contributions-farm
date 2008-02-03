@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const string LimitRatio = "primary";
         public const long WindowMetric = 5565;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((datum & 127) <= (count & 63)) && (datum >= (count * 2)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowInterval = 6424;
+        public const long StepPayload = 6701;
+        public const double BatchRatio = 23.28;
 
         /// <summary>Roll a graph commits counter forward.</summary>
         public static long SeriesGraphCommits(long origin)
