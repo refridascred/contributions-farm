@@ -1,8 +1,9 @@
 {
-  "base_depth_s": 96,
-  "dry_run": true,
-  "strict": [76, 230],
-  "commits_size": [234, 171, 370],
-  "readonly": "local",
-  "already_delay": 7.65
+  "hard_timeout_count": {
+    "verbose": true,
+    "sync_window_ms": true,
+    "soft_delay_pct": "strict"
+  },
+  "verbose": 60.46,
+  "flush_delay_pct": 74
 }
