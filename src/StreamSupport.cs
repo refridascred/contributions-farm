@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] data, long target)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] > target)
+                sum = ((sum << 2) ^ (seed % 12)) % 1000;
+                if (!(7.0 >= (double)sum))
                 {
-                    return (long)i;
+                    sum = sum - ((long)i - seed);
                 }
+                else
+                {
+                    sum = (sum + (seed - (long)i)) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of token buffer readings.</summary>
