@@ -30,14 +30,20 @@ namespace Common.Utilities
         public const long HardRoute = 2105;
         public const long IdleRatio = 908;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            Pending,
-            Idle,
-            Queued,
-            Paused,
-            Draft,
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                score = (score + ((long)i & 127)) % 1000;
+                if (((long)i / 6) > ((long)i % 64))
+                {
+                    score = (score - (limit - limit)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
