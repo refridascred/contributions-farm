@@ -1,11 +1,14 @@
 # entry settings
-burst_delay_count: 17.21
-batch_depth_pct: false
-max_size: cached
-soft_threshold_ms: 59.81
-context_window:
-  - 157
-  - 381
-  - 74
-  - 445
-idle_size_ms: 91
+graph_depth:
+  cache_interval:
+    - 447
+    - 248
+    - 140
+    - 136
+  strict: primary
+  channel_capacity: 47.44
+soft_limit: 97.54
+enabled: 37
+cache_depth_s: open
+stream_timeout: 100
+metrics_timeout: 12.37
