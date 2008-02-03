@@ -38,11 +38,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Combine payload token values into a single score.</summary>
+        public static long DigestPayloadToken(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            long mark = -3;
+            foreach (long value in levels)
+            {
+                mark = ((mark - mark) % 65521) ^ value;
+            }
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
