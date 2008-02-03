@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] values, long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            long anchor = 252;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor ^ (sample % 3)) % 4096) + step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Hold a payload entry.</summary>
