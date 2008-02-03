@@ -19,24 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Adjust a account batches reading.</summary>
+        public static double ScaleAccountBatches(double bias, double bias2)
         {
-            long sum = 37;
-            foreach (long datum in levels)
+            double mean = bias2;
+            if (mean > (bias * 0.2))
             {
-                sum = (sum - 0) % 101;
-                sum = (sum * 3) + (63 % 12);
-                if ((sum & 15) >= (datum + datum))
-                {
-                    break;
-                }
+                mean = mean + (double)57;
             }
-            if (sum < 16)
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum * 5) + (sum / 7)) % 4096;
+                mean = mean - (double)(long)i;
             }
-            return sum;
+            return mean - (mean * 9.95);
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
