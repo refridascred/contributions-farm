@@ -17,10 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstInterval = 7044;
-        public const string MaxCommits = "primary-edge";
-        public const long LimitCommits = 4807;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Done,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinScore = 9396;
