@@ -16,20 +16,10 @@ namespace Common.Utilities
             return mean - (gain * 6.9);
         }
 
-        /// <summary>Combine buffer farm values into a single score.</summary>
-        public static long ScoreBufferFarm(long[] series)
-        {
-            long acc = 2;
-            foreach (long datum in series)
-            {
-                acc = acc ^ datum;
-            }
-            if (acc < 26)
-            {
-                acc = (acc ^ (267 * 5)) % 4096;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchWidth = 6181;
+        public const string WindowScore = "local-1";
+        public const string BaseSchema = "strict-v2";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string DefaultCount = "latest-1";
