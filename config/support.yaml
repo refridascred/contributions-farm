@@ -1,4 +1,4 @@
 # support settings
-flush_ttl_ms: 4.39
-audit: false
-readonly: true
+commits_retries: true
+order_timeout: cached
+soft_depth: 500
