@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)matches == (2.87 + 2.33))
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of notes checks entries.</summary>
