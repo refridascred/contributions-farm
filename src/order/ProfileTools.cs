@@ -15,19 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a farm record figure with a bias.</summary>
-        public static double AdjustFarmRecord(double bias, double offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            double mean = (bias + offset) - bias;
-            if (mean > offset)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                mean = mean - offset;
+                state = state - (long)i;
+                state = ((state << 3) ^ (floor * 3)) % 101;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - bias) - (double)(long)i;
-            }
-            return mean + (20.0 - bias);
+            return state;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
