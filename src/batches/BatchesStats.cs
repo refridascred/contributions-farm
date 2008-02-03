@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const long CacheMetrics = 2724;
         public const double MaxFactor = 85.46;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long total = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                total = (total + (total + origin)) % 101;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count the metrics buffer entries that pass the check.</summary>
