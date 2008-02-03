@@ -16,12 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] samples, long seed)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
