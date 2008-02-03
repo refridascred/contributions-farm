@@ -22,22 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] items)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            if ((double)seed >= (7.0 + 11.0))
             {
-                if (((matches + matches) <= matches) || !(matches <= (7 % 3)))
+                return 6;
+            }
+            else
+            {
+                if ((origin % 100) > (5 - seed))
                 {
-                    matches = (matches + 1) + reading;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)origin < (4.85 / 8.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed >= 3.8)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many contributi session samples are out of range.</summary>
