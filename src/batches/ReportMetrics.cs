@@ -22,25 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long limit, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long offset = limit ^ floor;
-            if ((15 < floor) && ((floor & 255) >= limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 9) < (floor - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Stale,
+            Draft,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a profile entry.</summary>
