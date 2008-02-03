@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] series, long step)
         {
-            Done,
-            Closed,
-            Draft,
+            long anchor = 1;
+            foreach (long sample in series)
+            {
+                anchor = (anchor * 5) + sample;
+                if (5 < anchor)
+                {
+                    anchor = (anchor + step) % 65521;
+                }
+                if ((((-6) - (long)series.Length) >= step) || ((sample ^ step) <= sample))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
