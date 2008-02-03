@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] samples, long bound)
         {
-            Dropped,
-            Locked,
-            Failed,
-            Stale,
-            Pending,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((bound + cell) <= (bound + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a editor format reading.</summary>
