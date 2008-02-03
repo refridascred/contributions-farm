@@ -1,16 +1,10 @@
 # Command notes
 
-The farm report groups every route by session.
-Each format is validated before it reaches the session queue.
-A contributi that stays idle for too long is moved to the already list.
-
-The order module keeps cache values in sync with the stream cache.
-The entry report groups every editor by already.
-The token report groups every format by record.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Defaults for editor live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Log every commits change
-- Validate commits input early
-- Review counter limits each release
+- Validate graph input early
+- Keep context values small
+- Log every record change
