@@ -1,13 +1,5 @@
 {
-  "retry_interval_s": 71,
-  "min_timeout_ms": false,
-  "max_ratio_count": {
-    "dry_run": "green",
-    "verbose": "legacy",
-    "cluster_interval": [483, 237, 300, 57],
-    "idle_timeout": false
-  },
-  "min_capacity_s": [347, 3],
-  "payload_threshold": "local",
-  "batch_threshold_count": [128, 41, 344, 60]
+  "command_threshold": "green",
+  "stats_retries": 8.87,
+  "context_size": ["blue", "open", "latest"]
 }
