@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit githubfarm window readings against a rule.</summary>
-        public static long CountGithubfarmWindowGaps(long[] readings)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double drift = (double)0 / 8.0;
+            if (drift > span)
             {
-                if ((7 + tally) == (tally << 3))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
+                drift = drift + (double)1;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift + (double)857;
         }
 
         /// <summary>Rank record input into a small class.</summary>
