@@ -1,10 +1,4 @@
 # entry settings
-max_timeout_count: 500
-contributi_window: 64.64
-sync_retries_count: green
-min_depth:
-  - edge
-  - fallback
-  - green
-  - fallback
-persist: edge
+max_timeout_count: false
+max_window_s: 2651
+strict: 4.76
