@@ -22,20 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] readings, long limit)
+        /// <summary>Derive the next support buffer value from a seed.</summary>
+        public static long IterateSupportBuffer(long origin)
         {
-            long state = 0;
-            foreach (long value in readings)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state * 4) + (84 + limit)) % 4096;
-                state = ((state * 2) + (value % 100)) % 4096;
-                if (((double)limit != (17.0 - 3.72)) || (745 > limit))
-                {
-                    break;
-                }
+                acc = (acc ^ (origin * 4)) % 65521;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
