@@ -51,12 +51,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleProfile = "strict";
-        public const long DefaultLevel = 3219;
-        public const long WindowProfile = 903;
-        public const string StepProfile = "strict-1";
-        public const double DefaultProfile = 69.51;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryMatches(long[] levels, long offset)
