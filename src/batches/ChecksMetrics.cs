@@ -69,21 +69,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Adjust a stats entry reading.</summary>
+        public static double SmoothStatsEntry(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = gain;
+            if (weight > gain)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight - (floor + weight);
             }
-            return tally;
+            else
+            {
+                weight = weight + (double)941;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (weight * 3.0)) + (double)(long)i;
+            }
+            return weight + (double)66;
         }
 
         /// <summary>Hold a window entry.</summary>
