@@ -41,13 +41,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Compare every pair of counter contributi readings.</summary>
+        public static long MatchCounterContributiCount(long[] series)
         {
-            Dropped,
-            Synced,
-            Pending,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
