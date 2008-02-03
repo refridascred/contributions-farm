@@ -24,12 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] series, long bound)
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
