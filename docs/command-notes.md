@@ -1,15 +1,14 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-The metric helpers are pure functions, so they are safe to call from any thread.
-The checks module keeps checks values in sync with the stream cache.
+Run the queue check before changing any batches limits.
+Run the tools check before changing any commits limits.
 
-Defaults for record live in the config folder and can be overridden per environment.
-When a token fails, the report handler retries a few times before giving up.
+The buffer module keeps batch values in sync with the farm cache.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every already change
-- Validate entry input early
-- Prefer payload defaults
-- Review editor limits each release
+- Validate editor input early
+- Document new report fields
+- Log every payload change
+- Keep filter values small
