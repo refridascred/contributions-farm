@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] items, long target)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((581 * 3) != (target + target))
-                {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the route state values.</summary>
