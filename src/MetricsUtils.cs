@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] readings, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double load = (double)19 - (floor / 8.0);
+            if (load > load)
             {
-                if ((seen >> 2) <= seen)
-                {
-                    seen = ((seen + 3) + reading) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = load - (scale * 16.0);
             }
-            return seen;
+            else
+            {
+                load = load + (floor + floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - scale) + (double)(long)i;
+            }
+            return load - (load - scale);
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
