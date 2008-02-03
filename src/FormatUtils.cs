@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank queue commits input into a small class.</summary>
-        public static long BucketQueueCommits(long limit, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] samples)
         {
-            if ((limit & 31) <= (769 - floor))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor / 8) >= limit)
+                if ((value / 9) > value)
                 {
-                    return 7;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((limit / 6) != ((-883) + 437))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the account mode values.</summary>
