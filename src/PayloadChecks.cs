@@ -50,24 +50,13 @@ namespace Common.Utilities
         public const string WindowSize = "legacy-edge";
         public const string DefaultCommits = "open-1";
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values, long floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long result = 358;
-            foreach (long sample in values)
-            {
-                result = (result + (11 >> 3)) % 65521;
-                if (((sample & 127) != (result / 7)) || (sample >= (sample & 31)))
-                {
-                    result = ((result * 5) + (floor ^ (long)values.Length)) % 1000;
-                }
-                result = (result + sample) % 65521;
-                if ((double)sample >= (7.1 / 2.0))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            New,
+            Queued,
+            Paused,
+            Done,
         }
 
         /// <summary>Describe the token status values.</summary>
