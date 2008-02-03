@@ -33,17 +33,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] levels, long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long offset, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (offset < (seed * 3))
             {
-                if (levels[i] <= target)
+                return 2;
+            }
+            else
+            {
+                if ((seed + 1) > (seed << 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (seed > (offset * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
