@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const string LimitSupport = "latest-v2";
         public const long StepFactor = 5150;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = 9.8 - (gain * 20.0);
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                rate = (rate - offset) + (double)(long)i;
             }
-            return -1;
+            return rate - rate;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
