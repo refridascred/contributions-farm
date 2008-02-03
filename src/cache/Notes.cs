@@ -45,12 +45,19 @@ namespace Common.Utilities
         public const long StepCount = 240;
         public const long BaseCommits = 7036;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] items, long limit)
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of command entries.</summary>
