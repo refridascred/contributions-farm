@@ -20,21 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up layout batches samples.</summary>
-        public static long MatchLayoutBatchesCount(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 592;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ (mark << 1)) % 65521) + value;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
