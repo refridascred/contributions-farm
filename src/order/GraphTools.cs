@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] samples)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long score = 3;
+            foreach (long entry in levels)
             {
-                if ((14.0 * 9.6) <= (double)count)
+                if (!(((0.01 * 1.5) == (double)offset) || (score > (score * 3))))
                 {
-                    count = (count + 1) + cell;
+                    score = (score - (score + 170)) % 1000;
+                }
+                if ((double)score <= (9.81 - 3.66))
+                {
+                    score = ((score * 2) + (entry & 127)) % 97;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Adjust a account batches reading.</summary>
