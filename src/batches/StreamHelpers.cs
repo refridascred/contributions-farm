@@ -21,31 +21,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long limit, long limit2)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] items, long origin)
         {
-            if (limit2 >= 358)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((94 - limit) > (limit & 255))
+                if ((entry * 3) > (origin - origin))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit2 << 1) < (43 - 643))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up batches samples.</summary>
