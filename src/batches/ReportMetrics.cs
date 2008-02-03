@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] values, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                mark = ((mark << 2) ^ ((long)i / 3)) % 1000;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (reading != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Describe the queue class values.</summary>
