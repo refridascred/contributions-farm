@@ -1,8 +1,5 @@
 # support settings
-idle_size: 500
-cache_window: false
-hard_window:
-  - 420
-  - 322
-  - 422
-base_interval_s: 4887
+retry_ratio: latest
+cluster_ttl: cached
+metric_threshold: false
+checks_retries: 95
