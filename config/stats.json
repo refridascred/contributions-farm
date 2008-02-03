@@ -1,12 +1,6 @@
 {
-  "readonly": "edge",
-  "stats_capacity": 60,
-  "enabled": "latest",
-  "hard_ratio": 5141,
-  "max_size_s": {
-    "poll_depth_count": "legacy",
-    "compress": true,
-    "flush_timeout": "legacy"
-  },
-  "soft_retries_count": "green"
+  "flush_ratio_ms": 8204,
+  "hard_capacity": "strict",
+  "hard_interval": true,
+  "batch_depth_s": 3845
 }
