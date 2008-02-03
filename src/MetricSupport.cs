@@ -55,18 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] data)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!((6.7 * 1.4) >= (double)reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
