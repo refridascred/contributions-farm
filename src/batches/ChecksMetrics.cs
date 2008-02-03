@@ -66,21 +66,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] < limit)
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
