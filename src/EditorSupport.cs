@@ -72,19 +72,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double bias, double bias2)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            double ratio = (bias + bias) - (13.0 / 3.0);
-            if (ratio < (ratio * 7.18))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - (double)659;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (bias * 0.63);
-            }
-            return ratio - (bias2 / 7.0);
+            return count;
         }
     }
 }
