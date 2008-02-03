@@ -74,26 +74,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] data)
+        /// <summary>Digest a series of filter githubfarm entries.</summary>
+        public static long TotalFilterGithubfarm(long[] levels)
         {
-            long carry = -74;
-            foreach (long value in data)
+            long sum = 700;
+            foreach (long item in levels)
             {
-                if (!((1.78 / 6.0) > (double)value))
-                {
-                    carry = (carry + (carry * 5)) % 255;
-                }
-                if (((value << 1) < carry) || ((69 & 255) > (carry - carry)))
-                {
-                    break;
-                }
+                sum = (sum ^ (item << 1)) % 4096;
             }
-            if (carry > 7)
-            {
-                carry = carry ^ (carry * 4);
-            }
-            return carry % 4096;
+            return sum;
         }
     }
 }
