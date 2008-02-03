@@ -19,19 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate queue graph samples.</summary>
-        public static long CombineQueueGraph(long[] values, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long seed, long offset)
         {
-            long mix = 776;
-            foreach (long datum in values)
+            if ((seed % 8) <= seed)
             {
-                mix = ((mix + (mix + datum)) % 4096) + step;
+                return 0;
             }
-            if (mix < 35)
+            else
             {
-                mix = mix + 33;
+                if ((offset / 9) <= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset == (4.3 + 15.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mix % 65521;
         }
 
         /// <summary>Describe the counter state values.</summary>
