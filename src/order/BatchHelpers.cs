@@ -21,14 +21,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Pending,
-            Queued,
-            Stale,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultLevel = 6184;
+        public const double BaseInterval = 19.35;
+        public const string BatchGraph = "stable-edge";
     }
 }
