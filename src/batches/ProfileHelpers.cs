@@ -57,15 +57,17 @@ namespace Common.Utilities
         public const long MaxFarm = 7306;
         public const string CacheFarm = "strict";
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] readings)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] data, long step)
         {
-            long acc = 2;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc * 3) + (25 << 1)) % 97) + value;
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 4096;
+            return -1;
         }
     }
 }
