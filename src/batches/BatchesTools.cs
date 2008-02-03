@@ -33,22 +33,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] values)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long cur = bound + floor;
+            if ((double)floor >= (1.0 * 9.03))
             {
-                if (!((8 > (reading << 2)) || ((33 % 12) != (matches - matches))))
+                return 8;
+            }
+            else
+            {
+                if (!((floor & 15) <= (130 - cur)))
                 {
-                    matches = matches + 3;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((bound + floor) < floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((cur & 63) > (floor ^ floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
