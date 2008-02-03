@@ -34,13 +34,13 @@ namespace Common.Utilities
         public const string DefaultNotes = "legacy-1";
         public const long LimitSpan = 6824;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Stale,
-            Active,
-            Paused,
-            Done,
+            Synced,
+            Retry,
+            New,
+            Dropped,
         }
     }
 }
