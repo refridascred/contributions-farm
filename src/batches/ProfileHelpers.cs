@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metric class values.</summary>
