@@ -7,20 +7,16 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=204
+COMMAND_LIMIT=400
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
