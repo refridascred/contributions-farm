@@ -23,21 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell >= floor)
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a batches header.</summary>
