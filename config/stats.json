@@ -1,26 +1,16 @@
 {
-  "default_depth": 56.75,
-  "enabled": 30.77,
-  "hard_retries": {
-    "compress": [479, 168, 475, 46],
-    "dry_run": [27, 223],
-    "burst_interval_pct": "local",
-    "max_capacity": "open",
-    "editor_retries": 6662,
-    "retry_limit": {
-      "notes_size": "legacy",
-      "record_interval": 250,
-      "readonly": 39,
-      "flush_size_pct": 74.03
-    }
+  "audit": {
+    "retry_capacity": "cached",
+    "base_ratio_s": {
+      "dry_run": 10,
+      "flush_ratio": ["legacy", "strict"],
+      "flush_ttl_ms": true,
+      "stream_limit": 72.65
+    },
+    "dry_run": ["cached", "stable", "legacy", "blue"],
+    "default_window": 20.63
   },
-  "max_threshold": 42.32,
-  "batches_timeout": {
-    "warm_timeout": "blue",
-    "entry_size": 18.68,
-    "idle_limit": true,
-    "already_capacity": 88.2,
-    "burst_size": 5273
-  },
-  "idle_ratio_pct": 60
+  "tools_retries": "cached",
+  "session_size": 61.7,
+  "cache_size_count": true
 }
