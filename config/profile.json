@@ -1,20 +1,6 @@
 {
-  "strict": {
-    "persist": 66,
-    "strict": false,
-    "default_depth": "strict",
-    "max_ratio_pct": ["latest", "eu-west"],
-    "readonly": [30, 243, 145]
-  },
-  "buffer_capacity": true,
-  "tools_ratio": "edge",
-  "format_timeout": "blue",
-  "dry_run": false,
-  "max_delay_count": {
-    "stream_threshold": "green",
-    "default_window_count": "standard",
-    "enabled": false,
-    "sync_retries_count": 48.57,
-    "readonly": 100
-  }
+  "strict": 1024,
+  "idle_retries_ms": "legacy",
+  "route_size": 500,
+  "enabled": 1138
 }
