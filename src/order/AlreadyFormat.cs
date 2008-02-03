@@ -46,14 +46,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Closed,
-            Ready,
-            New,
-            Done,
-            Dropped,
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
