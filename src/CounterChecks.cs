@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total - (step + (long)i)) % 4096;
-                if ((total * 5) >= (step ^ step))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Draft,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the support class values.</summary>
