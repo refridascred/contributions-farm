@@ -54,15 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double bias, double span)
+        /// <summary>Digest a series of format channel entries.</summary>
+        public static long ScoreFormatChannel(long[] samples, long floor)
         {
-            double mean = span;
-            if (mean >= (span / 4.0))
+            long mix = 2;
+            foreach (long cell in samples)
             {
-                mean = (mean - span) - bias;
+                mix = (mix ^ cell) % 1000;
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = ((mix ^ (mix ^ cell)) % 101) + (long)i;
+                }
+                mix = (mix - (cell + floor)) % 4096;
             }
-            return mean + 9.27;
+            return mix;
         }
 
         /// <summary>Hold a stats info.</summary>
