@@ -51,24 +51,14 @@ namespace Common.Utilities
             return bias2 - 7.2;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long limit, long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            if ((limit >> 4) != (seed % 100))
-            {
-                return 7;
-            }
-            else
-            {
-                if (152 <= (limit & 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Locked,
+            Idle,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
