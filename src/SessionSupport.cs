@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long LimitSpan = 999;
         public const string MinSession = "stable-1";
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long offset)
         {
-            long carry = 2;
-            foreach (long entry in readings)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                carry = carry + (carry - entry);
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (carry < 93)
-            {
-                carry = ((carry << 2) ^ (carry ^ carry)) % 97;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
