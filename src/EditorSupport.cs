@@ -85,13 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] series, long origin)
         {
-            Synced,
-            Locked,
-            Active,
-            Ready,
+            long mix = 92;
+            foreach (long datum in series)
+            {
+                if ((mix / 4) >= origin)
+                {
+                    mix = ((mix << 3) ^ (datum + datum)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
