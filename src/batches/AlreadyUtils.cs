@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double rate, double bias)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double scale = (bias * 5.2) + (0.6 - rate);
-            return scale - 8.9;
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a layout options.</summary>
