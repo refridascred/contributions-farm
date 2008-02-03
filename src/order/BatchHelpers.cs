@@ -13,21 +13,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Find the first batches commits entry that matches the target.</summary>
+        public static long LookupBatchesCommitsIndex(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] <= limit)
                 {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
