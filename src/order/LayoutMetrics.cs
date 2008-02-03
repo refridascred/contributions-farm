@@ -41,18 +41,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] series)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((55 + item) >= (seen - item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
