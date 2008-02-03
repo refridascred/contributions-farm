@@ -37,10 +37,14 @@ namespace Common.Utilities
             return drift - (double)138;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinScore = 9396;
-        public const long StepBatches = 2533;
-        public const string WindowBatches = "legacy-edge";
-        public const long BaseBatches = 8903;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Closed,
+            Synced,
+            Stale,
+            Active,
+            New,
+        }
     }
 }
