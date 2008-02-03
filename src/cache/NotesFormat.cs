@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryLevel = 942;
-        public const long IdleTools = 7072;
-        public const long CacheTools = 5498;
-        public const double SoftTools = 62.63;
-        public const long BaseTools = 6367;
+        /// <summary>Measure how many support metrics samples are out of range.</summary>
+        public static long CountSupportMetricsHits(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((long)samples.Length ^ 2) >= (datum * 5))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long StepGithubfarm(long floor)
