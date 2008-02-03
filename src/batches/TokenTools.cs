@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long origin, long bound)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            if ((origin / 7) >= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((origin >> 5) < (bound ^ 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the session level values.</summary>
