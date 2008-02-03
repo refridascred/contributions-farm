@@ -20,15 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of context support entries.</summary>
-        public static long ScoreContextSupport(long[] readings, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long target)
         {
-            long sum = 12;
-            foreach (long entry in readings)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                sum = (((sum ^ ((long)readings.Length * 4)) % 1000) - entry) + seed;
+                total = (total - (total << 3)) % 65521;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
