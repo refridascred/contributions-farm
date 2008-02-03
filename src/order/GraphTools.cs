@@ -66,22 +66,17 @@ namespace Common.Utilities
             return rate + 18.0;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] values, long step)
         {
-            long state = 2;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2 * 2) >= state)
+                if ((values[i] == step) && ((values[i] % 5) != 0))
                 {
-                    state = ((state << 2) ^ state) % 101;
-                }
-                if ((69 % 97) > (cell * 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
