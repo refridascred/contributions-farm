@@ -29,17 +29,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] levels, long origin)
+        /// <summary>Accumulate route cluster samples.</summary>
+        public static long TallyRouteCluster(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -67;
+            foreach (long sample in samples)
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ (sample + target)) % 4096;
+                acc = (acc + (target / 5)) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
