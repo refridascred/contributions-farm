@@ -1,10 +1,7 @@
 {
-  "enabled": {
-    "verbose": [346, 11, 49, 410],
-    "queue_capacity": "green",
-    "graph_capacity": "primary",
-    "strict": false
-  },
-  "token_capacity": true,
-  "support_window": "primary"
+  "idle_limit_pct": 10.51,
+  "burst_ratio": 84,
+  "max_timeout": "stable",
+  "retry_ttl_pct": "standard",
+  "profile_delay": 250
 }
