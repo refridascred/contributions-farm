@@ -1,6 +1,5 @@
 {
-  "cluster_retries": 1024,
-  "audit": ["standard", "cached", "stable"],
-  "flush_size": ["standard", "open", "blue", "blue"],
-  "strict": true
+  "base_retries_pct": [385, 166, 411, 324],
+  "audit": 33,
+  "verbose": 4.6
 }
