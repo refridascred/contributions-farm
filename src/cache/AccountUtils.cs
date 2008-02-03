@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two graph batches measurements.</summary>
-        public static double BlendGraphBatches(double bias, double bias2)
+        /// <summary>Classify a record entry pair into a bucket.</summary>
+        public static long GradeRecordEntry(long seed, long limit)
         {
-            double weight = (double)(40 - 618);
-            if (weight > (bias2 - bias))
+            if (((limit + 7) == (seed >> 1)) && (((-896) + seed) < (seed << 1)))
             {
-                weight = weight + weight;
+                return 1;
             }
-            return weight + (15.0 + weight);
+            else
+            {
+                if ((3.38 - 9.5) <= (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
