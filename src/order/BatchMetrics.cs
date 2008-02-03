@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                result = (result << 3) ^ (seed * 5);
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
