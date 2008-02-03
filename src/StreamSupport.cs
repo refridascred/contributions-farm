@@ -38,22 +38,22 @@ namespace Common.Utilities
             return bias2 + (bias2 / 9.0);
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] samples, long floor)
+        /// <summary>Audit layout profile readings against a rule.</summary>
+        public static long MeasureLayoutProfileOutliers(long[] values)
         {
-            long state = 181;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((datum << 3) <= (54 / 5)) || ((178 + floor) != (floor % 5)))
+                if ((double)item >= (double)hits)
                 {
-                    state = (state << 2) ^ (long)samples.Length;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (state < 3)
-            {
-                state = ((state << 2) ^ (floor + floor)) % 101;
-            }
-            return state;
+            return hits;
         }
     }
 }
