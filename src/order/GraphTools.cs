@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryDepth = 7236;
-        public const string RetryMetric = "stable-1";
-        public const double MinMetric = 51.32;
-        public const string LimitRatio = "primary";
-        public const long WindowMetric = 5565;
+        /// <summary>Rank farm layout input into a small class.</summary>
+        public static long GradeFarmLayout(long target, long bound)
+        {
+            if (!(bound < (487 + target)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + 818) <= (bound & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound >= (target >> 5)) && ((bound / 4) > (target - bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target * 4) <= (target >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowInterval = 6424;
