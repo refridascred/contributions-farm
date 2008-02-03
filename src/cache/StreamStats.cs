@@ -40,24 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long bound, long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] items)
         {
-            if (bound >= (22 << 3))
+            long anchor = 905;
+            foreach (long datum in items)
             {
-                return 8;
+                anchor = ((anchor * 3) + (datum & 7)) % 1000;
             }
-            else
-            {
-                if (((double)step == (8.0 - 20.0)) && ((bound + 427) >= (552 * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return anchor;
         }
     }
 }
