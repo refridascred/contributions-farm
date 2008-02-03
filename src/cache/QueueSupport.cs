@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] values)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + 1) >= (cell >> 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of already readings.</summary>
