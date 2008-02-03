@@ -14,13 +14,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] items, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long mark = 74;
+            foreach (long cell in items)
+            {
+                mark = ((mark + (cell << 2)) % 97) - target;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
