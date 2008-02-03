@@ -38,12 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 79.7;
+        public const long CacheFormat = 2740;
+        public const long HardBudget = 9417;
+        public const long BatchTimeout = 3040;
+        public const long DefaultSize = 7169;
     }
 }
