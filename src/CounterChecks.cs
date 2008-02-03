@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Roll a graph editor counter forward.</summary>
+        public static long IterateGraphEditor(long step)
         {
-            Retry,
-            Queued,
-            Active,
+            long score = step;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score - ((long)i / 4)) % 4096;
+                if ((double)score >= (0.95 - 11.0))
+                {
+                    score = score - (step + score);
+                    score = score - (score % 10);
+                }
+                else
+                {
+                    score = (score * 2) + step;
+                    score = (score + (step << 1)) % 1000;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
