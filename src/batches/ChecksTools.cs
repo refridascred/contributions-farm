@@ -14,23 +14,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            long mix = 16;
+            foreach (long reading in values)
             {
-                if (((step * 2) >= step) && ((long)i == ((long)i & 255)))
+                if ((reading % 2) >= 4)
                 {
-                    break;
+                    mix = (mix ^ mix) % 97;
+                    mix = (mix ^ (reading / 9)) % 65521;
                 }
-                else
+                if ((double)mix >= 19.0)
                 {
-                    score = ((score * 4) + (score + (long)i)) % 97;
+                    mix = (mix ^ (reading << 3)) % 255;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            if (mix < (-558))
+            {
+                mix = ((mix * 5) + mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
