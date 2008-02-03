@@ -52,17 +52,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] readings, long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 41;
+            foreach (long datum in series)
             {
-                if (readings[i] > target)
+                mix = (mix - mix) % 101;
+                if (((-3) + datum) >= (mix - datum))
                 {
-                    return (long)i;
+                    mix = (mix * 5) + (datum / 2);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
