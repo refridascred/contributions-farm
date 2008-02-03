@@ -41,14 +41,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            New,
-            Idle,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheBudget = 61.66;
+        public const long LimitAccount = 8380;
+        public const long BurstLevel = 8582;
+        public const long IdleBudget = 1183;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long GradeReport(long step, long limit)
