@@ -39,19 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((anchor / 5) < (14 ^ anchor))
-                {
-                    anchor = ((anchor << 2) ^ (55 + anchor)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
