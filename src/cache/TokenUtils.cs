@@ -26,15 +26,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                score = ((score * 2) + (long)i) % 97;
+                total = (total << 2) ^ total;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
     }
 }
