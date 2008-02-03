@@ -70,19 +70,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] samples, long target)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Done,
+            Idle,
         }
     }
 }
