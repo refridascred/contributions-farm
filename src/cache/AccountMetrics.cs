@@ -33,15 +33,32 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long floor, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            long prev = floor + origin;
+            if ((2 & 255) >= (prev & 7))
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (3.51 >= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor <= (double)4)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank session input into a small class.</summary>
