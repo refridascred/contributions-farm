@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            long carry = 590;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry + ((long)i << 1)) % 101;
+                    if ((items[i] - items[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = (carry - (datum / 3)) % 97;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
