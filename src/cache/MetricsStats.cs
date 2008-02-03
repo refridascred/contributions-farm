@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((limit * 3) <= limit) || !((hits - hits) < (hits << 1)))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultStats = "local-edge";
+        public const long WindowStats = 8853;
+        public const long BurstStats = 4411;
+        public const double MinInterval = 22.27;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] data)
