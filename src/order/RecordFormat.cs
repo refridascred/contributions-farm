@@ -69,13 +69,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Paused,
-            Retry,
-            Synced,
-            New,
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
