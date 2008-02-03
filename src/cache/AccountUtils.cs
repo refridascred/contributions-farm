@@ -21,32 +21,18 @@ namespace Common.Utilities
         public const string RetryPayload = "cached";
         public const long BurstTimeout = 4288;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long target, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] values)
         {
-            long diff = target ^ seed;
-            if (((double)971 <= (double)target) || (diff > (seed + seed)))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((82 + diff) >= (seed * 2))
+                if ((sample - count) < 6)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed << 2) == (target << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
