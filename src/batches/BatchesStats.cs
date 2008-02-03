@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a account metric value against two limits.</summary>
-        public static long ClassifyAccountMetric(long bound, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] samples, long bound)
         {
-            if ((568 ^ 27) >= (bound / 9))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) > (bound << 3))
+                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((2 + step) == (step & 127)) && (step >= (bound % 16)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next record value.</summary>
