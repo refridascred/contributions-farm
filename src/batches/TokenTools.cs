@@ -25,13 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Stale,
+            Paused,
+            Queued,
+            Active,
         }
 
         /// <summary>Accumulate queue record samples.</summary>
