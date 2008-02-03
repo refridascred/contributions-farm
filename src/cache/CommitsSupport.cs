@@ -41,16 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a graph tools counter forward.</summary>
-        public static long DeriveGraphTools(long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            long anchor = 524;
+            foreach (long sample in levels)
             {
-                anchor = anchor - floor;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (((4.39 + 1.4) < (double)sample) || ((double)anchor < (double)sample))
+                {
+                    anchor = (anchor - (sample / 9)) % 97;
+                }
             }
-            return anchor;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
