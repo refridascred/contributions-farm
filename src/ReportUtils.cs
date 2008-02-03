@@ -27,21 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count farm batches pairs that satisfy a relation.</summary>
-        public static long MatchFarmBatchesCount(long[] values)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading < step)
                 {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
