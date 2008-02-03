@@ -29,12 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 49.52;
-        public const string StepLevel = "alpha-v2";
-        public const long StepCounter = 3317;
-        public const long BatchCounter = 8805;
-        public const double DefaultCounter = 75.88;
+        /// <summary>Measure how many filter format samples are out of range.</summary>
+        public static long AuditFilterFormatMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!((4.5 + 1.0) != (double)cell) || ((cell + cell) <= (hits & 7)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderOutliers(long[] readings, long bound)
