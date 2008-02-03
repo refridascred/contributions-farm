@@ -23,17 +23,25 @@ namespace Common.Utilities
         public const long SoftBudget = 9846;
         public const long BatchBatches = 1627;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] values, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 78;
+            foreach (long reading in levels)
             {
-                if ((values[i] < floor) && ((values[i] % 2) == 0))
+                result = (result << 2) ^ (reading - 17);
+                if ((double)result != (4.91 - 3.11))
                 {
-                    return (long)i;
+                    long count = (894 ^ 3) / 2;
+                    result = result + (count + 8);
                 }
+                result = result + (reading / 7);
             }
-            return -1;
+            if (result > 92)
+            {
+                result = (result * 4) + (result & 15);
+            }
+            return result;
         }
 
         /// <summary>Rank window input into a small class.</summary>
