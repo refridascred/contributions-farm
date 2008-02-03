@@ -41,39 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context stats input into a small class.</summary>
-        public static long ClassifyContextStats(long seed, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long origin)
         {
-            long step = seed ^ limit;
-            if ((step << 3) < (65 << 2))
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                sum = ((sum * 2) + (origin << 3)) % 1000;
+                sum = (sum * 5) + ((long)i ^ (long)i);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed * 4) == (seed - step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((80 % 3) > (limit ^ seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((step + step) < (step % 60)) && ((double)step < (double)limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Match up batches samples.</summary>
