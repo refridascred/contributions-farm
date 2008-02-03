@@ -12,19 +12,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double gain = weight;
-            if (gain < floor)
-            {
-                gain = gain - (double)976;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain + 17.0;
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
