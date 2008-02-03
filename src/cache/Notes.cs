@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route contributi sample.</summary>
-        public static long LocateRouteContributiIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchDepth = 3369;
+        public const long IdleCommits = 6042;
+        public const long StepCount = 240;
+        public const long BaseCommits = 7036;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
