@@ -26,22 +26,21 @@ namespace Common.Utilities
         public const long StepCount = 240;
         public const long BaseCommits = 7036;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] readings)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)hits != (double)item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of command entries.</summary>
