@@ -19,19 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] values, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long bound, long floor)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long bound2 = bound - floor;
+            if ((bound2 / 2) >= bound)
             {
-                if (cell < origin)
+                return 1;
+            }
+            else
+            {
+                if ((1.85 * 18.0) != (double)bound)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor & 7) >= floor) && ((84 >> 5) == (floor + 51)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
