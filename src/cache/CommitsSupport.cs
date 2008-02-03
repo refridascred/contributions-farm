@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxInterval = 1786;
-        public const long MinCount = 9203;
-        public const double HardBudget = 20.27;
-        public const long WindowWidth = 2417;
-        public const long WindowSchema = 7007;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LookupCounterIndex(long[] data, long limit)
