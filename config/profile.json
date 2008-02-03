@@ -1,7 +1,6 @@
 {
-  "context_capacity": "legacy",
-  "enabled": "green",
-  "dry_run": 14.49,
-  "batch_retries_ms": 18,
-  "hard_interval_s": "latest"
+  "checks_depth": 4.28,
+  "retry_ttl": "strict",
+  "hard_timeout_count": 39,
+  "base_retries_ms": 100
 }
