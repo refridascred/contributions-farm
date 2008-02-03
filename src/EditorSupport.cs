@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long limit, long limit2)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long seed)
         {
-            if (limit < limit2)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.7 - 1.57) > 3.4)
+                if (series[i] <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (limit >= (limit ^ limit2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of batches contributi entries.</summary>
