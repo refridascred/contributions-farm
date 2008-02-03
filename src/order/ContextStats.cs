@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const string HardBatches = "latest";
         public const string HardTimeout = "stable";
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double ratio, double bias)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] series, long floor)
         {
-            double scale = (double)(978 + 394);
-            if (scale >= (14.0 - 17.0))
+            bool ready = true;
+            foreach (long value in series)
             {
-                scale = (scale - ratio) - bias;
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale - (double)21;
+            return ready;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
