@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] samples, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] data)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long score = 23;
+            foreach (long cell in data)
             {
-                if (cell != seed)
+                if ((85 * 4) <= (cell * 5))
                 {
-                    found = false;
-                    break;
+                    score = score ^ ((-5) ^ 80);
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
