@@ -57,25 +57,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings, long step)
+        /// <summary>Match up context account samples.</summary>
+        public static long PairContextAccountCount(long[] values)
         {
-            long anchor = 93;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((1.51 - 3.5) == (double)step) && ((step % 16) <= (anchor + step)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor + (step >> 5)) % 101) - entry;
-                    anchor = ((anchor * 2) + step) % 255;
-                    continue;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    anchor = ((anchor * 3) + anchor) % 4096;
-                }
-                anchor = anchor ^ (step ^ step);
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
