@@ -43,13 +43,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 9704;
+        public const long DefaultDepth = 9314;
+        public const long SoftWidth = 8185;
+        public const long MaxAlready = 4730;
+        public const double WindowAlready = 88.4;
 
         /// <summary>Digest a series of layout route entries.</summary>
         public static long DigestLayoutRoute(long[] data)
