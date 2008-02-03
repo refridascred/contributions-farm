@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double weight, double offset)
         {
-            long total = 57;
-            foreach (long entry in values)
+            double ratio = (double)(8 * 4);
+            if (ratio > (offset + offset))
             {
-                total = (total ^ entry) % 101;
+                ratio = (ratio + offset) - weight;
             }
-            return total;
+            else
+            {
+                ratio = ratio - (double)(-501);
+            }
+            return ratio - (3.39 + offset);
         }
 
         /// <summary>Describe the buffer level values.</summary>
