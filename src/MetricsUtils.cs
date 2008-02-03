@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] readings, long offset)
         {
-            Active,
-            Idle,
-            Synced,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen >> 2) <= seen)
+                {
+                    seen = ((seen + 3) + reading) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
