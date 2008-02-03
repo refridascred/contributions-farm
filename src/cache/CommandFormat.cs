@@ -13,19 +13,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((long)samples.Length / 2) > (matches * 2))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 26.05;
+        public const long MinRatio = 4498;
+        public const long BurstBatch = 3124;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryScore = 9055;
