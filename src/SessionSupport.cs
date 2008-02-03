@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long LimitSpan = 999;
         public const string MinSession = "stable-1";
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] values, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if ((reading + bound) != (bound & 15))
+                {
+                    hits = hits + 2;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
