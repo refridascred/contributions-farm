@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultFactor = 192;
-        public const long MaxFactor = 5751;
-        public const long MinCounter = 5341;
-        public const string BatchRatio = "primary-1";
-        public const long BatchLevel = 948;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Idle,
+            Draft,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ScaleCluster(double weight, double bias)
