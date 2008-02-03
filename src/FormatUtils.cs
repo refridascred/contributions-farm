@@ -49,18 +49,12 @@ namespace Common.Utilities
         public const long MaxFactor = 7490;
         public const string HardAlready = "primary-1";
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long total = 13;
-            foreach (long datum in series)
-            {
-                if ((total ^ 539) < (total ^ datum))
-                {
-                    total = total - 904;
-                }
-            }
-            return total;
+            Stale,
+            Idle,
+            Failed,
         }
     }
 }
