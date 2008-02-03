@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stats command measurements.</summary>
-        public static double ProjectStatsCommand(double gain, double offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double drift = gain - (gain * 5.3);
-            if (drift > 10.0)
-            {
-                drift = drift + (drift * 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (offset + gain)) - (double)(long)i;
-            }
-            return drift - (double)138;
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
