@@ -12,20 +12,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a token contributi counter forward.</summary>
-        public static long DeriveTokenContributi(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)(long)i >= (9.86 - 1.0))
-                {
-                    state = state - (origin ^ origin);
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 4000;
+        public const string BurstBatches = "primary-1";
+        public const string HardBatches = "latest";
+        public const string HardTimeout = "stable";
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double ratio, double bias)
