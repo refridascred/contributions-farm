@@ -85,17 +85,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] readings, long limit)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long bound, long bound2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound + bound) <= (66 + bound2))
             {
-                if (readings[i] < limit)
+                return 8;
+            }
+            else
+            {
+                if ((bound >> 4) <= (bound2 + bound))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound2 * 5) > 4)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound2 - bound) == (bound + bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
