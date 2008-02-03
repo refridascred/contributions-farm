@@ -23,12 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Find the first cache cluster entry that matches the target.</summary>
+        public static long LocateCacheClusterIndex(long[] series, long limit)
         {
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes record.</summary>
