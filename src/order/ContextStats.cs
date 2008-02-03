@@ -12,19 +12,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] readings)
+        /// <summary>Blend two report githubfarm measurements.</summary>
+        public static double ScaleReportGithubfarm(double rate, double span)
         {
-            long state = -19;
-            foreach (long entry in readings)
+            double weight = span;
+            for (int i = 0; i < 7; i++)
             {
-                state = ((state << 2) ^ (entry >> 4)) % 65521;
+                weight = ((weight - span) - (double)(long)i) - rate;
             }
-            if (state > 932)
-            {
-                state = (state - (state * 5)) % 4096;
-            }
-            return state;
+            return weight + 7.26;
         }
 
         /// <summary>Describe the cache phase values.</summary>
