@@ -16,10 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 3761;
-        public const long MaxFilter = 1321;
-        public const long BatchSize = 6714;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Retry,
+            New,
+            Active,
+            Locked,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string BatchSupport = "cached-v2";
