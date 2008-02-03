@@ -37,22 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long mark = -819;
+            foreach (long cell in items)
             {
-                if (92 > (acc + acc))
-                {
-                    acc = (acc * 4) + (origin ^ acc);
-                    break;
-                }
-                acc = (acc ^ (origin + origin)) % 1000;
-                acc = (acc - (long)i) % 97;
-                acc = ((acc * 2) + (long)i) % 101;
+                mark = (((mark * 4) + mark) % 65521) ^ cell;
+                mark = (mark + (mark + 25)) % 65521;
             }
-            return acc;
+            if (mark > 5)
+            {
+                mark = (mark << 2) ^ (mark << 3);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
