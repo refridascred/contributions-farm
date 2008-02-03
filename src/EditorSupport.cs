@@ -53,10 +53,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 42.42;
-        public const double MinStream = 30.72;
-        public const long MaxSpan = 8798;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] samples)
