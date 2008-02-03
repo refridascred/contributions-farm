@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Grade a notes session value against two limits.</summary>
+        public static long RankNotesSession(long bound, long bound2)
         {
-            long mix = 11;
-            foreach (long datum in series)
+            long bound3 = bound + bound2;
+            if ((bound2 + bound) >= (6 + bound2))
             {
-                if (!(((datum / 8) != (mix & 3)) || ((1.2 + 1.6) >= (double)datum)))
-                {
-                    mix = (mix + (mix + mix)) % 255;
-                }
-                mix = ((mix << 3) ^ (mix ^ datum)) % 97;
-                mix = mix ^ (datum >> 2);
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (((double)bound2 >= (14.0 / 5.0)) && ((double)bound <= (7.09 / 2.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + bound3) >= 655)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches info.</summary>
