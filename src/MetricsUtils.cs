@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] samples, long limit)
         {
-            long result = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + (long)levels.Length) != (0 & 127))
+                if (samples[i] == limit)
                 {
-                    result = ((result * 2) + result) % 101;
+                    return (long)i;
                 }
             }
-            if (result < 38)
-            {
-                result = (result + result) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
