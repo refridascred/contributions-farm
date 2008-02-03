@@ -27,14 +27,21 @@ namespace Common.Utilities
         public const double WindowInterval = 14.75;
         public const string LimitWidth = "staging-1";
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] data)
         {
-            Failed,
-            Dropped,
-            Closed,
-            New,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine editor command values into a single score.</summary>
