@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 74.16;
-        public const long HardDepth = 1557;
-        public const long IdleSize = 807;
-        public const long MinSupport = 1042;
-        public const long DefaultRatio = 8743;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Fold a list of route metric readings.</summary>
         public static long TallyRouteMetric(long[] samples)
