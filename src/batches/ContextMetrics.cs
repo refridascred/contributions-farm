@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinTimeout = 6509;
+        public const double CacheSize = 4.2;
+        public const long HardBudget = 6895;
+        public const string LimitSupport = "latest-v2";
+        public const long StepFactor = 5150;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LocateRouteIndex(long[] samples, long floor)
