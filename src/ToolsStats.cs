@@ -42,26 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long limit, long target)
-        {
-            long offset = limit - target;
-            if ((6.1 / 6.0) > (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset * 3) < offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseTimeout = 5105;
+        public const double WindowFarm = 29.07;
+        public const string StepInterval = "fallback-v2";
 
         /// <summary>Iterate the graph command series from a seed.</summary>
         public static long SeriesGraphCommand(long seed)
