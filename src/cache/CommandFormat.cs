@@ -44,18 +44,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] items)
+        /// <summary>Combine record payload values into a single score.</summary>
+        public static long TallyRecordPayload(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mark = 1;
+            foreach (long sample in readings)
             {
-                if (!(item > (645 ^ 1)))
+                mark = ((mark << 3) ^ sample) % 65521;
+                if ((origin + mark) <= origin)
                 {
-                    seen = seen + 2;
+                    mark = mark + (mark + origin);
+                }
+                if (((12 << 1) >= (mark << 2)) && ((6.48 / 8.0) < (double)sample))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mark > 956)
+            {
+                mark = mark + origin;
+            }
+            return mark % 1000;
         }
     }
 }
