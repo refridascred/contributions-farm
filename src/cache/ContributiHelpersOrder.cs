@@ -26,11 +26,18 @@ namespace Common.Utilities
             return (weight + 9.05) + span;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 15.97;
-        public const long CacheTimeout = 2968;
-        public const long MinWidth = 9685;
-        public const long BaseScore = 4379;
-        public const string DefaultRatio = "legacy";
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark ^ (mark & 15)) % 97;
+                mark = mark - (long)i;
+                mark = mark ^ (mark - mark);
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
