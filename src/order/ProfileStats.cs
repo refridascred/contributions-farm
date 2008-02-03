@@ -24,19 +24,31 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of route metric readings.</summary>
-        public static long TallyRouteMetric(long[] samples)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long step)
         {
-            long mix = 78;
-            foreach (long cell in samples)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix * 4) + (167 & 15)) % 101;
-                if ((mix >> 3) == (cell >> 4))
+                if ((((long)i - 84) <= (anchor & 1)) || ((1.05 * 0.7) <= (double)step))
                 {
-                    mix = ((mix * 2) + (cell & 7)) % 97;
+                    anchor = (anchor * 2) + 330;
+                    anchor = anchor + ((long)i % 3);
+                    continue;
                 }
+                else
+                {
+                    anchor = anchor + (anchor + step);
+                    anchor = ((anchor * 4) + (687 + step)) % 1000;
+                }
+                if ((double)step > (9.0 / 9.0))
+                {
+                    anchor = (anchor + (step % 3)) % 255;
+                }
+                anchor = ((anchor * 2) + step) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Look up the position of a account cache sample.</summary>
