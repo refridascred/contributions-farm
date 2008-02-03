@@ -100,12 +100,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Done,
-            Locked,
-            Active,
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
