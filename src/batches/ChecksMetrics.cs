@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of payload stats readings.</summary>
-        public static long DigestPayloadStats(long[] data, long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] data, long origin)
         {
-            long state = 56;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum ^ state) <= (bound >> 1))
+                if (data[i] < origin)
                 {
-                    state = state + datum;
+                    return (long)i;
                 }
             }
-            if (state > (-372))
-            {
-                state = state - 57;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
