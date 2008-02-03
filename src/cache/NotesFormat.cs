@@ -17,13 +17,31 @@ namespace Common.Utilities
         public const double SoftTools = 62.63;
         public const long BaseTools = 6367;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long floor, long offset)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            if ((floor - floor) <= ((-7) - offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset << 1) != (7 ^ offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor < (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
