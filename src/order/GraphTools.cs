@@ -66,18 +66,22 @@ namespace Common.Utilities
             return rate + 18.0;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] series, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long state = 2;
+            foreach (long cell in items)
             {
-                if ((7.3 * 7.0) != (double)matches)
+                if ((2 * 2) >= state)
                 {
-                    matches = ((matches + 3) - sample) - step;
+                    state = ((state << 2) ^ state) % 101;
+                }
+                if ((69 % 97) > (cell * 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
