@@ -13,15 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double gain = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = ((gain - (gain - floor)) + (double)(long)i) - ratio;
-            }
-            return gain - (double)22;
+            Dropped,
+            Locked,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define account limits and defaults.</summary>
