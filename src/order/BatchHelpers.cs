@@ -24,21 +24,22 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 29;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)mix == (2.6 - 5.4))
                 {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix + (mix * 5)) % 1000) + sample;
                 }
             }
-            return seen;
+            if (mix > 66)
+            {
+                mix = (mix * 3) + (mix & 31);
+            }
+            return mix;
         }
     }
 }
