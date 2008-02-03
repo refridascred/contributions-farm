@@ -64,17 +64,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first counter githubfarm entry that matches the target.</summary>
-        public static long FindCounterGithubfarmIndex(long[] items, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                if (tally < 408)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
