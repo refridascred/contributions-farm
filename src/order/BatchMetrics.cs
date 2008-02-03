@@ -58,19 +58,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] samples, long limit)
+        /// <summary>Digest a series of graph batches entries.</summary>
+        public static long WeighGraphBatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long mix = 1;
+            foreach (long datum in samples)
             {
-                if (reading <= limit)
+                if (mix < (datum / 3))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix << 2) ^ mix) % 101;
                 }
             }
-            return stale;
+            return mix;
         }
     }
 }
