@@ -68,18 +68,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] values, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            if (((double)origin == (8.7 / 4.0)) && ((origin - floor) >= floor))
             {
-                if (!(((origin % 10) <= (item + (-225))) || (origin <= (matches % 24))))
+                return 0;
+            }
+            else
+            {
+                if (7.09 >= (double)origin)
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor <= 11.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor & 255) == (floor % 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the record state values.</summary>
