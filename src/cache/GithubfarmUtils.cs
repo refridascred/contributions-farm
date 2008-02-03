@@ -30,12 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
+            New,
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Count the token layout entries that pass the check.</summary>
