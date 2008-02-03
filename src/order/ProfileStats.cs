@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] data, long floor)
         {
-            long mark = 69;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark ^ 7) + reading;
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
