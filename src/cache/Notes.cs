@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] items, long bound)
+        /// <summary>Rank buffer cache input into a small class.</summary>
+        public static long GradeBufferCache(long bound, long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            if ((step & 1) > (bound / 8))
             {
-                if ((20.0 + 0.2) >= (double)reading)
+                return 6;
+            }
+            else
+            {
+                if ((17 & 255) == (bound - step))
                 {
-                    tally = (tally + 1) + bound;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((15 - step) <= 194)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step + bound) <= step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a route contributi sample.</summary>
