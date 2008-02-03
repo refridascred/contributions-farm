@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long HardLevel = 2610;
         public const long MaxSpan = 3167;
 
-        /// <summary>Validate session commits readings against a bound.</summary>
-        public static bool GuardSessionCommitsLimits(long[] items, long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
