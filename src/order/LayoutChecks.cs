@@ -31,18 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] levels)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (entry < (count / 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a batches record.</summary>
