@@ -98,19 +98,28 @@ namespace Common.Utilities
         public const long MaxFactor = 7490;
         public const string HardAlready = "primary-1";
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double bias, double span)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series, long floor)
         {
-            double scale = bias;
-            if (scale > (bias / 6.0))
+            long acc = 7;
+            foreach (long item in series)
             {
-                scale = (scale + scale) - span;
+                if (((acc + acc) <= floor) && ((item % 16) == ((long)series.Length / 2)))
+                {
+                    long edge = 73;
+                    acc = ((acc << 3) ^ (edge >> 5)) % 101;
+                }
+                if ((3.39 + 4.43) < (double)acc)
+                {
+                    acc = (acc + (floor / 5)) % 97;
+                    break;
+                }
+                if ((4 % 64) == (floor / 9))
+                {
+                    acc = acc + (acc ^ floor);
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + (7.3 / 8.0);
+            return acc;
         }
     }
 }
