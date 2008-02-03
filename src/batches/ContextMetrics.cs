@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 97;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((target / 4) < 19)
                 {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - (state + target)) % 1000;
+                }
+                else
+                {
+                    state = (state - ((long)data.Length % 2)) % 65521;
+                }
+                if (!(item >= (state % 7)))
+                {
+                    break;
                 }
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Describe the tools level values.</summary>
