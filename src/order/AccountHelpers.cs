@@ -52,19 +52,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] items, long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != floor)
+                if (readings[i] > target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
