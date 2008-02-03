@@ -75,12 +75,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 415;
-        public const long HardBudget = 7868;
-        public const string RetryDepth = "staging-1";
-        public const string BurstEditor = "alpha-edge";
-        public const long BaseWidth = 1801;
+        /// <summary>Audit queue counter readings against a rule.</summary>
+        public static long AuditQueueCounterHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!(tally < 47))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long SeriesAlready(long target)
