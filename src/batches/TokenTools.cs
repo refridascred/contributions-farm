@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long origin, long bound)
         {
-            Paused,
-            New,
-            Done,
-            Failed,
-            Pending,
+            if ((origin / 7) >= bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((origin >> 5) < (bound ^ 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
