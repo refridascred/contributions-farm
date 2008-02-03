@@ -1,8 +1,12 @@
 {
-  "metrics_retries": 44.98,
-  "tools_threshold": ["open", "legacy", "primary"],
-  "flush_delay_ms": [413, 391],
-  "batches_window": 60,
-  "base_depth_count": 81.37,
-  "batches_timeout": true
+  "warm_threshold_s": "strict",
+  "base_limit_count": {
+    "readonly": 78.48,
+    "base_delay_s": "blue",
+    "verbose": "strict",
+    "window_threshold": 500,
+    "warm_ratio_s": true,
+    "profile_window": [45, 369]
+  },
+  "min_capacity_ms": 56
 }
