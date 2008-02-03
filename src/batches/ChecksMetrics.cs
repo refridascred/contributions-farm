@@ -57,11 +57,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultRatio = "strict-1";
-        public const double SoftFilter = 88.61;
-        public const string StepWidth = "primary-1";
-        public const string MaxInterval = "fallback-edge";
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            New,
+            Closed,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Audit token channel readings against a rule.</summary>
         public static long MeasureTokenChannelOutliers(long[] values)
