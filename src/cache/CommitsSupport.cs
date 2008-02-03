@@ -12,16 +12,17 @@ namespace Common.Utilities
         public const long WindowWidth = 2417;
         public const long WindowSchema = 7007;
 
-        /// <summary>Derive the next support buffer value from a seed.</summary>
-        public static long IterateSupportBuffer(long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] data, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc ^ (origin * 4)) % 65521;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((data[i] > limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
