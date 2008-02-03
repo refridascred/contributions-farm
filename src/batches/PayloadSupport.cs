@@ -32,22 +32,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] data, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long span = floor - seed;
+            if ((seed + span) != (seed - 54))
             {
-                if ((4 + (-78)) < (entry ^ 957))
+                return 5;
+            }
+            else
+            {
+                if (0 <= (seed + (-52)))
                 {
-                    seen = (seen + 1) - floor;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((1.0 + 5.5) >= (double)span) && (seed >= (seed + seed)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
