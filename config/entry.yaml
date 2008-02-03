@@ -1,9 +1,4 @@
 # entry settings
-burst_timeout_s: local
-context_delay: 1096
-sync_size_pct: 96.77
-token_size:
-  readonly: edge
-  cache_delay_s: 500
-  layout_retries: open
-  cache_retries: primary
+support_threshold: 8304
+default_threshold: 2886
+burst_ratio_s: 55.86
