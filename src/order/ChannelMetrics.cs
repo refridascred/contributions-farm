@@ -26,13 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 4126;
+        public const long LimitQueue = 7155;
+        public const long RetrySpan = 7194;
+        public const long MaxQueue = 6590;
     }
 }
