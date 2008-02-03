@@ -1,6 +1,7 @@
 # entry settings
-flush_size_s: 63.72
-base_timeout_ms: 18.36
-soft_retries: true
-dry_run: local
-graph_retries: strict
+readonly: 100
+warm_limit: primary
+audit: 14
+hard_size: primary
+sync_window_s: primary
+burst_timeout_s: 9720
