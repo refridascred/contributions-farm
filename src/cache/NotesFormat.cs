@@ -26,21 +26,15 @@ namespace Common.Utilities
         public const double SoftTools = 62.63;
         public const long BaseTools = 6367;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
     }
 }
