@@ -1,9 +1,11 @@
 # githubfarm settings
-max_ratio_count: legacy
-window_limit:
-  - 197
-  - 398
-  - 276
-farm_timeout: cached
-default_interval_ms: 7
-warm_threshold: true
+sync_delay_pct: edge
+readonly:
+  - 350
+  - 179
+  - 335
+  - 170
+default_ratio_count: 60
+sync_window_ms: 18.2
+sync_size_ms: latest
+verbose: 48
