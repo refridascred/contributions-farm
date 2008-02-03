@@ -1,8 +1,11 @@
 # support settings
-base_capacity: 86.66
-soft_interval_count: local
-dry_run: standard
-route_ttl:
-  - edge
-  - cached
-  - staging
+default_timeout_pct: latest
+warm_retries_pct: true
+sync_timeout: 83.56
+strict:
+  window_timeout: blue
+  burst_capacity_pct: 41
+  warm_ttl_count: true
+  farm_interval: open
+  default_timeout_pct: cached
+  idle_interval_ms: local
