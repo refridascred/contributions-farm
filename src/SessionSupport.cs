@@ -18,23 +18,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double gain, double offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            double load = gain;
-            if (load < (gain * 7.0))
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                load = (load + load) - offset;
+                score = (score - (seed >> 3)) % 4096;
+                score = ((score * 4) + ((-185) * 5)) % 255;
+                score = ((score * 3) + (long)i) % 101;
             }
-            else
-            {
-                load = load - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load * 9.0)) + (double)(long)i;
-            }
-            return load + gain;
+            return score;
         }
     }
 }
