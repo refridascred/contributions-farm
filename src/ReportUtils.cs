@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] data, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long result = 9;
+            foreach (long reading in samples)
             {
-                if (reading >= offset)
+                if (!((double)9 == (double)result))
                 {
-                    found = false;
-                    break;
+                    result = (((result ^ result) % 101) - reading) - seed;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Count farm batches pairs that satisfy a relation.</summary>
