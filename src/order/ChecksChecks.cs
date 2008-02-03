@@ -37,21 +37,19 @@ namespace Common.Utilities
             return scale2 + (scale - 6.0);
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample < step)
                 {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
