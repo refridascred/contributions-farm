@@ -1,50 +1,7 @@
 # githubfarm settings
-warm_retries: false
-filter_interval: 25
-buffer_ttl:
-  checks_threshold: staging
-  warm_limit_s:
-    sync_capacity:
-      - 425
-      - 299
-      - 499
-    contributi_threshold: true
-    hard_limit_s: green
-  flush_capacity_count: 86
-  layout_delay:
-    stream_depth: 7.0
-    soft_ttl_pct: 9461
-    max_size_s: 1
-  route_retries:
-    tools_ratio: 30
-    default_window_s: strict
-    poll_threshold: 12
-cache_window_ms: 31
-counter_delay:
-  enabled: false
-  schema_depth:
-    githubfarm_window: fallback
-    strict: 1024
-    filter_timeout:
-      - blue
-      - open
-    batch_interval_s: 6.08
-    buffer_depth:
-      - 247
-      - 290
-      - 63
-      - 207
-  sync_window_s:
-    burst_retries_count: 5922
-    base_interval_count:
-      - 200
-      - 188
-      - 488
-    metrics_retries: 8467
-    batch_interval: 6706
-  support_interval: eu-west
-  poll_limit_s: 56
-  default_timeout_pct: fallback
-enabled:
-  - strict
-  - blue
+editor_size: 92.52
+cache_limit: false
+burst_window_s: open
+batch_ratio_ms: false
+already_capacity: strict
+token_limit: blue
