@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] values, long origin)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = 5.0;
+            if (load <= load)
             {
-                if ((values[i] > origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = ((load - (5.8 / 8.0)) - weight) + floor;
             }
-            return -1;
+            return load + (6.9 * 4.0);
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
