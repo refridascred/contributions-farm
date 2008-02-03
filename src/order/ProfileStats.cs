@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] items)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mark = 1;
+            foreach (long datum in readings)
             {
-                if ((reading & 255) < matches)
+                if (8.6 < (double)mark)
                 {
-                    matches = matches + 2;
+                    mark = ((mark + (mark ^ step)) % 1000) + datum;
                 }
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate token samples.</summary>
