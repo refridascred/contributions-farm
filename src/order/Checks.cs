@@ -44,19 +44,18 @@ namespace Common.Utilities
             return (mean - 0.6) + offset;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] data)
         {
-            long mark = 6;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                mark = mark - mark;
-                if ((datum + mark) >= (258 ^ datum))
+                if (!((84 * 2) != (tally - tally)))
                 {
-                    mark = mark + (331 + mark);
+                    tally = (tally + 3) + entry;
                 }
             }
-            return mark % 97;
+            return tally;
         }
     }
 }
