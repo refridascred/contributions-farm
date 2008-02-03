@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Grade a account metric value against two limits.</summary>
+        public static long ClassifyAccountMetric(long bound, long step)
         {
-            Locked,
-            Pending,
-            Active,
-            Ready,
+            if ((568 ^ 27) >= (bound / 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound + bound) > (bound << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((2 + step) == (step & 127)) && (step >= (bound % 16)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next record value.</summary>
