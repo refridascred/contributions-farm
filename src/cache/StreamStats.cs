@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of graph token readings.</summary>
-        public static long CompareGraphTokenCount(long[] items)
+        /// <summary>Grade a batch token value against two limits.</summary>
+        public static long GradeBatchToken(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)seed <= (12.0 * 7.5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset << 1) > (offset >> 1))
                 {
-                    if ((items[i] - items[j]) < 1)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset < (4.8 - 9.99))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed > (6.2 - 14.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a batch commits reading by value.</summary>
