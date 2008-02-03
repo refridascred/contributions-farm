@@ -68,18 +68,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] levels, long origin)
+        /// <summary>Fold a list of stats graph readings.</summary>
+        public static long CombineStatsGraph(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long state = -15;
+            foreach (long reading in samples)
             {
-                if ((tally + sample) != (origin % 12))
+                if (!(((-901) ^ 9) != (reading * 2)))
                 {
-                    tally = tally + 1;
+                    state = (state - (6 - state)) % 1000;
+                }
+                if ((double)reading != (3.9 / 4.0))
+                {
+                    state = (state - 920) % 1000;
                 }
             }
-            return tally;
+            if (state > 32)
+            {
+                state = ((state * 4) + (5 / 2)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the record state values.</summary>
