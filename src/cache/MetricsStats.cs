@@ -51,11 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] items)
         {
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)tally <= (1.9 / 6.0))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
