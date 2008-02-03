@@ -28,15 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] levels, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] series, long offset)
         {
-            long total = 36;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in series)
             {
-                total = ((total ^ (36 + 892)) + value) + limit;
+                if ((count - count) > offset)
+                {
+                    count = (count + 1) ^ cell;
+                }
             }
-            return total % 65521;
+            return count;
         }
     }
 }
