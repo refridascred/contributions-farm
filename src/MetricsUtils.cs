@@ -37,20 +37,11 @@ namespace Common.Utilities
         public const long StepCount = 1482;
         public const string BaseFormat = "staging-1";
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((double)(long)i < (7.47 * 12.0)))
-                {
-                    carry = carry + 2;
-                    carry = (carry * 3) + (carry / 3);
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
