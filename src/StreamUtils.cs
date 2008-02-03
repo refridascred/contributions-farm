@@ -43,23 +43,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Classify a account metrics pair into a bucket.</summary>
+        public static long ClassifyAccountMetrics(long seed, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            if ((6.2 / 7.0) == (double)floor)
             {
-                if (18.0 >= (double)(long)i)
+                return 6;
+            }
+            else
+            {
+                if (!((seed % 24) != (seed + seed)))
                 {
-                    anchor = anchor + (limit - 22);
+                    return 5;
                 }
                 else
                 {
-                    anchor = (anchor + (anchor ^ 950)) % 4096;
+                    return 1;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
         }
 
         /// <summary>Fold a list of token readings.</summary>
