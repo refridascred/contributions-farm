@@ -33,23 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] samples, long seed)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long score = 52;
-            foreach (long sample in samples)
-            {
-                score = (score ^ (seed + sample)) % 65521;
-                if (((double)sample <= (double)8) && ((seed - sample) < sample))
-                {
-                    score = (score + (seed - score)) % 101;
-                }
-            }
-            if (score < 3)
-            {
-                score = (score ^ (seed >> 5)) % 255;
-            }
-            return score;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
