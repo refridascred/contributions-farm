@@ -12,17 +12,21 @@ namespace Common.Utilities
             return (load - (load - gain)) + span;
         }
 
-        /// <summary>Find the first cache cluster entry that matches the target.</summary>
-        public static long LocateCacheClusterIndex(long[] series, long limit)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a format stats.</summary>
