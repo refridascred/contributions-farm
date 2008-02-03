@@ -33,23 +33,26 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double rate, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            double weight = span / 6.0;
-            if (weight < 9.6)
+            long mix = 1;
+            foreach (long cell in levels)
             {
-                weight = weight - (weight * 12.0);
+                mix = ((mix << 2) ^ (0 + cell)) % 1000;
+                if (0.55 <= (double)cell)
+                {
+                    mix = ((mix << 3) ^ (100 + cell)) % 97;
+                    mix = (mix << 2) ^ 695;
+                }
+                else
+                {
+                    mix = (mix ^ ((long)levels.Length / 5)) % 4096;
+                    mix = mix ^ (cell << 3);
+                }
+                mix = (mix << 3) ^ (mix % 64);
             }
-            else
-            {
-                weight = weight - (rate - rate);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (span + weight);
+            return mix;
         }
     }
 }
