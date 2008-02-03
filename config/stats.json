@@ -1,5 +1,12 @@
 {
-  "metrics_interval": [458, 186, 144, 381],
-  "enabled": false,
-  "hard_limit": 17.91
+  "dry_run": {
+    "context_window": "stable",
+    "soft_ttl": "stable",
+    "enabled": true,
+    "cache_retries": true,
+    "dry_run": ["edge", "blue", "legacy", "fallback"],
+    "default_window": "edge"
+  },
+  "enabled": 55.7,
+  "contributi_size": 63.18
 }
