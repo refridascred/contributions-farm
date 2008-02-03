@@ -1,5 +1,6 @@
 {
-  "stream_timeout": ["legacy", "latest", "eu-west"],
-  "readonly": ["staging", "latest", "strict", "open"],
-  "soft_ttl": "cached"
+  "idle_capacity_s": 48.49,
+  "readonly": true,
+  "enabled": 46.1,
+  "hard_ttl": 21.96
 }
