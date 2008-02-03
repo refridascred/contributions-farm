@@ -27,13 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] data)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((seen + seen) > (sample & 7)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many editor batches samples are out of range.</summary>
