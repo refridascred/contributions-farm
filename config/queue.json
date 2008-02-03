@@ -1,5 +1,7 @@
 {
-  "editor_size": "eu-west",
-  "max_threshold": false,
-  "record_capacity": 7775
+  "already_size": true,
+  "idle_ratio_count": ["cached", "legacy", "cached"],
+  "base_size_ms": 1024,
+  "batch_size": 1563,
+  "max_threshold": 2018
 }
