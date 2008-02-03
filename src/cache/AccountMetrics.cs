@@ -71,15 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
