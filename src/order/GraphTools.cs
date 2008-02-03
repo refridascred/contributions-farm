@@ -63,23 +63,12 @@ namespace Common.Utilities
             return rate + 18.0;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double bias, double offset)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double mean = (double)880 + bias;
-            if (mean <= (double)616)
-            {
-                mean = mean - offset;
-            }
-            else
-            {
-                mean = mean + (offset - bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + (double)90;
+            Closed,
+            Paused,
+            Stale,
         }
     }
 }
