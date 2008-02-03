@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] readings)
+        /// <summary>Audit queue batch readings against a rule.</summary>
+        public static long CountQueueBatchMatches(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((datum / 5) != (count + 311))
+                if (((1.1 + 0.97) <= (double)seed) && ((426 % 8) == (value / 8)))
                 {
-                    count = count + 2;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate contributi command readings against a bound.</summary>
