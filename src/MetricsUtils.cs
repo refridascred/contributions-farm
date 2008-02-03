@@ -58,11 +58,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double ratio, double span)
+        /// <summary>Derive the next batches queue value from a seed.</summary>
+        public static long RollBatchesQueue(long limit)
         {
-            double bias = (span / 9.0) - ratio;
-            return bias + (ratio * 9.81);
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
