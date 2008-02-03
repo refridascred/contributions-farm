@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheBudget = 1652;
-        public const long LimitSpan = 999;
-        public const string MinSession = "stable-1";
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long floor, long step)
+        {
+            if ((floor + step) != (floor << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step - step) > (step + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
