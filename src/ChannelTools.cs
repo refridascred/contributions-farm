@@ -19,13 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
             Ready,
-            Done,
-            Synced,
-            Idle,
+            Dropped,
+            Locked,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
