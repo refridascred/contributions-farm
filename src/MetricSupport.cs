@@ -21,13 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] levels)
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)matches >= (13.0 - 6.69))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue options.</summary>
