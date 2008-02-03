@@ -1,5 +1,21 @@
 {
-  "idle_capacity_ms": 47,
-  "soft_timeout_count": "green",
-  "readonly": true
+  "channel_limit": {
+    "dry_run": "open",
+    "max_window_count": 90.29,
+    "poll_size_s": ["fallback", "legacy", "fallback", "eu-west"],
+    "warm_capacity": 5727,
+    "strict": [469, 269],
+    "warm_timeout": "eu-west"
+  },
+  "min_ratio_pct": {
+    "idle_retries": false,
+    "enabled": true,
+    "strict": {
+      "batch_window": 2869,
+      "batch_window_pct": 4664,
+      "min_interval": 1.41,
+      "default_depth": 82.62
+    }
+  },
+  "flush_timeout_count": 79.56
 }
