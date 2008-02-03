@@ -34,18 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches checks samples are out of range.</summary>
-        public static long MeasureBatchesChecksMatches(long[] series, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (2.9 < (double)step)
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
