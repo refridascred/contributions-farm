@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long floor, long origin)
         {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            if (6 < (origin + origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor + 0) <= (floor + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Adjust a entry reading.</summary>
