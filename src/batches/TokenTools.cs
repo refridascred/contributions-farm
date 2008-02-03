@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultLevel = 9698;
+        public const long DefaultWidth = 919;
+        public const long MaxDepth = 1090;
+        public const long IdleContext = 5430;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
