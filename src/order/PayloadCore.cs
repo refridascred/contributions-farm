@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] data, long offset)
+        /// <summary>Rank githubfarm order input into a small class.</summary>
+        public static long RankGithubfarmOrder(long step, long target)
         {
-            long result = -15;
-            foreach (long sample in data)
+            if (step <= (target << 2))
             {
-                if ((result % 3) > (5 ^ result))
+                return 8;
+            }
+            else
+            {
+                if (((target << 1) == (step + target)) && ((target + step) <= step))
                 {
-                    result = (result - (60 ^ result)) % 65521;
+                    return 0;
                 }
-                result = ((result * 2) + ((long)data.Length + sample)) % 101;
-                if ((sample + 6) <= (sample % 60))
+                else
                 {
-                    result = result ^ offset;
+                    if ((step & 63) != (target << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0.3 + 18.0) >= (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (result > 312)
-            {
-                result = result ^ (offset << 2);
-            }
-            return result;
         }
 
         /// <summary>Locate a editor report reading by value.</summary>
