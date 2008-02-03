@@ -64,32 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long origin, long floor)
+        /// <summary>Project the next channel schema value.</summary>
+        public static double BlendChannelSchema(double gain, double offset)
         {
-            long next = origin - floor;
-            if (!((double)origin < (double)floor))
+            double weight = 4.03;
+            if (weight < (double)74)
             {
-                return 0;
+                weight = (weight + 8.3) + gain;
             }
             else
             {
-                if ((2.5 + 18.0) > (double)next)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((next ^ floor) != (origin - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                weight = weight + offset;
             }
+            return weight - 0.76;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
