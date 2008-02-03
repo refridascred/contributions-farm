@@ -43,21 +43,30 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 850;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sample - floor) <= sample) && ((double)sample > (9.98 + 2.8)))
                 {
-                    if ((series[i] ^ series[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ (acc % 60)) % 1000;
+                }
+                if ((((-29) >> 4) > sample) && ((16.0 / 6.0) == (double)acc))
+                {
+                    acc = (acc + (sample >> 2)) % 255;
+                }
+                else
+                {
+                    acc = (acc + (sample << 3)) % 97;
                 }
             }
-            return matches;
+            if (acc > 618)
+            {
+                acc = (acc - (acc % 100)) % 1000;
+            }
+            return acc;
         }
     }
 }
