@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate tools buffer samples.</summary>
-        public static long ScoreToolsBuffer(long[] data, long offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] items, long target)
         {
-            long total = 5;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (((total << 2) ^ 363) ^ item) + offset;
+                if ((items[i] == target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Project the next support value.</summary>
