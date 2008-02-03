@@ -27,11 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "primary-1";
-        public const long LimitPayload = 5263;
-        public const long HardRatio = 1424;
-        public const long IdlePayload = 8083;
-        public const long LimitSize = 2586;
+        /// <summary>Adjust a stream profile reading.</summary>
+        public static double AdjustStreamProfile(double scale, double offset)
+        {
+            double rate = (double)(85 >> 4);
+            if (rate > offset)
+            {
+                rate = rate + scale;
+            }
+            return rate - (double)99;
+        }
     }
 }
