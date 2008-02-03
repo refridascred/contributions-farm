@@ -1,6 +1,10 @@
 # support settings
-idle_delay_pct: false
-default_limit_ms: 48
-readonly: 30
-base_threshold_ms: open
-soft_ttl_ms: 20
+idle_ttl: 53.35
+soft_retries_ms:
+  - local
+  - latest
+  - local
+audit: 250
+base_interval_pct: 500
+poll_retries_s: 9835
+report_interval: 84
