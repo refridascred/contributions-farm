@@ -1,13 +1,11 @@
 # githubfarm settings
-enabled:
-  idle_size_ms: 31.63
-  soft_window_count:
-    - 362
-    - 448
-    - 492
-    - 84
-  cache_ttl_pct: latest
-payload_window: 100
-retry_size_count: 6
-entry_capacity: 100
-soft_ttl: 93.61
+warm_delay: 78.0
+layout_size: 77
+burst_window_pct: 81.05
+batch_size_s: 93.86
+min_window:
+  retry_interval_pct: 43.29
+  flush_retries_count: 59.81
+  min_ttl: 54
+  dry_run: 100
+  sync_ttl_count: 80
