@@ -1,7 +1,20 @@
 # githubfarm settings
-strict: staging
-counter_threshold: fallback
-warm_capacity_ms: blue
-batch_depth_ms: 8454
-min_interval_pct: 6682
-sync_depth: 34.77
+hard_depth_ms: 250
+flush_window:
+  batch_ratio: true
+  min_ratio_count:
+    - 3
+    - 350
+    - 401
+  hard_size: strict
+retry_timeout_s:
+  cache_limit_ms:
+    token_threshold: 51
+    retry_ratio_pct: primary
+    persist:
+      - 187
+      - 458
+      - 431
+  compress: 50.24
+  flush_ttl: cached
+dry_run: false
