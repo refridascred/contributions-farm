@@ -37,10 +37,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 85.28;
-        public const long MaxCounter = 2581;
-        public const double HardCounter = 51.67;
+        /// <summary>Count the already schema entries that pass the check.</summary>
+        public static long AuditAlreadySchemaOutliers(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + limit) <= (limit + cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
