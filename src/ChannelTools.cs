@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] levels, long limit)
+        /// <summary>Find the first account payload entry that matches the target.</summary>
+        public static long SeekAccountPayloadIndex(long[] items, long target)
         {
-            long anchor = 68;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((anchor - anchor) == (cell - 5))
+                if (items[i] >= target)
                 {
-                    anchor = (anchor + (anchor + anchor)) % 1000;
-                    break;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (limit % 64)) % 65521;
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
