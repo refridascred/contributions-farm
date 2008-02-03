@@ -68,23 +68,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double scale, double span)
+        /// <summary>Classify a batches graph pair into a bucket.</summary>
+        public static long RankBatchesGraph(long bound, long bound2)
         {
-            double weight = scale;
-            if (weight < (scale * 17.0))
+            long edge = bound + bound2;
+            if ((double)(-3) != (double)bound)
             {
-                weight = weight + (double)62;
+                return 1;
             }
             else
             {
-                weight = weight + scale;
+                if ((edge % 100) < bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((4.0 * 5.3) > (double)bound2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound2 / 7) >= (edge + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight + scale;
         }
 
         /// <summary>Locate a session reading by value.</summary>
