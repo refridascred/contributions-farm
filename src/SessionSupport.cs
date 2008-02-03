@@ -18,17 +18,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                score = (score - (seed >> 3)) % 4096;
-                score = ((score * 4) + ((-185) * 5)) % 255;
-                score = ((score * 3) + (long)i) % 101;
+                if ((tally / 9) >= (tally << 2))
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
