@@ -77,13 +77,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Paused,
-            Locked,
             Failed,
-            Closed,
+            Paused,
+            Active,
+            Idle,
         }
     }
 }
