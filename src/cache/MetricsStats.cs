@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] levels, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((585 >= (datum ^ floor)) || (((double)datum >= (1.0 + 9.2)) || (303 <= floor)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
