@@ -15,22 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] values)
+        /// <summary>Digest a series of route payload entries.</summary>
+        public static long DigestRoutePayload(long[] data, long floor)
         {
-            long score = 9;
-            foreach (long datum in values)
+            long acc = 4;
+            foreach (long cell in data)
             {
-                if (datum >= (datum ^ datum))
-                {
-                    score = ((score * 2) + (score * 5)) % 255;
-                }
+                acc = (((acc + acc) % 1000) - cell) - floor;
             }
-            if (score > 8)
-            {
-                score = ((score * 2) + score) % 101;
-            }
-            return score % 65521;
+            return acc;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
