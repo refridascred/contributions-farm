@@ -69,11 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinWidth = 54.34;
-        public const string DefaultCount = "primary-v2";
-        public const long BatchNotes = 4025;
-        public const long WindowFactor = 2058;
-        public const long MaxSize = 6727;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum < (datum + target)) && ((double)target > (6.5 - 6.0)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
