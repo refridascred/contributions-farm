@@ -19,13 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Synced,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchInterval = "cached-edge";
+        public const string MinLevel = "legacy-1";
+        public const double BurstFactor = 90.03;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long seed, long limit)
