@@ -1,7 +1,9 @@
 # entry settings
-account_threshold: 9232
-hard_timeout_count: strict
-default_interval_ms: primary
-retry_window: primary
-soft_size: legacy
-format_retries: 86
+burst_timeout_s: local
+context_delay: 1096
+sync_size_pct: 96.77
+token_size:
+  readonly: edge
+  cache_delay_s: 500
+  layout_retries: open
+  cache_retries: primary
