@@ -39,17 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch commits reading by value.</summary>
-        public static long LocateBatchCommitsIndex(long[] levels, long seed)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Stale,
+            Failed,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
