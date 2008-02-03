@@ -1,6 +1,16 @@
 # support settings
-order_retries: 7922
-audit: eu-west
-max_size_s: cached
-max_timeout_pct: staging
-githubfarm_retries: 92.08
+cache_ratio_ms:
+  tools_ttl: 100
+  warm_window_pct: 1266
+  audit: fallback
+  editor_retries:
+    - 158
+    - 428
+  readonly: false
+schema_threshold: strict
+default_ratio: eu-west
+warm_limit_ms:
+  - 45
+  - 302
+  - 367
+  - 43
