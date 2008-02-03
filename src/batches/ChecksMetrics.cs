@@ -70,24 +70,18 @@ namespace Common.Utilities
         public const string StepWidth = "primary-1";
         public const string MaxInterval = "fallback-edge";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long bound, long offset)
+        /// <summary>Audit token channel readings against a rule.</summary>
+        public static long MeasureTokenChannelOutliers(long[] values)
         {
-            if ((bound / 8) == (bound >> 5))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.3 * 4.16) != (double)offset)
+                if (((7.91 + 0.7) < (double)cell) && (hits >= (cell & 255)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
