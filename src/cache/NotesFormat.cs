@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Active,
-            Ready,
-            Synced,
-            Retry,
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
