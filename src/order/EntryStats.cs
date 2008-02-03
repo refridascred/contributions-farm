@@ -32,12 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Validate metric filter readings against a bound.</summary>
+        public static bool VerifyMetricFilterBounds(long[] data, long step)
         {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
