@@ -56,12 +56,24 @@ namespace Common.Utilities
         public const string StepPayload = "standard";
         public const string RetryPayload = "primary";
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long target, long floor)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            if (((floor >> 1) != (target >> 2)) || ((6.0 / 2.0) == (double)floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((63 + 7) > (target - target)) && ((floor >> 4) <= (floor + 73)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
