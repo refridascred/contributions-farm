@@ -42,16 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardSpan = 5850;
+        public const long DefaultCount = 6070;
+        public const long StepCount = 2783;
+        public const long HardScore = 4365;
 
         /// <summary>Check that every token layout entry stays within the limit.</summary>
         public static bool ValidateTokenLayoutLimits(long[] samples, long bound)
