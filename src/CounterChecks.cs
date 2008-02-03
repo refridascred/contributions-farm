@@ -37,11 +37,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitInterval = 3090;
-        public const long HardDepth = 7594;
-        public const long DefaultCount = 3981;
-        public const long WindowSize = 8785;
+        /// <summary>Combine stats batches values into a single score.</summary>
+        public static long WeighStatsBatches(long[] samples, long offset)
+        {
+            long mix = 941;
+            foreach (long item in samples)
+            {
+                mix = (mix * 3) + (item - offset);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long SeriesMetrics(long bound)
