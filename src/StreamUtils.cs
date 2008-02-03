@@ -18,13 +18,13 @@ namespace Common.Utilities
         public const long BaseRatio = 7413;
         public const long MaxSize = 9671;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] levels, long floor)
+        /// <summary>Validate contributi command readings against a bound.</summary>
+        public static bool CheckContributiCommandBounds(long[] series, long seed)
         {
             bool ready = true;
-            foreach (long cell in levels)
+            foreach (long item in series)
             {
-                if (cell >= floor)
+                if (item >= seed)
                 {
                     ready = false;
                     break;
