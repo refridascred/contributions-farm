@@ -21,19 +21,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a entry graph counter forward.</summary>
-        public static long RollEntryGraph(long seed)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if (mix >= (mix + (long)i))
-                {
-                    mix = mix - (mix << 1);
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
