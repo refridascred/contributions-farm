@@ -23,20 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double gain, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            double bias = offset;
+            if (bias > bias)
             {
-                acc = acc + (acc % 60);
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (((acc << 3) ^ ((long)i + origin)) % 255) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
+                bias = bias + gain;
             }
-            return acc;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias + offset;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
