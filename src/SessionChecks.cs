@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] values, long seed)
         {
-            long anchor = 253;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (194 < ((long)data.Length / 5))
+                if (datum >= seed)
                 {
-                    anchor = (anchor ^ (anchor - 27)) - limit;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (reading + anchor)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Describe the profile class values.</summary>
