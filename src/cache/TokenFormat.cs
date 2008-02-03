@@ -30,12 +30,9 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Pending,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheWidth = "local-1";
+        public const string WindowTimeout = "open-v2";
+        public const long BurstStats = 9003;
     }
 }
