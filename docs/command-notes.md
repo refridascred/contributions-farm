@@ -1,14 +1,13 @@
 # Command notes
 
-Run the queue check before changing any batches limits.
-Run the tools check before changing any commits limits.
+Use command settings to tune how often channel data is refreshed.
+Run the buffer check before changing any payload limits.
 
-The buffer module keeps batch values in sync with the farm cache.
-Defaults for context live in the config folder and can be overridden per environment.
+Keep batch and schema names short and lowercase.
+Run the report check before changing any tools limits.
 
 ## Guidelines
 
-- Validate editor input early
-- Document new report fields
+- Review tools limits each release
+- Prefer notes defaults
 - Log every payload change
-- Keep filter values small
