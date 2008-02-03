@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const double MinInterval = 54.19;
         public const long WindowSupport = 9595;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] data, long offset)
+        /// <summary>Project the next account cache value.</summary>
+        public static double ScaleAccountCache(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(9 ^ 0);
+            if (scale >= scale)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                scale = (scale + bias) - rate;
             }
-            return -1;
+            return scale + scale;
         }
 
         /// <summary>Rank context stats input into a small class.</summary>
