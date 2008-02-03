@@ -1,6 +1,5 @@
 {
-  "strict": "fallback",
-  "soft_limit_ms": 33.01,
-  "flush_capacity_ms": 50,
-  "enabled": "strict"
+  "idle_ttl_ms": "eu-west",
+  "poll_size_pct": 21,
+  "idle_limit_count": ["strict", "primary"]
 }
