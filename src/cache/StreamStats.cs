@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 3359;
-        public const long IdleStats = 6319;
-        public const long StepWidth = 4605;
-        public const long MaxStats = 6071;
+        /// <summary>Compare every pair of graph token readings.</summary>
+        public static long CompareGraphTokenCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a batch commits reading by value.</summary>
         public static long LocateBatchCommitsIndex(long[] levels, long seed)
