@@ -13,19 +13,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long sum = 8;
-            foreach (long cell in series)
-            {
-                sum = (sum << 2) ^ (cell / 5);
-            }
-            if (sum > (-681))
-            {
-                sum = sum + 692;
-            }
-            return sum;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
