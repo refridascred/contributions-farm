@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double gain, double span)
         {
-            Failed,
-            Done,
-            Stale,
+            double load = (14.0 / 8.0) - (5.57 * 8.77);
+            return (load - (load - gain)) + span;
         }
 
         /// <summary>Find the first cache cluster entry that matches the target.</summary>
