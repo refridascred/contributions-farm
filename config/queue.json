@@ -1,5 +1,12 @@
 {
-  "burst_ratio": 81.23,
-  "idle_ttl_ms": "blue",
-  "warm_delay_pct": ["standard", "blue"]
+  "sync_timeout_pct": "blue",
+  "default_delay_pct": 9234,
+  "verbose": 54.66,
+  "contributi_ttl": 24.81,
+  "hard_window_count": {
+    "sync_ratio_s": "eu-west",
+    "hard_limit": 2923,
+    "default_interval": "edge",
+    "sync_limit": 2346
+  }
 }
