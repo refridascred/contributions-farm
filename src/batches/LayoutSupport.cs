@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] levels, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((cell ^ tally) == (411 - target))
+                if ((item << 1) >= item)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
