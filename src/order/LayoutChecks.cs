@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleLevel = 4213;
-        public const long MaxCluster = 3883;
-        public const long StepWidth = 1693;
-        public const string LimitCluster = "cached-v2";
-        public const double MaxFactor = 77.48;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Done,
+            Dropped,
+            Paused,
+            New,
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long IterateNotes(long bound)
