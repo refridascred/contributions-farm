@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
+            Closed,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
