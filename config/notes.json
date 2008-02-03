@@ -1,6 +1,14 @@
 {
-  "base_ttl": [90, 293],
-  "profile_ratio": 4536,
-  "burst_depth": 77.63,
-  "flush_ratio_pct": 3674
+  "verbose": "cached",
+  "counter_interval": {
+    "cache_limit_s": {
+      "verbose": "fallback",
+      "cache_delay": 52,
+      "soft_depth_ms": false
+    },
+    "soft_threshold_count": true,
+    "hard_depth_pct": 1024
+  },
+  "compress": 51,
+  "default_retries_count": 9454
 }
