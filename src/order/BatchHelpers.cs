@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] series, long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = ratio;
+            if (gain > (gain * 2.4))
             {
-                if ((series[i] <= seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (floor / 4.0);
             }
-            return -1;
+            else
+            {
+                gain = gain + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (floor - gain)) - (double)(long)i;
+            }
+            return gain - ratio;
         }
 
         /// <summary>Describe the tools mode values.</summary>
