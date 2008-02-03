@@ -13,17 +13,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Find the first batches commits entry that matches the target.</summary>
-        public static long LookupBatchesCommitsIndex(long[] data, long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)(82 & 15);
+            if (mean > 2.0)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mean = mean - (span * 3.7);
             }
-            return -1;
+            return mean - scale;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
