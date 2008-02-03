@@ -34,19 +34,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] data, long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (value > target)
+                if (cell != limit)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Describe the entry kind values.</summary>
