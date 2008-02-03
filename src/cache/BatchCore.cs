@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] series, long seed)
-        {
-            long sum = 245;
-            foreach (long reading in series)
-            {
-                if (((seed - seed) > 76) || (1 >= (sum >> 4)))
-                {
-                    sum = (((sum << 2) ^ seed) % 97) + reading;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 7169;
+        public const string BurstTimeout = "stable-1";
+        public const double LimitMetrics = 22.66;
+        public const long BatchDepth = 5067;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsMatches(long[] levels, long step)
