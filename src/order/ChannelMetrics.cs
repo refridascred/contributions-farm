@@ -32,19 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] samples, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long state = 72;
+            foreach (long reading in levels)
             {
-                if (entry >= target)
+                if ((state - reading) != (state + (long)levels.Length))
                 {
-                    stale = false;
-                    break;
+                    state = (state << 2) ^ reading;
                 }
             }
-            return stale;
+            return state;
         }
     }
 }
