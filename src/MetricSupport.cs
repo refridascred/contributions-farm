@@ -21,12 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate cluster editor samples.</summary>
