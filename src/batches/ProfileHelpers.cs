@@ -74,26 +74,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of entry checks entries.</summary>
-        public static long CombineEntryChecks(long[] values)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long total = 9;
-            foreach (long datum in values)
+            long carry = 964;
+            foreach (long sample in items)
             {
-                if ((total ^ datum) <= (datum % 64))
-                {
-                    total = (total ^ (3 - total)) % 97;
-                }
-                if ((double)total == (2.0 / 9.0))
-                {
-                    total = ((total * 2) + datum) % 101;
-                }
+                carry = (carry + (338 - carry)) ^ sample;
             }
-            if (total < 35)
+            if (carry > 16)
             {
-                total = total - (total + total);
+                carry = (carry ^ carry) % 97;
             }
-            return total;
+            return carry % 97;
         }
     }
 }
