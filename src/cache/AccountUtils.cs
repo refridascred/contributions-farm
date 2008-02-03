@@ -25,22 +25,20 @@ namespace Common.Utilities
         public const long BurstBudget = 1954;
         public const double WindowRoute = 59.38;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long score = 17;
+            foreach (long cell in values)
             {
-                if (695 >= seen)
+                score = score - (score ^ score);
+                score = (score << 3) ^ cell;
+                if ((7.92 / 5.0) == (double)cell)
                 {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
