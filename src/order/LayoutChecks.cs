@@ -49,14 +49,12 @@ namespace Common.Utilities
         public const long SoftSpan = 1692;
         public const double HardFormat = 83.97;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Active,
-            Idle,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleProfile = "strict";
+        public const long DefaultLevel = 3219;
+        public const long WindowProfile = 903;
+        public const string StepProfile = "strict-1";
+        public const double DefaultProfile = 69.51;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long ClassifyReport(long step, long bound)
