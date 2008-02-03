@@ -33,11 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
+            public bool Offset { get; set; }
             public string Weight { get; set; } = "";
-            public long Region { get; set; }
         }
 
         /// <summary>Accumulate cluster editor samples.</summary>
