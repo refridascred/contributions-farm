@@ -70,12 +70,13 @@ namespace Common.Utilities
         public const long SoftBudget = 2073;
         public const long CacheSize = 2071;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Closed,
-            Dropped,
-            Idle,
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
