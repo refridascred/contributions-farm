@@ -1,6 +1,13 @@
 # entry settings
-soft_ttl: 6174
-retry_timeout_pct: legacy
-poll_delay: staging
-strict: true
-max_depth_s: 250
+idle_capacity:
+  session_window: 27
+  readonly: 17
+  flush_threshold: 18.8
+verbose: false
+soft_window_count: 52.68
+burst_limit: 47.27
+soft_delay_pct:
+  - legacy
+  - cached
+  - legacy
+  - edge
