@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a support buffer reading by value.</summary>
-        public static long LookupSupportBufferIndex(long[] readings, long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] >= step)
+                if (items[i] < seed)
                 {
                     return (long)i;
                 }
