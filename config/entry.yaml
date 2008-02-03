@@ -1,12 +1,5 @@
 # entry settings
-cache_threshold_pct: false
-idle_interval_count:
-  - blue
-  - legacy
-strict: 1024
-warm_ttl_pct:
-  - 354
-  - 384
-  - 443
-  - 113
-warm_timeout_ms: 500
+batch_window_count: cached
+readonly: 80.74
+flush_ratio: 4870
+soft_ratio_ms: true
