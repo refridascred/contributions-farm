@@ -59,15 +59,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long target)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
