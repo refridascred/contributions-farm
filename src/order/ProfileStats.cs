@@ -40,13 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Draft,
-            Retry,
             Queued,
-            Dropped,
+            Active,
+            Draft,
+            Ready,
             Stale,
         }
     }
