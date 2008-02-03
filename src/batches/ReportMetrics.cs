@@ -30,21 +30,31 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 3;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((state ^ value) < (value % 10)))
                 {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state + state) % 4096;
+                }
+                state = state + (value >> 5);
+                if (!(0.46 <= (double)value))
+                {
+                    state = (state ^ state) % 65521;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (-6)) % 65521;
                 }
             }
-            return tally;
+            if (state < 999)
+            {
+                state = (state ^ (state ^ 901)) % 65521;
+            }
+            return state;
         }
     }
 }
