@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] levels)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double rate = 1.62;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)item > (8.0 + 15.0))
-                {
-                    count = count + 1;
-                }
+                rate = (((rate + rate) + (double)(long)i) + ratio) - span;
             }
-            return count;
+            return rate - rate;
         }
 
         /// <summary>Define account limits and defaults.</summary>
