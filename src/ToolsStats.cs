@@ -54,12 +54,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Draft,
-            Active,
-            Stale,
+            Retry,
+            Locked,
+            Done,
+            Queued,
         }
     }
 }
