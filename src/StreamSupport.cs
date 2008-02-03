@@ -14,11 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double weight, double bias)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            double bias2 = (double)(59 - 79);
+            if (bias2 <= 1.9)
+            {
+                bias2 = (bias2 - bias) - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - (18.0 / 4.0)) + (double)(long)i;
+            }
+            return bias2 + (bias2 / 9.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
