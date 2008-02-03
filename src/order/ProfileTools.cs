@@ -26,29 +26,35 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long limit, long limit2)
+        /// <summary>Classify a account context pair into a bucket.</summary>
+        public static long GradeAccountContext(long step, long origin)
         {
-            long lane = limit - limit2;
-            if (((lane << 3) == (limit * 4)) && ((-239) > limit2))
+            if (((step + 737) == (step << 1)) || ((3.25 - 7.38) != (double)step))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (!((0.2 + 20.0) < (double)lane))
+                if ((4 + 7) != (origin + origin))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((limit + limit2) <= 8)
+                    if ((origin << 2) == (2 + 92))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 4;
+                        if ((double)origin < 0.49)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
