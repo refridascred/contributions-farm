@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] series, long bound)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long floor, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = floor ^ target;
+            if ((floor - target) >= (floor >> 5))
             {
-                if (series[i] <= bound)
+                return 2;
+            }
+            else
+            {
+                if ((slot - target) < (slot + slot))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first cache cluster entry that matches the target.</summary>
