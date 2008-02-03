@@ -1,7 +1,5 @@
 {
-  "idle_ttl": 8864,
-  "persist": false,
-  "cache_limit_pct": 84.84,
-  "max_capacity_pct": true,
-  "hard_retries_pct": "fallback"
+  "min_limit": "open",
+  "flush_window_s": 61,
+  "warm_size": false
 }
