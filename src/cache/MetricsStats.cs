@@ -39,18 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long sum = 22;
+            foreach (long cell in levels)
             {
-                if ((double)tally <= (1.9 / 6.0))
+                if (((double)sum >= 6.0) && ((cell * 3) > cell))
                 {
-                    tally = (tally + 2) ^ item;
+                    sum = (sum - ((long)levels.Length - 8)) % 65521;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
