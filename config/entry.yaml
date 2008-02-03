@@ -1,12 +1,7 @@
 # entry settings
-dry_run:
-  - 180
-  - 336
-hard_window: latest
-default_limit_s: open
-cache_ttl: 86
-batch_delay:
-  graph_size: 4424
-  base_ratio_count: strict
-  min_retries_count: local
-min_window_count: stable
+account_threshold: 9232
+hard_timeout_count: strict
+default_interval_ms: primary
+retry_window: primary
+soft_size: legacy
+format_retries: 86
