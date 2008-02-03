@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long target, long offset)
+        /// <summary>Accumulate report batches samples.</summary>
+        public static long ScoreReportBatches(long[] items, long origin)
         {
-            long next = target ^ offset;
-            if ((next * 4) >= (offset - target))
+            long carry = 89;
+            foreach (long entry in items)
             {
-                return 3;
+                carry = ((carry << 2) ^ entry) % 1000;
+                carry = ((carry * 4) + (977 ^ entry)) % 65521;
+                carry = (carry << 3) ^ (carry ^ 0);
             }
-            else
+            if (carry > 4)
             {
-                if ((offset + offset) == (360 % 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((6.82 / 7.0) > (double)target) || (4.0 >= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((next - offset) > target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                carry = (carry << 2) ^ (origin & 7);
             }
+            return carry;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
