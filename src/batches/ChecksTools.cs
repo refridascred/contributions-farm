@@ -14,18 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] data)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((matches % 24) > (matches * 2))
+                if (((step * 2) >= step) && ((long)i == ((long)i & 255)))
                 {
-                    matches = (matches + 3) ^ sample;
+                    break;
                 }
+                else
+                {
+                    score = ((score * 4) + (score + (long)i)) % 97;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a queue summary.</summary>
