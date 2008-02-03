@@ -20,11 +20,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
