@@ -44,10 +44,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleDepth = 3546;
-        public const double BaseRatio = 9.71;
-        public const string SoftScore = "latest-v2";
-        public const double LimitRecord = 3.29;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
