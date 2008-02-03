@@ -32,22 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] readings, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step > (item % 12)) && (((74 - seen) <= seen) && ((34 >> 1) < (seen >> 2))))
+                if (levels[i] <= target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
