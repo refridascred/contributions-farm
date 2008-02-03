@@ -15,15 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of route payload entries.</summary>
-        public static long DigestRoutePayload(long[] data, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long offset)
         {
-            long acc = 4;
-            foreach (long cell in data)
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                acc = (((acc + acc) % 1000) - cell) - floor;
+                result = (result * 4) + ((long)i * 5);
+                result = (result - (offset + result)) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
