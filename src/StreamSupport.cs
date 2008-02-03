@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a cache snapshot.</summary>
