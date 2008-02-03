@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxCount = 92.41;
-        public const string CacheRecord = "strict-1";
-        public const string HardRecord = "staging-edge";
-        public const long StepScore = 2765;
-        public const string MaxFactor = "local-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftWidth = 4648;
+        public const long LimitSize = 2812;
+        public const double MinFactor = 95.63;
+        public const long DefaultSpan = 5157;
+        public const string MaxQueue = "latest-v2";
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
