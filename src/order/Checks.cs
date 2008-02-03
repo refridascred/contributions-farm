@@ -47,14 +47,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            New,
-            Dropped,
-            Pending,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSize = 7508;
+        public const double WindowFactor = 2.65;
+        public const long LimitDepth = 8734;
+        public const string BatchSpan = "fallback-1";
+        public const long HardScore = 2025;
 
         /// <summary>Project the next route notes value.</summary>
         public static double SmoothRouteNotes(double weight, double offset)
