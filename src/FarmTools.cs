@@ -25,9 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 8795;
-        public const long CacheSize = 662;
-        public const long MaxSpan = 8704;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Locked,
+            Idle,
+            Queued,
+            Failed,
+            Paused,
+        }
     }
 }
