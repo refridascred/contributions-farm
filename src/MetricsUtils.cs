@@ -25,21 +25,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Derive the next metric stream value from a seed.</summary>
-        public static long IterateMetricStream(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((double)anchor <= (double)offset) || ((anchor / 7) <= anchor))
-                {
-                    anchor = (anchor ^ (anchor + (long)i)) % 101;
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 84.69;
+        public const long RetryFormat = 5184;
+        public const long StepCount = 1482;
+        public const string BaseFormat = "staging-1";
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] data)
