@@ -1,11 +1,49 @@
 # support settings
-metrics_depth: latest
-hard_size_pct:
-  - 105
-  - 98
-  - 68
-  - 494
-channel_retries: blue
-cache_ratio_pct: 30
-flush_timeout_ms: false
-soft_ttl_s: false
+strict: false
+base_interval_ms:
+  burst_limit_pct: 59.38
+  verbose:
+    base_limit_pct: legacy
+    cache_window_count: latest
+    base_delay_pct: 7618
+  window_retries: false
+  soft_interval_pct:
+    - 414
+    - 53
+persist:
+  verbose:
+    idle_timeout_pct: false
+    persist: true
+    idle_timeout_ms:
+      - 204
+      - 142
+    context_threshold: latest
+  notes_ratio:
+    - local
+    - staging
+    - eu-west
+    - cached
+  audit: true
+  stats_threshold:
+    - 83
+    - 204
+    - 16
+    - 99
+  base_delay:
+    command_delay: 94.0
+    already_capacity: 30
+    channel_ratio: fallback
+  notes_depth:
+    strict:
+      - 249
+      - 243
+      - 386
+    max_retries: strict
+    flush_window_s:
+      - blue
+      - strict
+      - latest
+    poll_limit_s: blue
+poll_window_pct: 18.85
+record_depth: false
+flush_ttl: edge
