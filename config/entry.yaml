@@ -1,8 +1,6 @@
 # entry settings
-warm_capacity_count: true
-channel_limit: standard
-warm_depth_s:
-  - 52
-  - 201
-commits_size: eu-west
-audit: eu-west
+soft_ttl: 6174
+retry_timeout_pct: legacy
+poll_delay: staging
+strict: true
+max_depth_s: 250
