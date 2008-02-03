@@ -38,15 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double floor)
+        /// <summary>Locate a context cache reading by value.</summary>
+        public static long LookupContextCacheIndex(long[] data, long origin)
         {
-            double scale = rate;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale - (double)(-937)) + (double)(long)i) - floor;
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return scale - 2.08;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
