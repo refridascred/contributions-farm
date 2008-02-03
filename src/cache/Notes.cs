@@ -33,19 +33,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] readings, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long mix = 928;
+            foreach (long sample in data)
             {
-                if (entry <= floor)
+                if ((double)target > (9.61 / 2.0))
                 {
-                    ok = false;
+                    mix = mix ^ (127 & 7);
+                }
+                if ((target & 1) >= (10 + sample))
+                {
                     break;
                 }
             }
-            return ok;
+            if (mix < 68)
+            {
+                mix = (mix << 2) ^ 36;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate filter samples.</summary>
