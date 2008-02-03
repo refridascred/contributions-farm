@@ -54,11 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 62.12;
+        public const long MaxSpan = 7672;
+        public const double RetryCommand = 2.21;
+        public const long MinCommand = 3551;
     }
 }
