@@ -33,13 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            Draft,
-            Synced,
-            Pending,
-            Stale,
+            long total = 4;
+            foreach (long reading in readings)
+            {
+                if (total < (0 << 1))
+                {
+                    total = ((total * 5) + (total / 3)) - reading;
+                }
+            }
+            return total;
         }
     }
 }
