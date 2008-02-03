@@ -31,14 +31,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] readings, long limit)
         {
-            Queued,
-            Active,
-            Draft,
-            Ready,
-            Stale,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
