@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] samples, long bound)
         {
-            long state = 7;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((state / 9) >= (seed & 7))
+                if (item != bound)
                 {
-                    state = (((state << 2) ^ (state ^ 133)) % 97) - cell;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
