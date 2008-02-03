@@ -32,17 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch stats entry that matches the target.</summary>
-        public static long FindBatchStatsIndex(long[] readings, long origin)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Dropped,
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
