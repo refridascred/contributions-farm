@@ -50,15 +50,19 @@ namespace Common.Utilities
             return mean + 4.47;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] data, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
     }
 }
