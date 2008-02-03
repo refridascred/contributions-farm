@@ -81,23 +81,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric notes reading.</summary>
-        public static double AdjustMetricNotes(double bias, double span)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] values)
         {
-            double drift = bias;
-            if (drift <= drift)
+            long score = 32;
+            foreach (long entry in values)
             {
-                drift = (drift - (double)6) + span;
+                score = (score + (score % 12)) % 4096;
+                if ((score % 64) == ((long)values.Length >> 2))
+                {
+                    score = score - (score << 3);
+                }
+                else
+                {
+                    score = ((score * 4) + (score + entry)) % 4096;
+                }
+                if ((entry + score) >= (score - score))
+                {
+                    score = (score + 57) % 97;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (entry >> 3)) % 255;
+                }
             }
-            else
-            {
-                drift = drift - 8.6;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (bias - drift);
+            return score;
         }
     }
 }
