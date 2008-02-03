@@ -46,14 +46,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] values)
         {
-            Dropped,
-            Synced,
-            Locked,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((31 + tally) < (reading / 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
