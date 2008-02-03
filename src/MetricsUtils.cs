@@ -65,13 +65,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Find the first format checks entry that matches the target.</summary>
+        public static long LookupFormatChecksIndex(long[] levels, long floor)
         {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
