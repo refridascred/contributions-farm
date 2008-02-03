@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long mark = 80;
-            foreach (long value in samples)
-            {
-                if (!((value - value) == (mark + value)))
-                {
-                    mark = ((mark * 4) + (mark + 6)) % 255;
-                }
-                mark = (mark << 2) ^ (value << 2);
-            }
-            return mark % 97;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
