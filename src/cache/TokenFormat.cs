@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepFactor = 6096;
-        public const long IdleMetrics = 8817;
-        public const string HardMetrics = "local-1";
-        public const string HardSpan = "standard-edge";
-        public const long BurstMetrics = 5307;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
