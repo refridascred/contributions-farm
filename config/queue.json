@@ -1,7 +1,5 @@
 {
-  "batch_size_count": "blue",
-  "hard_ttl_count": 19.17,
-  "poll_depth_ms": true,
-  "batch_timeout_count": 100,
-  "max_ratio_count": 26.37
+  "entry_depth": 66.54,
+  "poll_limit_ms": 2387,
+  "idle_size_s": 1024
 }
