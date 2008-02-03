@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] items)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading & 255) < matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
