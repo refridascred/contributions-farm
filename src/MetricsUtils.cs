@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first channel session entry that matches the target.</summary>
-        public static long LookupChannelSessionIndex(long[] data, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Idle,
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
