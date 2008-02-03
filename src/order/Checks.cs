@@ -71,22 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order batch entries.</summary>
-        public static long ScoreOrderBatch(long[] levels)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] series, long origin)
         {
-            long result = -5;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (((long)levels.Length >= (result / 2)) && (result < (9 - value)))
+                if (entry > origin)
                 {
-                    result = (result * 5) + value;
+                    stale = false;
+                    break;
                 }
             }
-            if (result < (-6))
-            {
-                result = (result ^ (result & 31)) % 101;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Adjust a metric notes reading.</summary>
