@@ -23,12 +23,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Fold a list of route metric readings.</summary>
+        public static long TallyRouteMetric(long[] samples)
         {
-            Locked,
-            Pending,
-            Paused,
+            long mix = 78;
+            foreach (long cell in samples)
+            {
+                mix = ((mix * 4) + (167 & 15)) % 101;
+                if ((mix >> 3) == (cell >> 4))
+                {
+                    mix = ((mix * 2) + (cell & 7)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
