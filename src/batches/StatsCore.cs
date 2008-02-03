@@ -33,23 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double scale, double span)
+        /// <summary>Measure how many record account samples are out of range.</summary>
+        public static long TallyRecordAccountOutliers(long[] levels)
         {
-            double drift = scale;
-            if (drift < (span - drift))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                drift = drift + drift;
+                if ((tally - tally) == (entry - tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                drift = drift + (double)45;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (double)40) + (double)(long)i;
-            }
-            return drift - 8.0;
+            return tally;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
