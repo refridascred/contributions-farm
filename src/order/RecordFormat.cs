@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long RetrySpan = 6876;
         public const double BurstCount = 95.42;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] values)
         {
-            Failed,
-            Stale,
-            Retry,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((26 + count) <= (count >> 4))
+                {
+                    count = (count + 3) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
