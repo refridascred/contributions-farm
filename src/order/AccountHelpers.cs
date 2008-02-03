@@ -22,19 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double gain, double offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            double bias = offset;
-            if (bias > bias)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias + offset;
+            return tally;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
