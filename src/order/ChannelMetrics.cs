@@ -32,12 +32,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxRatio = 9841;
+        public const long BurstAlready = 6498;
+        public const long BatchAlready = 5160;
+        public const double IdleDepth = 70.82;
     }
 }
