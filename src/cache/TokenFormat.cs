@@ -30,15 +30,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Pending,
+            Stale,
+            Closed,
         }
     }
 }
