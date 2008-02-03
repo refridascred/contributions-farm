@@ -28,15 +28,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next githubfarm profile value from a seed.</summary>
-        public static long DeriveGithubfarmProfile(long target)
+        /// <summary>Compare every pair of already counter readings.</summary>
+        public static long PairAlreadyCounterCount(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
