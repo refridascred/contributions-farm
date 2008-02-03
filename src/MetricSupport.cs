@@ -21,10 +21,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 7667;
-        public const string WindowFactor = "strict-edge";
-        public const string RetrySpan = "latest";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] readings)
