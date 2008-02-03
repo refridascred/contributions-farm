@@ -33,18 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] items, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((320 + value) <= 612)
                 {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) + seed;
                 }
             }
             return tally;
