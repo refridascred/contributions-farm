@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Retry,
+            Queued,
+            Stale,
         }
 
         /// <summary>Accumulate account samples.</summary>
