@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] levels, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (value < offset)
+                if ((hits ^ bound) <= (hits / 6))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the checks status values.</summary>
