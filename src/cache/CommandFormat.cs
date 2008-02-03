@@ -67,13 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double scale, double span)
         {
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            double bias = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (double)694) + (double)(long)i;
+            }
+            return bias - (span * 5.3);
         }
     }
 }
