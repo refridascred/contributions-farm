@@ -45,11 +45,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
+            long result = 970;
+            foreach (long cell in items)
+            {
+                result = result - (result & 15);
+                if (!((8.7 - 8.46) < (double)cell))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
     }
 }
