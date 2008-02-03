@@ -51,11 +51,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
