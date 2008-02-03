@@ -47,21 +47,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] items)
         {
-            long seen = 0;
+            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 16)
+                    if ((items[i] - items[j]) == 1)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
