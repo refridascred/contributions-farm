@@ -12,21 +12,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Roll a token contributi counter forward.</summary>
+        public static long DeriveTokenContributi(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)(long)i >= (9.86 - 1.0))
                 {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - (origin ^ origin);
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Blend two support measurements.</summary>
