@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 12.34;
-        public const long BurstBudget = 8408;
-        public const long BatchSize = 2296;
-        public const long HardLevel = 2610;
-        public const long MaxSpan = 3167;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Token { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
