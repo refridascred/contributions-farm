@@ -1,5 +1,5 @@
 {
-  "cluster_size": "strict",
-  "payload_retries": ["eu-west", "open", "stable"],
-  "context_interval": "stable"
+  "farm_depth": ["blue", "green", "staging"],
+  "batch_retries_ms": "legacy",
+  "strict": 75.18
 }
