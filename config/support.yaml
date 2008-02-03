@@ -1,12 +1,6 @@
 # support settings
-sync_window: edge
-retry_depth_count:
-  - latest
-  - legacy
-compress: true
-order_timeout: 63.53
-sync_threshold_pct:
-  - green
-  - legacy
-  - stable
-cache_retries: 22
+idle_delay_pct: false
+default_limit_ms: 48
+readonly: 30
+base_threshold_ms: open
+soft_ttl_ms: 20
