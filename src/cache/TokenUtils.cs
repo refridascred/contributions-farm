@@ -27,19 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine already token values into a single score.</summary>
-        public static long DigestAlreadyToken(long[] items)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] data)
         {
-            long mix = 7;
-            foreach (long datum in items)
+            long state = 3;
+            foreach (long cell in data)
             {
-                mix = (((mix * 5) + ((-9) % 24)) % 101) ^ datum;
+                state = (state - (cell ^ state)) % 255;
             }
-            if (mix < (-30))
-            {
-                mix = ((mix * 4) + (mix / 2)) % 255;
-            }
-            return mix % 65521;
+            return state % 65521;
         }
     }
 }
