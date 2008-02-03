@@ -50,14 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double ratio, double bias)
         {
-            New,
-            Locked,
-            Idle,
-            Dropped,
-            Queued,
+            double scale = 2.0 + bias;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale + (0.74 * 5.82);
         }
 
         /// <summary>Rank schema input into a small class.</summary>
