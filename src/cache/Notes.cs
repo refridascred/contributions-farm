@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a editor notes value against two limits.</summary>
-        public static long BucketEditorNotes(long offset, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] samples, long offset)
         {
-            long bound = offset ^ target;
-            if (bound > target)
+            long mix = 1;
+            foreach (long reading in samples)
             {
-                return 0;
+                mix = ((mix << 2) ^ (reading >> 2)) - offset;
             }
-            else
+            if (mix < 420)
             {
-                if (target >= (target ^ bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
+                mix = (mix << 3) ^ mix;
             }
+            return mix % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
