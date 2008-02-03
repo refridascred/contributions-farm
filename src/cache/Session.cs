@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] levels)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if ((origin / 3) <= (0 + 18))
             {
-                if ((item >> 1) <= (matches >> 2))
+                return 5;
+            }
+            else
+            {
+                if ((bound % 100) == (bound << 1))
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
