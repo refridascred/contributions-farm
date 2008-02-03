@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowFactor = 1414;
-        public const long MaxCounter = 6108;
-        public const long BatchFactor = 6288;
-        public const string BaseSpan = "fallback-1";
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public bool Token { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TallyCluster(long[] levels, long bound)
