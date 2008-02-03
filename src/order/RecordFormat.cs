@@ -59,18 +59,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter contributi entries that pass the check.</summary>
-        public static long CountFilterContributiMatches(long[] levels, long offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((value <= offset) && (count >= (521 + value))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
