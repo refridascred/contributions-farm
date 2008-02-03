@@ -18,19 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
-        public static bool VerifyCounterContributiRange(long[] samples, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long floor, long limit)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long diff = floor ^ limit;
+            if ((limit + floor) < (limit ^ floor))
             {
-                if (value < floor)
+                return 0;
+            }
+            else
+            {
+                if ((limit + 87) != (limit & 127))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((7 % 64) != (diff - diff))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)4 > (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many record account samples are out of range.</summary>
