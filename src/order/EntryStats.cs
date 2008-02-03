@@ -72,18 +72,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] series, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((-956) > (step & 63))
+                if ((816 ^ entry) > entry)
                 {
-                    hits = (hits + 2) - reading;
+                    seen = (seen + 1) - step;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
