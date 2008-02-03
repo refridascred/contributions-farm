@@ -1,8 +1,8 @@
 {
-  "queue_delay": 250,
-  "burst_ratio_count": "blue",
-  "strict": 4873,
-  "soft_threshold": 74.91,
-  "notes_interval": "local",
-  "idle_window": 17
+  "verbose": "strict",
+  "audit": true,
+  "readonly": false,
+  "channel_ttl": 67.18,
+  "context_size": 69,
+  "cache_capacity_s": 10.27
 }
