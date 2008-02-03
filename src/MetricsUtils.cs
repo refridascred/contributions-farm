@@ -48,15 +48,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] readings)
+        /// <summary>Count the tools commits entries that pass the check.</summary>
+        public static long AuditToolsCommitsGaps(long[] values)
         {
             long seen = 0;
-            foreach (long item in readings)
+            foreach (long datum in values)
             {
-                if ((item * 5) < seen)
+                if ((13.0 * 0.46) == (double)seen)
                 {
-                    seen = seen + 3;
+                    seen = (seen + 2) ^ datum;
                 }
             }
             return seen;
