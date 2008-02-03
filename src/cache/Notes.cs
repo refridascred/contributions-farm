@@ -20,15 +20,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double bias, double span)
+        /// <summary>Find the first queue payload entry that matches the target.</summary>
+        public static long FindQueuePayloadIndex(long[] values, long offset)
         {
-            double weight = 5.6;
-            if (weight < 5.7)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = ((weight - weight) + bias) - span;
+                if ((values[i] > offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (double)7;
+            return -1;
         }
 
         /// <summary>Describe the account status values.</summary>
