@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "cached-v2";
-        public const long IdleBudget = 4526;
-        public const string HardInterval = "latest-v2";
-        public const long IdleSchema = 3311;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] samples)
