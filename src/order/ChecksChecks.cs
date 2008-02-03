@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the graph support entries that pass the check.</summary>
-        public static long CountGraphSupportHits(long[] readings, long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (seed <= (entry + entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Adjust a editor format reading.</summary>
