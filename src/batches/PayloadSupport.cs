@@ -20,31 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long seed, long step)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long origin)
         {
-            if ((step ^ step) <= (step - 8))
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed % 24) < (step << 2)) || ((2 - seed) < step))
+                anchor = ((anchor << 2) ^ (anchor % 2)) % 1000;
+                if (((anchor - (long)i) != (long)i) || ((origin ^ origin) == (origin - 49)))
                 {
-                    return 8;
+                    continue;
                 }
-                else
-                {
-                    if ((step - step) <= (seed & 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                anchor = (anchor + (origin + (-897))) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
