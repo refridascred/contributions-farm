@@ -1,12 +1,11 @@
 # Command notes
 
-Use tools settings to tune how often stream data is refreshed.
-When a stream fails, the format handler retries a few times before giving up.
-Each metrics is validated before it reaches the window queue.
+Use window settings to tune how often order data is refreshed.
+Use cache settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Review graph limits each release
-- Validate commits input early
-- Document new already fields
-- Log every stream change
+- Keep schema values small
+- Validate batch input early
+- Log every channel change
+- Document new cluster fields
