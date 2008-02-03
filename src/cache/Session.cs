@@ -39,13 +39,17 @@ namespace Common.Utilities
         public const long MinLevel = 5816;
         public const long IdleAccount = 1355;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] series, long floor)
         {
-            Idle,
-            Done,
-            Dropped,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
