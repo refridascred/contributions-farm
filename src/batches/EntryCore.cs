@@ -36,12 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Look up the position of a stream cluster sample.</summary>
+        public static long LocateStreamClusterIndex(long[] values, long offset)
         {
-            Ready,
-            Synced,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
