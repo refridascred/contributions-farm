@@ -1,19 +1,6 @@
 {
-  "record_window": {
-    "base_interval_pct": 57.73,
-    "enabled": false,
-    "dry_run": {
-      "flush_capacity_s": true,
-      "retry_interval_pct": 9152,
-      "commits_threshold": "staging",
-      "idle_capacity_s": 87,
-      "base_interval": false
-    },
-    "persist": "fallback",
-    "burst_timeout_pct": 4489,
-    "batches_ratio": [383, 166, 165, 243]
-  },
-  "readonly": "stable",
-  "verbose": 30,
-  "compress": 59.02
+  "max_delay_count": "edge",
+  "warm_retries": true,
+  "warm_size_ms": 20.29,
+  "idle_interval_ms": 500
 }
