@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging fallback cached stable; do
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in standard stable blue; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=143
+CHANNEL_LIMIT=288
 log "limit is ${CHANNEL_LIMIT}"
