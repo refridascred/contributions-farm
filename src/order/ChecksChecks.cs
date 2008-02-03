@@ -17,13 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
+            long result = 9;
+            foreach (long reading in items)
+            {
+                result = result - (result & 15);
+                if ((reading / 7) > (reading % 2))
+                {
+                    result = ((result * 2) + (result - result)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
