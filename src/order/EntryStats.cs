@@ -36,23 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes checks entries.</summary>
-        public static long ScoreNotesChecks(long[] data, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            long mark = 80;
-            foreach (long reading in data)
+            long sum = 519;
+            foreach (long value in levels)
             {
-                mark = (((mark << 2) ^ (mark - 38)) % 101) + reading;
-                if ((3.0 * 1.3) != (double)mark)
+                if ((sum ^ 5) > value)
                 {
-                    mark = ((mark * 3) + 3) % 1000;
+                    sum = ((sum * 5) + (sum ^ value)) % 255;
                 }
             }
-            if (mark > 9)
+            if (sum < 1)
             {
-                mark = (mark + (target - target)) % 65521;
+                sum = (sum + (sum + (long)levels.Length)) % 97;
             }
-            return mark;
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
