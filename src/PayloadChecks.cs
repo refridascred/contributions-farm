@@ -38,13 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] levels, long target)
         {
-            Ready,
-            Locked,
-            Retry,
-            New,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
