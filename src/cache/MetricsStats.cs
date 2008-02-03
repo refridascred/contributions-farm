@@ -45,23 +45,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long limit, long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long seed, long step)
         {
-            long delta = limit - seed;
-            if (((delta % 8) <= limit) && ((delta + limit) < (48 + 90)))
+            long edge = seed + step;
+            if (!((seed & 63) < (seed + 13)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((double)delta > 2.0)
+                if (step >= (edge + 547))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    if (seed >= (step - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
