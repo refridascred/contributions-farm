@@ -15,22 +15,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long score = -3;
+            foreach (long cell in levels)
             {
-                if ((double)item > (double)seen)
+                score = (score - (cell + score)) % 4096;
+                score = (score + cell) % 1000;
+                if (((score - 42) < (cell & 31)) || (score >= cell))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (score < 663)
+            {
+                score = ((score << 3) ^ (32 - origin)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
