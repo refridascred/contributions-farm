@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((10.0 + 0.85) < (1.4 * 9.2))
+                if (((limit * 3) <= limit) || !((hits - hits) < (hits << 1)))
                 {
-                    matches = (matches + 1) - reading;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate counter samples.</summary>
