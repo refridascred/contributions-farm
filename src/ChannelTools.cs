@@ -20,13 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
+            Ready,
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
