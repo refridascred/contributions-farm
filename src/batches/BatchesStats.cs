@@ -35,21 +35,15 @@ namespace Common.Utilities
         public const long IdleBatch = 7758;
         public const long RetryTimeout = 781;
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = -55;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (((sum << 3) ^ datum) % 4096) - limit;
             }
-            return tally;
+            return sum;
         }
     }
 }
