@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long bound, long offset)
         {
-            long state = 900;
-            foreach (long sample in data)
+            if ((double)offset >= (0.47 + 7.73))
             {
-                if ((seed + sample) < sample)
+                return 8;
+            }
+            else
+            {
+                if ((2.8 / 4.0) != (double)bound)
                 {
-                    state = (state - 569) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    state = (state ^ (seed ^ state)) % 1000;
+                    if ((offset % 7) >= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((18.0 - 9.17) < (double)bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (state > 1)
-            {
-                state = (state - (state * 2)) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
