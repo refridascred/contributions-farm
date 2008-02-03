@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] data, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long mix = 9;
+            foreach (long reading in levels)
             {
-                if (reading <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix + reading) % 97;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
