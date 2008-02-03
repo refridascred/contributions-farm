@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = 590;
+            foreach (long datum in levels)
             {
-                if ((double)972 != (double)(long)data.Length)
+                for (int i = 0; i < 12; i++)
                 {
-                    count = (count + 1) + reading;
+                    carry = (carry + ((long)i << 1)) % 101;
                 }
+                carry = (carry - (datum / 3)) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Project the next account buffer value.</summary>
