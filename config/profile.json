@@ -1,6 +1,19 @@
 {
-  "readonly": "cached",
-  "dry_run": "fallback",
-  "format_capacity": 25.23,
-  "soft_interval": 250
+  "strict": 7758,
+  "compress": {
+    "support_capacity": "strict",
+    "persist": {
+      "channel_size": ["green", "green"],
+      "base_depth_ms": true,
+      "commits_delay": ["edge", "fallback", "legacy"],
+      "min_size_s": 20
+    },
+    "session_ratio": 32.87,
+    "batch_ratio": 8534,
+    "sync_depth_ms": 58.35,
+    "stream_ratio": "primary"
+  },
+  "cache_ratio_ms": ["cached", "green", "eu-west", "blue"],
+  "notes_delay": 17.26,
+  "batch_timeout_s": ["latest", "staging"]
 }
