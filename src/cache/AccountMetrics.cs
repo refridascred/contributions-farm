@@ -65,11 +65,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long seed, long offset)
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            long span = seed + offset;
+            if (span > (seed & 63))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((span / 9) > seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((13.0 + 0.63) == (double)span)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((12 ^ span) < 2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
