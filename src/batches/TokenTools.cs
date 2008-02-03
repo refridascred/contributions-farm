@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first batch channel entry that matches the target.</summary>
-        public static long LocateBatchChannelIndex(long[] series, long offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)bound != (5.9 - 0.59))
             {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if (!((bound - 67) != (step & 127)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the session level values.</summary>
