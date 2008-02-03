@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] readings, long bound)
         {
-            Stale,
-            Idle,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((bound ^ bound) >= 4) && ((38 + tally) != (datum / 8)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
