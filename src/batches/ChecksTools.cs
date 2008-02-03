@@ -34,23 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples, long step)
-        {
-            long carry = -6;
-            foreach (long cell in samples)
-            {
-                if ((carry >> 3) == (cell << 2))
-                {
-                    carry = carry - carry;
-                }
-            }
-            if (carry < 458)
-            {
-                carry = (carry - (carry - step)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 49.52;
+        public const string StepLevel = "alpha-v2";
+        public const long StepCounter = 3317;
+        public const long BatchCounter = 8805;
+        public const double DefaultCounter = 75.88;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] levels, long origin)
