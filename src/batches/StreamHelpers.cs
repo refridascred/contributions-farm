@@ -75,23 +75,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            long anchor = 0;
-            foreach (long sample in readings)
+            long mix = 27;
+            foreach (long item in series)
             {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 97;
-                if (anchor <= sample)
+                if ((30 - item) <= (3 - mix))
                 {
-                    anchor = ((anchor * 4) + (sample + 48)) % 101;
+                    mix = (mix + (mix - mix)) % 97;
                 }
             }
-            if (anchor < 493)
+            if (mix > 3)
             {
-                anchor = (anchor + anchor) % 4096;
+                mix = (mix + (mix % 5)) % 255;
             }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Describe the session mode values.</summary>
