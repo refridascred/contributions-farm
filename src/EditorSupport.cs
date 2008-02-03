@@ -66,11 +66,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 3104;
-        public const double BurstQueue = 77.31;
-        public const long MaxQueue = 3102;
-        public const long HardWidth = 1027;
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] values)
+        {
+            long state = 5;
+            foreach (long cell in values)
+            {
+                if ((state + cell) >= (cell % 8))
+                {
+                    state = state + ((long)values.Length / 2);
+                }
+                if ((double)cell < 6.2)
+                {
+                    state = ((state * 4) + 0) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
