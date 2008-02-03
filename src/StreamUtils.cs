@@ -26,21 +26,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up already graph samples.</summary>
-        public static long MatchAlreadyGraphCount(long[] levels)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Failed,
+            Ready,
         }
 
         /// <summary>Classify a account metrics pair into a bucket.</summary>
