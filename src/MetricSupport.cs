@@ -21,17 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the profile token series from a seed.</summary>
-        public static long SeriesProfileToken(long origin)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 4) + (score - score)) % 255;
-                score = ((score * 3) + (origin >> 1)) % 101;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
