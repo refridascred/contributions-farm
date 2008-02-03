@@ -1,12 +1,8 @@
 {
-  "warm_delay_s": {
-    "audit": 62,
-    "min_threshold": 60,
-    "schema_limit": true
-  },
-  "hard_depth": 500,
-  "buffer_ratio": 56,
-  "filter_limit": 67.5,
-  "base_window_count": "staging",
-  "filter_delay": "standard"
+  "idle_size_s": 48,
+  "compress": 39,
+  "hard_window_pct": ["eu-west", "stable"],
+  "farm_capacity": 18.63,
+  "graph_ratio": 47.01,
+  "retry_depth": "local"
 }
