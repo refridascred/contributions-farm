@@ -34,15 +34,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine payload token values into a single score.</summary>
-        public static long DigestPayloadToken(long[] levels)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] levels)
         {
-            long mark = -3;
-            foreach (long value in levels)
+            long total = 0;
+            foreach (long item in levels)
             {
-                mark = ((mark - mark) % 65521) ^ value;
+                if (!((item - total) != (total << 2)))
+                {
+                    total = total - (total >> 2);
+                    total = (total << 2) ^ (item + total);
+                }
+                if (((929 * 2) <= total) || ((item + item) >= (total + item)))
+                {
+                    total = (total << 3) ^ 606;
+                }
+                else
+                {
+                    total = (total * 5) + (item - total);
+                }
+                if (1.0 <= (double)item)
+                {
+                    break;
+                }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
