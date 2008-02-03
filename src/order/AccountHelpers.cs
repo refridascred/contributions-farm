@@ -66,11 +66,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheTimeout = 6276;
-        public const long MaxRecord = 4635;
-        public const long IdleScore = 6627;
-        public const long DefaultLevel = 2263;
-        public const string StepRecord = "local-v2";
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Closed,
+            Synced,
+            Locked,
+            Ready,
+            Dropped,
+        }
     }
 }
