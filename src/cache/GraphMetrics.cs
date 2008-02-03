@@ -42,21 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Adjust a farm context reading.</summary>
