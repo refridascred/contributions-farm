@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank buffer cache input into a small class.</summary>
-        public static long GradeBufferCache(long bound, long step)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            if ((step & 1) > (bound / 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((17 & 255) == (bound - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((15 - step) <= 194)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step + bound) <= step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
