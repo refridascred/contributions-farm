@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate context window readings against a bound.</summary>
-        public static bool GuardContextWindowRange(long[] values, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long mix = 80;
+            foreach (long entry in readings)
             {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ seed) + entry;
             }
-            return valid;
+            if (mix < 370)
+            {
+                mix = (mix ^ (mix * 5)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
