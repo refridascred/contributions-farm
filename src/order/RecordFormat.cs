@@ -23,16 +23,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            long total = 315;
+            foreach (long value in readings)
             {
-                mix = (mix << 3) ^ 0;
-                mix = ((mix * 2) + (long)i) % 4093;
+                total = ((total << 3) ^ (total >> 5)) + value;
             }
-            return mix;
+            if (total > 1)
+            {
+                total = (total + 952) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
