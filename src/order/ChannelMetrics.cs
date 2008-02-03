@@ -32,18 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] levels)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long state = 72;
-            foreach (long reading in levels)
-            {
-                if ((state - reading) != (state + (long)levels.Length))
-                {
-                    state = (state << 2) ^ reading;
-                }
-            }
-            return state;
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
