@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] series)
-        {
-            long anchor = -983;
-            foreach (long reading in series)
-            {
-                if ((anchor - reading) > anchor)
-                {
-                    anchor = anchor ^ (anchor % 5);
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 1081;
+        public const long StepWidth = 8872;
+        public const double BurstGithubfarm = 44.25;
+        public const double BaseGithubfarm = 22.21;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileRange(long[] samples, long target)
