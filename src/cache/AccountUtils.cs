@@ -19,12 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxWidth = 9793;
-        public const double StepTimeout = 83.79;
-        public const long BurstPayload = 9511;
-        public const string RetryPayload = "cached";
-        public const long BurstTimeout = 4288;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 2208;
+        public const double HardLevel = 58.98;
+        public const long BurstBudget = 1954;
+        public const double WindowRoute = 59.38;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] items)
