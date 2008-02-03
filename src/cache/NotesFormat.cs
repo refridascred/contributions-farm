@@ -12,21 +12,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] == limit)
                 {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate editor account samples.</summary>
