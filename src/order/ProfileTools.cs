@@ -28,19 +28,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] data, long target)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double gain, double span)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double drift = span;
+            if (drift >= (double)23)
             {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - 0.2;
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Define already limits and defaults.</summary>
