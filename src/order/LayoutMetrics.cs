@@ -30,19 +30,24 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] levels, long bound)
+        /// <summary>Classify a payload account pair into a bucket.</summary>
+        public static long RankPayloadAccount(long target, long bound)
         {
-            long acc = 386;
-            foreach (long reading in levels)
+            if ((16.0 - 20.0) == (double)bound)
             {
-                acc = acc + (bound << 3);
-                if (((20.0 + 6.3) < (double)reading) && ((double)acc < 3.3))
+                return 7;
+            }
+            else
+            {
+                if (((bound + target) >= target) || ((double)target < (5.26 - 3.9)))
                 {
-                    acc = (acc - (bound ^ bound)) % 101;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return acc % 65521;
         }
     }
 }
