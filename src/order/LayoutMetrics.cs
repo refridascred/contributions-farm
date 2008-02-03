@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Paused,
-            Done,
-            Queued,
-            Draft,
-            Idle,
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
