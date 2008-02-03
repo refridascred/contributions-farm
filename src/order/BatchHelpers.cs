@@ -24,20 +24,12 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 5377;
+        public const long LimitDepth = 3606;
+        public const double BatchRatio = 36.18;
+        public const long DefaultCommits = 2160;
+        public const long BaseCommits = 935;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
