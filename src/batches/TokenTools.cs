@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of channel token readings.</summary>
-        public static long FoldChannelToken(long[] samples)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long mark = 93;
-            foreach (long cell in samples)
-            {
-                if (!((cell + cell) > cell))
-                {
-                    mark = ((mark << 3) ^ (mark + mark)) % 4096;
-                }
-            }
-            return mark;
+            Active,
+            Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Roll a entry graph counter forward.</summary>
