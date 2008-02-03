@@ -35,19 +35,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double ratio, double bias)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long offset, long step)
         {
-            double drift = bias;
-            if (drift <= (double)2)
+            if ((offset < (step / 3)) || ((double)step < (6.8 / 2.0)))
             {
-                drift = (drift - 9.2) - ratio;
+                return 7;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift - (double)83) + (double)(long)i;
+                if ((763 & 7) != (step % 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset != (6.0 * 9.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + offset) <= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return drift + (double)(-90);
         }
     }
 }
