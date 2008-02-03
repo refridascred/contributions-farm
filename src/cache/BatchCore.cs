@@ -44,11 +44,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] readings, long bound)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
