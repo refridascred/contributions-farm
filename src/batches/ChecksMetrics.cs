@@ -14,12 +14,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSession = 7.22;
-        public const long BatchSession = 2150;
-        public const long IdleSession = 4575;
-        public const long BurstSession = 5904;
-        public const double HardSession = 90.82;
+        /// <summary>Validate token metrics readings against a bound.</summary>
+        public static bool ValidateTokenMetricsLimits(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long RankCluster(long bound, long offset)
