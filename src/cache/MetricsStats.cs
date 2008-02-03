@@ -64,12 +64,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] levels)
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (value <= (hits % 7))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
