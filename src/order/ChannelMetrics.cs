@@ -22,10 +22,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 4126;
-        public const long LimitQueue = 7155;
-        public const long RetrySpan = 7194;
-        public const long MaxQueue = 6590;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            New,
+            Pending,
+            Dropped,
+            Retry,
+        }
     }
 }
