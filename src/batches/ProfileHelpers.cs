@@ -61,12 +61,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 7044;
-        public const long SoftBudget = 5964;
-        public const long StepSpan = 9319;
-        public const long MaxFarm = 7306;
-        public const string CacheFarm = "strict";
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
+        }
 
         /// <summary>Digest a series of entry checks entries.</summary>
         public static long CombineEntryChecks(long[] values)
