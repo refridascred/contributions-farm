@@ -33,25 +33,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long origin, long target)
+        /// <summary>Count the metrics buffer entries that pass the check.</summary>
+        public static long MeasureMetricsBufferHits(long[] readings)
         {
-            long slot = origin - target;
-            if (((slot * 2) > (origin * 5)) || ((origin % 3) <= target))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin > (15.0 * 13.0))
+                if (seen >= (datum + datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
