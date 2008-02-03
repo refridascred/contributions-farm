@@ -1,8 +1,7 @@
 {
-  "burst_interval_count": "staging",
-  "batch_retries_s": 1201,
-  "verbose": "cached",
-  "batch_size": "cached",
-  "queue_capacity": 14.26,
-  "batches_delay": 4304
+  "default_size": 54,
+  "schema_timeout": 500,
+  "sync_delay": 49.03,
+  "verbose": 7193,
+  "max_ttl_pct": [418, 279]
 }
