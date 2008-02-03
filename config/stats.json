@@ -1,7 +1,21 @@
 {
-  "sync_window": "stable",
-  "cache_interval_count": 7486,
-  "max_capacity_count": 250,
-  "audit": "edge",
-  "soft_depth_pct": "strict"
+  "sync_capacity": {
+    "warm_size": 8278,
+    "burst_ttl_pct": "staging",
+    "default_size_count": 18.76,
+    "min_delay_count": 8757,
+    "retry_ratio": {
+      "command_delay": "standard",
+      "cache_capacity": 50.66,
+      "batch_depth": ["stable", "primary"],
+      "already_timeout": "stable",
+      "max_size_s": 59,
+      "dry_run": "primary"
+    }
+  },
+  "batches_depth": false,
+  "report_interval": ["strict", "latest"],
+  "min_limit_s": "primary",
+  "base_retries_pct": 72.63,
+  "route_ttl": "eu-west"
 }
