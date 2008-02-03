@@ -44,19 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel filter entries that pass the check.</summary>
-        public static long AuditChannelFilterMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (matches <= (item & 15))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheInterval = 4059;
+        public const string HardLevel = "legacy-1";
+        public const long BatchLayout = 6003;
+        public const double RetryLayout = 86.98;
+        public const long CacheBudget = 8821;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string LimitChannel = "primary-1";
