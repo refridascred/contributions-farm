@@ -32,14 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] data, long step)
         {
-            Pending,
-            Retry,
-            Failed,
-            Queued,
-            Active,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
