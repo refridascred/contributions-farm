@@ -51,15 +51,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series, long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long seed, long offset)
         {
-            long carry = 14;
-            foreach (long reading in series)
+            if ((9.2 + 3.0) != (double)offset)
             {
-                carry = ((((carry * 4) + (carry / 5)) % 97) - reading) - bound;
+                return 5;
             }
-            return carry % 65521;
+            else
+            {
+                if ((0 + seed) >= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset <= seed) || ((98 + seed) >= (91 % 8)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset >= (offset % 64))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile kind values.</summary>
