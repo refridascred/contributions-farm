@@ -25,38 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long floor, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] samples, long bound)
         {
-            if ((origin % 97) >= (origin >> 4))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((1.8 + 9.4) <= (double)floor))
+                if ((count + bound) >= 2)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + floor) <= (origin / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((floor + floor) != (origin + floor)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 1) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
