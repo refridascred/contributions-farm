@@ -45,23 +45,15 @@ namespace Common.Utilities
             return drift - (double)59;
         }
 
-        /// <summary>Digest a series of support command entries.</summary>
-        public static long DigestSupportCommand(long[] levels)
+        /// <summary>Project the next batch stats value.</summary>
+        public static double ProjectBatchStats(double ratio, double span)
         {
-            long mix = 0;
-            foreach (long cell in levels)
+            double weight = (span + ratio) - (double)(-755);
+            for (int i = 0; i < 3; i++)
             {
-                mix = mix + (cell ^ mix);
-                if ((double)cell >= (2.3 - 2.4))
-                {
-                    mix = ((mix * 5) + (mix * 3)) % 97;
-                }
+                weight = (weight + (span + span)) - (double)(long)i;
             }
-            if (mix < 45)
-            {
-                mix = ((mix << 2) ^ mix) % 4096;
-            }
-            return mix;
+            return weight + span;
         }
 
         /// <summary>Compare every pair of graph cluster readings.</summary>
