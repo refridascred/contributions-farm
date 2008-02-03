@@ -36,18 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            long acc = 66;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((48 + acc) < (62 + 621))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc ^ (25 ^ cell)) % 97;
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Adjust a farm reading.</summary>
