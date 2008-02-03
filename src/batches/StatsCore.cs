@@ -14,15 +14,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
+        public static bool VerifyCounterContributiRange(long[] samples, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if (value < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the editor status values.</summary>
