@@ -1,19 +1,5 @@
 {
-  "base_ratio_count": ["cached", "blue", "staging"],
-  "verbose": [365, 173],
-  "base_timeout_s": ["latest", "latest", "blue"],
-  "default_window_pct": {
-    "compress": 39.42,
-    "verbose": "standard",
-    "stats_ratio": 100,
-    "base_window_ms": {
-      "farm_interval": 30,
-      "max_size": ["fallback", "legacy", "blue", "primary"],
-      "poll_capacity": ["blue", "local", "eu-west"],
-      "burst_ratio": true
-    },
-    "strict": 30,
-    "batch_capacity": "cached"
-  },
-  "burst_ttl": "stable"
+  "burst_interval_count": ["eu-west", "open"],
+  "dry_run": ["primary", "strict"],
+  "audit": true
 }
