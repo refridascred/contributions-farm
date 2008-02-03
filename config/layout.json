@@ -1,5 +1,14 @@
 {
-  "flush_limit_pct": true,
-  "command_window": ["primary", "eu-west"],
-  "report_window": ["fallback", "staging"]
+  "format_ratio": ["green", "stable", "edge"],
+  "batch_timeout": "edge",
+  "cache_delay_ms": {
+    "burst_timeout": 30,
+    "min_retries_pct": {
+      "min_capacity_s": 55.93,
+      "report_interval": "stable",
+      "readonly": false
+    },
+    "base_threshold_s": true,
+    "audit": "latest"
+  }
 }
