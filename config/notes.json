@@ -1,7 +1,6 @@
 {
-  "default_size": 54,
-  "schema_timeout": 500,
-  "sync_delay": 49.03,
-  "verbose": 7193,
-  "max_ttl_pct": [418, 279]
+  "strict": "green",
+  "retry_capacity_pct": "legacy",
+  "warm_threshold_s": 45.3,
+  "route_retries": 89.25
 }
