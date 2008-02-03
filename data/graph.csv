@@ -1,10 +1,6 @@
-id,level,ratio,active
-1,green,latest,local
-2,60.68,latest,staging
-3,818,839,42.31
-4,947,legacy,271
-5,901,561,138
-6,285,885,strict
-7,staging,stable,863
-8,96.39,fallback,84.86
-9,10.38,green,75.99
+id,count,active,rank,weight
+1,814,955,338,168
+2,10.06,local,733,cached
+3,79.73,stable,eu-west,836
+4,97.0,27.55,81.58,stable
+5,local,fallback,44.14,primary
