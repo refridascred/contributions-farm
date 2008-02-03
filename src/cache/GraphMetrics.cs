@@ -20,19 +20,12 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] series, long bound)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
