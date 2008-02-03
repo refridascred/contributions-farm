@@ -26,16 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total << 2) ^ total;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
         }
     }
 }
