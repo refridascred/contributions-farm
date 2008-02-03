@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double weight, double offset)
-        {
-            double ratio = (double)(8 * 4);
-            if (ratio > (offset + offset))
-            {
-                ratio = (ratio + offset) - weight;
-            }
-            else
-            {
-                ratio = ratio - (double)(-501);
-            }
-            return ratio - (3.39 + offset);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 5237;
+        public const string StepContext = "strict-1";
+        public const long DefaultFactor = 2094;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long IterateNotes(long target)
