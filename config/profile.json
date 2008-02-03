@@ -1,6 +1,6 @@
 {
-  "payload_ttl": "open",
-  "retry_timeout": false,
-  "poll_ratio_count": 16.17,
-  "persist": true
+  "graph_size": "fallback",
+  "session_ratio": true,
+  "githubfarm_capacity": false,
+  "batch_delay": true
 }
