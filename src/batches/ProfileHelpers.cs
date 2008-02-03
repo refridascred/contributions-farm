@@ -71,18 +71,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics buffer entries that pass the check.</summary>
-        public static long AuditMetricsBufferMatches(long[] samples, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long acc = 2;
+            foreach (long value in readings)
             {
-                if ((tally - 9) < ((-7) & 3))
-                {
-                    tally = ((tally + 2) - entry) + step;
-                }
+                acc = (((acc * 3) + (25 << 1)) % 97) + value;
             }
-            return tally;
+            return acc % 4096;
         }
     }
 }
