@@ -1,11 +1,5 @@
 {
-  "idle_depth_ms": [153, 307, 28],
-  "max_ttl": {
-    "max_timeout": 500,
-    "dry_run": 250,
-    "farm_ttl": "local",
-    "hard_ttl": 74.74
-  },
-  "command_capacity": false,
-  "githubfarm_delay": 77
+  "route_capacity": [472, 316],
+  "poll_ratio_count": 250,
+  "soft_capacity_ms": 61
 }
