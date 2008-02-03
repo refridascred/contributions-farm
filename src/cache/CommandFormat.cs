@@ -47,15 +47,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double scale, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] readings, long origin)
         {
-            double bias = scale;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                bias = (bias + (double)694) + (double)(long)i;
+                if (origin > (origin + sample))
+                {
+                    count = count + 1;
+                }
             }
-            return bias - (span * 5.3);
+            return count;
         }
     }
 }
