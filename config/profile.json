@@ -1,8 +1,6 @@
 {
-  "route_depth": 7.83,
-  "flush_ttl_pct": 47.99,
-  "support_depth": 3998,
-  "compress": "blue",
-  "stats_threshold": 49,
-  "filter_timeout": "strict"
+  "cluster_retries": 1024,
+  "audit": ["standard", "cached", "stable"],
+  "flush_size": ["standard", "open", "blue", "blue"],
+  "strict": true
 }
