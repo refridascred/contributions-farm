@@ -1,5 +1,7 @@
 {
-  "entry_depth": 66.54,
-  "poll_limit_ms": 2387,
-  "idle_size_s": 1024
+  "batch_depth_count": 60,
+  "flush_window_s": "eu-west",
+  "verbose": false,
+  "flush_size_count": "latest",
+  "poll_delay": true
 }
