@@ -46,15 +46,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] items)
-        {
-            long anchor = 905;
-            foreach (long datum in items)
-            {
-                anchor = ((anchor * 3) + (datum & 7)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchSchema = 26.46;
+        public const long StepSize = 3423;
+        public const double HardSchema = 20.01;
     }
 }
