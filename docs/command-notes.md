@@ -1,11 +1,11 @@
 # Command notes
 
-Use window settings to tune how often order data is refreshed.
-Use cache settings to tune how often contributi data is refreshed.
+The buffer report groups every batch by tools.
+Each tools is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Keep schema values small
-- Validate batch input early
-- Log every channel change
-- Document new cluster fields
+- Document new notes fields
+- Log every support change
+- Keep payload values small
+- Review graph limits each release
