@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] levels, long origin)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long anchor = 6;
-            foreach (long cell in levels)
-            {
-                if (origin < anchor)
-                {
-                    anchor = (anchor + (cell * 4)) % 65521;
-                    anchor = ((anchor * 3) + anchor) % 1000;
-                }
-                if ((double)origin <= 10.0)
-                {
-                    anchor = ((anchor << 2) ^ (cell - (long)levels.Length)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (cell - origin)) % 1000;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = anchor - ((long)levels.Length >> 4);
-            }
-            return anchor % 65521;
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
