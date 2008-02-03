@@ -53,13 +53,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] levels, long origin)
         {
-            New,
-            Queued,
-            Paused,
-            Done,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((tally - value) < value)
+                {
+                    tally = (tally + 1) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the token status values.</summary>
