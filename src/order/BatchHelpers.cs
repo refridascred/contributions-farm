@@ -39,38 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long seed, long seed2)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] levels)
         {
-            if (1.3 <= (double)seed2)
+            long state = 675;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed2 != (double)1)
+                if ((value - value) < value)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 4) == (seed * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((81 + seed2) <= (seed2 - seed2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = (state - ((-51) * 3)) % 65521;
                 }
             }
+            return state;
         }
     }
 }
