@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every format cache entry stays within the limit.</summary>
-        public static bool CheckFormatCacheLimits(long[] items, long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long result = 14;
+            foreach (long cell in samples)
             {
-                if (cell > seed)
+                if ((cell + 84) < ((-9) & 1))
                 {
-                    ready = false;
-                    break;
+                    result = (result + ((long)samples.Length / 3)) % 97;
+                }
+                else
+                {
+                    result = ((result << 2) ^ 7) % 4096;
                 }
             }
-            return ready;
+            if (result > 78)
+            {
+                result = result ^ (result - result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
