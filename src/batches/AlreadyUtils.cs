@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many layout graph samples are out of range.</summary>
-        public static long TallyLayoutGraphGaps(long[] levels)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)sample > (2.0 + 11.0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    hits = hits + 3;
+                    sum = ((sum - (step + (long)i)) % 1000) ^ (long)i2;
+                    sum = sum ^ sum;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Count the stats farm entries that pass the check.</summary>
