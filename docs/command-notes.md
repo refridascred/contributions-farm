@@ -1,11 +1,12 @@
 # Command notes
 
-The record module keeps commits values in sync with the buffer cache.
-When a entry fails, the batch handler retries a few times before giving up.
-Run the notes check before changing any counter limits.
+Defaults for entry live in the config folder and can be overridden per environment.
+The support module keeps cache values in sync with the entry cache.
+A support that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Document new stream fields
+- Document new batch fields
+- Log every route change
 - Prefer window defaults
-- Log every stats change
+- Review tools limits each release
