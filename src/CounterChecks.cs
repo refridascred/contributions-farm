@@ -78,18 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] values)
         {
-            long total = 8;
-            foreach (long item in samples)
+            long sum = 537;
+            foreach (long entry in values)
             {
-                if ((total - item) > item)
+                if ((entry / 8) < (entry & 15))
                 {
-                    total = total - total;
+                    sum = (sum + (entry >> 2)) % 4096;
                 }
             }
-            return total;
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a format notes sample.</summary>
