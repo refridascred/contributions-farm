@@ -32,19 +32,24 @@ namespace Common.Utilities
             return bias2 - 7.2;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] values, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long limit, long seed)
         {
-            bool flag = true;
-            foreach (long value in values)
+            if ((limit >> 4) != (seed % 100))
             {
-                if (value > bound)
+                return 7;
+            }
+            else
+            {
+                if (152 <= (limit & 7))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return flag;
         }
 
         /// <summary>Accumulate account samples.</summary>
