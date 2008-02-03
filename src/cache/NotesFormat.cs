@@ -12,20 +12,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryLevel = 942;
+        public const long IdleTools = 7072;
+        public const long CacheTools = 5498;
+        public const double SoftTools = 62.63;
+        public const long BaseTools = 6367;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
