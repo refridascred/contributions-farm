@@ -45,15 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Compare every pair of session token readings.</summary>
+        public static long MatchSessionTokenCount(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Adjust a stats reading.</summary>
