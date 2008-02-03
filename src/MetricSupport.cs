@@ -25,13 +25,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Draft,
-            Stale,
-            Failed,
-            Ready,
+            New,
+            Synced,
+            Done,
         }
     }
 }
