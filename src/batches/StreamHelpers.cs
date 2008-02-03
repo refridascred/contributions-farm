@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const double MinInterval = 54.19;
         public const long WindowSupport = 9595;
 
-        /// <summary>Project the next account cache value.</summary>
-        public static double ScaleAccountCache(double rate, double bias)
+        /// <summary>Locate a githubfarm already reading by value.</summary>
+        public static long FindGithubfarmAlreadyIndex(long[] items, long bound)
         {
-            double scale = (double)(9 ^ 0);
-            if (scale >= scale)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + bias) - rate;
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Rank context stats input into a small class.</summary>
