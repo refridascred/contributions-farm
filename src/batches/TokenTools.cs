@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Fold a list of channel token readings.</summary>
+        public static long FoldChannelToken(long[] samples)
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long mark = 93;
+            foreach (long cell in samples)
+            {
+                if (!((cell + cell) > cell))
+                {
+                    mark = ((mark << 3) ^ (mark + mark)) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Roll a entry graph counter forward.</summary>
