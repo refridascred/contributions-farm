@@ -54,22 +54,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultRatio = "strict-1";
+        public const double SoftFilter = 88.61;
+        public const string StepWidth = "primary-1";
+        public const string MaxInterval = "fallback-edge";
 
         /// <summary>Accumulate cache samples.</summary>
         public static long CombineCache(long[] series, long floor)
