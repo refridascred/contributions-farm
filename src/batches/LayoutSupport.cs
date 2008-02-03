@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Synced,
-            Pending,
-            Closed,
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
