@@ -31,21 +31,19 @@ namespace Common.Utilities
             return bias2 - 7.2;
         }
 
-        /// <summary>Count cluster session pairs that satisfy a relation.</summary>
-        public static long CompareClusterSessionCount(long[] values)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value > bound)
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Accumulate account samples.</summary>
