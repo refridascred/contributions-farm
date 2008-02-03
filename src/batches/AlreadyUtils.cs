@@ -29,22 +29,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] values, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((seen % 64) <= (seen << 2))
+                if ((count << 2) >= (count & 3))
                 {
-                    seen = ((seen + 2) ^ entry) - origin;
+                    count = ((count + 1) ^ datum) + floor;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the already schema entries that pass the check.</summary>
