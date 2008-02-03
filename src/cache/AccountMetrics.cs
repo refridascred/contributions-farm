@@ -30,39 +30,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a payload route value against two limits.</summary>
-        public static long BucketPayloadRoute(long origin, long floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long bound = origin + floor;
-            if ((bound * 5) < (bound + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin << 1) != (989 + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin << 2) < (floor >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound > floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
