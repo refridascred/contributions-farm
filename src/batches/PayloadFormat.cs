@@ -29,15 +29,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Active,
-            Idle,
-            New,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinBudget = 31.91;
+        public const long BurstSize = 5593;
+        public const double MaxTimeout = 31.67;
+        public const long HardRoute = 2105;
+        public const long IdleRatio = 908;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long BucketAlready(long step, long seed)
