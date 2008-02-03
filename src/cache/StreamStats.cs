@@ -37,21 +37,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 9;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((40 + 564) <= reading)
                 {
-                    if ((data[i] ^ data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 3) + reading) % 1000;
+                }
+                else
+                {
+                    state = state ^ (reading - reading);
                 }
             }
-            return count;
+            if (state > 9)
+            {
+                state = (state * 2) + (state ^ 3);
+            }
+            return state;
         }
 
         /// <summary>Iterate the cluster payload series from a seed.</summary>
