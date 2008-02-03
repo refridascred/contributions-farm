@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchLevel = 20.39;
+        public const long BaseDepth = 7050;
+        public const double RetryBatch = 83.95;
+        public const long CacheBatch = 5116;
+        public const string SoftInterval = "fallback-edge";
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
