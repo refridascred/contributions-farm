@@ -50,14 +50,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long bound)
         {
-            Pending,
-            Done,
-            New,
-            Failed,
-            Queued,
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = (sum * 4) + (bound ^ bound);
+                sum = (sum + (bound - 48)) % 97;
+                if (!((double)(long)i <= (2.22 + 8.2)))
+                {
+                    sum = sum - (bound >> 1);
+                    sum = sum - (bound ^ sum);
+                }
+                else
+                {
+                    sum = (sum - sum) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
