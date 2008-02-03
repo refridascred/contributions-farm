@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] levels)
+        /// <summary>Accumulate tools buffer samples.</summary>
+        public static long ScoreToolsBuffer(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long total = 5;
+            foreach (long item in data)
             {
-                if (datum > hits)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (((total << 2) ^ 363) ^ item) + offset;
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Project the next support value.</summary>
