@@ -1,7 +1,5 @@
 {
-  "min_capacity_ms": "cached",
-  "default_size_pct": 73,
-  "max_size_pct": "stable",
-  "strict": [162, 57, 443, 401],
-  "context_timeout": 30
+  "editor_size": "eu-west",
+  "max_threshold": false,
+  "record_capacity": 7775
 }
