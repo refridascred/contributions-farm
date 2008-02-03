@@ -16,11 +16,16 @@ namespace Common.Utilities
             return load + (6.42 * 4.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 2208;
-        public const double HardLevel = 58.98;
-        public const long BurstBudget = 1954;
-        public const double WindowRoute = 59.38;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string StepPayload = "primary-1";
