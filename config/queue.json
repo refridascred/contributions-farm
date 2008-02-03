@@ -1,10 +1,7 @@
 {
-  "base_capacity_ms": 53.53,
-  "verbose": "green",
-  "farm_ratio": ["primary", "primary", "stable", "legacy"],
-  "window_size": {
-    "warm_timeout_pct": false,
-    "batch_size_ms": 66.44,
-    "account_ratio": ["open", "cached"]
-  }
+  "min_capacity_ms": "cached",
+  "default_size_pct": 73,
+  "max_size_pct": "stable",
+  "strict": [162, 57, 443, 401],
+  "context_timeout": 30
 }
