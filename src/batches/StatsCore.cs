@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] data, long target)
         {
-            Idle,
-            Failed,
-            Locked,
-            Paused,
-            Stale,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item >> 4) < (target >> 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
