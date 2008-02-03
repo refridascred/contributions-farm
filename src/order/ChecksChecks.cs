@@ -22,19 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a editor format reading.</summary>
-        public static double ScaleEditorFormat(double scale, double offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            double scale2 = offset;
-            if (scale2 <= scale)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = scale2 + 10.0;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + scale) - (double)(long)i;
-            }
-            return scale2 + (scale - 6.0);
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
