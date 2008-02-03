@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 7169;
-        public const string BurstTimeout = "stable-1";
-        public const double LimitMetrics = 22.66;
-        public const long BatchDepth = 5067;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsMatches(long[] levels, long step)
