@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 60.1;
-        public const long WindowSpan = 6618;
-        public const long CacheSize = 5492;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((origin << 3) < 83)
+                {
+                    hits = (hits + 3) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long WeighToken(long[] readings)
