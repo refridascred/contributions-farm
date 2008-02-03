@@ -25,17 +25,32 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] values, long limit)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long limit, long limit2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = limit - limit2;
+            if (((lane << 3) == (limit * 4)) && ((-239) > limit2))
             {
-                if (values[i] <= limit)
+                return 3;
+            }
+            else
+            {
+                if (!((0.2 + 20.0) < (double)lane))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + limit2) <= 8)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
