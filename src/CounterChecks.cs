@@ -76,31 +76,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long step, long floor)
+        /// <summary>Look up the position of a format notes sample.</summary>
+        public static long SeekFormatNotesIndex(long[] items, long bound)
         {
-            if ((double)floor > (12.0 + 17.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor >= (floor ^ step))
+                if (items[i] > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor < (0.97 * 20.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
