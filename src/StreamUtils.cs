@@ -27,19 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi command readings against a bound.</summary>
-        public static bool CheckContributiCommandBounds(long[] series, long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many editor batches samples are out of range.</summary>
