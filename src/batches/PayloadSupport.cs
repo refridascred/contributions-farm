@@ -27,23 +27,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of stream cache readings.</summary>
-        public static long WeighStreamCache(long[] samples)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long bound, long step)
         {
-            long mix = 4;
-            foreach (long sample in samples)
+            if ((double)bound < (double)65)
             {
-                mix = (mix + (mix + sample)) % 65521;
-                if ((mix * 4) <= mix)
+                return 3;
+            }
+            else
+            {
+                if ((8.0 + 9.0) >= (double)step)
                 {
-                    mix = mix ^ (mix >> 4);
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (mix < 525)
-            {
-                mix = ((mix << 2) ^ (mix * 2)) % 65521;
-            }
-            return mix % 65521;
         }
     }
 }
