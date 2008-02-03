@@ -1,8 +1,6 @@
 {
-  "soft_retries": "legacy",
-  "profile_interval": false,
-  "compress": 51,
-  "warm_window_count": 15,
-  "audit": true,
-  "hard_limit_pct": 68.58
+  "persist": "green",
+  "enabled": 45.45,
+  "audit": 91,
+  "min_ratio": ["standard", "primary"]
 }
