@@ -15,17 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] series, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                state = state - (long)i;
-                state = ((state << 3) ^ (floor * 3)) % 101;
-                state = ((state * 5) + (long)i) % 4093;
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
