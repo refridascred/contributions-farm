@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] levels, long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long mix = 8;
-            foreach (long item in levels)
-            {
-                mix = (((mix * 5) + item) % 97) + floor;
-            }
-            return mix;
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a command info.</summary>
