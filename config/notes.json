@@ -1,7 +1,5 @@
 {
-  "contributi_capacity": false,
-  "batch_timeout_pct": "local",
-  "readonly": "legacy",
-  "audit": true,
-  "notes_threshold": "local"
+  "base_timeout_count": "local",
+  "compress": 18,
+  "verbose": 26.19
 }
