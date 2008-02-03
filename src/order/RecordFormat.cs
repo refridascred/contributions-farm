@@ -14,19 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] items, long offset)
+        /// <summary>Check that every payload notes entry stays within the limit.</summary>
+        public static bool ValidatePayloadNotesBounds(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (datum != offset)
+                if (datum < floor)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
