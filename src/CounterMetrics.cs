@@ -16,10 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepScore = "cached";
-        public const long SoftBudget = 9846;
-        public const long BatchBatches = 1627;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaLimits(long[] values, long floor)
