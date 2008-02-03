@@ -1,7 +1,20 @@
 {
-  "idle_timeout_pct": 9566,
-  "stream_threshold": 250,
-  "warm_size": 1024,
-  "warm_ratio_pct": ["latest", "eu-west", "local", "standard"],
-  "window_delay": 41.1
+  "strict": {
+    "persist": 66,
+    "strict": false,
+    "default_depth": "strict",
+    "max_ratio_pct": ["latest", "eu-west"],
+    "readonly": [30, 243, 145]
+  },
+  "buffer_capacity": true,
+  "tools_ratio": "edge",
+  "format_timeout": "blue",
+  "dry_run": false,
+  "max_delay_count": {
+    "stream_threshold": "green",
+    "default_window_count": "standard",
+    "enabled": false,
+    "sync_retries_count": 48.57,
+    "readonly": 100
+  }
 }
