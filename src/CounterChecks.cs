@@ -71,18 +71,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Compare every pair of record payload readings.</summary>
+        public static long CompareRecordPayloadCount(long[] samples)
         {
-            long sum = 537;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry / 8) < (entry & 15))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + (entry >> 2)) % 4096;
+                    if ((samples[i] ^ samples[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Look up the position of a format notes sample.</summary>
