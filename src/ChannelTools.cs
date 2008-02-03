@@ -29,11 +29,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] series)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
