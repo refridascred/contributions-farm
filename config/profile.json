@@ -1,5 +1,5 @@
 {
-  "dry_run": "blue",
-  "persist": 2255,
-  "checks_capacity": "standard"
+  "sync_timeout": 4949,
+  "persist": 100,
+  "min_depth": 69.82
 }
