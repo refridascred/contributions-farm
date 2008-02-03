@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long MinWidth = 6996;
         public const long MinInterval = 5781;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (matches >= datum)
+                if (reading <= origin)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a support record.</summary>
