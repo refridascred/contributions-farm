@@ -1,12 +1,8 @@
 {
-  "strict": {
-    "soft_size_count": 6363,
-    "batch_interval_ms": 78,
-    "hard_delay": 17,
-    "min_ratio_ms": "open"
-  },
-  "persist": 57.46,
-  "retry_window": "legacy",
-  "sync_window_count": true,
-  "hard_delay": "eu-west"
+  "metrics_retries": 44.98,
+  "tools_threshold": ["open", "legacy", "primary"],
+  "flush_delay_ms": [413, 391],
+  "batches_window": 60,
+  "base_depth_count": 81.37,
+  "batches_timeout": true
 }
