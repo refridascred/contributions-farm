@@ -14,19 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] readings, long bound)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
