@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token metrics readings against a bound.</summary>
-        public static bool ValidateTokenMetricsLimits(long[] series, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long score = 614;
+            foreach (long value in readings)
             {
-                if (value != target)
+                if (!((5.0 * 4.46) < (double)score))
                 {
-                    ok = false;
-                    break;
+                    score = score - (score + value);
                 }
             }
-            return ok;
+            if (score > (-3))
+            {
+                score = ((score * 3) + (score + 52)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
