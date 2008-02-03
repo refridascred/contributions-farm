@@ -55,15 +55,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster payload series from a seed.</summary>
-        public static long StepClusterPayload(long bound)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long bound, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            if (bound >= (22 << 3))
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (((double)step == (8.0 - 20.0)) && ((bound + 427) >= (552 * 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
