@@ -23,12 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 9605;
-        public const long BurstWidth = 8697;
-        public const long BurstAlready = 1157;
-        public const long MaxTimeout = 428;
-        public const double MinDepth = 13.51;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryDepth = 874;
+        public const long BaseContributi = 3382;
+        public const string LimitLevel = "strict-1";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatMatches(long[] values, long floor)
