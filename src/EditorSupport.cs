@@ -45,19 +45,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double gain, double floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] values, long bound)
         {
-            double drift = (double)(599 >> 4);
-            if (drift > (gain / 9.0))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                drift = drift + (double)9;
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (floor - gain)) + (double)(long)i;
-            }
-            return drift + (double)800;
+            return flag;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
