@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long target, long offset)
         {
-            Done,
-            Active,
-            Locked,
-            New,
-            Draft,
+            if ((7.0 + 7.0) == (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset * 2) > (-608))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank report queue input into a small class.</summary>
