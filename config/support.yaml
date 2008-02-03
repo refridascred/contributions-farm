@@ -1,19 +1,11 @@
 # support settings
-enabled:
-  - 416
-  - 132
-  - 233
-max_size_pct:
-  - staging
-  - fallback
-  - primary
-  - fallback
-max_delay:
-  idle_delay_pct: open
-  compress:
-    flush_ttl_count: true
-    batch_window_s: 72.06
-    buffer_depth: 9767
-    default_capacity: local
-    dry_run: true
-  batch_ttl: 88.98
+metrics_depth: latest
+hard_size_pct:
+  - 105
+  - 98
+  - 68
+  - 494
+channel_retries: blue
+cache_ratio_pct: 30
+flush_timeout_ms: false
+soft_ttl_s: false
