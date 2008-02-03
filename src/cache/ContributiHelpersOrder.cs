@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster profile sample.</summary>
-        public static long LookupClusterProfileIndex(long[] levels, long target)
+        /// <summary>Check that every contributi format entry stays within the limit.</summary>
+        public static bool GuardContributiFormatBounds(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
+                if (datum > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
