@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a profile channel reading.</summary>
-        public static double SmoothProfileChannel(double ratio, double bias)
-        {
-            double gain = (double)(82 * 3);
-            if (gain < (gain * 8.5))
-            {
-                gain = gain + (double)71;
-            }
-            else
-            {
-                gain = gain - (bias - gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + ratio) - (double)(long)i;
-            }
-            return gain - (17.0 / 5.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleSize = 2669;
+        public const long WindowPayload = 8322;
+        public const long RetrySpan = 2107;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadOutliers(long[] levels, long target)
