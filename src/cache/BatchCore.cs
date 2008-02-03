@@ -19,16 +19,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] data, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] levels, long step)
         {
-            long mix = 362;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                mix = ((mix << 2) ^ (mix << 2)) % 101;
-                mix = mix - (value - floor);
+                if (((65 & 255) > hits) && (((hits / 9) <= (hits & 1)) || ((hits - step) > cell)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
