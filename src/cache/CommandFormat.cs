@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseDepth = 1162;
-        public const double MaxInterval = 16.36;
-        public const double StepMetrics = 18.25;
-        public const long BurstMetrics = 1742;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "legacy-1";
+        public const string IdleWidth = "fallback-1";
+        public const long MaxContext = 4255;
+        public const long LimitInterval = 7124;
+        public const long IdleContext = 9056;
 
         /// <summary>Accumulate command entry samples.</summary>
         public static long ScoreCommandEntry(long[] readings, long offset)
