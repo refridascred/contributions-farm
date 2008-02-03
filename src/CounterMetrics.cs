@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the githubfarm metric entries that pass the check.</summary>
-        public static long CountGithubfarmMetricGaps(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading > (reading / 3))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
