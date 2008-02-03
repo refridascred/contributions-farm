@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Paused,
-            Retry,
-            Active,
-            New,
-            Idle,
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a filter info.</summary>
