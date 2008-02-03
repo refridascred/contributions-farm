@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=268
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in strict primary cached green; do
+for item in fallback edge staging; do
     log "checking ${item}"
 done
