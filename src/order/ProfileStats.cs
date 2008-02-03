@@ -16,12 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] data, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
