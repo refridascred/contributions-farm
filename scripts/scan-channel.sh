@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+CHANNEL_LIMIT=51
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    latest)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in staging eu-west standard; do
-    log "checking ${item}"
-done
