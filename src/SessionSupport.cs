@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long floor, long step)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long origin)
         {
-            if ((floor + step) != (floor << 1))
+            if ((seed / 3) > 46)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((step - step) > (step + step))
+                if ((origin + 200) > (9 & 3))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    if ((9.0 - 8.8) == (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
