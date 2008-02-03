@@ -19,19 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] items, long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long limit)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long total = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample < floor)
+                if (((limit ^ limit) != (2 >> 4)) || ((limit / 3) >= (total + total)))
                 {
-                    valid = false;
-                    break;
+                    total = ((total * 3) + ((long)i - total)) % 101;
                 }
+                total = (total + ((long)i % 8)) % 97;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Rank route batches input into a small class.</summary>
