@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 25.45;
-        public const long CacheFilter = 2966;
-        public const long WindowFilter = 1180;
-        public const string CacheSize = "fallback";
-        public const string BurstScore = "local-v2";
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
