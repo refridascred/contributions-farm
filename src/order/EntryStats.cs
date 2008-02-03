@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] readings)
+        /// <summary>Count editor already pairs that satisfy a relation.</summary>
+        public static long MatchEditorAlreadyCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)matches == (2.87 + 2.33))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) ^ reading;
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of notes checks entries.</summary>
