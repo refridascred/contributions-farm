@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)69 * 1.3;
+            if (bias < (rate / 2.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias - bias) - span;
             }
-            return count;
+            else
+            {
+                bias = bias - rate;
+            }
+            return bias + 4.1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
