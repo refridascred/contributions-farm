@@ -58,32 +58,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a queue cluster value against two limits.</summary>
-        public static long ClassifyQueueCluster(long bound, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long bound)
         {
-            long cur = bound - limit;
-            if ((cur - limit) < (bound ^ limit))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((6.0 - 7.94) == (double)bound) && ((cur + cur) <= bound))
+                if (datum < (bound % 97))
                 {
-                    return 1;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((double)limit < (double)908)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
