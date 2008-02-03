@@ -54,27 +54,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor command values into a single score.</summary>
-        public static long DigestEditorCommand(long[] data, long seed)
+        /// <summary>Iterate the cluster payload series from a seed.</summary>
+        public static long StepClusterPayload(long bound)
         {
-            long result = -2;
-            foreach (long reading in data)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                result = result - (reading + reading);
-                if ((result >= (reading << 1)) && (reading < (result >> 5)))
-                {
-                    result = ((result << 2) ^ (reading & 63)) % 101;
-                }
-                if (reading < (result % 12))
-                {
-                    result = (result - (seed + seed)) % 97;
-                }
-                else
-                {
-                    result = result - result;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return result % 4096;
+            return sum;
         }
     }
 }
