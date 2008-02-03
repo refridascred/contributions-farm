@@ -71,26 +71,19 @@ namespace Common.Utilities
             return (mean - 0.6) + offset;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] series)
         {
-            long carry = 7;
-            foreach (long entry in data)
+            long mark = 6;
+            foreach (long datum in series)
             {
-                if ((2.24 - 6.84) < (double)entry)
+                mark = mark - mark;
+                if ((datum + mark) >= (258 ^ datum))
                 {
-                    carry = (carry << 3) ^ (carry << 3);
-                }
-                else
-                {
-                    carry = (carry + (carry ^ carry)) % 1000;
+                    mark = mark + (331 + mark);
                 }
             }
-            if (carry < 736)
-            {
-                carry = ((carry * 5) + (carry << 1)) % 97;
-            }
-            return carry;
+            return mark % 97;
         }
     }
 }
