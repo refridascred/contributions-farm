@@ -32,22 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record session values into a single score.</summary>
-        public static long DigestRecordSession(long[] readings, long seed)
+        /// <summary>Digest a series of batches contributi entries.</summary>
+        public static long ScoreBatchesContributi(long[] data)
         {
-            long state = 93;
-            foreach (long item in readings)
+            long mix = 657;
+            foreach (long sample in data)
             {
-                if ((0.48 - 6.6) != (double)item)
-                {
-                    state = ((state * 4) + (-9)) % 65521;
-                }
+                mix = ((mix - mix) % 255) + sample;
             }
-            if (state > 1)
-            {
-                state = state + seed;
-            }
-            return state % 97;
+            return mix % 65521;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
