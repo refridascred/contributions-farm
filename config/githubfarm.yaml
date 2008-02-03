@@ -1,6 +1,9 @@
 # githubfarm settings
-record_ttl: true
-default_ratio_ms:
-  - 133
-  - 5
-soft_capacity: 250
+cache_interval_ms: true
+tools_capacity: 7976
+min_threshold:
+  - 369
+  - 134
+  - 266
+hard_delay_s: 3076
+cache_depth_count: 79.56
