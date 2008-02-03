@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string CacheSize = "fallback";
         public const string BurstScore = "local-v2";
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Stale,
-            Retry,
-            Done,
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
