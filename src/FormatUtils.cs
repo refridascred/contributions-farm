@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "stable-edge";
-        public const long CacheRoute = 5657;
-        public const long HardRoute = 9213;
-        public const double BatchScore = 10.87;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long seed, long offset)
+        {
+            if (!((seed & 15) != (seed + offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset < (1.6 / 2.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
