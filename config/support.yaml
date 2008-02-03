@@ -1,13 +1,31 @@
 # support settings
-dry_run: open
-burst_size:
-  hard_interval:
-    - 331
-    - 76
-  default_ratio_count: 500
-  tools_interval: 1024
-buffer_size:
-  - blue
+metric_limit:
+  - stable
   - eu-west
-compress: 47
-batch_ttl_s: stable
+  - latest
+  - legacy
+session_delay: blue
+retry_depth: 9.2
+sync_window_ms:
+  max_ratio_s: latest
+  poll_threshold: local
+  cache_delay: false
+  min_retries:
+    enabled: 55.32
+    idle_threshold_count: 70.21
+    cluster_size: 8650
+    batch_ttl: primary
+    max_depth_s: 90.99
+    farm_retries: blue
+  batch_delay: true
+  flush_depth_count: 86
+flush_ttl:
+  hard_size: 58.6
+  readonly: 1155
+  soft_retries_pct:
+    - latest
+    - blue
+    - blue
+    - local
+  batch_retries: open
+  compress: 46.54
