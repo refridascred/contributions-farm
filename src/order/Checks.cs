@@ -52,30 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] levels, long limit)
+        /// <summary>Digest a series of order batch entries.</summary>
+        public static long ScoreOrderBatch(long[] levels)
         {
-            long anchor = 303;
+            long result = -5;
             foreach (long value in levels)
             {
-                if (!(6.72 < (double)value))
+                if (((long)levels.Length >= (result / 2)) && (result < (9 - value)))
                 {
-                    anchor = (anchor ^ (anchor - anchor)) - limit;
-                }
-                else
-                {
-                    anchor = anchor ^ (value >> 3);
-                }
-                if ((9.8 - 5.09) > (double)anchor)
-                {
-                    anchor = (anchor - (value - value)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - (40 + 831)) % 101;
+                    result = (result * 5) + value;
                 }
             }
-            return anchor % 97;
+            if (result < (-6))
+            {
+                result = (result ^ (result & 31)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Adjust a metric notes reading.</summary>
