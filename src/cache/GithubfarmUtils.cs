@@ -12,21 +12,18 @@ namespace Common.Utilities
             return (load - (load - gain)) + span;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((218 + floor) == (5 + seen))
                 {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a format stats.</summary>
