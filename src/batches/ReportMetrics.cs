@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] items, long bound)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long carry = 6;
-            foreach (long cell in items)
-            {
-                if ((double)carry <= (double)cell)
-                {
-                    carry = (((carry << 3) ^ (94 & 15)) % 1000) - bound;
-                }
-            }
-            return carry % 1000;
+            Closed,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
