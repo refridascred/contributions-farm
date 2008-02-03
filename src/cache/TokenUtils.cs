@@ -25,19 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] values, long floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
