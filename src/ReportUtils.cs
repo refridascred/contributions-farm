@@ -30,21 +30,11 @@ namespace Common.Utilities
         public const string MaxCount = "local";
         public const long WindowDepth = 5904;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
