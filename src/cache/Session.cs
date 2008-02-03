@@ -56,12 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            Failed,
+            New,
+            Done,
         }
     }
 }
