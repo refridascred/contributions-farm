@@ -23,18 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] readings)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum != (8.56 / 7.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
