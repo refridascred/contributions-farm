@@ -53,19 +53,15 @@ namespace Common.Utilities
             return bias - (rate * 6.3);
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] data, long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double scale, double bias)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double drift = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                drift = ((drift + (double)9) - (double)(long)i) + scale;
             }
-            return found;
+            return drift + (double)876;
         }
 
         /// <summary>Audit session contributi readings against a rule.</summary>
