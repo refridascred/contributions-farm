@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepBudget = 21.45;
-        public const string IdleEditor = "stable-v2";
-        public const string CacheDepth = "primary";
-        public const string MinEditor = "open-edge";
-        public const long RetrySpan = 7298;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] readings, long origin)
