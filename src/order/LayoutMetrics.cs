@@ -13,15 +13,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Count the metrics contributi entries that pass the check.</summary>
+        public static long CountMetricsContributiOutliers(long[] items, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((0.15 / 8.0) > (double)floor)
+                {
+                    seen = (seen + 1) - datum;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Classify a payload account pair into a bucket.</summary>
