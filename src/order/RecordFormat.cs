@@ -31,19 +31,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            long total = 315;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total << 3) ^ (total >> 5)) + value;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total > 1)
-            {
-                total = (total + 952) % 65521;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a queue stats.</summary>
