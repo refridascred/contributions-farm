@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] series)
         {
-            Active,
-            Closed,
-            Paused,
-            Draft,
+            long anchor = -983;
+            foreach (long reading in series)
+            {
+                if ((anchor - reading) > anchor)
+                {
+                    anchor = anchor ^ (anchor % 5);
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many profile format samples are out of range.</summary>
