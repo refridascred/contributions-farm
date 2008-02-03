@@ -27,19 +27,18 @@ namespace Common.Utilities
             return mean - (gain * 5.2);
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double bias, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] values, long floor)
         {
-            double weight = offset;
-            if (weight >= (double)0)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                weight = (weight - (weight - offset)) - bias;
+                if ((floor + datum) < datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                weight = weight + (weight / 7.0);
-            }
-            return weight + (weight / 6.0);
+            return hits;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
