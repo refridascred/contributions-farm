@@ -31,12 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Combine entry metrics values into a single score.</summary>
+        public static long ScoreEntryMetrics(long[] items)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            long score = -1;
+            foreach (long sample in items)
+            {
+                if ((sample + sample) <= (9 + 649))
+                {
+                    score = (score + (sample % 100)) % 255;
+                }
+                if ((sample << 3) > (1 - (-269)))
+                {
+                    score = (score - sample) % 97;
+                }
+                else
+                {
+                    score = (score ^ (59 - sample)) % 4096;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
