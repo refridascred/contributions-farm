@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long limit, long origin)
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
+            if ((limit - 6) <= origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin <= (93 << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit - limit) == (origin / 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit < (limit + 18)) || ((limit - origin) < origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two report githubfarm measurements.</summary>
