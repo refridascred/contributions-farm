@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long HardBuffer = 8360;
         public const string MaxBuffer = "fallback-1";
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] data, long offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Define support limits and defaults.</summary>
