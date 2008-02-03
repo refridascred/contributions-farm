@@ -19,15 +19,19 @@ namespace Common.Utilities
         public const long BurstWidth = 8751;
         public const double IdleScore = 29.55;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] values, long floor)
         {
-            long state = 3;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                state = (state - (cell ^ state)) % 255;
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return ok;
         }
     }
 }
