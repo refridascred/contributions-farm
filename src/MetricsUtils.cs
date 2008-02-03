@@ -42,14 +42,22 @@ namespace Common.Utilities
         public const long StepCount = 1482;
         public const string BaseFormat = "staging-1";
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] levels)
         {
-            Pending,
-            Failed,
-            Done,
-            Synced,
-            Dropped,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((long)levels.Length << 1) > value)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first format checks entry that matches the target.</summary>
