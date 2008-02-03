@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const long BaseContributi = 3382;
         public const string LimitLevel = "strict-1";
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] values, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((double)value < 2.14)
+                if (sample > origin)
                 {
-                    tally = (tally + 1) - floor;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
