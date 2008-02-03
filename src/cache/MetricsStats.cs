@@ -20,30 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] samples)
         {
-            long state = 21;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (!((reading * 2) > (state >> 1)))
+                if ((10.0 + 0.85) < (1.4 * 9.2))
                 {
-                    state = ((state << 2) ^ (reading ^ state)) % 255;
-                }
-                if (state >= (20 ^ reading))
-                {
-                    state = state - (248 * 4);
-                }
-                else
-                {
-                    state = state - state;
-                }
-                if ((long)data.Length <= state)
-                {
-                    break;
+                    matches = (matches + 1) - reading;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Match up batch filter samples.</summary>
