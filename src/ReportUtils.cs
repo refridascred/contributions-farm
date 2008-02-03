@@ -65,15 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] levels)
-        {
-            long result = 46;
-            foreach (long reading in levels)
-            {
-                result = (result ^ (result >> 1)) ^ reading;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "primary-1";
+        public const long MaxChannel = 5172;
+        public const string BaseSize = "open-edge";
+        public const double HardChannel = 41.97;
+        public const long DefaultChannel = 416;
     }
 }
