@@ -1,15 +1,12 @@
 # entry settings
-base_window_ms: 8189
-enabled: staging
-metric_ratio: true
-profile_threshold:
-  - 307
-  - 25
-  - 349
-  - 342
-flush_delay_pct:
-  - 61
-  - 16
-  - 212
-  - 34
-flush_ttl_ms: 96.04
+dry_run:
+  - 180
+  - 336
+hard_window: latest
+default_limit_s: open
+cache_ttl: 86
+batch_delay:
+  graph_size: 4424
+  base_ratio_count: strict
+  min_retries_count: local
+min_window_count: stable
