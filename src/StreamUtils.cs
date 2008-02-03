@@ -33,24 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a account metrics pair into a bucket.</summary>
-        public static long ClassifyAccountMetrics(long seed, long floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double ratio, double offset)
         {
-            if ((6.2 / 7.0) == (double)floor)
+            double drift = offset * 3.06;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
+                drift = ((drift - drift) + (double)(long)i) + ratio;
             }
-            else
-            {
-                if (!((seed % 24) != (seed + seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return drift - (double)59;
         }
 
         /// <summary>Digest a series of support command entries.</summary>
