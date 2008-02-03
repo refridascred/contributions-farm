@@ -32,23 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double scale, double bias)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] series)
         {
-            double bias2 = bias;
-            if (bias2 < (double)2)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                bias2 = (bias2 - 1.4) + scale;
+                if ((double)datum > (double)seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias - bias2)) + (double)(long)i;
-            }
-            return bias2 - 7.2;
+            return seen;
         }
 
         /// <summary>Describe the batches state values.</summary>
