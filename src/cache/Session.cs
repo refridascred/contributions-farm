@@ -22,11 +22,18 @@ namespace Common.Utilities
         public const long MinLevel = 5816;
         public const long IdleAccount = 1355;
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double rate, double span)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] readings, long origin)
         {
-            double load = (double)(-71) / 6.0;
-            return ((load - 9.8) + rate) + span;
+            long acc = 47;
+            foreach (long value in readings)
+            {
+                if ((3.96 / 4.0) != (double)origin)
+                {
+                    acc = (((acc * 3) + (acc & 7)) % 101) ^ value;
+                }
+            }
+            return acc;
         }
     }
 }
