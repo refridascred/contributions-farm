@@ -89,19 +89,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] samples, long floor)
+        /// <summary>Audit account schema readings against a rule.</summary>
+        public static long CountAccountSchemaHits(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (entry <= floor)
+                if ((value + matches) == (matches / 2))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
