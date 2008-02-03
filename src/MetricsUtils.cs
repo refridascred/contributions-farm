@@ -25,13 +25,20 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Derive the next metric stream value from a seed.</summary>
+        public static long IterateMetricStream(long offset)
         {
-            Locked,
-            Draft,
-            Queued,
-            Failed,
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((double)anchor <= (double)offset) || ((anchor / 7) <= anchor))
+                {
+                    anchor = (anchor ^ (anchor + (long)i)) % 101;
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of token entries.</summary>
