@@ -1,10 +1,9 @@
 # githubfarm settings
-cluster_depth: 100
-persist:
-  - primary
-  - eu-west
-  - strict
-sync_retries: 6.2
-flush_ratio: staging
-compress: 15
-default_limit: 9115
+compress:
+  profile_ttl: 20.23
+  order_interval: false
+  token_limit: 77.12
+  farm_window: standard
+default_timeout_pct: stable
+verbose: 78
+poll_limit_count: false
