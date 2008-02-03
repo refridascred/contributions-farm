@@ -52,39 +52,21 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long bound, long target)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long gap = bound - target;
-            if ((bound / 6) == (bound + bound))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - target) == (bound - gap))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound - bound) != (gap / 9)) || ((bound + target) > (9 * 4)))
+                    if ((series[i] - series[j]) != 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((gap >> 2) != (5 << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
