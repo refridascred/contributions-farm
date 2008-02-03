@@ -49,13 +49,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] levels, long limit)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            long anchor = 8;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor + (limit * 3)) % 4096) ^ sample;
+            }
+            if (anchor > 3)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
     }
 }
