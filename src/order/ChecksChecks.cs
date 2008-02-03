@@ -32,19 +32,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] data, long step)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= step)
+                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
