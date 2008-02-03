@@ -58,22 +58,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] levels)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double ratio = (double)((-93) % 3);
+            if (ratio >= weight)
             {
-                if (value <= (hits % 7))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio + ratio) + bias;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (weight * 8.9)) + (double)(long)i;
+            }
+            return ratio - (double)40;
         }
     }
 }
