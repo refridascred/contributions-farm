@@ -26,16 +26,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a queue filter counter forward.</summary>
-        public static long StepQueueFilter(long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                total = ((total << 2) ^ total) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                if (sample >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
