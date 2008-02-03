@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 4949;
+        public const string StepCommits = "staging-1";
+        public const long MinCommits = 4151;
+        public const double RetryFactor = 51.57;
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] samples, long seed)
