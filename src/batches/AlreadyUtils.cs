@@ -34,13 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            Idle,
-            Ready,
-            Synced,
-            Locked,
+            long state = 7;
+            foreach (long item in readings)
+            {
+                if ((item + item) == (item - state))
+                {
+                    state = state ^ (state & 1);
+                }
+            }
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
