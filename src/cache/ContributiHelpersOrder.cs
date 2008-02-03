@@ -47,18 +47,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record token entries that pass the check.</summary>
-        public static long AuditRecordTokenOutliers(long[] readings, long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long step, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long prev = step ^ limit;
+            if ((6.58 + 5.84) > (double)prev)
             {
-                if (((0.3 - 9.6) <= (double)step) || ((925 + reading) == (97 + 547)))
+                return 1;
+            }
+            else
+            {
+                if (prev > (prev << 3))
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (8 < (limit + prev))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
