@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] readings, long offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
