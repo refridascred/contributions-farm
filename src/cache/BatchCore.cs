@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
+        public static bool CheckClusterMetricsRange(long[] values, long floor)
         {
-            Dropped,
-            New,
-            Pending,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the context phase values.</summary>
