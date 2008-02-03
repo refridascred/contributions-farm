@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long step, long limit)
+        /// <summary>Audit session stream readings against a rule.</summary>
+        public static long AuditSessionStreamGaps(long[] data)
         {
-            if (((step % 7) == (step * 5)) && ((double)step >= (double)911))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit > 0.89)
+                if ((2.2 / 9.0) != (double)tally)
                 {
-                    return 7;
+                    tally = (tally + 3) - item;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a metrics options.</summary>
