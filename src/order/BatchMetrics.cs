@@ -61,20 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report githubfarm measurements.</summary>
-        public static double SmoothReportGithubfarm(double rate, double floor)
-        {
-            double bias = 1.0 / 7.0;
-            if (bias > (bias / 8.0))
-            {
-                bias = bias - floor;
-            }
-            else
-            {
-                bias = bias - (3.0 / 8.0);
-            }
-            return bias - (rate * 6.3);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTools = 33.63;
+        public const double DefaultFactor = 79.33;
+        public const string MinFactor = "latest-edge";
+        public const long MaxTools = 1063;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] samples, long step)
