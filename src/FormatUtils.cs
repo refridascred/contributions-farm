@@ -91,17 +91,25 @@ namespace Common.Utilities
         public const long MaxFactor = 7490;
         public const string HardAlready = "primary-1";
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] items, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long target, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = target ^ offset;
+            if (((target & 3) > (offset ^ 15)) || ((target >> 1) > (span >> 1)))
             {
-                if (items[i] >= step)
+                return 3;
+            }
+            else
+            {
+                if ((6 << 1) == (target + offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
