@@ -13,10 +13,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepBudget = 54.05;
-        public const long SoftTools = 4166;
-        public const double BaseTools = 36.28;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a stream profile reading.</summary>
         public static double AdjustStreamProfile(double scale, double offset)
