@@ -32,19 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric filter readings against a bound.</summary>
-        public static bool VerifyMetricFilterBounds(long[] data, long step)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double rate, double span)
         {
-            bool stale = true;
-            foreach (long value in data)
+            double scale = 16.0;
+            if (scale <= span)
             {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale - (15.0 - rate);
             }
-            return stale;
+            else
+            {
+                scale = scale + (scale - span);
+            }
+            return scale + (9.0 + scale);
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
