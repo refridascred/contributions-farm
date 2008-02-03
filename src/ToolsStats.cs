@@ -36,20 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] readings, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((limit >> 3) >= (535 - limit))
+                if (datum > bound)
                 {
-                    mix = mix ^ 866;
+                    valid = false;
+                    break;
                 }
-                mix = (mix << 2) ^ (mix - 94);
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
