@@ -20,22 +20,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many graph filter samples are out of range.</summary>
-        public static long CountGraphFilterMatches(long[] data, long origin)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((tally << 1) >= value) || ((double)value != (19.0 - 0.95)))
+                if (levels[i] > offset)
                 {
-                    tally = (tally + 3) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
