@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
