@@ -58,19 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double ratio, double span)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double load = (double)((-516) >> 4);
-            if (load <= (double)6)
-            {
-                load = ((load + 8.3) - ratio) - span;
-            }
-            else
-            {
-                load = load + (double)2;
-            }
-            return load + 2.9;
+            Locked,
+            Retry,
+            Failed,
+            Draft,
         }
     }
 }
