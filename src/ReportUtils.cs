@@ -54,19 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next channel schema value.</summary>
-        public static double BlendChannelSchema(double gain, double offset)
+        /// <summary>Count the channel filter entries that pass the check.</summary>
+        public static long AuditChannelFilterMatches(long[] data)
         {
-            double weight = 4.03;
-            if (weight < (double)74)
+            long matches = 0;
+            foreach (long item in data)
             {
-                weight = (weight + 8.3) + gain;
+                if (matches <= (item & 15))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                weight = weight + offset;
-            }
-            return weight - 0.76;
+            return matches;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
