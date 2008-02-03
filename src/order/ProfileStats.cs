@@ -58,19 +58,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] values, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] items)
         {
-            long sum = 562;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                sum = ((sum - ((long)values.Length & 7)) % 65521) ^ entry;
+                if ((8.4 / 4.0) >= (double)reading)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (sum > 480)
-            {
-                sum = (sum - target) % 65521;
-            }
-            return sum;
+            return matches;
         }
     }
 }
