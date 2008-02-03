@@ -42,22 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] levels, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] data, long bound)
         {
-            long acc = 4;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (!((double)offset == (4.64 + 0.47)))
+                if ((tally + datum) >= (bound + 269))
                 {
-                    acc = acc + (cell << 1);
+                    tally = tally + 2;
                 }
             }
-            if (acc < 703)
-            {
-                acc = (acc * 2) + (acc * 4);
-            }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Check that every token layout entry stays within the limit.</summary>
