@@ -92,12 +92,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long origin)
         {
-            Queued,
-            Synced,
-            Active,
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a window summary.</summary>
