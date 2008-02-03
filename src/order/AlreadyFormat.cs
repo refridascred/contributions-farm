@@ -13,17 +13,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result << 2) ^ result;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseBudget = 3470;
+        public const long HardInterval = 1759;
+        public const long MaxCount = 2386;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
