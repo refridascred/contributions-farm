@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinRatio = "cached-1";
+        public const double StepBudget = 36.29;
+        public const long SoftSupport = 9533;
+        public const double MinInterval = 54.19;
+        public const long WindowSupport = 9595;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
