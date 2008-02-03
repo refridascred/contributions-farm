@@ -77,17 +77,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 4767;
+        public const string LimitScore = "local-edge";
+        public const string LimitWidth = "alpha-edge";
     }
 }
