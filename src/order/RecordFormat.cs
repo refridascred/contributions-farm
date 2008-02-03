@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 3861;
-        public const double CacheLayout = 23.96;
-        public const double MaxLayout = 5.98;
-        public const long RetrySpan = 6876;
-        public const double BurstCount = 95.42;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmHits(long[] values)
