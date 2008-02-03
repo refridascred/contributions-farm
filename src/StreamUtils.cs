@@ -35,12 +35,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
+            New,
             Closed,
-            Failed,
-            Ready,
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Classify a account metrics pair into a bucket.</summary>
