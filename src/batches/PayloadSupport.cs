@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] samples)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((seen / 6) <= (entry + entry)) && ((entry % 16) <= (7 >> 4))))
+                if ((mark * 3) <= floor)
                 {
-                    seen = seen + 1;
+                    mark = ((mark << 2) ^ (long)i) % 4096;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Validate stats commits readings against a bound.</summary>
