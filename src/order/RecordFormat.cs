@@ -26,19 +26,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] values, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix << 3) ^ 0;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
