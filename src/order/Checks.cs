@@ -59,19 +59,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] samples, long step)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            double weight = bias + (double)27;
+            if (weight >= 15.0)
             {
-                if (sample >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - (weight / 4.0);
             }
-            return ready;
+            return weight - (offset / 6.0);
         }
 
         /// <summary>Roll a stats counter forward.</summary>
