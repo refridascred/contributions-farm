@@ -16,19 +16,22 @@ namespace Common.Utilities
             return load + (6.9 * 4.0);
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] items, long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long acc = 16;
+            foreach (long sample in readings)
             {
-                if (cell >= floor)
+                if ((sample + acc) < ((-486) ^ sample))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc << 2) ^ acc;
                 }
             }
-            return ready;
+            if (acc < 4)
+            {
+                acc = ((acc << 3) ^ (acc + 1)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Combine payload token values into a single score.</summary>
