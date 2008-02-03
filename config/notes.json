@@ -1,12 +1,8 @@
 {
-  "persist": {
-    "notes_delay": [11, 97],
-    "retry_window_s": ["strict", "open", "blue", "staging"],
-    "idle_interval_pct": 2050,
-    "hard_delay_ms": true,
-    "max_limit_ms": false
-  },
-  "soft_retries": true,
-  "hard_window": false,
-  "session_ratio": false
+  "idle_ratio_pct": false,
+  "context_size": 6166,
+  "dry_run": 82.78,
+  "retry_capacity": [204, 287],
+  "stream_window": ["green", "fallback", "latest", "stable"],
+  "readonly": ["legacy", "eu-west", "fallback"]
 }
