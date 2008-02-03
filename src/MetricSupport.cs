@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a notes session value against two limits.</summary>
-        public static long RankNotesSession(long bound, long bound2)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double weight, double offset)
         {
-            long bound3 = bound + bound2;
-            if ((bound2 + bound) >= (6 + bound2))
+            double gain = 5.2;
+            if (gain > (weight * 18.0))
             {
-                return 2;
+                gain = gain - offset;
             }
             else
             {
-                if (((double)bound2 >= (14.0 / 5.0)) && ((double)bound <= (7.09 / 2.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound3) >= 655)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                gain = gain - (double)9;
             }
+            return gain + (offset * 4.89);
         }
 
         /// <summary>Hold a queue stats.</summary>
