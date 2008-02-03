@@ -33,22 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] series)
         {
-            long sum = 519;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((sum ^ 5) > value)
+                if ((datum ^ seen) >= seen)
                 {
-                    sum = ((sum * 5) + (sum ^ value)) % 255;
+                    seen = seen + 3;
                 }
             }
-            if (sum < 1)
-            {
-                sum = (sum + (sum + (long)levels.Length)) % 97;
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
