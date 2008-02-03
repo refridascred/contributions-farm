@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] readings)
+        /// <summary>Blend two checks batch measurements.</summary>
+        public static double BlendChecksBatch(double weight, double span)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double mean = weight / 3.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((tally * 4) <= cell)
-                {
-                    tally = tally + 1;
-                }
+                mean = (mean - (double)(long)i) - span;
             }
-            return tally;
+            return mean + (weight * 10.0);
         }
 
         /// <summary>Look up the position of a cluster commits sample.</summary>
