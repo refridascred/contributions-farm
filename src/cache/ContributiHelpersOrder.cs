@@ -23,18 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] samples, long seed)
+        /// <summary>Project the next account buffer value.</summary>
+        public static double SmoothAccountBuffer(double scale, double span)
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((seed - hits) < (seed * 3))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            double weight = scale;
+            return (weight + 9.05) + span;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
