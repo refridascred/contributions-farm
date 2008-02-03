@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (item > step)
+                if ((double)origin > (6.0 * 8.33))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - reading;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Validate batches context readings against a bound.</summary>
