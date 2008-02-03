@@ -37,11 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardDepth = 2373;
-        public const string BurstContributi = "fallback";
-        public const long HardLevel = 3001;
-        public const long HardWidth = 8881;
+        /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
+        public static bool CheckTokenGithubfarmBounds(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsRange(long[] data, long bound)
