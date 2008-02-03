@@ -28,19 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double ratio, double bias)
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
+            double gain = bias / 4.0;
+            if (gain <= (5.93 + ratio))
             {
-                if (!((state + state) > (limit - 76)))
-                {
-                    state = (state - (limit + state)) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                gain = gain + 6.3;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - 17.0) + (double)(long)i;
+            }
+            return gain + (double)57;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
