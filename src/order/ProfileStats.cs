@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] series, long bound)
         {
-            Stale,
-            Idle,
-            Paused,
-            Synced,
-            Retry,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading <= (3.86 * 1.1))
+                {
+                    seen = (seen + 1) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
