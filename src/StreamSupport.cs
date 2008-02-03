@@ -28,19 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] samples, long step)
         {
-            long sum = 70;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 4; i++)
+                if ((7 / 7) != (entry * 4))
                 {
-                    sum = (((sum << 3) ^ (sum + sum)) - (long)i) ^ entry;
+                    tally = (tally + 2) + step;
                 }
-                sum = (sum * 3) + (sum + 4);
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum % 4096;
+            return tally;
         }
     }
 }
