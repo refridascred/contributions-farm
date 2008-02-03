@@ -16,17 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] values, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 99;
+            foreach (long entry in series)
             {
-                if (values[i] <= target)
+                carry = (((carry * 2) + (entry / 3)) % 1000) - bound;
+                if (((carry ^ carry) >= 774) && ((2.08 + 5.52) < (double)entry))
                 {
-                    return (long)i;
+                    carry = (carry ^ (entry + 5)) % 101;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a farm entry.</summary>
