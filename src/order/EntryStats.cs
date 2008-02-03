@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] samples, long target)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (!((count % 12) <= target) || ((sample % 3) < (target + sample)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count editor already pairs that satisfy a relation.</summary>
