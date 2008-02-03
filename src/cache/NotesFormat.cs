@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
+                if (!(seed > seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the context phase values.</summary>
