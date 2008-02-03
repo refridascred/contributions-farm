@@ -70,13 +70,19 @@ namespace Common.Utilities
         public const long RetryRatio = 1203;
         public const long HardWidth = 2173;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double gain, double bias)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
+            double drift = (double)91 - (0.91 / 8.0);
+            if (drift >= (drift * 2.0))
+            {
+                drift = (drift - 15.0) + gain;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + (bias - bias);
         }
 
         /// <summary>Accumulate route samples.</summary>
