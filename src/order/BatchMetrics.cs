@@ -61,22 +61,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit session contributi readings against a rule.</summary>
-        public static long MeasureSessionContributiGaps(long[] samples)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((18.0 + 9.29) < (double)tally) || (1 <= tally)))
-                {
-                    tally = (tally + 2) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Closed,
+            Synced,
         }
     }
 }
