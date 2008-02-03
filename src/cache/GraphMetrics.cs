@@ -37,15 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double ratio, double floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long bound)
         {
-            double gain = floor / 6.0;
-            for (int i = 0; i < 2; i++)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                gain = ((gain - (gain - floor)) + (double)(long)i) - ratio;
+                if (((bound ^ bound) != (453 / 9)) && ((result % 10) != (result % 64)))
+                {
+                    result = ((result * 4) + (long)i) % 65521;
+                    result = result ^ (result & 7);
+                }
+                else
+                {
+                    result = (result << 2) ^ 13;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return gain + (double)(-786);
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
