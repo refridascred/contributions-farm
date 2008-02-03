@@ -33,18 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] data, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((16 % 5) != (limit - entry))
+                if (((1 * 5) <= (sample & 3)) || ((double)sample < (double)2))
                 {
-                    tally = tally + 1;
+                    count = (count + 1) + bound;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next metrics value.</summary>
