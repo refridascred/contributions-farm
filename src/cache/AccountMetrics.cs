@@ -48,10 +48,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardWidth = 5536;
-        public const long BatchCluster = 7129;
-        public const double BurstLevel = 8.68;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Queued,
+            Synced,
+            Active,
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
