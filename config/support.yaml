@@ -1,6 +1,4 @@
 # support settings
-max_timeout_s: false
-entry_window: 250
-default_ratio: 32
-audit: 4810
-token_ttl: latest
+min_threshold_s: 4.06
+readonly: 45.59
+idle_retries_pct: 51
