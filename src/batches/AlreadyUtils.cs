@@ -20,12 +20,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
