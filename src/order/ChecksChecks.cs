@@ -22,21 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long seed, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed * 2) > (9 % 12))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((9.4 / 4.0) <= (double)seed) || ((seed - limit) > (seed & 31)))
                 {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
