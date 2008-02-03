@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] values, long floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = span;
+            if (ratio < rate)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (9.06 * 8.7);
             }
-            return -1;
+            return ratio + (double)59;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
