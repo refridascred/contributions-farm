@@ -1,5 +1,5 @@
 {
-  "idle_ttl_ms": "eu-west",
-  "poll_size_pct": 21,
-  "idle_limit_count": ["strict", "primary"]
+  "idle_capacity_ms": 47,
+  "soft_timeout_count": "green",
+  "readonly": true
 }
