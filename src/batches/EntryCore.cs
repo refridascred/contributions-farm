@@ -30,18 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] values, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long offset, long offset2)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long next = offset + offset2;
+            if (((659 - offset2) <= (next << 2)) || ((next >> 3) < next))
             {
-                if ((floor + datum) < datum)
+                return 7;
+            }
+            else
+            {
+                if (((6.66 - 5.61) > (double)next) && ((double)offset == (0.1 - 2.58)))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((48 + offset) > (offset2 + 22))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((offset2 - offset2) <= (next / 9)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the farm mode values.</summary>
