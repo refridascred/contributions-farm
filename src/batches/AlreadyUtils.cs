@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long offset, long seed)
         {
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
+            if ((double)offset != (8.34 + 3.5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.13 - 19.0) > (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a layout options.</summary>
