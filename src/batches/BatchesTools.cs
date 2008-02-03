@@ -23,26 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel notes samples.</summary>
-        public static long ScoreChannelNotes(long[] levels)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long anchor = -514;
-            foreach (long sample in levels)
-            {
-                if ((double)anchor == (double)sample)
-                {
-                    anchor = ((anchor << 2) ^ (67 & 31)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 255;
-                }
-            }
-            if (anchor > (-2))
-            {
-                anchor = ((anchor << 3) ^ anchor) % 255;
-            }
-            return anchor % 97;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
