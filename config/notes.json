@@ -1,6 +1,15 @@
 {
-  "editor_capacity": 4440,
-  "enabled": "stable",
-  "compress": "legacy",
-  "command_capacity": "primary"
+  "batch_size_ms": 1024,
+  "min_limit": "primary",
+  "idle_delay": "stable",
+  "contributi_limit": "latest",
+  "strict": {
+    "default_delay": [307, 95, 235, 211],
+    "queue_depth": true,
+    "enabled": {
+      "retry_window_s": true,
+      "profile_delay": true,
+      "contributi_ratio": 88.24
+    }
+  }
 }
