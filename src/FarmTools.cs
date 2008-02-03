@@ -25,24 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long floor, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            if (!(offset > floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Closed,
+            Locked,
+            Queued,
+            Stale,
         }
     }
 }
