@@ -14,14 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 74.16;
+        public const long HardDepth = 1557;
+        public const long IdleSize = 807;
+        public const long MinSupport = 1042;
+        public const long DefaultRatio = 8743;
 
         /// <summary>Fold a list of route metric readings.</summary>
         public static long TallyRouteMetric(long[] samples)
