@@ -39,12 +39,21 @@ namespace Common.Utilities
         public const long LimitInterval = 7124;
         public const long IdleContext = 9056;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] values)
         {
-            Stale,
-            Synced,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
