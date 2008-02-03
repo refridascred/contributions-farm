@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batches metric samples.</summary>
-        public static long ScoreBatchesMetric(long[] readings, long floor)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long result = 97;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading - 337) >= result)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result + ((-24) * 2)) % 97) - floor;
-                }
-                if ((1 % 12) <= result)
-                {
-                    result = result + (3 - result);
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 885)
-            {
-                result = (result - (result + result)) % 255;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
