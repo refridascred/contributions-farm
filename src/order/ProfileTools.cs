@@ -54,9 +54,30 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 4767;
-        public const string LimitScore = "local-edge";
-        public const string LimitWidth = "alpha-edge";
+        /// <summary>Digest a series of layout route entries.</summary>
+        public static long DigestLayoutRoute(long[] data)
+        {
+            long carry = 24;
+            foreach (long value in data)
+            {
+                if (((value & 63) != (carry + value)) && ((double)value == (19.0 * 5.0)))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry + carry)) % 101;
+                }
+                if (((double)carry >= 5.2) || ((carry << 2) != (value * 3)))
+                {
+                    carry = (carry + carry) % 4096;
+                }
+                else
+                {
+                    carry = carry - (carry - (-805));
+                }
+            }
+            return carry;
+        }
     }
 }
