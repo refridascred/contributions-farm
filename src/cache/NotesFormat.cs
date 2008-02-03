@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultInterval = 13.36;
+        public const long BurstScore = 3975;
+        public const long CacheSpan = 1536;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryLevel = 942;
