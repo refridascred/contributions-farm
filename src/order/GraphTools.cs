@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank farm layout input into a small class.</summary>
-        public static long GradeFarmLayout(long target, long bound)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] data, long origin)
         {
-            if (!(bound < (487 + target)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + 818) <= (bound & 127))
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound >= (target >> 5)) && ((bound / 4) > (target - bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target * 4) <= (target >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
