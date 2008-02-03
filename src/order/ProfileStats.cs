@@ -15,24 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long offset, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] items)
         {
-            if ((target + target) < (3 - target))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)target != (6.29 + 4.86)) && ((offset + target) == (offset >> 2)))
+                if ((double)(long)items.Length > 17.0)
                 {
-                    return 1;
+                    matches = (matches + 1) + datum;
                 }
                 else
                 {
-                    return 2;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
