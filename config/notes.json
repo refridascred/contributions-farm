@@ -1,14 +1,14 @@
 {
-  "verbose": "cached",
-  "counter_interval": {
-    "cache_limit_s": {
-      "verbose": "fallback",
-      "cache_delay": 52,
-      "soft_depth_ms": false
-    },
-    "soft_threshold_count": true,
-    "hard_depth_pct": 1024
+  "compress": true,
+  "sync_threshold_ms": 23,
+  "retry_ratio_pct": ["fallback", "primary"],
+  "flush_interval_ms": {
+    "sync_depth_ms": 90,
+    "base_timeout_s": 4910,
+    "sync_capacity": 5896,
+    "retry_threshold": 1024,
+    "flush_interval": "eu-west"
   },
-  "compress": 51,
-  "default_retries_count": 9454
+  "hard_window_pct": 30,
+  "max_delay": "eu-west"
 }
