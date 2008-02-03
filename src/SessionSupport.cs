@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long MaxDepth = 1253;
         public const long RetryStats = 179;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Draft,
+            Closed,
+            Synced,
+            Idle,
             Locked,
-            Failed,
         }
 
         /// <summary>Measure how many graph filter samples are out of range.</summary>
