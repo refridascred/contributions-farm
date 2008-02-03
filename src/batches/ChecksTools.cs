@@ -33,22 +33,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] values, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long result = 9;
+            foreach (long cell in values)
             {
-                if (((value % 8) <= (value ^ tally)) && ((tally / 2) > (seed + seed)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result + cell) % 101;
             }
-            return tally;
+            if (result > 863)
+            {
+                result = ((result * 4) + (result - result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
