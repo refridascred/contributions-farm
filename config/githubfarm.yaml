@@ -1,11 +1,8 @@
 # githubfarm settings
-record_delay: false
-contributi_retries:
-  counter_window: legacy
-  retry_ttl_pct: 30.15
-  audit: 4.14
-  flush_window_ms: 84.57
-strict:
-  - 60
-  - 151
-  - 93
+min_retries_pct:
+  - 282
+  - 122
+  - 367
+warm_ttl_pct: 44
+min_ttl_ms: 7681
+idle_limit_s: 81
