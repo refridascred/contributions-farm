@@ -1,4 +1,9 @@
 # support settings
-batch_window_count: true
-channel_size: true
-base_limit_pct: standard
+default_ratio_s: 8738
+batches_retries: 250
+hard_delay_count: 64.05
+readonly: standard
+dry_run:
+  - stable
+  - local
+cache_limit_s: 60
