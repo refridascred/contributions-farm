@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long step)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
