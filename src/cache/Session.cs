@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] samples, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 7;
+            foreach (long value in values)
             {
-                if ((samples[i] > bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum - value) % 4096) - step;
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
