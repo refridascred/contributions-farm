@@ -1,17 +1,7 @@
 {
-  "entry_timeout": "legacy",
-  "strict": 30,
-  "sync_interval_s": 61.74,
-  "default_retries_count": 30,
-  "cache_capacity_pct": {
-    "poll_retries_count": {
-      "burst_size": false,
-      "retry_threshold_count": 79.6,
-      "idle_limit_s": "green",
-      "soft_size": false
-    },
-    "poll_limit_pct": "fallback",
-    "max_interval": 18
-  },
-  "window_ttl": [280, 485, 50]
+  "contributi_capacity": false,
+  "batch_timeout_pct": "local",
+  "readonly": "legacy",
+  "audit": true,
+  "notes_threshold": "local"
 }
