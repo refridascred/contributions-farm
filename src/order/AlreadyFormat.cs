@@ -49,12 +49,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
+            Pending,
+            Stale,
+            Active,
+            Done,
         }
     }
 }
