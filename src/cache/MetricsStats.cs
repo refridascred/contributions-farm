@@ -45,32 +45,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long seed, long step)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] samples, long offset)
         {
-            long edge = seed + step;
-            if (!((seed & 63) < (seed + 13)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (step >= (edge + 547))
+                if (samples[i] > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed >= (step - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
