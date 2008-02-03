@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] readings, long offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
