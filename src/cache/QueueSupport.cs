@@ -29,19 +29,13 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double rate, double span)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double mean = (span + rate) / 7.0;
-            if (mean > (mean / 6.0))
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (span / 7.0)) + (double)(long)i;
-            }
-            return mean + 2.4;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
