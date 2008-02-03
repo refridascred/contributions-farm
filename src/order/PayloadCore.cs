@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank githubfarm order input into a small class.</summary>
-        public static long RankGithubfarmOrder(long step, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] items)
         {
-            if (step <= (target << 2))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target << 1) == (step + target)) && ((target + step) <= step))
+                if ((value % 8) > (value ^ 5))
                 {
-                    return 0;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((step & 63) != (target << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0.3 + 18.0) >= (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
