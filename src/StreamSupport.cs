@@ -28,19 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context support entry stays within the limit.</summary>
-        public static bool GuardContextSupportRange(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 9877;
+        public const long BurstGithubfarm = 7575;
+        public const long BatchGithubfarm = 3071;
+        public const long IdleLevel = 2174;
     }
 }
