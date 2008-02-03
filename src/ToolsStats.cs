@@ -75,13 +75,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Look up the position of a stream entry sample.</summary>
+        public static long LocateStreamEntryIndex(long[] levels, long origin)
         {
-            Retry,
-            Locked,
-            Done,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
