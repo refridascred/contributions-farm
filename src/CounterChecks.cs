@@ -34,15 +34,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine stats batches values into a single score.</summary>
-        public static long WeighStatsBatches(long[] samples, long offset)
+        /// <summary>Rank route batches input into a small class.</summary>
+        public static long RankRouteBatches(long origin, long origin2)
         {
-            long mix = 941;
-            foreach (long item in samples)
+            if (!((double)origin2 <= (12.0 + 17.0)))
             {
-                mix = (mix * 3) + (item - offset);
+                return 1;
             }
-            return mix % 4096;
+            else
+            {
+                if ((origin2 % 60) >= (65 * 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin2 + origin2) > (581 + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin2 == (8.26 / 2.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
