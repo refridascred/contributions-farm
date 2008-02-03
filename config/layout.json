@@ -1,8 +1,10 @@
 {
-  "dry_run": ["primary", "strict", "eu-west"],
-  "sync_retries_s": ["eu-west", "staging", "standard", "fallback"],
-  "warm_depth_pct": true,
-  "base_timeout_pct": "latest",
-  "soft_ttl_s": true,
-  "sync_ttl": true
+  "strict": false,
+  "warm_timeout_count": {
+    "cache_capacity": 5377,
+    "warm_retries_count": "strict",
+    "cache_window": [267, 417]
+  },
+  "soft_size_s": "fallback",
+  "stats_size": "open"
 }
