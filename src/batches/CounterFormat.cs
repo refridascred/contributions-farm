@@ -25,18 +25,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] levels, long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double gain = rate;
+            if (gain > gain)
             {
-                if (24 < (319 - seed))
-                {
-                    tally = (tally + 3) + value;
-                }
+                gain = gain - (bias - rate);
             }
-            return tally;
+            return gain + (gain * 2.1);
         }
     }
 }
