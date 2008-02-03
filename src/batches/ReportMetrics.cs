@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 1754;
+        public const long BaseReport = 7429;
+        public const double BatchSize = 33.76;
+        public const double BatchRatio = 75.39;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] items, long floor)
