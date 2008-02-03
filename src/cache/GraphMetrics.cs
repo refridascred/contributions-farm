@@ -41,18 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] readings, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((target ^ hits) >= (459 - reading))
+                if (entry > seed)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Project the next graph value.</summary>
