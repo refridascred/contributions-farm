@@ -1,19 +1,6 @@
 # support settings
-compress: local
-retry_threshold:
-  - green
-  - latest
-  - primary
-  - stable
-dry_run: local
-base_size_ms:
-  hard_ratio_count: primary
-  verbose:
-    - staging
-    - primary
-    - green
-    - eu-west
-  idle_window_ms: 100
-  batches_interval: edge
-  report_ttl: false
-  compress: 8251
+max_timeout_s: false
+entry_window: 250
+default_ratio: 32
+audit: 4810
+token_ttl: latest
