@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 110;
-        public const double DefaultSpan = 88.31;
-        public const string WindowSupport = "primary-v2";
-        public const long SoftSupport = 3573;
-        public const double HardWidth = 4.8;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double SmoothReport(double scale, double bias)
