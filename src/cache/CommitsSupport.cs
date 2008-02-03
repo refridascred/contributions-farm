@@ -49,12 +49,17 @@ namespace Common.Utilities
             return scale2 + (double)9;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleScore = 6015;
-        public const long BaseDepth = 157;
-        public const long DefaultBuffer = 4935;
-        public const string BurstTimeout = "legacy-v2";
-        public const string HardScore = "strict-v2";
+        /// <summary>Roll a graph tools counter forward.</summary>
+        public static long DeriveGraphTools(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = anchor - floor;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long ScoreProfile(long[] items, long bound)
