@@ -1,11 +1,12 @@
 # Command notes
 
-The already module keeps layout values in sync with the route cache.
-A filter that stays idle for too long is moved to the graph list.
-When a batch fails, the metrics handler retries a few times before giving up.
+Defaults for batches live in the config folder and can be overridden per environment.
+A queue that stays idle for too long is moved to the counter list.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Prefer cache defaults
-- Keep profile values small
+- Document new report fields
+- Prefer route defaults
+- Keep editor values small
+- Review report limits each release
