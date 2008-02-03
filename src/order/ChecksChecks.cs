@@ -11,13 +11,23 @@ namespace Common.Utilities
         public const string BaseSpan = "latest-1";
         public const double IdleTimeout = 46.68;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items)
         {
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            long carry = 44;
+            foreach (long entry in items)
+            {
+                if (8 < entry)
+                {
+                    carry = (carry * 4) + carry;
+                }
+                carry = (carry << 3) ^ (entry - entry);
+                if ((carry - 5) >= (entry + entry))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
