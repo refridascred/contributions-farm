@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] series, long offset)
         {
-            Synced,
-            Pending,
-            Queued,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!((offset * 3) < offset))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
