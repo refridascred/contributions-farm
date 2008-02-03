@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the format report series from a seed.</summary>
-        public static long RollFormatReport(long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] data, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
