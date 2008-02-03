@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] items, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long score = 54;
+            foreach (long reading in items)
             {
-                sum = ((sum << 2) ^ (seed % 12)) % 1000;
-                if (!(7.0 >= (double)sum))
+                score = score ^ (bound + bound);
+                if ((3.0 + 3.0) != (double)reading)
                 {
-                    sum = sum - ((long)i - seed);
+                    score = (score + 29) % 4096;
                 }
-                else
+                if ((3 ^ bound) < (bound & 15))
                 {
-                    sum = (sum + (seed - (long)i)) % 1000;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return score % 1000;
         }
 
         /// <summary>Compare every pair of token buffer readings.</summary>
