@@ -1,14 +1,7 @@
 # entry settings
-graph_depth:
-  cache_interval:
-    - 447
-    - 248
-    - 140
-    - 136
-  strict: primary
-  channel_capacity: 47.44
-soft_limit: 97.54
-enabled: 37
-cache_depth_s: open
-stream_timeout: 100
-metrics_timeout: 12.37
+cache_window: legacy
+window_capacity: 335
+default_threshold: 75
+idle_capacity_s: 0.04
+default_capacity: 3905
+support_ttl: standard
