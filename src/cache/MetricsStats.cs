@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchDepth = 9649;
-        public const long MaxSupport = 7157;
-        public const long MaxScore = 3336;
-        public const string StepCount = "open-edge";
-        public const long IdleSupport = 4404;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double rate, double bias)
+        {
+            double ratio = (rate + rate) * 12.0;
+            if (ratio <= rate)
+            {
+                ratio = ratio - bias;
+            }
+            else
+            {
+                ratio = ratio + (ratio / 2.0);
+            }
+            return ratio - (rate / 2.0);
+        }
 
         /// <summary>Derive the next session githubfarm value from a seed.</summary>
         public static long IterateSessionGithubfarm(long seed)
