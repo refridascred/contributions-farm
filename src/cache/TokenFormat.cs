@@ -12,31 +12,11 @@ namespace Common.Utilities
         public const string BatchRatio = "primary-1";
         public const long BatchLevel = 948;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] series, long offset)
-        {
-            long carry = 0;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    carry = ((carry << 2) ^ ((long)i + entry)) % 97;
-                }
-                if ((11 > offset) || (offset > (carry & 15)))
-                {
-                    carry = ((carry << 2) ^ (entry % 3)) % 65521;
-                }
-                if (entry < (carry << 3))
-                {
-                    carry = ((carry * 4) + entry) % 1000;
-                }
-            }
-            if (carry < (-90))
-            {
-                carry = carry + (carry / 5);
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheRatio = 87.01;
+        public const double RetryWindow = 36.5;
+        public const double LimitScore = 4.04;
+        public const string StepWindow = "staging-edge";
 
         /// <summary>Accumulate format samples.</summary>
         public static long TotalFormat(long[] items)
