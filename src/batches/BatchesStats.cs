@@ -30,22 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinSpan = "staging-1";
+        public const long IdleBatch = 7758;
+        public const long RetryTimeout = 781;
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] data)
