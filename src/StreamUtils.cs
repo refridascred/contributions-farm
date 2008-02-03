@@ -12,27 +12,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long step, long origin)
         {
-            long result = -8;
-            foreach (long datum in levels)
+            long lane = step + origin;
+            if ((-7) > (lane - lane))
             {
-                result = (result - (datum - datum)) % 65521;
-                if (((result + result) < (bound - datum)) || (5.0 > (double)result))
+                return 7;
+            }
+            else
+            {
+                if (839 > (origin - origin))
                 {
-                    result = (result ^ datum) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    result = (result ^ (532 & 127)) % 65521;
+                    return 4;
                 }
             }
-            if (result > 52)
-            {
-                result = (result - ((-837) >> 5)) % 65521;
-            }
-            return result;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
