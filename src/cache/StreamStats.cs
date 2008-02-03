@@ -37,9 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchSchema = 26.46;
-        public const long StepSize = 3423;
-        public const double HardSchema = 20.01;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxWidth = 91.08;
+        public const string DefaultCounter = "local-edge";
+        public const long LimitTimeout = 1391;
+        public const string BurstCounter = "alpha-1";
+        public const double LimitFactor = 37.2;
     }
 }
