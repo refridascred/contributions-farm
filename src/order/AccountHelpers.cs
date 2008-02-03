@@ -66,14 +66,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Iterate the queue batches series from a seed.</summary>
+        public static long DeriveQueueBatches(long offset)
         {
-            Closed,
-            Synced,
-            Locked,
-            Ready,
-            Dropped,
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(((long)i + (long)i) == (181 & 31)))
+                {
+                    mix = mix ^ (long)i;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ ((long)i + 75);
+                    mix = (mix + (offset - offset)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
