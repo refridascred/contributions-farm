@@ -29,19 +29,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] readings, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] data, long target)
         {
             long count = 0;
-            foreach (long datum in readings)
+            foreach (long sample in data)
             {
-                if ((count << 2) >= (count & 3))
+                if ((target >> 5) <= (target * 2))
                 {
-                    count = ((count + 1) ^ datum) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) + sample;
                 }
             }
             return count;
