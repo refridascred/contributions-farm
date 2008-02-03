@@ -27,10 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 4281;
-        public const double BatchSpan = 11.88;
-        public const double CacheFormat = 85.77;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Retry,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
