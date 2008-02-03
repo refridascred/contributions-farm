@@ -34,31 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] levels, long seed)
         {
-            long total = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((item - total) != (total << 2)))
+                if (levels[i] > seed)
                 {
-                    total = total - (total >> 2);
-                    total = (total << 2) ^ (item + total);
-                }
-                if (((929 * 2) <= total) || ((item + item) >= (total + item)))
-                {
-                    total = (total << 3) ^ 606;
-                }
-                else
-                {
-                    total = (total * 5) + (item - total);
-                }
-                if (1.0 <= (double)item)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count token cluster pairs that satisfy a relation.</summary>
