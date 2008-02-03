@@ -1,10 +1,15 @@
 # entry settings
-burst_limit_pct:
-  enabled: fallback
-  sync_limit_pct: legacy
-  batch_interval_count: 6065
-  metric_ratio: 56
-counter_delay: eu-west
-strict:
-  - 428
-  - 164
+base_window_ms: 8189
+enabled: staging
+metric_ratio: true
+profile_threshold:
+  - 307
+  - 25
+  - 349
+  - 342
+flush_delay_pct:
+  - 61
+  - 16
+  - 212
+  - 34
+flush_ttl_ms: 96.04
