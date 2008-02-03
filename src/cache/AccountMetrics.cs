@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((-424) & 63) > ((long)i * 5)) && ((step + acc) < acc))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    break;
+                    mix = ((mix ^ (offset << 3)) % 65521) ^ (long)i2;
+                }
+                if (!((double)mix <= 15.0))
+                {
+                    mix = (mix << 3) ^ (long)i;
                 }
                 else
                 {
-                    acc = acc ^ step;
+                    mix = (mix + (offset ^ offset)) % 101;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Hold a batches record.</summary>
