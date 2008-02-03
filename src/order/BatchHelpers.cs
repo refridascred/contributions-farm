@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 5377;
-        public const long LimitDepth = 3606;
-        public const double BatchRatio = 36.18;
-        public const long DefaultCommits = 2160;
-        public const long BaseCommits = 935;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxCount = 92.41;
+        public const string CacheRecord = "strict-1";
+        public const string HardRecord = "staging-edge";
+        public const long StepScore = 2765;
+        public const string MaxFactor = "local-edge";
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
