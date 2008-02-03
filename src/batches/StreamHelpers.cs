@@ -45,17 +45,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 0;
+            foreach (long sample in readings)
             {
-                if (data[i] >= bound)
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 97;
+                if (anchor <= sample)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + (sample + 48)) % 101;
                 }
             }
-            return -1;
+            if (anchor < 493)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the session mode values.</summary>
