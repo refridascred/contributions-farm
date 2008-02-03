@@ -49,10 +49,23 @@ namespace Common.Utilities
         public const double LimitInterval = 64.62;
         public const string SoftAlready = "primary-edge";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 91.25;
-        public const string StepPayload = "standard";
-        public const string RetryPayload = "primary";
+        /// <summary>Count the stream notes entries that pass the check.</summary>
+        public static long TallyStreamNotesGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally + reading) == (reading - reading))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long target, long floor)
