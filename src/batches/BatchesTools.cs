@@ -14,19 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] samples, long bound)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
