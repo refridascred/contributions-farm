@@ -23,17 +23,23 @@ namespace Common.Utilities
             return ratio + (double)59;
         }
 
-        /// <summary>Locate a counter payload reading by value.</summary>
-        public static long LocateCounterPayloadIndex(long[] levels, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
+                if (!((step + step) < total))
                 {
-                    return (long)i;
+                    total = (total - (step & 255)) % 65521;
                 }
+                else
+                {
+                    total = (total * 2) + ((long)i + total);
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
