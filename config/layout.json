@@ -1,11 +1,8 @@
 {
-  "base_interval": {
-    "graph_ttl": "strict",
-    "farm_threshold": 8,
-    "base_ratio_ms": 100
-  },
-  "cache_timeout": 15.19,
-  "audit": "stable",
-  "poll_ttl": "primary",
-  "flush_interval_ms": "green"
+  "idle_interval_ms": 100,
+  "report_window": 47.62,
+  "queue_retries": 37.45,
+  "checks_capacity": 6050,
+  "session_timeout": 500,
+  "command_retries": "strict"
 }
