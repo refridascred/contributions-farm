@@ -45,21 +45,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long step, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            if ((double)seed >= (7.24 / 5.0))
             {
-                mix = (mix << 3) ^ (mix * 3);
-                if (!((mix + mix) > (mix + seed)))
-                {
-                    long offset = (seed & 3) * 3;
-                    mix = (mix << 3) ^ (offset - mix);
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((step >> 1) > (step % 12))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
