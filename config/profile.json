@@ -1,8 +1,10 @@
 {
-  "poll_threshold": "standard",
-  "session_ttl": "stable",
-  "warm_limit_count": false,
-  "report_capacity": "latest",
-  "notes_window": 49.58,
-  "strict": 3072
+  "enabled": {
+    "verbose": [346, 11, 49, 410],
+    "queue_capacity": "green",
+    "graph_capacity": "primary",
+    "strict": false
+  },
+  "token_capacity": true,
+  "support_window": "primary"
 }
