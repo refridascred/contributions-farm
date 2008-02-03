@@ -82,11 +82,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            New,
+            Retry,
+            Active,
+            Draft,
+            Dropped,
         }
     }
 }
