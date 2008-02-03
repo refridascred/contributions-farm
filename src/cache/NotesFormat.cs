@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultInterval = 13.36;
-        public const long BurstScore = 3975;
-        public const long CacheSpan = 1536;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - seen) < seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryLevel = 942;
