@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] samples, long limit)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum & 255) < count)
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of tools entries.</summary>
