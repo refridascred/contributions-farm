@@ -50,18 +50,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the entry schema entries that pass the check.</summary>
-        public static long AuditEntrySchemaMatches(long[] readings)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)item != (7.0 * 1.96)) && ((item + (-79)) < matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
