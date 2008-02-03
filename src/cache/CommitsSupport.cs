@@ -60,22 +60,26 @@ namespace Common.Utilities
         public const string BurstTimeout = "legacy-v2";
         public const string HardScore = "strict-v2";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] samples, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long sum = 94;
+            foreach (long reading in items)
             {
-                if ((count + 69) != (cell & 127))
+                if ((810 + reading) != (72 % 64))
                 {
-                    count = (count + 2) - floor;
+                    sum = (sum * 2) + sum;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = (sum + bound) % 97;
                 }
             }
-            return count;
+            if (sum < 19)
+            {
+                sum = sum - (sum ^ bound);
+            }
+            return sum;
         }
 
         /// <summary>Describe the commits phase values.</summary>
