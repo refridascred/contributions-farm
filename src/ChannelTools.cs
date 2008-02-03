@@ -29,22 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] items, long origin)
         {
-            long carry = 27;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((carry % 8) != (reading + 940))
+                if (value <= (matches ^ 3))
                 {
-                    carry = carry + (carry & 7);
+                    matches = (matches + 1) + origin;
                 }
             }
-            if (carry < 3)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry;
+            return matches;
         }
     }
 }
