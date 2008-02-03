@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] series, long bound)
         {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
