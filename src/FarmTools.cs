@@ -25,12 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long floor, long offset)
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
+            if (!(offset > floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
