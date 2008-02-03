@@ -24,19 +24,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] series, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long score = 83;
+            foreach (long entry in readings)
             {
-                if (entry != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (score << 3) ^ entry;
+                score = ((score * 3) + (step + step)) % 4096;
             }
-            return valid;
+            return score % 4096;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
