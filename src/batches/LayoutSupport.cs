@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardRatio = 93.86;
-        public const long HardBatch = 8548;
-        public const long DefaultBatch = 436;
-        public const long CacheCount = 108;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Synced,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadOutliers(long[] levels, long target)
