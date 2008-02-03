@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
+            Paused,
+            Retry,
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Accumulate window order samples.</summary>
