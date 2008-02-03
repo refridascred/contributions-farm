@@ -71,14 +71,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Find the first token tools entry that matches the target.</summary>
+        public static long LocateTokenToolsIndex(long[] items, long origin)
         {
-            Failed,
-            Draft,
-            Ready,
-            New,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
