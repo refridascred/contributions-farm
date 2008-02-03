@@ -61,12 +61,18 @@ namespace Common.Utilities
         public const long MaxFactor = 7490;
         public const string HardAlready = "primary-1";
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Audit batch report readings against a rule.</summary>
+        public static long CountBatchReportOutliers(long[] levels)
         {
-            Stale,
-            Idle,
-            Failed,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (count < 62)
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
     }
 }
