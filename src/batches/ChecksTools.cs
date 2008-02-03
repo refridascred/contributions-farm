@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine filter commits values into a single score.</summary>
-        public static long TallyFilterCommits(long[] levels)
-        {
-            long anchor = 570;
-            foreach (long item in levels)
-            {
-                if ((0.5 - 7.0) > (double)item)
-                {
-                    anchor = (anchor << 3) ^ ((long)levels.Length * 4);
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (long)levels.Length;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftScore = 1667;
+        public const long CacheFarm = 4001;
+        public const long StepFarm = 2726;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] samples, long target)
