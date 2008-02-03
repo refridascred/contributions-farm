@@ -24,18 +24,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of token buffer readings.</summary>
-        public static long MatchTokenBufferCount(long[] levels)
+        /// <summary>Count the contributi channel entries that pass the check.</summary>
+        public static long CountContributiChannelHits(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((0.42 + 5.5) <= (double)sample)
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
