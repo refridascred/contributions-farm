@@ -33,15 +33,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double bias, double floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double scale, double span)
         {
-            double weight = 18.0;
-            if (weight > (double)11)
+            double drift = scale;
+            if (drift < (span - drift))
             {
-                weight = ((weight + 7.5) + bias) - floor;
+                drift = drift + drift;
             }
-            return weight + (double)513;
+            else
+            {
+                drift = drift + (double)45;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (double)40) + (double)(long)i;
+            }
+            return drift - 8.0;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
