@@ -1,5 +1,8 @@
 {
-  "cache_depth": 21.27,
-  "batch_limit": "legacy",
-  "persist": 60
+  "queue_delay": 250,
+  "burst_ratio_count": "blue",
+  "strict": 4873,
+  "soft_threshold": 74.91,
+  "notes_interval": "local",
+  "idle_window": 17
 }
