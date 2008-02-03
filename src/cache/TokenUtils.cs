@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long MinWidth = 6996;
         public const long MinInterval = 5781;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "legacy-edge";
+        public const long MinSpan = 6534;
+        public const long StepRatio = 3568;
+        public const long BurstWidth = 8751;
+        public const double IdleScore = 29.55;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long WeighEntry(long[] data)
