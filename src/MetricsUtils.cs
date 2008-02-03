@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
+            long result = 0;
+            foreach (long value in levels)
+            {
+                if ((value + (long)levels.Length) != (0 & 127))
+                {
+                    result = ((result * 2) + result) % 101;
+                }
+            }
+            if (result < 38)
+            {
+                result = (result + result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
