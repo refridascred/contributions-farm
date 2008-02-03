@@ -18,13 +18,11 @@ namespace Common.Utilities
         public const long HardInterval = 1759;
         public const long MaxCount = 2386;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Closed,
-            Synced,
-            Locked,
-            Active,
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
