@@ -39,11 +39,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 5872;
-        public const long BurstWidth = 2039;
-        public const long DefaultWidth = 9049;
-        public const double MinSize = 34.64;
-        public const string HardLevel = "alpha-1";
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long seed, long seed2)
+        {
+            if (1.3 <= (double)seed2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed2 != (double)1)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed / 4) == (seed * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((81 + seed2) <= (seed2 - seed2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
