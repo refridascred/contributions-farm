@@ -14,12 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Paused,
-            Ready,
-            Idle,
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
