@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] samples, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((samples[i] == bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
