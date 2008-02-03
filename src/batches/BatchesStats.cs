@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseScore = 8769;
-        public const long BaseCount = 4245;
-        public const long CacheMetrics = 2724;
-        public const double MaxFactor = 85.46;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Locked,
+            Draft,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
