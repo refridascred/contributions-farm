@@ -20,14 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double scale, double bias)
         {
-            Paused,
-            Draft,
-            Closed,
-            Done,
-            Failed,
+            double rate = bias * 8.0;
+            if (rate < rate)
+            {
+                rate = rate - 12.0;
+            }
+            else
+            {
+                rate = rate - (double)5;
+            }
+            return rate + scale;
         }
 
         /// <summary>Describe the format state values.</summary>
