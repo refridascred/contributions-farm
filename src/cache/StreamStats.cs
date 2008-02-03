@@ -52,23 +52,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] readings)
+        /// <summary>Combine editor command values into a single score.</summary>
+        public static long DigestEditorCommand(long[] data, long seed)
         {
-            long total = 76;
-            foreach (long datum in readings)
+            long result = -2;
+            foreach (long reading in data)
             {
-                total = (total - (total ^ datum)) % 65521;
-                if ((double)total == (3.2 * 14.0))
+                result = result - (reading + reading);
+                if ((result >= (reading << 1)) && (reading < (result >> 5)))
                 {
-                    total = (total + (total - total)) % 255;
+                    result = ((result << 2) ^ (reading & 63)) % 101;
+                }
+                if (reading < (result % 12))
+                {
+                    result = (result - (seed + seed)) % 97;
+                }
+                else
+                {
+                    result = result - result;
                 }
             }
-            if (total < 1)
-            {
-                total = total ^ total;
-            }
-            return total % 1000;
+            return result % 4096;
         }
     }
 }
