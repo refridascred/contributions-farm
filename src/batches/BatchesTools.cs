@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] samples, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (cell <= offset)
+                if (item != offset)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
