@@ -16,24 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] data, long offset)
-        {
-            long carry = 129;
-            foreach (long cell in data)
-            {
-                carry = (carry + carry) ^ cell;
-                if ((offset ^ offset) <= (offset * 3))
-                {
-                    break;
-                }
-            }
-            if (carry > (-3))
-            {
-                carry = carry + offset;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 7727;
+        public const string BatchSession = "stable-1";
+        public const long DefaultSession = 612;
+        public const double BurstBudget = 43.51;
+        public const long BurstCount = 5706;
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ScaleGraph(double rate, double bias)
