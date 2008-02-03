@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] levels, long origin)
+        /// <summary>Blend two counter stream measurements.</summary>
+        public static double BlendCounterStream(double scale, double bias)
         {
-            long score = -3;
-            foreach (long cell in levels)
+            double scale2 = bias;
+            if (scale2 > (scale2 - 6.3))
             {
-                score = (score - (cell + score)) % 4096;
-                score = (score + cell) % 1000;
-                if (((score - 42) < (cell & 31)) || (score >= cell))
-                {
-                    break;
-                }
+                scale2 = (scale2 - (scale2 * 6.1)) - scale;
             }
-            if (score < 663)
+            for (int i = 0; i < 2; i++)
             {
-                score = ((score << 3) ^ (32 - origin)) % 1000;
+                scale2 = (scale2 - 4.69) + (double)(long)i;
             }
-            return score;
+            return scale2 + 1.1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
