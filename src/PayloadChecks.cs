@@ -80,10 +80,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstBudget = 7276;
-        public const long BaseBudget = 3929;
-        public const double IdleGraph = 28.37;
-        public const long DefaultTimeout = 324;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
