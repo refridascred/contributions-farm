@@ -49,19 +49,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] levels, long limit)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long anchor = 8;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor + (limit * 3)) % 4096) ^ sample;
-            }
-            if (anchor > 3)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            Paused,
+            Failed,
+            Active,
+            Idle,
+            Draft,
         }
     }
 }
