@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (item >= origin)
+                if (!((double)36 == (double)datum))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
