@@ -77,15 +77,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double span)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double scale = (double)(56 + 705);
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (((scale - (1.98 - scale)) - (double)(long)i) + weight) - span;
-            }
-            return scale - 4.1;
+            Closed,
+            Done,
+            Synced,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
