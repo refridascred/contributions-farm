@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long MinWidth = 6996;
         public const long MinInterval = 5781;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "legacy-edge";
-        public const long MinSpan = 6534;
-        public const long StepRatio = 3568;
-        public const long BurstWidth = 8751;
-        public const double IdleScore = 29.55;
+        /// <summary>Look up the position of a payload schema sample.</summary>
+        public static long SeekPayloadSchemaIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] values, long floor)
