@@ -41,24 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long offset, long target)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            if (!((double)offset >= (2.8 / 5.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset >> 1) >= (offset + target)) && ((offset + offset) < offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
