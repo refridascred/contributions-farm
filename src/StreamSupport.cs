@@ -29,15 +29,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double ratio, double bias)
-        {
-            double mean = (double)5;
-            if (mean < (mean + bias))
-            {
-                mean = mean + bias;
-            }
-            return mean - ratio;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitScore = 1792;
+        public const long MaxFactor = 3055;
+        public const long WindowRatio = 6312;
+        public const long DefaultPayload = 7655;
     }
 }
