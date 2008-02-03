@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two metric commits measurements.</summary>
-        public static double BlendMetricCommits(double gain, double floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long origin, long origin2)
         {
-            double ratio = gain + (double)301;
-            if (ratio <= floor)
+            long offset = origin + origin2;
+            if (offset <= (origin2 + offset))
             {
-                ratio = ratio + (double)276;
+                return 8;
             }
             else
             {
-                ratio = ratio - (ratio - gain);
+                if (offset > (origin + 37))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return ratio - ratio;
         }
 
         /// <summary>Define support limits and defaults.</summary>
