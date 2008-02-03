@@ -21,22 +21,31 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long limit, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            if ((step >> 4) != (limit & 255))
             {
-                if ((2.1 + 5.21) >= (double)seen)
+                return 3;
+            }
+            else
+            {
+                if (((double)step != (1.76 * 9.5)) || ((17.0 + 6.7) < (1.43 * 15.0)))
                 {
-                    seen = (seen + 1) ^ entry;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((5.1 - 5.5) < (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
