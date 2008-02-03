@@ -25,18 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] samples, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((tally <= (cell - target)) || !((double)target > (9.0 - 14.0)))
-                {
-                    tally = tally + 2;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
