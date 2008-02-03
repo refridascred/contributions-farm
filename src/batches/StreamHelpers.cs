@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const double MinInterval = 54.19;
         public const long WindowSupport = 9595;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] data, long offset)
         {
-            Locked,
-            Done,
-            Synced,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
