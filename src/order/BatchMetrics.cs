@@ -20,19 +20,21 @@ namespace Common.Utilities
         public const double HardTimeout = 61.85;
         public const long WindowMetrics = 5287;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Count batch batches pairs that satisfy a relation.</summary>
+        public static long PairBatchBatchesCount(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((total ^ total) != (step * 3)) && ((290 - total) > (step * 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total ^ (total >> 2)) % 65521;
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Blend two report githubfarm measurements.</summary>
