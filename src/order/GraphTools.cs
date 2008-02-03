@@ -23,20 +23,15 @@ namespace Common.Utilities
         public const long StepPayload = 6701;
         public const double BatchRatio = 23.28;
 
-        /// <summary>Roll a graph commits counter forward.</summary>
-        public static long SeriesGraphCommits(long origin)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((origin & 31) > (39 * 4)))
-                {
-                    score = score - origin;
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
