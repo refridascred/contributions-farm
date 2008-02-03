@@ -49,10 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultFarm = "fallback-1";
-        public const long MaxInterval = 3072;
-        public const long LimitFactor = 2314;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long SortSession(long step, long floor)
