@@ -1,20 +1,15 @@
 # githubfarm settings
-hard_depth_ms: 250
-flush_window:
-  batch_ratio: true
-  min_ratio_count:
-    - 3
-    - 350
-    - 401
-  hard_size: strict
-retry_timeout_s:
-  cache_limit_ms:
-    token_threshold: 51
-    retry_ratio_pct: primary
-    persist:
-      - 187
-      - 458
-      - 431
-  compress: 50.24
-  flush_ttl: cached
-dry_run: false
+compress: latest
+idle_timeout_s:
+  min_capacity_ms:
+    batch_ratio_pct: 250
+    hard_interval: false
+    base_timeout: 14.47
+    metrics_size: 8.8
+    burst_interval_pct: 64.27
+  soft_limit_ms: 250
+  base_ratio_count: 74
+hard_threshold_s: 16.68
+notes_interval: 1024
+soft_interval_s: blue
+warm_interval_s: 60
