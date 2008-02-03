@@ -57,11 +57,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 2892;
-        public const long BatchDepth = 1053;
-        public const double HardSpan = 12.4;
-        public const string HardScore = "primary-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinDepth = 5673;
+        public const long StepProfile = 7436;
+        public const long SoftFactor = 2042;
+        public const double BatchInterval = 19.34;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultAlready = 2814;
