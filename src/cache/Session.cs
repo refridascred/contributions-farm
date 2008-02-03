@@ -22,10 +22,15 @@ namespace Common.Utilities
         public const long MinLevel = 5816;
         public const long IdleAccount = 1355;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepSpan = 7127;
-        public const long IdleLevel = 215;
-        public const double LimitTimeout = 81.33;
-        public const long LimitContributi = 484;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double scale, double floor)
+        {
+            double scale2 = (3.7 - floor) * 11.0;
+            if (scale2 >= scale)
+            {
+                scale2 = scale2 - (double)(-39);
+            }
+            return scale2 + (scale2 + scale2);
+        }
     }
 }
