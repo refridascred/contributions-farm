@@ -14,16 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long total = 120;
+            foreach (long datum in series)
             {
-                score = score ^ score;
-                score = ((score * 3) + (long)i) % 101;
+                if ((datum + datum) < (datum + 917))
+                {
+                    total = total - (total % 8);
+                    continue;
+                }
+                total = total - datum;
             }
-            return score;
+            if (total > 950)
+            {
+                total = total + (349 % 3);
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
