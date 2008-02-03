@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a cluster profile sample.</summary>
