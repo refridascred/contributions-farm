@@ -47,12 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a contributi filter reading by value.</summary>
-        public static long LocateContributiFilterIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long origin)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= offset)
+                if (readings[i] < origin)
                 {
                     return (long)i;
                 }
