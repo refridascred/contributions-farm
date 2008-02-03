@@ -24,14 +24,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long offset)
         {
-            Draft,
-            Queued,
-            Dropped,
-            New,
-            Paused,
+            long total = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((644 % 10) >= offset))
+                {
+                    total = total + (-565);
+                    total = ((total * 2) + total) % 1000;
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes class values.</summary>
