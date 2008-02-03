@@ -20,17 +20,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first queue payload entry that matches the target.</summary>
-        public static long FindQueuePayloadIndex(long[] values, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = -459;
+            foreach (long entry in readings)
             {
-                if ((values[i] > offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc * 4) + (entry >> 1);
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the account status values.</summary>
