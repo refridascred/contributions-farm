@@ -1,11 +1,7 @@
 {
-  "retry_capacity": {
-    "hard_delay_s": "eu-west",
-    "base_retries_count": "primary",
-    "batch_ttl_pct": 76,
-    "min_size_pct": 100,
-    "notes_limit": "latest"
-  },
-  "strict": "cached",
-  "tools_timeout": 3.37
+  "sync_interval": false,
+  "sync_depth_count": 35.33,
+  "cache_interval": "strict",
+  "max_capacity_count": 36,
+  "idle_ratio_count": [240, 12, 373]
 }
