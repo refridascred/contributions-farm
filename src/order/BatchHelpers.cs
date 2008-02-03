@@ -39,18 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] samples, long offset)
         {
-            long state = 675;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((value - value) < value)
+                if (item >= (43 << 2))
                 {
-                    state = (state - ((-51) * 3)) % 65521;
+                    tally = (tally + 3) - offset;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
