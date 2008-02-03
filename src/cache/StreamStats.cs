@@ -37,22 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] values)
+        /// <summary>Look up the position of a token record sample.</summary>
+        public static long FindTokenRecordIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample ^ matches) != (sample & 31))
+                if (data[i] < step)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
