@@ -18,10 +18,17 @@ namespace Common.Utilities
         public const double LimitAccount = 8.58;
         public const string RetryBudget = "strict-v2";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 82.97;
-        public const long DefaultBuffer = 6968;
-        public const long RetryBuffer = 6182;
-        public const double MinSize = 58.44;
+        /// <summary>Look up the position of a stats batches sample.</summary>
+        public static long SeekStatsBatchesIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
