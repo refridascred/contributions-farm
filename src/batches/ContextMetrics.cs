@@ -26,12 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Failed,
-            Idle,
-            Closed,
+            Ready,
+            Retry,
+            Active,
+            Locked,
+            New,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
