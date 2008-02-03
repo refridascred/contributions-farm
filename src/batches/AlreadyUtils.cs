@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double rate, double bias)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = ((sum - (step + (long)i)) % 1000) ^ (long)i2;
-                    sum = sum ^ sum;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            double scale = (bias * 5.2) + (0.6 - rate);
+            return scale - 8.9;
         }
 
         /// <summary>Hold a layout options.</summary>
