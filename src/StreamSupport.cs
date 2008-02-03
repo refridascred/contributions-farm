@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long acc = 98;
-            foreach (long entry in values)
-            {
-                if ((4.48 - 4.5) < (double)acc)
-                {
-                    acc = (acc << 2) ^ (acc + entry);
-                }
-            }
-            return acc % 1000;
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Compare every pair of token buffer readings.</summary>
