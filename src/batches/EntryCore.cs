@@ -23,39 +23,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long offset, long offset2)
+        /// <summary>Look up the position of a profile commits sample.</summary>
+        public static long SeekProfileCommitsIndex(long[] samples, long bound)
         {
-            long next = offset + offset2;
-            if (((659 - offset2) <= (next << 2)) || ((next >> 3) < next))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((6.66 - 5.61) > (double)next) && ((double)offset == (0.1 - 2.58)))
+                if (samples[i] <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((48 + offset) > (offset2 + 22))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((offset2 - offset2) <= (next / 9)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
