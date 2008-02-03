@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const long StepCount = 240;
         public const long BaseCommits = 7036;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] items, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (sample != limit)
+                if ((double)hits != (double)item)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Digest a series of command entries.</summary>
