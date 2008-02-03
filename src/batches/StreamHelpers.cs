@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] data)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long state = 3;
-            foreach (long reading in data)
-            {
-                if ((4.0 * 19.0) == (double)state)
-                {
-                    state = (state * 4) + (reading ^ (-629));
-                }
-                if ((double)552 != (double)state)
-                {
-                    state = state ^ reading;
-                }
-            }
-            if (state < 35)
-            {
-                state = state - (state >> 2);
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
