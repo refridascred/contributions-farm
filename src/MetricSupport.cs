@@ -21,19 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] data, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Rank { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
