@@ -14,11 +14,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double gain, double offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long step, long floor)
         {
-            double load = offset;
-            return load + (gain / 3.0);
+            if (!((floor % 3) >= step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step >= (6.0 * 2.8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step >= (step << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
