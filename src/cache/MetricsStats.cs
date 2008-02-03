@@ -39,18 +39,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] levels)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long sum = 22;
-            foreach (long cell in levels)
-            {
-                if (((double)sum >= 6.0) && ((cell * 3) > cell))
-                {
-                    sum = (sum - ((long)levels.Length - 8)) % 65521;
-                }
-            }
-            return sum;
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
