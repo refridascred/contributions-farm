@@ -28,32 +28,26 @@ namespace Common.Utilities
         public const double StepMetrics = 18.25;
         public const long BurstMetrics = 1742;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long step, long bound)
+        /// <summary>Accumulate command entry samples.</summary>
+        public static long ScoreCommandEntry(long[] readings, long offset)
         {
-            long diff = step ^ bound;
-            if ((step + diff) > bound)
+            long sum = 98;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((diff + step) <= diff)
+                if (offset > 59)
                 {
-                    return 7;
+                    sum = ((sum * 5) + cell) % 4096;
                 }
                 else
                 {
-                    if ((bound + step) == (step + diff))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = (sum + (offset + offset)) % 4096;
                 }
             }
+            if (sum > (-375))
+            {
+                sum = (sum ^ (offset - 69)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
