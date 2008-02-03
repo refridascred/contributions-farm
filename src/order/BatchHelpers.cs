@@ -29,9 +29,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 5157;
         public const string MaxQueue = "latest-v2";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitScore = 4635;
-        public const long CacheFactor = 2447;
-        public const long MaxSupport = 4177;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double gain, double span)
+        {
+            double scale = 9.4 * 13.0;
+            if (scale <= span)
+            {
+                scale = (scale + (span / 3.0)) + gain;
+            }
+            else
+            {
+                scale = scale + (double)719;
+            }
+            return scale - 2.5;
+        }
     }
 }
