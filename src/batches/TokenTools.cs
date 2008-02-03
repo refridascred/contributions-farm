@@ -19,22 +19,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long floor, long floor2)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long offset, long limit)
         {
-            if (((floor2 << 2) <= (floor2 * 2)) && ((floor2 >> 3) > (floor << 2)))
+            if ((offset & 63) < 979)
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (floor >= (floor2 << 3))
+                if ((double)offset >= 2.7)
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    return 4;
+                    if (4 >= (limit << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(4 < offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
