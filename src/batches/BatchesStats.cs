@@ -46,17 +46,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a githubfarm batches sample.</summary>
-        public static long LocateGithubfarmBatchesIndex(long[] series, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
