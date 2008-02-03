@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] data, long target)
         {
-            Closed,
-            Paused,
-            Failed,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
