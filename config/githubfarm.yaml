@@ -1,31 +1,7 @@
 # githubfarm settings
-verbose: 65.16
-tools_limit:
-  - 293
-  - 493
-  - 192
-max_depth_count:
-  persist: true
-  min_interval_ms:
-    min_interval_pct:
-      - 37
-      - 14
-      - 407
-      - 341
-    poll_ratio_ms: true
-    readonly: false
-  buffer_size: 26
-  default_threshold_s:
-    - 198
-    - 158
-    - 135
-    - 134
-  idle_size_ms:
-    min_retries_pct: eu-west
-    hard_ratio_ms: false
-    payload_threshold: eu-west
-  default_window:
-    default_depth: 27.04
-    flush_timeout_count: 58
-    dry_run: 30
-    tools_retries: 16.5
+notes_retries:
+  - edge
+  - latest
+persist: 100
+base_window_count: primary
+verbose: 94.05
