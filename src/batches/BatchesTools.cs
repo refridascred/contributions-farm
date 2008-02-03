@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] readings)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (datum > (datum >> 4))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
