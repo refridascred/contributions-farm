@@ -58,17 +58,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a stream entry sample.</summary>
-        public static long LocateStreamEntryIndex(long[] levels, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
