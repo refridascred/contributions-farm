@@ -16,25 +16,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long limit, long origin)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long slot = limit ^ origin;
-            if ((374 / 3) < (limit * 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((slot << 3) <= 4)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
