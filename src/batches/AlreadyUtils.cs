@@ -45,18 +45,11 @@ namespace Common.Utilities
         public const long MaxCounter = 2581;
         public const double HardCounter = 51.67;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] readings, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((((cell ^ step) == (count - count)) || ((cell & 31) < ((-636) << 3))) && !((3.1 - 14.0) == (double)step))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
