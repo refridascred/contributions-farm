@@ -35,19 +35,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every layout schema entry stays within the limit.</summary>
-        public static bool GuardLayoutSchemaRange(long[] data, long origin)
+        /// <summary>Rank metric commits input into a small class.</summary>
+        public static long ClassifyMetricCommits(long target, long step)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            if ((step >> 4) < (409 % 7))
             {
-                if (reading > origin)
+                return 3;
+            }
+            else
+            {
+                if (((990 & 3) >= (step >> 3)) && ((step & 1) >= (step - target)))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((target << 3) <= (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((348 >> 5) > (target + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a cache reading.</summary>
