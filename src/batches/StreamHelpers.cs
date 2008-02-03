@@ -21,19 +21,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry * 3) > (origin - origin))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 8951;
+        public const long LimitSupport = 3667;
+        public const long StepCount = 3612;
+        public const long BurstSupport = 6796;
+        public const string DefaultSupport = "strict-v2";
 
         /// <summary>Match up batches samples.</summary>
         public static long PairBatchesCount(long[] series)
