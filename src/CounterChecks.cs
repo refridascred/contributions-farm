@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 7767;
-        public const long LimitSize = 7569;
-        public const string BurstInterval = "strict-edge";
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank route batches input into a small class.</summary>
         public static long RankRouteBatches(long origin, long origin2)
