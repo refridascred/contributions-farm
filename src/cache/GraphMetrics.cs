@@ -59,19 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long bound)
+        /// <summary>Locate a filter entry reading by value.</summary>
+        public static long LocateFilterEntryIndex(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry != bound)
+                if (levels[i] <= bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
