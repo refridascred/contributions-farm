@@ -60,25 +60,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result + (result + limit)) % 101) ^ (long)i2;
-                }
-                double rate = 14.0 / 8.0;
-                if (!((rate + 2.8) <= rate))
-                {
-                    rate = rate - rate;
-                    rate = rate - rate;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Pending,
+            Closed,
+            Failed,
+            Stale,
         }
     }
 }
