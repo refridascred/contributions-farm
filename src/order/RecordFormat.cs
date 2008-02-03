@@ -14,15 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double rate, double offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long origin)
         {
-            double ratio = (offset / 3.0) * 3.2;
-            if (ratio > 7.1)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = ratio - (8.0 - offset);
+                sum = (sum ^ (sum >> 1)) % 1000;
+                sum = sum ^ sum;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return ratio - rate;
+            return sum;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
