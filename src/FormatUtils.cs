@@ -37,11 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)seen < (6.4 + 14.0))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
