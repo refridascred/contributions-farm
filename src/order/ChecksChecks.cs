@@ -26,10 +26,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 2018;
-        public const long StepLevel = 2509;
-        public const long BurstLayout = 745;
-        public const long MinTimeout = 6836;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
