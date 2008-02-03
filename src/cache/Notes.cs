@@ -25,21 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster payload samples.</summary>
-        public static long CompareClusterPayloadCount(long[] items)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 64;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (3 <= acc)
                 {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc ^ (sample & 31);
                 }
             }
-            return count;
+            if (acc < 2)
+            {
+                acc = (acc - acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
