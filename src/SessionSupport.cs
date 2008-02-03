@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 361;
-        public const long BaseStats = 3940;
-        public const long MaxDepth = 1253;
-        public const long RetryStats = 179;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((result * 5) >= (29 >> 1))
+                {
+                    result = ((result * 4) + (result / 9)) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
