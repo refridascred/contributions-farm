@@ -29,12 +29,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] values, long origin)
         {
-            Synced,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen % 64) <= (seen << 2))
+                {
+                    seen = ((seen + 2) ^ entry) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the already schema entries that pass the check.</summary>
