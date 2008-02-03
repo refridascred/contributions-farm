@@ -1,6 +1,7 @@
 {
-  "githubfarm_interval": ["local", "strict", "eu-west"],
-  "stats_timeout": true,
-  "hard_size": [340, 467],
-  "sync_delay_s": 78
+  "enabled": 250,
+  "metric_limit": 77.58,
+  "window_threshold": "green",
+  "flush_retries": false,
+  "account_ratio": ["local", "open", "primary", "local"]
 }
