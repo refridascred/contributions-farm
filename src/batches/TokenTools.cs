@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Stale,
-            Queued,
-            Paused,
-            Idle,
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a entry graph counter forward.</summary>
