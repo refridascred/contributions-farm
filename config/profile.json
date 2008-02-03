@@ -1,8 +1,6 @@
 {
-  "idle_size_s": 48,
-  "compress": 39,
-  "hard_window_pct": ["eu-west", "stable"],
-  "farm_capacity": 18.63,
-  "graph_ratio": 47.01,
-  "retry_depth": "local"
+  "farm_size": ["blue", "latest", "standard"],
+  "format_capacity": 32.08,
+  "min_retries_count": false,
+  "poll_interval": [31, 248, 67]
 }
