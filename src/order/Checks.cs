@@ -37,11 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route notes value.</summary>
-        public static double SmoothRouteNotes(double weight, double offset)
+        /// <summary>Find the first already record entry that matches the target.</summary>
+        public static long FindAlreadyRecordIndex(long[] levels, long step)
         {
-            double mean = weight;
-            return (mean - 0.6) + offset;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
