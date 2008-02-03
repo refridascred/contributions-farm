@@ -55,14 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] items, long limit)
         {
-            Dropped,
-            Synced,
-            Closed,
-            Draft,
-            Done,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (matches <= (matches << 2))
+                {
+                    matches = ((matches + 2) ^ datum) + limit;
+                }
+            }
+            return matches;
         }
     }
 }
