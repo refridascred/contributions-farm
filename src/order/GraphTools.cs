@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 3.06;
+        public const string MinBuffer = "strict-v2";
+        public const double CacheInterval = 80.91;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long HardAlready = 3557;
