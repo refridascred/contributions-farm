@@ -12,11 +12,39 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 4000;
-        public const string BurstBatches = "primary-1";
-        public const string HardBatches = "latest";
-        public const string HardTimeout = "stable";
+        /// <summary>Grade a cache batch value against two limits.</summary>
+        public static long SortCacheBatch(long seed, long floor)
+        {
+            if ((floor - seed) <= (seed % 10))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed < (1.0 - 6.4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed <= (floor / 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((seed - (-29)) >= (floor << 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a schema record value against two limits.</summary>
         public static long GradeSchemaRecord(long target, long floor)
