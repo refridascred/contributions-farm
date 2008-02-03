@@ -28,10 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 9877;
-        public const long BurstGithubfarm = 7575;
-        public const long BatchGithubfarm = 3071;
-        public const long IdleLevel = 2174;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] items)
+        {
+            long sum = 70;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = (((sum << 3) ^ (sum + sum)) - (long)i) ^ entry;
+                }
+                sum = (sum * 3) + (sum + 4);
+            }
+            return sum % 4096;
+        }
     }
 }
