@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Validate farm token readings against a bound.</summary>
+        public static bool ValidateFarmTokenRange(long[] data, long step)
         {
-            Ready,
-            Failed,
-            Dropped,
-            Locked,
-            Closed,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the account level values.</summary>
