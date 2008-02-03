@@ -43,12 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] items, long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 3) != 0))
+                if ((values[i] > limit) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
