@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of route tools readings.</summary>
-        public static long PairRouteToolsCount(long[] readings)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (bias * 12.0) + bias;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean + 9.7) + (double)(long)i;
             }
-            return matches;
+            return mean - (gain * 6.9);
         }
 
         /// <summary>Combine buffer farm values into a single score.</summary>
