@@ -53,13 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            New,
-            Pending,
-            Dropped,
-            Done,
+            Retry,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the commits phase values.</summary>
