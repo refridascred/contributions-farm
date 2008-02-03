@@ -24,18 +24,11 @@ namespace Common.Utilities
             return gain - (double)22;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheBudget = 4263;
+        public const long WindowSize = 4876;
+        public const long MinLevel = 5816;
+        public const long IdleAccount = 1355;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
