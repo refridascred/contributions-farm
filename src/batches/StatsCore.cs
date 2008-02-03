@@ -14,13 +14,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            public long Label { get; set; }
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public double Owner { get; set; }
+            long total = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
