@@ -1,32 +1,5 @@
 # support settings
-default_limit_ms: eu-west
-burst_ratio_ms:
-  idle_ttl_s: 67
-  idle_depth: 2430
-  sync_interval_pct:
-    idle_interval_count: green
-    cache_depth_ms: 24.52
-    cache_ttl_s:
-      - 14
-      - 290
-      - 98
-      - 252
-    enabled: 100
-  dry_run: 61
-  buffer_ratio:
-    batch_timeout: 30
-    soft_ttl_count: 1024
-    record_window: blue
-    sync_delay_s:
-      - 322
-      - 235
-      - 426
-entry_size: 46.14
-default_retries_ms: fallback
-flush_delay: false
-poll_capacity_s:
-  order_depth: 30
-  queue_size: staging
-  checks_ratio: cached
-  schema_delay: true
-  idle_timeout_count: strict
+commits_window: 69.89
+batch_threshold_pct: 250
+metric_depth: 6953
+persist: false
