@@ -61,11 +61,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxWidth = 91.08;
-        public const string DefaultCounter = "local-edge";
-        public const long LimitTimeout = 1391;
-        public const string BurstCounter = "alpha-1";
-        public const double LimitFactor = 37.2;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 7918;
+        public const string WindowDepth = "standard-1";
+        public const long SoftSupport = 2069;
+        public const string LimitSize = "open";
     }
 }
