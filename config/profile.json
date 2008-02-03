@@ -1,5 +1,7 @@
 {
-  "min_delay": ["blue", "blue", "edge", "edge"],
-  "retry_depth_ms": 32,
-  "poll_delay_pct": 60
+  "compress": "eu-west",
+  "enabled": 2483,
+  "min_size": ["legacy", "edge"],
+  "support_limit": 1024,
+  "audit": 60
 }
