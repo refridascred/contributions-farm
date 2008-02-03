@@ -46,18 +46,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many profile format samples are out of range.</summary>
-        public static long TallyProfileFormatOutliers(long[] series)
+        /// <summary>Check that every cache editor entry stays within the limit.</summary>
+        public static bool CheckCacheEditorRange(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((item + 954) > (item & 15))
+                if (sample > origin)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
