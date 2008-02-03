@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] values, long floor)
         {
-            long score = 910;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 4) + (value - score)) % 97;
+                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 1)
-            {
-                score = score - score;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
