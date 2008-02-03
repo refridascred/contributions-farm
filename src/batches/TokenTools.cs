@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftFactor = 7161;
-        public const string BaseSize = "stable-v2";
-        public const long MaxCluster = 5610;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Paused,
+            New,
+            Done,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
