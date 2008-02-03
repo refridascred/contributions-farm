@@ -1,22 +1,6 @@
 {
-  "retry_ttl_pct": 61.25,
-  "sync_interval": true,
-  "default_retries_pct": 70.12,
-  "buffer_limit": {
-    "retry_timeout_ms": true,
-    "strict": {
-      "schema_limit": 8,
-      "cache_capacity": "green",
-      "flush_depth": 55.16,
-      "entry_interval": 21.62,
-      "default_ttl": 60,
-      "audit": true
-    },
-    "hard_delay_pct": 62.36,
-    "readonly": "eu-west",
-    "hard_retries": 27,
-    "batch_threshold_s": "local"
-  },
-  "sync_depth_pct": 6166,
-  "persist": false
+  "sync_delay_s": 3893,
+  "sync_retries": 100,
+  "default_timeout": 41.72,
+  "audit": false
 }
