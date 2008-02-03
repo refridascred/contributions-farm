@@ -1,5 +1,7 @@
 {
-  "compress": 71,
-  "dry_run": 88.72,
-  "audit": [206, 55, 301, 323]
+  "readonly": 30,
+  "max_ratio_count": "eu-west",
+  "flush_threshold_pct": true,
+  "compress": 77.86,
+  "retry_window_s": "legacy"
 }
