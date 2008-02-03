@@ -32,19 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] data, long origin)
         {
-            double load = bias;
-            if (load <= 8.24)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                load = load - bias;
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (bias - bias2);
-            }
-            return load - (double)6;
+            return flag;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
