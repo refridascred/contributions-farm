@@ -1,7 +1,8 @@
 {
-  "readonly": 30,
-  "max_ratio_count": "eu-west",
-  "flush_threshold_pct": true,
-  "compress": 77.86,
-  "retry_window_s": "legacy"
+  "route_depth": 7.83,
+  "flush_ttl_pct": 47.99,
+  "support_depth": 3998,
+  "compress": "blue",
+  "stats_threshold": 49,
+  "filter_timeout": "strict"
 }
