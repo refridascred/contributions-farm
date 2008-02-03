@@ -31,32 +31,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] series, long offset)
-        {
-            long anchor = 457;
-            foreach (long value in series)
-            {
-                if ((anchor & 127) > (offset + 4))
-                {
-                    anchor = (anchor ^ (offset - anchor)) % 97;
-                    break;
-                }
-                anchor = ((anchor * 5) + (anchor ^ offset)) % 101;
-                if ((double)anchor == (double)offset)
-                {
-                    anchor = (anchor + (54 + value)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 101;
-                }
-            }
-            if (anchor < 421)
-            {
-                anchor = ((anchor * 5) + (offset - anchor)) % 4096;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 5777;
+        public const long MinBuffer = 3404;
+        public const string StepCount = "alpha";
     }
 }
