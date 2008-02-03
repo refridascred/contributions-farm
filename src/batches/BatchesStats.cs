@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long CacheMetrics = 2724;
         public const double MaxFactor = 85.46;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 8187;
-        public const long BaseAlready = 8566;
-        public const long HardSpan = 523;
-        public const long RetryInterval = 535;
-        public const string MinAlready = "fallback-v2";
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Count the metrics buffer entries that pass the check.</summary>
         public static long MeasureMetricsBufferHits(long[] readings)
