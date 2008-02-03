@@ -38,11 +38,39 @@ namespace Common.Utilities
             return (bias2 - bias2) + bias;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long target, long seed)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            long bound = target - seed;
+            if (target >= (seed - bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed ^ target) >= (seed ^ seed)) || ((target + bound) > (seed - seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound / 5) > (seed << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((808 >> 2) >= (bound - bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate already samples.</summary>
