@@ -28,13 +28,30 @@ namespace Common.Utilities
         public const long MinWindow = 6138;
         public const long BaseCount = 4686;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] values, long origin)
         {
-            Paused,
-            Retry,
-            Ready,
-            New,
+            long carry = 508;
+            foreach (long sample in values)
+            {
+                if (!((double)origin <= (1.01 * 18.0)))
+                {
+                    carry = (carry << 2) ^ (carry + carry);
+                }
+                if ((sample + carry) >= (sample ^ origin))
+                {
+                    carry = (carry + (carry << 3)) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 3) + origin) % 255;
+                }
+            }
+            if (carry > 82)
+            {
+                carry = ((carry << 3) ^ 8) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a notes record.</summary>
