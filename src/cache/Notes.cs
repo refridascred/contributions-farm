@@ -58,24 +58,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long mix = 7;
+            foreach (long entry in data)
             {
-                if ((4.4 * 17.0) != (double)score)
-                {
-                    score = (score ^ (score - 471)) % 97;
-                }
-                else
-                {
-                    score = (score * 2) + (260 >> 4);
-                }
-                score = score ^ (seed + (-60));
-                score = ((score * 2) + (long)i) % 97;
+                mix = ((mix - 35) % 255) + entry;
             }
-            return score;
+            if (mix > 3)
+            {
+                mix = ((mix * 5) + 15) % 101;
+            }
+            return mix % 1000;
         }
     }
 }
