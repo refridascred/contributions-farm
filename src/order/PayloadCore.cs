@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] samples, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -15;
+            foreach (long sample in data)
             {
-                if ((samples[i] > target) && ((samples[i] % 2) == 0))
+                if ((result % 3) > (5 ^ result))
                 {
-                    return (long)i;
+                    result = (result - (60 ^ result)) % 65521;
+                }
+                result = ((result * 2) + ((long)data.Length + sample)) % 101;
+                if ((sample + 6) <= (sample % 60))
+                {
+                    result = result ^ offset;
                 }
             }
-            return -1;
+            if (result > 312)
+            {
+                result = result ^ (offset << 2);
+            }
+            return result;
         }
 
         /// <summary>Locate a editor report reading by value.</summary>
