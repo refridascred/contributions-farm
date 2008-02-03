@@ -23,17 +23,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first profile metrics entry that matches the target.</summary>
-        public static long FindProfileMetricsIndex(long[] levels, long target)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double weight, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = span;
+            if (gain >= 5.0)
             {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (span - span)) + weight;
             }
-            return -1;
+            else
+            {
+                gain = gain + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + span;
         }
     }
 }
