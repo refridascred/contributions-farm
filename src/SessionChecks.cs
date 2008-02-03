@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const long BurstLevel = 8582;
         public const long IdleBudget = 1183;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 8226;
-        public const string CacheDepth = "staging-edge";
-        public const double DefaultFormat = 24.35;
-        public const long LimitRatio = 5700;
-        public const long CacheFormat = 4010;
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double bias, double floor)
+        {
+            double weight = (double)5 - bias;
+            if (weight < (double)3)
+            {
+                weight = (weight - (double)413) - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (weight - bias);
+        }
     }
 }
