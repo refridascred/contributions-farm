@@ -20,12 +20,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] values, long limit)
         {
-            Done,
-            Pending,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
