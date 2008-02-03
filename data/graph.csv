@@ -1,8 +1,6 @@
-id,count
-1,201
-2,standard
-3,12.41
-4,87.02
-5,63.4
-6,edge
-7,fallback
+id,label,state,token,owner
+1,45.66,eu-west,67.33,local
+2,17.26,162,61.76,391
+3,legacy,35.04,972,95.82
+4,58.05,17.5,82,196
+5,primary,62.53,85.05,42.72
