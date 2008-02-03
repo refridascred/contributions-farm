@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] values, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long sum = -338;
-            foreach (long reading in values)
-            {
-                sum = (sum ^ (reading + seed)) % 1000;
-            }
-            return sum % 65521;
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Grade a payload route value against two limits.</summary>
