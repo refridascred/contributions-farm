@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            Closed,
+            Failed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
