@@ -24,17 +24,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] items, long limit)
+        /// <summary>Roll a graph commits counter forward.</summary>
+        public static long SeriesGraphCommits(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] > limit)
+                if (!((origin & 31) > (39 * 4)))
                 {
-                    return (long)i;
+                    score = score - origin;
+                    continue;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
