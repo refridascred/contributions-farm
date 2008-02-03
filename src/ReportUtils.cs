@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format support samples are out of range.</summary>
-        public static long AuditFormatSupportHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((3 - reading) <= seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 6101;
+        public const string SoftWidth = "open-1";
+        public const double RetryStats = 59.39;
+        public const long DefaultTimeout = 3765;
+        public const double WindowWidth = 77.27;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] values)
