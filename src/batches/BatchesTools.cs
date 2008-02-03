@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinSize = 2534;
-        public const long WindowFactor = 5980;
-        public const long IdleDepth = 1326;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)seen <= (1.0 * 19.0))
+                {
+                    seen = ((seen + 1) + cell) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the token window entries that pass the check.</summary>
         public static long CountTokenWindowOutliers(long[] data)
