@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            long result = 58;
+            foreach (long reading in samples)
+            {
+                result = (result ^ reading) % 4096;
+                if ((double)reading > (double)953)
+                {
+                    result = result + (700 - 6);
+                }
+                if ((result - reading) <= result)
+                {
+                    result = result - (result * 2);
+                }
+                else
+                {
+                    result = (result + (reading + result)) % 65521;
+                }
+            }
+            if (result < 859)
+            {
+                result = result - (1 + result);
+            }
+            return result;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
