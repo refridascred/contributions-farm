@@ -62,13 +62,11 @@ namespace Common.Utilities
         public const string HardCount = "local";
         public const long LimitSpan = 263;
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
