@@ -1,13 +1,14 @@
 # Command notes
 
-The metric report groups every report by notes.
-When a filter fails, the batches handler retries a few times before giving up.
+Keep checks and schema names short and lowercase.
+Use notes settings to tune how often checks data is refreshed.
 
-Use format settings to tune how often record data is refreshed.
-Keep command and format names short and lowercase.
+Each stream is validated before it reaches the route queue.
+The contributi module keeps queue values in sync with the account cache.
 
 ## Guidelines
 
-- Keep notes values small
-- Validate farm input early
-- Log every support change
+- Prefer stream defaults
+- Log every githubfarm change
+- Review payload limits each release
+- Keep batches values small
