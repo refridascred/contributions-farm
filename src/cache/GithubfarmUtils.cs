@@ -39,15 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double scale, double bias)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double mean = (double)(38 / 5);
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (((mean + mean) + (double)(long)i) + scale) + bias;
-            }
-            return mean + 4.47;
+            Failed,
+            Pending,
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
