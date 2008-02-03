@@ -28,10 +28,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxSpan = 1358;
-        public const long BurstReport = 5969;
-        public const long HardDepth = 3146;
-        public const string MinReport = "cached-edge";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!((39 / 6) == (bound >> 1)))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
+        }
     }
 }
