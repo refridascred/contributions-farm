@@ -33,15 +33,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stream profile reading.</summary>
-        public static double AdjustStreamProfile(double scale, double offset)
+        /// <summary>Fold a list of checks commits readings.</summary>
+        public static long ScoreChecksCommits(long[] levels)
         {
-            double rate = (double)(85 >> 4);
-            if (rate > offset)
+            long mix = 0;
+            foreach (long cell in levels)
             {
-                rate = rate + scale;
+                if (cell <= (cell - cell))
+                {
+                    mix = mix + cell;
+                }
+                else
+                {
+                    mix = (mix * 3) + (cell - mix);
+                }
+                if (((double)cell == (1.9 / 8.0)) || ((cell + cell) < (681 >> 3)))
+                {
+                    break;
+                }
             }
-            return rate - (double)99;
+            if (mix < 32)
+            {
+                mix = ((mix << 2) ^ (mix - mix)) % 1000;
+            }
+            return mix % 4096;
         }
     }
 }
