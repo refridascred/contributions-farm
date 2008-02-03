@@ -12,26 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long step, long origin)
-        {
-            long lane = step + origin;
-            if ((-7) > (lane - lane))
-            {
-                return 7;
-            }
-            else
-            {
-                if (839 > (origin - origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 6843;
+        public const long WindowBudget = 9107;
+        public const long BaseRatio = 7413;
+        public const long MaxSize = 9671;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsRange(long[] levels, long floor)
