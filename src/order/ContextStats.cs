@@ -58,13 +58,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a queue cluster value against two limits.</summary>
+        public static long ClassifyQueueCluster(long bound, long limit)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
+            long cur = bound - limit;
+            if ((cur - limit) < (bound ^ limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((6.0 - 7.94) == (double)bound) && ((cur + cur) <= bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit < (double)908)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
