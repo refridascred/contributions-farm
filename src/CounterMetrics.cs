@@ -27,18 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long total = 7;
-            foreach (long value in samples)
-            {
-                if (((value + value) <= value) || (value >= ((long)samples.Length / 5)))
-                {
-                    total = ((total << 2) ^ (value ^ total)) % 97;
-                }
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
