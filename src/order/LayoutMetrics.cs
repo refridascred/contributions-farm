@@ -41,11 +41,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public long Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinScore = 9396;
+        public const long StepBatches = 2533;
+        public const string WindowBatches = "legacy-edge";
+        public const long BaseBatches = 8903;
     }
 }
