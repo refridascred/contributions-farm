@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] samples, long limit)
         {
-            long result = 14;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((cell + 84) < ((-9) & 1))
+                if ((datum & 255) < count)
                 {
-                    result = (result + ((long)samples.Length / 3)) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ 7) % 4096;
+                    count = (count + 2) + limit;
                 }
             }
-            if (result > 78)
-            {
-                result = result ^ (result - result);
-            }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
