@@ -20,11 +20,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long seed, long step)
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            if ((step ^ step) <= (step - 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed % 24) < (step << 2)) || ((2 - seed) < step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step - step) <= (seed & 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
