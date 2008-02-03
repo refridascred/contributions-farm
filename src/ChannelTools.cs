@@ -48,18 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((((count << 2) <= ((long)samples.Length + sample)) || (sample >= (sample % 7))) && (sample < ((long)samples.Length - sample)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 6705;
+        public const double LimitDepth = 92.18;
+        public const long HardLevel = 9326;
     }
 }
