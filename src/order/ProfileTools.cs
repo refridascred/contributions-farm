@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long target)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)step == (double)(long)i)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    sum = sum + (sum + 128);
+                    score = (score ^ ((long)i2 / 4)) % 97;
                 }
-                sum = (sum << 2) ^ sum;
-                if (!((step + sum) >= 20))
-                {
-                    sum = (sum - step) % 1000;
-                    sum = (sum + (step % 60)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Classify a account context pair into a bucket.</summary>
