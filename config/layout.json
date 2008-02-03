@@ -1,14 +1,5 @@
 {
-  "batches_delay": ["green", "local", "eu-west"],
-  "soft_interval_count": {
-    "sync_retries": {
-      "dry_run": 49,
-      "compress": true,
-      "base_capacity_s": 49,
-      "burst_limit_count": 7
-    },
-    "layout_delay": "standard",
-    "min_window": "stable"
-  },
-  "batch_ttl_s": 60
+  "dry_run": false,
+  "base_ratio": 38.79,
+  "audit": 99
 }
