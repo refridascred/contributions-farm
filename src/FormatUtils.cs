@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first batch window entry that matches the target.</summary>
-        public static long SeekBatchWindowIndex(long[] levels, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
