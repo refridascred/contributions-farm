@@ -80,19 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] levels, long target)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Locked,
+            Failed,
+            Closed,
         }
     }
 }
