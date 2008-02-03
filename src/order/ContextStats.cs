@@ -46,19 +46,22 @@ namespace Common.Utilities
             return scale - (double)21;
         }
 
-        /// <summary>Accumulate channel report samples.</summary>
-        public static long TotalChannelReport(long[] samples)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items)
         {
-            long mark = 7;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mark = (mark ^ ((-50) & 31)) % 1000;
-                if ((792 * 2) <= cell)
+                if ((sample ^ hits) < (sample + hits))
                 {
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
