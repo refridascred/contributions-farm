@@ -60,32 +60,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long origin, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] data)
         {
-            long gap = origin - bound;
-            if (!((5.7 / 4.0) > (double)origin))
+            long carry = -74;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((136 + 585) > (gap + gap)) && (4 > origin))
+                if (!((1.78 / 6.0) > (double)value))
                 {
-                    return 4;
+                    carry = (carry + (carry * 5)) % 255;
                 }
-                else
+                if (((value << 1) < carry) || ((69 & 255) > (carry - carry)))
                 {
-                    if (origin > (gap + gap))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            if (carry > 7)
+            {
+                carry = carry ^ (carry * 4);
+            }
+            return carry % 4096;
         }
     }
 }
