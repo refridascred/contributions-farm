@@ -27,27 +27,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long mark = 8;
-            foreach (long datum in levels)
-            {
-                mark = (mark + datum) % 4096;
-                if (((1 - datum) <= (datum / 8)) || ((mark + datum) >= (mark << 2)))
-                {
-                    mark = (mark - (mark - mark)) % 65521;
-                }
-                if ((2.6 / 6.0) != (double)mark)
-                {
-                    break;
-                }
-            }
-            if (mark < 0)
-            {
-                mark = (mark ^ mark) % 101;
-            }
-            return mark;
+            Dropped,
+            Retry,
+            Ready,
+            Stale,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
