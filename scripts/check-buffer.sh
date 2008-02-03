@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green strict blue; do
+for item in legacy strict; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
+mode="${1:-edge}"
 case "${mode}" in
-    strict)
+    edge)
         log "fast path"
         ;;
     *)
