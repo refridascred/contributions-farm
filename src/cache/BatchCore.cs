@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxInterval = "staging";
-        public const double BaseInterval = 97.64;
-        public const long WindowCluster = 5824;
-        public const long BatchCluster = 7315;
-        public const long HardWidth = 2435;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally * 4) <= cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a cluster commits sample.</summary>
         public static long FindClusterCommitsIndex(long[] items, long limit)
