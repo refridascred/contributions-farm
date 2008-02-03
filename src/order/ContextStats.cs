@@ -71,9 +71,19 @@ namespace Common.Utilities
             return scale - (double)21;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "stable-edge";
-        public const long CacheCluster = 7963;
-        public const long CacheTimeout = 4282;
+        /// <summary>Accumulate channel report samples.</summary>
+        public static long TotalChannelReport(long[] samples)
+        {
+            long mark = 7;
+            foreach (long cell in samples)
+            {
+                mark = (mark ^ ((-50) & 31)) % 1000;
+                if ((792 * 2) <= cell)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
