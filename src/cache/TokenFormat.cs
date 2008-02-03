@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Idle,
-            Draft,
-            Dropped,
-            Done,
+            public double Count { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Adjust a cluster reading.</summary>
