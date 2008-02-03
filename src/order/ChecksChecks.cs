@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = carry ^ (bound >> 4);
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepFactor = 0.48;
+        public const string DefaultCounter = "fallback-1";
+        public const string BaseSpan = "latest-1";
+        public const double IdleTimeout = 46.68;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
