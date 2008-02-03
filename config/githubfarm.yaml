@@ -1,11 +1,28 @@
 # githubfarm settings
-sync_delay_pct: edge
-readonly:
-  - 350
-  - 179
-  - 335
-  - 170
-default_ratio_count: 60
-sync_window_ms: 18.2
-sync_size_ms: latest
-verbose: 48
+graph_threshold: latest
+checks_window: 46.47
+warm_threshold:
+  - primary
+  - fallback
+token_depth:
+  session_retries: 500
+  flush_timeout_ms:
+    idle_ratio: primary
+    strict: 29
+    notes_size: true
+  record_size: true
+  audit: latest
+  cache_threshold_ms: green
+  retry_delay:
+    - 20
+    - 330
+cluster_ttl:
+  burst_depth: true
+  cache_depth: eu-west
+  githubfarm_threshold: primary
+  command_retries: 500
+  queue_size:
+    - open
+    - legacy
+    - standard
+enabled: true
