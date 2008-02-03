@@ -14,11 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate route cluster samples.</summary>
