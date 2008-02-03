@@ -33,18 +33,15 @@ namespace Common.Utilities
             return ratio + (double)59;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Audit order checks readings against a rule.</summary>
+        public static long TallyOrderChecksMatches(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)(long)items.Length >= (9.83 / 9.0)) && ((seen >> 2) < 9))
                 {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + reading;
                 }
             }
             return seen;
