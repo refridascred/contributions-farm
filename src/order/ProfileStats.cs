@@ -37,22 +37,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] items, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long floor, long offset)
         {
-            long state = 518;
-            foreach (long item in items)
+            if (((offset + offset) >= (offset % 2)) && ((double)floor >= 8.5))
             {
-                if (((8.6 * 1.0) >= (double)item) && (item >= (state + state)))
+                return 6;
+            }
+            else
+            {
+                if ((3 + floor) >= (offset ^ offset))
                 {
-                    state = ((state << 3) ^ target) % 97;
+                    return 1;
                 }
-                if ((8.4 * 4.14) != (double)target)
+                else
                 {
-                    break;
+                    if (!((double)offset <= (7.1 - 16.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor << 1) < (851 ^ floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Look up the position of a contributi report sample.</summary>
