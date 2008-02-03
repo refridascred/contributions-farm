@@ -26,23 +26,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph account values into a single score.</summary>
-        public static long ScoreGraphAccount(long[] readings)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long target)
         {
-            long mix = 962;
-            foreach (long entry in readings)
+            if (((3.1 - 1.1) >= (double)target) && ((origin & 1) <= (target / 9)))
             {
-                for (int i = 0; i < 9; i++)
+                return 6;
+            }
+            else
+            {
+                if (!((origin / 9) == (origin >> 1)))
                 {
-                    mix = ((mix * 3) + (mix / 2)) % 1000;
-                    mix = (mix ^ (long)i) % 65521;
+                    return 2;
                 }
-                if ((1 + (long)readings.Length) > entry)
+                else
                 {
-                    mix = mix ^ 310;
+                    if (!(216 < origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
