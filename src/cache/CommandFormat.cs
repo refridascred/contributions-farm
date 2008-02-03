@@ -13,19 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] items, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (reading >= offset)
+                if (((long)samples.Length / 2) > (matches * 2))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
