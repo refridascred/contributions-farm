@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many batches filter samples are out of range.</summary>
-        public static long CountBatchesFilterMatches(long[] levels, long step)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (9 >= (tally + step))
+                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
                 {
-                    tally = (tally + 1) - datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the context phase values.</summary>
