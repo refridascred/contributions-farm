@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of stats token readings.</summary>
-        public static long CombineStatsToken(long[] readings, long seed)
+        /// <summary>Validate session channel readings against a bound.</summary>
+        public static bool CheckSessionChannelBounds(long[] items, long bound)
         {
-            long state = 6;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (1 < (seed - state))
+                if (value >= bound)
                 {
-                    state = ((state + (87 / 2)) % 101) ^ entry;
-                }
-                else
-                {
-                    state = state + (875 + 292);
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Blend two counter measurements.</summary>
