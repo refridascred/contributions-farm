@@ -64,18 +64,17 @@ namespace Common.Utilities
             return gain - (rate + 6.26);
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] levels, long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (offset > (offset % 2))
+                if (series[i] < step)
                 {
-                    hits = (hits + 3) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
