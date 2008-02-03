@@ -29,18 +29,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
-        public static long AuditGithubfarmClusterOutliers(long[] samples, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (((value & 255) < step) && (((count >> 4) >= value) || ((count >> 3) > (27 << 1))))
+                if (datum <= seed)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
