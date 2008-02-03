@@ -50,19 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((bound - hits) >= (entry + 96))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchDepth = 9028;
+        public const long BaseTimeout = 1504;
+        public const string WindowSize = "legacy-edge";
+        public const string DefaultCommits = "open-1";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TotalSchema(long[] values, long floor)
