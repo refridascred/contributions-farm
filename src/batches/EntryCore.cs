@@ -36,17 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stream cluster sample.</summary>
-        public static long LocateStreamClusterIndex(long[] values, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((values[i] < offset) && ((values[i] % 3) != 0))
+                if (reading <= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Fold a list of record readings.</summary>
