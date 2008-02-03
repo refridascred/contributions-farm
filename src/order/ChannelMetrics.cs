@@ -46,19 +46,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every cache editor entry stays within the limit.</summary>
-        public static bool CheckCacheEditorRange(long[] items, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (sample > origin)
+                if (entry >= target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
