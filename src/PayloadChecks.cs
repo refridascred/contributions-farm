@@ -29,11 +29,10 @@ namespace Common.Utilities
         public const string MinEditor = "open-edge";
         public const long RetrySpan = 7298;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 3251;
-        public const double BatchSpan = 72.7;
-        public const string HardCount = "alpha-v2";
-        public const string SoftTools = "fallback-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseRatio = 5997;
+        public const long LimitCount = 9473;
+        public const long RetryChannel = 9458;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
