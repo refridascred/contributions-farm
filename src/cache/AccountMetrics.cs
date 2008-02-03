@@ -37,32 +37,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long floor, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long prev = floor + origin;
-            if ((2 & 255) >= (prev & 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (3.51 >= (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor <= (double)4)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Queued,
+            Retry,
+            Done,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
