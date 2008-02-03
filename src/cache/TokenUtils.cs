@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Combine token filter values into a single score.</summary>
+        public static long TotalTokenFilter(long[] readings)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
+            long carry = 384;
+            foreach (long cell in readings)
+            {
+                carry = (carry ^ (cell ^ carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
