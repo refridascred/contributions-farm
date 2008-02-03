@@ -41,26 +41,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] data, long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long total = 55;
-            foreach (long item in data)
-            {
-                if ((double)total > (17.0 - 12.0))
-                {
-                    total = total + (target >> 1);
-                }
-                if ((target / 6) <= (item + total))
-                {
-                    break;
-                }
-            }
-            if (total > 700)
-            {
-                total = ((total << 3) ^ (target / 7)) % 97;
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
