@@ -70,18 +70,13 @@ namespace Common.Utilities
         public const long RetryRatio = 1203;
         public const long HardWidth = 2173;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] values, long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (5.3 > (double)bound)
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
