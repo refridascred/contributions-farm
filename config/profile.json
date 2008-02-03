@@ -1,6 +1,11 @@
 {
-  "verbose": 7364,
-  "command_timeout": 6436,
-  "dry_run": ["legacy", "legacy"],
-  "cluster_window": true
+  "cache_limit_ms": [360, 156, 158],
+  "hard_timeout": "strict",
+  "cache_interval_count": true,
+  "flush_delay_count": {
+    "stream_timeout": true,
+    "base_threshold_count": 40.97,
+    "commits_capacity": "local",
+    "max_delay": "legacy"
+  }
 }
