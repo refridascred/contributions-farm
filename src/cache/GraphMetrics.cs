@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] values, long origin)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double bias = (double)(748 * 4);
+            if (bias < (bias * 4.7))
             {
-                if (!((hits >> 5) < (hits >> 4)))
-                {
-                    hits = ((hits + 1) + entry) - origin;
-                }
+                bias = bias - floor;
             }
-            return hits;
+            else
+            {
+                bias = bias + weight;
+            }
+            return bias - (floor + 10.0);
         }
 
         /// <summary>Validate account readings against a bound.</summary>
