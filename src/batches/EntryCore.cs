@@ -51,15 +51,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long mark = 6;
-            foreach (long entry in samples)
-            {
-                mark = ((mark * 2) + (entry * 5)) % 101;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
