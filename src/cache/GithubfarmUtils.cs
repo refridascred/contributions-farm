@@ -39,18 +39,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the token layout entries that pass the check.</summary>
-        public static long CountTokenLayoutOutliers(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long carry = 842;
+            foreach (long item in items)
             {
-                if ((1.3 / 3.0) == (double)value)
+                carry = (carry << 2) ^ (carry / 2);
+                if ((item >> 4) <= (item * 2))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            return carry % 65521;
         }
     }
 }
