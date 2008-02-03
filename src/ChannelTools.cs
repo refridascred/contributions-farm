@@ -18,28 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long bound, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long step, long floor)
         {
-            if (((bound * 3) < (bound - 15)) || ((6.13 + 7.0) >= (double)step))
+            if ((double)step >= (double)floor)
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((bound - 299) >= (bound / 3))
+                if (floor < (step - step))
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((double)bound < (2.57 * 2.0))
+                    if ((double)floor < (double)step)
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        return 0;
+                        return 2;
                     }
                 }
             }
