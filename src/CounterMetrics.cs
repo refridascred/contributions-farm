@@ -29,19 +29,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] items, long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= step)
+                if ((values[i] < floor) && ((values[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the layout class values.</summary>
