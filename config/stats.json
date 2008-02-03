@@ -1,5 +1,5 @@
 {
-  "min_limit": "open",
-  "flush_window_s": 61,
-  "warm_size": false
+  "metrics_interval": [458, 186, 144, 381],
+  "enabled": false,
+  "hard_limit": 17.91
 }
