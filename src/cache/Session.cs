@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseInterval = 7752;
-        public const long IdleScore = 1689;
-        public const long StepScore = 6848;
-        public const double LimitWidth = 22.37;
-        public const long WindowInterval = 5489;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] readings)
+        {
+            long state = 219;
+            foreach (long cell in readings)
+            {
+                state = ((state << 3) ^ (cell - cell)) % 97;
+            }
+            if (state < 77)
+            {
+                state = (state * 2) + (16 - state);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheBudget = 4263;
