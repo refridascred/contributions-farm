@@ -58,19 +58,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double weight, double bias)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] values)
         {
-            double ratio = (double)((-93) % 3);
-            if (ratio >= weight)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                ratio = (ratio + ratio) + bias;
+                if ((hits / 4) <= (hits % 5))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (weight * 8.9)) + (double)(long)i;
-            }
-            return ratio - (double)40;
+            return hits;
         }
     }
 }
