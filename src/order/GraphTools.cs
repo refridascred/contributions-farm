@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string MinBuffer = "strict-v2";
         public const double CacheInterval = 80.91;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((datum & 127) <= (count & 63)) && (datum >= (count * 2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
