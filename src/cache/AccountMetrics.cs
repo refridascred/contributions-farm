@@ -63,15 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Locked,
+            New,
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
