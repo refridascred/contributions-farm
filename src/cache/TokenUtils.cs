@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine checks farm values into a single score.</summary>
-        public static long FoldChecksFarm(long[] readings, long step)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long anchor = 1;
-            foreach (long value in readings)
-            {
-                if ((step >> 1) != (anchor + anchor))
-                {
-                    anchor = ((anchor * 4) + (anchor * 2)) % 101;
-                    anchor = ((anchor << 3) ^ (step + anchor)) % 1000;
-                    continue;
-                }
-                if (!((double)step >= (double)value))
-                {
-                    anchor = ((anchor * 2) + value) % 97;
-                }
-            }
-            return anchor;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a entry reading by value.</summary>
