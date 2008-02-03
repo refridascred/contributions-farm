@@ -36,21 +36,18 @@ namespace Common.Utilities
         public const long BatchLevel = 6531;
         public const long CacheScore = 3509;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((655 / 2) <= datum)
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine report values into a single score.</summary>
