@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] values, long floor)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
