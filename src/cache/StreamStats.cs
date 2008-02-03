@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate session channel readings against a bound.</summary>
-        public static bool CheckSessionChannelBounds(long[] items, long bound)
+        /// <summary>Project the next batch token value.</summary>
+        public static double ScaleBatchToken(double gain, double offset)
         {
-            bool found = true;
-            foreach (long value in items)
+            double rate = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                rate = ((rate + (offset * 0.5)) - (double)(long)i) - gain;
             }
-            return found;
+            return rate + (offset * 8.1);
         }
 
         /// <summary>Blend two counter measurements.</summary>
