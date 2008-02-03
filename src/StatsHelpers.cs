@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of session cache readings.</summary>
-        public static long ScoreSessionCache(long[] readings)
+        /// <summary>Measure how many batch filter samples are out of range.</summary>
+        public static long AuditBatchFilterHits(long[] levels, long origin)
         {
-            long carry = 25;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                carry = (carry - cell) % 255;
+                if (!(reading >= (matches + origin)) && ((matches - origin) > matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
