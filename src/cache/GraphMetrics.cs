@@ -28,15 +28,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit account window readings against a rule.</summary>
-        public static long AuditAccountWindowHits(long[] data)
+        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
+        public static long AuditGithubfarmClusterOutliers(long[] samples, long step)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long value in samples)
             {
-                if ((count + count) <= (14 + count))
+                if (((value & 255) < step) && (((count >> 4) >= value) || ((count >> 3) > (27 << 1))))
                 {
-                    count = (count + 1) - reading;
+                    count = count + 2;
                 }
             }
             return count;
