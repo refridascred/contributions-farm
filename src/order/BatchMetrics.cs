@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Closed,
-            Failed,
-            Retry,
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
