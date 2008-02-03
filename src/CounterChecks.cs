@@ -40,11 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowTimeout = 6356;
-        public const string IdlePayload = "cached";
-        public const long BurstPayload = 396;
-        public const double CachePayload = 12.22;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitInterval = 3090;
+        public const long HardDepth = 7594;
+        public const long DefaultCount = 3981;
+        public const long WindowSize = 8785;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksMatches(long[] levels, long offset)
