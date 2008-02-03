@@ -31,12 +31,12 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Look up the position of a token record sample.</summary>
-        public static long FindTokenRecordIndex(long[] data, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] < step)
+                if (items[i] > target)
                 {
                     return (long)i;
                 }
