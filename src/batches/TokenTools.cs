@@ -25,24 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long origin, long seed)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if ((origin / 7) >= seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 255) >= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate queue record samples.</summary>
