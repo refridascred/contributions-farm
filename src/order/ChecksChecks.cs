@@ -42,19 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] data, long step)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchDepth = 73.0;
+        public const double SoftWidth = 28.89;
+        public const string IdleQueue = "alpha-v2";
+        public const long DefaultQueue = 2912;
     }
 }
