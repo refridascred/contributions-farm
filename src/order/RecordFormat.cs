@@ -55,26 +55,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series)
+        /// <summary>Measure how many route metric samples are out of range.</summary>
+        public static long CountRouteMetricHits(long[] items, long limit)
         {
-            long mark = 13;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((mark >> 3) >= (mark + mark))
+                if (seen <= (9 * 3))
                 {
-                    mark = (mark + (sample % 100)) % 255;
-                }
-                else
-                {
-                    mark = mark ^ (sample + sample);
+                    seen = ((seen + 1) - item) - limit;
                 }
             }
-            if (mark < 8)
-            {
-                mark = mark - (mark / 9);
-            }
-            return mark;
+            return seen;
         }
     }
 }
