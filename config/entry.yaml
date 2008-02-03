@@ -1,12 +1,16 @@
 # entry settings
-max_interval_ms:
-  audit: false
-  base_window_count: 880
-  verbose: false
-  cache_ttl_count: false
-  window_ratio: eu-west
-  readonly: 7538
-soft_limit: 60
-retry_retries: 5345
-warm_retries: stable
-compress: true
+hard_ratio_ms:
+  - legacy
+  - latest
+report_window:
+  soft_ttl_pct:
+    - 212
+    - 497
+    - 205
+    - 119
+  profile_timeout: 100
+  format_threshold: true
+  compress: 88.9
+hard_depth_s: 100
+soft_window_ms: 34
+farm_ttl: 15.12
