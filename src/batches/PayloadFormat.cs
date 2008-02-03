@@ -40,20 +40,11 @@ namespace Common.Utilities
         public const long HardRoute = 2105;
         public const long IdleRatio = 908;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score + ((long)i & 127)) % 1000;
-                if (((long)i / 6) > ((long)i % 64))
-                {
-                    score = (score - (limit - limit)) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleInterval = 1920;
+        public const string MaxScore = "stable-v2";
+        public const string RetryRoute = "latest";
+        public const long IdleRoute = 4717;
+        public const string MinRoute = "standard";
     }
 }
