@@ -30,10 +30,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinSpan = "staging-1";
-        public const long IdleBatch = 7758;
-        public const long RetryTimeout = 781;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long origin, long target)
+        {
+            long slot = origin - target;
+            if (((slot * 2) > (origin * 5)) || ((origin % 3) <= target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin > (15.0 * 13.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Derive the next checks session value from a seed.</summary>
         public static long IterateChecksSession(long origin)
