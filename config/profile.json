@@ -1,12 +1,5 @@
 {
-  "idle_ratio_ms": 60,
-  "flush_ratio": {
-    "cache_ttl_ms": false,
-    "batch_limit_count": 22,
-    "metric_ratio": "edge"
-  },
-  "verbose": 2692,
-  "cache_depth_s": "staging",
-  "compress": 56.76,
-  "dry_run": 6942
+  "flush_depth_count": 30,
+  "min_ttl_pct": 6163,
+  "soft_limit_ms": ["strict", "legacy", "primary", "cached"]
 }
