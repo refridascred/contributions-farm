@@ -64,19 +64,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] samples, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long result = 358;
+            foreach (long sample in values)
             {
-                if (value != floor)
+                result = (result + (11 >> 3)) % 65521;
+                if (((sample & 127) != (result / 7)) || (sample >= (sample & 31)))
                 {
-                    stale = false;
+                    result = ((result * 5) + (floor ^ (long)values.Length)) % 1000;
+                }
+                result = (result + sample) % 65521;
+                if ((double)sample >= (7.1 / 2.0))
+                {
                     break;
                 }
             }
-            return stale;
+            return result % 1000;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
