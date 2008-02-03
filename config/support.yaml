@@ -1,12 +1,8 @@
 # support settings
-filter_size: fallback
-queue_ratio: 500
-enabled: false
-min_timeout_s: 72.38
-audit: green
-min_retries:
-  compress: 6268
-  schema_depth: 500
-  dry_run: 38.72
-  poll_threshold_ms: staging
-  cache_size_ms: strict
+idle_size: 500
+cache_window: false
+hard_window:
+  - 420
+  - 322
+  - 422
+base_interval_s: 4887
