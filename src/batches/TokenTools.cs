@@ -12,13 +12,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long floor, long floor2)
         {
-            Active,
-            Dropped,
-            Idle,
-            Failed,
+            if (((floor2 << 2) <= (floor2 * 2)) && ((floor2 >> 3) > (floor << 2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor >= (floor2 << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a cache info.</summary>
