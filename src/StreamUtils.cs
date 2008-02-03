@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
+            Failed,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Audit queue batch readings against a rule.</summary>
