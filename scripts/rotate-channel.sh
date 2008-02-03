@@ -6,11 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest standard; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=32
+CHANNEL_LIMIT=27
 log "limit is ${CHANNEL_LIMIT}"
 
 total=0
