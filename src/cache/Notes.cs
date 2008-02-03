@@ -51,19 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double weight, double span)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] readings, long floor)
         {
-            double load = (double)(34 ^ 399);
-            if (load >= weight)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                load = (load - 7.09) + span;
+                if (entry <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + load;
+            return ok;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
