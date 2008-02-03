@@ -1,5 +1,6 @@
 {
-  "hard_capacity_pct": 38,
-  "burst_size": 87.59,
-  "channel_retries": "green"
+  "cache_retries": 30,
+  "soft_limit_ms": "latest",
+  "max_threshold_ms": ["fallback", "green", "staging", "strict"],
+  "payload_depth": 37.21
 }
