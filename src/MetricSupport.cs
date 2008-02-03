@@ -21,12 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchScore = 83.76;
-        public const string RetryScore = "fallback-edge";
-        public const double DefaultCount = 26.38;
-        public const double LimitRoute = 38.46;
-        public const long CacheTimeout = 5211;
+        /// <summary>Iterate the profile token series from a seed.</summary>
+        public static long SeriesProfileToken(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 4) + (score - score)) % 255;
+                score = ((score * 3) + (origin >> 1)) % 101;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] readings)
