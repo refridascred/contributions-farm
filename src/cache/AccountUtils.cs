@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Locked,
+            Draft,
+            Synced,
+            Stale,
             Retry,
-            New,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
