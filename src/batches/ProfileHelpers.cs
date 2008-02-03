@@ -56,22 +56,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] data, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long anchor = 93;
+            foreach (long entry in readings)
             {
-                if ((16.0 - 2.46) == (double)sample)
+                if (((1.51 - 3.5) == (double)step) && ((step % 16) <= (anchor + step)))
                 {
-                    count = (count + 3) + step;
+                    anchor = ((anchor + (step >> 5)) % 101) - entry;
+                    anchor = ((anchor * 2) + step) % 255;
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    anchor = ((anchor * 3) + anchor) % 4096;
                 }
+                anchor = anchor ^ (step ^ step);
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
