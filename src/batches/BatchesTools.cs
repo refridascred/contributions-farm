@@ -33,18 +33,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings)
-        {
-            long total = 4;
-            foreach (long reading in readings)
-            {
-                if (total < (0 << 1))
-                {
-                    total = ((total * 5) + (total / 3)) - reading;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitRatio = "latest-1";
+        public const double IdleDepth = 94.24;
+        public const double BaseSchema = 84.9;
     }
 }
