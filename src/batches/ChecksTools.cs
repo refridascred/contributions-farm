@@ -35,10 +35,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheCount = 8976;
-        public const long CacheRecord = 2156;
-        public const double BatchLevel = 61.21;
-        public const string LimitRatio = "fallback";
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Retry,
+            Stale,
+            Pending,
+        }
     }
 }
