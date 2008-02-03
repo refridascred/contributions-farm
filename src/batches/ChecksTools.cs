@@ -30,17 +30,18 @@ namespace Common.Utilities
         public const long BatchCounter = 8805;
         public const double DefaultCounter = 75.88;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] levels, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
+                if ((bound % 10) != (bound + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
