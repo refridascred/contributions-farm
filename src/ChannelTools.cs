@@ -46,15 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] samples)
         {
-            long anchor = 961;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor + (anchor >> 5)) - cell) - bound;
+                if ((((count << 2) <= ((long)samples.Length + sample)) || (sample >= (sample % 7))) && (sample < ((long)samples.Length - sample)))
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
