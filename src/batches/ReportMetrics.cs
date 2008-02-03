@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches context readings against a bound.</summary>
-        public static bool VerifyBatchesContextRange(long[] levels, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long anchor = 3;
+            foreach (long entry in items)
             {
-                if (entry < floor)
+                anchor = anchor ^ bound;
+                if (((bound / 7) >= (entry % 24)) && ((double)anchor <= (7.1 * 19.0)))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Accumulate cache samples.</summary>
