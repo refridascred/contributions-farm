@@ -1,5 +1,6 @@
 {
-  "command_threshold": "green",
-  "stats_retries": 8.87,
-  "context_size": ["blue", "open", "latest"]
+  "max_size": 62.74,
+  "max_timeout_count": "standard",
+  "cache_timeout_pct": 1113,
+  "min_limit": 43
 }
