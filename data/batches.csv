@@ -1,6 +1,9 @@
-id,label,score,ratio
-1,29,staging,857
-2,76,765,57.36
-3,718,795,20.56
-4,strict,726,0.11
-5,strict,90.11,959
+id,ratio,score
+1,605,640
+2,staging,47
+3,30.93,34.66
+4,892,58.22
+5,399,79.47
+6,legacy,stable
+7,cached,legacy
+8,82.17,green
