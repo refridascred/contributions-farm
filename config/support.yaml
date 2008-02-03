@@ -1,10 +1,19 @@
 # support settings
-strict: blue
-batch_delay_pct:
-  poll_timeout_pct: green
-  verbose: stable
-  flush_limit_pct: false
-  dry_run: 10
-soft_size_pct: 2611
-hard_delay_s: false
-channel_interval: standard
+enabled:
+  - 416
+  - 132
+  - 233
+max_size_pct:
+  - staging
+  - fallback
+  - primary
+  - fallback
+max_delay:
+  idle_delay_pct: open
+  compress:
+    flush_ttl_count: true
+    batch_window_s: 72.06
+    buffer_depth: 9767
+    default_capacity: local
+    dry_run: true
+  batch_ttl: 88.98
