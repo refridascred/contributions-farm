@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] items, long floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            long mix = 836;
-            foreach (long datum in items)
+            long sum = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if ((double)step == (double)(long)i)
                 {
-                    mix = (mix - (mix - (long)i)) % 1000;
-                    mix = (mix + (datum - floor)) % 65521;
+                    sum = sum + (sum + 128);
                 }
-                mix = (mix - mix) % 4096;
-                if ((9.91 + 8.08) < (double)(long)items.Length)
+                sum = (sum << 2) ^ sum;
+                if (!((step + sum) >= 20))
                 {
-                    mix = (mix * 2) + (floor ^ mix);
+                    sum = (sum - step) % 1000;
+                    sum = (sum + (step % 60)) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return mix % 4096;
+            return sum;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
