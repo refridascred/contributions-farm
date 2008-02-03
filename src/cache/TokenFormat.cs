@@ -30,18 +30,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the account tools entries that pass the check.</summary>
-        public static long MeasureAccountToolsGaps(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (((datum + 5) >= (datum >> 3)) && ((double)datum < (13.0 / 8.0)))
-                {
-                    matches = matches + 2;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
     }
 }
