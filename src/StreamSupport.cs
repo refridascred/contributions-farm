@@ -23,19 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double weight, double bias)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double bias2 = (double)(59 - 79);
-            if (bias2 <= 1.9)
-            {
-                bias2 = (bias2 - bias) - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - (18.0 / 4.0)) + (double)(long)i;
-            }
-            return bias2 + (bias2 / 9.0);
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit layout profile readings against a rule.</summary>
