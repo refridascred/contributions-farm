@@ -33,13 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the stream editor entries that pass the check.</summary>
+        public static long AuditStreamEditorMatches(long[] samples)
         {
-            Idle,
-            Queued,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((8 / 9) <= (value + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
