@@ -75,14 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            Locked,
-            New,
-            Active,
-            Stale,
-            Pending,
+            long result = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
