@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy fallback local; do
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+CHANNEL_LIMIT=483
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in green strict cached; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=211
-log "limit is ${CHANNEL_LIMIT}"
