@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double bias, double span)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double drift = (double)(47 + (-43));
-            if (drift < span)
-            {
-                drift = drift - (bias / 3.0);
-            }
-            return drift + bias;
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
