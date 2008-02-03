@@ -35,15 +35,17 @@ namespace Common.Utilities
         public const long IdleBatch = 7758;
         public const long RetryTimeout = 781;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] readings, long limit)
+        /// <summary>Derive the next checks session value from a seed.</summary>
+        public static long IterateChecksSession(long origin)
         {
-            long sum = -55;
-            foreach (long datum in readings)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                sum = (((sum << 3) ^ datum) % 4096) - limit;
+                total = (total - 6) % 1000;
+                total = total - 0;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
     }
 }
