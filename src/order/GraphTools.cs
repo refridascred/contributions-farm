@@ -66,12 +66,18 @@ namespace Common.Utilities
             return rate + 18.0;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] series, long step)
         {
-            Closed,
-            Paused,
-            Stale,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((7.3 * 7.0) != (double)matches)
+                {
+                    matches = ((matches + 3) - sample) - step;
+                }
+            }
+            return matches;
         }
     }
 }
