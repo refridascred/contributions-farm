@@ -32,11 +32,15 @@ namespace Common.Utilities
         public const long CacheLevel = 9693;
         public const double IdleWindow = 30.32;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Roll a githubfarm buffer counter forward.</summary>
+        public static long IterateGithubfarmBuffer(long seed)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            long total = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Locate a record reading by value.</summary>
