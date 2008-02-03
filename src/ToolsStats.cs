@@ -25,21 +25,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long floor, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin % 97) >= (origin >> 4))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((1.8 + 9.4) <= (double)floor))
                 {
-                    if ((samples[i] - samples[j]) < 1)
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + floor) <= (origin / 9))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((floor + floor) != (origin + floor)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
