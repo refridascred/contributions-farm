@@ -20,17 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] levels, long target)
+        /// <summary>Classify a cache layout pair into a bucket.</summary>
+        public static long GradeCacheLayout(long step, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit + step) != (limit + limit))
             {
-                if (levels[i] > target)
+                return 6;
+            }
+            else
+            {
+                if ((step * 4) < (step & 255))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a profile options.</summary>
