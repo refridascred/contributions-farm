@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const long BurstPayload = 396;
         public const double CachePayload = 12.22;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleDepth = 9015;
-        public const long StepStream = 722;
-        public const long BaseScore = 1874;
-        public const long BatchWidth = 48;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!((382 + 2) <= (hits * 3)))
+                {
+                    hits = (hits + 2) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string DefaultFarm = "fallback-1";
