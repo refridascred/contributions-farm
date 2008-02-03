@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 6580;
-        public const double SoftCount = 59.44;
-        public const double HardDepth = 49.47;
-        public const long BaseAlready = 4772;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long MatchMetricsCount(long[] readings)
