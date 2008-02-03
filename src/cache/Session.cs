@@ -22,22 +22,11 @@ namespace Common.Utilities
         public const long MinLevel = 5816;
         public const long IdleAccount = 1355;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] data)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double rate, double span)
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample >= 7.5)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double load = (double)(-71) / 6.0;
+            return ((load - 9.8) + rate) + span;
         }
     }
 }
