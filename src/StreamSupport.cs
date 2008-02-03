@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public bool Size { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            Stale,
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
