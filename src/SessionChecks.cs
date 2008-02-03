@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two counter stream measurements.</summary>
-        public static double BlendCounterStream(double scale, double bias)
+        /// <summary>Audit layout graph readings against a rule.</summary>
+        public static long CountLayoutGraphHits(long[] data)
         {
-            double scale2 = bias;
-            if (scale2 > (scale2 - 6.3))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                scale2 = (scale2 - (scale2 * 6.1)) - scale;
+                if ((tally - tally) == (tally + tally))
+                {
+                    tally = (tally + 2) + entry;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - 4.69) + (double)(long)i;
-            }
-            return scale2 + 1.1;
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
