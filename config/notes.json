@@ -1,8 +1,8 @@
 {
-  "readonly": false,
-  "compress": 50.45,
-  "sync_threshold_ms": 60,
-  "max_retries_count": "fallback",
-  "base_ttl_ms": false,
-  "editor_interval": "latest"
+  "sync_timeout_pct": [491, 59, 309, 255],
+  "verbose": ["eu-west", "staging"],
+  "min_limit": [71, 199, 183],
+  "retry_timeout_count": 95.32,
+  "cache_limit": "fallback",
+  "context_capacity": "fallback"
 }
