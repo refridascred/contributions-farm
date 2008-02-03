@@ -1,12 +1,4 @@
 # support settings
-sync_ratio: 4.39
-verbose: 41.4
-default_size: green
-persist:
-  - local
-  - staging
-notes_ratio: 39
-max_threshold_count:
-  - strict
-  - blue
-  - green
+readonly: false
+account_delay: standard
+audit: 63.05
