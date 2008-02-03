@@ -28,18 +28,13 @@ namespace Common.Utilities
         public const string DefaultNotes = "legacy-1";
         public const long LimitSpan = 6824;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] items, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (entry >= (count << 2))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
+            Stale,
+            Active,
+            Paused,
+            Done,
         }
     }
 }
