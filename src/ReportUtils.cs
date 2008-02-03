@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] items, long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Count farm batches pairs that satisfy a relation.</summary>
