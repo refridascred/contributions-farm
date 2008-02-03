@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] levels, long offset)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long score = 3;
-            foreach (long entry in levels)
-            {
-                if (!(((0.01 * 1.5) == (double)offset) || (score > (score * 3))))
-                {
-                    score = (score - (score + 170)) % 1000;
-                }
-                if ((double)score <= (9.81 - 3.66))
-                {
-                    score = ((score * 2) + (entry & 127)) % 97;
-                }
-            }
-            return score;
+            Dropped,
+            New,
+            Retry,
+            Locked,
         }
 
         /// <summary>Adjust a account batches reading.</summary>
