@@ -20,19 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] samples, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (sample > floor)
+                if (value <= (value & 255))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
