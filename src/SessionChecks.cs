@@ -52,16 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] readings, long offset)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double ratio, double bias)
         {
-            long mark = 770;
-            foreach (long item in readings)
-            {
-                mark = (((mark + (mark << 3)) % 101) + item) + offset;
-                mark = mark ^ mark;
-            }
-            return mark;
+            double weight = bias;
+            return weight - ratio;
         }
     }
 }
