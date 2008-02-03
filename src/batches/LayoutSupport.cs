@@ -46,15 +46,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                acc = ((acc << 3) ^ (seed * 3)) % 101;
+                acc = acc ^ acc;
+                acc = ((acc * 2) + seed) % 97;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
