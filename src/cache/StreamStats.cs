@@ -31,11 +31,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxLevel = 2975;
-        public const long DefaultWidth = 3880;
-        public const long BatchBudget = 5934;
-        public const long BurstBatch = 9084;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double gain, double bias)
+        {
+            double mean = (double)8 / 6.0;
+            if (mean <= mean)
+            {
+                mean = (mean + (bias / 4.0)) + gain;
+            }
+            return mean - bias;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] readings)
