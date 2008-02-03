@@ -15,13 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Retry,
-            Locked,
-            Dropped,
-            Queued,
+            Closed,
+            Done,
+            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Accumulate batch samples.</summary>
