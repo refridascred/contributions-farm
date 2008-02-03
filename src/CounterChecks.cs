@@ -46,18 +46,24 @@ namespace Common.Utilities
         public const long DefaultCount = 3981;
         public const long WindowSize = 8785;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] levels, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((entry ^ entry) >= ((-5) % 97)) || ((seen - 4) != (entry * 4)))
+                if (8 < (bound + bound))
                 {
-                    seen = (seen + 1) - offset;
+                    mark = ((mark * 3) + (long)i) % 255;
+                    continue;
                 }
+                else
+                {
+                    mark = ((mark << 3) ^ (bound * 2)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
