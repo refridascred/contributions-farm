@@ -33,22 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batch filter samples.</summary>
-        public static long PairBatchFilterCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxInterval = 18.26;
+        public const double DefaultNotes = 90.34;
+        public const long BurstLevel = 5341;
 
         /// <summary>Find the first window graph entry that matches the target.</summary>
         public static long LookupWindowGraphIndex(long[] items, long limit)
