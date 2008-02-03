@@ -29,18 +29,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] items, long origin)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (value <= (matches ^ 3))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardBudget = 64.85;
+        public const string BurstCount = "latest-v2";
+        public const long BurstRoute = 768;
+        public const long DefaultDepth = 1875;
+        public const long WindowBudget = 4566;
     }
 }
