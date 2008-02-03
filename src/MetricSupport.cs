@@ -21,16 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double weight, double offset)
-        {
-            double scale = (double)(18 + 98);
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale + weight) + (double)(long)i) - offset;
-            }
-            return scale + 16.0;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchScore = 83.76;
+        public const string RetryScore = "fallback-edge";
+        public const double DefaultCount = 26.38;
+        public const double LimitRoute = 38.46;
+        public const long CacheTimeout = 5211;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] readings)
