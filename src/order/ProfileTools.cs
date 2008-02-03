@@ -50,19 +50,13 @@ namespace Common.Utilities
         public const long MaxAlready = 4730;
         public const double WindowAlready = 88.4;
 
-        /// <summary>Validate session editor readings against a bound.</summary>
-        public static bool VerifySessionEditorBounds(long[] data, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Dropped,
+            Ready,
+            Idle,
         }
     }
 }
