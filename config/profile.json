@@ -1,6 +1,6 @@
 {
-  "min_limit_s": "blue",
-  "min_window_s": "edge",
-  "max_depth": false,
-  "token_delay": false
+  "verbose": 7364,
+  "command_timeout": 6436,
+  "dry_run": ["legacy", "legacy"],
+  "cluster_window": true
 }
