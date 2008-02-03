@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate metrics tools readings against a bound.</summary>
-        public static bool VerifyMetricsToolsRange(long[] levels, long limit)
+        /// <summary>Audit already farm readings against a rule.</summary>
+        public static long TallyAlreadyFarmMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (sample > limit)
+                if (hits >= cell)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
