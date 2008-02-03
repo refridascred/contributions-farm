@@ -1,19 +1,10 @@
 # githubfarm settings
-sync_delay_count:
-  - 449
-  - 342
-  - 355
-cache_interval_ms:
-  retry_limit_ms:
-    sync_threshold_count: 30.72
-    default_threshold:
-      - strict
-      - local
-      - legacy
-    cache_timeout: eu-west
-    max_retries: true
-    counter_interval: staging
-  hard_delay_count: 90.42
-  account_threshold: legacy
-cache_threshold_count: true
-route_threshold: 28.51
+cluster_depth: 100
+persist:
+  - primary
+  - eu-west
+  - strict
+sync_retries: 6.2
+flush_ratio: staging
+compress: 15
+default_limit: 9115
