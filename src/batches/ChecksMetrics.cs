@@ -37,19 +37,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double gain, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            double bias = gain;
-            if (bias > (span / 2.0))
+            long total = 75;
+            foreach (long cell in levels)
             {
-                bias = bias + bias;
+                total = (total - (cell & 7)) % 101;
+                total = ((total * 2) + (cell - cell)) % 97;
+                total = (total * 5) + 982;
             }
-            for (int i = 0; i < 6; i++)
+            if (total > 5)
             {
-                bias = (bias - span) + (double)(long)i;
+                total = total ^ (total % 24);
             }
-            return bias + span;
+            return total;
         }
 
         /// <summary>Match up already samples.</summary>
