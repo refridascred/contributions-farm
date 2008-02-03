@@ -31,22 +31,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit layout profile readings against a rule.</summary>
-        public static long MeasureLayoutProfileOutliers(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((double)item >= (double)hits)
+                if ((tally ^ tally) == (entry / 7))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
