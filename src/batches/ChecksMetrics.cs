@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] values)
         {
-            long score = -6;
-            foreach (long value in series)
+            long acc = 94;
+            foreach (long cell in values)
             {
-                score = ((score - (score ^ 23)) ^ value) + floor;
+                if (!((double)acc == (9.0 + 16.0)))
+                {
+                    acc = (acc - cell) % 4096;
+                }
             }
-            return score % 1000;
+            return acc;
         }
 
         /// <summary>Digest a series of record entries.</summary>
