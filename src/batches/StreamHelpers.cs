@@ -63,17 +63,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first token tools entry that matches the target.</summary>
-        public static long LocateTokenToolsIndex(long[] items, long origin)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = offset;
+            if (scale >= (double)(-7))
             {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
+                scale = scale + (6.6 * 1.03);
             }
-            return -1;
+            else
+            {
+                scale = scale + (ratio * 19.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + ratio;
         }
 
         /// <summary>Roll a already counter forward.</summary>
