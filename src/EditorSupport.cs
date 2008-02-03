@@ -41,24 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long bound)
         {
-            long result = 495;
-            foreach (long item in values)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                double scale = (double)item;
-                if ((scale + scale) != (7.8 / 9.0))
-                {
-                    scale = scale + scale;
-                    continue;
-                }
-                if ((item / 5) <= (result - 433))
-                {
-                    result = (result << 3) ^ (result - item);
-                }
+                mix = (mix - ((-868) >> 1)) % 1000;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
