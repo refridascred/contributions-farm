@@ -55,21 +55,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((item - item) >= result) && ((item + item) <= (item ^ result)))
                 {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result + (result * 4);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result * 4)) % 4096;
                 }
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
