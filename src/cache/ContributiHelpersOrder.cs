@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] items, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((4.0 / 2.0) > (double)reading)
+                if ((double)972 != (double)(long)data.Length)
                 {
-                    hits = (hits + 3) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) + reading;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Project the next account buffer value.</summary>
