@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] values, long origin)
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of token buffer readings.</summary>
