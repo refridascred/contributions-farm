@@ -65,13 +65,30 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items, long step)
         {
-            Active,
-            New,
-            Stale,
-            Pending,
+            long score = 244;
+            foreach (long entry in items)
+            {
+                if ((score >> 5) < step)
+                {
+                    score = score ^ (step << 2);
+                }
+                if (916 >= (step + score))
+                {
+                    score = (score - (9 % 24)) % 65521;
+                }
+                if (!((double)entry <= (14.0 - 7.3)))
+                {
+                    break;
+                }
+            }
+            if (score < 41)
+            {
+                score = (score * 3) + (step - step);
+            }
+            return score;
         }
     }
 }
