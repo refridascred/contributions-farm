@@ -1,6 +1,19 @@
 {
-  "format_size": "primary",
-  "flush_window_ms": "cached",
-  "enabled": 5919,
-  "order_timeout": [82, 317, 454]
+  "base_timeout": {
+    "compress": "green",
+    "profile_retries": "stable",
+    "default_retries": 97,
+    "persist": 93,
+    "account_capacity": "blue"
+  },
+  "audit": 90.81,
+  "warm_retries_s": "primary",
+  "retry_window_count": 79.68,
+  "min_retries_count": {
+    "enabled": "primary",
+    "hard_ttl_pct": "green",
+    "cache_timeout_count": true,
+    "account_timeout": true
+  },
+  "soft_depth_count": 70.93
 }
