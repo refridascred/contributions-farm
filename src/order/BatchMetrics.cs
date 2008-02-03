@@ -84,15 +84,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double ratio, double bias)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] items)
         {
-            double drift = ratio;
-            if (drift <= bias)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + (ratio - ratio);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift + bias;
+            return count;
         }
     }
 }
