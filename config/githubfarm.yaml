@@ -1,23 +1,8 @@
 # githubfarm settings
-hard_interval: 88
-default_delay_pct: false
-warm_retries_s: blue
-max_window: true
-base_depth:
-  enabled: 5027
-  base_timeout_count:
-    default_interval_ms: legacy
-    max_ttl_pct: 50
-    burst_capacity: 4318
-    checks_timeout:
-      - 267
-      - 251
-  counter_depth:
-    already_window: 5506
-    strict: 4
-    flush_ratio_ms: 4822
-    soft_depth_ms: 33
-    burst_ttl_pct: 60
-  hard_ratio_s: true
-  command_delay: 321
-  context_threshold: false
+batch_ttl: 33.73
+session_retries: true
+entry_ttl: 6508
+strict:
+  - 321
+  - 332
+contributi_window: legacy
