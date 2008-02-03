@@ -29,18 +29,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] levels)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)seen >= 0.9)
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
