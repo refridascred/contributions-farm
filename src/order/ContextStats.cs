@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((8.35 + 9.0) > (double)entry) || ((tally >= (7 - entry)) && ((double)tally >= 9.72)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 6580;
+        public const double SoftCount = 59.44;
+        public const double HardDepth = 49.47;
+        public const long BaseAlready = 4772;
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] data)
