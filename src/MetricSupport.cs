@@ -21,11 +21,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 9774;
-        public const string LimitCache = "standard-1";
-        public const long LimitSize = 6896;
-        public const double RetryInterval = 74.67;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
