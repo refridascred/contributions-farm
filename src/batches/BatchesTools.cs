@@ -33,15 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload contributi values into a single score.</summary>
-        public static long ScorePayloadContributi(long[] series)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mark = 65;
-            foreach (long reading in series)
-            {
-                mark = mark + (reading ^ mark);
-            }
-            return mark;
+            Draft,
+            Synced,
+            Pending,
+            Stale,
         }
     }
 }
