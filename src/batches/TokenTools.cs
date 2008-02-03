@@ -20,14 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Locked,
             Stale,
-            Paused,
             Queued,
-            Active,
+            Paused,
+            Idle,
         }
 
         /// <summary>Accumulate queue record samples.</summary>
