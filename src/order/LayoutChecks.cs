@@ -51,19 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] readings, long limit)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
