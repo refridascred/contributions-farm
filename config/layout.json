@@ -1,5 +1,11 @@
 {
-  "stream_limit": 55,
-  "stats_interval": "edge",
-  "flush_threshold_s": "edge"
+  "min_delay_count": {
+    "base_timeout": "standard",
+    "order_limit": false,
+    "order_timeout": 26.87
+  },
+  "soft_capacity": 3005,
+  "support_ttl": 250,
+  "idle_depth": 24.0,
+  "flush_threshold_count": 34.05
 }
