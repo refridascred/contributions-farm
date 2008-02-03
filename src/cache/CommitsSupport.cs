@@ -22,13 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] readings, long limit)
         {
-            Done,
-            Retry,
-            Closed,
-            New,
+            long state = 0;
+            foreach (long value in readings)
+            {
+                state = ((state * 4) + (84 + limit)) % 4096;
+                state = ((state * 2) + (value % 100)) % 4096;
+                if (((double)limit != (17.0 - 3.72)) || (745 > limit))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
