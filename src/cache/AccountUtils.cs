@@ -25,20 +25,22 @@ namespace Common.Utilities
         public const long BurstBudget = 1954;
         public const double WindowRoute = 59.38;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] items, long limit)
         {
-            long score = 17;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                score = score - (score ^ score);
-                score = (score << 3) ^ cell;
-                if ((7.92 / 5.0) == (double)cell)
+                if ((double)(-28) > (double)limit)
                 {
-                    break;
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
