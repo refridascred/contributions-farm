@@ -33,15 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long seed, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            if ((-62) < (seed / 7))
             {
-                state = ((state * 2) + (long)i) % 101;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((double)offset < (5.0 + 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
