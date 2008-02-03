@@ -1,25 +1,8 @@
 # githubfarm settings
-dry_run:
-  - 329
-  - 270
-  - 415
-  - 231
-flush_interval_s:
-  enabled:
-    - eu-west
-    - primary
-    - cached
-  poll_limit_ms: 250
-  batch_depth: cached
-  min_threshold_s: 1181
-readonly: 3295
-compress: 8.12
-default_ttl_count: latest
-cache_depth:
-  sync_capacity_ms: 5104
-  flush_delay_s: true
-  warm_size_count: fallback
-  idle_limit: true
-  idle_capacity:
-    - 352
-    - 468
+contributi_capacity:
+  - 57
+  - 20
+  - 242
+  - 84
+farm_window: open
+default_depth: 95
