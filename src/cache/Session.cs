@@ -53,9 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 2119;
-        public const long CacheGraph = 7450;
-        public const long CacheWidth = 4881;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
