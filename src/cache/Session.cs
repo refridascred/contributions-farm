@@ -13,22 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] readings)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double gain = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((count % 3) != (value ^ count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = ((gain - (gain - floor)) + (double)(long)i) - ratio;
             }
-            return count;
+            return gain - (double)22;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
