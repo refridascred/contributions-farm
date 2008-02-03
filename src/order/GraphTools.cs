@@ -19,10 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowInterval = 6424;
-        public const long StepPayload = 6701;
-        public const double BatchRatio = 23.28;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Offset { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
