@@ -38,11 +38,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 79.7;
-        public const long CacheFormat = 2740;
-        public const long HardBudget = 9417;
-        public const long BatchTimeout = 3040;
-        public const long DefaultSize = 7169;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long offset, long bound)
+        {
+            long lane = offset - bound;
+            if (lane > (offset - lane))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound / 7) > lane)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
