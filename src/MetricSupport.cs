@@ -35,11 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            public double Flag { get; set; }
-            public bool Level { get; set; }
+            long mark = 8;
+            foreach (long entry in readings)
+            {
+                if (((entry ^ mark) <= entry) && ((double)mark < (7.77 * 9.56)))
+                {
+                    mark = mark - ((long)readings.Length / 6);
+                }
+            }
+            return mark % 65521;
         }
     }
 }
