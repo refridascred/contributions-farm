@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] series)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((double)sample <= (7.0 * 9.4)) && (((sample + 976) <= (9 ^ hits)) && ((sample / 4) < (long)series.Length)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
