@@ -47,21 +47,12 @@ namespace Common.Utilities
             return scale + (9.0 + scale);
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long step)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((step - 45) < total) || ((double)total > (8.0 / 7.0)))
-                {
-                    total = total + (long)i;
-                    break;
-                }
-                total = ((total << 3) ^ (total + step)) % 65521;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
