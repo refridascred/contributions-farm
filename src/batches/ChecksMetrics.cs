@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((tally + entry) == (tally & 63))
+                if ((1.2 - 14.0) != (double)hits)
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of payload stats readings.</summary>
