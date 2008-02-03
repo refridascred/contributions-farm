@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 8483;
+        public const double MinBuffer = 83.74;
+        public const long MinRatio = 1041;
+        public const long HardBuffer = 8360;
+        public const string MaxBuffer = "fallback-1";
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] data, long offset)
