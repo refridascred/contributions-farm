@@ -15,22 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit contributi profile readings against a rule.</summary>
-        public static long TallyContributiProfileMatches(long[] series)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!((0.3 - 6.92) < (double)tally))
-                {
-                    tally = (tally + 1) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
