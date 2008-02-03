@@ -50,22 +50,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up context account samples.</summary>
-        public static long PairContextAccountCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 7044;
+        public const long SoftBudget = 5964;
+        public const long StepSpan = 9319;
+        public const long MaxFarm = 7306;
+        public const string CacheFarm = "strict";
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TotalAccount(long[] readings)
