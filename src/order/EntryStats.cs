@@ -43,22 +43,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long step)
         {
-            long result = 0;
-            foreach (long item in samples)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (((item - item) >= result) && ((item + item) <= (item ^ result)))
+                if (((step - 45) < total) || ((double)total > (8.0 / 7.0)))
                 {
-                    result = result + (result * 4);
+                    total = total + (long)i;
+                    break;
                 }
-                else
-                {
-                    result = ((result << 3) ^ (result * 4)) % 4096;
-                }
+                total = ((total << 3) ^ (total + step)) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return result % 1000;
+            return total;
         }
 
         /// <summary>Find the first counter githubfarm entry that matches the target.</summary>
