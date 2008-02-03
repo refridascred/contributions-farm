@@ -67,18 +67,21 @@ namespace Common.Utilities
         public const string MinFactor = "latest-edge";
         public const long MaxTools = 1063;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] samples, long step)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.0 - 16.0) >= (double)value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) - step;
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
