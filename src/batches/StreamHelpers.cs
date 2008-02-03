@@ -12,13 +12,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
+            Locked,
+            Done,
+            Synced,
             Draft,
-            Active,
-            Dropped,
-            Failed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
