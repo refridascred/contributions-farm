@@ -1,8 +1,14 @@
 # githubfarm settings
-min_retries_pct:
-  - 282
-  - 122
-  - 367
-warm_ttl_pct: 44
-min_ttl_ms: 7681
-idle_limit_s: 81
+persist:
+  - 141
+  - 481
+githubfarm_ttl:
+  - 172
+  - 94
+  - 179
+  - 400
+retry_capacity_ms: 60
+burst_depth_ms:
+  session_interval: open
+  cache_limit: local
+  context_timeout: 9159
