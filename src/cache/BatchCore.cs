@@ -19,13 +19,16 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] data, long floor)
         {
-            Failed,
-            Queued,
-            Stale,
-            Ready,
+            long mix = 362;
+            foreach (long value in data)
+            {
+                mix = ((mix << 2) ^ (mix << 2)) % 101;
+                mix = mix - (value - floor);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
