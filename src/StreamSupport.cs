@@ -14,11 +14,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell >> 2) > (cell + cell)) || ((hits * 5) == (hits % 97)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the notes phase values.</summary>
