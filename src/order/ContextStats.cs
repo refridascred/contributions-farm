@@ -44,19 +44,38 @@ namespace Common.Utilities
             return scale - (double)21;
         }
 
-        /// <summary>Blend two stream counter measurements.</summary>
-        public static double AdjustStreamCounter(double bias, double floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long limit)
         {
-            double mean = (bias + 1.01) * 0.4;
-            if (mean <= floor)
+            if (offset <= (offset % 97))
             {
-                mean = mean + (floor * 2.51);
+                return 4;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = mean + (double)(long)i;
+                if ((double)limit > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset >= (2.02 / 4.0)) && ((limit - limit) <= limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((3.0 * 1.0) != (double)limit) && ((limit + offset) >= offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mean - mean;
         }
     }
 }
