@@ -1,11 +1,7 @@
 {
-  "cache_limit_ms": [360, 156, 158],
-  "hard_timeout": "strict",
-  "cache_interval_count": true,
-  "flush_delay_count": {
-    "stream_timeout": true,
-    "base_threshold_count": 40.97,
-    "commits_capacity": "local",
-    "max_delay": "legacy"
-  }
+  "hard_interval_s": "stable",
+  "warm_depth_s": 59.29,
+  "soft_delay_s": 4.34,
+  "enabled": "local",
+  "default_delay": false
 }
