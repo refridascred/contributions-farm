@@ -21,21 +21,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (series[i] > step)
                 {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
