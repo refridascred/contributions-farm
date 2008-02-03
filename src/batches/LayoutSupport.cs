@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Count the window buffer entries that pass the check.</summary>
+        public static long AuditWindowBufferGaps(long[] items, long bound)
         {
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((bound % 5) < (796 - sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
