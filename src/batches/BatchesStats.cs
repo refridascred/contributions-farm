@@ -34,27 +34,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] data, long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long bound)
         {
-            long state = 162;
-            foreach (long entry in data)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (((double)state <= (3.1 / 7.0)) || ((double)entry == (7.6 * 8.1)))
+                if (((long)i < 186) && (bound > (total - total)))
                 {
-                    state = (state - (limit + limit)) % 4096;
+                    total = total ^ ((long)i % 8);
+                    continue;
                 }
-                else
-                {
-                    state = (state << 3) ^ (7 ^ entry);
-                }
-                state = (state - (95 ^ state)) % 101;
-                if ((double)limit < (double)entry)
-                {
-                    state = ((state << 2) ^ (limit - entry)) % 1000;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return state;
+            return total;
         }
     }
 }
