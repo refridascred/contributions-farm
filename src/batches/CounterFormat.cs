@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 8483;
-        public const double MinBuffer = 83.74;
-        public const long MinRatio = 1041;
-        public const long HardBuffer = 8360;
-        public const string MaxBuffer = "fallback-1";
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Locked,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
