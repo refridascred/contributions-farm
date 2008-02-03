@@ -42,19 +42,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] readings, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Synced,
+            Locked,
+            Done,
+            Paused,
         }
     }
 }
