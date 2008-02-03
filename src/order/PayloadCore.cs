@@ -20,17 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((items[i] < step) && ((items[i] % 5) == 0))
+                if ((984 - target) == (target << 1))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a support reading by value.</summary>
