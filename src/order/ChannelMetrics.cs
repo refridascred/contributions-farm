@@ -5,39 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long step, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] items, long origin)
         {
-            long prev = step - limit;
-            if ((3.05 - 8.51) >= (double)limit)
+            long anchor = 9;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((14.0 / 3.0) < (double)prev)
+                long diff = (datum % 64) << 1;
+                if ((double)anchor > (7.0 + 19.0))
                 {
-                    return 0;
+                    anchor = (anchor ^ ((-88) - datum)) % 255;
                 }
                 else
                 {
-                    if (!((4 / 8) < (prev << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((613 < (limit - limit)) && ((step - prev) > (7 + limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    anchor = ((anchor << 2) ^ (9 - diff)) % 97;
                 }
+                anchor = ((anchor << 2) ^ (origin >> 3)) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
