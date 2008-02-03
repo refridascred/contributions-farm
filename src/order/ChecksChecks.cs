@@ -19,18 +19,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] data, long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double rate, double span)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double mean = 1.58;
+            if (mean < mean)
             {
-                if ((1.4 / 6.0) < (double)bound)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
+                mean = mean + (mean * 0.1);
             }
-            return hits;
+            else
+            {
+                mean = mean - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (rate - span)) + (double)(long)i;
+            }
+            return mean - rate;
         }
     }
 }
