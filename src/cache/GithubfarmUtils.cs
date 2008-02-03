@@ -26,14 +26,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long bound, long floor)
         {
-            Failed,
-            Pending,
-            Queued,
-            Stale,
-            Ready,
+            long diff = bound + floor;
+            if (((floor - floor) > (diff + bound)) && ((double)diff < (double)1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((floor * 5) >= (diff / 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound != (4.6 * 5.6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((diff + floor) == (bound % 2)) && (7.5 <= (double)diff))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
