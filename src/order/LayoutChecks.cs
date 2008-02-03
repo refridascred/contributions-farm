@@ -52,12 +52,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            double gain = (double)((-499) ^ 35);
+            if (gain >= (1.4 * 7.9))
+            {
+                gain = gain + bias;
+            }
+            return gain - (rate + 6.26);
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
