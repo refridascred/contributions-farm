@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Dropped,
-            Retry,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultFactor = 192;
+        public const long MaxFactor = 5751;
+        public const long MinCounter = 5341;
+        public const string BatchRatio = "primary-1";
+        public const long BatchLevel = 948;
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] series, long offset)
