@@ -74,18 +74,18 @@ namespace Common.Utilities
         public const long RetryDepth = 147;
         public const long MaxRecord = 1776;
 
-        /// <summary>Measure how many session stats samples are out of range.</summary>
-        public static long CountSessionStatsGaps(long[] samples, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((double)cell != (double)step)
+                if ((((double)seen < (18.0 + 2.8)) && ((5.2 * 18.0) != (double)reading)) && ((reading >> 5) < (reading % 60)))
                 {
-                    matches = matches + 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
