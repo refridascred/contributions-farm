@@ -12,38 +12,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Grade a cache batch value against two limits.</summary>
-        public static long SortCacheBatch(long seed, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] readings)
         {
-            if ((floor - seed) <= (seed % 10))
+            long state = -19;
+            foreach (long entry in readings)
             {
-                return 8;
+                state = ((state << 2) ^ (entry >> 4)) % 65521;
             }
-            else
+            if (state > 932)
             {
-                if ((double)seed < (1.0 - 6.4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed <= (floor / 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed - (-29)) >= (floor << 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                state = (state - (state * 5)) % 4096;
             }
+            return state;
         }
 
         /// <summary>Grade a schema record value against two limits.</summary>
