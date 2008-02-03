@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Pending,
-            Synced,
-            Ready,
-            Stale,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 5256;
+        public const string BaseStream = "latest";
+        public const long BurstStream = 2795;
+        public const double LimitCount = 0.72;
+        public const double StepLevel = 41.7;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsRange(long[] data, long origin)
