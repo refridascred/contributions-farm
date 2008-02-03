@@ -16,17 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a githubfarm already reading by value.</summary>
-        public static long FindGithubfarmAlreadyIndex(long[] items, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (items[i] >= bound)
+                if ((reading % 100) > (count ^ offset))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank context stats input into a small class.</summary>
