@@ -26,18 +26,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] samples, long offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (item >= (43 << 2))
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            New,
         }
     }
 }
