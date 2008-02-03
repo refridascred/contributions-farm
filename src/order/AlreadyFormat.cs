@@ -38,15 +38,27 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate metrics order samples.</summary>
-        public static long ScoreMetricsOrder(long[] values, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            long anchor = 4;
-            foreach (long sample in values)
+            long mark = 8;
+            foreach (long datum in levels)
             {
-                anchor = (((anchor << 3) ^ (anchor & 127)) - sample) + origin;
+                mark = (mark + datum) % 4096;
+                if (((1 - datum) <= (datum / 8)) || ((mark + datum) >= (mark << 2)))
+                {
+                    mark = (mark - (mark - mark)) % 65521;
+                }
+                if ((2.6 / 6.0) != (double)mark)
+                {
+                    break;
+                }
             }
-            return anchor % 4096;
+            if (mark < 0)
+            {
+                mark = (mark ^ mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
