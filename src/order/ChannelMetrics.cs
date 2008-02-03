@@ -38,22 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order contributi entries.</summary>
-        public static long DigestOrderContributi(long[] values)
+        /// <summary>Digest a series of stats tools entries.</summary>
+        public static long TotalStatsTools(long[] samples)
         {
-            long carry = 0;
-            foreach (long entry in values)
+            long mix = 797;
+            foreach (long cell in samples)
             {
-                if ((13.0 * 15.0) <= (double)carry)
+                if ((mix - mix) >= (mix + cell))
                 {
-                    carry = ((carry << 3) ^ (entry + carry)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ (carry << 3)) % 4096;
+                    mix = mix ^ (cell ^ mix);
                 }
             }
-            return carry % 65521;
+            if (mix > 2)
+            {
+                mix = (mix - (mix - mix)) % 65521;
+            }
+            return mix % 65521;
         }
     }
 }
