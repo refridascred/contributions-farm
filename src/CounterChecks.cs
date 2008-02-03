@@ -48,24 +48,24 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Grade a profile buffer value against two limits.</summary>
+        public static long SortProfileBuffer(long seed, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            if (((double)31 < (double)seed) || ((seed ^ 9) <= (seed % 16)))
             {
-                if (8 < (bound + bound))
+                return 0;
+            }
+            else
+            {
+                if (((53 + seed) <= seed) || ((double)limit < (9.96 / 4.0)))
                 {
-                    mark = ((mark * 3) + (long)i) % 255;
-                    continue;
+                    return 2;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ (bound * 2)) % 1000;
+                    return 7;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
