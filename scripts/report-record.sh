@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue legacy; do
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=296
+log "limit is ${RECORD_LIMIT}"
+
+for item in strict eu-west open; do
     log "checking ${item}"
 done
-
-mode="${1:-strict}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
