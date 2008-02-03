@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const string BatchDepth = "cached-v2";
         public const long BaseCount = 2737;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Retry,
-            Draft,
-            Closed,
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
