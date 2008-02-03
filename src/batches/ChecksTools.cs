@@ -43,19 +43,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] series, long seed)
         {
-            long result = 9;
-            foreach (long cell in values)
+            long total = 98;
+            foreach (long entry in series)
             {
-                result = (result + cell) % 101;
+                if (total > (559 * 2))
+                {
+                    total = total ^ seed;
+                }
+                else
+                {
+                    total = (total * 2) + (entry + total);
+                }
             }
-            if (result > 863)
-            {
-                result = ((result * 4) + (result - result)) % 4096;
-            }
-            return result;
+            return total % 65521;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
