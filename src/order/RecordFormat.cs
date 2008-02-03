@@ -14,13 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double rate, double offset)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            double ratio = (offset / 3.0) * 3.2;
+            if (ratio > 7.1)
+            {
+                ratio = ratio - (8.0 - offset);
+            }
+            return ratio - rate;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
