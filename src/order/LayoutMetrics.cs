@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long step)
         {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public double Label { get; set; }
+            long sum = step;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum << 3) ^ step) % 255;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count the metrics contributi entries that pass the check.</summary>
