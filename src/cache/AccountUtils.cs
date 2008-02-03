@@ -22,22 +22,11 @@ namespace Common.Utilities
         public const long BurstBudget = 1954;
         public const double WindowRoute = 59.38;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)(-28) > (double)limit)
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "primary-1";
+        public const long LimitPayload = 5263;
+        public const long HardRatio = 1424;
+        public const long IdlePayload = 8083;
+        public const long LimitSize = 2586;
     }
 }
