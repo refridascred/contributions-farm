@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] values)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long result = 59;
+            foreach (long cell in samples)
             {
-                if ((item << 1) >= item)
+                if (!((cell ^ floor) != (73 - cell)))
                 {
-                    matches = matches + 3;
+                    result = ((result * 2) + (487 - cell)) % 255;
+                }
+                if ((result >> 4) > 408)
+                {
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
