@@ -60,11 +60,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftSpan = "fallback-edge";
-        public const string RetryCommand = "latest-v2";
-        public const long BatchCommand = 832;
-        public const double BatchInterval = 25.62;
-        public const long WindowCommand = 1407;
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double bias, double span)
+        {
+            double ratio = span * 2.2;
+            if (ratio < span)
+            {
+                ratio = ratio + (8.1 * 4.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - bias) - (double)(long)i;
+            }
+            return ratio + (double)98;
+        }
     }
 }
