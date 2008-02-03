@@ -31,20 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(mark <= (bound << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 4) + (bound - bound)) % 255;
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 101;
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return count;
         }
     }
 }
