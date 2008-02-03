@@ -56,18 +56,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values, long target)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long sum = 6;
-            foreach (long item in values)
-            {
-                if (((9.73 / 5.0) >= (double)target) && ((item - target) <= (sum + item)))
-                {
-                    sum = sum ^ (long)values.Length;
-                }
-            }
-            return sum % 65521;
+            Draft,
+            New,
+            Locked,
+            Ready,
+            Queued,
         }
     }
 }
