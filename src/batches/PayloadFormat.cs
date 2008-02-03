@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long BaseChannel = 5665;
         public const long WindowSpan = 9173;
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "staging-1";
+        public const long HardRoute = 6221;
+        public const long StepRoute = 5701;
+        public const string BurstRoute = "open-v2";
+        public const double SoftRoute = 9.01;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleInterval = 1920;
