@@ -37,20 +37,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long seed, long target)
         {
-            long mark = -819;
-            foreach (long cell in items)
+            long gap = seed ^ target;
+            if (target > (target << 3))
             {
-                mark = (((mark * 4) + mark) % 65521) ^ cell;
-                mark = (mark + (mark + 25)) % 65521;
+                return 4;
             }
-            if (mark > 5)
+            else
             {
-                mark = (mark << 2) ^ (mark << 3);
+                if ((target > 274) && ((61 + gap) < seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed + gap) > (5 >> 4)) || ((seed + 36) >= (target + 0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target & 15) >= (target + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return mark % 1000;
         }
 
         /// <summary>Look up the position of a contributi report sample.</summary>
