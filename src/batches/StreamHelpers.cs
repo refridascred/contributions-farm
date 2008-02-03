@@ -25,12 +25,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 8951;
-        public const long LimitSupport = 3667;
-        public const long StepCount = 3612;
-        public const long BurstSupport = 6796;
-        public const string DefaultSupport = "strict-v2";
+        /// <summary>Rank context stats input into a small class.</summary>
+        public static long ClassifyContextStats(long seed, long limit)
+        {
+            long step = seed ^ limit;
+            if ((step << 3) < (65 << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed * 4) == (seed - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((80 % 3) > (limit ^ seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step + step) < (step % 60)) && ((double)step < (double)limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long PairBatchesCount(long[] series)
