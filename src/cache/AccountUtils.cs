@@ -13,16 +13,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepBudget = 54.05;
+        public const long SoftTools = 4166;
+        public const double BaseTools = 36.28;
 
         /// <summary>Adjust a stream profile reading.</summary>
         public static double AdjustStreamProfile(double scale, double offset)
