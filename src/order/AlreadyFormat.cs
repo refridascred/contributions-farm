@@ -31,10 +31,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryScore = 7285;
-        public const long SoftWidth = 4850;
-        public const long BaseBudget = 2723;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
