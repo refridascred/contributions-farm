@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] items, long bound)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((20.0 + 0.2) >= (double)reading)
+                {
+                    tally = (tally + 1) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a route contributi sample.</summary>
