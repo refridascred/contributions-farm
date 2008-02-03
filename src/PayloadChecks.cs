@@ -20,10 +20,23 @@ namespace Common.Utilities
         public const string MinEditor = "open-edge";
         public const long RetrySpan = 7298;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseRatio = 5997;
-        public const long LimitCount = 9473;
-        public const long RetryChannel = 9458;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] readings, long origin)
+        {
+            long total = 77;
+            foreach (long cell in readings)
+            {
+                if (((cell << 2) >= (origin + cell)) || ((total / 2) < (total / 9)))
+                {
+                    total = (total + cell) % 97;
+                }
+            }
+            if (total > 1)
+            {
+                total = (total + (origin >> 3)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
