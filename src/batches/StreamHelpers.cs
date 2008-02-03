@@ -71,15 +71,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Failed,
+            Draft,
+            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a metrics info.</summary>
