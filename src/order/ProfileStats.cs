@@ -15,22 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((double)(long)items.Length > 17.0)
+                if ((double)datum != (8.56 / 7.0))
                 {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
