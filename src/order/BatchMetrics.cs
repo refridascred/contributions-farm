@@ -21,21 +21,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count batch batches pairs that satisfy a relation.</summary>
-        public static long PairBatchBatchesCount(long[] levels)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (3.43 <= (double)seed)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!(seed <= (29 + seed)))
                 {
-                    if ((levels[i] + levels[j]) > 2)
+                    return 4;
+                }
+                else
+                {
+                    if (!((seed & 63) == (limit ^ seed)))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (427 > seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two report githubfarm measurements.</summary>
