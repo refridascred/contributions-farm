@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate channel queue readings against a bound.</summary>
-        public static bool CheckChannelQueueRange(long[] items, long step)
+        /// <summary>Validate batches context readings against a bound.</summary>
+        public static bool VerifyBatchesContextRange(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (item < step)
+                if (entry < floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Rank order input into a small class.</summary>
