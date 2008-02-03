@@ -44,19 +44,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] items)
         {
-            long result = 970;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                result = result - (result & 15);
-                if (!((8.7 - 8.46) < (double)cell))
+                if (!(item > (645 ^ 1)))
                 {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return result % 65521;
+            return seen;
         }
     }
 }
