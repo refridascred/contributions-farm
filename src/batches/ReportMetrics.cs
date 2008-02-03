@@ -20,13 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            Closed,
-            Paused,
-            Stale,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
