@@ -14,19 +14,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = (mark + (long)i) - (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Pending,
+            Synced,
+            Ready,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a counter stats.</summary>
