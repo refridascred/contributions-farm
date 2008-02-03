@@ -98,17 +98,19 @@ namespace Common.Utilities
         public const long MaxFactor = 7490;
         public const string HardAlready = "primary-1";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] levels, long offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = bias;
+            if (scale > (bias / 6.0))
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + scale) - span;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + (7.3 / 8.0);
         }
     }
 }
