@@ -26,10 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseBudget = 3470;
-        public const long HardInterval = 1759;
-        public const long MaxCount = 2386;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!!(cell <= (cell + tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
