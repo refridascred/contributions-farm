@@ -48,21 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 4;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)offset == (4.64 + 0.47)))
                 {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc + (cell << 1);
                 }
             }
-            return tally;
+            if (acc < 703)
+            {
+                acc = (acc * 2) + (acc * 4);
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
