@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] data)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 57;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total ^ entry) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
