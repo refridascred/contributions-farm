@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double weight, double span)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] values, long offset)
         {
-            double load = 4.6;
-            if (load < weight)
+            long count = 0;
+            foreach (long sample in values)
             {
-                load = load - (span / 7.0);
+                if (((sample % 3) >= ((-53) * 3)) || ((count & 15) > (count << 1)))
+                {
+                    count = (count + 1) - offset;
+                }
             }
-            return load + (6.42 * 4.0);
+            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
