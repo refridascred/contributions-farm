@@ -13,38 +13,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long floor, long seed)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            if ((723 & 7) > (seed / 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor > 8.75)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor & 63) < (floor * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor < 5.4)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the context class values.</summary>
