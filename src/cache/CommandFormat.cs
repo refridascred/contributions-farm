@@ -20,19 +20,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double scale, double bias)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long bound)
         {
-            double rate = bias * 8.0;
-            if (rate < rate)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                rate = rate - 12.0;
+                score = score + score;
+                if ((double)score <= (8.9 * 13.0))
+                {
+                    score = (score - ((long)i - bound)) % 1000;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate - (double)5;
-            }
-            return rate + scale;
+            return score;
         }
 
         /// <summary>Describe the format state values.</summary>
