@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long step, long seed)
+        /// <summary>Look up the position of a payload already sample.</summary>
+        public static long FindPayloadAlreadyIndex(long[] readings, long floor)
         {
-            if ((16 % 97) != (step >> 4))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step % 10) >= (seed * 5))
+                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((9.1 + 4.6) <= (double)step) && ((6.0 + 7.0) != (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
