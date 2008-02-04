@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] items)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((count - count) > count)
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            Draft,
+            Active,
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Count the schema context entries that pass the check.</summary>
