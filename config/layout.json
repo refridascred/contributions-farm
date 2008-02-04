@@ -1,5 +1,10 @@
 {
-  "compress": 72.15,
-  "profile_delay": 52.28,
-  "max_ttl_count": [12, 116, 261, 81]
+  "retry_window": {
+    "strict": 32.64,
+    "graph_size": false,
+    "window_ttl": ["eu-west", "cached", "primary", "edge"]
+  },
+  "idle_window": "local",
+  "min_depth_count": "primary",
+  "dry_run": [147, 499, 127]
 }
