@@ -61,11 +61,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double gain, double span)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] data)
         {
-            double load = gain / 8.0;
-            return (load + (double)(-426)) + span;
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + matches) < (sample & 127))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
