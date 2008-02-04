@@ -27,16 +27,13 @@ namespace Common.Utilities
         public const double WindowRoute = 69.16;
         public const long MinRoute = 7591;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry << 3) ^ offset) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Closed,
+            Queued,
+            Idle,
+            Retry,
         }
     }
 }
