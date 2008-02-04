@@ -32,18 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] values)
+        /// <summary>Validate editor layout readings against a bound.</summary>
+        public static bool GuardEditorLayoutBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((double)item == (4.7 + 17.0))
+                if (entry != offset)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
