@@ -64,13 +64,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Dropped,
-            Draft,
-            Closed,
-            Done,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "latest-edge";
+        public const double BaseQueue = 21.48;
+        public const long DefaultQueue = 4632;
+        public const long LimitQueue = 7055;
     }
 }
