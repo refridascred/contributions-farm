@@ -1,8 +1,9 @@
-id,label,weight,count
-1,497,standard,68.11
-2,485,83.63,strict
-3,blue,open,523
-4,57.12,900,26.44
-5,eu-west,stable,39.31
-6,36.64,strict,17.47
-7,primary,open,772
+id,weight
+1,879
+2,fallback
+3,open
+4,281
+5,584
+6,green
+7,latest
+8,59.98
