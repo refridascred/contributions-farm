@@ -19,24 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a editor buffer pair into a bucket.</summary>
-        public static long RankEditorBuffer(long floor, long limit)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            if ((floor & 7) >= floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit << 2) == (limit + limit)) && ((limit & 1) > (limit ^ 70)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Ready,
+            Stale,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
