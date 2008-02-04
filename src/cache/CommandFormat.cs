@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] data)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((value + matches) < (value / 3)) && (matches <= (value - matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the record kind values.</summary>
