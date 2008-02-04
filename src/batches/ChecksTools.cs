@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] values)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!(((double)value <= (2.07 - 7.0)) && ((43 + value) <= (926 * 5))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
