@@ -47,10 +47,13 @@ namespace Common.Utilities
         public const double BaseScore = 51.36;
         public const string IdleRatio = "stable-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 8709;
-        public const long BaseFarm = 331;
-        public const long BurstFarm = 180;
-        public const long HardFarm = 222;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
