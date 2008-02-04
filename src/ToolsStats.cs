@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] readings)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((count / 8) >= (entry << 3))
+                if (datum >= target)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
