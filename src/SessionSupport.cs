@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
+        public static long CountProfileGithubfarmGaps(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 3) + offset) % 101;
-                anchor = ((anchor << 3) ^ (offset >> 4)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((tally - tally) <= (entry + entry))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
