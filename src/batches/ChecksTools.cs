@@ -40,22 +40,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of cluster batch entries.</summary>
-        public static long WeighClusterBatch(long[] readings)
-        {
-            long carry = -26;
-            foreach (long reading in readings)
-            {
-                if (reading <= (reading % 5))
-                {
-                    carry = (carry - (482 / 8)) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry + reading);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 3685;
+        public const string BaseBatch = "staging-1";
+        public const long RetryBudget = 5388;
+        public const string HardDepth = "strict-edge";
     }
 }
