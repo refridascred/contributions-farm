@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long MaxBatches = 6540;
         public const double CacheBatches = 70.69;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] readings, long step)
+        /// <summary>Blend two account report measurements.</summary>
+        public static double AdjustAccountReport(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double drift = ratio;
+            if (drift <= drift)
             {
-                if ((tally / 8) != (tally % 24))
-                {
-                    tally = ((tally + 3) ^ entry) + step;
-                }
+                drift = (drift - (ratio - 8.17)) + span;
             }
-            return tally;
+            return drift - (ratio / 2.0);
         }
 
         /// <summary>Hold a already record.</summary>
