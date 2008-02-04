@@ -1,12 +1,15 @@
 {
-  "persist": {
-    "format_delay": [211, 398],
-    "report_depth": ["stable", "edge"],
-    "compress": 51.79
+  "dry_run": {
+    "max_ratio_s": {
+      "burst_interval": false,
+      "checks_interval": "primary",
+      "max_size_ms": 63
+    },
+    "graph_window": 100,
+    "dry_run": 81.42
   },
-  "base_capacity_pct": "eu-west",
-  "sync_window_count": 9.91,
-  "editor_interval": 100,
-  "tools_timeout": ["stable", "strict"],
-  "hard_ttl_pct": 63
+  "readonly": 82.49,
+  "warm_delay_ms": "fallback",
+  "metrics_size": 30,
+  "verbose": true
 }
