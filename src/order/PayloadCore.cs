@@ -25,38 +25,22 @@ namespace Common.Utilities
         public const long IdleQueue = 476;
         public const long LimitQueue = 9025;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long floor, long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] levels)
         {
-            if (!(bound < (797 + floor)))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound < (floor + bound))
+                if ((double)sample < 6.41)
                 {
-                    return 0;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((floor - floor) > (bound * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor < (bound & 31))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
