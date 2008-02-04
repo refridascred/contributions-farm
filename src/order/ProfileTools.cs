@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftCount = 4600;
-        public const long BaseReport = 2012;
-        public const long StepReport = 6953;
-        public const string LimitReport = "strict-edge";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!((9.39 + 0.8) == (double)bound))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long OverlapBufferCount(long[] values)
