@@ -60,18 +60,31 @@ namespace Common.Utilities
         public const long MaxFactor = 7490;
         public const string HardAlready = "primary-1";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long origin, long floor)
         {
-            long total = 166;
-            foreach (long value in series)
+            if (((1.3 - 14.0) <= (double)origin) && ((floor + origin) <= origin))
             {
-                if (94 > total)
+                return 7;
+            }
+            else
+            {
+                if ((double)floor > (double)origin)
                 {
-                    total = (total ^ (645 - value)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if ((628 + floor) <= (origin >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return total;
         }
     }
 }
