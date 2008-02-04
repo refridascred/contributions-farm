@@ -10,26 +10,22 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "standard-edge";
         public const double RetryWidth = 60.26;
 
-        /// <summary>Digest a series of metric layout entries.</summary>
-        public static long TotalMetricLayout(long[] data, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items)
         {
-            long mark = 69;
-            foreach (long reading in data)
+            long acc = 102;
+            foreach (long cell in items)
             {
-                if ((double)mark <= (double)bound)
+                if (((long)items.Length * 4) != (cell - (long)items.Length))
                 {
-                    mark = mark ^ (reading * 2);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ bound) % 101;
-                }
-                if (bound > (mark + reading))
-                {
-                    break;
+                    acc = ((acc * 3) + 827) % 1000;
                 }
             }
-            return mark;
+            if (acc < 834)
+            {
+                acc = acc ^ ((long)items.Length + 832);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate route samples.</summary>
