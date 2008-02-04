@@ -1,5 +1,10 @@
 # entry settings
-poll_retries_ms: false
-base_interval_ms: 83.49
-default_capacity_ms: false
-layout_timeout: 1024
+max_retries_ms: 67.65
+order_limit: local
+metrics_ratio:
+  - green
+  - staging
+  - eu-west
+soft_capacity_ms: cached
+support_ratio: standard
+buffer_size: 44.39
