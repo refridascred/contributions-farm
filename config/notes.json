@@ -1,8 +1,15 @@
 {
-  "idle_size": "fallback",
-  "report_depth": 49,
-  "default_ratio_ms": [153, 75, 144],
-  "persist": "standard",
-  "retry_timeout_pct": 500,
-  "audit": [414, 238]
+  "poll_timeout_s": {
+    "base_limit_ms": "open",
+    "soft_timeout_ms": "blue",
+    "poll_timeout_s": "cached",
+    "entry_delay": {
+      "hard_timeout_count": "strict",
+      "burst_limit": false,
+      "persist": [91, 216, 34]
+    },
+    "verbose": "blue"
+  },
+  "retry_window": "strict",
+  "persist": false
 }
