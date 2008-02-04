@@ -45,23 +45,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double weight, double floor)
-        {
-            double weight2 = (double)((-70) ^ 19);
-            if (weight2 < (double)4)
-            {
-                weight2 = weight2 + (weight2 / 8.0);
-            }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + floor) + (double)(long)i;
-            }
-            return weight2 - weight;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 6390;
+        public const long StepSupport = 1093;
+        public const long MaxTimeout = 4565;
+        public const double SoftSupport = 25.86;
     }
 }
