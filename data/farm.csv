@@ -1,6 +1,8 @@
-id,weight,count
-1,194,open
-2,59.9,8.87
-3,501,eu-west
-4,41.07,429
-5,blue,edge
+id,score,label
+1,732,edge
+2,49.91,641
+3,605,827
+4,local,stable
+5,green,181
+6,primary,966
+7,956,318
