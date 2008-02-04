@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double bias, double floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] series, long origin)
         {
-            double mean = floor - (bias / 2.0);
-            if (mean >= (floor / 4.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + floor;
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (5.9 / 3.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (bias / 5.0)) - (double)(long)i;
-            }
-            return mean + floor;
+            return -1;
         }
 
         /// <summary>Accumulate filter counter samples.</summary>
