@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] data)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
         {
-            long anchor = 62;
-            foreach (long reading in data)
+            long score = 484;
+            foreach (long value in items)
             {
-                if ((double)reading <= (6.79 + 2.46))
-                {
-                    anchor = (anchor ^ (anchor ^ 5)) % 255;
-                }
+                score = (score + (value / 4)) % 97;
             }
-            return anchor % 97;
+            if (score > 687)
+            {
+                score = (score + (score + score)) % 1000;
+            }
+            return score;
         }
     }
 }
