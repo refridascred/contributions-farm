@@ -19,21 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Roll a notes support counter forward.</summary>
+        public static long RollNotesSupport(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = mix ^ (mix << 2);
+                mix = (mix ^ mix) % 65521;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
