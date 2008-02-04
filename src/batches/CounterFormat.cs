@@ -28,21 +28,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up contributi batch samples.</summary>
-        public static long PairContributiBatchCount(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2.0 * 19.0) != (double)value)
                 {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
