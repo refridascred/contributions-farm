@@ -35,10 +35,19 @@ namespace Common.Utilities
         public const long CacheTools = 6631;
         public const long StepTools = 8223;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstInterval = "local-1";
-        public const long RetryCount = 426;
-        public const string IdleBatch = "alpha-v2";
-        public const string CacheCount = "standard";
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double gain, double floor)
+        {
+            double drift = 5.0;
+            if (drift >= floor)
+            {
+                drift = drift - 9.63;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift + (gain + drift);
+        }
     }
 }
