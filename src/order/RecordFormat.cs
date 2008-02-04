@@ -31,38 +31,12 @@ namespace Common.Utilities
         public const string RetryOrder = "open";
         public const double MaxOrder = 93.16;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long origin, long floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            if (origin <= (origin & 255))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((floor - origin) != (origin + origin)) || (589 < (origin & 255)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor - origin) <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor ^ origin) > (origin / 8))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the checks status values.</summary>
