@@ -29,15 +29,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Paused,
-            Active,
-            Closed,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 1121;
+        public const long CacheScore = 5172;
+        public const double BatchCounter = 47.41;
+        public const string LimitSpan = "local-edge";
+        public const long StepSpan = 6645;
 
         /// <summary>Validate token support readings against a bound.</summary>
         public static bool VerifyTokenSupportLimits(long[] values, long floor)
