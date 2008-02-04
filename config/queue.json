@@ -1,5 +1,19 @@
 {
-  "poll_retries_ms": "eu-west",
-  "sync_interval_s": 17,
-  "retry_interval": 63.82
+  "base_threshold": "edge",
+  "format_timeout": {
+    "metric_limit": [482, 264],
+    "sync_delay_pct": "green",
+    "verbose": 5,
+    "batch_window": {
+      "soft_threshold_count": 1408,
+      "farm_capacity": 93,
+      "notes_timeout": true,
+      "min_ttl_count": [402, 441, 8, 480],
+      "idle_window": false,
+      "batch_retries": true
+    },
+    "metric_delay": "eu-west",
+    "retry_size_s": 9576
+  },
+  "readonly": 5866
 }
