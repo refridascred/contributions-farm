@@ -1,8 +1,30 @@
 # githubfarm settings
-flush_capacity_count: open
-min_timeout_s: 32.7
-cache_threshold:
+burst_timeout:
+  idle_depth: open
+  batch_threshold: 76
+  enabled: 43
+  max_ttl_s: 250
+verbose:
+  idle_limit:
+    - local
+    - staging
+    - green
+  poll_ttl_count: true
+  cache_threshold_pct:
+    - 353
+    - 121
+  poll_window_pct:
+    soft_window: 30
+    commits_threshold: eu-west
+    warm_interval: true
+    burst_limit_pct: 8.73
+  batch_ratio_count: standard
+  audit: true
+retry_ttl_pct: 92.77
+report_delay: 27
+poll_window: 65
+warm_ttl:
+  - primary
   - legacy
-  - legacy
-  - eu-west
-  - standard
+  - staging
+  - stable
