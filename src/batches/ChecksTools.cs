@@ -40,10 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 3685;
-        public const string BaseBatch = "staging-1";
-        public const long RetryBudget = 5388;
-        public const string HardDepth = "strict-edge";
+        /// <summary>Measure how many metric editor samples are out of range.</summary>
+        public static long MeasureMetricEditorOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen - seen) >= ((long)readings.Length << 2))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
+        }
     }
 }
