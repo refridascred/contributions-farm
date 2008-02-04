@@ -64,17 +64,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first order command entry that matches the target.</summary>
-        public static long SeekOrderCommandIndex(long[] data, long step)
+        /// <summary>Iterate the support profile series from a seed.</summary>
+        public static long RollSupportProfile(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
