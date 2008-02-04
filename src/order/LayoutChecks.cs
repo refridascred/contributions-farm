@@ -14,21 +14,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up report record samples.</summary>
-        public static long PairReportRecordCount(long[] readings)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = step + step2;
+            if (!((42 % 60) <= step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((step ^ step) >= (slot + step2)) && ((slot >> 3) > (slot + step)))
                 {
-                    if ((readings[i] - readings[j]) < 14)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step2 <= (double)slot)
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
