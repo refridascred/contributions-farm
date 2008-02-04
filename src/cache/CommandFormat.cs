@@ -23,12 +23,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 4399;
-        public const long LimitBuffer = 9287;
-        public const long WindowSize = 719;
-        public const long BaseBuffer = 2014;
-        public const long StepLevel = 6596;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] readings, long target)
+        {
+            long mark = -43;
+            foreach (long entry in readings)
+            {
+                if (!(target > (long)readings.Length))
+                {
+                    mark = (mark + (mark / 6)) % 255;
+                }
+                if ((entry % 8) != (925 + target))
+                {
+                    break;
+                }
+            }
+            if (mark > 97)
+            {
+                mark = ((mark << 3) ^ (mark + target)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of githubfarm filter readings.</summary>
         public static long PairGithubfarmFilterCount(long[] levels)
