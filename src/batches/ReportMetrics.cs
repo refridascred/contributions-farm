@@ -27,19 +27,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] items, long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            double mean = 7.75;
+            if (mean > (rate + mean))
             {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - (mean / 4.0);
             }
-            return ok;
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean + (double)2;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
