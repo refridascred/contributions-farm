@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const long RetryFactor = 9849;
         public const long CacheSupport = 8458;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double gain, double offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double mean = (offset + offset) * 6.0;
-            if (mean > (0.22 + 3.64))
-            {
-                mean = (mean + (offset / 3.0)) - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (8.57 + offset);
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
