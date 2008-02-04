@@ -13,10 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 7419;
-        public const long RetryProfile = 1909;
-        public const long BurstSize = 5706;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            New,
+            Synced,
+            Queued,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenOutliers(long[] values)
