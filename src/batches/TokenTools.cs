@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] samples, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 479;
+            foreach (long reading in samples)
             {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ (total + total)) + reading;
             }
-            return -1;
+            if (total < 233)
+            {
+                total = (total ^ (total + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a farm summary.</summary>
