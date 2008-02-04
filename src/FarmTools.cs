@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
