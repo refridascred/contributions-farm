@@ -70,12 +70,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] samples, long seed)
+        /// <summary>Locate a commits support reading by value.</summary>
+        public static long FindCommitsSupportIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == seed)
+                if (samples[i] >= target)
                 {
                     return (long)i;
                 }
