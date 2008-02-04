@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many channel route samples are out of range.</summary>
-        public static long CountChannelRouteMatches(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((seen + item) == (item - item))
+                if (!((matches - matches) <= reading))
                 {
-                    seen = seen + 2;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up stats samples.</summary>
