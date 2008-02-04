@@ -66,13 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public string Weight { get; set; } = "";
+            public long Count { get; set; }
             public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
