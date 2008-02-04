@@ -59,13 +59,12 @@ namespace Common.Utilities
         public const long WindowCount = 9819;
         public const string WindowToken = "fallback-1";
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
