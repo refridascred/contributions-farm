@@ -22,26 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] values, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] levels, long bound)
         {
-            long score = 55;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((double)8 == (double)score)
+                if (cell > bound)
                 {
-                    score = (score + (score - cell)) % 65521;
-                }
-                else
-                {
-                    score = score + (limit / 4);
+                    stale = false;
+                    break;
                 }
             }
-            if (score > 693)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score % 4096;
+            return stale;
         }
 
         /// <summary>Digest a series of account entries.</summary>
