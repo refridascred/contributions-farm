@@ -16,13 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
