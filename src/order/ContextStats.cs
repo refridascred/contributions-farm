@@ -39,22 +39,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] levels, long bound)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((2.75 - 9.1) >= (double)offset)
             {
-                if (datum < (bound % 97))
+                return 7;
+            }
+            else
+            {
+                if (!((offset % 60) <= bound))
                 {
-                    hits = hits + 2;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!(offset < (bound + bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6.0 * 0.83) <= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
