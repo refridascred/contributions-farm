@@ -1,13 +1,7 @@
 # entry settings
-poll_depth_ms:
-  - standard
-  - green
-  - cached
-  - fallback
-cache_size: stable
-dry_run: standard
-readonly: 43.63
-hard_ratio_ms:
-  - 221
-  - 390
-  - 217
+batch_retries: 71.16
+hard_interval_ms: 43
+retry_limit_s: strict
+report_capacity: false
+cache_ttl: 1
+schema_retries: 33
