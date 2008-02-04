@@ -19,16 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Classify a editor buffer pair into a bucket.</summary>
+        public static long RankEditorBuffer(long floor, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            if ((floor & 7) >= floor)
             {
-                carry = (carry << 3) ^ ((long)i + carry);
-                carry = ((carry * 5) + (long)i) % 97;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if (((limit << 2) == (limit + limit)) && ((limit & 1) > (limit ^ 70)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
