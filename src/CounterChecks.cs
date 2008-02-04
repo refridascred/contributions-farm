@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long offset, long seed)
+        /// <summary>Measure how many checks layout samples are out of range.</summary>
+        public static long MeasureChecksLayoutHits(long[] series, long origin)
         {
-            long next = offset ^ seed;
-            if ((seed + seed) != (next % 7))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((567 + next) >= (seed - next))
+                if ((7.0 / 8.0) < (0.6 - 1.15))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) <= (seed & 15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = ((hits + 1) + sample) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
