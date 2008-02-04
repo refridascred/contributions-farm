@@ -32,11 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a editor summary.</summary>
