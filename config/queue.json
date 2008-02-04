@@ -1,7 +1,20 @@
 {
-  "idle_capacity": "standard",
-  "batch_window": 250,
-  "sync_limit_pct": "staging",
-  "flush_threshold_pct": 100,
-  "retry_window_count": "green"
+  "min_retries": "stable",
+  "soft_threshold_ms": true,
+  "already_timeout": {
+    "counter_timeout": 32.03,
+    "hard_threshold_pct": "latest",
+    "audit": false,
+    "max_retries_pct": 44.8,
+    "readonly": true,
+    "poll_size_count": {
+      "sync_threshold_count": 30,
+      "sync_depth_pct": "standard",
+      "max_capacity_count": 61.82,
+      "command_limit": "local",
+      "min_threshold_ms": 4133,
+      "readonly": "cached"
+    }
+  },
+  "verbose": "green"
 }
