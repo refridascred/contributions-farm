@@ -19,38 +19,17 @@ namespace Common.Utilities
         public const string IdleWidth = "stable-v2";
         public const long CacheSpan = 1074;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long floor, long step)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] items, long seed)
         {
-            if ((step - step) > floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor * 3) <= step)
+                if (items[i] < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step + step) > (step >> 3)) || ((double)floor > (1.5 * 5.28)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step > (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
