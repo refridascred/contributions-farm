@@ -61,13 +61,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long offset, long target)
         {
-            Stale,
-            Failed,
-            Locked,
-            Draft,
+            long lane = offset - target;
+            if ((lane - (-8)) != (lane % 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((-9) & 255) < (lane << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)offset == (double)lane) && ((target + lane) >= (offset + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
