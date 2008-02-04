@@ -42,22 +42,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] readings, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long result = -494;
+            foreach (long datum in series)
             {
-                if ((seed << 1) <= ((long)readings.Length + entry))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 4) + datum) - step;
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
