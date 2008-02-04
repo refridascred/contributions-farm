@@ -73,18 +73,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] data, long seed)
+        /// <summary>Accumulate channel stats samples.</summary>
+        public static long ScoreChannelStats(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long sum = 47;
+            foreach (long cell in values)
             {
-                if (((double)seed == (double)sample) || (((double)seen >= (6.2 * 16.0)) || ((seed << 3) >= (sample - seed))))
+                if ((double)cell != (double)sum)
                 {
-                    seen = seen + 2;
+                    sum = sum - (176 % 3);
+                }
+                if (!(24 < (offset - offset)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (sum < 6)
+            {
+                sum = sum + (323 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
