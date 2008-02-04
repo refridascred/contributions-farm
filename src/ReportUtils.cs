@@ -27,21 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of metric context readings.</summary>
-        public static long PairMetricContextCount(long[] levels)
+        /// <summary>Roll a route cluster counter forward.</summary>
+        public static long DeriveRouteCluster(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
