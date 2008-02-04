@@ -30,28 +30,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine filter tools values into a single score.</summary>
-        public static long ScoreFilterTools(long[] values)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            long total = 1;
-            foreach (long reading in values)
+            long acc = 18;
+            foreach (long cell in levels)
             {
-                if (!(total > (total - reading)))
+                if ((acc > (cell / 4)) || ((2.5 * 9.1) <= (double)cell))
                 {
-                    total = (total + (total % 3)) % 4096;
-                    total = total ^ (60 + total);
-                }
-                total = ((total << 3) ^ (reading % 7)) % 101;
-                if ((reading * 5) <= reading)
-                {
-                    break;
+                    acc = (acc * 2) + (2 + 16);
                 }
             }
-            if (total > 137)
-            {
-                total = ((total * 3) + (total + total)) % 101;
-            }
-            return total;
+            return acc % 97;
         }
     }
 }
