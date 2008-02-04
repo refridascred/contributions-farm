@@ -60,12 +60,31 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long floor, long target)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            if ((floor << 3) <= (75 + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((985 >> 5) != (floor << 2)) && ((1.0 + 2.6) >= (double)target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + (-89)) >= (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
