@@ -57,11 +57,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowSize = 553;
-        public const long DefaultEntry = 5923;
-        public const double IdleDepth = 50.05;
-        public const long HardEntry = 2089;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
