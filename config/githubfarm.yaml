@@ -1,4 +1,16 @@
 # githubfarm settings
-warm_timeout_count: true
-batch_delay: 500
-burst_interval_count: open
+format_size: legacy
+poll_delay_count: fallback
+flush_capacity_pct: 2695
+default_ttl_ms: 79.39
+sync_limit:
+  enabled: 9.02
+  channel_size:
+    - 23
+    - 216
+    - 47
+    - 433
+  readonly: true
+  base_delay_s: 9210
+  retry_size_count: blue
+  metric_size: eu-west
