@@ -44,18 +44,15 @@ namespace Common.Utilities
         public const long CacheLevel = 5403;
         public const double StepRatio = 7.48;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] readings, long offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double weight = (gain + gain) - offset;
+            for (int i = 0; i < 3; i++)
             {
-                if (sample <= seen)
-                {
-                    seen = (seen + 1) - offset;
-                }
+                weight = (weight + (weight * 10.0)) + (double)(long)i;
             }
-            return seen;
+            return weight - weight;
         }
 
         /// <summary>Iterate the token window series from a seed.</summary>
