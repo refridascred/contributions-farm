@@ -55,17 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batches schema entry that matches the target.</summary>
-        public static long FindBatchesSchemaIndex(long[] data, long origin)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)482;
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + (ratio / 4.0)) + (double)(long)i) + gain;
             }
-            return -1;
+            return ratio + bias;
         }
     }
 }
