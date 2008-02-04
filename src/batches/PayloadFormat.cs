@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const long LimitTimeout = 3768;
         public const long MaxTimeout = 8104;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Locate a queue order reading by value.</summary>
+        public static long LocateQueueOrderIndex(long[] series, long target)
         {
-            Draft,
-            Failed,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
