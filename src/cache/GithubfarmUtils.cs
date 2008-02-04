@@ -32,19 +32,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double weight, double span)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] levels, long origin)
         {
-            double scale = (double)(1 / 8);
-            if (scale < span)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - weight;
+                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + span;
+            return -1;
         }
     }
 }
