@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mark = 312;
+            foreach (long entry in values)
             {
-                if ((long)values.Length > (sample + seen))
+                if (entry < (62 ^ mark))
                 {
-                    seen = seen + 1;
+                    mark = (mark ^ (mark / 9)) % 255;
                 }
             }
-            return seen;
+            if (mark > 7)
+            {
+                mark = ((mark * 2) + mark) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
