@@ -52,18 +52,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] values)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!(sample <= tally) || (tally <= ((long)values.Length / 4)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
