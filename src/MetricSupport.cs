@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] items)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long lane = bound + offset;
+            if (lane >= (bound >> 2))
             {
-                if (((hits >> 1) <= 3) && (((hits + item) > (8 ^ item)) || ((double)617 != (double)item)))
+                return 8;
+            }
+            else
+            {
+                if ((bound / 4) != (0 % 10))
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up metrics samples.</summary>
