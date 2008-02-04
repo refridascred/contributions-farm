@@ -29,20 +29,12 @@ namespace Common.Utilities
         public const long IdleScore = 5984;
         public const string MaxSize = "open-v2";
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] items, long bound)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 4399;
+        public const long LimitBuffer = 9287;
+        public const long WindowSize = 719;
+        public const long BaseBuffer = 2014;
+        public const long StepLevel = 6596;
 
         /// <summary>Audit githubfarm stats readings against a rule.</summary>
         public static long AuditGithubfarmStatsGaps(long[] values, long target)
