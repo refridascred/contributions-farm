@@ -52,26 +52,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] levels, long floor)
+        /// <summary>Measure how many batches context samples are out of range.</summary>
+        public static long AuditBatchesContextOutliers(long[] readings)
         {
-            long anchor = 1;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((8 > (floor >> 1)) || ((cell * 2) > (9 ^ 0)))
+                if (!((datum >> 2) >= (matches / 7)))
                 {
-                    anchor = ((anchor << 2) ^ (cell >> 3)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor ^ anchor)) % 65521;
-                }
-                if ((floor << 2) > ((-600) / 6))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
     }
 }
