@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxBudget = 1.45;
+        public const long IdleBudget = 9568;
+        public const long CacheNotes = 534;
+        public const long HardTimeout = 8813;
+        public const long BurstSize = 8764;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string BatchInterval = "cached-edge";
