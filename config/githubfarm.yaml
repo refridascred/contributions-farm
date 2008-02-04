@@ -1,10 +1,18 @@
 # githubfarm settings
-strict: cached
-metrics_ratio:
-  max_window: true
-  base_depth: true
-  flush_window: 896
-  channel_delay: eu-west
-  batches_timeout: primary
-verbose: false
-readonly: strict
+sync_size: 72.6
+verbose:
+  retry_size_pct: true
+  cache_depth_pct: 3
+  soft_ratio: false
+  warm_timeout_ms: local
+base_retries_count: 79
+min_window_s:
+  - primary
+  - stable
+compress:
+  sync_capacity_s: stable
+  sync_threshold_ms: 500
+  min_size_ms: 31.04
+  strict: true
+  warm_window: 22.03
+strict: open
