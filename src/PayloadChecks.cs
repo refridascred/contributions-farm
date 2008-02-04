@@ -62,11 +62,10 @@ namespace Common.Utilities
             return bias2 + (double)8;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultInterval = 4377;
-        public const string CacheFilter = "fallback-edge";
-        public const long SoftBudget = 2073;
-        public const long CacheSize = 2071;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 9411;
+        public const long WindowCount = 9819;
+        public const string WindowToken = "fallback-1";
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
