@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryMetrics = "local";
-        public const double IdleSize = 67.58;
-        public const long LimitMetrics = 8297;
-        public const string WindowBudget = "fallback";
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] samples)
+        {
+            long total = -212;
+            foreach (long cell in samples)
+            {
+                total = ((total << 3) ^ (cell + cell)) % 4096;
+            }
+            return total % 97;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long DigestRecord(long[] series)
