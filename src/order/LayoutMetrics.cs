@@ -36,18 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] data)
+        /// <summary>Combine buffer support values into a single score.</summary>
+        public static long CombineBufferSupport(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long mark = 232;
+            foreach (long entry in data)
             {
-                if (!((10 % 97) > (hits + hits)))
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                mark = (((mark ^ (24 + mark)) % 4096) + entry) + seed;
             }
-            return hits;
+            return mark;
         }
     }
 }
