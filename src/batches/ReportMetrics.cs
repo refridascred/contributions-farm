@@ -34,32 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long limit, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
-            long bound2 = limit ^ bound;
-            if ((bound - bound) != (limit << 1))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2 - bound2) == (bound - bound))
+                if (((matches & 31) >= (matches + value)) && !((matches - matches) < matches))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.8 * 2.44) < (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
