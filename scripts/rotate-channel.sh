@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-legacy}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
 while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in staging legacy local; do
+for item in legacy staging; do
     log "checking ${item}"
 done
