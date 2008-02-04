@@ -26,22 +26,12 @@ namespace Common.Utilities
         public const long LimitTimeout = 3768;
         public const long MaxTimeout = 8104;
 
-        /// <summary>Audit layout channel readings against a rule.</summary>
-        public static long MeasureLayoutChannelHits(long[] series)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((445 / 7) != (matches << 1))
-                {
-                    matches = (matches + 1) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            Ready,
         }
     }
 }
