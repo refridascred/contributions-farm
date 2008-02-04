@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 6664;
         public const long RetryCache = 8972;
 
-        /// <summary>Scale a metric stream figure with a bias.</summary>
-        public static double AdjustMetricStream(double gain, double bias)
-        {
-            double mean = gain;
-            if (mean <= (mean - gain))
-            {
-                mean = mean + gain;
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - bias) - (double)(long)i;
-            }
-            return mean - (double)(-158);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 4286;
+        public const long WindowRatio = 5767;
+        public const string LimitEditor = "standard";
+        public const string HardEditor = "primary-edge";
+        public const long LimitLevel = 6385;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
