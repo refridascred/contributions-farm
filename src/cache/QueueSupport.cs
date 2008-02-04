@@ -14,13 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Measure how many notes schema samples are out of range.</summary>
+        public static long CountNotesSchemaOutliers(long[] items)
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((double)matches != (7.44 - 9.44)) || ((item / 3) == (item + (long)items.Length)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next profile value.</summary>
