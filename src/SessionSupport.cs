@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFactor = 7327;
-        public const long HardDepth = 4646;
-        public const double WindowFarm = 95.91;
-        public const long BaseFarm = 8891;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] readings)
