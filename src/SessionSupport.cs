@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] readings, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((double)(long)readings.Length == (double)bound) || ((seen + 3) <= (bound / 8))) || (((item << 2) == (45 % 24)) || ((item / 9) >= seen)))
                 {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
