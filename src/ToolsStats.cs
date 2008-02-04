@@ -48,15 +48,23 @@ namespace Common.Utilities
         public const double WindowFarm = 29.07;
         public const string StepInterval = "fallback-v2";
 
-        /// <summary>Iterate the graph command series from a seed.</summary>
-        public static long SeriesGraphCommand(long seed)
+        /// <summary>Fold a list of channel report readings.</summary>
+        public static long CombineChannelReport(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            long carry = 427;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                carry = (carry << 2) ^ entry;
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = ((carry * 2) + (long)items.Length) - (long)i;
+                }
+                if ((carry & 3) >= (entry + entry))
+                {
+                    carry = carry ^ (entry + carry);
+                }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Hold a already stats.</summary>
