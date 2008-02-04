@@ -19,15 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long floor, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            if ((offset / 6) >= (4 << 1))
             {
-                result = ((result * 3) + (long)i) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((5.0 - 8.8) >= 6.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >> 5) != ((-28) - 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
