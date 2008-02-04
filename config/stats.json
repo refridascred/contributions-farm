@@ -1,14 +1,14 @@
 {
-  "strict": "standard",
-  "burst_timeout_count": ["legacy", "edge", "standard"],
-  "sync_interval_pct": {
-    "burst_capacity_count": 52.83,
-    "dry_run": "staging",
-    "checks_depth": [134, 107, 395, 201],
-    "min_timeout_pct": 250,
-    "token_window": "stable",
-    "batch_threshold": true
+  "context_ratio": {
+    "farm_size": "standard",
+    "batches_interval": "stable",
+    "retry_retries": 30,
+    "buffer_window": 9782,
+    "retry_size_ms": 42.63
   },
-  "commits_capacity": "local",
-  "min_interval_pct": 250
+  "cluster_retries": 4305,
+  "soft_limit_pct": "open",
+  "window_ttl": "strict",
+  "readonly": 500,
+  "compress": 100
 }
