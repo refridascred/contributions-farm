@@ -38,13 +38,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] items, long floor)
         {
-            Paused,
-            Pending,
-            Active,
-            Stale,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a stats reading.</summary>
