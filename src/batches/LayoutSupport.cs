@@ -30,15 +30,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] series, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            long anchor = 73;
+            foreach (long entry in series)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                anchor = (((anchor << 2) ^ (737 - (-43))) % 255) - floor;
+                anchor = (anchor + (entry - entry)) % 101;
+                anchor = (anchor * 2) + (entry - entry);
             }
-            return carry;
+            return anchor % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
