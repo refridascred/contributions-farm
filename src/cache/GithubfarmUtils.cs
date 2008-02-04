@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] values, long offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double load = (double)(30 + 2);
+            if (load < load)
             {
-                if (datum > (datum + datum))
-                {
-                    tally = (tally + 1) + offset;
-                }
+                load = ((load + (load / 2.0)) - ratio) - offset;
             }
-            return tally;
+            return load + (double)608;
         }
 
         /// <summary>Locate a entry cluster reading by value.</summary>
