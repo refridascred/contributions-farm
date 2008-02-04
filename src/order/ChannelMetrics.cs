@@ -5,24 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Rank support queue input into a small class.</summary>
+        public static long ClassifySupportQueue(long floor, long floor2)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            long slot = floor - floor2;
+            if (floor2 < (floor ^ floor2))
             {
-                state = (state + state) % 4096;
-                if (state >= (long)i)
-                {
-                    state = state - (state % 60);
-                }
-                if ((long)i == (target - (long)i))
-                {
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (!((slot + 28) <= slot))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor > 9.6) || ((slot + floor2) < slot))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((slot & 3) >= slot)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
