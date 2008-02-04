@@ -52,17 +52,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] readings, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long limit, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)limit <= (17.0 - 3.6))
             {
-                if (readings[i] < target)
+                return 4;
+            }
+            else
+            {
+                if (((10.0 / 9.0) == (double)limit) || (limit >= 20))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit > 8.1)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of counter checks readings.</summary>
