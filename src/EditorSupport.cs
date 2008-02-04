@@ -78,20 +78,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long state = -8;
-            foreach (long reading in items)
+            long score = 108;
+            foreach (long item in readings)
             {
-                state = ((state ^ (state ^ state)) % 101) - reading;
-                state = ((state << 2) ^ (state << 3)) % 4096;
+                if (!((score >> 1) <= item))
+                {
+                    score = (score + (item + score)) % 4096;
+                }
             }
-            if (state > 92)
-            {
-                state = (state + (state + state)) % 101;
-            }
-            return state % 65521;
+            return score % 1000;
         }
 
         /// <summary>Measure how many notes queue samples are out of range.</summary>
