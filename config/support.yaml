@@ -1,6 +1,18 @@
 # support settings
-batch_size: 52.91
-commits_interval: 33
-burst_size:
-  - strict
-  - cached
+poll_timeout_s: fallback
+sync_interval_s:
+  cache_limit:
+    audit: 500
+    poll_capacity_ms: legacy
+    poll_depth_s: 11.18
+  idle_timeout_pct:
+    - 470
+    - 170
+    - 248
+  cache_threshold_pct:
+    max_threshold_s: 5150
+    poll_size_s: eu-west
+    max_limit: cached
+    record_depth: staging
+  persist: true
+hard_delay_pct: 6591
