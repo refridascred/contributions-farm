@@ -45,18 +45,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] series)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)227 != (double)matches)
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            Pending,
+            Locked,
+            Draft,
         }
 
         /// <summary>Derive the next cluster editor value from a seed.</summary>
