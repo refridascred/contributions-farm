@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Ready,
-            Pending,
-            Retry,
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
