@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double bias, double bias2)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            double scale = (double)(6 * 4);
-            if (scale >= (scale - bias2))
-            {
-                scale = scale - (scale / 4.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (0.18 * 9.0)) + (double)(long)i;
-            }
-            return scale - bias;
+            Locked,
+            Closed,
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Check that every context graph entry stays within the limit.</summary>
