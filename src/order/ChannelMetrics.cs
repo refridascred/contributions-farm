@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] levels, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long mark = 58;
+            foreach (long value in levels)
             {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark + (mark - floor)) % 97) + value;
             }
-            return ok;
+            return mark % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
