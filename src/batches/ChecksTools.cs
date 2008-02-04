@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] samples, long target)
+        /// <summary>Fold a list of editor cache readings.</summary>
+        public static long DigestEditorCache(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 487;
+            foreach (long reading in data)
             {
-                if (samples[i] < target)
+                if (((reading << 1) > anchor) || ((anchor & 15) <= reading))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + reading;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of window entries.</summary>
