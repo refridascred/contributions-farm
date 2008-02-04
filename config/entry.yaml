@@ -1,8 +1,8 @@
 # entry settings
-batches_ratio: 250
-soft_limit_s: 9.78
-min_ttl_count:
-  - 265
-  - 202
-  - 470
-  - 232
+strict: 7190
+idle_ttl: 28.33
+editor_delay:
+  - legacy
+  - fallback
+  - open
+audit: 185
