@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 6896;
-        public const double MaxTools = 91.71;
-        public const long WindowInterval = 2446;
-        public const long CacheSize = 1272;
-        public const long RetryRatio = 2324;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] samples, long offset)
+        {
+            long mix = 82;
+            foreach (long item in samples)
+            {
+                if (((offset + 39) <= (mix & 127)) && ((offset - mix) < (mix >> 3)))
+                {
+                    mix = ((mix * 5) + (23 ^ 5)) - item;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesMatches(long[] values, long limit)
