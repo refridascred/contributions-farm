@@ -5,32 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long step, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] values)
         {
-            long delta = step ^ bound;
-            if ((double)bound > (2.4 / 8.0))
+            long anchor = 47;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((4 >> 5) < (step + bound)) && ((2.5 + 4.04) == (double)bound))
+                anchor = (anchor ^ anchor) % 4096;
+                if (datum < (anchor ^ datum))
                 {
-                    return 6;
+                    anchor = anchor - (anchor / 9);
                 }
                 else
                 {
-                    if ((double)delta <= (2.46 / 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = (anchor - (60 + anchor)) % 65521;
                 }
             }
+            if (anchor < 95)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
