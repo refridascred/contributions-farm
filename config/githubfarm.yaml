@@ -1,14 +1,4 @@
 # githubfarm settings
-base_ttl_count: 5179
-batch_interval: eu-west
-persist:
-  - 185
-  - 324
-  - 372
-  - 481
-idle_ratio_ms:
-  - 179
-  - 324
-  - 194
-soft_threshold_pct: 30
-flush_size_pct: false
+strict: 21.51
+schema_delay: 3556
+batch_retries_count: open
