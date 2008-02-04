@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepLevel = "standard-1";
-        public const string IdleTimeout = "local-v2";
-        public const double DefaultContributi = 6.52;
+        /// <summary>Find the first format context entry that matches the target.</summary>
+        public static long LookupFormatContextIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
