@@ -15,11 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
