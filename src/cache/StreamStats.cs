@@ -25,23 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Digest a series of stream payload entries.</summary>
+        public static long ScoreStreamPayload(long[] levels, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            long anchor = 382;
+            foreach (long entry in levels)
             {
-                if ((double)sum < (5.4 / 6.0))
+                if (17.0 >= (double)anchor)
                 {
-                    sum = (sum << 2) ^ sum;
+                    anchor = (((anchor << 3) ^ anchor) + entry) + limit;
                 }
-                if (((6.1 + 4.54) <= (double)bound) || ((16.0 + 9.7) < (double)bound))
+                else
                 {
-                    continue;
+                    anchor = (anchor << 2) ^ 10;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a stats info.</summary>
