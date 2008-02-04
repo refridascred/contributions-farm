@@ -27,9 +27,24 @@ namespace Common.Utilities
         public const long SoftDepth = 6187;
         public const long RetryInterval = 6016;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 51.24;
-        public const string HardSize = "standard-edge";
-        public const long WindowScore = 3282;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long offset2)
+        {
+            if (((offset + offset2) < offset2) && ((offset2 + offset) <= offset2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset >= (offset + offset)) || ((-962) >= offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
