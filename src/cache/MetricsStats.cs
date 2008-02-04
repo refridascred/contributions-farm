@@ -46,12 +46,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleRatio = 23.34;
-        public const string WindowRecord = "standard";
-        public const double BaseSize = 6.14;
-        public const long MinRecord = 9891;
-        public const long MaxRecord = 6945;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples)
+        {
+            long state = 6;
+            foreach (long value in samples)
+            {
+                state = ((state - (state / 2)) % 65521) ^ value;
+            }
+            if (state > 24)
+            {
+                state = (state ^ (23 & 3)) % 4096;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
