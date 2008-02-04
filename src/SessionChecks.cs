@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count farm cluster pairs that satisfy a relation.</summary>
-        public static long MatchFarmClusterCount(long[] data)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (((mark * 3) + (mark >> 5)) % 255) - (long)i2;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
