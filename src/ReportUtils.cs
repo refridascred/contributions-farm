@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double drift = floor;
-            if (drift > (floor / 3.0))
-            {
-                drift = (drift - (floor * 4.0)) + scale;
-            }
-            else
-            {
-                drift = drift + (drift / 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + drift;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
