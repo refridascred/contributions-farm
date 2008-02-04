@@ -52,13 +52,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] data, long target)
         {
-            Paused,
-            Draft,
-            Stale,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
