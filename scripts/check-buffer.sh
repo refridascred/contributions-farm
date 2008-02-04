@@ -6,22 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge blue; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 10); do
     total=$((total + i * 5))
 done
 log "total ${total}"
+
+mode="${1:-blue}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
