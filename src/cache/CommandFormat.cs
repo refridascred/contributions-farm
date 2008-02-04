@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            double weight2 = weight * 16.0;
+            if (weight2 < (double)76)
+            {
+                weight2 = weight2 - (weight2 / 4.0);
+            }
+            else
+            {
+                weight2 = weight2 + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - (double)287) + (double)(long)i;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
