@@ -14,15 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batches entry entries.</summary>
-        public static long TotalBatchesEntry(long[] items, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] series, long bound)
         {
-            long score = -16;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                score = ((((score << 3) ^ (663 << 1)) % 4096) - cell) - floor;
+                if ((543 << 3) > (bound / 2))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Accumulate format stream samples.</summary>
