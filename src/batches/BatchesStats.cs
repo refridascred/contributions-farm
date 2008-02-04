@@ -16,33 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long origin, long bound)
-        {
-            long span = origin ^ bound;
-            if ((8.6 - 4.1) <= (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.9 - 5.2) >= (double)span)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((50 >= (bound + span)) || ((double)bound > (20.0 / 2.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "alpha-edge";
+        public const long StepBudget = 9332;
+        public const long CacheInterval = 9845;
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] values)
