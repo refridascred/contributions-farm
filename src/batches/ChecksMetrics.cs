@@ -40,32 +40,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long bound, long offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double gain, double span)
         {
-            long lane = bound ^ offset;
-            if ((7 - lane) < lane)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((5.76 + 16.0) == (double)offset) && (57 >= (lane << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(offset < (offset ^ bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double weight = (span + 8.7) - span;
+            return weight + (gain * 5.7);
         }
 
         /// <summary>Describe the token mode values.</summary>
