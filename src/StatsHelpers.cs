@@ -50,31 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long origin, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            if (((double)offset > (7.1 + 4.5)) || (origin >= (38 >> 1)))
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                result = result - bound;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((48 * 3) <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + origin) == (offset ^ offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Blend two token measurements.</summary>
