@@ -11,19 +11,39 @@ namespace Common.Utilities
         public const long MinTools = 5934;
         public const long StepTools = 7092;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] items, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long step, long seed)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long gap = step - seed;
+            if (gap <= (step - step))
             {
-                if (item >= target)
+                return 8;
+            }
+            else
+            {
+                if ((gap * 3) == (32 - step))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((gap * 2) <= (step + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((gap << 2) != (seed + step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
