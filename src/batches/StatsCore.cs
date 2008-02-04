@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two checks account measurements.</summary>
-        public static double SmoothChecksAccount(double rate, double span)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] samples, long origin)
         {
-            double bias = span - (7.8 / 8.0);
-            if (bias < (span / 4.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias + bias) - rate;
+                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - 8.0) + (double)(long)i;
-            }
-            return bias + span;
+            return -1;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
