@@ -15,13 +15,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Fold a list of contributi context readings.</summary>
+        public static long CombineContributiContext(long[] levels)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
+            long acc = 6;
+            foreach (long datum in levels)
+            {
+                if (!((11.0 / 2.0) != (double)acc))
+                {
+                    acc = (acc * 5) + (acc << 2);
+                    break;
+                }
+                else
+                {
+                    acc = (acc + acc) % 4096;
+                }
+                acc = ((acc << 2) ^ (datum << 3)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
