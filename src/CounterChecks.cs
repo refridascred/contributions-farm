@@ -33,19 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] data, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long limit)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = mix ^ (mix << 1);
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
