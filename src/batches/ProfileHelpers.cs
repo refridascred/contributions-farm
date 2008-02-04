@@ -80,19 +80,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm batch counter forward.</summary>
-        public static long DeriveFarmBatch(long limit)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long target)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((6.88 - 1.0) > (double)score)
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                state = (state << 2) ^ (target + state);
+                state = ((state << 2) ^ (target % 97)) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return score;
+            return state;
         }
     }
 }
