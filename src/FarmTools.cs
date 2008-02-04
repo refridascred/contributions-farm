@@ -22,11 +22,22 @@ namespace Common.Utilities
         public const long BurstSession = 5914;
         public const long BatchSession = 9793;
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
         {
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (9.15 < (double)seen)
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
