@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] series, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
