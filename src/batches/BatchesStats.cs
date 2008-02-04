@@ -48,22 +48,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long result = 308;
-            foreach (long reading in series)
-            {
-                if (reading < (2 << 1))
-                {
-                    result = result + (result >> 5);
-                }
-                if (reading > (reading + 83))
-                {
-                    break;
-                }
-            }
-            return result;
+            Ready,
+            Paused,
+            Retry,
         }
     }
 }
