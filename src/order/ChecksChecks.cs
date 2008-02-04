@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
