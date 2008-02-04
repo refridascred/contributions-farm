@@ -52,19 +52,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate layout metric readings against a bound.</summary>
-        public static bool ValidateLayoutMetricRange(long[] series, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (value > bound)
+                if ((cell * 4) < (cell % 10))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
