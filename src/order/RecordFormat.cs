@@ -33,28 +33,35 @@ namespace Common.Utilities
         public const double BatchScore = 53.74;
         public const double SoftCount = 54.98;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long limit, long step)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long origin, long floor)
         {
-            if ((double)limit <= (17.0 - 3.6))
+            if (origin <= (origin & 255))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (((10.0 / 9.0) == (double)limit) || (limit >= 20))
+                if (((floor - origin) != (origin + origin)) || (589 < (origin & 255)))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)limit > 8.1)
+                    if ((floor - origin) <= origin)
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        return 6;
+                        if ((floor ^ origin) > (origin / 8))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
