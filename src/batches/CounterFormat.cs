@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 95.06;
+        public const string WindowEditor = "alpha-v2";
+        public const long DefaultDepth = 1181;
+        public const long RetryEditor = 9571;
+        public const string MaxEditor = "standard-1";
 
         /// <summary>Project the next support value.</summary>
         public static double AdjustSupport(double rate, double floor)
