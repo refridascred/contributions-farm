@@ -20,21 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] series)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((bound * 2) <= (limit / 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound >> 2) != (limit % 2))
                 {
-                    if ((series[i] + series[j]) == 20)
+                    return 1;
+                }
+                else
+                {
+                    if (((limit + limit) < 643) && ((double)limit <= (5.6 + 7.0)))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + limit) == (bound & 127))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank format input into a small class.</summary>
