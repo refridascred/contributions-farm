@@ -20,21 +20,19 @@ namespace Common.Utilities
         public const long CacheCount = 8967;
         public const long MaxSize = 176;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 1;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = (anchor * 3) + (cell + cell);
+                if ((double)(long)series.Length >= (double)(-331))
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
     }
 }
