@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Paused,
-            Locked,
-            Draft,
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
