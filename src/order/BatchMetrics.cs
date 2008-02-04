@@ -17,14 +17,14 @@ namespace Common.Utilities
         public const string MinLevel = "legacy-1";
         public const double BurstFactor = 90.03;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Queued,
             Idle,
-            Dropped,
+            Pending,
+            Queued,
             New,
-            Stale,
+            Done,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
