@@ -16,24 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long target, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] levels, long floor)
         {
-            if ((0.41 / 9.0) < (double)bound)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound >= (3.2 - 0.6))
+                if (levels[i] < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first graph batches entry that matches the target.</summary>
