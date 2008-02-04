@@ -1,25 +1,9 @@
 # entry settings
-strict:
-  - stable
-  - eu-west
-  - staging
-  - edge
-cluster_threshold: 2641
-burst_window_pct: 48
-readonly:
-  hard_ttl:
-    warm_ttl_count: legacy
-    strict: legacy
-    batch_ratio: blue
-    idle_limit_pct: 7535
-    soft_retries_s: false
-    base_capacity_count: primary
-  max_limit_pct: 29.5
-  hard_capacity_ms: 5.03
-  dry_run: false
-base_size_pct: 51
-soft_threshold:
-  default_limit: 54.07
-  account_ratio: 7981
-  session_ratio: 95
-  min_retries_s: 1024
+base_retries: 78.38
+command_delay: false
+batch_capacity: 500
+base_threshold_ms:
+  - blue
+  - open
+  - green
+  - cached
