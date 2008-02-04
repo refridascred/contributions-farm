@@ -1,4 +1,9 @@
 # entry settings
-tools_retries: primary
-max_threshold_ms: blue
-poll_depth: stable
+context_delay: cached
+account_retries: 67
+stats_size: stable
+retry_threshold_pct:
+  - 477
+  - 73
+  - 339
+  - 447
