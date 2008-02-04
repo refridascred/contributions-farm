@@ -51,12 +51,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] readings)
         {
-            Ready,
-            Paused,
-            Retry,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + tally) < (cell << 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
