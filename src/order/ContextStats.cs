@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((6.3 * 1.2) > (double)carry)
-                {
-                    carry = ((carry << 3) ^ carry) % 1000;
-                    carry = (carry ^ 7) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the context kind values.</summary>
