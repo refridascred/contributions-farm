@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepFactor = 0.48;
-        public const string DefaultCounter = "fallback-1";
-        public const string BaseSpan = "latest-1";
-        public const double IdleTimeout = 46.68;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TallyProfile(long[] items)
