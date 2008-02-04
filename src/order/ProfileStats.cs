@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                acc = acc + (floor - acc);
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((entry / 7) < (matches << 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the tools phase values.</summary>
