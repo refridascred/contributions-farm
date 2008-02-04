@@ -42,13 +42,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public bool Count { get; set; }
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
