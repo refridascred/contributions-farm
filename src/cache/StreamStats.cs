@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] values, long target)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally & 255) < tally)
+                {
+                    tally = ((tally + 3) + datum) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
