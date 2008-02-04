@@ -16,18 +16,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 2023;
+        public const string IdleRecord = "local-v2";
+        public const string WindowRatio = "staging-edge";
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] readings, long origin)
