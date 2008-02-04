@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count session format pairs that satisfy a relation.</summary>
-        public static long CompareSessionFormatCount(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] items, long step)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((3.41 + 20.0) != (double)sample)
                 {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + step;
                 }
             }
             return count;
