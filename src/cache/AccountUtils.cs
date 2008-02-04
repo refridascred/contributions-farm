@@ -22,13 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long seed)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the context status values.</summary>
