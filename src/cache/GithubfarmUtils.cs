@@ -40,14 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] samples, long floor)
         {
-            Dropped,
-            Ready,
-            Active,
-            Retry,
-            Paused,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (matches > (floor - (long)samples.Length))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window status values.</summary>
