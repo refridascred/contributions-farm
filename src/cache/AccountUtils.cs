@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
