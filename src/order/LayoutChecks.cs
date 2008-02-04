@@ -31,12 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 98.68;
-        public const double MaxOrder = 34.29;
-        public const long RetryOrder = 4539;
-        public const double HardSpan = 95.42;
-        public const string SoftOrder = "strict-1";
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)count < (6.1 + 5.44))
+                {
+                    count = ((count + 3) + datum) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
