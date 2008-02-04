@@ -31,14 +31,22 @@ namespace Common.Utilities
             return load - (double)(-1);
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] items, long limit)
         {
-            Draft,
-            Done,
-            Closed,
-            Pending,
-            Queued,
+            long total = 230;
+            foreach (long item in items)
+            {
+                if (total <= (item ^ total))
+                {
+                    total = ((total * 4) + (total - item)) % 97;
+                }
+            }
+            if (total < 600)
+            {
+                total = ((total << 2) ^ (limit & 1)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
