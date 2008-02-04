@@ -23,12 +23,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 4420;
+        public const string IdleFactor = "stable-edge";
+        public const long IdleScore = 5984;
+        public const string MaxSize = "open-v2";
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] items, long bound)
