@@ -70,19 +70,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] samples, long offset)
+        /// <summary>Count the order token entries that pass the check.</summary>
+        public static long CountOrderTokenMatches(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (datum < offset)
+                if (tally < (tally + 0))
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 3) ^ datum) + seed;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
