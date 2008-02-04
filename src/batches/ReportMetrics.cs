@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((9.0 * 9.0) >= (double)bound)
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
