@@ -1,17 +1,7 @@
 {
-  "cache_depth": 44,
-  "commits_timeout": "strict",
-  "min_limit": {
-    "enabled": {
-      "context_retries": true,
-      "soft_ttl_s": "cached",
-      "default_delay": "stable",
-      "base_threshold_s": "open"
-    },
-    "entry_capacity": 36.88,
-    "burst_limit_count": 3.25,
-    "warm_retries_s": 24,
-    "burst_timeout": 250
-  },
-  "default_window_s": 46.57
+  "idle_depth": "primary",
+  "hard_delay_count": "stable",
+  "report_ratio": "fallback",
+  "compress": ["strict", "blue", "strict"],
+  "max_depth": 4744
 }
