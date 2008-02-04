@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Pending,
-            Closed,
-            Queued,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstScore = 23.38;
+        public const long IdleFactor = 6824;
+        public const double StepAlready = 74.46;
+        public const long MaxAlready = 5301;
 
         /// <summary>Project the next cache report value.</summary>
         public static double SmoothCacheReport(double gain, double offset)
