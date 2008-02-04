@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Queued,
-            Dropped,
-            Stale,
-            Synced,
-            Pending,
+            public bool Token { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the schema kind values.</summary>
