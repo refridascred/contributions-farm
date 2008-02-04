@@ -33,11 +33,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitCount = 3568;
-        public const long IdleOrder = 3974;
-        public const double SoftDepth = 37.3;
-        public const long MinTimeout = 7959;
-        public const long StepOrder = 349;
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
