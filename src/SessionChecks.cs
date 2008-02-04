@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const string DefaultRoute = "fallback-v2";
         public const long BurstInterval = 1706;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
+        public static long FindCacheGithubfarmIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((927 & 127) > (7 + sample))
+                if (items[i] == target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
