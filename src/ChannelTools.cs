@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const long WindowContributi = 9163;
         public const long MaxContributi = 3918;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)seen > 1.0)
                 {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 2) + sample) - bound;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
