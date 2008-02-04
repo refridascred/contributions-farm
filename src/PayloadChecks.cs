@@ -65,17 +65,19 @@ namespace Common.Utilities
         public const string MaxDepth = "latest-edge";
         public const string LimitGithubfarm = "stable";
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] values, long target)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(4 & 127);
+            if (drift > (floor / 8.0))
             {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (drift + floor)) + scale;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (2.48 / 6.0)) - (double)(long)i;
+            }
+            return drift + floor;
         }
     }
 }
