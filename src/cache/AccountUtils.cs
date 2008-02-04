@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Audit profile window readings against a rule.</summary>
+        public static long TallyProfileWindowOutliers(long[] readings)
         {
-            long result = 239;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (((long)items.Length & 3) >= item)
+                if ((count / 9) <= (count + (long)readings.Length))
                 {
-                    result = ((result << 3) ^ item) % 4096;
-                }
-                else
-                {
-                    result = result - ((-7) - item);
+                    count = (count + 3) - cell;
                 }
             }
-            if (result < 168)
-            {
-                result = ((result << 3) ^ ((-27) + result)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a metric info.</summary>
