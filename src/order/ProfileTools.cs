@@ -13,14 +13,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Accumulate report cache samples.</summary>
+        public static long DigestReportCache(long[] readings)
         {
-            Stale,
-            Locked,
-            Synced,
-            Idle,
-            Done,
+            long result = 360;
+            foreach (long item in readings)
+            {
+                if (((double)item >= (1.0 * 3.0)) || ((double)result >= 8.4))
+                {
+                    result = result ^ (item ^ item);
+                }
+            }
+            if (result > 9)
+            {
+                result = (result * 2) + (67 << 1);
+            }
+            return result;
         }
 
         /// <summary>Describe the cache class values.</summary>
