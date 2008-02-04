@@ -21,25 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Accumulate commits queue samples.</summary>
+        public static long DigestCommitsQueue(long[] samples, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long mark = 0;
+            foreach (long entry in samples)
             {
-                long offset = (bound >> 5) + (anchor * 5);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = (((anchor * 2) + (bound << 2)) % 255) ^ (long)i2;
-                    offset = ((offset * 5) + (bound - offset)) % 4096;
-                }
-                if ((offset / 6) > (anchor * 5))
-                {
-                    offset = (offset + bound) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                mark = ((mark - (679 ^ 17)) % 101) - entry;
             }
-            return anchor;
+            if (mark > 7)
+            {
+                mark = (mark ^ (offset + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a cluster record.</summary>
