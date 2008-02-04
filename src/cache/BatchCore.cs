@@ -31,21 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((9.0 * 0.5) >= (double)bound)
                 {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
