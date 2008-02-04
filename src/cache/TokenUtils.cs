@@ -37,18 +37,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long acc = 18;
-            foreach (long cell in levels)
-            {
-                if ((acc > (cell / 4)) || ((2.5 * 9.1) <= (double)cell))
-                {
-                    acc = (acc * 2) + (2 + 16);
-                }
-            }
-            return acc % 97;
+            Retry,
+            Failed,
+            Queued,
+            Idle,
         }
     }
 }
