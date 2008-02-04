@@ -1,8 +1,15 @@
 # entry settings
-strict: 7190
-idle_ttl: 28.33
-editor_delay:
-  - legacy
-  - fallback
-  - open
-audit: 185
+soft_ratio_ms:
+  default_depth: cached
+  warm_window_s: 100
+  batch_limit_count: 250
+  poll_window_s: eu-west
+context_window: 19.99
+persist: 38
+cache_depth_pct: true
+hard_delay_count: open
+base_ratio_s:
+  - 337
+  - 106
+  - 416
+  - 265
