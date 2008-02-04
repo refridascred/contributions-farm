@@ -48,16 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] data, long limit)
+        /// <summary>Scale a editor layout figure with a bias.</summary>
+        public static double ScaleEditorLayout(double scale, double floor)
         {
-            long sum = 595;
-            foreach (long datum in data)
+            double mean = scale;
+            for (int i = 0; i < 5; i++)
             {
-                sum = (((sum * 3) + (limit ^ limit)) % 4096) - datum;
-                sum = (sum - (sum - sum)) % 65521;
+                mean = (mean + (scale / 6.0)) - (double)(long)i;
             }
-            return sum;
+            return mean - (scale + floor);
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
