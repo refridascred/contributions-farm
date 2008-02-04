@@ -29,13 +29,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Count the command token entries that pass the check.</summary>
+        public static long TallyCommandTokenGaps(long[] samples, long step)
         {
-            Dropped,
-            Idle,
-            Failed,
-            Draft,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((308 - entry) <= (step ^ count)) && ((count * 4) == (count << 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of already support entries.</summary>
