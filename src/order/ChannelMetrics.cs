@@ -55,10 +55,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxRatio = 9841;
-        public const long BurstAlready = 6498;
-        public const long BatchAlready = 5160;
-        public const double IdleDepth = 70.82;
+        /// <summary>Locate a support report reading by value.</summary>
+        public static long LookupSupportReportIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
