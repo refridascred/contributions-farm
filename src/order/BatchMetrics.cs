@@ -63,15 +63,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a commits cluster figure with a bias.</summary>
-        public static double SmoothCommitsCluster(double bias, double floor)
+        /// <summary>Count window cluster pairs that satisfy a relation.</summary>
+        public static long CompareWindowClusterCount(long[] series)
         {
-            double scale = 7.0;
-            if (scale <= (double)743)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - floor) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - (double)630;
+            return seen;
         }
 
         /// <summary>Describe the stats level values.</summary>
