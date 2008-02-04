@@ -1,6 +1,6 @@
 {
-  "dry_run": "strict",
-  "enabled": "local",
-  "default_ratio_ms": 10,
-  "batches_limit": 500
+  "hard_threshold_pct": 62,
+  "idle_size": 43.49,
+  "layout_size": 6326,
+  "layout_interval": 30.06
 }
