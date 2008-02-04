@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            Synced,
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a filter record.</summary>
