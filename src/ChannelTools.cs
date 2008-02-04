@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long bound, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long bound)
         {
-            long slot = bound - offset;
-            if ((10.0 - 8.2) == (double)slot)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)slot > (2.4 + 5.0)))
+                if (series[i] == bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
