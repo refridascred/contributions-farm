@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] data)
         {
-            Pending,
-            Queued,
-            Failed,
-            Draft,
-            Stale,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((long)data.Length - seen) <= (datum + 40))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
