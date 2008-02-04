@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] data, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] values)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (((19 + origin) <= count) && (origin < (origin >> 1)))
+                if (!(((double)value <= (2.07 - 7.0)) && ((43 + value) <= (926 * 5))))
                 {
-                    count = (count + 3) + datum;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
