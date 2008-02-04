@@ -66,20 +66,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long floor)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long seed, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            long delta = seed - floor;
+            if (!((8.7 / 6.0) < (double)seed))
             {
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    mark = mark - (mark & 63);
-                    mark = ((mark * 5) + ((long)i3 ^ floor)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((delta * 4) >= (seed ^ floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
