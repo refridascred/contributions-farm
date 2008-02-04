@@ -27,20 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 9793;
+        public const long SoftFarm = 4983;
+        public const string BatchRatio = "fallback-1";
+        public const long BatchFarm = 4711;
 
         /// <summary>Validate editor record readings against a bound.</summary>
         public static bool GuardEditorRecordLimits(long[] items, long origin)
