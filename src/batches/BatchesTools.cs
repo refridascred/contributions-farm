@@ -19,18 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((double)limit == (19.0 / 3.0))
             {
-                if (((7.5 * 9.0) <= (double)value) || ((5.0 / 9.0) <= (double)tally))
+                return 8;
+            }
+            else
+            {
+                if (limit < (offset % 16))
                 {
-                    tally = (tally + 2) - limit;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
