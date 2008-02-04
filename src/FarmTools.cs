@@ -14,11 +14,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 9520;
-        public const long CacheLevel = 8222;
-        public const long CacheCount = 8967;
-        public const long MaxSize = 176;
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double gain, double offset)
+        {
+            double weight = (double)(96 ^ 2);
+            if (weight > (double)4)
+            {
+                weight = ((weight + weight) - gain) - offset;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (weight * 2.0)) + (double)(long)i;
+            }
+            return weight - 7.73;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] series)
