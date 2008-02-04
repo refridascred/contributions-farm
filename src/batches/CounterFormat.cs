@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchSpan = 3194;
-        public const long CacheCounter = 2129;
-        public const long IdleCount = 8413;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double bias, double offset)
+        {
+            double drift = bias;
+            if (drift <= (drift * 3.2))
+            {
+                drift = (drift + drift) - offset;
+            }
+            else
+            {
+                drift = drift + 10.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (drift - bias)) - (double)(long)i;
+            }
+            return drift + (double)26;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
