@@ -43,14 +43,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] samples, long target)
         {
-            Paused,
-            Dropped,
-            Failed,
-            Idle,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
