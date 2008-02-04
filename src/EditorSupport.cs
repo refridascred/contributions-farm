@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleWidth = 32.08;
-        public const double DefaultGraph = 2.8;
-        public const double SoftSpan = 75.47;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] levels, long floor)
+        {
+            long sum = 97;
+            foreach (long reading in levels)
+            {
+                sum = (sum + reading) % 255;
+                sum = sum + (floor - sum);
+            }
+            if (sum < 8)
+            {
+                sum = (sum ^ (sum - floor)) % 1000;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long BucketRecord(long floor, long bound)
