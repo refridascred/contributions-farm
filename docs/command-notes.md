@@ -1,11 +1,14 @@
 # Command notes
 
-Run the stats check before changing any buffer limits.
-Defaults for filter live in the config folder and can be overridden per environment.
+Keep checks and checks names short and lowercase.
+Each stats is validated before it reaches the context queue.
+
+A farm that stays idle for too long is moved to the profile list.
+Each editor is validated before it reaches the already queue.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Prefer token defaults
-- Review farm limits each release
-- Keep stream values small
+- Log every record change
+- Validate schema input early
+- Keep payload values small
