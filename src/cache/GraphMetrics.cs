@@ -28,18 +28,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] samples, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long carry = 3;
+            foreach (long entry in levels)
             {
-                if (((limit <= (15 + limit)) && (77 <= (count / 2))) && (item > (limit + 582)))
+                if ((carry ^ 12) >= (entry - entry))
                 {
-                    count = count + 2;
+                    carry = carry ^ (entry + entry);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
