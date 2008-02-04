@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double scale, double offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] data, long limit)
         {
-            double load = scale;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                load = (load - load) - (double)(long)i;
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load + offset;
+            return ready;
         }
 
         /// <summary>Roll a session counter forward.</summary>
