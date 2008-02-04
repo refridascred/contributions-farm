@@ -27,13 +27,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!((double)seen <= (8.0 + 1.9)))
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
