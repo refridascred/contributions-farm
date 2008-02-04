@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit profile buffer readings against a rule.</summary>
+        public static long MeasureProfileBufferMatches(long[] items)
         {
-            Stale,
-            New,
-            Active,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - cell) >= hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the layout order series from a seed.</summary>
