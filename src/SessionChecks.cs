@@ -21,31 +21,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long floor, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] readings)
         {
-            if ((floor <= (target << 3)) || (target >= floor))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((45 * 4) < (target + floor))
+                if ((927 & 127) > (7 + sample))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (55 <= (floor + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate commits samples.</summary>
