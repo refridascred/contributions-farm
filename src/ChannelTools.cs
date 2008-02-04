@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] samples, long target)
         {
-            public double Label { get; set; }
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
