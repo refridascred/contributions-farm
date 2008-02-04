@@ -36,22 +36,17 @@ namespace Common.Utilities
         public const long BaseBuffer = 2014;
         public const long StepLevel = 6596;
 
-        /// <summary>Audit githubfarm stats readings against a rule.</summary>
-        public static long AuditGithubfarmStatsGaps(long[] values, long target)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((466 >> 4) >= (target & 31))
+                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
                 {
-                    tally = (tally + 1) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
