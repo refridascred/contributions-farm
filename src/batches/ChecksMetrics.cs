@@ -68,12 +68,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] samples)
         {
-            Pending,
-            Done,
-            Closed,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample <= (9.0 * 5.2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
