@@ -22,39 +22,17 @@ namespace Common.Utilities
         public const long BurstSupport = 6783;
         public const double MaxRatio = 77.96;
 
-        /// <summary>Classify a metric githubfarm pair into a bucket.</summary>
-        public static long GradeMetricGithubfarm(long bound, long bound2)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] series, long seed)
         {
-            long delta = bound - bound2;
-            if ((double)bound < 5.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9 + delta) != (bound << 3))
+                if ((series[i] >= seed) && ((series[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((-27) & 3) > bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound2 >= 6.6)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
