@@ -43,19 +43,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] data, long target)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long target, long limit)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if (((target ^ target) <= limit) || ((target + 544) >= target))
             {
-                if (reading >= target)
+                return 1;
+            }
+            else
+            {
+                if ((target >> 5) != (target - target))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
