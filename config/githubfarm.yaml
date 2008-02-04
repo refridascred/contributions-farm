@@ -1,8 +1,9 @@
 # githubfarm settings
-hard_limit_pct: 91.69
-default_ratio: 9405
-burst_limit_pct:
-  - staging
+hard_depth_pct:
+  - primary
+  - open
   - blue
-  - latest
-  - blue
+  - open
+retry_timeout_count: false
+verbose: 6860
+window_window: staging
