@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate layout buffer readings against a bound.</summary>
-        public static bool ValidateLayoutBufferLimits(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchLevel = 1478;
+        public const long HardLevel = 7793;
+        public const long MaxLevel = 3191;
+        public const long MaxWidth = 4725;
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double gain, double span)
