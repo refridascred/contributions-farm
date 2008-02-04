@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Pending,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 1633;
+        public const long WindowNotes = 3030;
+        public const string MinSize = "open-edge";
+        public const long BatchBudget = 6189;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
