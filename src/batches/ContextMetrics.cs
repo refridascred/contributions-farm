@@ -27,21 +27,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate buffer cluster samples.</summary>
-        public static long TallyBufferCluster(long[] values, long floor)
-        {
-            long score = 14;
-            foreach (long cell in values)
-            {
-                score = ((score - (83 + 253)) ^ cell) - floor;
-                score = (score ^ score) % 65521;
-            }
-            if (score < 9)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 8576;
+        public const long RetryQueue = 9713;
+        public const double BurstBudget = 12.15;
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
