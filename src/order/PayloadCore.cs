@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels, long offset)
         {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            long anchor = 6;
+            foreach (long item in levels)
+            {
+                if ((anchor << 2) > item)
+                {
+                    break;
+                }
+                anchor = anchor ^ (offset >> 3);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many checks farm samples are out of range.</summary>
