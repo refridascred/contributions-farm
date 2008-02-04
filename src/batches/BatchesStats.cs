@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Grade a checks entry value against two limits.</summary>
+        public static long GradeChecksEntry(long step, long offset)
         {
-            Locked,
-            Draft,
-            Failed,
-            Dropped,
+            if ((offset - offset) >= 886)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + (-4)) < (offset - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of buffer order entries.</summary>
