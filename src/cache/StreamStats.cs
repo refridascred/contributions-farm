@@ -20,22 +20,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] values)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long acc = 3;
+            foreach (long entry in levels)
             {
-                if ((reading - reading) >= matches)
+                if (!((8.78 - 18.0) <= (double)acc))
                 {
-                    matches = matches + 3;
+                    acc = acc + 498;
+                    acc = (acc + acc) % 1000;
                 }
-                else
+                if ((4 >> 4) > entry)
                 {
-                    matches = matches - 1;
+                    acc = (acc ^ (79 >> 3)) % 1000;
                 }
+                acc = ((acc << 3) ^ (acc + entry)) % 65521;
             }
-            return matches;
+            if (acc > (-91))
+            {
+                acc = acc - acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
