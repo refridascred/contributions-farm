@@ -19,22 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] readings, long step)
         {
-            long acc = -6;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc ^ 629) > (value - value))
+                if ((readings[i] > step) && ((readings[i] % 3) == 0))
                 {
-                    acc = ((acc * 2) + (value + value)) % 97;
+                    return (long)i;
                 }
             }
-            if (acc > 727)
-            {
-                acc = acc ^ (92 % 7);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
