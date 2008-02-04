@@ -20,14 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Retry,
-            Draft,
-            Idle,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 2892;
+        public const long BurstWidth = 879;
+        public const string BurstTimeout = "strict-v2";
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
