@@ -71,21 +71,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of record payload readings.</summary>
-        public static long CompareRecordPayloadCount(long[] samples)
+        /// <summary>Combine metric layout values into a single score.</summary>
+        public static long CombineMetricLayout(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 256;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (mark > (1 % 10))
                 {
-                    if ((samples[i] ^ samples[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 5) + (bound + entry)) % 65521;
+                    break;
+                }
+                if ((bound * 2) <= (mark + mark))
+                {
+                    mark = mark ^ (68 % 10);
                 }
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a format notes sample.</summary>
