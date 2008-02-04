@@ -58,32 +58,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long step, long limit)
-        {
-            long prev = step ^ limit;
-            if ((6.58 + 5.84) > (double)prev)
-            {
-                return 1;
-            }
-            else
-            {
-                if (prev > (prev << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (8 < (limit + prev))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheSpan = 5147;
+        public const string WindowFilter = "primary-v2";
+        public const long HardLevel = 9703;
     }
 }
