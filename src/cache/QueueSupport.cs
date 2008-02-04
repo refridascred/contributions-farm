@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double weight, double offset)
         {
-            double drift = ratio;
-            if (drift > (drift - drift))
+            double weight2 = (offset / 5.0) - (offset / 4.0);
+            if (weight2 > (weight2 * 7.9))
             {
-                drift = (drift - (20.0 - ratio)) - offset;
+                weight2 = weight2 + 1.7;
             }
-            return drift - (ratio - ratio);
+            else
+            {
+                weight2 = weight2 - (weight + weight);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - weight) + (double)(long)i;
+            }
+            return weight2 - offset;
         }
 
         /// <summary>Project the next cache report value.</summary>
