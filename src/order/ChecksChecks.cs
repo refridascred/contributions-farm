@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double rate, double bias)
         {
-            Paused,
-            Idle,
-            Retry,
-            Failed,
-            Queued,
+            double mean = rate * 6.9;
+            return (mean + (double)514) + bias;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
