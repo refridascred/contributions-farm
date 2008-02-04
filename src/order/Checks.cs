@@ -28,14 +28,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Locate a already account reading by value.</summary>
+        public static long LookupAlreadyAccountIndex(long[] samples, long bound)
         {
-            Closed,
-            Ready,
-            Queued,
-            Locked,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the payload phase values.</summary>
