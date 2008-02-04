@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] levels, long seed)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double bias, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = offset;
+            if (gain < (gain * 8.8))
             {
-                if ((levels[i] <= seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + (8.0 / 5.0)) - bias;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (double)(-930);
         }
 
         /// <summary>Define route limits and defaults.</summary>
