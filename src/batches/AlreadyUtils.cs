@@ -14,19 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] items, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (acc < 599)
+                if (items[i] > floor)
                 {
-                    acc = acc ^ (acc << 1);
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
