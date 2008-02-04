@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a editor context reading by value.</summary>
-        public static long LookupEditorContextIndex(long[] readings, long limit)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
