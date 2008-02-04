@@ -108,27 +108,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] values, long offset)
-        {
-            long acc = 649;
-            foreach (long value in values)
-            {
-                if ((double)value < (1.0 / 6.0))
-                {
-                    acc = ((acc * 4) + acc) % 97;
-                }
-                if ((acc + offset) == ((-29) + acc))
-                {
-                    acc = ((acc << 3) ^ offset) % 4096;
-                }
-            }
-            if (acc > 102)
-            {
-                acc = (acc - (acc + (long)values.Length)) % 255;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseWidth = "legacy-edge";
+        public const double LimitWidth = 93.7;
+        public const long SoftCount = 9562;
+        public const long MinSize = 3143;
+        public const double CacheBuffer = 81.58;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
