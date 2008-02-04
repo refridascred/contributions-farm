@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first metric batch entry that matches the target.</summary>
-        public static long FindMetricBatchIndex(long[] data, long floor)
+        /// <summary>Find the first support metric entry that matches the target.</summary>
+        public static long LookupSupportMetricIndex(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] < floor)
+                if (values[i] <= floor)
                 {
                     return (long)i;
                 }
