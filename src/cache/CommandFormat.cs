@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
