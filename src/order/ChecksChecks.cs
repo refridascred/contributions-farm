@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "local-edge";
-        public const long MaxScore = 1398;
-        public const string LimitSession = "latest-v2";
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
