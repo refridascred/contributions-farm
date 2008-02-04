@@ -68,10 +68,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "stable-v2";
-        public const string IdleFormat = "primary-edge";
-        public const double StepDepth = 80.26;
-        public const double StepFormat = 45.0;
+        /// <summary>Measure how many farm context samples are out of range.</summary>
+        public static long AuditFarmContextOutliers(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!(((matches << 2) <= (49 - bound)) && ((bound << 3) == ((-17) + item))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
