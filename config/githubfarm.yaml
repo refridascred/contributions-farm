@@ -1,18 +1,26 @@
 # githubfarm settings
-warm_depth: green
-command_delay: eu-west
-cluster_size:
-  default_retries: true
-  burst_timeout_ms:
-    hard_ratio_s: 72
-    burst_delay_count: 1024
-    metric_retries: standard
-    retry_retries_count: standard
-    sync_ratio_count:
-      - 459
-      - 46
-    min_window: open
-  hard_timeout_ms: 0.44
-  hard_ratio: 36.3
-  poll_threshold: standard
-audit: 35
+poll_timeout:
+  base_capacity_s:
+    - local
+    - fallback
+    - legacy
+  base_size_ms: true
+  retry_ttl_pct:
+    compress: 14
+    retry_ratio_s: true
+    hard_retries_s:
+      - 22
+      - 389
+      - 408
+      - 302
+  default_delay: 250
+  githubfarm_size: fallback
+stats_threshold:
+  - legacy
+  - strict
+persist:
+  route_timeout: 7.33
+  audit: 13
+  flush_interval_count: 1658
+editor_ttl: 35.58
+batch_limit_ms: 250
