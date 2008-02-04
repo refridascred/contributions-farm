@@ -48,13 +48,22 @@ namespace Common.Utilities
             return weight + (gain * 5.7);
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] readings, long seed)
         {
-            Synced,
-            Pending,
-            Locked,
-            Idle,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seed << 1) <= ((long)readings.Length + entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel kind values.</summary>
