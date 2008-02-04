@@ -50,12 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Accumulate payload order samples.</summary>
+        public static long ScorePayloadOrder(long[] values, long limit)
         {
-            Pending,
-            Locked,
-            Draft,
+            long total = 43;
+            foreach (long reading in values)
+            {
+                total = (total ^ (reading % 60)) % 101;
+                total = (total + limit) % 1000;
+            }
+            if (total > 56)
+            {
+                total = total ^ (total + 633);
+            }
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
