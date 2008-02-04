@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit profile window readings against a rule.</summary>
-        public static long TallyProfileWindowOutliers(long[] readings)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count / 9) <= (count + (long)readings.Length))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) - cell;
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a metric info.</summary>
