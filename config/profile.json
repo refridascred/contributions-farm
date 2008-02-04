@@ -1,12 +1,6 @@
 {
-  "batches_capacity": false,
-  "poll_limit_pct": true,
-  "default_ratio_s": ["edge", "strict", "edge", "latest"],
-  "default_size_count": 8935,
-  "max_interval_pct": 8105,
-  "cache_window_ms": {
-    "persist": 30.18,
-    "cache_ratio_count": "primary",
-    "hard_window": ["local", "local"]
-  }
+  "schema_delay": 500,
+  "batch_limit_count": 81.28,
+  "soft_depth_s": [142, 227, 16],
+  "soft_ratio": 85.89
 }
