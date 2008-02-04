@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Compare every pair of payload tools readings.</summary>
+        public static long ComparePayloadToolsCount(long[] series)
         {
-            New,
-            Paused,
-            Dropped,
-            Queued,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
