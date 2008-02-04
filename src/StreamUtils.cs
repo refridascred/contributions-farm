@@ -37,17 +37,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] samples, long seed)
+        /// <summary>Accumulate format cache samples.</summary>
+        public static long FoldFormatCache(long[] data)
         {
-            long result = 59;
-            foreach (long datum in samples)
+            long result = 666;
+            foreach (long entry in data)
             {
-                if ((double)seed > (double)result)
-                {
-                    result = (result << 3) ^ (result ^ result);
-                }
-                if (((83 + (long)samples.Length) >= (result * 3)) || ((datum >> 2) == (result + seed)))
+                result = (result + result) % 65521;
+                if ((entry * 2) < result)
                 {
                     break;
                 }
