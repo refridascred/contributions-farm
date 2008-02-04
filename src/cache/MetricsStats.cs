@@ -60,17 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] values, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                if ((matches << 3) >= (reading ^ matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
