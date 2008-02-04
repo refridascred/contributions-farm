@@ -40,17 +40,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] readings, long limit)
+        /// <summary>Digest a series of cluster batch entries.</summary>
+        public static long WeighClusterBatch(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -26;
+            foreach (long reading in readings)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                if (reading <= (reading % 5))
                 {
-                    return (long)i;
+                    carry = (carry - (482 / 8)) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry + reading);
                 }
             }
-            return -1;
+            return carry % 1000;
         }
     }
 }
