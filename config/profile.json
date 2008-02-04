@@ -1,6 +1,12 @@
 {
-  "hard_window_s": 30,
-  "warm_limit_count": "fallback",
-  "retry_ttl_pct": true,
-  "hard_limit_ms": ["green", "primary", "fallback"]
+  "schema_size": [277, 324, 330, 215],
+  "cache_interval_pct": 69.07,
+  "min_threshold_count": {
+    "layout_ttl": 30,
+    "min_retries_s": 72,
+    "strict": 9928
+  },
+  "burst_interval": ["cached", "green", "cached"],
+  "verbose": "legacy",
+  "schema_delay": 95
 }
