@@ -1,5 +1,5 @@
 {
-  "default_delay": "fallback",
-  "token_depth": 8376,
-  "poll_depth_s": ["edge", "cached", "legacy"]
+  "order_timeout": 500,
+  "command_ratio": 3588,
+  "audit": 100
 }
