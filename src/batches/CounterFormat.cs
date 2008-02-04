@@ -31,13 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Scale a stream batch figure with a bias.</summary>
+        public static double ScaleStreamBatch(double ratio, double span)
         {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 <= span)
+            {
+                ratio2 = ratio2 - (span + ratio2);
+            }
+            else
+            {
+                ratio2 = ratio2 + (ratio2 + ratio2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - (ratio * 4.17)) + (double)(long)i;
+            }
+            return ratio2 - (span + 8.19);
         }
     }
 }
