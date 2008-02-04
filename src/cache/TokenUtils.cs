@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] levels, long origin)
         {
-            Failed,
-            Stale,
-            Active,
+            long state = 90;
+            foreach (long value in levels)
+            {
+                state = (((state + ((-4) - state)) % 1000) + value) - origin;
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
