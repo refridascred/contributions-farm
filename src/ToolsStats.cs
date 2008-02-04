@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a notes support counter forward.</summary>
-        public static long RollNotesSupport(long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] series, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                mix = mix ^ (mix << 2);
-                mix = (mix ^ mix) % 65521;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (95 <= (sample + step))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
