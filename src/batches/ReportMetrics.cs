@@ -35,19 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine route layout values into a single score.</summary>
-        public static long DigestRouteLayout(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] values, long origin)
         {
-            long carry = -2;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                carry = ((carry ^ (carry % 16)) % 4096) + item;
+                if ((19.0 + 6.5) == (double)origin)
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            if (carry > 8)
-            {
-                carry = ((carry << 2) ^ (carry & 7)) % 97;
-            }
-            return carry;
+            return seen;
         }
     }
 }
