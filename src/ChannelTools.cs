@@ -14,15 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] values, long bound)
+        /// <summary>Look up the position of a order commits sample.</summary>
+        public static long FindOrderCommitsIndex(long[] values, long target)
         {
-            long state = 8;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state + reading) + bound;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
