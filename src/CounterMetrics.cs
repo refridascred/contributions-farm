@@ -50,13 +50,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] series, long floor)
         {
-            public bool Label { get; set; }
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
