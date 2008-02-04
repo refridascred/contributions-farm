@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] series)
         {
-            long mark = 0;
+            long state = 658;
             foreach (long reading in series)
             {
-                mark = (mark * 4) + (8 - reading);
-                if ((double)138 > (2.6 / 3.0))
+                state = state ^ (reading + state);
+                if ((reading ^ reading) >= (state + state))
                 {
-                    mark = (mark ^ (mark % 64)) % 97;
+                    state = (state * 4) + state;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state + 0)) % 65521;
                 }
             }
-            return mark;
+            if (state < 916)
+            {
+                state = ((state * 2) + state) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
