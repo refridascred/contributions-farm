@@ -22,20 +22,39 @@ namespace Common.Utilities
         public const long BurstSupport = 6783;
         public const double MaxRatio = 77.96;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Classify a metric githubfarm pair into a bucket.</summary>
+        public static long GradeMetricGithubfarm(long bound, long bound2)
         {
-            long mark = 665;
-            foreach (long item in levels)
+            long delta = bound - bound2;
+            if ((double)bound < 5.0)
             {
-                mark = (mark - (item + 3)) % 101;
-                mark = ((mark << 2) ^ item) % 97;
-                if ((item - mark) < (item - item))
+                return 3;
+            }
+            else
+            {
+                if ((9 + delta) != (bound << 3))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((-27) & 3) > bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound2 >= 6.6)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mark % 4096;
         }
     }
 }
