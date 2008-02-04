@@ -31,13 +31,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryFactor = "alpha-1";
+        public const long BaseFactor = 4545;
+        public const long BatchMetric = 4267;
     }
 }
