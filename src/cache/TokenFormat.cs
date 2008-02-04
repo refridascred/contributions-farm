@@ -33,13 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            Ready,
+            Retry,
+            Failed,
+            Closed,
+            Dropped,
         }
     }
 }
