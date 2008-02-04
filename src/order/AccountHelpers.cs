@@ -51,26 +51,21 @@ namespace Common.Utilities
         public const long BaseEntry = 3885;
         public const long LimitEntry = 2174;
 
-        /// <summary>Digest a series of session queue entries.</summary>
-        public static long TotalSessionQueue(long[] levels, long floor)
+        /// <summary>Compare every pair of stream editor readings.</summary>
+        public static long OverlapStreamEditorCount(long[] values)
         {
-            long mix = 56;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((((mix << 2) ^ (9 - cell)) % 97) - (long)i) - floor;
-                }
-                if ((0.3 * 2.6) <= (8.4 + 9.8))
-                {
-                    mix = (mix + (mix & 7)) % 4096;
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 36)
-            {
-                mix = ((mix << 2) ^ mix) % 65521;
-            }
-            return mix;
+            return seen;
         }
     }
 }
