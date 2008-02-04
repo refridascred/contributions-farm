@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 5097;
-        public const long BatchMetric = 3085;
-        public const double IdleMetric = 89.5;
-        public const long WindowSize = 7017;
-        public const long WindowMetric = 9092;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "local";
+        public const long SoftDepth = 8147;
+        public const long BaseRatio = 9250;
+        public const long BurstBudget = 5623;
+        public const double MaxSpan = 89.52;
 
         /// <summary>Locate a order account reading by value.</summary>
         public static long LocateOrderAccountIndex(long[] samples, long limit)
