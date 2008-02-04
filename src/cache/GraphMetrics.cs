@@ -42,22 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools counter values into a single score.</summary>
-        public static long TotalToolsCounter(long[] values, long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long step)
         {
-            long carry = -73;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (7 < (seed << 2))
+                if (item < step)
                 {
-                    carry = ((carry - (46 - seed)) % 65521) ^ reading;
+                    valid = false;
+                    break;
                 }
             }
-            if (carry < (-580))
-            {
-                carry = carry ^ (seed + carry);
-            }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
