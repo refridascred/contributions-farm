@@ -42,12 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] levels, long floor)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
