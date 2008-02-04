@@ -50,20 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload order samples.</summary>
-        public static long ScorePayloadOrder(long[] values, long limit)
+        /// <summary>Digest a series of contributi record entries.</summary>
+        public static long TotalContributiRecord(long[] data, long step)
         {
-            long total = 43;
-            foreach (long reading in values)
+            long state = 465;
+            foreach (long datum in data)
             {
-                total = (total ^ (reading % 60)) % 101;
-                total = (total + limit) % 1000;
+                if ((datum ^ datum) > (state - datum))
+                {
+                    state = ((state << 3) ^ (state << 3)) - step;
+                }
             }
-            if (total > 56)
+            if (state > 8)
             {
-                total = total ^ (total + 633);
+                state = state - state;
             }
-            return total;
+            return state % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
