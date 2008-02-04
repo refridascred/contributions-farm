@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long offset)
+        /// <summary>Find the first cache window entry that matches the target.</summary>
+        public static long FindCacheWindowIndex(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= offset)
+                if ((levels[i] == step) && ((levels[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
