@@ -33,11 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitSize = 5824;
-        public const long BatchTimeout = 4937;
-        public const string WindowSpan = "staging-1";
-        public const string MinLayout = "cached-1";
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] readings, long target)
+        {
+            long acc = 8;
+            foreach (long cell in readings)
+            {
+                acc = (acc * 5) + (target << 1);
+                if (((double)target < 5.7) || ((418 * 5) == (acc >> 4)))
+                {
+                    acc = acc + (cell % 60);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ cell) % 4096;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] values)
