@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long offset, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double rate, double span)
         {
-            if ((89 ^ seed) <= offset)
+            double load = span;
+            if (load <= load)
             {
-                return 4;
+                load = load - rate;
             }
             else
             {
-                if ((double)offset >= 1.55)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(offset <= (817 * 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset > (7.0 - 10.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                load = load + (span * 0.2);
             }
+            return load - rate;
         }
 
         /// <summary>Describe the commits status values.</summary>
