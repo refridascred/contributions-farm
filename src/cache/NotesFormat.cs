@@ -22,21 +22,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Dropped,
+            Stale,
         }
     }
 }
