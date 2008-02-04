@@ -14,21 +14,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next metric command value from a seed.</summary>
-        public static long IterateMetricCommand(long target)
+        /// <summary>Digest a series of buffer order entries.</summary>
+        public static long TallyBufferOrder(long[] values, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            long sum = -7;
+            foreach (long value in values)
             {
-                if (!((-19) > (carry << 3)))
+                for (int i = 0; i < 8; i++)
                 {
-                    carry = (carry - (carry % 12)) % 4096;
-                    carry = carry ^ ((long)i + carry);
+                    sum = ((sum ^ (sum / 8)) % 4096) + (long)i;
                 }
-                carry = carry ^ (carry + (long)i);
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = ((sum + (sum >> 3)) % 97) - (long)i2;
+                }
+                if ((step >> 5) < (value << 2))
+                {
+                    sum = (sum * 4) + (sum & 15);
+                }
             }
-            return carry;
+            return sum % 65521;
         }
 
         /// <summary>Count the metrics buffer entries that pass the check.</summary>
