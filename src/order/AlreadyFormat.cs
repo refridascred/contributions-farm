@@ -46,13 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Ready,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSize = 9881;
+        public const long BurstSession = 6373;
+        public const long BaseCount = 8672;
+        public const double MinSession = 32.24;
+        public const string DefaultSession = "local-edge";
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowGaps(long[] items, long origin)
