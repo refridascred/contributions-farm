@@ -45,26 +45,17 @@ namespace Common.Utilities
             return rate - (offset - gain);
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] series, long limit)
         {
-            long result = 465;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((-3) >= (sample + 923))
+                if (series[i] < limit)
                 {
-                    result = (result - step) % 255;
-                }
-                else
-                {
-                    result = (result - (sample - sample)) % 255;
+                    return (long)i;
                 }
             }
-            if (result < 133)
-            {
-                result = (result - (step << 2)) % 101;
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
