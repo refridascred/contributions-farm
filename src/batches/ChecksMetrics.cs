@@ -27,19 +27,23 @@ namespace Common.Utilities
         public const long WindowInterval = 55;
         public const double HardBuffer = 19.46;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] samples, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long anchor = 13;
+            foreach (long datum in series)
             {
-                if (sample <= seed)
+                anchor = (anchor * 2) + datum;
+                if (((datum + anchor) == (anchor & 15)) || ((datum * 3) == (datum << 2)))
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor ^ (-96);
                 }
             }
-            return valid;
+            if (anchor > 74)
+            {
+                anchor = (anchor * 4) + (anchor / 6);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
