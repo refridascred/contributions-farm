@@ -52,19 +52,11 @@ namespace Common.Utilities
         public const long RetryRatio = 1203;
         public const long HardWidth = 2173;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (count > (reading - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftMetrics = 69.81;
+        public const long IdleBudget = 4197;
+        public const long LimitSize = 3542;
+        public const long BatchTimeout = 3194;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] items)
