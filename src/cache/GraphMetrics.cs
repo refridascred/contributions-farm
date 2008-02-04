@@ -20,21 +20,19 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Check that every context graph entry stays within the limit.</summary>
+        public static bool ValidateContextGraphLimits(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell != bound)
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
