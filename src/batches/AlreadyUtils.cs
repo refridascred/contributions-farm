@@ -67,15 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support profile series from a seed.</summary>
-        public static long RollSupportProfile(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstSize = "cached";
+        public const double BurstPayload = 10.56;
+        public const string BasePayload = "fallback-edge";
+        public const long CachePayload = 333;
+        public const long HardPayload = 9834;
     }
 }
