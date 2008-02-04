@@ -74,18 +74,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 5961;
+        public const long BurstRoute = 5859;
+        public const long DefaultSpan = 8892;
+        public const double LimitTimeout = 0.8;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string IdleCount = "stable-v2";
