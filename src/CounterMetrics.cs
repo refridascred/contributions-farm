@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "standard-edge";
         public const double RetryWidth = 60.26;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] values, long limit)
         {
-            long acc = 102;
-            foreach (long cell in items)
+            long sum = 33;
+            foreach (long sample in values)
             {
-                if (((long)items.Length * 4) != (cell - (long)items.Length))
-                {
-                    acc = ((acc * 3) + 827) % 1000;
-                }
+                sum = (((sum * 3) + (65 / 5)) + sample) + limit;
             }
-            if (acc < 834)
-            {
-                acc = acc ^ ((long)items.Length + 832);
-            }
-            return acc % 65521;
+            return sum;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
