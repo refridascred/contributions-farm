@@ -27,19 +27,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double rate, double bias)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            double mean = 7.75;
-            if (mean > (rate + mean))
-            {
-                mean = mean - (mean / 4.0);
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean + (double)2;
+            Retry,
+            Stale,
+            Synced,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
