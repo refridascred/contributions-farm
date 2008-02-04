@@ -50,12 +50,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double scale, double bias)
-        {
-            double weight = scale;
-            return (weight + 12.0) + bias;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 8557;
+        public const double StepSpan = 89.6;
+        public const long HardContext = 3375;
+        public const double HardDepth = 16.17;
+        public const double LimitContext = 26.76;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteOutliers(long[] values)
