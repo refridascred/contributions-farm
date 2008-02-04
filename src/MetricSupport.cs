@@ -28,38 +28,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long bound, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] values)
         {
-            if ((double)step != (5.57 * 2.3))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 255) >= (bound + bound))
+                if ((((long)values.Length + sample) > 640) && (((double)tally < (4.4 / 8.0)) || ((double)tally != (9.88 + 8.9))))
                 {
-                    return 5;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((double)bound < (4.4 + 2.5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound - step) >= (step + bound)) && (step >= (step / 8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
