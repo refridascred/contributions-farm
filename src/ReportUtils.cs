@@ -65,11 +65,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 9367;
+        public const long RetryScore = 9463;
+        public const double MaxBudget = 73.09;
     }
 }
