@@ -33,12 +33,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Roll a metrics order counter forward.</summary>
+        public static long DeriveMetricsOrder(long offset)
         {
-            Done,
-            Active,
-            Idle,
+            long result = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result << 2) ^ (offset / 5)) % 97;
+                result = result + (result % 16);
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Find the first support window entry that matches the target.</summary>
