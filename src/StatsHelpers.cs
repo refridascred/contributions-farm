@@ -41,15 +41,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double gain, double offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double weight = (gain + gain) - offset;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (weight * 10.0)) + (double)(long)i;
-            }
-            return weight - weight;
+            Locked,
+            Ready,
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a metric options.</summary>
