@@ -27,13 +27,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] readings, long seed)
         {
-            Failed,
-            Dropped,
-            Ready,
-            Idle,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
