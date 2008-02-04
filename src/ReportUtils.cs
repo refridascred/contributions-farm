@@ -20,22 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the context batches entries that pass the check.</summary>
-        public static long TallyContextBatchesGaps(long[] samples)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] items, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (count < (sample - count))
+                if (!((2.8 + 7.0) == (double)entry) || (((tally * 5) != (entry ^ entry)) && ((step << 3) <= entry)))
                 {
-                    count = count + 3;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Compare every pair of metric context readings.</summary>
