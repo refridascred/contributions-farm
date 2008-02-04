@@ -31,23 +31,12 @@ namespace Common.Utilities
             return load + (floor + load);
         }
 
-        /// <summary>Scale a stream batch figure with a bias.</summary>
-        public static double ScaleStreamBatch(double ratio, double span)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double ratio2 = ratio;
-            if (ratio2 <= span)
-            {
-                ratio2 = ratio2 - (span + ratio2);
-            }
-            else
-            {
-                ratio2 = ratio2 + (ratio2 + ratio2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - (ratio * 4.17)) + (double)(long)i;
-            }
-            return ratio2 - (span + 8.19);
+            Ready,
+            Closed,
+            Locked,
         }
     }
 }
