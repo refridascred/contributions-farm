@@ -34,22 +34,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] levels, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + datum) >= (count & 127))
-                {
-                    count = (count + 2) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Paused,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
