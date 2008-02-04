@@ -15,12 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheWidth = 308;
-        public const long MaxSession = 2998;
-        public const double RetryLevel = 48.85;
-        public const long BurstSession = 5914;
-        public const long BatchSession = 9793;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 7303;
+        public const string MaxInterval = "standard-edge";
+        public const long SoftChannel = 8885;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long WeighStats(long[] series, long bound)
