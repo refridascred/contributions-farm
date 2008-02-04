@@ -1,12 +1,5 @@
 {
-  "burst_capacity_pct": {
-    "sync_delay": true,
-    "idle_delay_s": false,
-    "base_window": ["primary", "strict"],
-    "entry_timeout": "cached"
-  },
-  "cache_size_count": 60,
-  "dry_run": 37.54,
-  "schema_size": "open",
-  "token_retries": [285, 458, 334]
+  "default_limit": "stable",
+  "min_retries_count": 62.77,
+  "flush_ttl": 2
 }
