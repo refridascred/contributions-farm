@@ -1,4 +1,18 @@
 # githubfarm settings
-strict: 21.51
-schema_delay: 3556
-batch_retries_count: open
+warm_depth: green
+command_delay: eu-west
+cluster_size:
+  default_retries: true
+  burst_timeout_ms:
+    hard_ratio_s: 72
+    burst_delay_count: 1024
+    metric_retries: standard
+    retry_retries_count: standard
+    sync_ratio_count:
+      - 459
+      - 46
+    min_window: open
+  hard_timeout_ms: 0.44
+  hard_ratio: 36.3
+  poll_threshold: standard
+audit: 35
