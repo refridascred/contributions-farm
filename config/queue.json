@@ -1,19 +1,8 @@
 {
-  "base_threshold": "edge",
-  "format_timeout": {
-    "metric_limit": [482, 264],
-    "sync_delay_pct": "green",
-    "verbose": 5,
-    "batch_window": {
-      "soft_threshold_count": 1408,
-      "farm_capacity": 93,
-      "notes_timeout": true,
-      "min_ttl_count": [402, 441, 8, 480],
-      "idle_window": false,
-      "batch_retries": true
-    },
-    "metric_delay": "eu-west",
-    "retry_size_s": 9576
-  },
-  "readonly": 5866
+  "min_capacity": true,
+  "metric_retries": "primary",
+  "audit": 72.0,
+  "cluster_size": "open",
+  "burst_limit_pct": 1908,
+  "sync_depth_count": true
 }
