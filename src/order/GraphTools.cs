@@ -49,15 +49,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double ratio, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] data, long limit)
         {
-            double drift = floor * 1.52;
-            if (drift >= floor)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                drift = drift + ratio;
+                if ((seen > (limit << 2)) || ((limit + limit) > (limit << 3)))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift + ratio;
+            return seen;
         }
     }
 }
