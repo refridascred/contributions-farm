@@ -15,17 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] levels, long bound)
+        /// <summary>Fold a list of cluster already readings.</summary>
+        public static long TallyClusterAlready(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 91;
+            foreach (long reading in series)
             {
-                if (levels[i] <= bound)
+                state = (state ^ 643) + reading;
+                if (((floor >> 3) >= state) && ((floor - 0) >= (503 << 2)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the schema class values.</summary>
