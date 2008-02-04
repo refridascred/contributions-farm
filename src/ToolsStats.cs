@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!((matches - matches) <= reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Queued,
+            Active,
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
