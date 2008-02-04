@@ -1,9 +1,13 @@
 # entry settings
-context_delay: cached
-account_retries: 67
-stats_size: stable
-retry_threshold_pct:
-  - 477
-  - 73
-  - 339
-  - 447
+poll_window:
+  compress:
+    - 146
+    - 245
+    - 151
+    - 271
+  counter_limit: 15
+  metrics_ratio: 2.11
+sync_window_count: true
+strict: latest
+graph_depth: true
+editor_retries: 10.25
