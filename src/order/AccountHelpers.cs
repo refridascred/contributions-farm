@@ -57,14 +57,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitSize = 7786;
+        public const long MinSpan = 890;
+        public const long MinCommand = 3918;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] series, long offset)
