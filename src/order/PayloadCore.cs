@@ -23,17 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state - (target >> 3)) % 97;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 1706;
+        public const double MaxQueue = 13.32;
+        public const string BaseQueue = "strict-v2";
+        public const long IdleQueue = 476;
+        public const long LimitQueue = 9025;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long RankGithubfarm(long floor, long bound)
