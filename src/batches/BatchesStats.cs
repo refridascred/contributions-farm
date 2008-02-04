@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
-        public static bool VerifyFilterClusterRange(long[] levels, long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
