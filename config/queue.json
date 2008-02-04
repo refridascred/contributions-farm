@@ -1,8 +1,14 @@
 {
-  "readonly": 60,
-  "batch_depth_ms": 11.14,
-  "soft_retries_count": 49.2,
-  "default_retries_ms": "strict",
-  "min_window": ["latest", "staging"],
-  "retry_ttl_ms": 100
+  "compress": "open",
+  "channel_interval": "blue",
+  "checks_ttl": "primary",
+  "flush_depth_pct": {
+    "account_timeout": 500,
+    "persist": "eu-west",
+    "max_limit": 68.62,
+    "poll_capacity_ms": 6572,
+    "githubfarm_threshold": ["local", "staging"],
+    "strict": ["open", "cached", "green"]
+  },
+  "warm_limit_count": 60
 }
