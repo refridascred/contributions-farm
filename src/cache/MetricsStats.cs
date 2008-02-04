@@ -32,18 +32,32 @@ namespace Common.Utilities
         public const string BurstStats = "local-edge";
         public const double CacheStats = 21.26;
 
-        /// <summary>Audit window stats readings against a rule.</summary>
-        public static long MeasureWindowStatsGaps(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long target, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long delta = target ^ step;
+            if ((1.75 <= (double)target) && ((delta + step) >= delta))
             {
-                if (((long)values.Length >> 5) > (seen / 7))
+                return 7;
+            }
+            else
+            {
+                if (5 >= step)
                 {
-                    seen = (seen + 1) + datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((delta - 89) == (target - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next command metrics value from a seed.</summary>
