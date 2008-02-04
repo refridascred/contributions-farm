@@ -50,17 +50,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first token session entry that matches the target.</summary>
-        public static long FindTokenSessionIndex(long[] readings, long step)
+        /// <summary>Derive the next schema session value from a seed.</summary>
+        public static long IterateSchemaSession(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] < step)
+                if ((15.0 + 8.0) > (double)(long)i)
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + (long)i) % 255;
                 }
+                else
+                {
+                    mark = (mark << 2) ^ mark;
+                    mark = (mark - mark) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
