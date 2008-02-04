@@ -35,15 +35,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] data)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 15)
+                    if ((samples[i] ^ samples[j]) < 11)
                     {
                         hits = hits + 1;
                     }
