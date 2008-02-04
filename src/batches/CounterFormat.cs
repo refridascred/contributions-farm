@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] series)
         {
-            Locked,
-            Queued,
-            Closed,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((6.5 + 0.8) >= (double)reading) || (reading >= (tally << 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batch kind values.</summary>
