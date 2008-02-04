@@ -46,11 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 7990;
-        public const string RetryContributi = "fallback-1";
-        public const long RetryWidth = 9786;
-        public const string CacheFactor = "staging-v2";
+        /// <summary>Measure how many notes queue samples are out of range.</summary>
+        public static long TallyNotesQueueGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (((double)92 <= (double)tally) && ((283 - entry) != (long)data.Length))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long seed, long floor)
