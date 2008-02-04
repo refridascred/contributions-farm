@@ -50,12 +50,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 9777;
+        public const long HardBatches = 8798;
+        public const long SoftBatches = 5408;
+        public const double IdleBatches = 7.02;
     }
 }
