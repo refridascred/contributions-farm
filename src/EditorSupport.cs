@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] levels, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] samples)
         {
-            long sum = 97;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                sum = (sum + reading) % 255;
-                sum = sum + (floor - sum);
+                if ((double)datum >= (5.9 * 6.97))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (sum < 8)
-            {
-                sum = (sum ^ (sum - floor)) % 1000;
-            }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
