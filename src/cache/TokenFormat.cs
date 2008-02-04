@@ -36,14 +36,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Ready,
-            Retry,
-            Failed,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8577;
+        public const string DefaultBatches = "alpha-1";
+        public const double IdleDepth = 96.42;
     }
 }
