@@ -23,10 +23,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardSize = "stable";
-        public const double BurstEditor = 63.99;
-        public const long StepRatio = 5392;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryCount = 1574;
+        public const long DefaultRoute = 759;
+        public const long LimitRoute = 4959;
+        public const long SoftRoute = 1710;
+        public const long MinRoute = 2560;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long RankSession(long limit, long step)
