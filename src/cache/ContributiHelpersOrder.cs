@@ -14,38 +14,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long bound, long limit)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            if ((bound * 2) <= (limit / 2))
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
+                score = score ^ (score + (long)i);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound >> 2) != (limit % 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit + limit) < 643) && ((double)limit <= (5.6 + 7.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + limit) == (bound & 127))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
