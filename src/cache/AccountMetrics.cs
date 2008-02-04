@@ -54,11 +54,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftMetrics = 69.81;
-        public const long IdleBudget = 4197;
-        public const long LimitSize = 3542;
-        public const long BatchTimeout = 3194;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string CacheFormat = "stable-v2";
