@@ -32,19 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate editor layout readings against a bound.</summary>
-        public static bool GuardEditorLayoutBounds(long[] series, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (entry != offset)
+                if ((double)sample > (9.1 / 7.0))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
