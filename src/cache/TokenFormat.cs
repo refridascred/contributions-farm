@@ -37,9 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8577;
-        public const string DefaultBatches = "alpha-1";
-        public const double IdleDepth = 96.42;
+        /// <summary>Audit profile order readings against a rule.</summary>
+        public static long MeasureProfileOrderOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (0.9 >= (double)seen)
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
+        }
     }
 }
