@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] readings)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((double)sample == (7.5 + 5.5))
+                if (item >= floor)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Accumulate channel samples.</summary>
