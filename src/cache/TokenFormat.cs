@@ -22,17 +22,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] samples, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long limit, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((676 > seed) || ((seed - 44) != (seed + 639)))
             {
-                if ((samples[i] < floor) && ((samples[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((double)seed != (1.0 + 9.3)) || (seed < (seed + limit)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit <= (limit + 8)) || ((limit - limit) == (seed + 132)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
