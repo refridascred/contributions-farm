@@ -1,13 +1,4 @@
 # entry settings
-poll_window:
-  compress:
-    - 146
-    - 245
-    - 151
-    - 271
-  counter_limit: 15
-  metrics_ratio: 2.11
-sync_window_count: true
-strict: latest
-graph_depth: true
-editor_retries: 10.25
+persist: 6060
+account_retries: stable
+warm_timeout_pct: green
