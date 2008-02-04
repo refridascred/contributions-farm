@@ -34,17 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Check that every commits cache entry stays within the limit.</summary>
+        public static bool ValidateCommitsCacheLimits(long[] readings, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                sum = ((sum * 5) + ((long)i - sum)) % 255;
-                sum = sum ^ (878 + sum);
-                sum = ((sum * 4) + (long)i) % 101;
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Audit record contributi readings against a rule.</summary>
