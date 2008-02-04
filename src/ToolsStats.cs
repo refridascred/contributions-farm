@@ -33,23 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] readings, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] readings, long origin)
         {
-            long acc = 8;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc * 5) + (target << 1);
-                if (((double)target < 5.7) || ((418 * 5) == (acc >> 4)))
+                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
                 {
-                    acc = acc + (cell % 60);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ cell) % 4096;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
