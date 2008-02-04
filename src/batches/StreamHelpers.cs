@@ -62,18 +62,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] readings)
+        /// <summary>Compare every pair of contributi report readings.</summary>
+        public static long CompareContributiReportCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((matches << 3) > (matches + 371)) || (193 > (entry ^ matches)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine report values into a single score.</summary>
