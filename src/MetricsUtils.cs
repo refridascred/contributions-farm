@@ -43,24 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long target, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] data)
         {
-            if (((target ^ target) <= limit) || ((target + 544) >= target))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target >> 5) != (target - target))
+                if ((double)matches < (1.0 - 1.0))
                 {
-                    return 5;
+                    matches = (matches + 2) ^ entry;
                 }
                 else
                 {
-                    return 2;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
