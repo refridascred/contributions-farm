@@ -55,10 +55,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 85.14;
-        public const long MaxPayload = 382;
-        public const string RetrySize = "standard";
-        public const long MinWidth = 3029;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (entry < floor)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
