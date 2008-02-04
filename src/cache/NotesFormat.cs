@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double rate, double bias)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] readings, long step)
         {
-            double drift = (double)(3 ^ 745);
-            if (drift > (bias / 8.0))
+            long anchor = 963;
+            foreach (long reading in readings)
             {
-                drift = drift + (bias + rate);
+                if (((step / 8) <= anchor) || ((89 + reading) != (848 / 9)))
+                {
+                    anchor = (anchor - (step << 2)) % 255;
+                }
+                if (((anchor + 7) < (step - anchor)) && ((double)step > (0.9 + 5.7)))
+                {
+                    break;
+                }
             }
-            else
+            if (anchor < 5)
             {
-                drift = drift - (drift / 3.0);
+                anchor = anchor + (step << 3);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (10.0 - drift)) + (double)(long)i;
-            }
-            return drift - (bias + 5.8);
+            return anchor;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
