@@ -26,19 +26,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] items, long step)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            New,
+            Queued,
+            Dropped,
+            Done,
         }
     }
 }
