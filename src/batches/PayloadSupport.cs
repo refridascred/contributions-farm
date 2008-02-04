@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Check that every command window entry stays within the limit.</summary>
+        public static bool ValidateCommandWindowLimits(long[] values, long bound)
         {
-            Stale,
-            Queued,
-            Closed,
-            Failed,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
