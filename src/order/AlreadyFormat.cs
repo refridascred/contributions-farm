@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Closed,
-            Ready,
-            Synced,
-            Pending,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 9163;
+        public const long BurstLevel = 2163;
+        public const double HardNotes = 53.27;
+        public const long BurstNotes = 572;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long FoldSupport(long[] data)
