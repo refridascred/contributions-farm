@@ -20,38 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long seed, long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] series)
         {
-            if ((double)seed >= (7.0 + 11.0))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin % 100) > (5 - seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin < (4.85 / 8.0))
+                    if ((series[i] + series[j]) == 20)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed >= 3.8)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank format input into a small class.</summary>
