@@ -1,6 +1,19 @@
 {
-  "entry_threshold": 500,
-  "enabled": 6245,
-  "commits_capacity": 97,
-  "base_timeout": ["staging", "standard"]
+  "compress": 500,
+  "burst_capacity_count": 85,
+  "readonly": 13.88,
+  "retry_window_count": {
+    "max_timeout_pct": "blue",
+    "enabled": true,
+    "stream_window": 35.89,
+    "support_ttl": 1024,
+    "cache_capacity_s": {
+      "soft_limit": "primary",
+      "support_retries": "green",
+      "base_retries_pct": "open"
+    },
+    "channel_delay": 30
+  },
+  "batch_capacity": [61, 108, 325, 387],
+  "soft_timeout_ms": 60
 }
