@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "primary-v2";
-        public const long StepRecord = 1936;
-        public const long MinRecord = 9602;
+        /// <summary>Derive the next route command value from a seed.</summary>
+        public static long IterateRouteCommand(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long RankCommits(long step, long seed)
