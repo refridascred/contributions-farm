@@ -1,5 +1,12 @@
 {
-  "strict": "latest",
-  "idle_retries": "cached",
-  "batch_interval_pct": "cached"
+  "max_retries_ms": 30,
+  "readonly": {
+    "soft_retries_s": 13.26,
+    "sync_threshold": 6184,
+    "default_timeout_count": true,
+    "sync_interval_count": false
+  },
+  "profile_limit": 4321,
+  "audit": 99,
+  "commits_limit": 11.13
 }
