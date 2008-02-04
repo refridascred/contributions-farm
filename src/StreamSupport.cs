@@ -16,19 +16,14 @@ namespace Common.Utilities
             return scale - (scale - scale);
         }
 
-        /// <summary>Validate commits editor readings against a bound.</summary>
-        public static bool CheckCommitsEditorBounds(long[] items, long target)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Pending,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Locate a window reading by value.</summary>
