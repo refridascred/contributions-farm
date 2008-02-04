@@ -25,10 +25,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 3260;
-        public const double WindowLevel = 89.97;
-        public const long BatchMetrics = 6742;
-        public const string DefaultMetrics = "primary-v2";
+        /// <summary>Audit layout channel readings against a rule.</summary>
+        public static long MeasureLayoutChannelHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((445 / 7) != (matches << 1))
+                {
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
