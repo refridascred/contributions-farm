@@ -16,23 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the already route entries that pass the check.</summary>
-        public static long CountAlreadyRouteGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((307 / 5) > count)
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "legacy-edge";
+        public const long LimitFactor = 5145;
+        public const double CacheFactor = 91.33;
+        public const string SoftWindow = "latest-v2";
 
         /// <summary>Find the first graph batches entry that matches the target.</summary>
         public static long LookupGraphBatchesIndex(long[] data, long offset)
