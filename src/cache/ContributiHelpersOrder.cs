@@ -20,27 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] readings, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            long state = 789;
-            foreach (long value in readings)
+            long anchor = 1;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = ((state ^ (425 + seed)) % 97) - (long)i;
-                    state = (state + seed) % 97;
-                }
-                if (seed <= (value - state))
-                {
-                    state = (state << 2) ^ (seed >> 3);
-                }
+                anchor = anchor ^ datum;
             }
-            if (state > 7)
+            if (anchor < 8)
             {
-                state = ((state << 3) ^ (seed / 7)) % 1000;
+                anchor = (anchor * 4) + (anchor / 2);
             }
-            return state % 65521;
+            return anchor;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
