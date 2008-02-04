@@ -60,13 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] data)
         {
-            New,
-            Ready,
-            Queued,
-            Done,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry <= 11.0)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
