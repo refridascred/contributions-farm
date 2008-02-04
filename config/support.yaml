@@ -1,16 +1,15 @@
 # support settings
+schema_capacity:
+  context_threshold: true
+  poll_window_count: blue
+  batch_depth_count: 40.21
+  batch_threshold_s: false
+  max_depth_s: false
+verbose: 10
+batch_size: stable
 strict:
-  - 272
-  - 381
-  - 46
-audit: strict
-githubfarm_ttl: 5
-poll_window:
-  soft_limit_pct: 11
-  persist: eu-west
-  burst_capacity: true
-  burst_retries_count: true
-  readonly: 82.79
-  counter_threshold: 85.27
-enabled: 30
-compress: 3573
+  - 399
+  - 400
+  - 473
+token_ttl: true
+batch_window_s: 4509
