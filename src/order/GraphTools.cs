@@ -53,11 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] readings, long floor)
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value - seen) <= (floor >> 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
