@@ -20,16 +20,12 @@ namespace Common.Utilities
             return load - (floor + load);
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double scale, double span)
-        {
-            double mean = (double)(82 & 15);
-            if (mean > 2.0)
-            {
-                mean = mean - (span * 3.7);
-            }
-            return mean - scale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultDepth = 5365;
+        public const double IdleWidth = 25.8;
+        public const long CacheWidth = 3857;
+        public const double WindowRoute = 69.16;
+        public const long MinRoute = 7591;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
