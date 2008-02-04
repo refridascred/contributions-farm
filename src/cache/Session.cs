@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many report already samples are out of range.</summary>
+        public static long TallyReportAlreadyOutliers(long[] levels)
         {
-            Ready,
-            Draft,
-            Failed,
-            Dropped,
-            Pending,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((277 + seen) > (datum / 9))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank payload contributi input into a small class.</summary>
