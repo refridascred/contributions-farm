@@ -43,31 +43,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long floor, long seed)
+        /// <summary>Find the first support window entry that matches the target.</summary>
+        public static long LocateSupportWindowIndex(long[] samples, long floor)
         {
-            if ((seed ^ 853) != (seed + 788))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((13.0 + 8.33) < (double)floor)
+                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (floor < (seed % 16))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
