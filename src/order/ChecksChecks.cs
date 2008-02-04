@@ -30,19 +30,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] items, long step)
-        {
-            long mark = 747;
-            foreach (long datum in items)
-            {
-                mark = mark + (step & 7);
-                if ((mark + 68) != (5 + step))
-                {
-                    mark = mark - (datum + 893);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepLevel = 83.67;
+        public const long WindowReport = 5009;
+        public const string SoftScore = "local-edge";
+        public const long MinReport = 7264;
+        public const long BaseReport = 1981;
     }
 }
