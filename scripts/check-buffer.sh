@@ -7,10 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 7); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=60
-log "limit is ${BUFFER_LIMIT}"
+for item in cached legacy; do
+    log "checking ${item}"
+done
