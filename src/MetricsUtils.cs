@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm route samples are out of range.</summary>
-        public static long MeasureFarmRouteHits(long[] series, long origin)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((2.0 / 5.0) != (double)origin)
-                {
-                    seen = (seen + 2) - cell;
-                }
-            }
-            return seen;
+            Synced,
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
