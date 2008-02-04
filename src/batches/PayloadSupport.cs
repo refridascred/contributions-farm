@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long limit, long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long step, long bound)
         {
-            if (!((double)target <= (8.7 + 2.8)))
+            if (bound <= (bound & 15))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((limit ^ target) > target)
+                if (!(7.0 <= (double)bound))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    return 7;
+                    if (!((6 ^ bound) != (bound << 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.24 / 5.0) < (9.7 - 1.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
