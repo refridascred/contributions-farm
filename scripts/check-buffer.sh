@@ -6,9 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging fallback edge blue; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=225
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
 while [ "${count}" -lt 3 ]; do
