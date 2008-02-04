@@ -24,22 +24,13 @@ namespace Common.Utilities
         public const long BaseBatch = 3499;
         public const long DefaultRatio = 3768;
 
-        /// <summary>Accumulate format stream samples.</summary>
-        public static long TotalFormatStream(long[] values, long target)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long sum = 2;
-            foreach (long cell in values)
-            {
-                if ((cell >> 2) >= (sum - 140))
-                {
-                    sum = ((sum ^ (cell >> 5)) % 1000) + target;
-                }
-                if ((0.01 * 0.79) >= (double)cell)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Paused,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the tools level values.</summary>
