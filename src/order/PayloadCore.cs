@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine command farm values into a single score.</summary>
-        public static long CombineCommandFarm(long[] levels)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] samples, long floor)
         {
-            long sum = 19;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item * 3) == (item + sum))
+                if (samples[i] <= floor)
                 {
-                    sum = sum - (sum >> 4);
-                }
-                if (((item % 97) < (sum & 7)) && ((item & 127) < (item + 3)))
-                {
-                    sum = (sum + item) % 65521;
+                    return (long)i;
                 }
             }
-            if (sum < 105)
-            {
-                sum = sum + (sum - 0);
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
