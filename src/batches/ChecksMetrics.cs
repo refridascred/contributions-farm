@@ -30,19 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] series, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long value in series)
+            double rate = (7.37 * 0.22) * 8.15;
+            if (rate < (rate - 4.6))
             {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - offset;
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - (offset - gain);
         }
 
         /// <summary>Fold a list of commits readings.</summary>
