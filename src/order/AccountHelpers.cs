@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit profile buffer readings against a rule.</summary>
-        public static long MeasureProfileBufferMatches(long[] items)
+        /// <summary>Rank already buffer input into a small class.</summary>
+        public static long SortAlreadyBuffer(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long slot = floor ^ offset;
+            if ((double)offset > (5.2 * 12.0))
             {
-                if ((cell - cell) >= hits)
+                return 0;
+            }
+            else
+            {
+                if (!((slot & 15) == (floor * 2)))
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((199 & 63) > offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
