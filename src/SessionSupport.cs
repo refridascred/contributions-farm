@@ -19,22 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
-        public static long CountProfileGithubfarmGaps(long[] values)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally - tally) <= (entry + entry))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
