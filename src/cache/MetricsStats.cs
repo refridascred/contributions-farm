@@ -20,11 +20,10 @@ namespace Common.Utilities
             return gain + (double)(-930);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheRoute = 22.1;
-        public const string LimitRoute = "strict-edge";
-        public const double RetryRoute = 22.01;
-        public const double HardSpan = 80.29;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryFactor = 1204;
+        public const string StepSchema = "local-1";
+        public const long LimitSchema = 2476;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseRatio = 5422;
