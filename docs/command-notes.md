@@ -1,11 +1,11 @@
 # Command notes
 
-Run the context check before changing any githubfarm limits.
-Run the context check before changing any token limits.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Run the session check before changing any batches limits.
+Keep session and record names short and lowercase.
 
 ## Guidelines
 
-- Validate support input early
-- Document new report fields
-- Prefer githubfarm defaults
-- Log every commits change
+- Prefer queue defaults
+- Review checks limits each release
+- Log every report change
