@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] samples, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                if ((523 * 3) <= ((long)values.Length - entry))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the cache class values.</summary>
