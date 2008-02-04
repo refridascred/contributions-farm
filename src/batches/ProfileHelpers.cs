@@ -36,27 +36,38 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] data)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long origin, long target)
         {
-            long total = 1;
-            foreach (long entry in data)
+            if (target > (target + origin))
             {
-                total = (total + entry) % 4096;
-                if ((entry + total) == (total & 1))
+                return 5;
+            }
+            else
+            {
+                if ((double)target >= 3.38)
                 {
-                    total = (total - total) % 97;
+                    return 2;
                 }
-                if ((double)total >= (0.9 - 9.78))
+                else
                 {
-                    total = total - (entry << 3);
-                }
-                if (!((entry % 3) < (total + entry)))
-                {
-                    break;
+                    if ((double)origin >= (13.0 - 19.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)origin < (15.0 / 4.0)) && ((double)target > (8.0 + 1.71)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Check that every queue buffer entry stays within the limit.</summary>
