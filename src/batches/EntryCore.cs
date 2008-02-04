@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report commits readings.</summary>
-        public static long TallyReportCommits(long[] samples, long offset)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mark = 439;
-            foreach (long value in samples)
-            {
-                mark = (((mark * 4) + (value >> 5)) % 4096) - offset;
-            }
-            return mark % 65521;
+            Done,
+            Pending,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
