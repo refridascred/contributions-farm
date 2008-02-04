@@ -23,25 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long step, long seed)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long cur = step ^ seed;
-            if (!(seed > (step - cur)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step + 6) >= (seed >> 1)) || ((seed & 31) < seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
