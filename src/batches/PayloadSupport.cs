@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleEditor = "primary";
-        public const double WindowEditor = 71.36;
-        public const long LimitEditor = 563;
+        /// <summary>Scale a checks session figure with a bias.</summary>
+        public static double SmoothChecksSession(double weight, double offset)
+        {
+            double mean = (double)2 - (8.3 / 5.0);
+            if (mean >= weight)
+            {
+                mean = mean + (weight * 4.1);
+            }
+            return mean - offset;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorRange(long[] data, long step)
