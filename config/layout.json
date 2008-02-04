@@ -1,5 +1,23 @@
 {
-  "enabled": "local",
-  "warm_ratio_count": "edge",
-  "warm_ttl": 64
+  "flush_depth": {
+    "audit": false,
+    "cache_capacity": 30.0,
+    "max_retries_s": {
+      "audit": 211,
+      "record_delay": true,
+      "cache_threshold_s": 3002,
+      "burst_threshold_s": false,
+      "persist": "blue",
+      "cluster_ttl": 250
+    },
+    "retry_delay": 1024,
+    "cluster_threshold": {
+      "compress": "primary",
+      "poll_ttl_count": 39.55,
+      "batch_limit_pct": 30
+    }
+  },
+  "warm_threshold": "staging",
+  "idle_depth": ["edge", "edge", "local", "strict"],
+  "retry_size_pct": 100
 }
