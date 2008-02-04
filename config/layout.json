@@ -1,5 +1,5 @@
 {
-  "window_depth": [262, 308],
-  "filter_timeout": "standard",
-  "stream_timeout": 26
+  "hard_delay_pct": "primary",
+  "base_window_ms": true,
+  "farm_depth": 5.98
 }
