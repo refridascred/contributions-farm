@@ -52,18 +52,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many batches context samples are out of range.</summary>
-        public static long AuditBatchesContextOutliers(long[] readings)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((datum >> 2) >= (matches / 7)))
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
