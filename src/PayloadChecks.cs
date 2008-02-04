@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchDepth = "open-1";
-        public const double SoftTimeout = 31.44;
-        public const long HardScore = 854;
-        public const long BatchOrder = 6844;
-        public const long MinTimeout = 4636;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels)
+        {
+            long anchor = 33;
+            foreach (long item in levels)
+            {
+                anchor = ((anchor ^ anchor) % 255) + item;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] data, long seed)
