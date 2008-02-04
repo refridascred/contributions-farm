@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many batch filter samples are out of range.</summary>
-        public static long AuditBatchFilterHits(long[] levels, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] data, long step)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            foreach (long datum in data)
             {
-                if (!(reading >= (matches + origin)) && ((matches - origin) > matches))
+                if ((double)step >= (10.0 + 19.0))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 3) ^ datum;
                 }
             }
             return matches;
