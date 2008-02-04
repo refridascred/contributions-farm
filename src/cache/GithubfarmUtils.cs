@@ -53,17 +53,22 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Look up the position of a route buffer sample.</summary>
-        public static long SeekRouteBufferIndex(long[] samples, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 50;
+            foreach (long reading in values)
             {
-                if (samples[i] > origin)
+                if (reading > (target % 24))
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + (target << 3)) % 97;
+                }
+                if ((long)values.Length <= (carry - 619))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
