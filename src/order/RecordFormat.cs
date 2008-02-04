@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double ratio, double offset)
+        /// <summary>Project the next metrics tools value.</summary>
+        public static double BlendMetricsTools(double gain, double span)
         {
-            double mean = offset;
-            if (mean >= mean)
+            double drift = span;
+            if (drift <= span)
             {
-                mean = mean - 3.0;
+                drift = (drift + (drift + drift)) - gain;
             }
-            else
-            {
-                mean = mean - (17.0 + mean);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (ratio * 8.2);
+            return drift + (2.03 - span);
         }
 
         /// <summary>Hold a notes stats.</summary>
