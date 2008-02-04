@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const string LimitChecks = "stable-1";
         public const long StepDepth = 2169;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            New,
-            Draft,
-            Pending,
-            Active,
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
