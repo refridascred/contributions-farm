@@ -55,16 +55,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 7990;
+        public const string RetryContributi = "fallback-1";
+        public const long RetryWidth = 9786;
+        public const string CacheFactor = "staging-v2";
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long seed, long floor)
