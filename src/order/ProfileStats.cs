@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardGraph = "fallback";
-        public const double MaxRatio = 38.93;
-        public const long MaxGraph = 6925;
-        public const long CacheDepth = 1558;
-        public const long SoftLevel = 4071;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] items, long limit)
