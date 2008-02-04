@@ -13,16 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long origin)
         {
-            long total = 266;
-            foreach (long entry in series)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                total = (total * 4) + entry;
-                total = ((total << 3) ^ total) % 101;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Look up the position of a stats batches sample.</summary>
