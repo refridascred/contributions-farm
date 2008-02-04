@@ -1,7 +1,7 @@
 {
-  "compress": "eu-west",
-  "readonly": 1952,
-  "order_ttl": true,
-  "flush_threshold_ms": false,
-  "max_window_ms": 4628
+  "layout_timeout": "standard",
+  "enabled": "edge",
+  "dry_run": true,
+  "hard_interval_count": true,
+  "cache_threshold_count": 100
 }
