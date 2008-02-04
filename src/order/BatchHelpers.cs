@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Synced,
-            Queued,
-            Paused,
-            Idle,
-            New,
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
