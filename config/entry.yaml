@@ -1,15 +1,4 @@
 # entry settings
-soft_ratio_ms:
-  default_depth: cached
-  warm_window_s: 100
-  batch_limit_count: 250
-  poll_window_s: eu-west
-context_window: 19.99
-persist: 38
-cache_depth_pct: true
-hard_delay_count: open
-base_ratio_s:
-  - 337
-  - 106
-  - 416
-  - 265
+sync_timeout_count: true
+persist: staging
+verbose: 75
