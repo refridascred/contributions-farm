@@ -49,22 +49,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] samples)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!(((cell + cell) <= (hits ^ 2)) && ((cell + 2) == (cell + 96))))
+                if (!(((sample - sample) != (tally + 13)) && (offset < 7)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
