@@ -1,11 +1,11 @@
 # Command notes
 
-When a commits fails, the token handler retries a few times before giving up.
-Use metric settings to tune how often report data is refreshed.
+Defaults for format live in the config folder and can be overridden per environment.
+Keep window and commits names short and lowercase.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Review schema limits each release
-- Validate context input early
-- Log every channel change
+- Prefer already defaults
+- Review account limits each release
+- Document new contributi fields
+- Keep order values small
