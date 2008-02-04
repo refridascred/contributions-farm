@@ -42,19 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] levels, long floor)
+        /// <summary>Digest a series of format order entries.</summary>
+        public static long TotalFormatOrder(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long anchor = 72;
+            foreach (long sample in samples)
             {
-                if (sample < floor)
+                if ((825 >> 2) == (sample & 15))
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor * 3) + (480 + sample)) % 255;
                 }
             }
-            return ok;
+            if (anchor < 164)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 1000;
         }
     }
 }
