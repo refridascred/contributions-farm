@@ -1,18 +1,15 @@
 # githubfarm settings
-sync_size: 72.6
-verbose:
-  retry_size_pct: true
-  cache_depth_pct: 3
-  soft_ratio: false
-  warm_timeout_ms: local
-base_retries_count: 79
-min_window_s:
-  - primary
-  - stable
-compress:
-  sync_capacity_s: stable
-  sync_threshold_ms: 500
-  min_size_ms: 31.04
-  strict: true
-  warm_window: 22.03
-strict: open
+soft_threshold_pct:
+  batch_capacity: 33.89
+  entry_limit: true
+  default_interval: eu-west
+  buffer_delay:
+    audit: legacy
+    idle_timeout_count: legacy
+    base_threshold_ms: blue
+    verbose: false
+    stats_ttl: 100
+sync_delay_pct: fallback
+flush_ratio: 17.11
+githubfarm_interval: true
+strict: true
