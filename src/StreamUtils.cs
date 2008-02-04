@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const string IdleTimeout = "local-v2";
         public const double DefaultContributi = 6.52;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] samples, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Look up the position of a command contributi sample.</summary>
