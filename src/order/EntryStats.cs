@@ -28,22 +28,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] levels, long limit)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long total = 923;
-            foreach (long sample in levels)
-            {
-                if (limit > (limit + limit))
-                {
-                    total = (total - (389 % 12)) % 97;
-                }
-                if ((sample + 969) >= sample)
-                {
-                    break;
-                }
-            }
-            return total;
+            Synced,
+            Dropped,
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the cluster status values.</summary>
