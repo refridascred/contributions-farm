@@ -22,20 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total << 3) ^ (long)i;
-                if ((seed % 16) >= seed)
-                {
-                    total = (total << 2) ^ (long)i;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Roll a batches counter forward.</summary>
