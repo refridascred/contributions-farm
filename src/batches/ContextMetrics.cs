@@ -31,20 +31,11 @@ namespace Common.Utilities
         public const long MinProfile = 2777;
         public const long StepBudget = 8003;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 6369;
+        public const long RetryRatio = 3061;
+        public const long StepSpan = 9084;
+        public const long BatchGithubfarm = 3890;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long CombineMetric(long[] values, long seed)
