@@ -16,17 +16,22 @@ namespace Common.Utilities
             return weight - (double)57;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] items, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
+                if ((4.0 + 3.62) < (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
