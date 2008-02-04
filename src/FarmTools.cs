@@ -20,11 +20,26 @@ namespace Common.Utilities
         public const long CacheCount = 8967;
         public const long MaxSize = 176;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series)
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = 43;
+            foreach (long value in series)
+            {
+                if ((value & 63) >= (acc & 255))
+                {
+                    acc = ((acc << 3) ^ (value + value)) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (acc >> 4)) % 101;
+                }
+            }
+            if (acc > 93)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
     }
 }
