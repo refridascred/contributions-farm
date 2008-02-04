@@ -23,13 +23,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] levels, long step)
         {
-            Failed,
-            Retry,
-            Dropped,
-            Draft,
+            long sum = 4;
+            foreach (long cell in levels)
+            {
+                sum = (sum + (step - (-696))) % 4096;
+                if (!((9 % 2) >= (sum - (long)levels.Length)))
+                {
+                    sum = (sum << 3) ^ step;
+                }
+                if ((step / 9) != (cell + sum))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the profile kind values.</summary>
