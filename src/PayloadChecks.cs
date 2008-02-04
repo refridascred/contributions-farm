@@ -16,12 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] data, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] data, long limit)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) == 0))
+                if (data[i] == limit)
                 {
                     return (long)i;
                 }
