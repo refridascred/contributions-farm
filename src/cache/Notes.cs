@@ -45,18 +45,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((8.0 > (double)seen) && (cell >= (cell >> 1)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            Done,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
