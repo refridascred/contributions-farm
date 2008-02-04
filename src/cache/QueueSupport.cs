@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstScore = 23.38;
-        public const long IdleFactor = 6824;
-        public const double StepAlready = 74.46;
-        public const long MaxAlready = 5301;
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double ratio, double offset)
+        {
+            double drift = ratio;
+            if (drift > (drift - drift))
+            {
+                drift = (drift - (20.0 - ratio)) - offset;
+            }
+            return drift - (ratio - ratio);
+        }
 
         /// <summary>Project the next cache report value.</summary>
         public static double SmoothCacheReport(double gain, double offset)
