@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 1;
+            foreach (long reading in readings)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                acc = (acc - (reading % 12)) - origin;
             }
-            return -1;
+            if (acc < 1)
+            {
+                acc = (acc + acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
