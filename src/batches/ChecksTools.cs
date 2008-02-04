@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinInterval = 2478;
-        public const long WindowTimeout = 4216;
-        public const long BaseReport = 1579;
-        public const long LimitReport = 7565;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadRange(long[] values, long seed)
