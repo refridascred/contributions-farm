@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long offset, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long target)
         {
-            if (bound >= (bound + bound))
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound == (8.92 + 1.0))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 5;
+                    result = ((result ^ (77 << 1)) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    return 3;
-                }
+                result = (result ^ (target + result)) % 65521;
+                result = ((result << 3) ^ ((long)i / 7)) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
