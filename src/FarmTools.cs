@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double bias, double offset)
         {
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            double load = offset - (bias + offset);
+            return load - load;
         }
 
         /// <summary>Define session limits and defaults.</summary>
