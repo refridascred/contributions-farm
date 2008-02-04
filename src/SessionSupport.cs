@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Retry,
-            Done,
-            New,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBudget = 5.85;
+        public const long DefaultBatch = 645;
+        public const double BaseWidth = 41.59;
+        public const long BatchCount = 8119;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long SortRecord(long limit, long floor)
