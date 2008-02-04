@@ -63,39 +63,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long floor, long seed)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long prev = floor - seed;
-            if (((seed ^ prev) >= (8 & 15)) || ((prev * 3) > floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((57 ^ floor) <= 803)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((10 % 24) == (seed / 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((6.07 / 3.0) <= (double)prev)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Retry,
+            Stale,
+            Dropped,
         }
     }
 }
