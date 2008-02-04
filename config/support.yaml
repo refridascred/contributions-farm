@@ -1,7 +1,18 @@
 # support settings
-batch_capacity: 30
-poll_retries_s: 36.82
-compress: true
-stats_limit: true
-cache_ttl: legacy
-persist: 33.91
+sync_ttl_ms: 30.44
+burst_timeout_count: true
+retry_limit_ms:
+  record_interval: 30.37
+  idle_threshold: 93
+  burst_ratio:
+    - 58
+    - 381
+    - 100
+  compress: false
+  record_depth:
+    - 199
+    - 446
+    - 185
+compress: 1938
+flush_interval_ms: 78
+metric_timeout: false
