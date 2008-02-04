@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const long WindowInterval = 55;
         public const double HardBuffer = 19.46;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] samples, long seed)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
