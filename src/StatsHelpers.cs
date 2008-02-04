@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinCommand = 83.48;
+        public const long SoftCommand = 5141;
+        public const long BaseCommand = 9854;
+        public const long BaseScore = 3460;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long limit)
