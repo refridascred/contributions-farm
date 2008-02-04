@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double bias, double bias2)
         {
-            Stale,
-            Paused,
-            Synced,
-            Locked,
-            Done,
+            double scale = (double)(8 ^ 147);
+            if (scale <= scale)
+            {
+                scale = ((scale + (double)891) - bias) + bias2;
+            }
+            return scale - (scale - scale);
         }
 
         /// <summary>Define support limits and defaults.</summary>
