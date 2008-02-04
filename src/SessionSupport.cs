@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate metric checks samples.</summary>
-        public static long FoldMetricChecks(long[] readings, long bound)
+        /// <summary>Scale a order contributi figure with a bias.</summary>
+        public static double ScaleOrderContributi(double rate, double offset)
         {
-            long score = 1;
-            foreach (long value in readings)
+            double gain = (16.0 / 3.0) / 4.0;
+            if (gain >= rate)
             {
-                score = (((score ^ (score << 2)) % 255) - value) + bound;
+                gain = gain - (rate - 4.8);
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
