@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const long HardTimeout = 8813;
         public const long BurstSize = 8764;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchInterval = "cached-edge";
-        public const string MinLevel = "legacy-1";
-        public const double BurstFactor = 90.03;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)6 == (double)sample)
+                {
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
