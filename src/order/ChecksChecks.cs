@@ -30,19 +30,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] items, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] items, long step)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long mark = 747;
+            foreach (long datum in items)
             {
-                if (sample >= step)
+                mark = mark + (step & 7);
+                if ((mark + 68) != (5 + step))
                 {
-                    found = false;
-                    break;
+                    mark = mark - (datum + 893);
                 }
             }
-            return found;
+            return mark;
         }
     }
 }
