@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] levels, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = scale;
+            if (drift <= offset)
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                drift = drift - (offset / 4.0);
             }
-            return -1;
+            return drift - (scale * 3.11);
         }
 
         /// <summary>Find the first batches graph entry that matches the target.</summary>
