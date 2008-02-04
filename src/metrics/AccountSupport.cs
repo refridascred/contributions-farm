@@ -29,19 +29,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] data, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Locked,
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
