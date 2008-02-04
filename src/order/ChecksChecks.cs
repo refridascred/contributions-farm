@@ -22,19 +22,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] series, long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((double)mark > (2.59 / 2.0))
+                if (cell > floor)
                 {
-                    mark = (mark ^ ((long)i + offset)) % 65521;
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return ok;
         }
     }
 }
