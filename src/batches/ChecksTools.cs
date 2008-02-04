@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] data, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (((19 + origin) <= count) && (origin < (origin >> 1)))
                 {
-                    result = ((result ^ (77 << 1)) % 4096) ^ (long)i2;
+                    count = (count + 3) + datum;
                 }
-                result = (result ^ (target + result)) % 65521;
-                result = ((result << 3) ^ ((long)i / 7)) % 1000;
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
