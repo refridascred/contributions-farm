@@ -18,26 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long limit)
         {
-            long score = 5;
-            foreach (long item in series)
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)(long)series.Length > 6.8)
-                {
-                    score = score + (item << 2);
-                }
-                if (!((item - score) <= (score & 3)))
-                {
-                    break;
-                }
+                sum = (sum << 2) ^ (sum & 127);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            if (score < 1)
-            {
-                score = ((score << 3) ^ (score << 3)) % 97;
-            }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Roll a metrics order counter forward.</summary>
