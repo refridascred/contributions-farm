@@ -49,22 +49,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] data, long limit)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if ((3.6 / 5.0) > (7.16 + 2.0))
             {
-                if ((seen > (limit << 2)) || ((limit + limit) > (limit << 3)))
+                return 2;
+            }
+            else
+            {
+                if ((floor % 3) > (offset << 3))
                 {
-                    seen = (seen + 2) + datum;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
