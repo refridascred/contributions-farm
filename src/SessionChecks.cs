@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] data)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally & 31) < (sample << 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate metrics filter readings against a bound.</summary>
