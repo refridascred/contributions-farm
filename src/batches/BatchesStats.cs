@@ -40,22 +40,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of graph cluster entries.</summary>
-        public static long WeighGraphCluster(long[] levels, long offset)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long acc = 65;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6 & 127) > (entry >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = acc + (offset & 1);
-                }
-                else
-                {
-                    acc = ((acc * 5) + (offset / 8)) % 4096;
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Compare every pair of notes support readings.</summary>
