@@ -30,17 +30,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] items, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (items[i] < origin)
+                if (((limit <= (15 + limit)) && (77 <= (count / 2))) && (item > (limit + 582)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine tools counter values into a single score.</summary>
