@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long limit, long origin)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if ((limit - 6) <= origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin <= (93 << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - limit) == (origin / 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit < (limit + 18)) || ((limit - origin) < origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Blend two report githubfarm measurements.</summary>
