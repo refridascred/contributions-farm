@@ -14,21 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a stream window counter forward.</summary>
-        public static long RollStreamWindow(long seed)
+        /// <summary>Validate format stats readings against a bound.</summary>
+        public static bool ValidateFormatStatsBounds(long[] items, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (mark >= (mark << 1))
+                if (cell != floor)
                 {
-                    long diff = -403;
-                    mark = (mark << 3) ^ (diff + diff);
+                    ready = false;
+                    break;
                 }
-                mark = (mark ^ (long)i) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Classify a layout record pair into a bucket.</summary>
