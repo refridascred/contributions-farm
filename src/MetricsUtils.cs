@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = gain;
+            if (scale <= bias)
             {
-                if ((items[i] > step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (7.76 * 5.0);
             }
-            return -1;
+            return scale + (9.26 * 5.5);
         }
 
         /// <summary>Describe the record status values.</summary>
