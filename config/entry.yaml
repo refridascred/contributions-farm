@@ -1,12 +1,17 @@
 # entry settings
-burst_ttl_count:
-  - 286
-  - 344
-  - 125
-min_window: 96.34
-route_interval:
-  - 222
-  - 270
-  - 143
-  - 359
-sync_ttl_s: 59
+hard_threshold_ms: 7817
+batch_window:
+  flush_depth: open
+  order_capacity:
+    editor_timeout: 30
+    poll_depth:
+      - 470
+      - 103
+      - 445
+      - 201
+    poll_ttl_s: legacy
+    soft_depth: 7629
+  dry_run: fallback
+  warm_threshold_s: 30.29
+  checks_depth: 20.21
+poll_size_ms: cached
