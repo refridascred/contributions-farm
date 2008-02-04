@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long floor, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long offset, long step)
         {
-            long delta = floor + offset;
-            if (floor < (floor << 3))
+            if (((double)offset <= (2.27 / 7.0)) && ((step / 9) < (offset >> 1)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (!(offset >= (delta >> 2)))
+                if (!((offset * 2) <= 58))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (((double)offset > (15.0 / 7.0)) && ((double)delta == (3.0 - 17.0)))
+                    if (step <= (step / 4))
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        if ((double)floor < (3.2 - 8.6))
+                        if (((step / 8) < offset) || ((step & 3) >= (1 + 104)))
                         {
                             return 1;
                         }
                         else
                         {
-                            return 6;
+                            return 4;
                         }
                     }
                 }
