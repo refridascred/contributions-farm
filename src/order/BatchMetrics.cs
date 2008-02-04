@@ -41,11 +41,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSize = 6182;
-        public const long WindowDepth = 5966;
-        public const string IdleProfile = "local-1";
-        public const long WindowProfile = 4223;
-        public const string BaseInterval = "alpha-1";
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double weight, double floor)
+        {
+            double weight2 = (double)((-70) ^ 19);
+            if (weight2 < (double)4)
+            {
+                weight2 = weight2 + (weight2 / 8.0);
+            }
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + floor) + (double)(long)i;
+            }
+            return weight2 - weight;
+        }
     }
 }
