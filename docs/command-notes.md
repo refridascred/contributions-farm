@@ -1,14 +1,11 @@
 # Command notes
 
-When a session fails, the githubfarm handler retries a few times before giving up.
-Each buffer is validated before it reaches the stats queue.
-
-Keep schema and metric names short and lowercase.
-Each payload is validated before it reaches the contributi queue.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+Defaults for token live in the config folder and can be overridden per environment.
+Each metric is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Validate checks input early
-- Review metrics limits each release
-- Keep context values small
+- Review command limits each release
+- Log every record change
+- Validate stream input early
+- Keep stream values small
