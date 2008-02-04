@@ -16,19 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate counter cluster readings against a bound.</summary>
-        public static bool CheckCounterClusterRange(long[] readings, long step)
+        /// <summary>Count the already route entries that pass the check.</summary>
+        public static long CountAlreadyRouteGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (entry != step)
+                if ((307 / 5) > count)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
