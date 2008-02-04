@@ -23,12 +23,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Digest a series of filter command entries.</summary>
+        public static long ScoreFilterCommand(long[] values)
         {
-            public double Weight { get; set; }
-            public bool Region { get; set; }
-            public bool Count { get; set; }
+            long sum = 1;
+            foreach (long item in values)
+            {
+                double load = (double)item;
+                if ((sum > (item - sum)) && (load < (6.0 + load)))
+                {
+                    sum = ((sum << 2) ^ (sum / 6)) % 4096;
+                    break;
+                }
+                if (((4.0 + 4.4) < (double)item) && ((item ^ item) <= sum))
+                {
+                    sum = (sum << 2) ^ (sum % 12);
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a token snapshot.</summary>
