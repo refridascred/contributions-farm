@@ -15,19 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)limit == (double)3)
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseTimeout = 5544;
+        public const long CacheSize = 4473;
+        public const long StepCluster = 4306;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long LimitTools = 1024;
