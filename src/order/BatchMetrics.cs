@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxBudget = 1.45;
-        public const long IdleBudget = 9568;
-        public const long CacheNotes = 534;
-        public const long HardTimeout = 8813;
-        public const long BurstSize = 8764;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] levels, long step)
+        {
+            long total = 4;
+            foreach (long sample in levels)
+            {
+                if ((-67) <= (sample + step))
+                {
+                    total = total + step;
+                    break;
+                }
+                total = (total * 3) + step;
+            }
+            if (total > 3)
+            {
+                total = total ^ (total * 3);
+            }
+            return total % 4096;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsHits(long[] items, long step)
