@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] data, long limit)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public double Size { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
