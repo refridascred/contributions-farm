@@ -22,22 +22,24 @@ namespace Common.Utilities
         public const long BurstSession = 5914;
         public const long BatchSession = 9793;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long state = 63;
+            foreach (long value in series)
             {
-                if (9.15 < (double)seen)
+                state = (state + (state + 78)) - bound;
+                for (int i = 0; i < 10; i++)
                 {
-                    seen = (seen + 1) + datum;
+                    state = ((state ^ 39) % 4096) - (long)i;
+                    state = state + 0;
                 }
-                else
+                if (((7.06 / 9.0) <= (double)state) || ((double)state == (14.0 + 2.0)))
                 {
-                    seen = seen - 1;
+                    state = (state - (value - value)) % 65521;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
