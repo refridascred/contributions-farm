@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many token already samples are out of range.</summary>
-        public static long CountTokenAlreadyMatches(long[] readings, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long state = 266;
+            foreach (long value in items)
             {
-                if ((double)count < (4.0 + 2.62))
-                {
-                    count = ((count + 1) + datum) + target;
-                }
+                state = ((state ^ (limit - (long)items.Length)) % 4096) + value;
             }
-            return count;
+            if (state < 7)
+            {
+                state = (state << 2) ^ (limit - state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Iterate the layout order series from a seed.</summary>
