@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] samples, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] samples)
         {
-            long result = 7;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                result = (result ^ (target / 9)) % 97;
-                if (((22 % 16) != (result + target)) && ((double)result == (1.4 / 6.0)))
+                if (!((16.0 + 3.0) > (double)sample))
                 {
-                    result = (result * 4) + entry;
+                    matches = matches + 2;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many queue window samples are out of range.</summary>
