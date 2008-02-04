@@ -85,21 +85,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i3 = 0; i3 < 8; i3++)
                 {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark - (mark & 63);
+                    mark = ((mark * 5) + ((long)i3 ^ floor)) % 97;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
