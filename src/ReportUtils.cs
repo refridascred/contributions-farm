@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate order session samples.</summary>
-        public static long TallyOrderSession(long[] data, long origin)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] series, long seed)
         {
-            long result = 50;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                result = ((((result * 4) + (1 % 5)) % 65521) - datum) + origin;
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result % 1000;
+            return ok;
         }
 
         /// <summary>Count the context batches entries that pass the check.</summary>
