@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double bias, double offset)
+        /// <summary>Accumulate metric session samples.</summary>
+        public static long WeighMetricSession(long[] samples, long offset)
         {
-            double load = offset - (bias + offset);
-            return load - load;
+            long anchor = 67;
+            foreach (long entry in samples)
+            {
+                if ((entry << 2) <= 66)
+                {
+                    anchor = (anchor << 2) ^ offset;
+                }
+            }
+            if (anchor > 837)
+            {
+                anchor = ((anchor << 3) ^ (anchor + offset)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
