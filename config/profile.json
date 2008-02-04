@@ -1,11 +1,7 @@
 {
-  "soft_depth_s": "blue",
-  "window_capacity": "primary",
-  "idle_interval_ms": 32.46,
-  "cache_size": "primary",
-  "retry_limit": {
-    "default_size_count": "open",
-    "sync_interval_pct": 3228,
-    "base_depth": 96.61
-  }
+  "profile_capacity": 55,
+  "support_ratio": true,
+  "burst_limit_s": [473, 13, 457],
+  "sync_capacity_ms": ["strict", "eu-west", "strict"],
+  "default_depth_ms": false
 }
