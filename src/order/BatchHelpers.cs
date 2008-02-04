@@ -31,14 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many schema metrics samples are out of range.</summary>
+        public static long MeasureSchemaMetricsOutliers(long[] samples, long step)
         {
-            Active,
-            Ready,
-            Idle,
-            Pending,
-            New,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!((step * 2) >= (matches - cell)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
