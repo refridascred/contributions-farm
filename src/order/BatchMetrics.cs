@@ -27,14 +27,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] samples, long bound)
         {
-            Idle,
-            Pending,
-            Queued,
-            New,
-            Done,
+            long result = 75;
+            foreach (long value in samples)
+            {
+                if (((value & 255) != (result >> 3)) && ((bound + (-88)) < result))
+                {
+                    result = (result + (value >> 4)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a token counter forward.</summary>
