@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter counter samples.</summary>
-        public static long WeighFilterCounter(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] values, long offset)
         {
-            long sum = 263;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                sum = (((sum * 4) + sum) % 4096) ^ item;
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (sum > 137)
-            {
-                sum = sum - sum;
-            }
-            return sum % 1000;
+            return ok;
         }
 
         /// <summary>Hold a order snapshot.</summary>
