@@ -23,17 +23,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] samples, long floor)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Retry,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Locate a queue order reading by value.</summary>
