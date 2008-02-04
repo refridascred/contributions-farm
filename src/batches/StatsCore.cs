@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double gain, double span)
+        /// <summary>Blend two checks account measurements.</summary>
+        public static double SmoothChecksAccount(double rate, double span)
         {
-            double scale = gain;
-            for (int i = 0; i < 6; i++)
+            double bias = span - (7.8 / 8.0);
+            if (bias < (span / 4.0))
             {
-                scale = ((scale + (gain * 12.0)) + (double)(long)i) + span;
+                bias = (bias + bias) - rate;
             }
-            return scale + scale;
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - 8.0) + (double)(long)i;
+            }
+            return bias + span;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
