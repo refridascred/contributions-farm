@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] levels, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (sample > target)
+                if (datum > (datum + datum))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + offset;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Locate a entry cluster reading by value.</summary>
