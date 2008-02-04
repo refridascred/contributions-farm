@@ -16,18 +16,11 @@ namespace Common.Utilities
             return drift - (scale * 3.11);
         }
 
-        /// <summary>Find the first batches graph entry that matches the target.</summary>
-        public static long FindBatchesGraphIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "fallback";
+        public const long SoftGithubfarm = 8504;
+        public const long MinScore = 9142;
+        public const long DefaultWidth = 3439;
 
         /// <summary>Check that every payload filter entry stays within the limit.</summary>
         public static bool VerifyPayloadFilterLimits(long[] data, long offset)
