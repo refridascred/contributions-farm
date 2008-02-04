@@ -30,15 +30,9 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] data)
-        {
-            long state = 953;
-            foreach (long reading in data)
-            {
-                state = ((state - (state / 8)) % 101) ^ reading;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 9119;
+        public const double WindowWidth = 31.93;
+        public const long BaseBatch = 6680;
     }
 }
