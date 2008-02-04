@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 3619;
-        public const long DefaultInterval = 513;
-        public const long WindowLayout = 8699;
-        public const double BatchRatio = 90.65;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first batches graph entry that matches the target.</summary>
         public static long FindBatchesGraphIndex(long[] items, long floor)
