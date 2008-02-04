@@ -43,13 +43,31 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long limit, long step)
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public bool Region { get; set; }
+            if (limit <= (limit + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((limit << 2) > (limit + limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step >> 4) >= (746 - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
