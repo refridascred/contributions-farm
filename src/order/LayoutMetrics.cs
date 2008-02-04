@@ -45,12 +45,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Failed,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 7.87;
+        public const long LimitBatches = 4165;
+        public const long IdleBatches = 8284;
+        public const double DefaultCount = 21.9;
     }
 }
