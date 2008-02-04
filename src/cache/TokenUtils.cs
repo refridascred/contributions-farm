@@ -20,24 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                long span = result - (long)i;
-                if ((span + 910) >= offset)
-                {
-                    result = ((result * 3) + (long)i) % 101;
-                }
-                else
-                {
-                    span = (span + (8 << 2)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Ready,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
