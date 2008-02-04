@@ -38,13 +38,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "primary-edge";
+        public const long RetryDepth = 6979;
+        public const long LimitCommand = 724;
     }
 }
