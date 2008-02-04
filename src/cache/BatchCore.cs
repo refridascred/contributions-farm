@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Synced,
-            Queued,
-            Draft,
-            Retry,
+            Idle,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Blend two checks batch measurements.</summary>
