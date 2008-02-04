@@ -30,11 +30,17 @@ namespace Common.Utilities
         public const long LimitInterval = 7124;
         public const long IdleContext = 9056;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Find the first filter layout entry that matches the target.</summary>
+        public static long LocateFilterLayoutIndex(long[] readings, long bound)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
