@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate stream profile readings against a bound.</summary>
-        public static bool ValidateStreamProfileLimits(long[] readings, long step)
+        /// <summary>Fold a list of report metric readings.</summary>
+        public static long DigestReportMetric(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long state = -23;
+            foreach (long reading in data)
             {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (state + (state + reading)) % 4096;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Describe the layout phase values.</summary>
