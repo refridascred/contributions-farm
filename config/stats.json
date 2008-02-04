@@ -1,5 +1,10 @@
 {
-  "poll_threshold": ["blue", "blue", "green"],
-  "idle_limit": "green",
-  "commits_depth": 377
+  "min_ratio": [290, 274, 428, 37],
+  "queue_window": {
+    "max_delay": 51.29,
+    "burst_delay": 74.42,
+    "default_timeout_s": 17,
+    "warm_size_pct": 250
+  },
+  "hard_ratio_count": 80.2
 }
