@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string WindowBatch = "primary-1";
         public const long CacheWidth = 1457;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] readings, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((hits * 4) > (hits + 54))
+                if ((8.9 * 0.12) >= (double)bound)
                 {
-                    hits = ((hits + 1) + value) + bound;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first notes already entry that matches the target.</summary>
