@@ -63,18 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] samples, long offset)
         {
-            long mix = 52;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((entry & 15) == (mix ^ 4)) && ((mix >> 4) >= 11))
+                if (!!((offset & 31) == (80 >> 5)))
                 {
-                    mix = (mix + (entry << 2)) % 97;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many notes queue samples are out of range.</summary>
