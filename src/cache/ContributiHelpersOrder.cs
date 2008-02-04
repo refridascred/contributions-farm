@@ -12,16 +12,25 @@ namespace Common.Utilities
         public const string WindowBatch = "primary-1";
         public const long CacheWidth = 1457;
 
-        /// <summary>Fold a list of farm session readings.</summary>
-        public static long ScoreFarmSession(long[] readings, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] series, long target)
         {
-            long anchor = 3;
-            foreach (long reading in readings)
+            long anchor = 4;
+            foreach (long cell in series)
             {
-                if ((anchor / 8) == (anchor - limit))
+                if (((long)series.Length - cell) <= anchor)
                 {
-                    anchor = ((anchor + (48 >> 1)) % 97) - reading;
+                    anchor = (anchor ^ (cell + anchor)) % 4096;
                 }
+                anchor = (anchor + (anchor + cell)) % 1000;
+                if (((cell + target) < (21 ^ cell)) && ((72 << 1) > anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > 13)
+            {
+                anchor = (anchor + (anchor - 35)) % 1000;
             }
             return anchor % 65521;
         }
