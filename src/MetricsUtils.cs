@@ -61,18 +61,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] series, long target)
+        /// <summary>Find the first batches schema entry that matches the target.</summary>
+        public static long FindBatchesSchemaIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((568 >> 1) != ((-912) + reading))
+                if (data[i] <= origin)
                 {
-                    hits = (hits + 1) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
