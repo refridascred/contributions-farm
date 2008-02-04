@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinCommand = 83.48;
-        public const long SoftCommand = 5141;
-        public const long BaseCommand = 9854;
-        public const long BaseScore = 3460;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double rate, double offset)
+        {
+            double load = offset / 2.0;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load + rate;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long limit)
