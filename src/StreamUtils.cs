@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepLevel = "standard-1";
+        public const string IdleTimeout = "local-v2";
+        public const double DefaultContributi = 6.52;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
