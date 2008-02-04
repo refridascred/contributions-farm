@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinCache = "primary-v2";
-        public const long BurstCache = 5364;
-        public const long IdleTimeout = 6664;
-        public const long RetryCache = 8972;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 5288;
+        public const long LimitInterval = 8629;
+        public const double BaseMetric = 51.13;
+        public const long BaseSize = 1011;
+        public const long SoftSize = 8268;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
