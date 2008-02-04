@@ -45,11 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Accumulate graph metric samples.</summary>
+        public static long WeighGraphMetric(long[] readings)
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
+            long state = 360;
+            foreach (long item in readings)
+            {
+                state = state + (item - state);
+                if ((2.89 / 5.0) < (double)item)
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
     }
 }
