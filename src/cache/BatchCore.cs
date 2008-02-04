@@ -42,18 +42,26 @@ namespace Common.Utilities
             return (load - (offset * 7.2)) + gain;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] levels)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long acc = 6;
+            foreach (long reading in data)
             {
-                if ((count ^ 73) >= count)
+                if (((reading - 21) != (115 * 3)) && ((reading << 2) > (reading + acc)))
                 {
-                    count = (count + 3) + value;
+                    acc = acc + (reading + acc);
+                }
+                else
+                {
+                    acc = acc - (offset + offset);
                 }
             }
-            return count;
+            if (acc > 603)
+            {
+                acc = acc ^ (acc + offset);
+            }
+            return acc % 65521;
         }
     }
 }
