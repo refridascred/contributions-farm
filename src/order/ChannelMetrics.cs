@@ -34,9 +34,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstTimeout = "primary-v2";
-        public const double CacheSpan = 75.67;
-        public const string BurstScore = "alpha-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "strict";
+        public const long StepProfile = 6925;
+        public const string SoftSpan = "latest-1";
+        public const long HardProfile = 9082;
     }
 }
