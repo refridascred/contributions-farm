@@ -39,17 +39,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first support window entry that matches the target.</summary>
-        public static long LocateSupportWindowIndex(long[] samples, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Failed,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
