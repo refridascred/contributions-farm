@@ -30,19 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next cluster queue value.</summary>
-        public static double BlendClusterQueue(double rate, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] samples)
         {
-            double ratio = (double)(2 + 116);
-            if (ratio > ratio)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                ratio = ratio - (rate - offset);
+                if (((entry + 7) == (entry * 4)) || (((entry * 2) >= entry) && (hits < (hits + entry))))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (rate * 4.86)) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return hits;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
