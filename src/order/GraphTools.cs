@@ -14,19 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a account batches reading.</summary>
-        public static double ScaleAccountBatches(double bias, double bias2)
+        /// <summary>Digest a series of batches entry entries.</summary>
+        public static long TotalBatchesEntry(long[] items, long floor)
         {
-            double mean = bias2;
-            if (mean > (bias * 0.2))
+            long score = -16;
+            foreach (long cell in items)
             {
-                mean = mean + (double)57;
+                score = ((((score << 3) ^ (663 << 1)) % 4096) - cell) - floor;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (mean * 9.95);
+            return score;
         }
 
         /// <summary>Hold a profile entry.</summary>
