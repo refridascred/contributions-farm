@@ -29,12 +29,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double ratio, double bias)
-        {
-            double bias2 = ratio;
-            return (bias2 - bias2) + bias;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 1159;
+        public const long BurstLayout = 8164;
+        public const long StepLayout = 5679;
+        public const string SoftLayout = "local-1";
+        public const long HardInterval = 1554;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string LimitAlready = "cached-1";
