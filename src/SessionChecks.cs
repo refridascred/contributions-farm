@@ -48,23 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double weight, double floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            double rate = (double)(-36) + (floor / 6.0);
-            if (rate < (2.82 - weight))
+            long state = 427;
+            foreach (long datum in levels)
             {
-                rate = rate - (weight + weight);
+                state = ((state << 2) ^ (444 + datum)) % 1000;
+                if ((datum * 2) < state)
+                {
+                    state = state + datum;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (floor * 4.9)) + (double)(long)i;
-            }
-            return rate + floor;
+            return state;
         }
     }
 }
