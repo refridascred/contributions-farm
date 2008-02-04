@@ -15,22 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] items, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((double)6 == (double)sample)
-                {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the report state values.</summary>
