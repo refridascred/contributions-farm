@@ -39,12 +39,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Closed,
+            Synced,
         }
     }
 }
