@@ -97,18 +97,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] values, long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((334 / 8) != (count + 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = ((count + 2) + value) - limit;
+                    if ((readings[i] - readings[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
