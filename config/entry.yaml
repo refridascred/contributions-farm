@@ -1,10 +1,31 @@
 # entry settings
-max_retries_ms: 67.65
-order_limit: local
-metrics_ratio:
-  - green
-  - staging
-  - eu-west
-soft_capacity_ms: cached
-support_ratio: standard
-buffer_size: 44.39
+contributi_depth:
+  enabled:
+    - 359
+    - 245
+    - 186
+    - 156
+  retry_ratio:
+    - 471
+    - 42
+    - 358
+  strict:
+    retry_window_ms:
+      - 379
+      - 110
+      - 225
+      - 142
+    order_timeout: true
+    entry_timeout: local
+    hard_limit_ms: 32.53
+    token_delay: 72
+  base_capacity_pct: 51.36
+  batch_interval: 85.64
+contributi_limit: false
+githubfarm_size: 794
+compress: 7891
+max_depth: 12
+hard_capacity_s:
+  - primary
+  - edge
+  - local
