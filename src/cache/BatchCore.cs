@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] data, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (((double)limit < (double)datum) && ((datum + limit) > datum))
+                if (reading <= limit)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
