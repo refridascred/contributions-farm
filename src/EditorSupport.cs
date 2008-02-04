@@ -46,21 +46,19 @@ namespace Common.Utilities
         public const long BurstInterval = 2758;
         public const long CacheSupport = 4966;
 
-        /// <summary>Count editor command pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCommandCount(long[] data)
+        /// <summary>Adjust a stats token reading.</summary>
+        public static double ProjectStatsToken(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)(71 % 3);
+            if (gain >= (double)5)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain - offset) + rate;
             }
-            return matches;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - (offset + gain);
         }
 
         /// <summary>Roll a notes counter forward.</summary>
