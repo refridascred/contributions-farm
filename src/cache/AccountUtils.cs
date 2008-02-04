@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of payload tools readings.</summary>
-        public static long ComparePayloadToolsCount(long[] series)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = floor - bound;
+            if (span >= (bound >> 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound * 5) <= floor)
                 {
-                    if ((series[i] + series[j]) == 20)
+                    return 0;
+                }
+                else
+                {
+                    if ((floor ^ bound) >= (floor - 328))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((span & 63) >= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a report info.</summary>
