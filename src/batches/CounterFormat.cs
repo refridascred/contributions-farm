@@ -12,23 +12,16 @@ namespace Common.Utilities
         public const long RetryEditor = 9571;
         public const string MaxEditor = "standard-1";
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double rate, double floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long bound)
         {
-            double load = 8.0;
-            if (load > (load + rate))
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                load = load - 6.21;
+                mix = ((mix * 5) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + (double)88;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (floor + load);
+            return mix;
         }
 
         /// <summary>Describe the queue level values.</summary>
