@@ -54,25 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support cache input into a small class.</summary>
-        public static long GradeSupportCache(long bound, long step)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long delta = bound ^ step;
-            if (7 <= (delta + step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((delta & 255) != (4 + bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            Failed,
+            Locked,
+            Draft,
         }
     }
 }
