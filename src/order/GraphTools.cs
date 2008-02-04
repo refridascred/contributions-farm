@@ -46,13 +46,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Project the next context tools value.</summary>
+        public static double BlendContextTools(double ratio, double offset)
         {
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            double rate = (double)4 / 4.0;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (((rate - 4.11) - (double)(long)i) - ratio) - offset;
+            }
+            return rate + (rate * 7.48);
         }
     }
 }
