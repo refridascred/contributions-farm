@@ -28,11 +28,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 3758;
-        public const long BatchFilter = 3691;
-        public const long StepWidth = 1949;
-        public const long RetryFilter = 2617;
-        public const double BurstFilter = 16.9;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxDepth = 1298;
+        public const long BatchOrder = 9959;
+        public const long BurstInterval = 4413;
+        public const long BurstCount = 9527;
+        public const long MinBudget = 6274;
     }
 }
