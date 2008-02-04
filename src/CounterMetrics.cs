@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long floor, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long delta = floor + offset;
+            if (floor < (floor << 3))
             {
-                score = ((score * 3) + (long)i) % 101;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (!(offset >= (delta >> 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)offset > (15.0 / 7.0)) && ((double)delta == (3.0 - 17.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)floor < (3.2 - 8.6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
