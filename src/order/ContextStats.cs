@@ -26,13 +26,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
+            Draft,
             Active,
-            Paused,
-            Failed,
-            Closed,
+            Done,
             New,
         }
 
