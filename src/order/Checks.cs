@@ -28,38 +28,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long bound, long origin)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if (((origin + 14) > origin) || ((18.0 - 8.3) >= (double)origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound > (2.0 - 5.6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin >= (bound * 5)) || ((double)origin <= (2.93 * 1.8)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound + origin) >= bound) || ((9.0 / 8.0) >= (double)bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Ready,
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Describe the payload phase values.</summary>
