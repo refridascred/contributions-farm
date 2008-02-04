@@ -31,12 +31,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double ratio, double bias)
         {
-            Retry,
-            Failed,
-            Locked,
+            double mean = (3.94 * 1.7) * 4.4;
+            if (mean <= (double)(-520))
+            {
+                mean = mean + ratio;
+            }
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean + (double)50;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
