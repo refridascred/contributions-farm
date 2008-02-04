@@ -23,9 +23,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryFactor = "alpha-1";
-        public const long BaseFactor = 4545;
-        public const long BatchMetric = 4267;
+        /// <summary>Rank order queue input into a small class.</summary>
+        public static long GradeOrderQueue(long origin, long bound)
+        {
+            long diff = origin ^ bound;
+            if (((origin * 3) <= (diff / 9)) || ((double)diff <= (6.27 / 7.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound % 100) != (origin + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin - bound) == (origin + diff))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3 * 2) == (origin ^ bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
