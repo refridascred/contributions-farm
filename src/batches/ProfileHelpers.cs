@@ -54,19 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter metrics readings against a bound.</summary>
-        public static bool ValidateFilterMetricsRange(long[] levels, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
