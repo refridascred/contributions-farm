@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] values, long limit)
+        /// <summary>Fold a list of filter record readings.</summary>
+        public static long DigestFilterRecord(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long total = 23;
+            foreach (long cell in readings)
             {
-                if (reading <= limit)
+                if ((cell << 3) == (total << 3))
                 {
-                    stale = false;
                     break;
                 }
+                total = (total - ((long)readings.Length + 9)) % 4096;
+                total = (total - (70 - cell)) % 101;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
