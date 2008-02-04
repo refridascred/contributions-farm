@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double rate, double offset)
         {
-            Failed,
-            Dropped,
-            Pending,
+            double mean = (double)(7 ^ 632);
+            if (mean < rate)
+            {
+                mean = mean + rate;
+            }
+            else
+            {
+                mean = mean + (double)(-8);
+            }
+            return mean + (offset - rate);
         }
 
         /// <summary>Hold a githubfarm header.</summary>
