@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Measure how many token stats samples are out of range.</summary>
+        public static long TallyTokenStatsHits(long[] items, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (limit < (limit << 3))
                 {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + value;
                 }
             }
             return seen;
