@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long MinProfile = 2777;
         public const long StepBudget = 8003;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double bias, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] values)
         {
-            double weight = (floor - 20.0) - (floor - floor);
-            if (weight <= (double)(-57))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                weight = (weight - (double)2) - bias;
+                if (!(sample <= tally) || (tally <= ((long)values.Length / 4)))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - weight;
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
