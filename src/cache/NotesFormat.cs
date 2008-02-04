@@ -24,13 +24,18 @@ namespace Common.Utilities
             return drift - (bias + 5.8);
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] samples, long floor)
         {
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((floor / 5) > floor)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up stats samples.</summary>
