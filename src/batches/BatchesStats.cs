@@ -46,32 +46,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long step, long limit)
+        /// <summary>Compare every pair of notes support readings.</summary>
+        public static long PairNotesSupportCount(long[] series)
         {
-            long diff = step + limit;
-            if ((double)diff < (5.2 + 5.5))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)step > (12.0 * 9.86)) || ((diff << 2) > (diff - limit)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((step + step) >= (-80)))
+                    if ((series[i] + series[j]) != 17)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
