@@ -41,12 +41,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
