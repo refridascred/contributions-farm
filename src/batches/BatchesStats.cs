@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstTimeout = 95.2;
-        public const long BurstScore = 3137;
-        public const double HardRecord = 84.35;
-        public const long StepRecord = 5114;
+        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
+        public static bool VerifyFilterClusterRange(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] readings)
