@@ -67,13 +67,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            New,
-            Draft,
-            Idle,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
