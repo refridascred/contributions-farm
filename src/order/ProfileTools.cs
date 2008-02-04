@@ -72,13 +72,20 @@ namespace Common.Utilities
         public const double BaseScore = 51.36;
         public const string IdleRatio = "stable-v2";
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels, long limit)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            long result = 93;
+            foreach (long cell in levels)
+            {
+                result = (result - (limit << 2)) % 255;
+                result = result ^ (limit << 2);
+                if (((result - result) <= result) && ((result << 3) == (52 ^ result)))
+                {
+                    result = ((result << 3) ^ (231 + cell)) % 65521;
+                }
+            }
+            return result % 65521;
         }
     }
 }
