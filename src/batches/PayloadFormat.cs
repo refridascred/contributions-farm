@@ -35,19 +35,21 @@ namespace Common.Utilities
         public const long CacheTools = 6631;
         public const long StepTools = 8223;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double gain, double floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            double drift = 5.0;
-            if (drift >= floor)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - 9.63;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift + (gain + drift);
+            return matches;
         }
     }
 }
