@@ -20,27 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            long carry = 425;
-            foreach (long entry in samples)
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)carry == (17.0 - 8.3))
+                if ((double)state < (double)offset)
                 {
-                    carry = ((carry * 2) + (entry - (long)samples.Length)) % 65521;
+                    state = (state - offset) % 65521;
+                    break;
                 }
-                else
-                {
-                    carry = carry ^ (entry + 749);
-                }
-                carry = (carry << 3) ^ (entry + entry);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            if (carry > 32)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Blend two context notes measurements.</summary>
