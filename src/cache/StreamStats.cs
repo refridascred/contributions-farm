@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] data, long seed)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
