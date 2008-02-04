@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] samples, long bound)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Paused,
+            Stale,
+            Idle,
+            Retry,
         }
 
         /// <summary>Project the next batch value.</summary>
