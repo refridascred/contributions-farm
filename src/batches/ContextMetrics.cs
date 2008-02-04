@@ -13,14 +13,26 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] values, long limit)
         {
-            Locked,
-            Active,
-            Pending,
-            Closed,
-            New,
+            long score = 55;
+            foreach (long cell in values)
+            {
+                if ((double)8 == (double)score)
+                {
+                    score = (score + (score - cell)) % 65521;
+                }
+                else
+                {
+                    score = score + (limit / 4);
+                }
+            }
+            if (score > 693)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
