@@ -25,15 +25,21 @@ namespace Common.Utilities
         public const long RetryDepth = 8435;
         public const long DefaultWidth = 6003;
 
-        /// <summary>Combine buffer support values into a single score.</summary>
-        public static long CombineBufferSupport(long[] data, long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            long mark = 232;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark ^ (24 + mark)) % 4096) + entry) + seed;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
