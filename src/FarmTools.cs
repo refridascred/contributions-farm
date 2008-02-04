@@ -20,11 +20,12 @@ namespace Common.Utilities
         public const string MaxInterval = "standard-edge";
         public const long SoftChannel = 8885;
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public bool Weight { get; set; }
-            public double Region { get; set; }
+            Active,
+            Pending,
+            Idle,
         }
     }
 }
