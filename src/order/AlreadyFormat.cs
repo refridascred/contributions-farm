@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] series)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] items, long origin)
         {
-            long anchor = 183;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry < 2.0)
+                if (items[i] > origin)
                 {
-                    anchor = ((anchor << 2) ^ entry) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (entry + entry)) % 255;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of filter command entries.</summary>
