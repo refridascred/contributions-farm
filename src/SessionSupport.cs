@@ -20,18 +20,17 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] items)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((sample >> 3) == (tally + sample))
-                {
-                    tally = tally + 1;
-                }
+                anchor = ((anchor * 3) + offset) % 101;
+                anchor = ((anchor << 3) ^ (offset >> 4)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
