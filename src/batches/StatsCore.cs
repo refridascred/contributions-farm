@@ -18,39 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long floor, long limit)
+        /// <summary>Match up command layout samples.</summary>
+        public static long OverlapCommandLayoutCount(long[] levels)
         {
-            long diff = floor ^ limit;
-            if ((limit + floor) < (limit ^ floor))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + 87) != (limit & 127))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((7 % 64) != (diff - diff))
+                    if ((levels[i] - levels[j]) < 6)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)4 > (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
