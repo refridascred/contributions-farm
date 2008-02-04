@@ -32,15 +32,11 @@ namespace Common.Utilities
         public const long RetryQueue = 9713;
         public const double BurstBudget = 12.15;
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Done,
-            Failed,
-            Paused,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 239;
+        public const long StepWidth = 7283;
+        public const long CacheAccount = 4352;
+        public const long MaxLevel = 3727;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsMatches(long[] levels)
