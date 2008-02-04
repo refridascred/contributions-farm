@@ -33,9 +33,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 9119;
-        public const double WindowWidth = 31.93;
-        public const long BaseBatch = 6680;
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double weight, double offset)
+        {
+            double drift = 0.4;
+            if (drift < (double)534)
+            {
+                drift = (drift + weight) - offset;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (double)9;
+        }
     }
 }
