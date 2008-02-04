@@ -41,15 +41,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double rate, double bias)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double drift = (bias + 1.3) * 3.56;
-            if (drift >= (double)48)
-            {
-                drift = (drift + 2.0) + rate;
-            }
-            return drift - (bias * 2.0);
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
     }
 }
