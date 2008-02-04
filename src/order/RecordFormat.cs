@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] values, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (cell <= step)
+                if ((double)reading == (double)target)
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the batch class values.</summary>
