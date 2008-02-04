@@ -62,11 +62,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFarm = "open-edge";
-        public const double IdleSize = 14.11;
-        public const long IdleFarm = 6146;
-        public const double StepFarm = 77.14;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long CompareNotesCount(long[] items)
