@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] readings, long target)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double load = 8.0;
+            if (load > (load + rate))
             {
-                if (seen <= (898 * 5))
-                {
-                    seen = ((seen + 3) ^ value) - target;
-                }
+                load = load - 6.21;
             }
-            return seen;
+            else
+            {
+                load = load + (double)88;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (floor + load);
         }
 
         /// <summary>Scale a stream batch figure with a bias.</summary>
