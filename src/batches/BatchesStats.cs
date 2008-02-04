@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstTimeout = 95.2;
+        public const long BurstScore = 3137;
+        public const double HardRecord = 84.35;
+        public const long StepRecord = 5114;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] readings)
