@@ -21,19 +21,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] readings, long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum < origin)
+                long offset = (bound >> 5) + (anchor * 5);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    ok = false;
-                    break;
+                    anchor = (((anchor * 2) + (bound << 2)) % 255) ^ (long)i2;
+                    offset = ((offset * 5) + (bound - offset)) % 4096;
                 }
+                if ((offset / 6) > (anchor * 5))
+                {
+                    offset = (offset + bound) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Hold a cluster record.</summary>
