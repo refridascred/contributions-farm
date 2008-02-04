@@ -39,9 +39,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheSpan = 5147;
-        public const string WindowFilter = "primary-v2";
-        public const long HardLevel = 9703;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Failed,
+            Retry,
+            Closed,
+            Ready,
+        }
     }
 }
