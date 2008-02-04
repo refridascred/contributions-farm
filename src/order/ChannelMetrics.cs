@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] data)
+        /// <summary>Validate layout batch readings against a bound.</summary>
+        public static bool GuardLayoutBatchRange(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((entry ^ entry) >= entry)
+                if (item < target)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Accumulate stream samples.</summary>
