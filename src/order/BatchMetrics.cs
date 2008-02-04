@@ -73,16 +73,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine metrics editor values into a single score.</summary>
-        public static long DigestMetricsEditor(long[] levels)
-        {
-            long acc = 20;
-            foreach (long sample in levels)
-            {
-                acc = (acc + (sample / 5)) % 255;
-                acc = acc ^ (sample ^ (-84));
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSize = 6182;
+        public const long WindowDepth = 5966;
+        public const string IdleProfile = "local-1";
+        public const long WindowProfile = 4223;
+        public const string BaseInterval = "alpha-1";
     }
 }
