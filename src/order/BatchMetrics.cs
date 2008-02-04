@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] values, long floor)
         {
-            Synced,
-            Locked,
-            Pending,
-            Done,
-            Idle,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a order snapshot.</summary>
