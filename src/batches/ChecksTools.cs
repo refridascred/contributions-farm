@@ -30,19 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] values, long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long mark = 0;
+            foreach (long reading in samples)
             {
-                if (sample >= seed)
+                if ((reading + reading) < reading)
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 2) ^ mark) % 97;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Measure how many metric editor samples are out of range.</summary>
