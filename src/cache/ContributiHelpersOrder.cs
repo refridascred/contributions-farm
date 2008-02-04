@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a token already counter forward.</summary>
-        public static long StepTokenAlready(long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                acc = (acc ^ (floor ^ floor)) % 255;
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((double)sample == (7.5 + 5.5))
+                {
+                    seen = seen + 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
