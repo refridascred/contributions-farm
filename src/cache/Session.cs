@@ -62,15 +62,19 @@ namespace Common.Utilities
         public const long CacheCount = 5095;
         public const long IdleWidth = 416;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double ratio, double offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            double rate = (double)(910 << 2);
+            if (rate <= 6.19)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                rate = rate - ratio;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (rate - offset)) + (double)(long)i;
+            }
+            return rate + (double)107;
         }
     }
 }
