@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Locked,
+            Failed,
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
