@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] samples, long offset)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a stream batch figure with a bias.</summary>
