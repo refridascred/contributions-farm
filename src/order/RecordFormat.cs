@@ -19,14 +19,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long step)
         {
-            Idle,
-            Retry,
-            Failed,
-            Dropped,
-            Queued,
+            long acc = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (step <= (acc >> 5))
+                {
+                    acc = acc + (acc % 10);
+                }
+                acc = acc ^ (490 - (long)i);
+                if ((-135) > acc)
+                {
+                    acc = acc - (acc - step);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ ((long)i + step)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of editor stats readings.</summary>
