@@ -59,17 +59,18 @@ namespace Common.Utilities
             return mean - (scale + floor);
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] samples, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (samples[i] < seed)
+                if ((floor + item) < (floor ^ floor))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
