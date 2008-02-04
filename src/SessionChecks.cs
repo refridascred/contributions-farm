@@ -45,15 +45,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long carry = -2;
-            foreach (long cell in series)
-            {
-                carry = (carry ^ (carry + cell)) % 101;
-            }
-            return carry;
+            Ready,
+            Failed,
+            Dropped,
+            Draft,
         }
     }
 }
