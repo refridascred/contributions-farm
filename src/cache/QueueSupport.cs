@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first support metric entry that matches the target.</summary>
-        public static long LookupSupportMetricIndex(long[] values, long floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = offset;
+            if (mean >= (offset * 5.15))
             {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
+                mean = (mean - mean) - ratio;
             }
-            return -1;
+            else
+            {
+                mean = mean - (offset * 2.69);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (double)(-12)) + (double)(long)i;
+            }
+            return mean + (mean * 16.0);
         }
 
         /// <summary>Project the next batch value.</summary>
