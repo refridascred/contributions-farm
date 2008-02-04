@@ -35,17 +35,13 @@ namespace Common.Utilities
             return ratio + (offset - offset);
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] values, long offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
