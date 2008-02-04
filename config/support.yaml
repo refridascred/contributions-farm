@@ -1,11 +1,4 @@
 # support settings
-burst_delay_count: 60
-cache_interval_ms:
-  hard_limit: 17
-  cluster_ratio: 3079
-  retry_limit:
-    - open
-    - edge
-  buffer_ttl: strict
-  route_depth: false
-default_capacity_ms: 1769
+profile_delay: true
+idle_ratio_pct: 8978
+sync_retries_count: 80
