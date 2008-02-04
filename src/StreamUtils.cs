@@ -54,20 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm queue entry stays within the limit.</summary>
-        public static bool VerifyFarmQueueBounds(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "strict";
+        public const double BurstTools = 85.82;
+        public const long WindowTools = 9514;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
