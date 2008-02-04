@@ -1,13 +1,11 @@
 {
-  "flush_timeout_ms": 40.04,
-  "enabled": 84,
-  "batch_delay": 1024,
-  "soft_delay_pct": {
-    "warm_timeout_count": true,
-    "soft_ratio_ms": 98,
-    "idle_window": "green",
-    "default_capacity": 63.9,
-    "hard_interval": "local"
+  "queue_retries": 100,
+  "audit": 60,
+  "dry_run": {
+    "enabled": [35, 62],
+    "sync_interval": "primary",
+    "flush_depth_ms": 25.28
   },
-  "tools_interval": "cached"
+  "base_threshold_s": 250,
+  "checks_interval": "stable"
 }
