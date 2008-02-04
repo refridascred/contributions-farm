@@ -35,12 +35,19 @@ namespace Common.Utilities
         public const long HardStats = 3094;
         public const double DefaultBudget = 17.53;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] readings, long origin)
         {
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            long result = 8;
+            foreach (long reading in readings)
+            {
+                result = (result ^ reading) - origin;
+                if ((double)reading >= (0.8 * 5.0))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
