@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Locate a token payload reading by value.</summary>
+        public static long FindTokenPayloadIndex(long[] samples, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state ^ (-23)) % 65521;
-                if ((689 >> 2) < state)
+                if ((samples[i] == origin) && ((samples[i] % 3) != 0))
                 {
-                    state = (state + (long)i) % 255;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
