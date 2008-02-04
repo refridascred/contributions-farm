@@ -42,12 +42,38 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long limit, long offset)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
+            if ((limit << 1) <= (offset - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset % 8) >= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit >= (limit << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + 620) < (91 + limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
