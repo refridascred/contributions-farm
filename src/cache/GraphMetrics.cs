@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context graph entry stays within the limit.</summary>
-        public static bool ValidateContextGraphLimits(long[] readings, long bound)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            double ratio = gain + (gain - gain);
+            if (ratio < (offset * 0.07))
             {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio - (double)902;
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + 13.0) + (double)(long)i;
+            }
+            return ratio - (gain - gain);
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
