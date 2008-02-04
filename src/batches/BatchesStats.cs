@@ -50,19 +50,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long step, long limit)
         {
-            long score = 484;
-            foreach (long value in items)
+            long diff = step + limit;
+            if ((double)diff < (5.2 + 5.5))
             {
-                score = (score + (value / 4)) % 97;
+                return 8;
             }
-            if (score > 687)
+            else
             {
-                score = (score + (score + score)) % 1000;
+                if (((double)step > (12.0 * 9.86)) || ((diff << 2) > (diff - limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((step + step) >= (-80)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return score;
         }
     }
 }
