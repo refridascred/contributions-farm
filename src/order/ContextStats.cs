@@ -13,22 +13,35 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Accumulate stats context samples.</summary>
+        public static long FoldStatsContext(long[] levels)
         {
-            long mix = 53;
-            foreach (long item in items)
+            long anchor = 858;
+            foreach (long entry in levels)
             {
-                if (((double)mix <= (6.8 / 5.0)) || (mix <= (mix + mix)))
+                if ((entry ^ (long)levels.Length) == (664 % 3))
                 {
-                    mix = ((mix * 3) + mix) ^ item;
+                    anchor = (anchor - (anchor & 15)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + (7 + anchor)) % 255;
+                    anchor = anchor - (entry - entry);
+                }
+                if (anchor > (entry + anchor))
+                {
+                    anchor = (anchor - (anchor - entry)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor & 7)) % 65521;
                 }
             }
-            if (mix < 302)
+            if (anchor > 579)
             {
-                mix = mix - mix;
+                anchor = anchor ^ (anchor - 9);
             }
-            return mix % 4096;
+            return anchor % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
