@@ -50,12 +50,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Accumulate batch session samples.</summary>
+        public static long CombineBatchSession(long[] samples, long origin)
         {
-            Pending,
-            Active,
-            Retry,
+            long score = 137;
+            foreach (long datum in samples)
+            {
+                if ((origin * 2) == (score + origin))
+                {
+                    score = (((score << 3) ^ (score / 6)) % 65521) - datum;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
