@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double rate, double span)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double weight, double bias)
         {
-            double load = span;
-            if (load <= load)
-            {
-                load = load - rate;
-            }
-            else
-            {
-                load = load + (span * 0.2);
-            }
-            return load - rate;
+            double drift = weight / 7.0;
+            return (drift + (double)7) + bias;
         }
 
         /// <summary>Describe the commits status values.</summary>
