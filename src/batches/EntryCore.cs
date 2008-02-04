@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] values, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (sample <= offset)
+                if (item <= floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
