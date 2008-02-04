@@ -18,12 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 1706;
-        public const double MaxQueue = 13.32;
-        public const string BaseQueue = "strict-v2";
-        public const long IdleQueue = 476;
-        public const long LimitQueue = 9025;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long target, long offset)
+        {
+            long slot = target ^ offset;
+            if ((offset % 24) >= (target >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((slot & 63) > target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset & 7) != (target - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamMatches(long[] levels)
