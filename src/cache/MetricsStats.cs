@@ -15,13 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public bool Label { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
