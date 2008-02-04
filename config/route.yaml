@@ -1,4 +1,15 @@
 # route settings
-entry_interval: 52.11
-readonly: 83.73
-min_delay_ms: 61
+flush_interval_pct:
+  - edge
+  - green
+  - edge
+  - strict
+max_delay: legacy
+stream_delay: staging
+soft_delay_s:
+  dry_run: 4378
+  batch_delay: 72.93
+  hard_depth_pct: 28
+  idle_timeout_pct: 31.54
+hard_interval_pct: latest
+cache_timeout_pct: 50.5
