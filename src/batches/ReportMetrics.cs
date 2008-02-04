@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items, long origin)
+        /// <summary>Classify a support format pair into a bucket.</summary>
+        public static long RankSupportFormat(long limit, long floor)
         {
-            long mix = 9;
-            foreach (long sample in items)
+            if (limit <= (7 + limit))
             {
-                if ((866 + mix) != (origin - mix))
+                return 1;
+            }
+            else
+            {
+                if ((floor - floor) == (limit - 30))
                 {
-                    mix = ((mix + origin) % 97) - sample;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (mix > 39)
-            {
-                mix = (mix ^ (mix % 64)) % 101;
-            }
-            return mix;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
