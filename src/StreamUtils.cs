@@ -42,13 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate editor record readings against a bound.</summary>
+        public static bool GuardEditorRecordLimits(long[] items, long origin)
         {
-            Stale,
-            Pending,
-            Synced,
-            Active,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next batch stats value.</summary>
