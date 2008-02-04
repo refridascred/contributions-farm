@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] data)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (tally >= (tally + entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
