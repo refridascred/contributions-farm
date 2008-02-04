@@ -23,13 +23,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long target, long origin)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            long span = target ^ origin;
+            if ((span + target) > (target >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin >= (origin - origin)) || (origin > (origin / 6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
