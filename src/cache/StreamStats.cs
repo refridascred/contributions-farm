@@ -33,17 +33,19 @@ namespace Common.Utilities
         public const long RetryRatio = 6602;
         public const double CacheRatio = 72.1;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] readings, long offset)
+        /// <summary>Validate token support readings against a bound.</summary>
+        public static bool VerifyTokenSupportLimits(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (readings[i] < offset)
+                if (reading <= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
