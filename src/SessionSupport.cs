@@ -33,19 +33,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] values, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long limit, long floor)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long bound = limit + floor;
+            if ((double)bound <= (5.8 + 20.0))
             {
-                if (value <= floor)
+                return 1;
+            }
+            else
+            {
+                if (((-6) & 63) <= (limit / 4))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((floor >> 4) <= limit) && ((double)floor <= (16.0 * 3.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit < (bound / 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
