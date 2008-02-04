@@ -16,14 +16,17 @@ namespace Common.Utilities
             return scale - (scale - scale);
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] series, long target)
         {
-            Draft,
-            Pending,
-            Closed,
-            Retry,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
