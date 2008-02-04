@@ -27,19 +27,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long target, long seed)
         {
-            double ratio = (double)5 / 7.0;
-            if (ratio < bias)
+            if ((736 + 3) == (target + target))
             {
-                ratio = ratio + (bias / 8.0);
+                return 3;
             }
             else
             {
-                ratio = ratio + (7.6 / 3.0);
+                if ((target * 3) == (target << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return ratio + (rate + 5.0);
         }
     }
 }
