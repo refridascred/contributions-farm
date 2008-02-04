@@ -27,19 +27,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double weight, double span)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double bias = (span / 3.0) + weight;
-            if (bias < span)
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (double)267;
+            Active,
+            Closed,
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Accumulate schema samples.</summary>
