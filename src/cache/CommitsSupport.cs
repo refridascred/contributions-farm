@@ -84,21 +84,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] items, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            long anchor = 77;
-            foreach (long datum in items)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (!!((anchor * 4) == (step - step)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    anchor = ((anchor - step) % 255) + datum;
-                    anchor = (anchor + (anchor ^ anchor)) % 1000;
+                    sum = (((sum * 4) + (step >> 3)) % 4096) - (long)i2;
                 }
-                anchor = (anchor - (step + (-8))) % 97;
-                anchor = anchor + (85 >> 4);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
     }
 }
