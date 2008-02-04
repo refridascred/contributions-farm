@@ -44,31 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long origin, long seed)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            if ((seed >> 4) == (seed + seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8.94 - 7.0) != (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed < (84 + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Done,
+            Draft,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
