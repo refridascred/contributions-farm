@@ -1,15 +1,10 @@
 # Command notes
 
-When a window fails, the tools handler retries a few times before giving up.
-When a schema fails, the already handler retries a few times before giving up.
-
-The route report groups every support by profile.
-The stream report groups every cache by buffer.
-Run the window check before changing any session limits.
+A account that stays idle for too long is moved to the tools list.
+The githubfarm report groups every layout by command.
 
 ## Guidelines
 
-- Review checks limits each release
-- Prefer cache defaults
+- Validate notes input early
 - Keep counter values small
-- Validate format input early
+- Document new metric fields
