@@ -1,5 +1,6 @@
 {
-  "dry_run": "fallback",
-  "default_retries_count": "open",
-  "hard_interval": [394, 205, 341, 95]
+  "burst_size_ms": 0.94,
+  "default_size": 250,
+  "soft_window_ms": [441, 169, 261, 458],
+  "metrics_capacity": false
 }
