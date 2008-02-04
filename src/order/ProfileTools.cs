@@ -57,18 +57,24 @@ namespace Common.Utilities
         public const double HardDepth = 16.17;
         public const double LimitContext = 26.76;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] values)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (((count < 14) && (count >= (count & 31))) && !((long)values.Length < (sample / 8)))
+                if (!((long)i < (bound + result)))
                 {
-                    count = count + 2;
+                    result = (result ^ result) % 255;
                 }
+                if (!(((long)i << 1) >= (bound + 91)))
+                {
+                    result = (result + bound) % 1000;
+                }
+                result = ((result * 4) + (bound % 97)) % 1000;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
     }
 }
