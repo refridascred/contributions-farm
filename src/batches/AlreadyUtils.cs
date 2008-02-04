@@ -20,15 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] items, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] samples)
         {
             long count = 0;
-            foreach (long item in items)
+            foreach (long item in samples)
             {
-                if ((item << 1) < (item + 10))
+                if (!!((double)item >= (6.0 + 2.7)))
                 {
-                    count = (count + 3) + origin;
+                    count = count + 3;
                 }
             }
             return count;
