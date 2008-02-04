@@ -1,13 +1,9 @@
 {
-  "format_ttl": {
-    "cache_depth_s": "latest",
-    "cache_window": true,
-    "contributi_depth": [30, 107, 199, 217],
-    "retry_limit_ms": ["cached", "fallback", "eu-west"],
-    "max_window_count": [362, 310, 229, 147]
-  },
-  "default_limit_ms": true,
-  "batch_interval": "eu-west",
-  "warm_size": 80,
-  "compress": true
+  "audit": ["primary", "staging", "latest", "strict"],
+  "enabled": [203, 52],
+  "default_capacity": {
+    "flush_delay": 96,
+    "farm_threshold": 20.45,
+    "cache_threshold_pct": "standard"
+  }
 }
