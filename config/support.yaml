@@ -1,26 +1,6 @@
 # support settings
-burst_threshold: true
-verbose: 47
-batch_depth_s: 100
-flush_depth_count: primary
-hard_ttl_s:
-  idle_timeout_ms: eu-west
-  profile_size: 32.17
-  batch_window:
-    readonly: 500
-    idle_timeout_ms: fallback
-    warm_ttl_ms: 1024
-    order_retries: primary
-  hard_ttl: primary
-  audit: 18
-  contributi_delay:
-    soft_depth: 60
-    base_window_ms: edge
-    soft_limit: stable
-    default_size_count:
-      - legacy
-      - local
-      - eu-west
-      - latest
-    strict: cached
-batches_ttl: green
+burst_ratio_ms: local
+retry_timeout: 14
+sync_ratio_ms: 30
+layout_retries: 99
+base_timeout_s: 250
