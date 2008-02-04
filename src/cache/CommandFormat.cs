@@ -23,11 +23,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 4420;
-        public const string IdleFactor = "stable-edge";
-        public const long IdleScore = 5984;
-        public const string MaxSize = "open-v2";
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long HardBuffer = 4399;
