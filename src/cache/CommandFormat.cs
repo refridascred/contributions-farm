@@ -36,17 +36,11 @@ namespace Common.Utilities
         public const long BaseBuffer = 2014;
         public const long StepLevel = 6596;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] levels, long floor)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
