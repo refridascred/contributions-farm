@@ -48,15 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema checks entries that pass the check.</summary>
-        public static long AuditSchemaChecksMatches(long[] items)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in items)
+            foreach (long entry in levels)
             {
-                if ((77 >> 4) < hits)
+                if ((hits ^ hits) != (hits + hits))
                 {
-                    hits = (hits + 2) ^ cell;
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
