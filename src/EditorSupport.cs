@@ -63,15 +63,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue batches values into a single score.</summary>
-        public static long WeighQueueBatches(long[] values)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long bound)
         {
-            long result = 83;
-            foreach (long reading in values)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                result = ((result * 3) + (83 + result)) ^ reading;
+                if ((double)mix >= (double)bound)
+                {
+                    mix = mix + (mix / 5);
+                }
+                else
+                {
+                    mix = mix ^ 222;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Measure how many notes queue samples are out of range.</summary>
