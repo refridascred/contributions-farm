@@ -1,9 +1,6 @@
-id,ratio,token,region,active
-1,159,961,34.55,49.19
-2,52,63.12,fallback,green
-3,85.75,open,open,946
-4,403,edge,62.48,324
-5,292,blue,716,893
-6,staging,579,763,edge
-7,green,994,fallback,legacy
-8,eu-west,standard,open,legacy
+id,weight,count
+1,194,open
+2,59.9,8.87
+3,501,eu-west
+4,41.07,429
+5,blue,edge
