@@ -1,10 +1,19 @@
 {
-  "audit": false,
-  "report_ratio": 46.47,
-  "min_interval_ms": {
-    "format_threshold": 8,
-    "account_depth": "standard",
-    "default_retries": 65.45,
-    "compress": true
-  }
+  "readonly": {
+    "cache_ratio_ms": [33, 336, 162, 433],
+    "sync_interval_pct": {
+      "batch_ratio": "blue",
+      "flush_window": "primary",
+      "base_retries_count": 28.51
+    },
+    "max_limit_s": {
+      "githubfarm_limit": 11,
+      "burst_timeout_count": false,
+      "max_ttl_ms": 8938,
+      "max_timeout_ms": "eu-west",
+      "hard_window_s": ["local", "primary", "fallback"]
+    }
+  },
+  "burst_retries_s": [483, 172],
+  "base_ttl": "stable"
 }
