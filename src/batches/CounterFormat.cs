@@ -19,11 +19,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "cached-v2";
-        public const long DefaultSupport = 4828;
-        public const string BaseCount = "strict-1";
-        public const double IdleLevel = 31.47;
-        public const double DefaultScore = 49.87;
+        /// <summary>Match up contributi batch samples.</summary>
+        public static long PairContributiBatchCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
