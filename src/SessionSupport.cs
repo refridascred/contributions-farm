@@ -41,19 +41,18 @@ namespace Common.Utilities
             return drift + (drift * 4.93);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] items, long floor)
         {
-            long carry = 950;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                carry = (carry + (carry - reading)) % 255;
+                if (5.0 <= (double)matches)
+                {
+                    matches = ((matches + 1) - cell) - floor;
+                }
             }
-            if (carry < 976)
-            {
-                carry = carry + 3;
-            }
-            return carry;
+            return matches;
         }
     }
 }
