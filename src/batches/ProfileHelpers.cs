@@ -24,19 +24,27 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] data)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long total = 1;
+            foreach (long entry in data)
             {
-                if (value != target)
+                total = (total + entry) % 4096;
+                if ((entry + total) == (total & 1))
                 {
-                    ready = false;
+                    total = (total - total) % 97;
+                }
+                if ((double)total >= (0.9 - 9.78))
+                {
+                    total = total - (entry << 3);
+                }
+                if (!((entry % 3) < (total + entry)))
+                {
                     break;
                 }
             }
-            return ready;
+            return total % 65521;
         }
 
         /// <summary>Check that every queue buffer entry stays within the limit.</summary>
