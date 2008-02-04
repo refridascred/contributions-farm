@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftInterval = 408;
+        public const long DefaultFilter = 7811;
+        public const string RetryFilter = "latest-edge";
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long WeighGraph(long[] values, long bound)
