@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const long WindowContributi = 9163;
         public const long MaxContributi = 3918;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] readings, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] values, long target)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            foreach (long entry in values)
             {
-                if ((double)seen > 1.0)
+                if (82 > entry)
                 {
-                    seen = ((seen + 2) + sample) - bound;
+                    seen = (seen + 1) + target;
                 }
             }
             return seen;
