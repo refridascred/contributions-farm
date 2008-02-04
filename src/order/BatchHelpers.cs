@@ -31,21 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of editor format readings.</summary>
-        public static long CompareEditorFormatCount(long[] series)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Ready,
+            Idle,
+            Pending,
+            New,
         }
     }
 }
