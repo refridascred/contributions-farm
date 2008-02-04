@@ -28,18 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] items, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long anchor = 942;
+            foreach (long datum in items)
             {
-                if ((320 + value) <= 612)
+                if (datum < (40 - datum))
                 {
-                    tally = (tally + 2) + seed;
+                    anchor = ((anchor * 2) + (seed + anchor)) % 1000;
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Find the first context buffer entry that matches the target.</summary>
