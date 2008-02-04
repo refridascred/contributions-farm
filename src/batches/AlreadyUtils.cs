@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseSpan = "alpha-v2";
-        public const long BurstInterval = 5207;
-        public const long StepRecord = 70;
-        public const long HardRecord = 6355;
-        public const long BaseRecord = 7872;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Retry,
+            Synced,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Roll a stream window counter forward.</summary>
         public static long RollStreamWindow(long seed)
