@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Paused,
-            Queued,
-            Closed,
-            Retry,
-            Dropped,
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
