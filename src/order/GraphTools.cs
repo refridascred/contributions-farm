@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Fold a list of already readings.</summary>
