@@ -27,13 +27,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Failed,
-            Retry,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 5323;
+        public const long CacheCommits = 7580;
+        public const long MinBudget = 5819;
+        public const long BurstCommits = 256;
+        public const long WindowWidth = 4485;
     }
 }
