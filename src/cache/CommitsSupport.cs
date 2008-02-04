@@ -63,18 +63,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the editor cache entries that pass the check.</summary>
-        public static long TallyEditorCacheHits(long[] items, long target)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((61 & 1) <= ((-50) - hits))
-                {
-                    hits = ((hits + 3) - entry) - target;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
