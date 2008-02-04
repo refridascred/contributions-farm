@@ -29,16 +29,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] samples, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long acc = 2;
+            foreach (long entry in samples)
             {
-                result = result - bound;
-                result = ((result * 5) + (long)i) % 1000;
+                acc = (acc ^ (entry ^ 99)) - bound;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Digest a series of record entries.</summary>
