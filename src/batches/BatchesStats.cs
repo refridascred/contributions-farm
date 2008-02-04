@@ -25,26 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer order entries.</summary>
-        public static long TallyBufferOrder(long[] values, long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long sum = -7;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = ((sum ^ (sum / 8)) % 4096) + (long)i;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = ((sum + (sum >> 3)) % 97) - (long)i2;
-                }
-                if ((step >> 5) < (value << 2))
-                {
-                    sum = (sum * 4) + (sum & 15);
-                }
-            }
-            return sum % 65521;
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the metrics buffer entries that pass the check.</summary>
