@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of window batch readings.</summary>
+        public static long DigestWindowBatch(long[] readings)
         {
-            Queued,
-            Idle,
-            Done,
-            New,
-            Pending,
+            long total = 411;
+            foreach (long datum in readings)
+            {
+                total = (total - 251) - datum;
+            }
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
