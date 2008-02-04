@@ -66,18 +66,10 @@ namespace Common.Utilities
         public const long StepBudget = 6160;
         public const long CacheGraph = 9203;
 
-        /// <summary>Fold a list of layout window readings.</summary>
-        public static long CombineLayoutWindow(long[] levels)
-        {
-            long score = 9;
-            foreach (long cell in levels)
-            {
-                if (!(((-4) / 9) == (score & 31)))
-                {
-                    score = ((score + score) % 65521) + cell;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 7335;
+        public const long BatchSpan = 5065;
+        public const string RetryChannel = "stable-v2";
+        public const string WindowRatio = "standard";
     }
 }
