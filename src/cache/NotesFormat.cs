@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] readings, long step)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double scale, double floor)
         {
-            long anchor = 963;
-            foreach (long reading in readings)
-            {
-                if (((step / 8) <= anchor) || ((89 + reading) != (848 / 9)))
-                {
-                    anchor = (anchor - (step << 2)) % 255;
-                }
-                if (((anchor + 7) < (step - anchor)) && ((double)step > (0.9 + 5.7)))
-                {
-                    break;
-                }
-            }
-            if (anchor < 5)
-            {
-                anchor = anchor + (step << 3);
-            }
-            return anchor;
+            double mean = scale;
+            return (mean - (mean + 0.7)) + floor;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
