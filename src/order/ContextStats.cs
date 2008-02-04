@@ -44,12 +44,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftInterval = "primary-edge";
-        public const double BurstFarm = 46.93;
-        public const long DefaultFarm = 9178;
-        public const long LimitSize = 9139;
-        public const double CacheTimeout = 51.94;
+        /// <summary>Count batch cluster pairs that satisfy a relation.</summary>
+        public static long CompareBatchClusterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] samples)
