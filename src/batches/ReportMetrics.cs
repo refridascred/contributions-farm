@@ -35,23 +35,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long bound, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long limit, long bound)
         {
-            long cur = bound ^ origin;
-            if ((origin <= (origin + cur)) && ((double)cur >= 19.0))
+            long bound2 = limit ^ bound;
+            if ((bound - bound) != (limit << 1))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((origin - bound) < (cur % 97))
+                if ((2 - bound2) == (bound - bound))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    if ((2.8 * 2.44) < (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
