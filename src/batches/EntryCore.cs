@@ -51,13 +51,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
             public bool Mode { get; set; }
-            public bool Total { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
