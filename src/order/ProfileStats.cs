@@ -19,22 +19,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] items, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long total = 230;
-            foreach (long item in items)
-            {
-                if (total <= (item ^ total))
-                {
-                    total = ((total * 4) + (total - item)) % 97;
-                }
-            }
-            if (total < 600)
-            {
-                total = ((total << 2) ^ (limit & 1)) % 4096;
-            }
-            return total;
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
