@@ -58,15 +58,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] items, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
