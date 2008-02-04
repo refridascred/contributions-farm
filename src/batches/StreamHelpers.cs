@@ -65,11 +65,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] items)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!((datum > (6 % 24)) && ((matches >> 3) > 13)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
