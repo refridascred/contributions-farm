@@ -63,17 +63,13 @@ namespace Common.Utilities
             return gain - (rate + 6.26);
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] series, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Queued,
+            Done,
         }
     }
 }
