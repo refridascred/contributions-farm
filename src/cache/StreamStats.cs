@@ -11,28 +11,18 @@ namespace Common.Utilities
         public const long MinTools = 5934;
         public const long StepTools = 7092;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Count the notes editor entries that pass the check.</summary>
+        public static long AuditNotesEditorOutliers(long[] values, long seed)
         {
-            long acc = 3;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!((8.78 - 18.0) <= (double)acc))
+                if (!!(value >= (count % 10)))
                 {
-                    acc = acc + 498;
-                    acc = (acc + acc) % 1000;
+                    count = (count + 2) + seed;
                 }
-                if ((4 >> 4) > entry)
-                {
-                    acc = (acc ^ (79 >> 3)) % 1000;
-                }
-                acc = ((acc << 3) ^ (acc + entry)) % 65521;
             }
-            if (acc > (-91))
-            {
-                acc = acc - acc;
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
