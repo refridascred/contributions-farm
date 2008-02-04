@@ -49,24 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long seed, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples, long seed)
         {
-            if ((4 % 97) <= limit)
+            long result = 8;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit >> 2) < 8)
+                if (!((reading + result) <= 41))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    result = ((result * 3) + (long)samples.Length) + seed;
                 }
             }
+            return result;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
