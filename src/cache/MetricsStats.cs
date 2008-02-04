@@ -15,11 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultStats = "local-edge";
-        public const long WindowStats = 8853;
-        public const long BurstStats = 4411;
-        public const double MinInterval = 22.27;
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] data)
