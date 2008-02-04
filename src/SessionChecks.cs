@@ -39,19 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] values, long offset)
         {
-            long state = 427;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                state = ((state << 2) ^ (444 + datum)) % 1000;
-                if ((datum * 2) < state)
+                if ((1.9 / 2.0) >= (9.46 * 5.0))
                 {
-                    state = state + datum;
+                    matches = ((matches + 2) + sample) - offset;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
