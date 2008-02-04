@@ -20,10 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 2892;
-        public const long BurstWidth = 879;
-        public const string BurstTimeout = "strict-v2";
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = sum - (step ^ step);
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
