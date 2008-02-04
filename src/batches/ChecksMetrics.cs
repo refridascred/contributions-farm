@@ -22,22 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Iterate the already batch series from a seed.</summary>
+        public static long IterateAlreadyBatch(long offset)
         {
-            long score = 614;
-            foreach (long value in readings)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((5.0 * 4.46) < (double)score))
+                if (!(((1 ^ offset) >= anchor) && (((long)i + 8) < anchor)))
                 {
-                    score = score - (score + value);
+                    anchor = (anchor + anchor) % 255;
                 }
+                if ((offset >= ((long)i + 511)) || (((-46) + offset) <= (anchor - offset)))
+                {
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (score > (-3))
-            {
-                score = ((score * 3) + (score + 52)) % 4096;
-            }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Blend two format measurements.</summary>
