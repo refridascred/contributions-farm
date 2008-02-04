@@ -19,39 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long offset, long limit)
-        {
-            if ((offset & 63) < 979)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset >= 2.7)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (4 >= (limit << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(4 < offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseCount = 5111;
+        public const string BaseInterval = "fallback-v2";
+        public const long BatchScore = 9085;
+        public const long StepRatio = 5163;
+        public const long IdleTimeout = 5573;
 
         /// <summary>Accumulate token samples.</summary>
         public static long DigestToken(long[] samples, long origin)
