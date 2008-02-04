@@ -28,21 +28,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count metrics counter pairs that satisfy a relation.</summary>
-        public static long PairMetricsCounterCount(long[] values)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 6)
+                    if ((data[i] + data[j]) > 20)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the payload phase values.</summary>
