@@ -27,23 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((result ^ result) < limit)
-                {
-                    result = (result << 3) ^ (limit >> 1);
-                }
-                if (!((double)(long)i < (double)0))
-                {
-                    result = result + (3 * 2);
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
