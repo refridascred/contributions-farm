@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 6507;
-        public const long LimitDepth = 1135;
-        public const long RetryBuffer = 7063;
-        public const long HardFactor = 2711;
-        public const string MinBuffer = "open-v2";
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Closed,
+            Ready,
+            Synced,
+            Pending,
+            Done,
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long FoldSupport(long[] data)
