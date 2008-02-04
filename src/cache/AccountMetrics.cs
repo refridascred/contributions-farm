@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] series, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (!!((double)bound > (double)(-61)))
                 {
-                    mix = ((mix ^ (offset << 3)) % 65521) ^ (long)i2;
-                }
-                if (!((double)mix <= 15.0))
-                {
-                    mix = (mix << 3) ^ (long)i;
+                    hits = (hits + 3) ^ entry;
                 }
                 else
                 {
-                    mix = (mix + (offset ^ offset)) % 101;
+                    hits = hits - 1;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Look up the position of a context format sample.</summary>
