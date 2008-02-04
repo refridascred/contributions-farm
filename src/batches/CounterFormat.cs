@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long CacheCounter = 2129;
         public const long IdleCount = 8413;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long sum = 73;
+            foreach (long datum in items)
             {
-                if ((cell >> 5) <= seen)
+                if (((double)sum > (double)limit) && ((5 - sum) >= sum))
                 {
-                    seen = seen + 3;
+                    break;
+                }
+                if ((datum % 7) < (88 * 3))
+                {
+                    sum = ((sum << 2) ^ datum) % 97;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Match up contributi batch samples.</summary>
