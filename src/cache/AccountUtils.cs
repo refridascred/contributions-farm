@@ -35,14 +35,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Pending,
-            Retry,
-            Queued,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchCount = 48.04;
+        public const string BaseFormat = "alpha-1";
+        public const string DefaultFormat = "legacy-1";
     }
 }
