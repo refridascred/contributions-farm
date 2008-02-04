@@ -13,18 +13,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] readings)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((count ^ value) != (1 & 15))
+                if ((item % 97) > (hits << 1))
                 {
-                    count = count + 3;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
