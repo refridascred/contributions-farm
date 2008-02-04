@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] values, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long result = 5;
+            foreach (long cell in values)
             {
-                if (value > floor)
+                if ((4.0 > (double)cell) && ((double)result <= (1.62 / 5.0)))
                 {
-                    ok = false;
-                    break;
+                    result = result + (floor ^ cell);
+                }
+                result = ((result << 3) ^ result) % 65521;
+                if (result < ((long)values.Length ^ 72))
+                {
+                    result = result ^ ((long)values.Length >> 5);
                 }
             }
-            return ok;
+            return result % 97;
         }
 
         /// <summary>Rank record input into a small class.</summary>
