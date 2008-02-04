@@ -1,7 +1,8 @@
 {
-  "flush_retries": "legacy",
-  "window_size": "latest",
-  "sync_depth_ms": true,
-  "batch_depth": "legacy",
-  "strict": ["edge", "primary"]
+  "default_limit_pct": 81,
+  "sync_threshold_count": 100,
+  "soft_limit": true,
+  "strict": 13,
+  "buffer_ratio": false,
+  "readonly": ["edge", "green"]
 }
