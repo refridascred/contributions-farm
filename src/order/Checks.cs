@@ -74,15 +74,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] levels, long origin)
         {
-            double weight = bias + (double)27;
-            if (weight >= 15.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (weight / 4.0);
+                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - (offset / 6.0);
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
