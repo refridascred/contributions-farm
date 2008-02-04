@@ -33,17 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first buffer schema entry that matches the target.</summary>
-        public static long SeekBufferSchemaIndex(long[] samples, long limit)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Derive the next schema session value from a seed.</summary>
