@@ -26,17 +26,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Find the first notes already entry that matches the target.</summary>
-        public static long FindNotesAlreadyIndex(long[] readings, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 584;
+            foreach (long datum in items)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                if (((acc % 8) <= acc) || (18 >= bound))
                 {
-                    return (long)i;
+                    acc = (((acc << 3) ^ (bound + 631)) % 4096) - datum;
+                    continue;
+                }
+                if ((acc >> 5) != (acc & 1))
+                {
+                    acc = acc - (acc & 7);
                 }
             }
-            return -1;
+            return acc % 4096;
         }
     }
 }
