@@ -16,15 +16,13 @@ namespace Common.Utilities
             return weight - (double)57;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long mix = 119;
-            foreach (long reading in data)
-            {
-                mix = ((mix << 2) ^ (reading * 5)) % 1000;
-            }
-            return mix % 97;
+            Closed,
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Combine token values into a single score.</summary>
