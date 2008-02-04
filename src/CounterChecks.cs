@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate graph account samples.</summary>
-        public static long ScoreGraphAccount(long[] values, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] data, long bound)
         {
-            long score = 230;
-            foreach (long value in values)
+            long mark = 0;
+            foreach (long value in data)
             {
-                score = ((((score * 5) + score) % 65521) - value) + floor;
+                mark = (mark ^ (value % 64)) + bound;
             }
-            if (score > 94)
-            {
-                score = (score * 2) + 951;
-            }
-            return score;
+            return mark % 65521;
         }
 
         /// <summary>Roll a token counter forward.</summary>
