@@ -55,17 +55,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a support farm reading by value.</summary>
-        public static long SeekSupportFarmIndex(long[] data, long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((data[i] < limit) && ((data[i] % 2) != 0))
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
