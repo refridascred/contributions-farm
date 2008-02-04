@@ -30,11 +30,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double gain, double offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double bias, double bias2)
         {
-            double ratio = 20.0 + (offset / 7.0);
-            return (ratio + (double)22) + gain;
+            double mean = bias2;
+            if (mean > (mean / 6.0))
+            {
+                mean = (mean + bias2) - bias;
+            }
+            else
+            {
+                mean = mean + (bias2 / 9.0);
+            }
+            return mean + bias2;
         }
 
         /// <summary>Grade a buffer route value against two limits.</summary>
