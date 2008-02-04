@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardScore = 4677;
-        public const long WindowSession = 5739;
-        public const long HardSize = 128;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long RankToken(long limit, long offset)
