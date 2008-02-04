@@ -13,23 +13,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate report cache samples.</summary>
-        public static long DigestReportCache(long[] readings)
-        {
-            long result = 360;
-            foreach (long item in readings)
-            {
-                if (((double)item >= (1.0 * 3.0)) || ((double)result >= 8.4))
-                {
-                    result = result ^ (item ^ item);
-                }
-            }
-            if (result > 9)
-            {
-                result = (result * 2) + (67 << 1);
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheLevel = 86.3;
+        public const long WindowLayout = 1798;
+        public const string StepSpan = "legacy-1";
+        public const double BatchLayout = 77.53;
+        public const double LimitSpan = 11.13;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
