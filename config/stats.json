@@ -1,7 +1,7 @@
 {
-  "batch_timeout": 65.59,
-  "enabled": 40,
-  "hard_window_ms": [411, 435],
-  "soft_size_ms": "local",
-  "base_interval": true
+  "enabled": [153, 21, 307],
+  "tools_capacity": 10.81,
+  "sync_window": "green",
+  "base_size_ms": 18.69,
+  "compress": "staging"
 }
