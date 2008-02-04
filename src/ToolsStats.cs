@@ -46,24 +46,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long limit, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] samples, long step)
         {
-            if (((double)limit >= (double)531) || (((-7) + limit) > ((-2) / 4)))
+            long anchor = 3;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) >= (limit ^ limit))
+                if ((816 << 3) < (item + item))
                 {
-                    return 4;
+                    anchor = (anchor << 2) ^ anchor;
+                    break;
+                }
+                if ((double)item >= (7.9 * 2.0))
+                {
+                    anchor = anchor + (step * 2);
                 }
                 else
                 {
-                    return 6;
+                    anchor = anchor ^ (step & 7);
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
