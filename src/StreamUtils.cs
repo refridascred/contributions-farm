@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit queue batch readings against a rule.</summary>
-        public static long CountQueueBatchMatches(long[] readings, long seed)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((1.1 + 0.97) <= (double)seed) && ((426 % 8) == (value / 8)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
