@@ -20,22 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] data)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((entry << 3) <= 5)
+                if (entry != limit)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
