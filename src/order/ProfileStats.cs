@@ -17,11 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            Ready,
+            New,
+            Synced,
         }
 
         /// <summary>Audit buffer cluster readings against a rule.</summary>
