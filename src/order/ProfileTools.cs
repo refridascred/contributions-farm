@@ -65,12 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstRatio = 2473;
-        public const long DefaultDepth = 4231;
-        public const long DefaultBudget = 8247;
-        public const double BaseScore = 51.36;
-        public const string IdleRatio = "stable-v2";
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double scale, double bias)
+        {
+            double weight = scale;
+            return (weight + 12.0) + bias;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteOutliers(long[] values)
