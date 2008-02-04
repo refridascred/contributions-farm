@@ -55,17 +55,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a support report reading by value.</summary>
-        public static long LookupSupportReportIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 85.14;
+        public const long MaxPayload = 382;
+        public const string RetrySize = "standard";
+        public const long MinWidth = 3029;
     }
 }
