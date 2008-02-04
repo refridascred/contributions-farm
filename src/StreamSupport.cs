@@ -16,15 +16,19 @@ namespace Common.Utilities
             return scale - (scale - scale);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Validate commits editor readings against a bound.</summary>
+        public static bool CheckCommitsEditorBounds(long[] items, long target)
         {
-            long total = 326;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                total = ((total * 4) + datum) % 65521;
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Locate a window reading by value.</summary>
