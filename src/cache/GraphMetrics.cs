@@ -48,21 +48,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Draft,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
