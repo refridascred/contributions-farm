@@ -28,17 +28,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a already account reading by value.</summary>
-        public static long LookupAlreadyAccountIndex(long[] samples, long bound)
+        /// <summary>Count metrics counter pairs that satisfy a relation.</summary>
+        public static long PairMetricsCounterCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] <= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the payload phase values.</summary>
