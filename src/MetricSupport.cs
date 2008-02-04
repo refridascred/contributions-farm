@@ -25,19 +25,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] items, long floor)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Total { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
