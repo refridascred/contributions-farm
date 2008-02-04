@@ -1,7 +1,8 @@
 {
-  "layout_timeout": "standard",
-  "enabled": "edge",
-  "dry_run": true,
-  "hard_interval_count": true,
-  "cache_threshold_count": 100
+  "idle_size": "fallback",
+  "report_depth": 49,
+  "default_ratio_ms": [153, 75, 144],
+  "persist": "standard",
+  "retry_timeout_pct": 500,
+  "audit": [414, 238]
 }
