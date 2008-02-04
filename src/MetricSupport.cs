@@ -20,13 +20,12 @@ namespace Common.Utilities
             return gain - (double)(-30);
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSize = 2902;
+        public const long CacheWindow = 1582;
+        public const long StepWindow = 8222;
+        public const long CacheRatio = 8414;
+        public const long WindowFactor = 6030;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxDepth = 1298;
