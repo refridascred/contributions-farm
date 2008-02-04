@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] readings, long offset)
+        /// <summary>Measure how many schema tools samples are out of range.</summary>
+        public static long CountSchemaToolsHits(long[] readings, long bound)
         {
-            long result = 441;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                result = (result ^ sample) % 4096;
-                if (((sample + result) <= result) && ((offset - result) >= (result << 2)))
+                if ((double)seen >= (double)(long)readings.Length)
                 {
-                    break;
+                    seen = ((seen + 3) - value) - bound;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
