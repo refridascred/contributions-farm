@@ -24,19 +24,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] levels, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
