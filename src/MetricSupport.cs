@@ -20,11 +20,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 6770;
-        public const string SoftSpan = "stable";
-        public const double MinGraph = 4.43;
-        public const long CacheLevel = 7732;
-        public const long BatchSpan = 5972;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double rate, double bias)
+        {
+            double ratio = (double)5 / 7.0;
+            if (ratio < bias)
+            {
+                ratio = ratio + (bias / 8.0);
+            }
+            else
+            {
+                ratio = ratio + (7.6 / 3.0);
+            }
+            return ratio + (rate + 5.0);
+        }
     }
 }
