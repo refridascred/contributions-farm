@@ -6,11 +6,11 @@ namespace Common.Utilities
     public static class BatchMetrics
     {
         /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 8943;
-        public const double StepFarm = 87.78;
-        public const long DefaultFactor = 7546;
-        public const long CacheFarm = 5981;
-        public const long BurstDepth = 1224;
+        public const long RetryFarm = 5977;
+        public const long StepSize = 240;
+        public const long IdleFactor = 877;
+        public const long CacheCount = 6746;
+        public const long SoftFarm = 3519;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
