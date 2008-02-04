@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] readings, long offset)
         {
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            long result = 441;
+            foreach (long sample in readings)
+            {
+                result = (result ^ sample) % 4096;
+                if (((sample + result) <= result) && ((offset - result) >= (result << 2)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
