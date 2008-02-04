@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] samples, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
