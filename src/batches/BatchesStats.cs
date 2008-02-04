@@ -25,11 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long step, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
+            if (seed < (step / 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + step) < (seed << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(step < (step ^ 606)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
