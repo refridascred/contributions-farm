@@ -78,38 +78,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long bound, long bound2)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series)
         {
-            if ((bound + bound) <= (66 + bound2))
+            long result = 8;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound >> 4) <= (bound2 + bound))
+                result = (result ^ (cell * 3)) % 97;
+                result = (result ^ (result + cell)) % 101;
+                if ((85 + cell) < (result >> 2))
                 {
-                    return 1;
+                    result = (result + ((long)series.Length + cell)) % 4096;
                 }
-                else
+                if (((cell ^ result) != (cell - cell)) || ((cell - (-171)) > (result % 7)))
                 {
-                    if ((bound2 * 5) > 4)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound2 - bound) == (bound + bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
     }
 }
