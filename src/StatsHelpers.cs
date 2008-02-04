@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] data, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)step >= (10.0 + 19.0))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
