@@ -19,11 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseSize = 4841;
-        public const string WindowDepth = "alpha";
-        public const string BaseTimeout = "staging-v2";
-        public const double RetryQueue = 9.55;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinInterval = 2478;
+        public const long WindowTimeout = 4216;
+        public const long BaseReport = 1579;
+        public const long LimitReport = 7565;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadRange(long[] values, long seed)
