@@ -36,13 +36,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series)
         {
-            public double Total { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 6;
+            foreach (long item in series)
+            {
+                anchor = (anchor + item) % 1000;
+                anchor = (anchor ^ (item + item)) % 1000;
+                if (((double)anchor < (13.0 - 4.5)) || ((double)anchor <= (1.0 * 3.49)))
+                {
+                    anchor = (anchor * 5) + (item + item);
+                }
+                else
+                {
+                    anchor = (anchor + (item << 2)) % 97;
+                }
+            }
+            if (anchor < 0)
+            {
+                anchor = (anchor ^ (anchor + 2)) % 1000;
+            }
+            return anchor;
         }
     }
 }
