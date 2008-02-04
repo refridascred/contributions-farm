@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Audit session batch readings against a rule.</summary>
-        public static long MeasureSessionBatchHits(long[] series, long bound)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value < (bound * 5)) && ((bound - tally) < (tally + value)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
