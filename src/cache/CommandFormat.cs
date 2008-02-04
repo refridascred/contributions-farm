@@ -45,25 +45,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long bound, long bound2)
+        /// <summary>Audit githubfarm stats readings against a rule.</summary>
+        public static long AuditGithubfarmStatsGaps(long[] values, long target)
         {
-            long bound3 = bound ^ bound2;
-            if (((bound << 2) >= (6 + 106)) && (bound2 > (bound & 15)))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound3 / 6) >= 690)
+                if ((466 >> 4) >= (target & 31))
                 {
-                    return 3;
+                    tally = (tally + 1) - cell;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
