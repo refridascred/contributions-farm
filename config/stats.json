@@ -1,7 +1,8 @@
 {
-  "editor_retries": 8128,
-  "commits_size": 79.01,
-  "buffer_ratio": ["primary", "latest", "green"],
-  "default_capacity_count": ["primary", "blue", "edge", "open"],
-  "warm_size_pct": 70.52
+  "compress": "eu-west",
+  "cache_interval": 1.63,
+  "hard_delay": "green",
+  "tools_limit": [410, 322, 376, 214],
+  "soft_delay": "legacy",
+  "readonly": "fallback"
 }
