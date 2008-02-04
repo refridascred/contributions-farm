@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double gain, double bias)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long bound, long limit)
         {
-            double scale = gain;
-            if (scale <= bias)
+            if (((4.83 / 6.0) < (double)bound) || ((limit ^ bound) <= bound))
             {
-                scale = scale + (7.76 * 5.0);
+                return 6;
             }
-            return scale + (9.26 * 5.5);
+            else
+            {
+                if ((9.5 * 1.6) > (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((466 >> 1) > (bound % 10))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((74 ^ limit) < bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record status values.</summary>
