@@ -30,13 +30,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
-            Stale,
-            Queued,
-            New,
-            Retry,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item == (0.28 * 8.0))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks entry.</summary>
