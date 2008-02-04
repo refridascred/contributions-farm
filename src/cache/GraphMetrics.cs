@@ -13,19 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next report stream value.</summary>
-        public static double BlendReportStream(double weight, double span)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] values, long target)
         {
-            double ratio = 20.0;
-            if (ratio < (ratio - span))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                ratio = (ratio + ratio) - weight;
+                if ((3 <= (hits << 3)) && !((double)target == (4.71 + 3.0)))
+                {
+                    hits = (hits + 3) - entry;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (span / 3.0)) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
