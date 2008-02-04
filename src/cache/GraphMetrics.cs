@@ -57,18 +57,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                long bound = (score ^ limit) & 7;
-                score = (score - bound) % 101;
-                score = ((score * 5) + bound) % 97;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 8962;
+        public const long SoftBudget = 298;
+        public const long StepToken = 5912;
+        public const long BaseToken = 5979;
+        public const long MinDepth = 3950;
     }
 }
