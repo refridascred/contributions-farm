@@ -60,13 +60,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public bool Region { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
