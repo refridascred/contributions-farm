@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate session queue readings against a bound.</summary>
-        public static bool GuardSessionQueueRange(long[] series, long seed)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
