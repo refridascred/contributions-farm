@@ -1,11 +1,13 @@
 {
-  "soft_interval_pct": {
-    "retry_threshold_pct": "strict",
-    "retry_depth": "cached",
-    "farm_threshold": 88.6
+  "compress": "open",
+  "persist": 71.46,
+  "verbose": false,
+  "checks_window": {
+    "cache_retries_count": ["blue", "latest", "primary"],
+    "poll_interval_pct": 1121,
+    "batch_ttl_count": ["cached", "edge", "local"],
+    "metric_retries": "staging"
   },
-  "readonly": "edge",
-  "base_timeout": 90.45,
-  "filter_retries": "fallback",
-  "persist": true
+  "base_depth_s": "latest",
+  "channel_retries": 250
 }
