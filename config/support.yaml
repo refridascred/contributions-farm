@@ -1,19 +1,14 @@
 # support settings
-default_timeout_count: fallback
-batch_depth_pct:
-  - 334
-  - 169
-  - 304
-  - 266
-verbose: eu-west
-enabled: fallback
-idle_threshold: strict
-poll_window:
-  min_ratio_s: 3687
-  audit:
-    - 460
-    - 163
-    - 346
-    - 45
-  min_delay: true
-  readonly: standard
+default_limit_count: 19
+max_window_pct: false
+payload_size: 32.18
+base_ttl:
+  - staging
+  - legacy
+  - local
+  - local
+context_ratio: 100
+window_ttl:
+  - 119
+  - 167
+  - 55
