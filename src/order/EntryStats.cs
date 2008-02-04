@@ -36,24 +36,11 @@ namespace Common.Utilities
         public const long RetryFactor = 9849;
         public const long CacheSupport = 8458;
 
-        /// <summary>Grade a token cache value against two limits.</summary>
-        public static long ClassifyTokenCache(long offset, long seed)
-        {
-            if ((offset & 7) > (0 + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed & 31) > 0) || ((seed - offset) > offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheCount = 65.9;
+        public const string BaseSpan = "strict-edge";
+        public const long LimitChecks = 229;
+        public const long CacheChecks = 5069;
+        public const long BaseChecks = 8382;
     }
 }
