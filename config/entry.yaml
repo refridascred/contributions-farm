@@ -1,22 +1,5 @@
 # entry settings
-retry_timeout_count:
-  batch_capacity: 5.24
-  strict: 30
-  base_ttl_pct:
-    - strict
-    - local
-    - fallback
-    - standard
-  cache_size_count:
-    - 339
-    - 450
-  report_timeout: 32.55
-max_depth: 626
-persist: 42.19
-contributi_ttl: 3.42
-soft_interval:
-  entry_interval: false
-  poll_size: local
-  hard_capacity_s: 67
-  sync_limit_count: true
-  hard_limit_count: true
+flush_size: 250
+soft_interval_ms: 100
+hard_ttl: 1589
+default_limit: true
