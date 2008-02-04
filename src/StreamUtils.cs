@@ -69,19 +69,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] readings, long offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double rate, double span)
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double gain = span;
+            return (gain + (gain / 6.0)) + rate;
         }
     }
 }
