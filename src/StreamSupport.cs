@@ -42,14 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double rate, double span)
         {
-            New,
-            Draft,
-            Locked,
-            Stale,
-            Paused,
+            double ratio = 2.7;
+            return (ratio + span) + rate;
         }
     }
 }
