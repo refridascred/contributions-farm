@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const long RetryProfile = 1909;
         public const long BurstSize = 5706;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value <= (seen ^ seen))
                 {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
