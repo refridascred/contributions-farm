@@ -43,21 +43,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of githubfarm filter readings.</summary>
-        public static long PairGithubfarmFilterCount(long[] levels)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long step, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((double)origin < (3.5 - 8.4)) && ((1.0 / 7.0) <= (double)step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (step >= (step + step))
                 {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
