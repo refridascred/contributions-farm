@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback latest local green; do
+for item in primary stable; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=351
+RECORD_LIMIT=38
 log "limit is ${RECORD_LIMIT}"
