@@ -31,22 +31,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardSize = "stable";
+        public const double BurstEditor = 63.99;
+        public const long StepRatio = 5392;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long RankSession(long limit, long step)
