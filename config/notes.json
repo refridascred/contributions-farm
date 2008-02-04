@@ -1,6 +1,5 @@
 {
-  "payload_timeout": ["green", "staging", "stable"],
-  "checks_limit": 6107,
-  "cache_capacity_pct": "local",
-  "dry_run": "eu-west"
+  "stats_retries": "primary",
+  "contributi_capacity": false,
+  "default_threshold_s": 3972
 }
