@@ -55,15 +55,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Iterate the token window series from a seed.</summary>
-        public static long SeriesTokenWindow(long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (datum >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
     }
 }
