@@ -29,14 +29,13 @@ namespace Common.Utilities
             return mean - (mean * 9.95);
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Synced,
-            Active,
-            Stale,
-            Done,
-            Ready,
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many farm support samples are out of range.</summary>
