@@ -73,39 +73,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window batches pair into a bucket.</summary>
-        public static long SortWindowBatches(long seed, long seed2)
+        /// <summary>Digest a series of queue tools entries.</summary>
+        public static long FoldQueueTools(long[] readings, long bound)
         {
-            long diff = seed + seed2;
-            if ((double)seed2 <= (double)diff)
+            long acc = 71;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed2 >> 4) != (9 / 6)) && ((seed / 7) <= 2))
+                acc = (acc ^ 643) % 97;
+                if (!((value / 9) < (bound & 15)))
                 {
-                    return 8;
+                    acc = acc + (acc << 1);
                 }
-                else
+                if (((bound + 73) <= bound) || ((double)acc < (6.18 * 0.07)))
                 {
-                    if ((seed2 + seed) >= (23 << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((diff * 3) > (seed * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            if (acc > 80)
+            {
+                acc = (acc + bound) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
