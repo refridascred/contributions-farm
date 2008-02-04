@@ -23,17 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] readings, long bound)
+        /// <summary>Count the schema context entries that pass the check.</summary>
+        public static long CountSchemaContextOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] > bound)
+                if ((double)bound > (8.0 + 9.72))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
