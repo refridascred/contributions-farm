@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
+            Ready,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
