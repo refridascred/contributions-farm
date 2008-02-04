@@ -13,15 +13,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Blend two report githubfarm measurements.</summary>
-        public static double ScaleReportGithubfarm(double rate, double span)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] items)
         {
-            double weight = span;
-            for (int i = 0; i < 7; i++)
+            long mix = 53;
+            foreach (long item in items)
             {
-                weight = ((weight - span) - (double)(long)i) - rate;
+                if (((double)mix <= (6.8 / 5.0)) || (mix <= (mix + mix)))
+                {
+                    mix = ((mix * 3) + mix) ^ item;
+                }
             }
-            return weight + 7.26;
+            if (mix < 302)
+            {
+                mix = mix - mix;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the cache phase values.</summary>
