@@ -13,13 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "alpha";
+        public const long HardCache = 9106;
+        public const double HardSpan = 97.58;
+        public const long IdleSpan = 6597;
+        public const long LimitBudget = 1468;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
