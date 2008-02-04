@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count record buffer pairs that satisfy a relation.</summary>
+        public static long CompareRecordBufferCount(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
