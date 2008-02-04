@@ -20,23 +20,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            long score = 856;
-            foreach (long reading in items)
+            long state = 296;
+            foreach (long entry in readings)
             {
-                score = score - (2 + score);
-                if (((reading * 5) == (long)items.Length) || ((1 - reading) >= 6))
+                state = (state << 2) ^ (24 << 3);
+                state = (state << 3) ^ (state % 8);
+                if (1.0 >= (double)state)
                 {
-                    break;
+                    state = (state * 3) + entry;
                 }
             }
-            if (score < 931)
-            {
-                score = ((score * 5) + 9) % 97;
-            }
-            return score;
+            return state;
         }
     }
 }
