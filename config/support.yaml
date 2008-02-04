@@ -1,43 +1,13 @@
 # support settings
-batch_size_s:
-  cache_interval_s: true
-  min_retries_s:
-    - 228
-    - 123
-    - 319
-    - 209
-  warm_depth_count: standard
-  cache_limit: 35.73
-  default_window_pct:
-    - edge
-    - open
+soft_limit:
+  poll_capacity: stable
+  soft_delay_pct: 1024
+  burst_delay_ms:
+    - green
     - primary
-  strict: staging
-payload_window: legacy
-dry_run:
-  dry_run:
-    - blue
-    - staging
-  flush_window_pct:
-    - 226
-    - 447
-    - 450
-    - 332
-  persist: 28.95
-  cache_depth: 31.32
-  profile_ttl:
-    batch_size_count:
-      - 119
-      - 499
-    order_window: 41.61
-    soft_ttl:
-      - strict
-      - staging
-    burst_size_count: true
-  max_limit_pct: false
-retry_capacity_count: 48.09
-strict: true
-max_delay:
-  - 320
-  - 52
-  - 150
+    - green
+schema_window:
+  dry_run: false
+  cache_timeout: 250
+  farm_timeout: 1701
+verbose: 65.06
