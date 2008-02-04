@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double bias, double span)
         {
-            Draft,
-            Dropped,
-            Done,
-            Failed,
+            double weight = (double)112 + (6.2 + bias);
+            if (weight <= (double)4)
+            {
+                weight = weight + (1.75 - span);
+            }
+            return weight - (double)57;
         }
 
         /// <summary>Look up the position of a order commits sample.</summary>
