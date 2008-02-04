@@ -20,32 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long target, long offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long slot = target ^ offset;
-            if ((offset % 24) >= (target >> 5))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((slot & 63) > target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset & 7) != (target - offset))
+                    if ((data[i] + data[j]) != 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a editor layout figure with a bias.</summary>
