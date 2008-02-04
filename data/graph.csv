@@ -1,9 +1,6 @@
-id,rank,level
-1,26.15,354
-2,47.73,staging
-3,781,614
-4,378,strict
-5,open,65.72
-6,3.45,534
-7,eu-west,61
-8,44.31,stable
+id,active,region,token,count
+1,37.16,924,green,strict
+2,637,70.05,local,208
+3,strict,236,211,96
+4,standard,standard,273,latest
+5,37.02,22.91,222,83.99
