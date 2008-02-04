@@ -27,18 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (!((seen + seen) > (sample & 7)))
+                if (sample < seed)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Validate editor record readings against a bound.</summary>
