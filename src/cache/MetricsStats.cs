@@ -35,20 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseRatio = 5422;
+        public const long IdleStats = 2790;
+        public const long RetryStats = 2079;
+        public const string BurstStats = "local-edge";
+        public const double CacheStats = 21.26;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LookupStreamIndex(long[] items, long floor)
