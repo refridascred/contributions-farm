@@ -60,15 +60,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the layout githubfarm series from a seed.</summary>
-        public static long IterateLayoutGithubfarm(long floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
