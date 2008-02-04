@@ -58,19 +58,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            long state = 6;
-            foreach (long value in samples)
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state - (state / 2)) % 65521) ^ value;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            if (state > 24)
-            {
-                state = (state ^ (23 & 3)) % 4096;
-            }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
