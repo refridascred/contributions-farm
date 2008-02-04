@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a checks entry value against two limits.</summary>
-        public static long GradeChecksEntry(long step, long offset)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            if ((offset - offset) >= 886)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + (-4)) < (offset - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
