@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] values, long origin)
+        /// <summary>Classify a batches farm pair into a bucket.</summary>
+        public static long SortBatchesFarm(long target, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = target ^ offset;
+            if ((double)edge != (6.1 - 6.1))
             {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((offset / 9) <= (298 + edge))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target > (6.8 + 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many farm route samples are out of range.</summary>
