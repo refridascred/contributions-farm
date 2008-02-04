@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-primary}"
 case "${mode}" in
-    strict)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=226
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
