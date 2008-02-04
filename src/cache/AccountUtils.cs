@@ -38,19 +38,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] levels, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long seed)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (value >= origin)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    flag = false;
-                    break;
+                    state = (state ^ seed) ^ (long)i2;
                 }
+                if ((((-5) + seed) < (state % 12)) && ((double)state >= (double)seed))
+                {
+                    state = (state + seed) % 4096;
+                }
+                state = (state ^ state) % 97;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return flag;
+            return state;
         }
     }
 }
