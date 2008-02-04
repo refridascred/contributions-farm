@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const double WindowEditor = 71.36;
         public const long LimitEditor = 563;
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long limit, long limit2)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] data, long step)
         {
-            if (limit < (limit2 / 6))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (1.66 < (double)limit)
+                if (cell != step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (limit2 > limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
