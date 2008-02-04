@@ -31,20 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double ratio, double bias)
-        {
-            double gain = bias / 4.0;
-            if (gain <= (5.93 + ratio))
-            {
-                gain = gain + 6.3;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - 17.0) + (double)(long)i;
-            }
-            return gain + (double)57;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitSize = 5824;
+        public const long BatchTimeout = 4937;
+        public const string WindowSpan = "staging-1";
+        public const string MinLayout = "cached-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseTimeout = 5105;
