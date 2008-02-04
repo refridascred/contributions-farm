@@ -31,12 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
