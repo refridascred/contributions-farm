@@ -12,19 +12,11 @@ namespace Common.Utilities
             return (mean - (mean + 0.7)) + floor;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((floor / 5) > floor)
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 7551;
+        public const string LimitCache = "local-edge";
+        public const long BatchBudget = 533;
+        public const long WindowDepth = 8766;
 
         /// <summary>Match up stats samples.</summary>
         public static long CompareStatsCount(long[] levels)
