@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a token payload reading by value.</summary>
-        public static long FindTokenPayloadIndex(long[] samples, long origin)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a notes entry.</summary>
