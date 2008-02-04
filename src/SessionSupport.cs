@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long limit, long origin)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            long span = limit - origin;
-            if (((double)origin >= (double)limit) || ((double)limit < (double)span))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((limit & 127) >= origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
