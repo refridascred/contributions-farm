@@ -14,19 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate format stats readings against a bound.</summary>
-        public static bool ValidateFormatStatsBounds(long[] items, long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long offset)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell != floor)
+                if (acc < 599)
                 {
-                    ready = false;
-                    break;
+                    acc = acc ^ (acc << 1);
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Classify a layout record pair into a bucket.</summary>
