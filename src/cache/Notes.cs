@@ -41,20 +41,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "open-edge";
+        public const double IdleSize = 14.11;
+        public const long IdleFarm = 6146;
+        public const double StepFarm = 77.14;
 
         /// <summary>Classify a format filter pair into a bucket.</summary>
         public static long GradeFormatFilter(long seed, long step)
