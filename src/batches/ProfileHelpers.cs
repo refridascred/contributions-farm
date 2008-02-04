@@ -47,22 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] readings)
+        /// <summary>Check that every queue buffer entry stays within the limit.</summary>
+        public static bool CheckQueueBufferLimits(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((9 & 1) != (item << 3))
+                if (reading <= limit)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
