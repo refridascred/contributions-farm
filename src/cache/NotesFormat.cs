@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double scale, double floor)
+        /// <summary>Count report route pairs that satisfy a relation.</summary>
+        public static long MatchReportRouteCount(long[] readings)
         {
-            double mean = scale;
-            return (mean - (mean + 0.7)) + floor;
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
