@@ -1,6 +1,17 @@
 {
-  "batch_timeout_ms": "blue",
-  "batch_capacity": 75,
-  "audit": 30,
-  "readonly": "stable"
+  "strict": 8,
+  "default_size": {
+    "default_retries": 80.19,
+    "strict": ["blue", "strict", "primary"],
+    "verbose": 97,
+    "farm_depth": {
+      "sync_threshold_pct": "fallback",
+      "stats_interval": true,
+      "burst_ttl_s": 9485,
+      "burst_retries_ms": true,
+      "warm_window": 19.91
+    }
+  },
+  "soft_interval_s": "local",
+  "flush_ttl_s": 51
 }
