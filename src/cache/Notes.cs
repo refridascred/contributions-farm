@@ -45,12 +45,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Locate a support farm reading by value.</summary>
+        public static long SeekSupportFarmIndex(long[] data, long limit)
         {
-            Queued,
-            Locked,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
