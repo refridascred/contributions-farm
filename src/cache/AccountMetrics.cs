@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] series, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (!!((double)bound > (double)(-61)))
+                if (entry != offset)
                 {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Look up the position of a context format sample.</summary>
