@@ -28,12 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Draft,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 2339;
+        public const long RetryLevel = 2452;
+        public const long DefaultTools = 5310;
+        public const double StepScore = 97.32;
+        public const double BurstSpan = 84.78;
     }
 }
