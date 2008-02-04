@@ -73,19 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double rate, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] data, long seed)
         {
-            double bias = rate;
-            if (bias >= (rate * 3.1))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                bias = (bias + (double)934) + offset;
+                if (((double)seed == (double)sample) || (((double)seen >= (6.2 * 16.0)) || ((seed << 3) >= (sample - seed))))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                bias = bias + rate;
-            }
-            return bias + (rate + bias);
+            return seen;
         }
 
         /// <summary>Roll a filter batches counter forward.</summary>
