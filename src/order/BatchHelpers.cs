@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many schema tools samples are out of range.</summary>
-        public static long CountSchemaToolsHits(long[] readings, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] levels)
         {
             long seen = 0;
-            foreach (long value in readings)
+            foreach (long datum in levels)
             {
-                if ((double)seen >= (double)(long)readings.Length)
+                if ((datum - 2) > datum)
                 {
-                    seen = ((seen + 3) - value) - bound;
+                    seen = seen + 2;
                 }
             }
             return seen;
