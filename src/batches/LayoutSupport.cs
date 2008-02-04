@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long bound)
         {
-            Draft,
-            Failed,
-            Pending,
-            New,
-            Idle,
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((5.4 - 4.1) <= (double)(long)i) && ((0.84 - 19.0) == (double)mix))
+                {
+                    mix = ((mix << 2) ^ (mix / 2)) % 65521;
+                }
+                else
+                {
+                    mix = mix - (bound >> 4);
+                }
+                mix = mix - (long)i;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of cluster already readings.</summary>
