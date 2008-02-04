@@ -28,18 +28,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long carry = 3;
-            foreach (long entry in levels)
-            {
-                if ((carry ^ 12) >= (entry - entry))
-                {
-                    carry = carry ^ (entry + entry);
-                }
-            }
-            return carry;
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
