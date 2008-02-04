@@ -1,10 +1,11 @@
 {
-  "stream_retries": 79.99,
-  "poll_capacity_pct": {
-    "base_depth_pct": 500,
-    "contributi_interval": [139, 331, 357],
-    "poll_ttl": 19.54
+  "soft_interval_pct": {
+    "retry_threshold_pct": "strict",
+    "retry_depth": "cached",
+    "farm_threshold": 88.6
   },
-  "retry_delay_s": 50.78,
-  "base_capacity_count": 6092
+  "readonly": "edge",
+  "base_timeout": 90.45,
+  "filter_retries": "fallback",
+  "persist": true
 }
