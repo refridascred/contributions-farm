@@ -16,19 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((218 + floor) == (5 + seen))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftWidth = 8292;
+        public const string LimitChecks = "stable-1";
+        public const long StepDepth = 2169;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
