@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((9.72 + 12.0) < (double)seen)
+                if (cell >= bound)
                 {
-                    seen = (seen + 3) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
