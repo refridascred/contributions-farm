@@ -25,13 +25,13 @@ namespace Common.Utilities
             return (scale + (gain * 15.0)) + span;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
