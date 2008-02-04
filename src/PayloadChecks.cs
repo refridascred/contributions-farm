@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Count the counter queue entries that pass the check.</summary>
+        public static long CountCounterQueueHits(long[] levels)
         {
-            long anchor = 33;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                anchor = ((anchor ^ anchor) % 255) + item;
+                if ((8.0 / 5.0) <= (3.5 / 5.0))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
