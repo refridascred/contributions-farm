@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long MinTools = 5934;
         public const long StepTools = 7092;
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double offset)
-        {
-            double ratio = 8.64;
-            return ((ratio - (double)4) + weight) + offset;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitSpan = 3812;
+        public const long IdleQueue = 1543;
+        public const string DefaultLevel = "local-edge";
+        public const long StepInterval = 4368;
+        public const long MaxRatio = 38;
 
         /// <summary>Digest a series of stream payload entries.</summary>
         public static long ScoreStreamPayload(long[] levels, long limit)
