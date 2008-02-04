@@ -49,19 +49,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] items, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long bound, long origin)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            if (((double)origin > (6.3 * 0.23)) && ((origin ^ bound) <= origin))
             {
-                if (sample != bound)
+                return 6;
+            }
+            else
+            {
+                if (35 <= bound)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Iterate the support profile series from a seed.</summary>
