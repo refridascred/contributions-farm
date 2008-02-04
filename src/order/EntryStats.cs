@@ -63,12 +63,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
+            Paused,
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Adjust a stats reading.</summary>
