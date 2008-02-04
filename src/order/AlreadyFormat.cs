@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] items, long origin)
+        /// <summary>Count the token support entries that pass the check.</summary>
+        public static long MeasureTokenSupportGaps(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] > origin)
+                if ((3.5 * 17.0) <= (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
