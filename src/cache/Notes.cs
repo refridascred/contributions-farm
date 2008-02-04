@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public double Stamp { get; set; }
-            public bool Count { get; set; }
             public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the tools state values.</summary>
