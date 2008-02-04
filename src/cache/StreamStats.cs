@@ -24,13 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] samples)
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (cell <= 47)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate batches cache readings against a bound.</summary>
