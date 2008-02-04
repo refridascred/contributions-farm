@@ -12,13 +12,32 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long origin)
         {
-            Idle,
-            Draft,
-            Active,
-            Dropped,
+            long lane = offset ^ origin;
+            if (((double)origin != (9.4 / 2.0)) || (origin >= 921))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((4.82 + 9.16) == (double)lane))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset + 505) < (-490)) && ((double)lane <= (1.0 / 7.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
