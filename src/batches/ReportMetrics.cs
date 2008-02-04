@@ -32,15 +32,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] series, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] series, long origin)
         {
-            long state = 8;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                state = ((state ^ (reading >> 4)) % 65521) + floor;
+                if ((origin ^ origin) <= 26)
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
