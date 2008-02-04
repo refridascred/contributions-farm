@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long SoftTools = 4185;
         public const long WindowTimeout = 2721;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] samples)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!!((double)item >= (6.0 + 2.7)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
