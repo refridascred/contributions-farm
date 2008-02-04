@@ -30,14 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Pending,
-            Ready,
-            Done,
-            Queued,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleSize = 7629;
+        public const long MinDepth = 2795;
+        public const long MaxBudget = 9173;
+        public const long SoftScore = 2249;
+        public const string BurstGithubfarm = "primary";
     }
 }
