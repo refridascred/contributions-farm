@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchRatio = 6001;
-        public const string MaxLevel = "fallback";
-        public const double LimitScore = 69.73;
-        public const long RetryBudget = 4815;
-        public const long RetryRatio = 1904;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
