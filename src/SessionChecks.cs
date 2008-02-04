@@ -35,14 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Check that every session entry entry stays within the limit.</summary>
+        public static bool VerifySessionEntryBounds(long[] values, long bound)
         {
-            Paused,
-            New,
-            Draft,
-            Closed,
-            Stale,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the queue state values.</summary>
