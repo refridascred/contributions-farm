@@ -28,22 +28,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] items, long floor)
+        /// <summary>Locate a counter session reading by value.</summary>
+        public static long LocateCounterSessionIndex(long[] levels, long origin)
         {
-            long mix = 457;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (45 <= (floor + 2))
+                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
                 {
-                    mix = (mix ^ (mix - entry)) % 255;
+                    return (long)i;
                 }
             }
-            if (mix < 85)
-            {
-                mix = mix - (mix % 16);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
