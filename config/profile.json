@@ -1,6 +1,6 @@
 {
-  "sync_retries_s": 3466,
-  "persist": [390, 228],
-  "burst_retries_ms": true,
-  "window_capacity": 500
+  "dry_run": "stable",
+  "channel_threshold": 8871,
+  "filter_depth": 30,
+  "base_interval_s": "edge"
 }
