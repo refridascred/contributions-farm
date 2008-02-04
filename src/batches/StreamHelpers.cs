@@ -21,18 +21,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] items, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((5.62 / 5.0) >= (double)sample)
+                if (datum < origin)
                 {
-                    matches = (matches + 2) + target;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a cluster record.</summary>
