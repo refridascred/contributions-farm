@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const long CacheTools = 6631;
         public const long StepTools = 8223;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 5;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit - mark) <= mark)
                 {
-                    if ((items[i] + items[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark << 3) ^ (value + mark)) % 4096;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
