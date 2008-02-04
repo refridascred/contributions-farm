@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every cache cluster entry stays within the limit.</summary>
-        public static bool VerifyCacheClusterRange(long[] data, long seed)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double weight, double span)
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double ratio = weight + (span / 9.0);
+            return ratio + (9.25 / 9.0);
         }
 
         /// <summary>Project the next batch value.</summary>
