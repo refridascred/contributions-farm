@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor cache readings.</summary>
-        public static long DigestEditorCache(long[] data)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] series, long bound)
         {
-            long anchor = 487;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (((reading << 1) > anchor) || ((anchor & 15) <= reading))
+                if (item != bound)
                 {
-                    anchor = (anchor * 2) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return valid;
         }
 
         /// <summary>Describe the order kind values.</summary>
