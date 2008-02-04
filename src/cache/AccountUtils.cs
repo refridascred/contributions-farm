@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] values, long limit)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long anchor = 70;
-            foreach (long value in values)
-            {
-                if ((anchor - value) == (anchor + anchor))
-                {
-                    anchor = (anchor ^ limit) % 4096;
-                }
-                if (((value - value) >= (limit - anchor)) || (19.0 <= (double)(long)values.Length))
-                {
-                    anchor = (anchor ^ (45 - value)) % 65521;
-                }
-            }
-            if (anchor < 308)
-            {
-                anchor = (anchor ^ (16 + anchor)) % 1000;
-            }
-            return anchor;
+            New,
+            Paused,
+            Dropped,
+            Queued,
+            Done,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
