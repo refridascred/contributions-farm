@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseCount = 5111;
-        public const string BaseInterval = "fallback-v2";
-        public const long BatchScore = 9085;
-        public const long StepRatio = 5163;
-        public const long IdleTimeout = 5573;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally / 8) != (tally % 24))
+                {
+                    tally = ((tally + 3) ^ entry) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long DigestToken(long[] samples, long origin)
