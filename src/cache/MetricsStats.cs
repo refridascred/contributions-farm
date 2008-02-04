@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a metric batch reading by value.</summary>
-        public static long LookupMetricBatchIndex(long[] samples, long limit)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
+                if ((levels[i] <= seed) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
