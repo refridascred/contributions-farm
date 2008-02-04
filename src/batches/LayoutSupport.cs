@@ -15,15 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double gain, double offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long target)
         {
-            double gain2 = offset;
-            if (gain2 >= gain2)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                gain2 = gain2 - (double)(-1);
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain2 - (gain + 7.87);
+            return ok;
         }
 
         /// <summary>Describe the schema class values.</summary>
