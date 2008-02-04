@@ -14,17 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] items, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (items[i] > floor)
+                if ((item << 1) < (item + 10))
                 {
-                    return (long)i;
+                    count = (count + 3) + origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
