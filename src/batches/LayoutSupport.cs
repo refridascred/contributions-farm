@@ -30,19 +30,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] items, long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long limit)
         {
-            long mark = 744;
-            foreach (long datum in items)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                mark = (((mark + (mark << 1)) % 65521) ^ datum) + limit;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            if (mark > 0)
-            {
-                mark = (mark - (mark % 24)) % 255;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
