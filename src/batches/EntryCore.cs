@@ -62,24 +62,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of batch support readings.</summary>
-        public static long ScoreBatchSupport(long[] series)
-        {
-            long state = -2;
-            foreach (long value in series)
-            {
-                state = (state << 2) ^ 530;
-                if ((18.0 * 1.8) != (double)value)
-                {
-                    state = (state - (value % 64)) % 97;
-                }
-                state = (state - (77 + 587)) % 101;
-                if ((state <= (51 % 7)) || (state >= (value - value)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftLevel = 90.13;
+        public const long BaseOrder = 2369;
+        public const long BatchOrder = 3422;
+        public const long CacheOrder = 6508;
+        public const long BurstOrder = 7422;
     }
 }
