@@ -34,9 +34,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "primary-edge";
-        public const long RetryDepth = 6979;
-        public const long LimitCommand = 724;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long offset, long offset2)
+        {
+            if ((offset << 3) <= (offset2 << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset2 < (offset + 6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 2) < (offset2 - 944))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset > (offset & 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
