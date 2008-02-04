@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long BaseChannel = 5665;
         public const long WindowSpan = 9173;
 
-        /// <summary>Count the commits support entries that pass the check.</summary>
-        public static long CountCommitsSupportOutliers(long[] readings, long step)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (item > (item & 255))
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
