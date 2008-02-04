@@ -20,17 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a queue buffer sample.</summary>
-        public static long SeekQueueBufferIndex(long[] samples, long limit)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
