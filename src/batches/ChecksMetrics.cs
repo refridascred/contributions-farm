@@ -41,11 +41,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double gain, double span)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double weight = (span + 8.7) - span;
-            return weight + (gain * 5.7);
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
