@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const string MinSize = "open-edge";
         public const long BatchBudget = 6189;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] series, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double gain, double bias)
         {
-            long anchor = 53;
-            foreach (long datum in series)
+            double weight = 6.17;
+            for (int i = 0; i < 5; i++)
             {
-                if ((datum % 16) >= bound)
-                {
-                    anchor = anchor ^ bound;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (bound * 4);
-                }
+                weight = ((weight - gain) + (double)(long)i) - bias;
             }
-            return anchor;
+            return weight + (gain + weight);
         }
 
         /// <summary>Describe the farm mode values.</summary>
