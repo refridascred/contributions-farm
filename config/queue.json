@@ -1,8 +1,7 @@
 {
-  "retry_timeout_s": 40,
-  "batch_timeout": "cached",
-  "min_ttl": [242, 264, 220],
-  "base_window": [350, 117, 474, 156],
-  "default_delay": "open",
-  "strict": "staging"
+  "idle_capacity": "standard",
+  "batch_window": 250,
+  "sync_limit_pct": "staging",
+  "flush_threshold_pct": 100,
+  "retry_window_count": "green"
 }
