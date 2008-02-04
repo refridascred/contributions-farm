@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] data, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (((5.4 - 4.1) <= (double)(long)i) && ((0.84 - 19.0) == (double)mix))
+                if (reading != origin)
                 {
-                    mix = ((mix << 2) ^ (mix / 2)) % 65521;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mix = mix - (bound >> 4);
-                }
-                mix = mix - (long)i;
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Fold a list of cluster already readings.</summary>
