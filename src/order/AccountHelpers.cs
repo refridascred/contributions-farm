@@ -47,18 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format token samples.</summary>
-        public static long DigestFormatToken(long[] samples)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long limit)
         {
-            long acc = 1;
-            foreach (long value in samples)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((acc >> 5) >= acc))
+                if (2 < (mark + mark))
                 {
-                    acc = (acc << 3) ^ (value % 24);
+                    mark = ((mark * 2) + (long)i) % 101;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
