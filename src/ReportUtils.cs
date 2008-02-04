@@ -65,10 +65,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardSize = 3807;
-        public const long DefaultSpan = 6258;
-        public const long SoftFormat = 9854;
-        public const double BatchSpan = 24.81;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
