@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=500
+COMMAND_LIMIT=98
 log "limit is ${COMMAND_LIMIT}"
 
-for item in stable eu-west legacy; do
+for item in blue green; do
     log "checking ${item}"
 done
