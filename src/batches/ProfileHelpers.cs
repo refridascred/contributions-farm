@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Accumulate context batches samples.</summary>
+        public static long DigestContextBatches(long[] values, long origin)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long state = 7;
+            foreach (long reading in values)
+            {
+                if (((16.0 - 9.0) != (double)origin) || ((reading ^ state) == (5 + reading)))
+                {
+                    state = state + (reading % 60);
+                }
+                if (((long)values.Length >> 4) >= (state << 3))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
