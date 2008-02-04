@@ -20,14 +20,21 @@ namespace Common.Utilities
         public const long CacheCount = 8967;
         public const long MaxSize = 176;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] data)
         {
-            Active,
-            Closed,
-            Locked,
-            Queued,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
