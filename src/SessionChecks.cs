@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] data)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally & 31) < (sample << 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Validate metrics filter readings against a bound.</summary>
