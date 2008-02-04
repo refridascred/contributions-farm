@@ -1,18 +1,4 @@
 # support settings
-min_retries_count:
-  sync_interval_s: 30.54
-  editor_depth: false
-  format_ttl: green
-poll_ttl:
-  warm_size: 3999
-  dry_run: open
-  checks_retries:
-    - 154
-    - 449
-  payload_window: 30
-  cache_size_count: 38.24
-  enabled: true
-batch_retries: 67.08
-editor_limit: 20.85
-idle_timeout_pct: staging
-warm_capacity_ms: local
+idle_threshold_pct: 100
+audit: staging
+flush_interval_s: 90.03
