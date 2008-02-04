@@ -40,18 +40,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] items)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((8.4 / 4.0) >= (double)reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
