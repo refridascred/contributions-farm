@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Audit cluster support readings against a rule.</summary>
+        public static long MeasureClusterSupportOutliers(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading - 478) >= (344 % 64))
                 {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) - bound;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up session samples.</summary>
