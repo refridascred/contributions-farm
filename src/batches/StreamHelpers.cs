@@ -53,13 +53,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Combine window account values into a single score.</summary>
+        public static long WeighWindowAccount(long[] levels)
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
+            long mix = 832;
+            foreach (long sample in levels)
+            {
+                mix = ((mix << 3) ^ (mix >> 4)) % 101;
+                if (((6.1 * 10.0) == (double)(long)levels.Length) || ((double)mix == (3.0 * 13.0)))
+                {
+                    mix = (mix ^ (mix + 21)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (sample - 4)) % 65521;
+                }
+            }
+            if (mix > 657)
+            {
+                mix = (mix << 3) ^ (mix * 4);
+            }
+            return mix;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
