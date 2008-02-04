@@ -27,11 +27,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTools = 33.63;
-        public const double DefaultFactor = 79.33;
-        public const string MinFactor = "latest-edge";
-        public const long MaxTools = 1063;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Stale,
+            Dropped,
+            Pending,
+            Locked,
+            New,
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
