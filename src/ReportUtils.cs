@@ -13,13 +13,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Combine tools batch values into a single score.</summary>
+        public static long TotalToolsBatch(long[] samples)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long result = 961;
+            foreach (long value in samples)
+            {
+                if ((value - result) <= (result >> 3))
+                {
+                    result = result ^ (value ^ 3);
+                }
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of metric context readings.</summary>
