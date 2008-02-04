@@ -56,12 +56,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 77.46;
-        public const double BatchTools = 30.23;
-        public const double CacheTools = 79.85;
-        public const long IdleTools = 6382;
-        public const double IdleLevel = 52.67;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!!((sample + offset) >= (490 * 4)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long RollCache(long origin)
