@@ -20,15 +20,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings, long limit)
         {
-            long anchor = 60;
-            foreach (long item in samples)
+            long acc = 78;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor ^ (anchor % 10)) % 255) ^ item;
+                if ((limit / 6) <= limit)
+                {
+                    acc = (acc - (209 - limit)) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 3) + (acc - cell);
+                }
             }
-            return anchor % 97;
+            if (acc < 951)
+            {
+                acc = (acc << 2) ^ 203;
+            }
+            return acc;
         }
 
         /// <summary>Rank metric commits input into a small class.</summary>
