@@ -71,13 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue buffer entry stays within the limit.</summary>
-        public static bool CheckQueueBufferLimits(long[] readings, long limit)
+        /// <summary>Validate filter metrics readings against a bound.</summary>
+        public static bool ValidateFilterMetricsRange(long[] levels, long floor)
         {
             bool stale = true;
-            foreach (long reading in readings)
+            foreach (long cell in levels)
             {
-                if (reading <= limit)
+                if (cell < floor)
                 {
                     stale = false;
                     break;
