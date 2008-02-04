@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double rate, double floor)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            double gain = floor;
+            if (gain >= (gain + gain))
+            {
+                gain = (gain - (4.6 - 4.0)) + rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (double)(-30);
         }
 
         /// <summary>Hold a notes entry.</summary>
