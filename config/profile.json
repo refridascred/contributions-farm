@@ -1,11 +1,11 @@
 {
-  "queue_retries": 100,
-  "audit": 60,
-  "dry_run": {
-    "enabled": [35, 62],
-    "sync_interval": "primary",
-    "flush_depth_ms": 25.28
-  },
-  "base_threshold_s": 250,
-  "checks_interval": "stable"
+  "counter_window": false,
+  "entry_depth": 6.63,
+  "retry_timeout_count": "strict",
+  "warm_timeout": {
+    "burst_ratio_count": "latest",
+    "compress": false,
+    "batches_ratio": false,
+    "persist": 29.62
+  }
 }
