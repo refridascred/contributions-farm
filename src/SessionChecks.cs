@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long origin, long seed)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            if (((-717) << 2) < (seed + 47))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed > origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
