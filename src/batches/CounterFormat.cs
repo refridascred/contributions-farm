@@ -24,12 +24,12 @@ namespace Common.Utilities
             return drift + (double)26;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] levels, long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] > origin) && ((levels[i] % 5) != 0))
+                if (samples[i] <= offset)
                 {
                     return (long)i;
                 }
