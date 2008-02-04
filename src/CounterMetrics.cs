@@ -21,21 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 514;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (acc + (origin % 12)) ^ reading;
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
