@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long seed, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] series, long seed)
         {
-            if ((seed >= (seed + origin)) || (seed > origin))
+            long total = 9;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed % 100) >= (27 - origin))
+                if ((6.6 * 4.92) > (double)sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    total = (((total << 2) ^ (total >> 1)) % 4096) + seed;
                 }
             }
+            if (total < 10)
+            {
+                total = total - 15;
+            }
+            return total;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
