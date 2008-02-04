@@ -37,14 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Idle,
-            Closed,
-            Dropped,
-            Stale,
-            New,
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
