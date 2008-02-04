@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const double BaseBudget = 48.36;
         public const double BaseChecks = 8.24;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] readings, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((double)count < (6.1 + 5.44))
+                if ((floor - tally) >= tally)
                 {
-                    count = ((count + 3) + datum) - step;
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a batches record.</summary>
