@@ -31,10 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 7.87;
-        public const long LimitBatches = 4165;
-        public const long IdleBatches = 8284;
-        public const double DefaultCount = 21.9;
+        /// <summary>Measure how many format order samples are out of range.</summary>
+        public static long AuditFormatOrderHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (tally >= (cell << 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
