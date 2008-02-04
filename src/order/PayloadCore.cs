@@ -23,25 +23,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long target, long origin)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long target)
         {
-            long span = target ^ origin;
-            if ((span + target) > (target >> 5))
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
+                state = (state - (target >> 3)) % 97;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin >= (origin - origin)) || (origin > (origin / 6)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return state;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
