@@ -1,11 +1,13 @@
 {
-  "min_threshold_pct": true,
-  "format_delay": ["fallback", "primary", "blue"],
-  "enabled": {
-    "min_ttl_ms": 93.74,
-    "audit": [366, 386],
-    "strict": 28.05,
-    "burst_capacity_pct": "legacy",
-    "compress": false
-  }
+  "soft_capacity_pct": 77.94,
+  "sync_interval": ["green", "cached"],
+  "cache_threshold_s": "primary",
+  "hard_delay": 63.1,
+  "audit": {
+    "enabled": 500,
+    "editor_window": true,
+    "cache_interval_pct": "stable",
+    "default_interval_ms": false
+  },
+  "stream_timeout": "edge"
 }
