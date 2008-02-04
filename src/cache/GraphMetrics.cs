@@ -27,11 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardDepth = "legacy-v2";
-        public const double MaxCommits = 8.36;
-        public const double LimitCommits = 80.11;
-        public const long IdleRatio = 4463;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 2334;
+        public const long HardQueue = 3589;
+        public const long BaseCount = 6000;
+        public const long RetryFactor = 8801;
+        public const long HardCount = 828;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsRange(long[] samples, long step)
