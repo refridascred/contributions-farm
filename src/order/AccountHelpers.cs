@@ -35,10 +35,14 @@ namespace Common.Utilities
         public const string SoftLayout = "local-1";
         public const long HardInterval = 1554;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "cached-1";
-        public const double LimitInterval = 64.62;
-        public const string SoftAlready = "primary-edge";
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public bool Count { get; set; }
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long SoftScore = 2633;
