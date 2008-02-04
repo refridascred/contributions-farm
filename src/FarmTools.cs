@@ -14,23 +14,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double gain, double offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] series, long seed)
         {
-            double weight = (double)(96 ^ 2);
-            if (weight > (double)4)
+            bool valid = true;
+            foreach (long item in series)
             {
-                weight = ((weight + weight) - gain) - offset;
+                if (item <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (weight * 2.0)) + (double)(long)i;
-            }
-            return weight - 7.73;
+            return valid;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
