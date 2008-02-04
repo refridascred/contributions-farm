@@ -1,13 +1,8 @@
 {
-  "burst_window_pct": "primary",
-  "poll_delay_s": [221, 206, 487],
-  "readonly": {
-    "persist": "latest",
-    "dry_run": {
-      "retry_interval": 20.48,
-      "base_capacity": "blue",
-      "retry_depth": [83, 372, 16]
-    },
-    "verbose": 12.69
-  }
+  "cache_threshold_ms": false,
+  "order_size": true,
+  "hard_retries_count": 60.04,
+  "checks_depth": "strict",
+  "soft_depth_s": true,
+  "hard_ratio": 28.6
 }
