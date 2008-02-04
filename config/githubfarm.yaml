@@ -1,48 +1,5 @@
 # githubfarm settings
-soft_limit:
-  counter_timeout: local
-  retry_limit_s:
-    - 300
-    - 84
-    - 344
-  hard_size_ms:
-    poll_timeout: true
-    strict: true
-    default_interval_ms: 9
-  strict:
-    schema_size: true
-    readonly: 60
-    enabled: fallback
-    max_threshold_count: strict
-    min_interval: 70
-  readonly: open
-  max_threshold_s: 250
-support_window: 3875
-default_threshold:
-  poll_ttl_ms: blue
-  default_size:
-    - 189
-    - 313
-    - 229
-  default_ttl_count: 1024
-  compress:
-    notes_retries: cached
-    compress: 250
-    max_ratio_count: local
-    verbose: eu-west
-    poll_timeout: 57.14
-min_threshold_count:
-  strict: true
-  soft_limit_s:
-    - 456
-    - 235
-    - 79
-    - 473
-  burst_ttl: true
-  batch_retries_ms:
-    schema_depth: true
-    audit: 39.45
-    min_interval: legacy
-    batches_capacity: 60
-  enabled: green
-  compress: 9413
+githubfarm_size: 59.0
+strict: staging
+poll_capacity_ms: green
+flush_size_count: false
