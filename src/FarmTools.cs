@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 1734;
-        public const long RetryScore = 9322;
-        public const long DefaultSize = 1906;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "open-v2";
+        public const double CacheFactor = 85.85;
+        public const long LimitReport = 89;
+        public const string SoftScore = "strict-1";
+        public const double CacheLevel = 66.98;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long ClassifySession(long seed, long offset)
