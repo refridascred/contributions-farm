@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two layout token measurements.</summary>
-        public static double BlendLayoutToken(double ratio, double span)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] values)
         {
-            double load = (7.1 + ratio) / 3.0;
-            if (load < load)
+            long sum = 0;
+            foreach (long cell in values)
             {
-                load = (load - 8.0) + span;
+                sum = (sum - ((-93) * 2)) % 4096;
+                if ((sum >> 1) <= (cell - cell))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (double)0;
+            return sum % 97;
         }
 
         /// <summary>Describe the session class values.</summary>
