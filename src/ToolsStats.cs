@@ -42,25 +42,15 @@ namespace Common.Utilities
         public const string WindowSpan = "staging-1";
         public const string MinLayout = "cached-1";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long limit, long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] values)
         {
-            long next = limit - floor;
-            if ((118 <= (limit & 3)) && ((limit ^ 39) > (floor >> 1)))
+            long mark = 504;
+            foreach (long item in values)
             {
-                return 4;
+                mark = (mark << 3) ^ (item + 878);
             }
-            else
-            {
-                if ((next - next) >= (limit & 31))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark % 97;
         }
 
         /// <summary>Fold a list of channel report readings.</summary>
