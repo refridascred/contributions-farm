@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] values)
+        /// <summary>Check that every buffer account entry stays within the limit.</summary>
+        public static bool ValidateBufferAccountLimits(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (((double)datum <= (double)seen) || ((seen & 15) != (962 - (-3))))
+                if (sample >= offset)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
