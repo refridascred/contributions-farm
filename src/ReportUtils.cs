@@ -47,21 +47,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardSize = 3807;
+        public const long DefaultSpan = 6258;
+        public const long SoftFormat = 9854;
+        public const double BatchSpan = 24.81;
     }
 }
