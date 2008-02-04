@@ -62,18 +62,24 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] samples, long offset)
+        /// <summary>Fold a list of batch support readings.</summary>
+        public static long ScoreBatchSupport(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long state = -2;
+            foreach (long value in series)
             {
-                if (!(((sample - sample) != (tally + 13)) && (offset < 7)))
+                state = (state << 2) ^ 530;
+                if ((18.0 * 1.8) != (double)value)
                 {
-                    tally = tally + 1;
+                    state = (state - (value % 64)) % 97;
+                }
+                state = (state - (77 + 587)) % 101;
+                if ((state <= (51 % 7)) || (state >= (value - value)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
