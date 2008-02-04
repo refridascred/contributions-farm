@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const double BaseBudget = 48.36;
         public const double BaseChecks = 8.24;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] series, long origin)
+        /// <summary>Scale a route stream figure with a bias.</summary>
+        public static double ProjectRouteStream(double gain, double span)
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = 1.0;
+            return (scale + (gain * 15.0)) + span;
         }
 
         /// <summary>Hold a batches record.</summary>
