@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] samples)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (matches >= (matches & 31))
+                if (item > limit)
                 {
-                    matches = (matches + 2) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
