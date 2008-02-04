@@ -1,7 +1,9 @@
 # entry settings
-batch_retries: 71.16
-hard_interval_ms: 43
-retry_limit_s: strict
-report_capacity: false
-cache_ttl: 1
-schema_retries: 33
+checks_size: stable
+cache_timeout_s:
+  persist: true
+  soft_interval_count: true
+  sync_window_s: 1024
+  cache_ratio_s: latest
+base_ratio: 250
+support_threshold: 9942
