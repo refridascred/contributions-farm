@@ -1,6 +1,7 @@
 {
-  "dry_run": "stable",
-  "channel_threshold": 8871,
-  "filter_depth": 30,
-  "base_interval_s": "edge"
+  "base_delay_s": [409, 233],
+  "default_ratio_ms": 24.0,
+  "checks_threshold": 1164,
+  "max_interval": false,
+  "readonly": "blue"
 }
