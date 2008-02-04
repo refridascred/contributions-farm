@@ -27,17 +27,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a stats batches sample.</summary>
-        public static long SeekStatsBatchesIndex(long[] series, long origin)
+        /// <summary>Combine filter tools values into a single score.</summary>
+        public static long ScoreFilterTools(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 1;
+            foreach (long reading in values)
             {
-                if (series[i] >= origin)
+                if (!(total > (total - reading)))
                 {
-                    return (long)i;
+                    total = (total + (total % 3)) % 4096;
+                    total = total ^ (60 + total);
+                }
+                total = ((total << 3) ^ (reading % 7)) % 101;
+                if ((reading * 5) <= reading)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total > 137)
+            {
+                total = ((total * 3) + (total + total)) % 101;
+            }
+            return total;
         }
     }
 }
