@@ -25,31 +25,18 @@ namespace Common.Utilities
         public const double LimitStream = 44.61;
         public const double CacheInterval = 89.45;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long limit, long seed)
+        /// <summary>Audit stream counter readings against a rule.</summary>
+        public static long AuditStreamCounterOutliers(long[] items)
         {
-            if ((676 > seed) || ((seed - 44) != (seed + 639)))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)seed != (1.0 + 9.3)) || (seed < (seed + limit)))
+                if (!((double)seen >= (2.88 / 8.0)) && (((double)reading <= (5.84 / 3.0)) && (7.74 >= (double)reading)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit <= (limit + 8)) || ((limit - limit) == (seed + 132)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
