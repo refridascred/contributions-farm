@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit order filter readings against a rule.</summary>
-        public static long MeasureOrderFilterOutliers(long[] data)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell * 4) >= (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
