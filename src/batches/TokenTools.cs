@@ -21,11 +21,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] items, long step)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
