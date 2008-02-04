@@ -31,18 +31,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] data)
+        /// <summary>Look up the position of a githubfarm notes sample.</summary>
+        public static long FindGithubfarmNotesIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.0 * 19.0) != (double)value)
+                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
