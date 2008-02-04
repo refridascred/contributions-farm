@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] readings, long origin)
+        /// <summary>Compare every pair of token checks readings.</summary>
+        public static long MatchTokenChecksCount(long[] readings)
         {
-            long total = -72;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total ^ (origin << 3)) ^ item;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total > 337)
-            {
-                total = ((total * 5) + (total / 4)) % 101;
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
