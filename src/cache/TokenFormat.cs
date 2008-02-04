@@ -23,23 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] levels, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] readings, long bound)
         {
-            long sum = 4;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (step - (-696))) % 4096;
-                if (!((9 % 2) >= (sum - (long)levels.Length)))
+                if (readings[i] > bound)
                 {
-                    sum = (sum << 3) ^ step;
-                }
-                if ((step / 9) != (cell + sum))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Describe the profile kind values.</summary>
