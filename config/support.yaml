@@ -1,5 +1,8 @@
 # support settings
-metrics_size: green
-poll_threshold_s: 100
-hard_limit: staging
-max_size_s: cached
+enabled: 40.16
+hard_retries_pct: false
+min_retries: 250
+cache_ratio:
+  - 442
+  - 203
+compress: 100
