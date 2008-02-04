@@ -1,6 +1,13 @@
 {
-  "persist": false,
-  "metrics_window": ["green", "open"],
-  "retry_size": 40.61,
-  "enabled": 14.1
+  "soft_limit_ms": {
+    "warm_interval": "standard",
+    "cache_threshold": 92.7,
+    "batch_ttl_ms": false,
+    "soft_threshold_s": "staging",
+    "filter_window": true
+  },
+  "compress": ["standard", "open"],
+  "hard_size": 86.51,
+  "default_ttl_s": 60,
+  "poll_depth": [252, 345]
 }
