@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            Pending,
+            Closed,
+            Queued,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
