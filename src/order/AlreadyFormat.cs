@@ -55,21 +55,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Rank support cache input into a small class.</summary>
+        public static long GradeSupportCache(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = bound ^ step;
+            if (7 <= (delta + step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((delta & 255) != (4 + bound)))
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
