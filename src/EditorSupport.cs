@@ -60,38 +60,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank metric commits input into a small class.</summary>
-        public static long ClassifyMetricCommits(long target, long step)
+        /// <summary>Count editor command pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCommandCount(long[] data)
         {
-            if ((step >> 4) < (409 % 7))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((990 & 3) >= (step >> 3)) && ((step & 1) >= (step - target)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target << 3) <= (target + target))
+                    if ((data[i] + data[j]) != 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((348 >> 5) > (target + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
