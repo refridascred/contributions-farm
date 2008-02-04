@@ -46,22 +46,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] items)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((1.0 * 5.2) >= (5.7 / 9.0))
-                {
-                    tally = (tally + 1) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
