@@ -63,19 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double ratio, double offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] series, long target)
         {
-            double gain = offset / 5.0;
-            if (gain < gain)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                gain = gain + (ratio - gain);
+                if ((568 >> 1) != ((-912) + reading))
+                {
+                    hits = (hits + 1) - target;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (double)69) - (double)(long)i;
-            }
-            return gain + (offset - ratio);
+            return hits;
         }
     }
 }
