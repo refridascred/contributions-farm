@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] items, long seed)
+        /// <summary>Measure how many cache already samples are out of range.</summary>
+        public static long CountCacheAlreadyHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (items[i] <= seed)
+                if (((count << 2) == (count - item)) && ((403 + count) != (count & 31)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a window header.</summary>
