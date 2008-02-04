@@ -1,6 +1,15 @@
 # githubfarm settings
-enabled: staging
-max_ttl_s: false
-poll_window_count: green
-verbose: 500
-batch_threshold_ms: 421
+default_capacity:
+  batch_size_s: cached
+  flush_timeout: 91.29
+  verbose: edge
+  idle_threshold_s:
+    - 406
+    - 321
+  sync_threshold_count: open
+enabled: 89.31
+persist:
+  - 187
+  - 337
+batches_timeout: latest
+default_threshold_pct: true
