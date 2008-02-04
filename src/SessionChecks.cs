@@ -34,19 +34,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate cluster context readings against a bound.</summary>
-        public static bool GuardClusterContextLimits(long[] levels, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (datum >= seed)
+                if ((matches - matches) <= (entry * 3))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
