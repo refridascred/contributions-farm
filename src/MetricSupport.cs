@@ -33,19 +33,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] data, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] items)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long score = 856;
+            foreach (long reading in items)
             {
-                if (value >= target)
+                score = score - (2 + score);
+                if (((reading * 5) == (long)items.Length) || ((1 - reading) >= 6))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (score < 931)
+            {
+                score = ((score * 5) + 9) % 97;
+            }
+            return score;
         }
     }
 }
