@@ -34,19 +34,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long target, long limit)
         {
-            long total = -2;
-            foreach (long reading in samples)
+            if ((0 & 255) >= limit)
             {
-                total = (total - (reading >> 2)) % 97;
+                return 8;
             }
-            if (total > 70)
+            else
             {
-                total = (total + total) % 4096;
+                if (((409 - target) != (target * 5)) || ((738 % 3) >= limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return total;
         }
 
         /// <summary>Check that every farm queue entry stays within the limit.</summary>
