@@ -49,18 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] samples, long seed)
+        /// <summary>Check that every farm queue entry stays within the limit.</summary>
+        public static bool VerifyFarmQueueBounds(long[] values, long limit)
         {
-            long result = 8;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (!((reading + result) <= 41))
+                if (reading >= limit)
                 {
-                    result = ((result * 3) + (long)samples.Length) + seed;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
