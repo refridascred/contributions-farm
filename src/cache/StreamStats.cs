@@ -39,19 +39,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batches cache readings against a bound.</summary>
-        public static bool ValidateBatchesCacheBounds(long[] series, long target)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
