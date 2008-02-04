@@ -1,6 +1,10 @@
 {
-  "hard_size_pct": 30,
-  "hard_size_count": true,
-  "poll_window_ms": 67,
-  "max_interval_pct": "legacy"
+  "audit": false,
+  "report_ratio": 46.47,
+  "min_interval_ms": {
+    "format_threshold": 8,
+    "account_depth": "standard",
+    "default_retries": 65.45,
+    "compress": true
+  }
 }
