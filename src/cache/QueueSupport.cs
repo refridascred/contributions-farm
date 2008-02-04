@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate layout buffer readings against a bound.</summary>
+        public static bool ValidateLayoutBufferLimits(long[] readings, long floor)
         {
-            Closed,
-            Paused,
-            Stale,
-            Idle,
-            Retry,
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next batch value.</summary>
