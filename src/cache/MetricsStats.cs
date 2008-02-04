@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const string BurstStats = "local-edge";
         public const double CacheStats = 21.26;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long target)
+        /// <summary>Audit window stats readings against a rule.</summary>
+        public static long MeasureWindowStatsGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (item <= target)
+                if (((long)values.Length >> 5) > (seen / 7))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Derive the next command metrics value from a seed.</summary>
