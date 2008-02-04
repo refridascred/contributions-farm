@@ -43,17 +43,13 @@ namespace Common.Utilities
         public const long MinRecord = 9891;
         public const long MaxRecord = 6945;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] series, long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Stale,
+            Closed,
+            Locked,
         }
     }
 }
