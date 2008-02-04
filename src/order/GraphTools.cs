@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultInterval = "stable-1";
-        public const long DefaultStream = 3238;
-        public const double StepStream = 97.55;
-        public const string WindowLevel = "local-edge";
+        /// <summary>Audit order filter readings against a rule.</summary>
+        public static long MeasureOrderFilterOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((cell * 4) >= (hits + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetrySpan = 1862;
