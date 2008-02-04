@@ -42,11 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double rate, double span)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double ratio = 2.7;
-            return (ratio + span) + rate;
+            Draft,
+            Queued,
+            Retry,
         }
     }
 }
