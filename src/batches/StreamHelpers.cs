@@ -62,21 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up already batch samples.</summary>
-        public static long MatchAlreadyBatchCount(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((matches << 3) > (matches + 371)) || (193 > (entry ^ matches)))
                 {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
