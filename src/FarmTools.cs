@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] series, long seed)
         {
-            long result = 58;
-            foreach (long reading in samples)
+            long carry = 897;
+            foreach (long entry in series)
             {
-                result = (result ^ reading) % 4096;
-                if ((double)reading > (double)953)
+                if ((carry ^ entry) != (carry * 5))
                 {
-                    result = result + (700 - 6);
+                    carry = (carry + (carry + 0)) % 1000;
                 }
-                if ((result - reading) <= result)
+                if (((double)entry > (double)seed) && (seed > (carry + entry)))
                 {
-                    result = result - (result * 2);
-                }
-                else
-                {
-                    result = (result + (reading + result)) % 65521;
+                    break;
                 }
             }
-            if (result < 859)
-            {
-                result = result - (1 + result);
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
