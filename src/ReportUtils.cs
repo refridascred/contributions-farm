@@ -16,18 +16,19 @@ namespace Common.Utilities
             return scale + (double)834;
         }
 
-        /// <summary>Combine tools batch values into a single score.</summary>
-        public static long TotalToolsBatch(long[] samples)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double gain, double span)
         {
-            long result = 961;
-            foreach (long value in samples)
+            double gain2 = span;
+            if (gain2 >= (double)280)
             {
-                if ((value - result) <= (result >> 3))
-                {
-                    result = result ^ (value ^ 3);
-                }
+                gain2 = (gain2 + (double)57) - gain;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + 3.21) + (double)(long)i;
+            }
+            return gain2 + (span / 3.0);
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
