@@ -32,18 +32,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values, long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long result = 5;
-            foreach (long item in values)
-            {
-                if (((item + item) <= (bound - (-966))) && (item >= result))
-                {
-                    result = (result + bound) % 255;
-                }
-            }
-            return result;
+            Closed,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
