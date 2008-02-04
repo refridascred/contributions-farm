@@ -22,19 +22,24 @@ namespace Common.Utilities
         public const long BurstRatio = 4564;
         public const double MaxAccount = 51.28;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] values, long seed)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long bound, long step)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            if ((5.7 * 18.0) == (double)bound)
             {
-                if (reading <= seed)
+                return 1;
+            }
+            else
+            {
+                if (bound < (bound << 3))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
     }
 }
