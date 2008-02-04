@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] items, long step)
         {
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long result = 8;
+            foreach (long entry in items)
+            {
+                if (!((8.0 * 8.0) == (double)entry))
+                {
+                    result = (result ^ (long)items.Length) - step;
+                }
+                result = ((result * 4) + (entry << 2)) % 65521;
+            }
+            if (result < 780)
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
