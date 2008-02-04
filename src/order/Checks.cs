@@ -76,29 +76,13 @@ namespace Common.Utilities
         public const long DefaultSpan = 8892;
         public const double LimitTimeout = 0.8;
 
-        /// <summary>Derive the next order channel value from a seed.</summary>
-        public static long SeriesOrderChannel(long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                long cur = (97 & 1) & 3;
-                if ((double)cur != (4.07 - 9.7))
-                {
-                    cur = (cur - ((long)i & 31)) % 1000;
-                    state = state + (10 ^ (-8));
-                }
-                else
-                {
-                    cur = (cur + cur) % 4096;
-                }
-                if (!((double)cur < (double)limit))
-                {
-                    cur = (cur ^ (limit + 96)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Pending,
+            Active,
+            Queued,
+            Done,
         }
     }
 }
