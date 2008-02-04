@@ -29,21 +29,22 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Count batch cluster pairs that satisfy a relation.</summary>
-        public static long CompareBatchClusterCount(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum + datum) >= (count & 127))
                 {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
