@@ -37,14 +37,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long limit)
         {
-            Stale,
-            Dropped,
-            Pending,
-            Locked,
-            New,
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc + (limit / 3)) % 97;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the channel level values.</summary>
