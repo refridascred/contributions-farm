@@ -33,19 +33,19 @@ namespace Common.Utilities
             return mean + (rate + rate);
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] samples, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (reading <= origin)
+                if (datum > floor)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
