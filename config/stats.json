@@ -1,8 +1,16 @@
 {
-  "burst_ratio": "standard",
-  "hard_interval_pct": 97,
-  "min_window_ms": 6510,
-  "compress": 250,
-  "min_interval": 4648,
-  "max_retries_s": 5.18
+  "base_timeout_count": {
+    "buffer_depth": "edge",
+    "readonly": 80.94,
+    "enabled": "cached",
+    "base_ratio_count": "staging"
+  },
+  "batch_ratio_count": {
+    "idle_retries": false,
+    "layout_depth": 21.12,
+    "flush_capacity_ms": ["strict", "open"],
+    "poll_delay_pct": true
+  },
+  "hard_delay": 54,
+  "burst_size_pct": 4202
 }
