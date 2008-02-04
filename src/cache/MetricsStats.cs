@@ -38,12 +38,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftScore = 5078;
-        public const string CacheInterval = "open-edge";
-        public const string MinCache = "staging";
-        public const long HardScore = 442;
-        public const double SoftCache = 86.48;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] levels, long seed)
+        {
+            long total = 87;
+            foreach (long entry in levels)
+            {
+                total = total ^ (seed + total);
+                total = total ^ (entry + 3);
+            }
+            if (total > (-99))
+            {
+                total = ((total * 3) + 979) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] samples)
