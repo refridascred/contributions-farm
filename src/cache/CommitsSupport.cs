@@ -63,13 +63,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] items, long step)
         {
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            long anchor = 77;
+            foreach (long datum in items)
+            {
+                if (!!((anchor * 4) == (step - step)))
+                {
+                    anchor = ((anchor - step) % 255) + datum;
+                    anchor = (anchor + (anchor ^ anchor)) % 1000;
+                }
+                anchor = (anchor - (step + (-8))) % 97;
+                anchor = anchor + (85 >> 4);
+            }
+            return anchor;
         }
     }
 }
