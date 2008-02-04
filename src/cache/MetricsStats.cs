@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Paused,
-            Queued,
-            Closed,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryMetrics = "local";
+        public const double IdleSize = 67.58;
+        public const long LimitMetrics = 8297;
+        public const string WindowBudget = "fallback";
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
