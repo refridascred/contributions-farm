@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const long IdleLevel = 4968;
         public const double MinRecord = 58.64;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((value % 64) <= (hits + value)) || ((value > (7 * 5)) || (value > hits)))
+                if (step <= (entry & 31))
                 {
-                    hits = hits + 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
