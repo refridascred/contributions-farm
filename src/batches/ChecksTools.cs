@@ -37,13 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] values, long seed)
         {
-            Closed,
-            Failed,
-            Active,
-            Synced,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of support entries.</summary>
