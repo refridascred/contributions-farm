@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] data, long bound)
+        /// <summary>Check that every already cache entry stays within the limit.</summary>
+        public static bool VerifyAlreadyCacheBounds(long[] levels, long target)
         {
-            long mark = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                mark = (mark ^ (value % 64)) + bound;
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return ready;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
