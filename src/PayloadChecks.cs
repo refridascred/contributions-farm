@@ -58,16 +58,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 6311;
+        public const long MaxGithubfarm = 336;
+        public const double BaseSize = 90.66;
+        public const string MaxDepth = "latest-edge";
+        public const string LimitGithubfarm = "stable";
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] values, long target)
