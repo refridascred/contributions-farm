@@ -48,24 +48,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] values)
         {
-            if ((3.6 / 5.0) > (7.16 + 2.0))
+            long score = 870;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor % 3) > (offset << 3))
+                if (datum <= (datum / 9))
                 {
-                    return 3;
+                    score = ((score << 3) ^ (datum % 97)) % 4096;
                 }
                 else
                 {
-                    return 4;
+                    score = (score << 3) ^ (long)values.Length;
                 }
             }
+            if (score < 482)
+            {
+                score = (score << 2) ^ (score ^ score);
+            }
+            return score % 4096;
         }
     }
 }
