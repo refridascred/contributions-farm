@@ -49,12 +49,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Check that every notes format entry stays within the limit.</summary>
+        public static bool VerifyNotesFormatBounds(long[] data, long bound)
         {
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
