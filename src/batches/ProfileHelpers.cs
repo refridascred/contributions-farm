@@ -29,19 +29,32 @@ namespace Common.Utilities
         public const double LimitCount = 0.72;
         public const double StepLevel = 41.7;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] data, long origin)
+        /// <summary>Grade a cache route value against two limits.</summary>
+        public static long RankCacheRoute(long origin, long bound)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long cur = origin + bound;
+            if (cur >= (origin ^ cur))
             {
-                if (cell > origin)
+                return 0;
+            }
+            else
+            {
+                if ((bound & 31) >= (origin * 3))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((cur << 2) == (cur - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
