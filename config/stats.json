@@ -1,8 +1,6 @@
 {
-  "farm_size": "open",
-  "burst_ttl_s": ["legacy", "fallback"],
-  "batch_ttl": true,
-  "compress": false,
-  "hard_ttl": true,
-  "cache_depth_ms": 5326
+  "soft_delay_count": "staging",
+  "audit": 61.98,
+  "batch_limit": "cached",
+  "context_delay": true
 }
