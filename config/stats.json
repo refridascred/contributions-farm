@@ -1,7 +1,7 @@
 {
-  "base_depth_ms": 87,
-  "context_ratio": 2821,
-  "metric_ttl": 62,
-  "idle_retries_pct": 8545,
-  "burst_limit_pct": "eu-west"
+  "editor_retries": 8128,
+  "commits_size": 79.01,
+  "buffer_ratio": ["primary", "latest", "green"],
+  "default_capacity_count": ["primary", "blue", "edge", "open"],
+  "warm_size_pct": 70.52
 }
