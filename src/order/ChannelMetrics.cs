@@ -31,21 +31,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Measure how many metrics window samples are out of range.</summary>
+        public static long CountMetricsWindowGaps(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((matches > (95 + (long)values.Length)) && ((datum + datum) >= (matches / 3))))
                 {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
