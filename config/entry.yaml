@@ -1,4 +1,4 @@
 # entry settings
-entry_ttl: 37.14
-poll_threshold_pct: 9039
-batch_capacity_count: local
+tools_retries: primary
+max_threshold_ms: blue
+poll_depth: stable
