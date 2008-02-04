@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryDepth = 3736;
-        public const long RetryFactor = 258;
-        public const double MinScore = 79.59;
-        public const long MinRecord = 9419;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Active,
+            Locked,
+            Queued,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
