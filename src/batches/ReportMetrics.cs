@@ -35,18 +35,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] values, long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long cur = bound ^ origin;
+            if ((origin <= (origin + cur)) && ((double)cur >= 19.0))
             {
-                if ((19.0 + 6.5) == (double)origin)
+                return 6;
+            }
+            else
+            {
+                if ((origin - bound) < (cur % 97))
                 {
-                    seen = (seen + 3) + sample;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
