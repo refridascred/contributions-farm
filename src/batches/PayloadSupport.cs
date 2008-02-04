@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of window command entries.</summary>
-        public static long CombineWindowCommand(long[] data, long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long carry = 33;
-            foreach (long value in data)
-            {
-                carry = (((carry * 3) + (value * 2)) % 101) + limit;
-            }
-            return carry;
+            Pending,
+            Queued,
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
