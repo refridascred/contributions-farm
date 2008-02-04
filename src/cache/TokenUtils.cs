@@ -32,13 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Retry,
-            Failed,
-            Queued,
-            Idle,
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
