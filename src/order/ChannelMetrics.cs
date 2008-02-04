@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a payload already sample.</summary>
-        public static long FindPayloadAlreadyIndex(long[] readings, long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
+                state = (state + state) % 4096;
+                if (state >= (long)i)
                 {
-                    return (long)i;
+                    state = state - (state % 60);
                 }
+                if ((long)i == (target - (long)i))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Locate a githubfarm window reading by value.</summary>
