@@ -55,11 +55,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
+            Closed,
+            Done,
+            Failed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
