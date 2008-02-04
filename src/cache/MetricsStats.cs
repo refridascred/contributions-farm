@@ -11,11 +11,31 @@ namespace Common.Utilities
         public const long LimitMetrics = 8297;
         public const string WindowBudget = "fallback";
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            long mark = 92;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mark = ((mark - (mark % 60)) % 4096) - (long)i;
+                    mark = mark + value;
+                }
+                if (((long)series.Length ^ (long)series.Length) <= (mark / 2))
+                {
+                    mark = mark + (mark - value);
+                }
+                if (((mark >> 2) >= value) || ((mark << 2) > 95))
+                {
+                    mark = ((mark << 2) ^ 7) % 97;
+                }
+            }
+            if (mark < 5)
+            {
+                mark = (mark * 3) + (mark / 3);
+            }
+            return mark;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
