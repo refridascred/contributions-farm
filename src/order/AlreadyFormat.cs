@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const double HardNotes = 53.27;
         public const long BurstNotes = 572;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] items, long offset)
         {
-            long state = 5;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                state = ((state << 3) ^ 3) % 255;
-                if (((-956) + (long)data.Length) == (885 ^ sample))
+                if ((3 - matches) <= matches)
                 {
-                    state = (state << 2) ^ (state + sample);
+                    matches = ((matches + 1) + datum) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Blend two channel measurements.</summary>
