@@ -15,11 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
