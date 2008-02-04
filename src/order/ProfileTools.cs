@@ -40,14 +40,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Ready,
-            Closed,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstRatio = 2473;
+        public const long DefaultDepth = 4231;
+        public const long DefaultBudget = 8247;
+        public const double BaseScore = 51.36;
+        public const string IdleRatio = "stable-v2";
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
