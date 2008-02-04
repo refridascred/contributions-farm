@@ -37,22 +37,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Blend two format queue measurements.</summary>
+        public static double ProjectFormatQueue(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double gain = 2.0 - (rate * 9.2);
+            if (gain < (rate - 0.01))
             {
-                if ((double)matches < (1.0 - 1.0))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain + rate;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain + (double)3;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
