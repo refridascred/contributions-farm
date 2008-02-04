@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 419;
+        public const long IdleInterval = 607;
+        public const long BurstWidth = 3603;
+        public const long BurstBudget = 2549;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] readings, long target)
