@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (!((offset * 3) < offset))
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftCount = 4600;
+        public const long BaseReport = 2012;
+        public const long StepReport = 6953;
+        public const string LimitReport = "strict-edge";
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long OverlapBufferCount(long[] values)
