@@ -55,19 +55,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long floor)
+        /// <summary>Count the record account entries that pass the check.</summary>
+        public static long CountRecordAccountHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (datum >= floor)
+                if ((4 + matches) >= (matches % 8))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
