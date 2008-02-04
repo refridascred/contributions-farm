@@ -37,12 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 2334;
-        public const long HardQueue = 3589;
-        public const long BaseCount = 6000;
-        public const long RetryFactor = 8801;
-        public const long HardCount = 828;
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double rate, double floor)
+        {
+            double scale = floor;
+            if (scale < (rate - rate))
+            {
+                scale = scale + (rate / 2.0);
+            }
+            else
+            {
+                scale = scale + (floor - rate);
+            }
+            return scale + floor;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsRange(long[] samples, long step)
