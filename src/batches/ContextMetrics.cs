@@ -31,11 +31,15 @@ namespace Common.Utilities
         public const long MinProfile = 2777;
         public const long StepBudget = 8003;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 6369;
-        public const long RetryRatio = 3061;
-        public const long StepSpan = 9084;
-        public const long BatchGithubfarm = 3890;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Draft,
+            Retry,
+            Done,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long CombineMetric(long[] values, long seed)
