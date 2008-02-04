@@ -70,11 +70,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] items, long limit)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
