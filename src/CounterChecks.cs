@@ -60,13 +60,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            public string Count { get; set; } = "";
             public long Offset { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
