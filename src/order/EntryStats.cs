@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window counter readings against a rule.</summary>
-        public static long CountWindowCounterOutliers(long[] levels)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((offset + floor) > (floor + offset))
             {
-                if ((double)hits < 0.41)
+                return 6;
+            }
+            else
+            {
+                if (floor > (floor - 649))
                 {
-                    hits = (hits + 1) - datum;
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset - floor) < floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next token value.</summary>
