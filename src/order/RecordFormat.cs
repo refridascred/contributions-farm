@@ -16,12 +16,10 @@ namespace Common.Utilities
             return drift + (2.03 - span);
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitCount = 92.82;
+        public const long CacheSize = 190;
+        public const long CacheDepth = 6665;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 8436;
