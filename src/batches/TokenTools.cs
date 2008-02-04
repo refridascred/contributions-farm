@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "alpha";
-        public const long HardCache = 9106;
-        public const double HardSpan = 97.58;
-        public const long IdleSpan = 6597;
-        public const long LimitBudget = 1468;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
