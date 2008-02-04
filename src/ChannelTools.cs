@@ -24,23 +24,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((4.0 + 3.62) < (double)tally)
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 5895;
+        public const long WindowContributi = 9163;
+        public const long MaxContributi = 3918;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] data)
