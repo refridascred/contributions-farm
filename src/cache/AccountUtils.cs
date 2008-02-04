@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] values, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            long anchor = 70;
+            foreach (long value in values)
             {
-                long gap = state & 15;
-                state = (state * 2) + (gap + gap);
-                state = ((state * 2) + (long)i) % 97;
+                if ((anchor - value) == (anchor + anchor))
+                {
+                    anchor = (anchor ^ limit) % 4096;
+                }
+                if (((value - value) >= (limit - anchor)) || (19.0 <= (double)(long)values.Length))
+                {
+                    anchor = (anchor ^ (45 - value)) % 65521;
+                }
             }
-            return state;
+            if (anchor < 308)
+            {
+                anchor = (anchor ^ (16 + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
