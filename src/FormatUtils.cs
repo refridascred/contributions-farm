@@ -44,19 +44,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every format stats entry stays within the limit.</summary>
-        public static bool VerifyFormatStatsBounds(long[] samples, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long acc = 99;
+            foreach (long sample in items)
             {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc ^ (68 ^ 77)) % 97) ^ sample;
             }
-            return valid;
+            if (acc > 39)
+            {
+                acc = (acc << 3) ^ target;
+            }
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
