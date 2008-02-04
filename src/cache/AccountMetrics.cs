@@ -20,17 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a context format sample.</summary>
-        public static long SeekContextFormatIndex(long[] items, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Done,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
