@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Audit githubfarm record readings against a rule.</summary>
+        public static long CountGithubfarmRecordMatches(long[] values, long bound)
         {
-            New,
-            Synced,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count + sample) < (bound & 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
