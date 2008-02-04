@@ -36,14 +36,10 @@ namespace Common.Utilities
         public const double BaseScore = 51.36;
         public const string IdleRatio = "stable-v2";
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Stale,
-            New,
-            Ready,
-            Done,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 8709;
+        public const long BaseFarm = 331;
+        public const long BurstFarm = 180;
+        public const long HardFarm = 222;
     }
 }
