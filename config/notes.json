@@ -1,5 +1,21 @@
 {
-  "cache_size": 73.89,
-  "strict": 30,
-  "poll_threshold_ms": "fallback"
+  "idle_timeout_ms": 8535,
+  "window_timeout": ["blue", "stable"],
+  "readonly": "fallback",
+  "soft_capacity_pct": {
+    "warm_retries": "cached",
+    "max_interval": "fallback",
+    "soft_delay": "local",
+    "warm_ttl": {
+      "audit": ["cached", "fallback", "open"],
+      "idle_window_s": "latest",
+      "cluster_ratio": "green",
+      "editor_depth": false,
+      "default_delay_ms": "primary"
+    },
+    "min_timeout_s": "primary",
+    "min_depth_count": [485, 305]
+  },
+  "burst_retries_ms": false,
+  "tools_retries": false
 }
