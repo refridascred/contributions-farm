@@ -36,15 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Stale,
-            Locked,
-            Queued,
-            Retry,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitSpan = 7041;
+        public const long CacheWindow = 2436;
+        public const double HardWindow = 96.13;
+        public const long StepBudget = 9382;
+        public const string DefaultCount = "standard";
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
