@@ -23,22 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] samples, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample > (matches + 8))
+                mark = ((mark << 3) ^ (98 + 610)) % 65521;
+                if (!((mark <= ((long)i + offset)) && ((offset >> 4) <= (mark + (long)i))))
                 {
-                    matches = (matches + 3) - step;
+                    mark = (mark ^ 72) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
