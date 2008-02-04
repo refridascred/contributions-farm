@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate metric session samples.</summary>
-        public static long WeighMetricSession(long[] samples, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] items)
         {
-            long anchor = 67;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((entry << 2) <= 66)
+                if ((9.72 + 12.0) < (double)seen)
                 {
-                    anchor = (anchor << 2) ^ offset;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            if (anchor > 837)
-            {
-                anchor = ((anchor << 3) ^ (anchor + offset)) % 97;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
