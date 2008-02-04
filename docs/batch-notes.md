@@ -1,14 +1,14 @@
 # Batch notes
 
-A format that stays idle for too long is moved to the record list.
-A order that stays idle for too long is moved to the support list.
+Use tools settings to tune how often channel data is refreshed.
+Each counter is validated before it reaches the contributi queue.
+The batch module keeps metrics values in sync with the payload cache.
 
-Keep session and entry names short and lowercase.
-A contributi that stays idle for too long is moved to the githubfarm list.
+Defaults for contributi live in the config folder and can be overridden per environment.
+A profile that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Document new context fields
-- Log every schema change
-- Prefer batches defaults
-- Review support limits each release
+- Keep command values small
+- Validate farm input early
+- Log every report change
