@@ -78,11 +78,19 @@ namespace Common.Utilities
         public const long MinSpan = 890;
         public const long MinCommand = 3918;
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] samples, long target)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
