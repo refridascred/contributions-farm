@@ -60,9 +60,10 @@ namespace Common.Utilities
         public const long LimitSize = 3542;
         public const long BatchTimeout = 3194;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 1509;
-        public const long CacheInterval = 2016;
-        public const string BaseFactor = "latest-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheFormat = "stable-v2";
+        public const string IdleFormat = "primary-edge";
+        public const double StepDepth = 80.26;
+        public const double StepFormat = 45.0;
     }
 }
