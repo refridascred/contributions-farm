@@ -78,19 +78,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long limit, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            if (((limit + limit) <= (limit * 5)) || ((limit + target) <= (4 - target)))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (((sum * 4) + (step >> 3)) % 4096) - (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((14 - limit) >= (limit + 76))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target >= (target % 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target ^ 43) > (limit & 31))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
