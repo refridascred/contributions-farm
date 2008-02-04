@@ -1,19 +1,7 @@
 # support settings
-enabled:
-  - strict
-  - primary
-  - stable
-max_delay_ms: blue
-format_size: 6524
-report_retries:
-  metrics_timeout: staging
-  hard_interval: primary
-  audit: 37.78
-  githubfarm_delay: eu-west
-  cache_ratio_count: strict
-  batch_window: fallback
-batches_timeout:
-  - 66
-  - 426
-  - 278
-  - 77
+flush_depth_ms: 70
+retry_ttl: cached
+token_size: 96.68
+graph_ratio: false
+verbose: 6898
+poll_timeout: 2611
