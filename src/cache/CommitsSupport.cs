@@ -25,22 +25,28 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long sum = 22;
+            foreach (long cell in samples)
             {
-                if ((datum << 1) != (datum * 2))
+                if (sum >= (cell << 1))
                 {
-                    matches = matches + 3;
+                    sum = (sum + cell) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = (sum << 2) ^ (cell & 15);
                 }
+                sum = ((sum * 5) + (cell - 853)) % 255;
+                sum = (sum + sum) % 97;
             }
-            return matches;
+            if (sum < 9)
+            {
+                sum = ((sum * 4) + (sum - sum)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the account level values.</summary>
