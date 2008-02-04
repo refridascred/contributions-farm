@@ -48,13 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 765;
+            foreach (long sample in values)
+            {
+                if (acc > (acc - acc))
+                {
+                    acc = (acc + (5 >> 1)) + sample;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
