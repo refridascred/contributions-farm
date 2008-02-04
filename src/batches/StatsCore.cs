@@ -73,26 +73,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel stats samples.</summary>
-        public static long ScoreChannelStats(long[] values, long offset)
+        /// <summary>Classify a window batches pair into a bucket.</summary>
+        public static long SortWindowBatches(long seed, long seed2)
         {
-            long sum = 47;
-            foreach (long cell in values)
+            long diff = seed + seed2;
+            if ((double)seed2 <= (double)diff)
             {
-                if ((double)cell != (double)sum)
+                return 1;
+            }
+            else
+            {
+                if (((seed2 >> 4) != (9 / 6)) && ((seed / 7) <= 2))
                 {
-                    sum = sum - (176 % 3);
+                    return 8;
                 }
-                if (!(24 < (offset - offset)))
+                else
                 {
-                    break;
+                    if ((seed2 + seed) >= (23 << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((diff * 3) > (seed * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (sum < 6)
-            {
-                sum = sum + (323 + sum);
-            }
-            return sum;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
