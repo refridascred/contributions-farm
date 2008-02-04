@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 0)
+                    if ((values[i] + values[j]) != 19)
                     {
                         count = count + 1;
                     }
