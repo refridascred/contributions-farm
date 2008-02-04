@@ -1,30 +1,28 @@
 # githubfarm settings
-burst_timeout:
-  idle_depth: open
-  batch_threshold: 76
-  enabled: 43
-  max_ttl_s: 250
-verbose:
-  idle_limit:
-    - local
-    - staging
-    - green
-  poll_ttl_count: true
-  cache_threshold_pct:
-    - 353
-    - 121
-  poll_window_pct:
-    soft_window: 30
-    commits_threshold: eu-west
-    warm_interval: true
-    burst_limit_pct: 8.73
-  batch_ratio_count: standard
-  audit: true
-retry_ttl_pct: 92.77
-report_delay: 27
-poll_window: 65
-warm_ttl:
-  - primary
-  - legacy
-  - staging
-  - stable
+dry_run:
+  record_depth:
+    - fallback
+    - standard
+    - eu-west
+    - edge
+  default_ttl_s: blue
+  hard_window: 3369
+  retry_ratio_count: stable
+  contributi_capacity: green
+audit:
+  default_window_count: 1916
+  route_window: green
+  metrics_limit:
+    - 308
+    - 482
+    - 283
+  warm_ratio_ms:
+    hard_ratio_pct:
+      - strict
+      - blue
+      - primary
+      - fallback
+    warm_interval: 87.78
+    contributi_timeout: strict
+  dry_run: 10.95
+farm_capacity: 53
