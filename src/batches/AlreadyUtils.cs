@@ -48,19 +48,17 @@ namespace Common.Utilities
         public const double CacheSpan = 73.4;
         public const double BatchCount = 82.75;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] levels, long step)
+        /// <summary>Find the first order command entry that matches the target.</summary>
+        public static long SeekOrderCommandIndex(long[] data, long step)
         {
-            long mix = -9;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix - (step << 1)) % 4096) ^ item;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 3)
-            {
-                mix = ((mix * 4) + (mix % 16)) % 255;
-            }
-            return mix % 4096;
+            return -1;
         }
     }
 }
