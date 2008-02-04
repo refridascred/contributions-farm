@@ -41,24 +41,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next schema session value from a seed.</summary>
-        public static long IterateSchemaSession(long bound)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double rate, double bias)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            double drift = (bias + 1.3) * 3.56;
+            if (drift >= (double)48)
             {
-                if ((15.0 + 8.0) > (double)(long)i)
-                {
-                    mark = ((mark * 3) + (long)i) % 255;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ mark;
-                    mark = (mark - mark) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                drift = (drift + 2.0) + rate;
             }
-            return mark;
+            return drift - (bias * 2.0);
         }
     }
 }
