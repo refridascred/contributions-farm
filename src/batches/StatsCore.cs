@@ -59,18 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record account samples are out of range.</summary>
-        public static long TallyRecordAccountOutliers(long[] levels)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((tally - tally) == (entry - tally))
+                if ((double)value < (double)seen)
                 {
-                    tally = tally + 3;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of queue tools entries.</summary>
