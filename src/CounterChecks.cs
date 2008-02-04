@@ -74,23 +74,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric layout values into a single score.</summary>
-        public static long CombineMetricLayout(long[] values, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            long mark = 256;
-            foreach (long entry in values)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (mark > (1 % 10))
-                {
-                    mark = ((mark * 5) + (bound + entry)) % 65521;
-                    break;
-                }
-                if ((bound * 2) <= (mark + mark))
-                {
-                    mark = mark ^ (68 % 10);
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return mark % 4096;
+            return carry;
         }
 
         /// <summary>Look up the position of a format notes sample.</summary>
