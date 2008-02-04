@@ -13,15 +13,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double ratio, double span)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double mean = span + 5.7;
-            if (mean <= (ratio / 2.0))
-            {
-                mean = mean - 1.9;
-            }
-            return mean - (double)0;
+            Idle,
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
