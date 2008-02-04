@@ -1,6 +1,7 @@
-id,rank,state
-1,stable,open
-2,blue,332
-3,legacy,legacy
-4,latest,86.56
-5,156,870
+id,owner,region,token,active
+1,staging,93.34,78.97,stable
+2,85.5,926,eu-west,437
+3,462,edge,411,56.34
+4,71.15,open,828,41.45
+5,711,cached,431,391
+6,869,cached,733,staging
