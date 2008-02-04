@@ -21,18 +21,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] items)
+        /// <summary>Iterate the buffer farm series from a seed.</summary>
+        public static long SeriesBufferFarm(long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((matches - matches) <= (entry * 3))
+                sum = sum - 32;
+                if (!((long)i >= sum))
                 {
-                    matches = matches + 1;
+                    sum = (sum << 2) ^ (bound - (long)i);
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Accumulate commits samples.</summary>
