@@ -22,23 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] data, long floor)
-        {
-            long result = 28;
-            foreach (long datum in data)
-            {
-                if ((double)datum != (double)result)
-                {
-                    result = (result << 3) ^ (floor - 14);
-                }
-                if ((double)result == (5.46 - 6.9))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseSize = 4841;
+        public const string WindowDepth = "alpha";
+        public const string BaseTimeout = "staging-v2";
+        public const double RetryQueue = 9.55;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadRange(long[] values, long seed)
