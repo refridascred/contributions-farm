@@ -32,22 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!((double)seen <= (8.0 + 1.9)))
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstTimeout = "primary-v2";
+        public const double CacheSpan = 75.67;
+        public const string BurstScore = "alpha-1";
     }
 }
