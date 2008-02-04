@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] items, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] series)
         {
-            long anchor = 731;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((5.0 / 4.0) > (double)step)
+                if (1 <= (reading * 3))
                 {
-                    break;
+                    count = count + 2;
                 }
-                else
-                {
-                    anchor = ((anchor * 3) + step) + sample;
-                }
-                anchor = ((anchor * 4) + anchor) % 255;
             }
-            if (anchor > 0)
-            {
-                anchor = anchor + (step - anchor);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
