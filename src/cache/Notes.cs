@@ -43,38 +43,21 @@ namespace Common.Utilities
         public const long IdleFarm = 6146;
         public const double StepFarm = 77.14;
 
-        /// <summary>Classify a format filter pair into a bucket.</summary>
-        public static long GradeFormatFilter(long seed, long step)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            if ((double)seed >= (6.27 + 5.9))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((0.85 / 4.0) <= (double)step) || ((37 + seed) == (step & 31)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (417 - step))
+                    if ((items[i] + items[j]) < 18)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed * 3) > (step >> 2)) || ((seed >> 2) == (646 << 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
