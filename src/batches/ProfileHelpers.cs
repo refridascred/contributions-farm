@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Locate a counter metric reading by value.</summary>
+        public static long LocateCounterMetricIndex(long[] readings, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix ^ mix;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a cache entry.</summary>
