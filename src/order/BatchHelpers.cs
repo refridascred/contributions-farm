@@ -31,31 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long seed, long limit)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            if (((limit + limit) == (limit / 7)) || (2 <= (seed + seed)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed * 4) > 321)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit ^ seed) != (limit - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
