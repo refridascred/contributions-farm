@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double floor)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            double load = (double)17 + (8.9 / 9.0);
+            if (load < floor)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                load = load + (gain * 2.7);
             }
-            return result;
+            return load - (double)(-1);
         }
 
         /// <summary>Describe the metrics state values.</summary>
