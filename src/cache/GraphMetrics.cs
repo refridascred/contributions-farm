@@ -35,24 +35,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] items, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((bound ^ bound) != (453 / 9)) && ((result % 10) != (result % 64)))
+                if (items[i] < origin)
                 {
-                    result = ((result * 4) + (long)i) % 65521;
-                    result = result ^ (result & 7);
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result << 2) ^ 13;
-                }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Match up checks samples.</summary>
