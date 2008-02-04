@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] levels, long step)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] < step) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
