@@ -36,22 +36,13 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mix = 29;
-            foreach (long sample in levels)
-            {
-                if ((double)mix == (2.6 - 5.4))
-                {
-                    mix = ((mix + (mix * 5)) % 1000) + sample;
-                }
-            }
-            if (mix > 66)
-            {
-                mix = (mix * 3) + (mix & 31);
-            }
-            return mix;
+            Draft,
+            Idle,
+            Retry,
+            Paused,
         }
     }
 }
