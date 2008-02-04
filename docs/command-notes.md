@@ -1,12 +1,10 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the account list.
-The metric report groups every window by channel.
-A command that stays idle for too long is moved to the channel list.
+The queue report groups every session by checks.
+Each filter is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Review editor limits each release
-- Keep context values small
-- Log every tools change
-- Prefer metrics defaults
+- Document new batch fields
+- Keep payload values small
+- Review report limits each release
