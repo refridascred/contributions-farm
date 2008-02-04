@@ -15,12 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] levels, long limit)
         {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)limit == (double)3)
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
