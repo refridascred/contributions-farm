@@ -104,18 +104,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] samples)
-        {
-            long result = 3;
-            foreach (long entry in samples)
-            {
-                if ((28 + result) > ((-62) << 3))
-                {
-                    result = result + (result + entry);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryStream = 83.54;
+        public const string DefaultSpan = "open";
+        public const long WindowStream = 4467;
+        public const double MaxStream = 28.21;
     }
 }
