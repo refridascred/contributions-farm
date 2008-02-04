@@ -1,5 +1,7 @@
 {
-  "idle_size": ["green", "local"],
-  "strict": "standard",
-  "enabled": 41.61
+  "checks_timeout": 73.54,
+  "sync_retries": false,
+  "persist": true,
+  "retry_interval": 81.09,
+  "burst_ratio_s": false
 }
