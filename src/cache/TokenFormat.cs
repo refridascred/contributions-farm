@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] items)
         {
-            Queued,
-            Retry,
-            Paused,
-            Ready,
-            Done,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((count - count) > count)
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the schema context entries that pass the check.</summary>
