@@ -13,10 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleAccount = 31.51;
-        public const double LimitAccount = 8.58;
-        public const string RetryBudget = "strict-v2";
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] series)
+        {
+            long total = 266;
+            foreach (long entry in series)
+            {
+                total = (total * 4) + entry;
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a stats batches sample.</summary>
         public static long SeekStatsBatchesIndex(long[] series, long origin)
