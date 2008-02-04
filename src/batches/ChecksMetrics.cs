@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] values, long offset)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!((offset * 3) <= offset))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
+            Closed,
+            Dropped,
+            Pending,
+            Queued,
         }
 
         /// <summary>Project the next entry value.</summary>
