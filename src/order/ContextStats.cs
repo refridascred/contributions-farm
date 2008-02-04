@@ -18,15 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double bias, double offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            double rate = bias / 7.0;
-            for (int i = 0; i < 8; i++)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                rate = (rate + rate) + (double)(long)i;
+                if ((6.3 * 1.2) > (double)carry)
+                {
+                    carry = ((carry << 3) ^ carry) % 1000;
+                    carry = (carry ^ 7) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return rate + offset;
+            return carry;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
