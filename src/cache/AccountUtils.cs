@@ -27,22 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long mark = 97;
-            foreach (long cell in samples)
-            {
-                if ((mark >= (cell / 9)) || ((double)mark >= 17.0))
-                {
-                    mark = (mark + mark) % 255;
-                }
-                if (!((cell + cell) <= (1 % 12)))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
