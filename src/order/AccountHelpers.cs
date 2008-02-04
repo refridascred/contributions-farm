@@ -51,22 +51,17 @@ namespace Common.Utilities
         public const long BaseEntry = 3885;
         public const long LimitEntry = 2174;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] items, long seed)
         {
-            long mix = 7;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)reading >= (6.3 * 9.3))
+                if (items[i] < seed)
                 {
-                    mix = (mix * 4) + (mix + reading);
+                    return (long)i;
                 }
             }
-            if (mix < 79)
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix;
+            return -1;
         }
     }
 }
