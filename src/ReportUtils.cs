@@ -20,22 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] items, long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((2.8 + 7.0) == (double)entry) || (((tally * 5) != (entry ^ entry)) && ((step << 3) <= entry)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of metric context readings.</summary>
