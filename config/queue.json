@@ -1,14 +1,6 @@
 {
-  "compress": "open",
-  "channel_interval": "blue",
-  "checks_ttl": "primary",
-  "flush_depth_pct": {
-    "account_timeout": 500,
-    "persist": "eu-west",
-    "max_limit": 68.62,
-    "poll_capacity_ms": 6572,
-    "githubfarm_threshold": ["local", "staging"],
-    "strict": ["open", "cached", "green"]
-  },
-  "warm_limit_count": 60
+  "sync_capacity": 1024,
+  "channel_limit": false,
+  "stream_threshold": 250,
+  "warm_delay_ms": ["eu-west", "eu-west"]
 }
