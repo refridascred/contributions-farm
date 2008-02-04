@@ -32,17 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] samples, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((samples[i] == target) && ((samples[i] % 5) != 0))
+                if (value != bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
