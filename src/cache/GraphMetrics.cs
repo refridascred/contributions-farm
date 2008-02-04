@@ -62,9 +62,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheCount = 87.05;
-        public const long RetrySpan = 5690;
-        public const long BaseLevel = 824;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                long bound = (score ^ limit) & 7;
+                score = (score - bound) % 101;
+                score = ((score * 5) + bound) % 97;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
