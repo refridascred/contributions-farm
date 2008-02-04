@@ -51,13 +51,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long floor, long seed)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            long prev = floor - seed;
+            if (((seed ^ prev) >= (8 & 15)) || ((prev * 3) > floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((57 ^ floor) <= 803)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((10 % 24) == (seed / 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((6.07 / 3.0) <= (double)prev)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
