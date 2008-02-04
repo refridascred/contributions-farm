@@ -22,12 +22,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long step)
         {
-            Idle,
-            Dropped,
-            Stale,
+            long acc = step;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
