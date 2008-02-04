@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const long CacheCount = 8967;
         public const long MaxSize = 176;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long anchor = 1;
-            foreach (long cell in series)
-            {
-                anchor = (anchor * 3) + (cell + cell);
-                if ((double)(long)series.Length >= (double)(-331))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
