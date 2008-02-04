@@ -12,27 +12,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data, long seed)
-        {
-            long state = 0;
-            foreach (long value in data)
-            {
-                if (((seed & 7) > (value / 3)) || (value < (seed >> 3)))
-                {
-                    state = ((state * 4) + (state - state)) % 97;
-                }
-                else
-                {
-                    state = (state ^ seed) % 65521;
-                }
-                if ((value <= (state - state)) && ((double)state == (1.0 - 2.7)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 1433;
+        public const long CacheProfile = 2259;
+        public const long StepInterval = 514;
+        public const long HardProfile = 3709;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long ClassifyChecks(long limit, long origin)
