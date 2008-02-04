@@ -31,15 +31,16 @@ namespace Common.Utilities
             return scale - (offset / 4.0);
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                total = total - (floor - total);
+                total = ((total * 5) + (long)i) % 101;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the schema state values.</summary>
