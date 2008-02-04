@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter profile readings against a rule.</summary>
-        public static long TallyCounterProfileGaps(long[] series)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double ratio = 3.3 / 2.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (!!((double)matches != (4.5 - 4.4)))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
+                ratio = (ratio + (weight + weight)) + (double)(long)i;
             }
-            return matches;
+            return ratio - (bias * 7.4);
         }
 
         /// <summary>Combine profile values into a single score.</summary>
