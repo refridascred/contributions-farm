@@ -1,15 +1,8 @@
 {
-  "cache_limit_ms": "legacy",
-  "sync_window_ms": {
-    "hard_interval": {
-      "max_interval_count": false,
-      "retry_ratio": "stable",
-      "persist": "strict"
-    },
-    "route_interval": ["strict", "primary", "standard"],
-    "stats_ttl": false
-  },
-  "base_timeout": "legacy",
-  "burst_delay_ms": 5073,
-  "cache_interval_pct": 8081
+  "burst_ratio": "standard",
+  "hard_interval_pct": 97,
+  "min_window_ms": 6510,
+  "compress": 250,
+  "min_interval": 4648,
+  "max_retries_s": 5.18
 }
