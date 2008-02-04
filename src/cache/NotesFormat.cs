@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every contributi notes entry stays within the limit.</summary>
-        public static bool VerifyContributiNotesBounds(long[] data, long seed)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
