@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] data, long origin)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double weight = ratio;
+            if (weight < weight)
             {
-                if (reading != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - span;
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight - (ratio / 2.0);
         }
 
         /// <summary>Fold a list of cluster already readings.</summary>
