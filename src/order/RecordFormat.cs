@@ -75,26 +75,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter checks readings.</summary>
-        public static long DigestCounterChecks(long[] data, long target)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] data, long offset)
         {
-            long anchor = 59;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)target <= 6.51)
+                if (data[i] == offset)
                 {
-                    anchor = (anchor + entry) % 65521;
-                }
-                if ((target >= (target & 63)) || ((entry * 4) > (entry % 7)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < 345)
-            {
-                anchor = anchor + 0;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
