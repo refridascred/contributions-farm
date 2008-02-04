@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of token notes readings.</summary>
-        public static long CompareTokenNotesCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheRoute = 22.1;
+        public const string LimitRoute = "strict-edge";
+        public const double RetryRoute = 22.01;
+        public const double HardSpan = 80.29;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseRatio = 5422;
