@@ -43,13 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] data, long target)
         {
-            Pending,
-            Draft,
-            Locked,
-            Closed,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
