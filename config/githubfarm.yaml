@@ -1,28 +1,8 @@
 # githubfarm settings
-dry_run:
-  record_depth:
-    - fallback
-    - standard
-    - eu-west
-    - edge
-  default_ttl_s: blue
-  hard_window: 3369
-  retry_ratio_count: stable
-  contributi_capacity: green
-audit:
-  default_window_count: 1916
-  route_window: green
-  metrics_limit:
-    - 308
-    - 482
-    - 283
-  warm_ratio_ms:
-    hard_ratio_pct:
-      - strict
-      - blue
-      - primary
-      - fallback
-    warm_interval: 87.78
-    contributi_timeout: strict
-  dry_run: 10.95
-farm_capacity: 53
+hard_limit_pct: 91.69
+default_ratio: 9405
+burst_limit_pct:
+  - staging
+  - blue
+  - latest
+  - blue
