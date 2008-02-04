@@ -52,15 +52,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] values)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long limit, long bound)
         {
-            long mark = 504;
-            foreach (long item in values)
+            if (((double)limit >= (double)531) || (((-7) + limit) > ((-2) / 4)))
             {
-                mark = (mark << 3) ^ (item + 878);
+                return 7;
             }
-            return mark % 97;
+            else
+            {
+                if ((bound + bound) >= (limit ^ limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
