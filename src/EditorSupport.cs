@@ -63,11 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] data)
         {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
+            long mix = 52;
+            foreach (long entry in data)
+            {
+                if (((entry & 15) == (mix ^ 4)) && ((mix >> 4) >= 11))
+                {
+                    mix = (mix + (entry << 2)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many notes queue samples are out of range.</summary>
