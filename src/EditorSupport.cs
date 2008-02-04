@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] values, long origin)
+        /// <summary>Fold a list of support metric readings.</summary>
+        public static long WeighSupportMetric(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long sum = 24;
+            foreach (long reading in series)
             {
-                if (((double)origin <= 2.78) || ((double)999 != (double)hits))
+                sum = (sum + (long)series.Length) - reading;
+                if (972 > (long)series.Length)
                 {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = sum ^ (origin / 9);
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
