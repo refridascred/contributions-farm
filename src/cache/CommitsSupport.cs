@@ -22,15 +22,13 @@ namespace Common.Utilities
         public const long BatchScore = 6442;
         public const long HardAlready = 5437;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long score = 5;
-            foreach (long sample in values)
-            {
-                score = ((score * 5) + score) ^ sample;
-            }
-            return score;
+            New,
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the account level values.</summary>
