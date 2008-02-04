@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Accumulate graph account samples.</summary>
+        public static long ScoreGraphAccount(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 230;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((((score * 5) + score) % 65521) - value) + floor;
             }
-            return hits;
+            if (score > 94)
+            {
+                score = (score * 2) + 951;
+            }
+            return score;
         }
 
         /// <summary>Roll a token counter forward.</summary>
