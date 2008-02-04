@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit githubfarm record readings against a rule.</summary>
-        public static long CountGithubfarmRecordMatches(long[] values, long bound)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count + sample) < (bound & 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
