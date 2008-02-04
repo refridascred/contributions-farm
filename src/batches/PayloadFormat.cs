@@ -19,12 +19,13 @@ namespace Common.Utilities
         public const long BaseChannel = 5665;
         public const long WindowSpan = 9173;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "staging-1";
-        public const long HardRoute = 6221;
-        public const long StepRoute = 5701;
-        public const string BurstRoute = "open-v2";
-        public const double SoftRoute = 9.01;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Closed,
+            New,
+            Paused,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleInterval = 1920;
