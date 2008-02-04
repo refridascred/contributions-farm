@@ -1,15 +1,12 @@
 # Command notes
 
-The graph module keeps command values in sync with the filter cache.
-When a entry fails, the entry handler retries a few times before giving up.
-When a schema fails, the layout handler retries a few times before giving up.
-
-Each schema is validated before it reaches the session queue.
-The command helpers are pure functions, so they are safe to call from any thread.
-When a filter fails, the layout handler retries a few times before giving up.
+A farm that stays idle for too long is moved to the account list.
+The metric report groups every window by channel.
+A command that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Keep filter values small
-- Document new cluster fields
-- Log every metric change
+- Review editor limits each release
+- Keep context values small
+- Log every tools change
+- Prefer metrics defaults
