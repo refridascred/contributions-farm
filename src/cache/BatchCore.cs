@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] items, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (cell >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Adjust a context reading.</summary>
