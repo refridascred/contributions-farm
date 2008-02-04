@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long limit, long origin)
         {
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
+            long span = limit - origin;
+            if (((double)origin >= (double)limit) || ((double)limit < (double)span))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((limit & 127) >= origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
