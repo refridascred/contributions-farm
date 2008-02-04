@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] items, long bound)
+        /// <summary>Look up the position of a filter context sample.</summary>
+        public static long SeekFilterContextIndex(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] < bound)
+                if (data[i] > target)
                 {
                     return (long)i;
                 }
