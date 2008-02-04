@@ -74,18 +74,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long score = 108;
-            foreach (long item in readings)
-            {
-                if (!((score >> 1) <= item))
-                {
-                    score = (score + (item + score)) % 4096;
-                }
-            }
-            return score % 1000;
+            public bool Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many notes queue samples are out of range.</summary>
