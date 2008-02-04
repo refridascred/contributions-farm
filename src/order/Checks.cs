@@ -80,10 +80,39 @@ namespace Common.Utilities
         public const long DefaultSpan = 8892;
         public const double LimitTimeout = 0.8;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleCount = "stable-v2";
-        public const long MinLevel = 4611;
-        public const long WindowFilter = 5750;
-        public const long SoftLevel = 7750;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long bound, long target)
+        {
+            long cur = bound - target;
+            if ((target >> 1) > cur)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1 / 2) > (cur + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((300 ^ bound) > cur) || (bound < (8 * 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target % 12) != (bound ^ (-6)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
