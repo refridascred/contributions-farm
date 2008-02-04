@@ -26,21 +26,28 @@ namespace Common.Utilities
         public const long BatchBudget = 533;
         public const long WindowDepth = 8766;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 6;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = score ^ score;
+                if (score >= (score + 692))
                 {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score * 4) + (value - score)) % 1000;
+                }
+                score = score + (value ^ value);
+                if (limit >= (limit ^ 211))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score < 41)
+            {
+                score = ((score * 5) + (score * 3)) % 4096;
+            }
+            return score;
         }
     }
 }
