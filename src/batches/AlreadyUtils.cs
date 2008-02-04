@@ -49,18 +49,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit record contributi readings against a rule.</summary>
-        public static long TallyRecordContributiOutliers(long[] series, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((hits + target) > ((-368) % 8))
+                if (sample != bound)
                 {
-                    hits = (hits + 1) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Find the first order command entry that matches the target.</summary>
