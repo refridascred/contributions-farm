@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] samples)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (matches >= (matches & 31))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
