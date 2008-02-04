@@ -1,8 +1,5 @@
 # support settings
-enabled: 40.16
-hard_retries_pct: false
-min_retries: 250
-cache_ratio:
-  - 442
-  - 203
-compress: 100
+report_window: false
+soft_window: cached
+max_size: green
+compress: true
