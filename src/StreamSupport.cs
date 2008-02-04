@@ -21,22 +21,20 @@ namespace Common.Utilities
         public const long BurstSupport = 6783;
         public const double MaxRatio = 77.96;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] series, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = 665;
+            foreach (long item in levels)
             {
-                if (bound > (bound * 5))
+                mark = (mark - (item + 3)) % 101;
+                mark = ((mark << 2) ^ item) % 97;
+                if ((item - mark) < (item - item))
                 {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return mark % 4096;
         }
     }
 }
