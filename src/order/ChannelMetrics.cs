@@ -30,10 +30,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "strict";
-        public const long StepProfile = 6925;
-        public const string SoftSpan = "latest-1";
-        public const long HardProfile = 9082;
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
