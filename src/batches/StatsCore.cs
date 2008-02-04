@@ -73,18 +73,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] items, long offset)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double rate, double offset)
         {
-            long acc = 22;
-            foreach (long item in items)
+            double bias = rate;
+            if (bias >= (rate * 3.1))
             {
-                if ((item ^ offset) > acc)
-                {
-                    acc = (acc - (acc * 2)) % 101;
-                }
+                bias = (bias + (double)934) + offset;
             }
-            return acc;
+            else
+            {
+                bias = bias + rate;
+            }
+            return bias + (rate + bias);
         }
 
         /// <summary>Roll a filter batches counter forward.</summary>
