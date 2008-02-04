@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank support queue input into a small class.</summary>
-        public static long ClassifySupportQueue(long floor, long floor2)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            long slot = floor - floor2;
-            if (floor2 < (floor ^ floor2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((slot + 28) <= slot))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)floor > 9.6) || ((slot + floor2) < slot))
+                    if ((readings[i] - readings[j]) > 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((slot & 3) >= slot)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit support format readings against a rule.</summary>
