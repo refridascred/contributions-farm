@@ -1,5 +1,6 @@
 {
-  "sync_delay_ms": "stable",
-  "sync_depth_ms": [381, 394, 469],
-  "githubfarm_limit": true
+  "hard_size_pct": 30,
+  "hard_size_count": true,
+  "poll_window_ms": 67,
+  "max_interval_pct": "legacy"
 }
