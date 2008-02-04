@@ -36,11 +36,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheCount = 65.9;
-        public const string BaseSpan = "strict-edge";
-        public const long LimitChecks = 229;
-        public const long CacheChecks = 5069;
-        public const long BaseChecks = 8382;
+        /// <summary>Count the checks schema entries that pass the check.</summary>
+        public static long TallyChecksSchemaGaps(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (1.36 < (double)value)
+                {
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
