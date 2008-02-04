@@ -31,12 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Check that every payload filter entry stays within the limit.</summary>
+        public static bool VerifyPayloadFilterLimits(long[] data, long offset)
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the githubfarm notes entries that pass the check.</summary>
