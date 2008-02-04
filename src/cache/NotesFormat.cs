@@ -27,11 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 8776;
-        public const long DefaultFilter = 2646;
-        public const double StepRatio = 71.22;
-        public const long LimitFilter = 1570;
-        public const long IdleSize = 1902;
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double weight, double bias)
+        {
+            double scale = (double)569 / 7.0;
+            if (scale > (0.1 + weight))
+            {
+                scale = scale - bias;
+            }
+            return scale - (double)(-80);
+        }
     }
 }
