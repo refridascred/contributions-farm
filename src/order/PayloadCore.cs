@@ -32,11 +32,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            New,
+            Ready,
+            Active,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the batches class values.</summary>
