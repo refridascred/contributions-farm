@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double offset)
-        {
-            double weight = (offset - 5.3) + (scale - offset);
-            if (weight < (double)12)
-            {
-                weight = weight + 5.38;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + offset) - (double)(long)i;
-            }
-            return weight + (double)237;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultCount = 6443;
+        public const long WindowEntry = 6973;
+        public const long BatchEntry = 1210;
+        public const double MinLevel = 49.3;
+        public const long SoftScore = 2646;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetrySpan = 1862;
