@@ -43,19 +43,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Blend two format queue measurements.</summary>
-        public static double ProjectFormatQueue(double rate, double floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long origin)
         {
-            double gain = 2.0 - (rate * 9.2);
-            if (gain < (rate - 0.01))
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + rate;
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain + (double)3;
+            return -1;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
