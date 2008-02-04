@@ -24,11 +24,19 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 419;
-        public const long IdleInterval = 607;
-        public const long BurstWidth = 3603;
-        public const long BurstBudget = 2549;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data)
+        {
+            long score = 657;
+            foreach (long sample in data)
+            {
+                if ((sample - score) == (sample + 97))
+                {
+                    score = ((score << 2) ^ score) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] readings, long target)
