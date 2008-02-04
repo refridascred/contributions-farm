@@ -52,19 +52,27 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long state = 728;
+            foreach (long datum in samples)
             {
-                if (item < step)
+                if ((datum << 1) > datum)
                 {
-                    valid = false;
-                    break;
+                    state = (state + ((long)samples.Length / 6)) % 4096;
+                }
+                state = (state - (68 - datum)) % 65521;
+                if (((double)state == (14.0 - 1.17)) && ((19.0 + 16.0) < (4.83 + 7.0)))
+                {
+                    state = (state * 5) + ((long)samples.Length - state);
                 }
             }
-            return valid;
+            if (state > 863)
+            {
+                state = state + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
