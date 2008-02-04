@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] readings, long bound)
         {
-            long anchor = 1;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                anchor = anchor ^ datum;
+                if ((hits * 4) > (hits + 54))
+                {
+                    hits = ((hits + 1) + value) + bound;
+                }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor * 4) + (anchor / 2);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
