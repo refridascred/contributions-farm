@@ -1,14 +1,10 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-The window module keeps queue values in sync with the route cache.
-The report module keeps githubfarm values in sync with the tools cache.
-
-Keep counter and route names short and lowercase.
-Keep farm and githubfarm names short and lowercase.
+The format helpers are pure functions, so they are safe to call from any thread.
+A window that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Review profile limits each release
-- Prefer route defaults
-- Keep batches values small
+- Review schema limits each release
+- Validate buffer input early
+- Log every order change
