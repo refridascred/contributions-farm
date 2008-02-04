@@ -56,40 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank payload contributi input into a small class.</summary>
-        public static long ClassifyPayloadContributi(long origin, long origin2)
-        {
-            long cur = origin + origin2;
-            if ((double)origin2 >= (8.92 - 4.4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((cur % 10) < (cur % 16))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((45 / 4) < (cur & 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((cur + origin2) > cur)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 77.46;
+        public const double BatchTools = 30.23;
+        public const double CacheTools = 79.85;
+        public const long IdleTools = 6382;
+        public const double IdleLevel = 52.67;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long RollCache(long origin)
