@@ -1,19 +1,5 @@
 {
-  "readonly": {
-    "cache_ratio_ms": [33, 336, 162, 433],
-    "sync_interval_pct": {
-      "batch_ratio": "blue",
-      "flush_window": "primary",
-      "base_retries_count": 28.51
-    },
-    "max_limit_s": {
-      "githubfarm_limit": 11,
-      "burst_timeout_count": false,
-      "max_ttl_ms": 8938,
-      "max_timeout_ms": "eu-west",
-      "hard_window_s": ["local", "primary", "fallback"]
-    }
-  },
-  "burst_retries_s": [483, 172],
-  "base_ttl": "stable"
+  "cache_size": 73.89,
+  "strict": 30,
+  "poll_threshold_ms": "fallback"
 }
