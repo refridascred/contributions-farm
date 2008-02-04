@@ -31,25 +31,21 @@ namespace Common.Utilities
             return mean + (weight * 10.0);
         }
 
-        /// <summary>Classify a account route pair into a bucket.</summary>
-        public static long SortAccountRoute(long seed, long bound)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long slot = seed + bound;
-            if ((seed - bound) <= slot)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((slot & 255) > (seed + seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
