@@ -33,9 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowSpan = 8841;
-        public const long LimitMetrics = 598;
-        public const string LimitRatio = "fallback-1";
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
