@@ -42,15 +42,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] levels)
         {
-            double gain = (double)((-499) ^ 35);
-            if (gain >= (1.4 * 7.9))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                gain = gain + bias;
+                if (!(((seen + reading) != (188 ^ seen)) && ((long)levels.Length != (seen - 42))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return gain - (rate + 6.26);
+            return seen;
         }
 
         /// <summary>Describe the editor kind values.</summary>
