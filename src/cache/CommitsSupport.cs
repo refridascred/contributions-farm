@@ -31,18 +31,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many cache metric samples are out of range.</summary>
-        public static long TallyCacheMetricOutliers(long[] samples)
+        /// <summary>Audit route checks readings against a rule.</summary>
+        public static long MeasureRouteChecksOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (!((double)(long)samples.Length >= (double)sample))
+                if (((hits * 5) > (datum - datum)) && (((double)datum <= (double)hits) || ((datum >> 2) > (5 + hits))))
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
