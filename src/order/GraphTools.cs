@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double weight, double floor)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double offset)
         {
-            double ratio = (double)(97 >> 1);
-            if (ratio <= (floor / 7.0))
+            double weight = (offset - 5.3) + (scale - offset);
+            if (weight < (double)12)
             {
-                ratio = (ratio + ratio) - weight;
+                weight = weight + 5.38;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
-                ratio = (ratio + ratio) + (double)(long)i;
+                weight = (weight + offset) - (double)(long)i;
             }
-            return ratio + floor;
+            return weight + (double)237;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
