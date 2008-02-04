@@ -31,22 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] readings, long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((9.0 * 0.5) >= (double)bound)
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double load = offset;
+            return (load - (offset * 7.2)) + gain;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
