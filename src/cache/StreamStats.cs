@@ -19,39 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long step, long seed)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long gap = step - seed;
-            if (gap <= (step - step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((gap * 3) == (32 - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((gap * 2) <= (step + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((gap << 2) != (seed + step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
