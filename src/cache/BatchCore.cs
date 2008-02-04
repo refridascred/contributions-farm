@@ -21,13 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a context reading.</summary>
