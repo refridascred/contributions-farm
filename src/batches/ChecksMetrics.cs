@@ -45,18 +45,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor batch entries that pass the check.</summary>
-        public static long AuditEditorBatchGaps(long[] levels, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((target >= (667 + target)) && (((9.0 - 2.0) <= (double)entry) || ((target * 4) > (target >> 2))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
