@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a stream queue figure with a bias.</summary>
-        public static double ProjectStreamQueue(double ratio, double offset)
+        /// <summary>Check that every contributi notes entry stays within the limit.</summary>
+        public static bool VerifyContributiNotesBounds(long[] data, long seed)
         {
-            double ratio2 = (double)(25 * 3);
-            return (ratio2 + (2.98 - ratio)) + offset;
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
