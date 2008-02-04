@@ -12,13 +12,32 @@ namespace Common.Utilities
             return scale - (floor + bias);
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long origin, long offset)
         {
-            Failed,
-            Done,
-            Locked,
-            Active,
+            long lane = origin + offset;
+            if ((origin - origin) <= (4 * 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset % 8) == (lane ^ origin)) || ((lane - lane) == (83 / 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (lane < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
