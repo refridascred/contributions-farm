@@ -29,12 +29,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 1121;
-        public const long CacheScore = 5172;
-        public const double BatchCounter = 47.41;
-        public const string LimitSpan = "local-edge";
-        public const long StepSpan = 6645;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Validate token support readings against a bound.</summary>
         public static bool VerifyTokenSupportLimits(long[] values, long floor)
