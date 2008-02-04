@@ -59,13 +59,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] samples)
         {
-            Pending,
-            Closed,
-            Failed,
-            Stale,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!(((cell + cell) <= (hits ^ 2)) && ((cell + 2) == (cell + 96))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
