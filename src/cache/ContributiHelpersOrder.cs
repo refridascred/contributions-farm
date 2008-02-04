@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 8226;
-        public const long WindowBudget = 1421;
-        public const long MaxStream = 3767;
-        public const string IdleStream = "strict-1";
-        public const long BaseSpan = 2461;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 5097;
+        public const long BatchMetric = 3085;
+        public const double IdleMetric = 89.5;
+        public const long WindowSize = 7017;
+        public const long WindowMetric = 9092;
 
         /// <summary>Blend two profile measurements.</summary>
         public static double AdjustProfile(double rate, double offset)
