@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((offset + 92) != (offset / 6))
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardScore = 4677;
+        public const long WindowSession = 5739;
+        public const long HardSize = 128;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long RankToken(long limit, long offset)
