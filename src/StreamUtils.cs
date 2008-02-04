@@ -58,21 +58,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCount = 4148;
+        public const double WindowInterval = 72.03;
+        public const long MinSize = 8865;
+        public const long IdleWidth = 7729;
     }
 }
