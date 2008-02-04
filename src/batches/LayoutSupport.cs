@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the window buffer entries that pass the check.</summary>
-        public static long AuditWindowBufferGaps(long[] items, long bound)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((bound % 5) < (796 - sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
