@@ -49,11 +49,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 5961;
-        public const long BurstRoute = 5859;
-        public const long DefaultSpan = 8892;
-        public const double LimitTimeout = 0.8;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (((item & 15) >= (item + tally)) || (425 < (seed + item)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
