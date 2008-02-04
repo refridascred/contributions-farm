@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first account payload entry that matches the target.</summary>
-        public static long SeekAccountPayloadIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftInterval = 79.74;
+        public const long SoftCache = 5745;
+        public const double IdleBudget = 15.98;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long ClassifyProfile(long step, long floor)
