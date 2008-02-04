@@ -16,12 +16,19 @@ namespace Common.Utilities
         public const long WindowContributi = 9163;
         public const long MaxContributi = 3918;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] items, long limit)
         {
-            Idle,
-            Queued,
-            Retry,
+            long score = 901;
+            foreach (long sample in items)
+            {
+                score = ((score + 0) % 1000) ^ sample;
+            }
+            if (score > 468)
+            {
+                score = (score - (score + limit)) % 97;
+            }
+            return score % 97;
         }
     }
 }
