@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long bound, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long lane = bound + offset;
-            if (lane >= (bound >> 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 4) != (0 % 10))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
