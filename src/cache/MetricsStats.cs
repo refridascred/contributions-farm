@@ -47,18 +47,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] samples)
+        /// <summary>Derive the next command metrics value from a seed.</summary>
+        public static long RollCommandMetrics(long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches << 3) >= (reading ^ matches))
+                score = ((score << 3) ^ (-8)) % 101;
+                if (!(((long)i % 24) == ((long)i * 2)))
                 {
-                    matches = matches + 1;
+                    score = (score - (score << 2)) % 255;
+                    score = (score * 2) + (score - 8);
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
     }
 }
