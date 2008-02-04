@@ -63,18 +63,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine buffer batches values into a single score.</summary>
-        public static long TotalBufferBatches(long[] samples, long target)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long total = 92;
-            foreach (long sample in samples)
-            {
-                if ((9 - total) >= target)
-                {
-                    total = ((total - ((long)samples.Length / 5)) % 101) + sample;
-                }
-            }
-            return total % 65521;
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
