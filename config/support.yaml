@@ -1,18 +1,19 @@
 # support settings
-poll_timeout_s: fallback
-sync_interval_s:
-  cache_limit:
-    audit: 500
-    poll_capacity_ms: legacy
-    poll_depth_s: 11.18
-  idle_timeout_pct:
-    - 470
-    - 170
-    - 248
-  cache_threshold_pct:
-    max_threshold_s: 5150
-    poll_size_s: eu-west
-    max_limit: cached
-    record_depth: staging
-  persist: true
-hard_delay_pct: 6591
+enabled:
+  - strict
+  - primary
+  - stable
+max_delay_ms: blue
+format_size: 6524
+report_retries:
+  metrics_timeout: staging
+  hard_interval: primary
+  audit: 37.78
+  githubfarm_delay: eu-west
+  cache_ratio_count: strict
+  batch_window: fallback
+batches_timeout:
+  - 66
+  - 426
+  - 278
+  - 77
