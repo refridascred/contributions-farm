@@ -65,9 +65,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleSpan = 654;
-        public const long WindowWidth = 6886;
-        public const long RetryGraph = 5273;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
