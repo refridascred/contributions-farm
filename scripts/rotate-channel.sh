@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green open legacy; do
+mode="${1:-local}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in latest eu-west primary; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=282
-log "limit is ${CHANNEL_LIMIT}"
