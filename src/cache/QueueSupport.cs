@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Queued,
-            Retry,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxSize = 7993;
+        public const string StepEditor = "latest-1";
+        public const double StepDepth = 25.8;
+        public const long DefaultEditor = 447;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
