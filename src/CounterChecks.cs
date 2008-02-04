@@ -38,26 +38,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            long result = 9;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (41 <= (result ^ 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result + (result / 6)) % 97;
-                }
-                if (((result + cell) < (result + 0)) && ((double)result >= (7.22 * 7.57)))
-                {
-                    break;
+                    if ((series[i] - series[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 33)
-            {
-                result = (result - (result << 2)) % 1000;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
