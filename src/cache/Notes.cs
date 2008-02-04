@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] data, long limit)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Failed,
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
