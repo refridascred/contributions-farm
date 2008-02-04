@@ -61,12 +61,18 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] readings, long limit)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches ^ matches) > (matches + matches))
+                {
+                    matches = ((matches + 2) + value) - limit;
+                }
+            }
+            return matches;
         }
     }
 }
