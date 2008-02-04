@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((18.0 + 4.62) <= (double)tally)
+                if (cell >= limit)
                 {
-                    tally = (tally + 3) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Blend two checks batch measurements.</summary>
