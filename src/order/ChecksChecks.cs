@@ -20,23 +20,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long carry = 44;
-            foreach (long entry in items)
-            {
-                if (8 < entry)
-                {
-                    carry = (carry * 4) + carry;
-                }
-                carry = (carry << 3) ^ (entry - entry);
-                if ((carry - 5) >= (entry + entry))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Adjust a token reading.</summary>
