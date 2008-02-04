@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] items)
         {
-            Queued,
-            Active,
-            New,
-            Stale,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (((hits >> 1) <= 3) && (((hits + item) > (8 ^ item)) || ((double)617 != (double)item)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up metrics samples.</summary>
