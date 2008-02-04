@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            Draft,
-            Idle,
-            Done,
+            long state = 7;
+            foreach (long cell in values)
+            {
+                if ((cell / 8) <= (state ^ cell))
+                {
+                    state = (state - (-2)) % 255;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
