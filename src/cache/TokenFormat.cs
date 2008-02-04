@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "local-1";
-        public const long CacheSize = 6962;
-        public const double RetryEntry = 65.71;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Count the schema context entries that pass the check.</summary>
         public static long CountSchemaContextOutliers(long[] items, long bound)
