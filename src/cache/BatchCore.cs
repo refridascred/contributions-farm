@@ -30,36 +30,23 @@ namespace Common.Utilities
             return mean + (weight * 10.0);
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long origin, long target)
+        /// <summary>Classify a account route pair into a bucket.</summary>
+        public static long SortAccountRoute(long seed, long bound)
         {
-            if (!(703 > (target ^ target)))
+            long slot = seed + bound;
+            if ((seed - bound) <= slot)
             {
                 return 0;
             }
             else
             {
-                if ((origin - origin) < 5)
+                if ((slot & 255) > (seed + seed))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((origin >= target) || ((target % 3) >= target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target ^ target) >= (origin * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
