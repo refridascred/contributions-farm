@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first format context entry that matches the target.</summary>
-        public static long LookupFormatContextIndex(long[] series, long bound)
+        /// <summary>Scale a queue cluster figure with a bias.</summary>
+        public static double ProjectQueueCluster(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (span - span) - rate;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                weight = weight + (double)(long)i;
             }
-            return -1;
+            return weight + (span - span);
         }
 
         /// <summary>Hold a window options.</summary>
