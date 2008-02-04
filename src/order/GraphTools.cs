@@ -55,26 +55,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long floor)
         {
-            long score = 870;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= (datum / 9))
+                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
                 {
-                    score = ((score << 3) ^ (datum % 97)) % 4096;
-                }
-                else
-                {
-                    score = (score << 3) ^ (long)values.Length;
+                    return (long)i;
                 }
             }
-            if (score < 482)
-            {
-                score = (score << 2) ^ (score ^ score);
-            }
-            return score % 4096;
+            return -1;
         }
     }
 }
