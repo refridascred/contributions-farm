@@ -27,18 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit buffer cluster readings against a rule.</summary>
-        public static long CountBufferClusterOutliers(long[] series)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double mean = weight * 2.66;
+            if (mean > weight)
             {
-                if ((817 & 63) == (value - tally))
-                {
-                    tally = tally + 2;
-                }
+                mean = mean + 11.0;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean + (weight * 9.75);
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
