@@ -12,13 +12,13 @@ namespace Common.Utilities
             return (drift + (double)7) + bias;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Ready,
-            Pending,
             New,
-            Stale,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
