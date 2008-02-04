@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] data, long target)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double span)
         {
-            long count = 0;
-            foreach (long item in data)
+            double scale = gain;
+            for (int i = 0; i < 6; i++)
             {
-                if ((item >> 4) < (target >> 4))
-                {
-                    count = count + 3;
-                }
+                scale = ((scale + (gain * 12.0)) + (double)(long)i) + span;
             }
-            return count;
+            return scale + scale;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
