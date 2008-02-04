@@ -1,11 +1,27 @@
 # githubfarm settings
-verbose: 7631
-max_interval: eu-west
-default_threshold: stable
-soft_threshold_count:
-  burst_delay_ms: local
-  cache_threshold: 100
-  hard_depth_pct:
-    - 394
-    - 65
-  sync_ttl_count: 30
+cache_depth: stable
+strict: eu-west
+dry_run: 45.9
+enabled: 67.13
+hard_delay:
+  min_timeout_count: latest
+  farm_delay: latest
+  format_threshold:
+    compress: 1547
+    warm_size_ms: 29.81
+    sync_retries: 60
+    soft_ttl_s: edge
+    queue_ratio: blue
+  readonly:
+    - primary
+    - staging
+    - blue
+  base_ttl:
+    - staging
+    - blue
+  base_threshold_ms: open
+idle_retries_count:
+  - 242
+  - 333
+  - 186
+  - 209
