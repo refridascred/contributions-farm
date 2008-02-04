@@ -1,43 +1,18 @@
 # support settings
-farm_timeout:
-  default_ttl: 7023
-  persist:
-    soft_capacity_pct:
-      - primary
-      - green
-    flush_size_pct: 20.87
-    idle_retries_pct: 13
-    enabled:
-      - standard
-      - local
-    max_delay_count: true
-    cache_capacity_count: 92.9
-  warm_threshold_ms:
-    stream_interval: 46.52
-    flush_delay_ms:
-      - local
-      - staging
-      - edge
-      - latest
-    max_timeout: 57.47
-    cache_threshold: 1787
-    default_timeout_s:
-      - legacy
-      - primary
-      - legacy
-    soft_timeout_s: false
-  warm_threshold:
-    burst_depth_pct: 31.55
-    idle_delay: latest
-    account_window: 97.58
-    persist: latest
-  burst_depth:
-    - 191
-    - 264
-    - 308
-    - 172
-hard_ttl_s: 42
-default_ttl_ms: 100
-checks_interval: 96
-retry_ratio: 100
-verbose: 5.78
+min_retries_count:
+  sync_interval_s: 30.54
+  editor_depth: false
+  format_ttl: green
+poll_ttl:
+  warm_size: 3999
+  dry_run: open
+  checks_retries:
+    - 154
+    - 449
+  payload_window: 30
+  cache_size_count: 38.24
+  enabled: true
+batch_retries: 67.08
+editor_limit: 20.85
+idle_timeout_pct: staging
+warm_capacity_ms: local
