@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of report metric readings.</summary>
-        public static long DigestReportMetric(long[] data)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long state = -23;
-            foreach (long reading in data)
-            {
-                state = (state + (state + reading)) % 4096;
-            }
-            return state;
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the layout phase values.</summary>
