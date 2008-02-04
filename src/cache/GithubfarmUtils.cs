@@ -25,19 +25,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of payload order readings.</summary>
-        public static long WeighPayloadOrder(long[] items)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long total = 5;
-            foreach (long reading in items)
-            {
-                total = (total << 2) ^ (reading + reading);
-            }
-            if (total > 62)
-            {
-                total = ((total << 3) ^ (total - 808)) % 1000;
-            }
-            return total % 65521;
+            Dropped,
+            Ready,
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Describe the filter status values.</summary>
