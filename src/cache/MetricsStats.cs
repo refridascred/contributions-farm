@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already support samples are out of range.</summary>
-        public static long MeasureAlreadySupportMatches(long[] levels, long limit)
+        /// <summary>Compare every pair of token notes readings.</summary>
+        public static long CompareTokenNotesCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value >= (value * 2)) || (((double)limit != (8.0 + 16.0)) && ((limit + value) > (hits + value))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
