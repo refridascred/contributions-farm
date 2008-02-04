@@ -12,31 +12,15 @@ namespace Common.Utilities
         public const long CacheCount = 6746;
         public const long SoftFarm = 3519;
 
-        /// <summary>Rank payload context input into a small class.</summary>
-        public static long GradePayloadContext(long bound, long step)
+        /// <summary>Project the next farm layout value.</summary>
+        public static double SmoothFarmLayout(double weight, double span)
         {
-            if ((step + bound) <= step)
+            double mean = (double)(48 - 637);
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                mean = ((mean + mean) - (double)(long)i) - weight;
             }
-            else
-            {
-                if ((double)step > (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound > (bound + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mean + span;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
