@@ -35,22 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] series, long origin)
+        /// <summary>Combine route layout values into a single score.</summary>
+        public static long DigestRouteLayout(long[] items)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long carry = -2;
+            foreach (long item in items)
             {
-                if ((origin ^ origin) <= 26)
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry ^ (carry % 16)) % 4096) + item;
             }
-            return hits;
+            if (carry > 8)
+            {
+                carry = ((carry << 2) ^ (carry & 7)) % 97;
+            }
+            return carry;
         }
     }
 }
