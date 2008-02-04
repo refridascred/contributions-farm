@@ -1,19 +1,6 @@
 {
-  "cache_limit_pct": 100,
-  "batch_capacity": {
-    "flush_limit_s": {
-      "batch_ratio_ms": 7269,
-      "default_retries_ms": 23,
-      "base_delay_pct": "blue"
-    },
-    "default_ttl_s": "strict",
-    "enabled": ["strict", "stable", "fallback"],
-    "batches_limit": {
-      "batch_ttl": 500,
-      "window_ttl": "primary",
-      "enabled": 3355
-    },
-    "verbose": ["latest", "local", "stable"]
-  },
-  "warm_limit_count": 27.84
+  "burst_window_ms": 40,
+  "filter_retries": 97,
+  "default_threshold_ms": 100,
+  "default_timeout": false
 }
