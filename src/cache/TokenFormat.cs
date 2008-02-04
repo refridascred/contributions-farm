@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
+            Closed,
+            Synced,
             Draft,
-            Active,
-            Idle,
-            Pending,
-            Ready,
         }
 
         /// <summary>Count the schema context entries that pass the check.</summary>
