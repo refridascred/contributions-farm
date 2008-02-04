@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleScore = 20.07;
+        public const double MaxStats = 51.03;
+        public const long CacheStats = 8075;
+        public const long BurstSpan = 2862;
+        public const double WindowStats = 34.91;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 124;
