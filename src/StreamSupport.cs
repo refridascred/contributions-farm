@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double MinInterval = 28.94;
         public const long StepInterval = 3100;
 
-        /// <summary>Count the contributi channel entries that pass the check.</summary>
-        public static long CountContributiChannelHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((0.42 + 5.5) <= (double)sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 31.31;
+        public const double BaseInterval = 14.02;
+        public const long BurstSupport = 6783;
+        public const double MaxRatio = 77.96;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteHits(long[] series, long bound)
