@@ -45,11 +45,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "primary-1";
-        public const long MaxChannel = 5172;
-        public const string BaseSize = "open-edge";
-        public const double HardChannel = 41.97;
-        public const long DefaultChannel = 416;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
