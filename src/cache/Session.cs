@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double ratio, double bias)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            double ratio2 = (ratio / 7.0) * 3.35;
-            return (ratio2 - (double)2) + bias;
+            long score = 61;
+            foreach (long sample in data)
+            {
+                if (((score & 3) == (sample << 3)) || ((8 - 28) <= sample))
+                {
+                    score = (score - score) % 101;
+                }
+                score = (score + (122 % 97)) % 255;
+                score = score ^ (sample & 31);
+            }
+            return score;
         }
 
         /// <summary>Rank payload contributi input into a small class.</summary>
