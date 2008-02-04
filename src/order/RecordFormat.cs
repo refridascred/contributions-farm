@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstReport = 61.66;
-        public const long MinLevel = 2025;
-        public const string BatchReport = "standard-1";
-        public const long MaxReport = 7937;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Idle,
+            Retry,
+            Failed,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string CacheOrder = "standard-v2";
