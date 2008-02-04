@@ -12,18 +12,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the schema context entries that pass the check.</summary>
-        public static long CountSchemaContextOutliers(long[] items, long bound)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)bound > (8.0 + 9.72))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
+            Ready,
+            Queued,
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
