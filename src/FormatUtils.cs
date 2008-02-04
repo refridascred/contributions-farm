@@ -37,19 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] items, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] levels)
         {
-            long acc = 99;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                acc = ((acc ^ (68 ^ 77)) % 97) ^ sample;
+                if ((double)tally >= (6.0 - 4.61))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc > 39)
-            {
-                acc = (acc << 3) ^ target;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
