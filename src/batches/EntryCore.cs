@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] readings, long floor)
+        /// <summary>Fold a list of report commits readings.</summary>
+        public static long TallyReportCommits(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long mark = 439;
+            foreach (long value in samples)
             {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (((mark * 4) + (value >> 5)) % 4096) - offset;
             }
-            return stale;
+            return mark % 65521;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
