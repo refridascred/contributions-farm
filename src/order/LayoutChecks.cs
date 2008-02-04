@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 0.66;
-        public const string BatchSchema = "local-edge";
-        public const long DefaultInterval = 8850;
-        public const double CacheSchema = 97.93;
-        public const long HardSchema = 5310;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 124;
