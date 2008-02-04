@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a profile commits sample.</summary>
-        public static long LookupProfileCommitsIndex(long[] items, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] < seed)
+                if ((offset + 92) != (offset / 6))
                 {
-                    return (long)i;
+                    count = (count + 3) - cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
