@@ -1,26 +1,17 @@
 # githubfarm settings
-poll_timeout:
-  base_capacity_s:
-    - local
-    - fallback
-    - legacy
-  base_size_ms: true
-  retry_ttl_pct:
-    compress: 14
-    retry_ratio_s: true
-    hard_retries_s:
-      - 22
-      - 389
-      - 408
-      - 302
-  default_delay: 250
-  githubfarm_size: fallback
-stats_threshold:
-  - legacy
-  - strict
-persist:
-  route_timeout: 7.33
-  audit: 13
-  flush_interval_count: 1658
-editor_ttl: 35.58
-batch_limit_ms: 250
+default_ttl_count: primary
+payload_threshold: false
+cache_retries_ms: 936
+batches_threshold:
+  commits_threshold:
+    idle_retries: 500
+    readonly: open
+    layout_timeout: false
+    report_capacity: 23.15
+    strict:
+      - eu-west
+      - blue
+      - standard
+  max_interval: 9
+  cache_depth_count: 70.13
+  max_ttl_ms: 97.98
