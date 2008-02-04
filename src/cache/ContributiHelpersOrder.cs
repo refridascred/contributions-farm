@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long WindowSize = 7017;
         public const long WindowMetric = 9092;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double rate, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] levels, long seed)
         {
-            double scale = rate * 5.0;
-            if (scale < (rate / 2.0))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                scale = (scale + 2.9) - offset;
+                if (tally < (seed & 31))
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            return scale - 8.7;
+            return tally;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
