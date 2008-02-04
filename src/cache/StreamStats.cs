@@ -24,18 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] samples)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (cell <= 47)
+                if (entry >= origin)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Validate batches cache readings against a bound.</summary>
