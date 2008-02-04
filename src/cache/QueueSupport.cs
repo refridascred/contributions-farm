@@ -14,15 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next cache report value.</summary>
-        public static double SmoothCacheReport(double gain, double offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            double ratio = (double)7 - (offset / 4.0);
-            if (ratio < (double)35)
-            {
-                ratio = (ratio + 12.0) - gain;
-            }
-            return ratio + (offset - offset);
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
