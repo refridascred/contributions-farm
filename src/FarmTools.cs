@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const long BurstSession = 5914;
         public const long BatchSession = 9793;
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double scale, double floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            double rate = (double)(482 + 91);
-            if (rate >= (double)360)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate + (floor * 10.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (scale / 3.0);
-            }
-            return rate - 1.0;
+            return tally;
         }
     }
 }
