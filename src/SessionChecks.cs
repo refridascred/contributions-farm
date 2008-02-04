@@ -49,12 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Stale,
-            Failed,
-            Paused,
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
