@@ -62,13 +62,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Ready,
+            Stale,
             Failed,
-            Dropped,
-            Draft,
+            Paused,
         }
     }
 }
