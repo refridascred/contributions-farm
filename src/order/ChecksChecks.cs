@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Draft,
             Paused,
-            Synced,
+            Idle,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the metric kind values.</summary>
