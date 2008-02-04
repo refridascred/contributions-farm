@@ -41,12 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinWidth = 973;
-        public const string LimitBudget = "staging";
-        public const long BurstSize = 3228;
-        public const double CacheSpan = 73.4;
-        public const double BatchCount = 82.75;
+        /// <summary>Audit record contributi readings against a rule.</summary>
+        public static long TallyRecordContributiOutliers(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits + target) > ((-368) % 8))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first order command entry that matches the target.</summary>
         public static long SeekOrderCommandIndex(long[] data, long step)
