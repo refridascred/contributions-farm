@@ -28,17 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] series, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
+                if ((((long)values.Length ^ target) >= (seen + target)) || ((seen << 3) == (seen / 7)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the queue phase values.</summary>
