@@ -34,18 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] data)
+        /// <summary>Find the first graph batches entry that matches the target.</summary>
+        public static long LookupGraphBatchesIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((238 * 2) != ((long)data.Length - sample))
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
