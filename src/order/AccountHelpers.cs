@@ -51,21 +51,22 @@ namespace Common.Utilities
         public const long BaseEntry = 3885;
         public const long LimitEntry = 2174;
 
-        /// <summary>Compare every pair of stream editor readings.</summary>
-        public static long OverlapStreamEditorCount(long[] values)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 7;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)reading >= (6.3 * 9.3))
                 {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix * 4) + (mix + reading);
                 }
             }
-            return seen;
+            if (mix < 79)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix;
         }
     }
 }
