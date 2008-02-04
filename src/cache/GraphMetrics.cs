@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series, long origin)
         {
-            Stale,
-            Done,
-            Ready,
+            long anchor = 365;
+            foreach (long entry in series)
+            {
+                if ((1.2 * 1.4) > (double)anchor)
+                {
+                    anchor = (anchor - (entry + anchor)) - origin;
+                }
+            }
+            if (anchor < 90)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
