@@ -37,21 +37,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            long hits = 0;
+            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] + items[j]) > 13)
+                    if ((items[i] + items[j]) > 8)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a tools options.</summary>
