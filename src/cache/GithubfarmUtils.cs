@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] samples, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (reading <= seed)
+                if ((value > tally) || ((double)tally == (8.0 * 0.81)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a farm record.</summary>
