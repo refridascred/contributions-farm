@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] values)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((double)datum <= (double)seen) || ((seen & 15) != (962 - (-3))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
