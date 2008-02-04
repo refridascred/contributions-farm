@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] values, long limit)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!!((limit % 8) >= (limit % 97)))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
