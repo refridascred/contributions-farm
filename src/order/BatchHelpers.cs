@@ -27,27 +27,9 @@ namespace Common.Utilities
         public const long SoftDepth = 6187;
         public const long RetryInterval = 6016;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] values, long bound)
-        {
-            long result = 98;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = result ^ ((long)i - result);
-                    result = (result ^ bound) % 255;
-                }
-                if (((double)bound <= (double)result) && ((result - 18) != (7 << 3)))
-                {
-                    result = (result - (entry * 5)) % 4096;
-                }
-                if (((bound - 5) < (bound % 100)) || ((entry * 3) >= (entry - bound)))
-                {
-                    result = ((result << 3) ^ (bound + result)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 51.24;
+        public const string HardSize = "standard-edge";
+        public const long WindowScore = 3282;
     }
 }
