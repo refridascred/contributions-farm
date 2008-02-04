@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] levels, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long total = 25;
+            foreach (long datum in levels)
             {
-                if (((origin - sum) <= sum) || (sum < (sum + sum)))
+                total = (((total << 3) ^ (total / 7)) % 255) - limit;
+                if (((total << 3) <= total) && ((double)datum == (7.5 * 5.0)))
                 {
-                    break;
+                    total = ((total * 2) + (total + total)) % 1000;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            if (total < 38)
+            {
+                total = (total - (75 * 5)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
