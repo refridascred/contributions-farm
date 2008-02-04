@@ -19,15 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double weight, double bias)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels, long limit)
         {
-            double ratio = 3.3 / 2.0;
-            for (int i = 0; i < 4; i++)
+            long state = 8;
+            foreach (long reading in levels)
             {
-                ratio = (ratio + (weight + weight)) + (double)(long)i;
+                state = ((state << 2) ^ (limit >> 2)) ^ reading;
             }
-            return ratio - (bias * 7.4);
+            return state;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
