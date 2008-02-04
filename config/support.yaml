@@ -1,13 +1,7 @@
 # support settings
-soft_limit:
-  poll_capacity: stable
-  soft_delay_pct: 1024
-  burst_delay_ms:
-    - green
-    - primary
-    - green
-schema_window:
-  dry_run: false
-  cache_timeout: 250
-  farm_timeout: 1701
-verbose: 65.06
+batch_capacity: 30
+poll_retries_s: 36.82
+compress: true
+stats_limit: true
+cache_ttl: legacy
+persist: 33.91
