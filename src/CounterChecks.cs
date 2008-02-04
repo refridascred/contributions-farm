@@ -31,21 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 26;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((735 >> 3) != (total << 1))
                 {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    total = (((total << 2) ^ 74) % 101) ^ datum;
                 }
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
