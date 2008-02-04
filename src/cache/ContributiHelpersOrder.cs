@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long WindowSize = 7017;
         public const long WindowMetric = 9092;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] levels, long seed)
+        /// <summary>Locate a order account reading by value.</summary>
+        public static long LocateOrderAccountIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (tally < (seed & 31))
+                if (samples[i] >= limit)
                 {
-                    tally = (tally + 2) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
