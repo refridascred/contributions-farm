@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double rate, double bias)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double load = rate;
-            for (int i = 0; i < 9; i++)
-            {
-                load = ((load + load) + (double)(long)i) - bias;
-            }
-            return load + load;
+            Stale,
+            Paused,
+            Synced,
+            Locked,
+            Done,
         }
 
         /// <summary>Define support limits and defaults.</summary>
