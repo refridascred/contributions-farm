@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double scale, double floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double scale, double floor)
         {
-            double load = (double)(2 + 20);
-            if (load <= floor)
+            double mean = (double)(53 << 2);
+            if (mean < mean)
             {
-                load = (load - (double)9) - scale;
+                mean = mean - (mean - scale);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                load = load - load;
+                mean = (mean + floor) + (double)(long)i;
             }
-            return load - (floor + load);
+            return mean - (8.7 * 2.23);
         }
 
         /// <summary>Iterate the githubfarm buffer series from a seed.</summary>
