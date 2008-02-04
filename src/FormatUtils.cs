@@ -24,19 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items, long seed)
-        {
-            long anchor = 942;
-            foreach (long datum in items)
-            {
-                if (datum < (40 - datum))
-                {
-                    anchor = ((anchor * 2) + (seed + anchor)) % 1000;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 7912;
+        public const string BurstGraph = "standard-edge";
+        public const long RetryWidth = 2071;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long DeriveRoute(long bound)
