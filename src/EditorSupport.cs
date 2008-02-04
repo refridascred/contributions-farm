@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count counter contributi pairs that satisfy a relation.</summary>
-        public static long PairCounterContributiCount(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)entry != (16.0 + 11.0))
                 {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - limit;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
