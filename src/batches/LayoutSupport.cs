@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a channel format reading by value.</summary>
-        public static long LookupChannelFormatIndex(long[] series, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 109;
+            foreach (long entry in data)
             {
-                if (series[i] <= step)
+                if (((entry % 7) <= target) && (sum > 235))
                 {
-                    return (long)i;
+                    sum = (sum * 3) + 65;
+                }
+                if ((entry % 10) >= (entry / 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the order level values.</summary>
