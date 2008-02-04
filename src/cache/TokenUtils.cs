@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 8207;
+        public const string StepFarm = "strict-edge";
+        public const long StepBudget = 8405;
+        public const long IdleFarm = 7340;
+        public const long BurstFactor = 1170;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepBatches = 9777;
