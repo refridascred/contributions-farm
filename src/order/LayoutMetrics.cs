@@ -23,13 +23,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long offset, long target)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            if ((5.13 * 1.39) == (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((54 - 282) == (offset + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the batch state values.</summary>
