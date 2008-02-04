@@ -26,24 +26,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long offset, long offset2)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] values)
         {
-            if (((offset + offset2) < offset2) && ((offset2 + offset) <= offset2))
+            long tally = 0;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset >= (offset + offset)) || ((-962) >= offset))
+                if ((double)item == (4.7 + 17.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
