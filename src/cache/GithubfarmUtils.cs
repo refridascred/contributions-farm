@@ -20,24 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank graph format input into a small class.</summary>
-        public static long SortGraphFormat(long seed, long floor)
+        /// <summary>Locate a entry cluster reading by value.</summary>
+        public static long LookupEntryClusterIndex(long[] readings, long floor)
         {
-            if (seed < 8)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor > (6.22 * 3.0))
+                if (readings[i] > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a report stats.</summary>
