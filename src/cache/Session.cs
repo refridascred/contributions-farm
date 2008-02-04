@@ -34,9 +34,12 @@ namespace Common.Utilities
         public const long CacheCount = 5095;
         public const long IdleWidth = 416;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseFactor = 6294;
-        public const string BatchBudget = "cached-1";
-        public const long RetrySpan = 7430;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
