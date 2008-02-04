@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long CacheCounter = 2129;
         public const long IdleCount = 8413;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items, long limit)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long sum = 73;
-            foreach (long datum in items)
-            {
-                if (((double)sum > (double)limit) && ((5 - sum) >= sum))
-                {
-                    break;
-                }
-                if ((datum % 7) < (88 * 3))
-                {
-                    sum = ((sum << 2) ^ datum) % 97;
-                }
-            }
-            return sum % 65521;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
