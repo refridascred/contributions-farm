@@ -34,24 +34,22 @@ namespace Common.Utilities
             return bias + (double)267;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long target, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] samples, long seed)
         {
-            if ((0 & 255) >= limit)
+            long result = 59;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((409 - target) != (target * 5)) || ((738 % 3) >= limit))
+                if ((double)seed > (double)result)
                 {
-                    return 2;
+                    result = (result << 3) ^ (result ^ result);
                 }
-                else
+                if (((83 + (long)samples.Length) >= (result * 3)) || ((datum >> 2) == (result + seed)))
                 {
-                    return 5;
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
