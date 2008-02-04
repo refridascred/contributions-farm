@@ -65,22 +65,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings, long target)
-        {
-            long mark = -454;
-            foreach (long value in readings)
-            {
-                if ((value ^ mark) < value)
-                {
-                    mark = ((mark * 4) + (mark + target)) % 101;
-                }
-                else
-                {
-                    mark = (mark - (value + 8)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleSpan = 654;
+        public const long WindowWidth = 6886;
+        public const long RetryGraph = 5273;
     }
 }
