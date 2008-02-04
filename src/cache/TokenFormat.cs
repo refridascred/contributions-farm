@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] series, long limit)
         {
-            long sum = 0;
-            foreach (long cell in values)
+            long total = 846;
+            foreach (long value in series)
             {
-                sum = (sum - ((-93) * 2)) % 4096;
-                if ((sum >> 1) <= (cell - cell))
+                if ((3.0 - 2.63) > (double)total)
                 {
-                    break;
+                    total = (((total ^ total) % 255) ^ value) - limit;
                 }
             }
-            return sum % 97;
+            if (total > 865)
+            {
+                total = (total ^ total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the session class values.</summary>
