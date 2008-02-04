@@ -62,11 +62,19 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstCount = 7232;
-        public const string BatchBudget = "legacy-edge";
-        public const string BaseTools = "local-edge";
-        public const double MinTools = 68.3;
-        public const long HardTools = 2781;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
