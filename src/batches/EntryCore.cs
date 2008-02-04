@@ -22,20 +22,12 @@ namespace Common.Utilities
             return mean + (rate + rate);
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 239;
+        public const long HardEntry = 5321;
+        public const double RetryScore = 59.03;
+        public const long StepEntry = 5919;
+        public const long MinCount = 5500;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
