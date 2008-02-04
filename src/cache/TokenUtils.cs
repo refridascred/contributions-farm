@@ -5,24 +5,29 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long seed, long seed2)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            if (!((81 * 4) <= seed2))
+            long anchor = -77;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed % 7) < seed)
+                if ((13.0 + 0.13) <= (double)anchor)
                 {
-                    return 2;
+                    anchor = (anchor ^ ((long)readings.Length + sample)) % 1000;
+                    anchor = anchor ^ (sample ^ sample);
                 }
                 else
                 {
-                    return 0;
+                    anchor = (anchor - sample) % 255;
                 }
+                anchor = anchor ^ sample;
+                anchor = ((anchor << 3) ^ sample) % 101;
             }
+            if (anchor < (-683))
+            {
+                anchor = (anchor ^ (anchor * 3)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metric status values.</summary>
