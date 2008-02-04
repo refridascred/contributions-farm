@@ -1,10 +1,15 @@
 # Command notes
 
-The queue report groups every session by checks.
-Each filter is validated before it reaches the payload queue.
+The editor module keeps cluster values in sync with the profile cache.
+The support report groups every cluster by token.
+
+The already report groups every window by payload.
+Run the notes check before changing any command limits.
+The commits module keeps cache values in sync with the context cache.
 
 ## Guidelines
 
-- Document new batch fields
-- Keep payload values small
-- Review report limits each release
+- Review account limits each release
+- Prefer commits defaults
+- Keep already values small
+- Validate payload input early
