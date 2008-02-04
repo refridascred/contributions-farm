@@ -64,11 +64,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultSpan = "local-v2";
-        public const double SoftCount = 21.34;
-        public const long LimitSize = 9697;
-        public const double SoftWidth = 78.24;
-        public const long BaseDepth = 3349;
+        /// <summary>Classify a format filter pair into a bucket.</summary>
+        public static long GradeFormatFilter(long seed, long step)
+        {
+            if ((double)seed >= (6.27 + 5.9))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((0.85 / 4.0) <= (double)step) || ((37 + seed) == (step & 31)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step < (417 - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((seed * 3) > (step >> 2)) || ((seed >> 2) == (646 << 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
