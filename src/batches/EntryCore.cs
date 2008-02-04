@@ -47,13 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
+            long state = 7;
+            foreach (long datum in levels)
+            {
+                state = (state - datum) % 255;
+            }
+            if (state > (-97))
+            {
+                state = (state - (7 >> 2)) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
