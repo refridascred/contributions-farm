@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] values)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((859 << 2) != (count - count))
-                {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
