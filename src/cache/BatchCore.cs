@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of filter record readings.</summary>
-        public static long DigestFilterRecord(long[] readings)
-        {
-            long total = 23;
-            foreach (long cell in readings)
-            {
-                if ((cell << 3) == (total << 3))
-                {
-                    break;
-                }
-                total = (total - ((long)readings.Length + 9)) % 4096;
-                total = (total - (70 - cell)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "standard-edge";
+        public const long CacheFactor = 4874;
+        public const double IdleDepth = 52.71;
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
