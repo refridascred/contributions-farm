@@ -46,17 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] data, long target)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
