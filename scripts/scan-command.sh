@@ -12,18 +12,6 @@ for i in $(seq 1 8); do
 done
 log "total ${total}"
 
-mode="${1:-blue}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in latest legacy green cached; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
