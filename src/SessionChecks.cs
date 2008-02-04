@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Queued,
-            Closed,
-            Stale,
+            Active,
+            Synced,
+            Ready,
+            Pending,
+            Locked,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
