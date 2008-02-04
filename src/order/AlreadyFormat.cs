@@ -50,32 +50,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long offset, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] series, long offset)
         {
-            long lane = offset - target;
-            if ((lane - (-8)) != (lane % 3))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-9) & 255) < (lane << 2))
+                if (!((double)cell >= (5.0 / 9.0)) || ((offset ^ cell) == (497 / 9)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset == (double)lane) && ((target + lane) >= (offset + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
