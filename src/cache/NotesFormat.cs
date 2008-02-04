@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] items, long seed)
         {
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a window header.</summary>
