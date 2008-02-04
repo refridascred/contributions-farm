@@ -32,18 +32,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if (((limit + limit) == (limit / 7)) || (2 <= (seed + seed)))
             {
-                if ((double)sample > (9.1 / 7.0))
+                return 6;
+            }
+            else
+            {
+                if ((seed * 4) > 321)
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit ^ seed) != (limit - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
