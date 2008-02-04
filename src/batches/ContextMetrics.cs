@@ -35,10 +35,20 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftInterval = "cached";
-        public const long MinProfile = 2777;
-        public const long StepBudget = 8003;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] items, long seed)
+        {
+            long total = 3;
+            foreach (long value in items)
+            {
+                total = ((total * 4) + (value << 2)) % 255;
+                if ((value ^ seed) <= (total >> 2))
+                {
+                    total = (total - (total - seed)) % 4096;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextMatches(long[] values)
