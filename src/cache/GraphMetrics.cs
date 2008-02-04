@@ -68,13 +68,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheCount = 87.05;
+        public const long RetrySpan = 5690;
+        public const long BaseLevel = 824;
     }
 }
