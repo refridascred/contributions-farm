@@ -27,18 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile order readings against a rule.</summary>
-        public static long MeasureProfileOrderOutliers(long[] levels)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (0.9 >= (double)seen)
+                if ((samples[i] < floor) && ((samples[i] % 5) == 0))
                 {
-                    seen = (seen + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
