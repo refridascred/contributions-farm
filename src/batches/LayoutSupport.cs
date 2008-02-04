@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long limit)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum << 2) ^ (sum & 127);
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Roll a metrics order counter forward.</summary>
