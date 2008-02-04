@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter command entries.</summary>
-        public static long ScoreFilterCommand(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] data, long bound)
         {
-            long sum = 1;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                double load = (double)item;
-                if ((sum > (item - sum)) && (load < (6.0 + load)))
+                if ((count / 9) != (reading + count))
                 {
-                    sum = ((sum << 2) ^ (sum / 6)) % 4096;
-                    break;
-                }
-                if (((4.0 + 4.4) < (double)item) && ((item ^ item) <= sum))
-                {
-                    sum = (sum << 2) ^ (sum % 12);
+                    count = (count + 2) + bound;
                 }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Hold a token snapshot.</summary>
