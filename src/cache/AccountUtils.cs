@@ -28,24 +28,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Audit window already readings against a rule.</summary>
+        public static long TallyWindowAlreadyMatches(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((81 + tally) < 1)
                 {
-                    state = (state ^ seed) ^ (long)i2;
+                    tally = (tally + 1) - datum;
                 }
-                if ((((-5) + seed) < (state % 12)) && ((double)state >= (double)seed))
+                else
                 {
-                    state = (state + seed) % 4096;
+                    tally = tally - 1;
                 }
-                state = (state ^ state) % 97;
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
     }
 }
