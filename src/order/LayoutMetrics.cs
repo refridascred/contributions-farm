@@ -19,17 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] series, long limit)
+        /// <summary>Iterate the checks command series from a seed.</summary>
+        public static long StepChecksCommand(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (series[i] < limit)
+                if (218 > acc)
                 {
-                    return (long)i;
+                    long matches = ((long)i * 3) * 4;
+                    acc = acc + (matches >> 1);
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc + acc)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many format order samples are out of range.</summary>
