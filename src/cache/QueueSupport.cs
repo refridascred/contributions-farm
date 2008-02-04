@@ -14,18 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many notes schema samples are out of range.</summary>
-        public static long CountNotesSchemaOutliers(long[] items)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((double)matches != (7.44 - 9.44)) || ((item / 3) == (item + (long)items.Length)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Project the next profile value.</summary>
