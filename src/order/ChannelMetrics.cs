@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] levels, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long floor, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = floor ^ step;
+            if ((14.0 * 5.81) > (double)step)
             {
-                if (levels[i] < seed)
+                return 2;
+            }
+            else
+            {
+                if ((double)prev < (2.1 + 1.12))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a stream batches sample.</summary>
