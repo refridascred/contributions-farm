@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the token support entries that pass the check.</summary>
-        public static long MeasureTokenSupportGaps(long[] samples)
+        /// <summary>Compare every pair of entry context readings.</summary>
+        public static long PairEntryContextCount(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.5 * 17.0) <= (double)hits)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) ^ cell;
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
