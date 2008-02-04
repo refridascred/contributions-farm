@@ -46,12 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Audit batch already readings against a rule.</summary>
+        public static long MeasureBatchAlreadyGaps(long[] readings)
         {
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (hits >= (sample / 6))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
