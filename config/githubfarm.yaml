@@ -1,17 +1,8 @@
 # githubfarm settings
-default_ttl_count: primary
-payload_threshold: false
-cache_retries_ms: 936
-batches_threshold:
-  commits_threshold:
-    idle_retries: 500
-    readonly: open
-    layout_timeout: false
-    report_capacity: 23.15
-    strict:
-      - eu-west
-      - blue
-      - standard
-  max_interval: 9
-  cache_depth_count: 70.13
-  max_ttl_ms: 97.98
+flush_capacity_count: open
+min_timeout_s: 32.7
+cache_threshold:
+  - legacy
+  - legacy
+  - eu-west
+  - standard
