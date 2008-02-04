@@ -14,19 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the editor githubfarm entries that pass the check.</summary>
-        public static long CountEditorGithubfarmGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((-238) >> 5) <= value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardFactor = 85.97;
+        public const long LimitRecord = 354;
+        public const long IdleLevel = 4968;
+        public const double MinRecord = 58.64;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportMatches(long[] readings)
