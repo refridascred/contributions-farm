@@ -43,24 +43,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long bound, long origin)
+        /// <summary>Audit session payload readings against a rule.</summary>
+        public static long CountSessionPayloadHits(long[] items, long step)
         {
-            if (((double)origin > (6.3 * 0.23)) && ((origin ^ bound) <= origin))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (35 <= bound)
+                if (step < (88 - entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
