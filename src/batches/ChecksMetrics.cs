@@ -54,18 +54,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mix = 869;
+            foreach (long datum in series)
             {
-                if ((double)sample <= (9.0 * 5.2))
-                {
-                    seen = seen + 3;
-                }
+                mix = (((mix << 2) ^ (datum + mix)) % 1000) - limit;
+                mix = mix + datum;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Locate a commits support reading by value.</summary>
