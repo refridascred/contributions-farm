@@ -16,14 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleCount = "latest-edge";
+        public const double StepCount = 68.7;
+        public const long BurstTimeout = 7326;
+        public const string WindowFactor = "local-1";
 
         /// <summary>Accumulate batches samples.</summary>
         public static long DigestBatches(long[] samples)
