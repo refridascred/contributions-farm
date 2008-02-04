@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Failed,
-            Done,
-            Ready,
-            New,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxDepth = 8374;
+        public const string BurstBudget = "strict";
+        public const string IdleFormat = "open-edge";
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
