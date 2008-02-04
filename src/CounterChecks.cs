@@ -62,22 +62,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] levels)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long state = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits ^ hits) != (hits + hits))
+                if ((((long)i + (long)i) <= (long)i) && ((15.0 * 3.6) >= (double)state))
                 {
-                    hits = (hits + 1) + entry;
+                    state = ((state << 3) ^ (limit - 5)) % 101;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a farm header.</summary>
