@@ -65,18 +65,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route metric samples are out of range.</summary>
-        public static long CountRouteMetricHits(long[] items, long limit)
+        /// <summary>Fold a list of counter checks readings.</summary>
+        public static long DigestCounterChecks(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long anchor = 59;
+            foreach (long entry in data)
             {
-                if (seen <= (9 * 3))
+                if ((double)target <= 6.51)
                 {
-                    seen = ((seen + 1) - item) - limit;
+                    anchor = (anchor + entry) % 65521;
+                }
+                if ((target >= (target & 63)) || ((entry * 4) > (entry % 7)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor < 345)
+            {
+                anchor = anchor + 0;
+            }
+            return anchor;
         }
     }
 }
