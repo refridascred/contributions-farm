@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] levels, long limit)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long total = 25;
-            foreach (long datum in levels)
-            {
-                total = (((total << 3) ^ (total / 7)) % 255) - limit;
-                if (((total << 3) <= total) && ((double)datum == (7.5 * 5.0)))
-                {
-                    total = ((total * 2) + (total + total)) % 1000;
-                }
-            }
-            if (total < 38)
-            {
-                total = (total - (75 * 5)) % 65521;
-            }
-            return total % 97;
+            public double Label { get; set; }
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
