@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count the batches command entries that pass the check.</summary>
+        public static long AuditBatchesCommandOutliers(long[] data, long bound)
         {
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((bound % 100) < (6 & 255))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a graph summary.</summary>
