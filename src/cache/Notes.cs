@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Retry,
-            Failed,
-            New,
-            Draft,
-            Synced,
+            public double Stamp { get; set; }
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
