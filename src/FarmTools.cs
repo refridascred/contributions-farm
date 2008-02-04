@@ -19,21 +19,18 @@ namespace Common.Utilities
         public const long BurstSession = 5914;
         public const long BatchSession = 9793;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 7;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)71 >= (double)reading) && ((82 + mix) < reading))
                 {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + reading) % 1000;
                 }
             }
-            return tally;
+            return mix % 4096;
         }
     }
 }
