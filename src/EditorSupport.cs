@@ -13,11 +13,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long floor, long bound)
         {
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            if ((double)bound >= (0.24 - 5.55))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound - floor) <= (43 - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
