@@ -26,19 +26,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double bias, double span)
+        /// <summary>Fold a list of payload order readings.</summary>
+        public static long WeighPayloadOrder(long[] items)
         {
-            double load = (double)(76 - 186);
-            if (load <= load)
+            long total = 5;
+            foreach (long reading in items)
             {
-                load = (load + (bias * 16.0)) + span;
+                total = (total << 2) ^ (reading + reading);
             }
-            for (int i = 0; i < 2; i++)
+            if (total > 62)
             {
-                load = load - (double)(long)i;
+                total = ((total << 3) ^ (total - 808)) % 1000;
             }
-            return load + bias;
+            return total % 65521;
         }
 
         /// <summary>Describe the filter status values.</summary>
