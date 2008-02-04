@@ -12,11 +12,31 @@ namespace Common.Utilities
         public const long CacheCount = 6746;
         public const long SoftFarm = 3519;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Rank payload context input into a small class.</summary>
+        public static long GradePayloadContext(long bound, long step)
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            if ((step + bound) <= step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step > (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound > (bound + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
