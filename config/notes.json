@@ -1,15 +1,6 @@
 {
-  "poll_timeout_s": {
-    "base_limit_ms": "open",
-    "soft_timeout_ms": "blue",
-    "poll_timeout_s": "cached",
-    "entry_delay": {
-      "hard_timeout_count": "strict",
-      "burst_limit": false,
-      "persist": [91, 216, 34]
-    },
-    "verbose": "blue"
-  },
-  "retry_window": "strict",
-  "persist": false
+  "batch_timeout_ms": "blue",
+  "batch_capacity": 75,
+  "audit": 30,
+  "readonly": "stable"
 }
