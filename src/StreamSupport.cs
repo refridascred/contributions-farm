@@ -25,17 +25,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first payload route entry that matches the target.</summary>
-        public static long FindPayloadRouteIndex(long[] values, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (values[i] >= bound)
+                if (bound > (bound * 5))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
