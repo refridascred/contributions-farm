@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] items, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                mark = mark ^ ((long)i + origin);
-                mark = (mark + (long)i) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
