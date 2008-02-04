@@ -99,10 +99,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryStream = 83.54;
-        public const string DefaultSpan = "open";
-        public const long WindowStream = 4467;
-        public const double MaxStream = 28.21;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "local";
+        public const long StepSpan = 9723;
+        public const long MinDepth = 129;
     }
 }
