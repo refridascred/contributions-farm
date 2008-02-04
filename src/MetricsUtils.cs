@@ -32,14 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Active,
-            Pending,
-            Dropped,
-            Stale,
-            Closed,
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a editor summary.</summary>
