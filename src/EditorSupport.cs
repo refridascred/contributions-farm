@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] values, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((double)entry != (16.0 + 11.0))
+                if (((double)origin <= 2.78) || ((double)999 != (double)hits))
                 {
-                    tally = (tally + 3) - limit;
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
