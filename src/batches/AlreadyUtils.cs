@@ -23,18 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] series)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((486 ^ entry) == (entry & 255))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Audit session payload readings against a rule.</summary>
