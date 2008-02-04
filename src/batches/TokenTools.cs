@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitScore = 9600;
-        public const double BaseSpan = 51.63;
-        public const double HardInterval = 18.93;
-        public const long CacheSize = 1432;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Paused,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
