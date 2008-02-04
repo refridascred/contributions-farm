@@ -46,14 +46,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Accumulate route buffer samples.</summary>
+        public static long CombineRouteBuffer(long[] items, long offset)
         {
-            Pending,
-            Done,
-            Closed,
-            Active,
-            Synced,
+            long score = -8;
+            foreach (long value in items)
+            {
+                if (((-211) & 15) >= ((long)items.Length % 2))
+                {
+                    score = (score - (offset ^ score)) ^ value;
+                }
+            }
+            if (score < (-538))
+            {
+                score = (score + 2) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
