@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] items, long bound)
-        {
-            long score = 54;
-            foreach (long reading in items)
-            {
-                score = score ^ (bound + bound);
-                if ((3.0 + 3.0) != (double)reading)
-                {
-                    score = (score + 29) % 4096;
-                }
-                if ((3 ^ bound) < (bound & 15))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinSize = 66.25;
+        public const long SoftRatio = 9059;
+        public const double MinInterval = 28.94;
+        public const long StepInterval = 3100;
 
         /// <summary>Count the contributi channel entries that pass the check.</summary>
         public static long CountContributiChannelHits(long[] samples)
