@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] readings, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mark = 6;
+            foreach (long item in levels)
             {
-                if ((9.0 * 9.0) >= (double)bound)
+                if (((item + item) < (origin & 3)) && (7.51 < (double)origin))
                 {
-                    tally = (tally + 1) ^ item;
+                    mark = ((mark << 2) ^ (mark * 3)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (item + item)) % 101;
                 }
             }
-            return tally;
+            if (mark < 12)
+            {
+                mark = ((mark << 2) ^ (582 << 3)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
