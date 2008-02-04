@@ -31,20 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double ratio, double offset)
-        {
-            double mean = ratio;
-            if (mean <= (ratio * 2.3))
-            {
-                mean = (mean - 9.0) - offset;
-            }
-            else
-            {
-                mean = mean - (ratio - ratio);
-            }
-            return mean - mean;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 98.68;
+        public const double MaxOrder = 34.29;
+        public const long RetryOrder = 4539;
+        public const double HardSpan = 95.42;
+        public const string SoftOrder = "strict-1";
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
