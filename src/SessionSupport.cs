@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] readings)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double drift = (rate + floor) / 9.0;
+            if (drift >= floor)
             {
-                if ((item % 97) > (hits << 1))
-                {
-                    hits = hits + 1;
-                }
+                drift = drift + (drift + rate);
             }
-            return hits;
+            else
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (double)742) + (double)(long)i;
+            }
+            return drift + (drift * 4.93);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
