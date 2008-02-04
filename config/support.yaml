@@ -1,6 +1,5 @@
 # support settings
-burst_ratio_ms: local
-retry_timeout: 14
-sync_ratio_ms: 30
-layout_retries: 99
-base_timeout_s: 250
+metrics_size: green
+poll_threshold_s: 100
+hard_limit: staging
+max_size_s: cached
