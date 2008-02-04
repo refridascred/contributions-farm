@@ -1,7 +1,11 @@
 {
-  "profile_capacity": 55,
-  "support_ratio": true,
-  "burst_limit_s": [473, 13, 457],
-  "sync_capacity_ms": ["strict", "eu-west", "strict"],
-  "default_depth_ms": false
+  "hard_limit_pct": [321, 251, 75, 148],
+  "tools_timeout": {
+    "graph_threshold": false,
+    "audit": 8911,
+    "cache_timeout_count": 25,
+    "githubfarm_limit": 1280
+  },
+  "soft_size_pct": ["legacy", "primary"],
+  "warm_size_pct": "stable"
 }
