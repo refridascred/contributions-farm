@@ -80,39 +80,29 @@ namespace Common.Utilities
         public const long DefaultSpan = 8892;
         public const double LimitTimeout = 0.8;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long bound, long target)
+        /// <summary>Derive the next order channel value from a seed.</summary>
+        public static long SeriesOrderChannel(long limit)
         {
-            long cur = bound - target;
-            if ((target >> 1) > cur)
+            long state = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1 / 2) > (cur + bound))
+                long cur = (97 & 1) & 3;
+                if ((double)cur != (4.07 - 9.7))
                 {
-                    return 2;
+                    cur = (cur - ((long)i & 31)) % 1000;
+                    state = state + (10 ^ (-8));
                 }
                 else
                 {
-                    if (((300 ^ bound) > cur) || (bound < (8 * 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target % 12) != (bound ^ (-6)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    cur = (cur + cur) % 4096;
                 }
+                if (!((double)cur < (double)limit))
+                {
+                    cur = (cur ^ (limit + 96)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
+            return state;
         }
     }
 }
