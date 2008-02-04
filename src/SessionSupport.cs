@@ -16,12 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            Retry,
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
