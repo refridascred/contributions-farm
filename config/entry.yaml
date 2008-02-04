@@ -1,7 +1,5 @@
 # entry settings
-editor_threshold: 1024
-base_interval_ms: false
-retry_delay_pct:
-  - open
-  - strict
-  - latest
+report_ttl: 8434
+soft_ratio_ms: false
+dry_run: legacy
+persist: eu-west
