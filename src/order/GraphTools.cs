@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples, long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mix = 82;
-            foreach (long item in samples)
-            {
-                if (((offset + 39) <= (mix & 127)) && ((offset - mix) < (mix >> 3)))
-                {
-                    mix = ((mix * 5) + (23 ^ 5)) - item;
-                }
-            }
-            return mix;
+            Paused,
+            Locked,
+            Pending,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a format options.</summary>
