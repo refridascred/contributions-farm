@@ -76,10 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 2814;
-        public const long MaxFactor = 7490;
-        public const string HardAlready = "primary-1";
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Draft,
+            Dropped,
+            Queued,
+            Done,
+            Ready,
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long GradePayload(long seed, long seed2)
