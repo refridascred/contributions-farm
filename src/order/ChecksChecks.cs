@@ -30,11 +30,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepLevel = 83.67;
-        public const long WindowReport = 5009;
-        public const string SoftScore = "local-edge";
-        public const long MinReport = 7264;
-        public const long BaseReport = 1981;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] data)
+        {
+            long state = 953;
+            foreach (long reading in data)
+            {
+                state = ((state - (state / 8)) % 101) ^ reading;
+            }
+            return state;
+        }
     }
 }
