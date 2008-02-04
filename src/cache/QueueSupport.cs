@@ -28,23 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double ratio, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] items)
         {
-            double drift = (double)154;
-            if (drift > (offset * 8.8))
+            long count = 0;
+            foreach (long datum in items)
             {
-                drift = drift - drift;
+                if (((2.03 + 15.0) <= (double)count) && ((datum >> 3) != (count ^ count)))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                drift = drift + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (double)0;
+            return count;
         }
     }
 }
