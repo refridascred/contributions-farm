@@ -33,20 +33,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepScore = 26.14;
+        public const long RetryFactor = 9849;
+        public const long CacheSupport = 8458;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double gain, double offset)
