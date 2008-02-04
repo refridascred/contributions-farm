@@ -1,18 +1,5 @@
 {
-  "entry_timeout": "fallback",
-  "account_ratio": {
-    "default_threshold_count": {
-      "idle_size": 500,
-      "poll_limit": [117, 422],
-      "sync_delay": 49.56,
-      "audit": 52,
-      "batch_window": 500
-    },
-    "readonly": "eu-west",
-    "retry_timeout_s": ["edge", "staging", "cached", "stable"],
-    "burst_capacity_s": 30,
-    "audit": "legacy"
-  },
-  "checks_window": ["legacy", "standard", "strict"],
-  "burst_timeout": "stable"
+  "min_window_ms": "stable",
+  "idle_size_pct": 4269,
+  "flush_ratio": "staging"
 }
