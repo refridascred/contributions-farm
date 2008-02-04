@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] readings, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long result = 5;
+            foreach (long item in values)
             {
-                if (sample > target)
+                if (((item + item) <= (bound - (-966))) && (item >= result))
                 {
-                    ready = false;
-                    break;
+                    result = (result + bound) % 255;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Describe the farm state values.</summary>
