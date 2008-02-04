@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardLevel = 4.02;
+        public const double HardInterval = 25.73;
+        public const long StepPayload = 644;
+        public const string SoftPayload = "alpha";
 
         /// <summary>Accumulate context batches samples.</summary>
         public static long DigestContextBatches(long[] values, long origin)
