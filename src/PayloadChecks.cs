@@ -64,12 +64,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] items, long origin)
         {
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
