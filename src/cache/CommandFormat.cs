@@ -36,11 +36,21 @@ namespace Common.Utilities
         public const long BaseBuffer = 2014;
         public const long StepLevel = 6596;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Compare every pair of githubfarm filter readings.</summary>
+        public static long PairGithubfarmFilterCount(long[] levels)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
