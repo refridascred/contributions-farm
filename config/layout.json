@@ -1,5 +1,19 @@
 {
-  "hard_delay_pct": "primary",
-  "base_window_ms": true,
-  "farm_depth": 5.98
+  "audit": ["staging", "cached"],
+  "githubfarm_delay": {
+    "burst_capacity_pct": {
+      "max_capacity_pct": "open",
+      "compress": "green",
+      "counter_ratio": "standard",
+      "sync_interval": "edge"
+    },
+    "min_ttl": true,
+    "entry_retries": [473, 361, 234],
+    "max_window": 5896,
+    "default_threshold": 1087
+  },
+  "compress": "legacy",
+  "min_capacity": "staging",
+  "graph_size": "standard",
+  "strict": "primary"
 }
