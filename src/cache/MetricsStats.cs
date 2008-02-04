@@ -38,13 +38,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftScore = 5078;
+        public const string CacheInterval = "open-edge";
+        public const string MinCache = "staging";
+        public const long HardScore = 442;
+        public const double SoftCache = 86.48;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] samples)
