@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many graph githubfarm samples are out of range.</summary>
-        public static long MeasureGraphGithubfarmOutliers(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value << 1) > (288 << 3))
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 2092;
+        public const long DefaultTimeout = 1114;
+        public const long DefaultFactor = 5370;
 
         /// <summary>Blend two account report measurements.</summary>
         public static double AdjustAccountReport(double ratio, double span)
