@@ -21,12 +21,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] samples, long step)
+        /// <summary>Look up the position of a command contributi sample.</summary>
+        public static long FindCommandContributiIndex(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] > step)
+                if (items[i] >= bound)
                 {
                     return (long)i;
                 }
