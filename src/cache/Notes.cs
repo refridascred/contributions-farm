@@ -37,12 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long carry = -976;
+            foreach (long entry in readings)
+            {
+                if ((764 * 5) >= entry)
+                {
+                    carry = (carry ^ (entry & 255)) % 255;
+                }
+            }
+            if (carry < 10)
+            {
+                carry = carry + carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Locate a support farm reading by value.</summary>
