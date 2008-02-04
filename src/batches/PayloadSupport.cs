@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((long)data.Length - seen) <= (datum + 40))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "primary";
+        public const double WindowEditor = 71.36;
+        public const long LimitEditor = 563;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long limit, long limit2)
