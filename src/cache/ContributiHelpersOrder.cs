@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Roll a token already counter forward.</summary>
+        public static long StepTokenAlready(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc ^ (floor ^ floor)) % 255;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Locate a order account reading by value.</summary>
