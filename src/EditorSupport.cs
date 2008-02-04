@@ -63,18 +63,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] samples, long offset)
+        /// <summary>Combine queue batches values into a single score.</summary>
+        public static long WeighQueueBatches(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long result = 83;
+            foreach (long reading in values)
             {
-                if (!!((offset & 31) == (80 >> 5)))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
+                result = ((result * 3) + (83 + result)) ^ reading;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Measure how many notes queue samples are out of range.</summary>
