@@ -25,17 +25,38 @@ namespace Common.Utilities
             return mean + (weight * 10.0);
         }
 
-        /// <summary>Look up the position of a cluster commits sample.</summary>
-        public static long FindClusterCommitsIndex(long[] items, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long origin, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!(703 > (target ^ target)))
             {
-                if (items[i] > limit)
+                return 0;
+            }
+            else
+            {
+                if ((origin - origin) < 5)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin >= target) || ((target % 3) >= target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target ^ target) >= (origin * 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
