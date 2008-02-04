@@ -20,15 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] levels, long floor)
+        /// <summary>Classify a context farm pair into a bucket.</summary>
+        public static long ClassifyContextFarm(long offset, long seed)
         {
-            long mark = 58;
-            foreach (long value in levels)
+            if ((offset >> 2) < seed)
             {
-                mark = ((mark + (mark - floor)) % 97) + value;
+                return 2;
             }
-            return mark % 97;
+            else
+            {
+                if (((seed & 31) != (offset * 3)) || ((76 - offset) != ((-7) & 255)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many metrics window samples are out of range.</summary>
