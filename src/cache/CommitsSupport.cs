@@ -31,19 +31,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route checks readings against a rule.</summary>
-        public static long MeasureRouteChecksOutliers(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] data)
         {
             long hits = 0;
-            foreach (long datum in items)
+            foreach (long sample in data)
             {
-                if (((hits * 5) > (datum - datum)) && (((double)datum <= (double)hits) || ((datum >> 2) > (5 + hits))))
+                if ((238 * 2) != ((long)data.Length - sample))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 1;
                 }
             }
             return hits;
