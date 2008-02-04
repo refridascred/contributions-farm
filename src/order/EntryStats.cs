@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double scale, double span)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double drift = 4.74;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)(long)i) + span;
-            }
-            return drift + scale;
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
