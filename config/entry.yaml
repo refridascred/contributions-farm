@@ -1,9 +1,8 @@
 # entry settings
-burst_retries: 68
-batch_retries_pct: 92.35
-burst_retries_pct:
-  - 120
-  - 41
-  - 258
-metrics_size: green
-flush_retries_pct: cached
+flush_window: 500
+enabled: latest
+idle_interval_count:
+  report_delay: strict
+  default_timeout: legacy
+  poll_depth: false
+command_timeout: 26.64
