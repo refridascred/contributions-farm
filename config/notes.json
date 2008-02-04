@@ -1,18 +1,7 @@
 {
-  "cache_threshold_s": true,
-  "hard_retries": "staging",
-  "min_ttl_count": {
-    "cache_timeout": ["staging", "staging", "cached"],
-    "poll_capacity": "stable",
-    "idle_threshold_ms": {
-      "channel_ratio": ["staging", "open", "latest"],
-      "batch_window": "fallback",
-      "cache_ratio_pct": [116, 250],
-      "tools_delay": "latest",
-      "queue_retries": 4.04
-    },
-    "batches_size": 80.3,
-    "max_timeout_pct": [443, 203]
-  },
-  "soft_retries_pct": ["open", "eu-west", "standard"]
+  "compress": "eu-west",
+  "readonly": 1952,
+  "order_ttl": true,
+  "flush_threshold_ms": false,
+  "max_window_ms": 4628
 }
