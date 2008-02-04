@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every command window entry stays within the limit.</summary>
-        public static bool ValidateCommandWindowLimits(long[] values, long bound)
+        /// <summary>Locate a editor context reading by value.</summary>
+        public static long LookupEditorContextIndex(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != bound)
+                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
