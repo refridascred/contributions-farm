@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetrySpan = 1862;
-        public const long BaseBatch = 3499;
-        public const long DefaultRatio = 3768;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
