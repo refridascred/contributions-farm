@@ -22,15 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine filter tools values into a single score.</summary>
