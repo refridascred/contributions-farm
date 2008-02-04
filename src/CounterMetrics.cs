@@ -45,19 +45,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate graph metric samples.</summary>
-        public static long WeighGraphMetric(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            long state = 360;
-            foreach (long item in readings)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                state = state + (item - state);
-                if ((2.89 / 5.0) < (double)item)
-                {
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return state % 97;
+            return result;
         }
     }
 }
