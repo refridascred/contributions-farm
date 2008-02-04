@@ -11,16 +11,23 @@ namespace Common.Utilities
         public const long IdleTimeout = 6664;
         public const long RetryCache = 8972;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long offset)
+        /// <summary>Scale a metric stream figure with a bias.</summary>
+        public static double AdjustMetricStream(double gain, double bias)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            double mean = gain;
+            if (mean <= (mean - gain))
             {
-                mix = mix - mix;
-                mix = ((mix * 5) + (long)i) % 97;
+                mean = mean + gain;
             }
-            return mix;
+            else
+            {
+                mean = mean + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean - (double)(-158);
         }
 
         /// <summary>Describe the graph level values.</summary>
