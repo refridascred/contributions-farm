@@ -1,8 +1,11 @@
 # entry settings
-flush_window: 500
-enabled: latest
-idle_interval_count:
-  report_delay: strict
-  default_timeout: legacy
-  poll_depth: false
-command_timeout: 26.64
+hard_size_pct: 98.43
+hard_threshold_ms:
+  - open
+  - legacy
+  - legacy
+  - primary
+max_ratio_ms: true
+warm_ratio: 30
+base_ttl_pct: cached
+context_limit: 65.0
