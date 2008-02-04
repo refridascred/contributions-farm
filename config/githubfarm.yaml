@@ -1,7 +1,14 @@
 # githubfarm settings
-default_retries_ms:
-  - cached
+persist: true
+audit:
+  - stable
   - edge
-enabled: 89
-base_window_ms: staging
-min_size: true
+  - strict
+  - open
+default_capacity_ms:
+  contributi_size: local
+  batch_threshold_ms: 29.03
+  session_capacity: 72.41
+  enabled: 60
+sync_size: false
+stats_threshold: 2.08
