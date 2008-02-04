@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] readings)
         {
-            Paused,
-            Ready,
-            Failed,
-            Done,
-            Queued,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)seen == (8.7 * 2.1))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a queue buffer sample.</summary>
