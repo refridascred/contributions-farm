@@ -20,22 +20,13 @@ namespace Common.Utilities
         public const double BaseBudget = 48.36;
         public const double BaseChecks = 8.24;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] data, long floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((floor - tally) >= tally)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a batches record.</summary>
