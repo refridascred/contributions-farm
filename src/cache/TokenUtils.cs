@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (!((sample ^ matches) > (matches ^ (long)levels.Length)))
+                if ((double)90 == (double)tally)
                 {
-                    matches = matches + 1;
+                    tally = ((tally + 2) + entry) - step;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
