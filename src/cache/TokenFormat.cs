@@ -19,14 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] values, long offset)
         {
-            Ready,
-            Queued,
-            Retry,
-            Active,
-            Locked,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!(((double)offset < (double)(long)values.Length) || ((double)seen > 1.23)))
+                {
+                    seen = (seen + 1) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
