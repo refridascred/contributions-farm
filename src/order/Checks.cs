@@ -86,21 +86,10 @@ namespace Common.Utilities
             return weight - (offset / 6.0);
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleCount = "stable-v2";
+        public const long MinLevel = 4611;
+        public const long WindowFilter = 5750;
+        public const long SoftLevel = 7750;
     }
 }
