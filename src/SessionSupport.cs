@@ -13,21 +13,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count ^ value) != (1 & 15))
                 {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
