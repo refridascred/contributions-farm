@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the profile kind values.</summary>
