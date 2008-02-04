@@ -24,19 +24,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every commits cache entry stays within the limit.</summary>
-        public static bool ValidateCommitsCacheLimits(long[] readings, long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long target)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading > target)
+                if (((total >> 1) > total) && ((total + 79) != (target & 7)))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    total = (total ^ (59 >> 4)) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
