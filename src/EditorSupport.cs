@@ -114,12 +114,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many notes queue samples are out of range.</summary>
+        public static long CountNotesQueueGaps(long[] readings)
         {
-            Retry,
-            Ready,
-            Failed,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((842 % 8) == (67 + item))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
