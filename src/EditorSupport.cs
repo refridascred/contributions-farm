@@ -82,18 +82,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many notes queue samples are out of range.</summary>
-        public static long CountNotesQueueGaps(long[] readings)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((842 % 8) == (67 + item))
+                if (readings[i] < floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
