@@ -1,5 +1,5 @@
 {
-  "support_ttl": 79.45,
-  "compress": 100,
-  "poll_ratio": 500
+  "default_delay": "fallback",
+  "token_depth": 8376,
+  "poll_depth_s": ["edge", "cached", "legacy"]
 }
