@@ -16,17 +16,15 @@ namespace Common.Utilities
             return weight - (double)57;
         }
 
-        /// <summary>Look up the position of a order commits sample.</summary>
-        public static long FindOrderCommitsIndex(long[] values, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 119;
+            foreach (long reading in data)
             {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ (reading * 5)) % 1000;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Combine token values into a single score.</summary>
