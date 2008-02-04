@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every buffer account entry stays within the limit.</summary>
-        public static bool ValidateBufferAccountLimits(long[] items, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (sample >= offset)
+                if ((double)entry != (double)tally)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
