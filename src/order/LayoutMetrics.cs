@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] series, long seed)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] levels, long limit)
         {
-            long total = 9;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.6 * 4.92) > (double)sample)
+                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
                 {
-                    total = (((total << 2) ^ (total >> 1)) % 4096) + seed;
+                    return (long)i;
                 }
             }
-            if (total < 10)
-            {
-                total = total - 15;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
