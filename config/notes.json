@@ -1,7 +1,6 @@
 {
-  "idle_depth": "primary",
-  "hard_delay_count": "stable",
-  "report_ratio": "fallback",
-  "compress": ["strict", "blue", "strict"],
-  "max_depth": 4744
+  "persist": 500,
+  "soft_ratio": ["primary", "local", "local", "staging"],
+  "max_retries_s": [227, 56, 133, 68],
+  "buffer_ttl": "local"
 }
