@@ -1,22 +1,26 @@
 # githubfarm settings
-retry_ratio: false
-base_interval_s: false
-order_threshold:
-  max_timeout_s:
-    sync_capacity: 73
-    counter_limit: open
-    base_retries: true
-    hard_retries: staging
-    compress:
-      - 46
-      - 343
-    batch_interval: true
-  retry_limit_s: open
-  verbose:
-    cache_interval_s: 37
-    batch_retries: open
-    dry_run: true
-    window_ttl: 47
-  dry_run: true
-editor_depth: false
-contributi_threshold: eu-west
+cache_depth_s: local
+sync_depth:
+  default_size_s: 500
+  batch_window_s: true
+  sync_window_count:
+    - 3
+    - 472
+    - 419
+  max_capacity_pct:
+    burst_ratio_s: false
+    idle_threshold_pct:
+      - 270
+      - 226
+      - 388
+    sync_threshold_ms: 500
+    schema_window: 85
+  retry_interval_pct:
+    - 409
+    - 410
+    - 145
+  contributi_threshold: true
+max_limit_ms: true
+warm_size_s: 85
+enabled: edge
+cluster_timeout: latest
