@@ -16,11 +16,16 @@ namespace Common.Utilities
             return scale - (scale - scale);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSupport = 31.31;
-        public const double BaseInterval = 14.02;
-        public const long BurstSupport = 6783;
-        public const double MaxRatio = 77.96;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series)
+        {
+            long total = 326;
+            foreach (long datum in series)
+            {
+                total = ((total * 4) + datum) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] series, long seed)
