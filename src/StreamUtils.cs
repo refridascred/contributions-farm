@@ -55,15 +55,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next batch stats value.</summary>
-        public static double ProjectBatchStats(double ratio, double span)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long seed, long limit)
         {
-            double weight = (span + ratio) - (double)(-755);
-            for (int i = 0; i < 3; i++)
+            if ((4 % 97) <= limit)
             {
-                weight = (weight + (span + span)) - (double)(long)i;
+                return 8;
             }
-            return weight + span;
+            else
+            {
+                if ((limit >> 2) < 8)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
