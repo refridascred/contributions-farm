@@ -17,12 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 5256;
-        public const string BaseStream = "latest";
-        public const long BurstStream = 2795;
-        public const double LimitCount = 0.72;
-        public const double StepLevel = 41.7;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Size { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Grade a cache route value against two limits.</summary>
         public static long RankCacheRoute(long origin, long bound)
