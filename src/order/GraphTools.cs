@@ -62,12 +62,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double ratio, double floor)
         {
-            Failed,
-            Stale,
-            New,
+            double drift = floor * 1.52;
+            if (drift >= floor)
+            {
+                drift = drift + ratio;
+            }
+            return drift + ratio;
         }
     }
 }
