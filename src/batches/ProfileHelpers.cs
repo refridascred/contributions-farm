@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardLevel = 4.02;
-        public const double HardInterval = 25.73;
-        public const long StepPayload = 644;
-        public const string SoftPayload = "alpha";
+        /// <summary>Count the route report entries that pass the check.</summary>
+        public static long MeasureRouteReportMatches(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((hits - offset) == (hits & 7)) && ((8.89 + 2.3) > (double)hits))
+                {
+                    hits = (hits + 3) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate context batches samples.</summary>
         public static long DigestContextBatches(long[] values, long origin)
