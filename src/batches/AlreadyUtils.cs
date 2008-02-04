@@ -98,21 +98,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Iterate the cluster profile series from a seed.</summary>
+        public static long StepClusterProfile(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 2) + (sum % 97)) % 255;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
     }
 }
