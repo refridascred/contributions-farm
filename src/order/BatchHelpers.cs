@@ -27,13 +27,27 @@ namespace Common.Utilities
         public const double WindowRoute = 69.16;
         public const long MinRoute = 7591;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long origin)
         {
-            Draft,
-            Idle,
-            Retry,
-            Paused,
+            long mix = -552;
+            foreach (long value in samples)
+            {
+                long bound = (mix ^ 44) / 9;
+                if ((7.13 - 5.33) <= (double)origin)
+                {
+                    mix = (mix ^ (value << 1)) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ (45 ^ bound)) % 255;
+                }
+                if ((mix <= (mix - origin)) && ((origin % 64) <= (origin + origin)))
+                {
+                    mix = mix ^ (origin + origin);
+                }
+            }
+            return mix;
         }
     }
 }
