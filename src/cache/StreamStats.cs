@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTimeout = "stable-1";
-        public const long BaseTools = 981;
-        public const long MinTools = 5934;
-        public const long StepTools = 7092;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample >= 20.0)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long RankSession(long step, long seed)
