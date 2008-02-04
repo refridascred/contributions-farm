@@ -20,10 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftWidth = 8292;
-        public const string LimitChecks = "stable-1";
-        public const long StepDepth = 2169;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long origin, long offset)
+        {
+            if (11.0 < (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((6.6 / 8.0) >= (double)origin) && ((offset - 75) <= (origin + 9)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
