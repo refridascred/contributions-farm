@@ -1,15 +1,4 @@
 # githubfarm settings
-soft_threshold_pct:
-  batch_capacity: 33.89
-  entry_limit: true
-  default_interval: eu-west
-  buffer_delay:
-    audit: legacy
-    idle_timeout_count: legacy
-    base_threshold_ms: blue
-    verbose: false
-    stats_ttl: 100
-sync_delay_pct: fallback
-flush_ratio: 17.11
-githubfarm_interval: true
-strict: true
+warm_timeout_count: true
+batch_delay: 500
+burst_interval_count: open
