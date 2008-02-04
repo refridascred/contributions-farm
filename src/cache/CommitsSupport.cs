@@ -55,20 +55,16 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate route buffer samples.</summary>
-        public static long CombineRouteBuffer(long[] items, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] levels, long bound)
         {
-            long score = -8;
-            foreach (long value in items)
+            long score = 34;
+            foreach (long entry in levels)
             {
-                if (((-211) & 15) >= ((long)items.Length % 2))
+                if ((6.0 / 2.0) <= (double)entry)
                 {
-                    score = (score - (offset ^ score)) ^ value;
+                    score = (score ^ (entry << 2)) - bound;
                 }
-            }
-            if (score < (-538))
-            {
-                score = (score + 2) % 1000;
             }
             return score;
         }
