@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 2092;
-        public const long DefaultTimeout = 1114;
-        public const long DefaultFactor = 5370;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Blend two account report measurements.</summary>
         public static double AdjustAccountReport(double ratio, double span)
