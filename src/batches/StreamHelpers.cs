@@ -67,13 +67,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Closed,
-            Done,
-            Paused,
-            Ready,
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit queue counter readings against a rule.</summary>
