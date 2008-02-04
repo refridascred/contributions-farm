@@ -30,10 +30,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "standard-v2";
-        public const string RetryOrder = "open";
-        public const double MaxOrder = 93.16;
+        /// <summary>Fold a list of editor stats readings.</summary>
+        public static long DigestEditorStats(long[] series)
+        {
+            long total = 1;
+            foreach (long cell in series)
+            {
+                total = ((total - 0) % 97) - cell;
+            }
+            if (total > 288)
+            {
+                total = total ^ (total - total);
+            }
+            return total;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
