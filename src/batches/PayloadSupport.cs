@@ -14,11 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count the editor githubfarm entries that pass the check.</summary>
+        public static long CountEditorGithubfarmGaps(long[] samples)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((-238) >> 5) <= value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
