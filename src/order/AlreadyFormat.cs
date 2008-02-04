@@ -20,18 +20,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit editor profile readings against a rule.</summary>
-        public static long AuditEditorProfileHits(long[] items, long bound)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits % 16) != (7 + item))
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
