@@ -34,10 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "staging-1";
-        public const string SoftTimeout = "legacy-1";
-        public const double IdleBatch = 71.66;
-        public const long WindowBatch = 8963;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] series, long floor)
+        {
+            long state = 8;
+            foreach (long reading in series)
+            {
+                state = ((state ^ (reading >> 4)) % 65521) + floor;
+            }
+            return state;
+        }
     }
 }
