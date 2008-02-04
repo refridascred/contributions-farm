@@ -1,6 +1,7 @@
 {
-  "order_interval": 17,
-  "flush_depth_s": true,
-  "flush_limit_pct": [351, 286],
-  "verbose": "eu-west"
+  "batch_timeout": 65.59,
+  "enabled": 40,
+  "hard_window_ms": [411, 435],
+  "soft_size_ms": "local",
+  "base_interval": true
 }
