@@ -69,15 +69,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine contributi farm values into a single score.</summary>
-        public static long TotalContributiFarm(long[] levels, long origin)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long anchor = 3;
-            foreach (long sample in levels)
-            {
-                anchor = ((((anchor << 3) ^ 13) % 4096) ^ sample) - origin;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
