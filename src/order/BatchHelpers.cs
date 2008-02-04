@@ -31,18 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many schema metrics samples are out of range.</summary>
-        public static long MeasureSchemaMetricsOutliers(long[] samples, long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!((step * 2) >= (matches - cell)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Pending,
+            Ready,
+            Dropped,
+            Locked,
         }
     }
 }
