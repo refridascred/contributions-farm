@@ -87,32 +87,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long target, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] values, long offset)
         {
-            long edge = target - floor;
-            if ((double)edge >= 10.0)
+            long acc = 649;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.72 * 5.8) == (double)target)
+                if ((double)value < (1.0 / 6.0))
                 {
-                    return 6;
+                    acc = ((acc * 4) + acc) % 97;
                 }
-                else
+                if ((acc + offset) == ((-29) + acc))
                 {
-                    if (!(9 <= floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    acc = ((acc << 3) ^ offset) % 4096;
                 }
             }
+            if (acc > 102)
+            {
+                acc = (acc - (acc + (long)values.Length)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
