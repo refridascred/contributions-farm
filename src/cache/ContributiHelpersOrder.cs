@@ -27,11 +27,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 5323;
-        public const long CacheCommits = 7580;
-        public const long MinBudget = 5819;
-        public const long BurstCommits = 256;
-        public const long WindowWidth = 4485;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double gain, double bias)
+        {
+            double scale = (double)2 * 7.4;
+            if (scale <= (bias / 5.0))
+            {
+                scale = scale + (scale / 9.0);
+            }
+            else
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + 12.0) + (double)(long)i;
+            }
+            return scale - (double)669;
+        }
     }
 }
