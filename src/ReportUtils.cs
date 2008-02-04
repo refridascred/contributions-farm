@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Validate entry metric readings against a bound.</summary>
+        public static bool CheckEntryMetricLimits(long[] data, long limit)
         {
-            Paused,
-            Dropped,
-            Synced,
-            Failed,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the context batches entries that pass the check.</summary>
