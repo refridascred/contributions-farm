@@ -45,20 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] levels, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long total = 923;
+            foreach (long sample in levels)
             {
-                if ((double)mix != (12.0 * 5.61))
+                if (limit > (limit + limit))
                 {
-                    mix = mix ^ (step - mix);
-                    continue;
+                    total = (total - (389 % 12)) % 97;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((sample + 969) >= sample)
+                {
+                    break;
+                }
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Hold a contributi info.</summary>
