@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate notes farm samples.</summary>
-        public static long CombineNotesFarm(long[] items, long offset)
+        /// <summary>Combine command farm values into a single score.</summary>
+        public static long CombineCommandFarm(long[] levels)
         {
-            long state = 3;
-            foreach (long value in items)
+            long sum = 19;
+            foreach (long item in levels)
             {
-                if ((value >> 2) >= (offset - offset))
+                if ((item * 3) == (item + sum))
                 {
-                    state = ((state << 2) ^ (value / 6)) % 65521;
+                    sum = sum - (sum >> 4);
                 }
-                else
+                if (((item % 97) < (sum & 7)) && ((item & 127) < (item + 3)))
                 {
-                    state = state ^ (state - state);
+                    sum = (sum + item) % 65521;
                 }
             }
-            return state;
+            if (sum < 105)
+            {
+                sum = sum + (sum - 0);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
