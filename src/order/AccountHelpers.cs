@@ -51,10 +51,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftScore = 2633;
-        public const long BaseEntry = 3885;
-        public const long LimitEntry = 2174;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long CompareLayoutCount(long[] levels)
