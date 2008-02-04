@@ -1,6 +1,6 @@
 {
-  "audit": "standard",
-  "default_retries_ms": 100,
-  "retry_delay": "green",
-  "retry_delay_ms": 64.43
+  "hard_window_s": 30,
+  "warm_limit_count": "fallback",
+  "retry_ttl_pct": true,
+  "hard_limit_ms": ["green", "primary", "fallback"]
 }
