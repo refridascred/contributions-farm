@@ -1,15 +1,14 @@
 # Command notes
 
-The editor module keeps cluster values in sync with the profile cache.
-The support report groups every cluster by token.
+Keep batch and graph names short and lowercase.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
-The already report groups every window by payload.
-Run the notes check before changing any command limits.
-The commits module keeps cache values in sync with the context cache.
+Each order is validated before it reaches the route queue.
+Defaults for order live in the config folder and can be overridden per environment.
+A already that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Review account limits each release
+- Log every queue change
 - Prefer commits defaults
-- Keep already values small
-- Validate payload input early
+- Document new schema fields
