@@ -41,24 +41,13 @@ namespace Common.Utilities
             return mean + bias2;
         }
 
-        /// <summary>Grade a buffer route value against two limits.</summary>
-        public static long GradeBufferRoute(long floor, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            if (((floor + 29) >= (floor * 3)) && ((4.5 / 3.0) >= (9.2 - 14.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((5.1 * 1.0) <= (double)target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
