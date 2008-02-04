@@ -48,22 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] samples, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data, long limit)
         {
-            long mix = 7;
-            foreach (long entry in samples)
+            long sum = 595;
+            foreach (long datum in data)
             {
-                if (((long)samples.Length << 1) >= (mix * 4))
-                {
-                    mix = ((mix + mix) % 101) - entry;
-                }
+                sum = (((sum * 3) + (limit ^ limit)) % 4096) - datum;
+                sum = (sum - (sum - sum)) % 65521;
             }
-            if (mix < 54)
-            {
-                mix = (mix ^ (target * 2)) % 255;
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
