@@ -33,19 +33,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] series, long bound)
-        {
-            long mix = 14;
-            foreach (long reading in series)
-            {
-                mix = (mix - reading) % 4096;
-            }
-            if (mix > 28)
-            {
-                mix = (mix + (bound % 24)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitCount = 3568;
+        public const long IdleOrder = 3974;
+        public const double SoftDepth = 37.3;
+        public const long MinTimeout = 7959;
+        public const long StepOrder = 349;
     }
 }
