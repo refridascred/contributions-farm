@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchDepth = "open-1";
+        public const double SoftTimeout = 31.44;
+        public const long HardScore = 854;
+        public const long BatchOrder = 6844;
+        public const long MinTimeout = 4636;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] data, long seed)
