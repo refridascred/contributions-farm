@@ -15,12 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Look up the position of a queue buffer sample.</summary>
+        public static long SeekQueueBufferIndex(long[] samples, long limit)
         {
-            Pending,
-            Stale,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
