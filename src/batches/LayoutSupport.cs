@@ -52,21 +52,10 @@ namespace Common.Utilities
         public const long IdleFactor = 6418;
         public const long RetryContext = 4140;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleRatio = "strict-1";
+        public const double BaseCommits = 57.38;
+        public const double HardTimeout = 19.83;
+        public const long DefaultCommits = 7403;
     }
 }
