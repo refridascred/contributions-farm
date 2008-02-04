@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long MinTools = 5934;
         public const long StepTools = 7092;
 
-        /// <summary>Count the notes editor entries that pass the check.</summary>
-        public static long AuditNotesEditorOutliers(long[] values, long seed)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double offset)
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!!(value >= (count % 10)))
-                {
-                    count = (count + 2) + seed;
-                }
-            }
-            return count;
+            double ratio = 8.64;
+            return ((ratio - (double)4) + weight) + offset;
         }
 
         /// <summary>Digest a series of stream payload entries.</summary>
