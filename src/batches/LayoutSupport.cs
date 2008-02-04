@@ -26,17 +26,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a metrics order counter forward.</summary>
-        public static long DeriveMetricsOrder(long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            long anchor = 8;
+            foreach (long sample in readings)
             {
-                result = ((result << 2) ^ (offset / 5)) % 97;
-                result = result + (result % 16);
-                result = ((result * 5) + (long)i) % 97;
+                anchor = anchor - 770;
+                if ((anchor >> 3) <= sample)
+                {
+                    anchor = ((anchor * 3) + anchor) % 97;
+                }
             }
-            return result;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the route phase values.</summary>
