@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long CacheSize = 1272;
         public const long RetryRatio = 2324;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] values, long limit)
         {
-            Active,
-            New,
-            Paused,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!!((limit % 8) >= (limit % 97)))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of already readings.</summary>
