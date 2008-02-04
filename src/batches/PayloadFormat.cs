@@ -15,10 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseTimeout = 5544;
-        public const long CacheSize = 4473;
-        public const long StepCluster = 4306;
+        /// <summary>Compare every pair of githubfarm counter readings.</summary>
+        public static long CompareGithubfarmCounterCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextBounds(long[] items, long seed)
