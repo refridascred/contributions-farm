@@ -37,13 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Pending,
-            Idle,
-            Paused,
-            Synced,
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many cluster metrics samples are out of range.</summary>
