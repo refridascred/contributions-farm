@@ -29,10 +29,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleQueue = 32.93;
-        public const long RetryRatio = 6602;
-        public const double CacheRatio = 72.1;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Paused,
+            Active,
+            Closed,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Validate token support readings against a bound.</summary>
         public static bool VerifyTokenSupportLimits(long[] values, long floor)
