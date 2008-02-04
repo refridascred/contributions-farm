@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Check that every schema graph entry stays within the limit.</summary>
+        public static bool ValidateSchemaGraphBounds(long[] items, long origin)
         {
-            long anchor = -77;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((13.0 + 0.13) <= (double)anchor)
+                if (value > origin)
                 {
-                    anchor = (anchor ^ ((long)readings.Length + sample)) % 1000;
-                    anchor = anchor ^ (sample ^ sample);
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor - sample) % 255;
-                }
-                anchor = anchor ^ sample;
-                anchor = ((anchor << 3) ^ sample) % 101;
             }
-            if (anchor < (-683))
-            {
-                anchor = (anchor ^ (anchor * 3)) % 255;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
