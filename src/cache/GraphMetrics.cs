@@ -43,14 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Combine tools counter values into a single score.</summary>
+        public static long TotalToolsCounter(long[] values, long seed)
         {
-            Pending,
-            Draft,
-            Idle,
-            Synced,
-            Closed,
+            long carry = -73;
+            foreach (long reading in values)
+            {
+                if (7 < (seed << 2))
+                {
+                    carry = ((carry - (46 - seed)) % 65521) ^ reading;
+                }
+            }
+            if (carry < (-580))
+            {
+                carry = carry ^ (seed + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
