@@ -40,15 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double bias, double span)
+        /// <summary>Audit support format readings against a rule.</summary>
+        public static long CountSupportFormatMatches(long[] data)
         {
-            double load = bias;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                load = ((load + load) - (double)(long)i) + span;
+                if ((double)hits >= 3.0)
+                {
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return load - load;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
