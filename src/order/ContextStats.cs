@@ -41,19 +41,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] levels)
         {
-            long mix = 93;
-            foreach (long entry in samples)
+            long carry = 8;
+            foreach (long cell in levels)
             {
-                if (!((double)entry < (6.6 - 3.5)))
+                for (int i = 0; i < 8; i++)
                 {
-                    mix = (mix * 3) + entry;
+                    carry = ((carry + (carry << 3)) % 1000) ^ (long)i;
                 }
-                mix = ((mix * 4) + (entry - mix)) % 97;
+                if (cell < (carry * 5))
+                {
+                    carry = ((carry << 3) ^ ((-743) - carry)) % 65521;
+                }
             }
-            return mix;
+            if (carry > 6)
+            {
+                carry = carry - (carry / 4);
+            }
+            return carry;
         }
     }
 }
