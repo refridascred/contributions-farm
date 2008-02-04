@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue window samples are out of range.</summary>
-        public static long CountQueueWindowGaps(long[] samples)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)item <= (6.0 / 4.0)) && ((tally / 6) <= item))
-                {
-                    tally = tally + 1;
-                }
+                mark = mark ^ ((long)i + origin);
+                mark = (mark + (long)i) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Fold a list of route readings.</summary>
