@@ -13,19 +13,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate metrics filter readings against a bound.</summary>
-        public static bool CheckMetricsFilterBounds(long[] levels, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] values)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long acc = 84;
+            foreach (long datum in values)
             {
-                if (item < bound)
+                if ((acc ^ acc) <= (datum & 3))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 2) + (acc >> 3)) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ (datum << 2)) % 101;
                 }
             }
-            return flag;
+            if (acc < 87)
+            {
+                acc = ((acc * 2) + (acc % 7)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the account level values.</summary>
