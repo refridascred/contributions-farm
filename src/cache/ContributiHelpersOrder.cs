@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string IdleStream = "strict-1";
         public const long BaseSpan = 2461;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] data, long offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            double scale = rate * 5.0;
+            if (scale < (rate / 2.0))
             {
-                if (sample >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale + 2.9) - offset;
             }
-            return ok;
+            return scale - 8.7;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
