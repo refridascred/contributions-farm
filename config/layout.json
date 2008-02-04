@@ -1,5 +1,5 @@
 {
-  "min_window_ms": "stable",
-  "idle_size_pct": 4269,
-  "flush_ratio": "staging"
+  "enabled": "local",
+  "warm_ratio_count": "edge",
+  "warm_ttl": 64
 }
