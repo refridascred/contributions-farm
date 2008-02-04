@@ -25,18 +25,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] values)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long floor, long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if ((step - step) > floor)
             {
-                if (value <= (seen ^ seen))
+                return 7;
+            }
+            else
+            {
+                if ((floor * 3) <= step)
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (((step + step) > (step >> 3)) || ((double)floor > (1.5 * 5.28)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step > (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
