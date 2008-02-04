@@ -34,38 +34,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long offset, long offset2)
+        /// <summary>Find the first record profile entry that matches the target.</summary>
+        public static long LocateRecordProfileIndex(long[] samples, long seed)
         {
-            if ((offset << 3) <= (offset2 << 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset2 < (offset + 6))
+                if (samples[i] == seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 2) < (offset2 - 944))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset > (offset & 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
