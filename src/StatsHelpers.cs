@@ -69,14 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] samples, long floor)
         {
-            New,
-            Retry,
-            Active,
-            Draft,
-            Dropped,
+            long state = 119;
+            foreach (long datum in samples)
+            {
+                if ((13.0 + 9.0) < (double)state)
+                {
+                    state = (((state * 2) + (state >> 1)) % 97) - datum;
+                }
+                if ((18.0 + 12.0) != (double)floor)
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
