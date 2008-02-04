@@ -50,22 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi record entries.</summary>
-        public static long TotalContributiRecord(long[] data, long step)
+        /// <summary>Iterate the route contributi series from a seed.</summary>
+        public static long SeriesRouteContributi(long floor)
         {
-            long state = 465;
-            foreach (long datum in data)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((datum ^ datum) > (state - datum))
+                mark = mark + (mark * 4);
+                if (floor >= ((long)i >> 3))
                 {
-                    state = ((state << 3) ^ (state << 3)) - step;
+                    mark = mark ^ ((long)i * 3);
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (state > 8)
-            {
-                state = state - state;
-            }
-            return state % 97;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
