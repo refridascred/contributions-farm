@@ -47,26 +47,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] data, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
-            long mix = 928;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((double)target > (9.61 / 2.0))
+                if ((8.0 > (double)seen) && (cell >= (cell >> 1)))
                 {
-                    mix = mix ^ (127 & 7);
-                }
-                if ((target & 1) >= (10 + sample))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (mix < 68)
-            {
-                mix = (mix << 2) ^ 36;
-            }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Hold a format summary.</summary>
