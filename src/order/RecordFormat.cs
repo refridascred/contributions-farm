@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] series)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double ratio, double offset)
         {
-            long state = 658;
-            foreach (long reading in series)
+            double mean = offset;
+            if (mean >= mean)
             {
-                state = state ^ (reading + state);
-                if ((reading ^ reading) >= (state + state))
-                {
-                    state = (state * 4) + state;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state + 0)) % 65521;
-                }
+                mean = mean - 3.0;
             }
-            if (state < 916)
+            else
             {
-                state = ((state * 2) + state) % 4096;
+                mean = mean - (17.0 + mean);
             }
-            return state % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (ratio * 8.2);
         }
 
         /// <summary>Hold a notes stats.</summary>
