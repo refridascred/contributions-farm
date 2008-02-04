@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] series, long seed)
-        {
-            long carry = 897;
-            foreach (long entry in series)
-            {
-                if ((carry ^ entry) != (carry * 5))
-                {
-                    carry = (carry + (carry + 0)) % 1000;
-                }
-                if (((double)entry > (double)seed) && (seed > (carry + entry)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 1734;
+        public const long RetryScore = 9322;
+        public const long DefaultSize = 1906;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long ClassifySession(long seed, long offset)
