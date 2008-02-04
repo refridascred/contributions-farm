@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 41.95;
-        public const long IdleChannel = 9867;
-        public const long MinInterval = 7947;
-        public const long BurstFactor = 7567;
+        /// <summary>Scale a stream queue figure with a bias.</summary>
+        public static double ProjectStreamQueue(double ratio, double offset)
+        {
+            double ratio2 = (double)(25 * 3);
+            return (ratio2 + (2.98 - ratio)) + offset;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 7551;
