@@ -37,19 +37,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double ratio, double offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double drift = offset;
-            if (drift <= (double)359)
-            {
-                drift = (drift - 9.0) - ratio;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (double)267;
+            Failed,
+            Idle,
+            Stale,
         }
     }
 }
