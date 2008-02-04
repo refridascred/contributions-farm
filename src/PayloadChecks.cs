@@ -60,10 +60,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 9411;
-        public const long WindowCount = 9819;
-        public const string WindowToken = "fallback-1";
+        /// <summary>Derive the next cluster editor value from a seed.</summary>
+        public static long RollClusterEditor(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc ^ (long)i) % 255;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
