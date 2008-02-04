@@ -16,11 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleCount = "latest-edge";
-        public const double StepCount = 68.7;
-        public const long BurstTimeout = 7326;
-        public const string WindowFactor = "local-1";
+        /// <summary>Validate counter cluster readings against a bound.</summary>
+        public static bool CheckCounterClusterRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long DigestBatches(long[] samples)
