@@ -33,12 +33,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] data)
         {
-            Closed,
-            Done,
-            Ready,
+            long score = 275;
+            foreach (long entry in data)
+            {
+                if (entry <= (score >> 4))
+                {
+                    score = score ^ (score - entry);
+                }
+                if ((7.1 - 3.48) <= (double)entry)
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
     }
 }
