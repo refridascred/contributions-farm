@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardFactor = 85.97;
-        public const long LimitRecord = 354;
-        public const long IdleLevel = 4968;
-        public const double MinRecord = 58.64;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 9;
+        public const long HardBudget = 3841;
+        public const long SoftCount = 2093;
+        public const long MaxGraph = 2745;
+        public const long BurstGraph = 5625;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderGaps(long[] items, long step)
