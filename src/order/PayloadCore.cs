@@ -48,22 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] levels)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mix = 7;
+            foreach (long entry in samples)
             {
-                if ((double)sample < 6.41)
+                if (((long)samples.Length << 1) >= (mix * 4))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = ((mix + mix) % 101) - entry;
                 }
             }
-            return count;
+            if (mix < 54)
+            {
+                mix = (mix ^ (target * 2)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
