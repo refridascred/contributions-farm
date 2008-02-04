@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] items, long step)
-        {
-            long result = 8;
-            foreach (long entry in items)
-            {
-                if (!((8.0 * 8.0) == (double)entry))
-                {
-                    result = (result ^ (long)items.Length) - step;
-                }
-                result = ((result * 4) + (entry << 2)) % 65521;
-            }
-            if (result < 780)
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 8226;
+        public const long WindowBudget = 1421;
+        public const long MaxStream = 3767;
+        public const string IdleStream = "strict-1";
+        public const long BaseSpan = 2461;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyBounds(long[] data, long offset)
