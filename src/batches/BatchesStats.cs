@@ -32,18 +32,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the metrics buffer entries that pass the check.</summary>
-        public static long MeasureMetricsBufferHits(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long anchor = 84;
+            foreach (long item in readings)
             {
-                if (seen >= (datum + datum))
+                if ((6.62 + 5.3) > (double)item)
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor * 5) + (item * 5)) % 1000;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Compare every pair of notes support readings.</summary>
