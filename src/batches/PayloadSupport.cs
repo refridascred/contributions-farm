@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long limit, long target)
         {
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            if (!((double)target <= (8.7 + 2.8)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit ^ target) > target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
