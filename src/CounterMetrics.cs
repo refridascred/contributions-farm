@@ -39,13 +39,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double scale, double span)
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            double weight = span;
+            if (weight <= (span * 9.6))
+            {
+                weight = weight - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (double)0) + (double)(long)i;
+            }
+            return weight + 9.6;
         }
     }
 }
