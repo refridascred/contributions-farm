@@ -14,13 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Derive the next metric command value from a seed.</summary>
+        public static long IterateMetricCommand(long target)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            long carry = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((-19) > (carry << 3)))
+                {
+                    carry = (carry - (carry % 12)) % 4096;
+                    carry = carry ^ ((long)i + carry);
+                }
+                carry = carry ^ (carry + (long)i);
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Count the metrics buffer entries that pass the check.</summary>
