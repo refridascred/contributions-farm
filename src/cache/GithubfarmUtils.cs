@@ -29,12 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
             Synced,
-            Paused,
-            Done,
+            Failed,
+            Dropped,
         }
     }
 }
