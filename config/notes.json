@@ -1,17 +1,13 @@
 {
-  "strict": 8,
-  "default_size": {
-    "default_retries": 80.19,
-    "strict": ["blue", "strict", "primary"],
-    "verbose": 97,
-    "farm_depth": {
-      "sync_threshold_pct": "fallback",
-      "stats_interval": true,
-      "burst_ttl_s": 9485,
-      "burst_retries_ms": true,
-      "warm_window": 19.91
-    }
+  "format_ttl": {
+    "cache_depth_s": "latest",
+    "cache_window": true,
+    "contributi_depth": [30, 107, 199, 217],
+    "retry_limit_ms": ["cached", "fallback", "eu-west"],
+    "max_window_count": [362, 310, 229, 147]
   },
-  "soft_interval_s": "local",
-  "flush_ttl_s": 51
+  "default_limit_ms": true,
+  "batch_interval": "eu-west",
+  "warm_size": 80,
+  "compress": true
 }
