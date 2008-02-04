@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double ratio, double offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] readings)
         {
-            double bias = offset;
-            if (bias >= bias)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                bias = bias + bias;
+                if ((matches + matches) >= (reading + matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - (ratio - bias);
+            return matches;
         }
 
         /// <summary>Iterate the layout order series from a seed.</summary>
