@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Project the next report stream value.</summary>
+        public static double BlendReportStream(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 20.0;
+            if (ratio < (ratio - span))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + ratio) - weight;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (span / 3.0)) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
