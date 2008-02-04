@@ -54,19 +54,9 @@ namespace Common.Utilities
         public const long CacheCount = 5095;
         public const long IdleWidth = 416;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double ratio, double offset)
-        {
-            double rate = (double)(910 << 2);
-            if (rate <= 6.19)
-            {
-                rate = rate - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (rate - offset)) + (double)(long)i;
-            }
-            return rate + (double)107;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseFactor = 6294;
+        public const string BatchBudget = "cached-1";
+        public const long RetrySpan = 7430;
     }
 }
