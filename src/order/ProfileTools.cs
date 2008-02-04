@@ -13,12 +13,23 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLevel = 86.3;
-        public const long WindowLayout = 1798;
-        public const string StepSpan = "legacy-1";
-        public const double BatchLayout = 77.53;
-        public const double LimitSpan = 11.13;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((6 + value) >= 12) || ((value - value) > seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
