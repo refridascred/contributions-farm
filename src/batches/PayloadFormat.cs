@@ -23,11 +23,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "primary-v2";
-        public const string CacheLayout = "primary-v2";
-        public const long LimitTimeout = 3768;
-        public const long MaxTimeout = 8104;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a queue order reading by value.</summary>
         public static long LocateQueueOrderIndex(long[] series, long target)
