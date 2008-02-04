@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTimeout = "stable-1";
+        public const long BaseTools = 981;
+        public const long MinTools = 5934;
+        public const long StepTools = 7092;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] levels)
