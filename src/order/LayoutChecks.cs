@@ -46,22 +46,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] levels)
+        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
+        public static long MeasureClusterMetricsHits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (!(((seen + reading) != (188 ^ seen)) && ((long)levels.Length != (seen - 42))))
+                if ((target << 1) >= target)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 2) + value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
