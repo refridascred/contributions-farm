@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] samples)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((value > (matches % 97)) || (((value + matches) <= matches) || ((value & 255) > 62)))
-                {
-                    matches = matches + 1;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
