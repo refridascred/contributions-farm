@@ -44,11 +44,19 @@ namespace Common.Utilities
         public const long CacheLevel = 5403;
         public const double StepRatio = 7.48;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseFactor = 77.7;
-        public const long BatchDepth = 3263;
-        public const long BatchNotes = 6154;
-        public const long BatchScore = 7664;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (sample <= seen)
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the token window series from a seed.</summary>
         public static long SeriesTokenWindow(long target)
