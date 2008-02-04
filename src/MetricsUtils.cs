@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] values, long target)
+        /// <summary>Measure how many farm route samples are out of range.</summary>
+        public static long MeasureFarmRouteHits(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (value != target)
+                if ((2.0 / 5.0) != (double)origin)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) - cell;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
