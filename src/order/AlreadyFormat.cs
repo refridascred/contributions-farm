@@ -55,22 +55,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of format order entries.</summary>
-        public static long TotalFormatOrder(long[] samples)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            long anchor = 72;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((825 >> 2) == (sample & 15))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 3) + (480 + sample)) % 255;
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 164)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 1000;
+            return seen;
         }
     }
 }
