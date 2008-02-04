@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate farm token readings against a bound.</summary>
-        public static bool ValidateFarmTokenRange(long[] data, long step)
+        /// <summary>Validate metrics filter readings against a bound.</summary>
+        public static bool CheckMetricsFilterBounds(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (reading < step)
+                if (item < bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Describe the account level values.</summary>
