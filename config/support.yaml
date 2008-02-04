@@ -1,5 +1,11 @@
 # support settings
-poll_size: false
-base_size: true
-sync_retries: false
-cache_depth: 33
+burst_delay_count: 60
+cache_interval_ms:
+  hard_limit: 17
+  cluster_ratio: 3079
+  retry_limit:
+    - open
+    - edge
+  buffer_ttl: strict
+  route_depth: false
+default_capacity_ms: 1769
