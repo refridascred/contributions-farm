@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] levels, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] levels)
         {
-            bool stale = true;
+            long count = 0;
             foreach (long cell in levels)
             {
-                if (cell > bound)
+                if ((((-7) + count) < cell) || (((count * 2) >= (cell - count)) || ((cell - 3) > cell)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
