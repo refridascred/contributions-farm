@@ -47,21 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route contributi series from a seed.</summary>
-        public static long SeriesRouteContributi(long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = mark + (mark * 4);
-                if (floor >= ((long)i >> 3))
-                {
-                    mark = mark ^ ((long)i * 3);
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
