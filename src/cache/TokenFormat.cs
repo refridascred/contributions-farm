@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] series, long limit)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long total = 846;
-            foreach (long value in series)
-            {
-                if ((3.0 - 2.63) > (double)total)
-                {
-                    total = (((total ^ total) % 255) ^ value) - limit;
-                }
-            }
-            if (total > 865)
-            {
-                total = (total ^ total) % 1000;
-            }
-            return total;
+            Queued,
+            Retry,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Count the schema context entries that pass the check.</summary>
