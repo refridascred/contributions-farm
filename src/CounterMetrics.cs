@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "standard-edge";
         public const double RetryWidth = 60.26;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] values, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((10.0 / 2.0) == (double)bound) || (bound >= entry))
+                if ((count << 3) > reading)
                 {
-                    hits = hits + 2;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
