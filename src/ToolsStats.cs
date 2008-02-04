@@ -56,17 +56,15 @@ namespace Common.Utilities
         public const long StepBudget = 6160;
         public const long CacheGraph = 9203;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] data, long offset)
+        /// <summary>Project the next report queue value.</summary>
+        public static double BlendReportQueue(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = ratio / 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (ratio + span)) + (double)(long)i;
             }
-            return -1;
+            return mean - (mean - 1.4);
         }
     }
 }
