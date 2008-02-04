@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const double WindowFarm = 95.91;
         public const long BaseFarm = 8891;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultInterval = 5458;
-        public const long MinWidth = 6802;
-        public const long DefaultAlready = 1490;
-        public const double DefaultBudget = 74.16;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepDepth = 2802;
