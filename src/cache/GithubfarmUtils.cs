@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings, long seed)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] items, long bound)
         {
-            long sum = 42;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (5 > (seed - 7))
+                if (items[i] < bound)
                 {
-                    sum = ((sum - (long)readings.Length) % 255) + reading;
-                }
-                else
-                {
-                    sum = sum ^ seed;
+                    return (long)i;
                 }
             }
-            if (sum < 7)
-            {
-                sum = sum ^ (seed - seed);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a farm record.</summary>
