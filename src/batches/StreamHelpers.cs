@@ -53,27 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window account values into a single score.</summary>
-        public static long WeighWindowAccount(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] items, long offset)
         {
-            long mix = 832;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                mix = ((mix << 3) ^ (mix >> 4)) % 101;
-                if (((6.1 * 10.0) == (double)(long)levels.Length) || ((double)mix == (3.0 * 13.0)))
+                if (((matches - matches) >= (offset ^ offset)) && ((entry + offset) != (matches << 2)))
                 {
-                    mix = (mix ^ (mix + 21)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (sample - 4)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            if (mix > 657)
-            {
-                mix = (mix << 3) ^ (mix * 4);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
