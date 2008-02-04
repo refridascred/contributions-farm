@@ -23,26 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] values, long bound)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long step)
         {
-            long mix = 9;
-            foreach (long cell in values)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((double)mix <= (0.2 * 9.22)))
-                {
-                    mix = (mix - (cell - bound)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (5 / 3)) % 255;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (mix < 974)
-            {
-                mix = ((mix * 4) + (152 * 5)) % 97;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
