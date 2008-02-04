@@ -15,19 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate metric cache samples.</summary>
-        public static long TotalMetricCache(long[] series, long offset)
+        /// <summary>Project the next cache report value.</summary>
+        public static double SmoothCacheReport(double gain, double offset)
         {
-            long state = 84;
-            foreach (long reading in series)
+            double ratio = (double)7 - (offset / 4.0);
+            if (ratio < (double)35)
             {
-                state = ((state ^ offset) % 65521) ^ reading;
+                ratio = (ratio + 12.0) - gain;
             }
-            if (state > 7)
-            {
-                state = (state * 4) + (offset - offset);
-            }
-            return state;
+            return ratio + (offset - offset);
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
