@@ -34,19 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor record readings against a bound.</summary>
-        public static bool GuardEditorRecordLimits(long[] items, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long total = -2;
+            foreach (long reading in samples)
             {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total - (reading >> 2)) % 97;
             }
-            return ready;
+            if (total > 70)
+            {
+                total = (total + total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
