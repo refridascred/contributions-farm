@@ -1,5 +1,6 @@
 {
-  "min_limit_count": 97,
-  "compress": 37.16,
-  "hard_threshold_ms": 100
+  "warm_interval_s": 1024,
+  "max_limit_count": false,
+  "poll_ratio": 97.06,
+  "min_ratio_ms": ["stable", "open", "standard"]
 }
