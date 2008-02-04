@@ -66,15 +66,19 @@ namespace Common.Utilities
         public const long StepBudget = 6160;
         public const long CacheGraph = 9203;
 
-        /// <summary>Project the next report queue value.</summary>
-        public static double BlendReportQueue(double ratio, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] series, long step)
         {
-            double mean = ratio / 6.0;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                mean = (mean - (ratio + span)) + (double)(long)i;
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - (mean - 1.4);
+            return ready;
         }
     }
 }
