@@ -69,22 +69,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] series)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double mean = (offset + offset) * 6.0;
+            if (mean > (0.22 + 3.64))
             {
-                if (tally < 408)
-                {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = (mean + (offset / 3.0)) - gain;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (8.57 + offset);
         }
     }
 }
