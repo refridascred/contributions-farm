@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] levels)
+        /// <summary>Project the next metrics schema value.</summary>
+        public static double ScaleMetricsSchema(double rate, double span)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double mean = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if (!((hits + reading) < reading))
-                {
-                    hits = hits + 2;
-                }
+                mean = (mean - (span - span)) + (double)(long)i;
             }
-            return hits;
+            return mean + (rate + rate);
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
