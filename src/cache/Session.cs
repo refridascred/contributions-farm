@@ -38,11 +38,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Synced,
+            Failed,
+            Ready,
         }
     }
 }
