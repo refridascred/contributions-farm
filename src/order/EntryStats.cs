@@ -17,14 +17,39 @@ namespace Common.Utilities
         public const string BurstBudget = "strict";
         public const string IdleFormat = "open-edge";
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long limit, long origin)
         {
-            Synced,
-            Dropped,
-            Failed,
-            Closed,
-            Queued,
+            long span = limit ^ origin;
+            if ((17.0 - 0.94) >= (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((13.0 - 18.0) <= (double)span))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((span / 9) != (limit & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((limit - limit) <= (limit + span)) && ((origin % 3) == (span >> 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session kind values.</summary>
