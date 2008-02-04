@@ -42,22 +42,12 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values, long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long carry = 50;
-            foreach (long reading in values)
-            {
-                if (reading > (target % 24))
-                {
-                    carry = ((carry * 3) + (target << 3)) % 97;
-                }
-                if ((long)values.Length <= (carry - 619))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Synced,
+            Paused,
+            Done,
         }
     }
 }
