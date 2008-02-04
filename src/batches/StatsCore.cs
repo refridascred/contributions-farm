@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command layout samples.</summary>
-        public static long OverlapCommandLayoutCount(long[] levels)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
