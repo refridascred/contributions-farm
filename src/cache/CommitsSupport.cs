@@ -24,21 +24,15 @@ namespace Common.Utilities
         public const long BatchScore = 6442;
         public const long HardAlready = 5437;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 5;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 5) + score) ^ sample;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the account level values.</summary>
