@@ -30,10 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstBudget = "fallback";
-        public const string MaxCount = "local";
-        public const long WindowDepth = 5904;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Dropped,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
