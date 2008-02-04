@@ -35,18 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] readings)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + tally) < (cell << 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
