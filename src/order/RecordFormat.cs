@@ -52,20 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream record value from a seed.</summary>
-        public static long RollStreamRecord(long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] readings, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)floor <= (7.0 * 7.4))
+                if (readings[i] < target)
                 {
-                    carry = (carry ^ (floor % 100)) % 255;
-                    carry = ((carry << 3) ^ (long)i) % 101;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many route metric samples are out of range.</summary>
