@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double scale, double floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            double ratio = floor;
-            if (ratio > 2.49)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                ratio = (ratio - ratio) - scale;
+                long gap = state & 15;
+                state = (state * 2) + (gap + gap);
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio / 6.0)) + (double)(long)i;
-            }
-            return ratio - (ratio / 6.0);
+            return state;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
