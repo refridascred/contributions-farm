@@ -1,8 +1,5 @@
 {
-  "retry_interval": 40.14,
-  "max_retries_s": 26.0,
-  "strict": "staging",
-  "batches_ratio": "eu-west",
-  "max_limit_pct": false,
-  "readonly": "latest"
+  "burst_capacity_s": ["standard", "local", "latest", "stable"],
+  "burst_window_s": "eu-west",
+  "compress": [497, 229]
 }
