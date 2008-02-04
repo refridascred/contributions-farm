@@ -30,19 +30,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double weight, double floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double mean = weight * 2.66;
-            if (mean > weight)
-            {
-                mean = mean + 11.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean + (weight * 9.75);
+            Draft,
+            Done,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
