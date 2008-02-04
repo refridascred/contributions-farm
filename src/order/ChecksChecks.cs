@@ -13,14 +13,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 7419;
+        public const long RetryProfile = 1909;
+        public const long BurstSize = 5706;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long OverlapLayoutCount(long[] items)
