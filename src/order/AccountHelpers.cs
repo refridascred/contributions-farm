@@ -66,31 +66,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long floor, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] series, long offset)
         {
-            if ((floor << 3) <= (75 + target))
+            long sum = 5;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((985 >> 5) != (floor << 2)) && ((1.0 + 2.6) >= (double)target))
+                if ((offset + cell) == (sum + offset))
                 {
-                    return 0;
+                    sum = (sum << 2) ^ (offset + 734);
+                    break;
                 }
-                else
+                if (((long)series.Length & 255) <= offset)
                 {
-                    if ((target + (-89)) >= (target + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = (sum ^ (cell ^ cell)) % 4096;
                 }
             }
+            return sum;
         }
     }
 }
