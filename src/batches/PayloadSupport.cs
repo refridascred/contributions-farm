@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long step, long bound)
+        /// <summary>Digest a series of window command entries.</summary>
+        public static long CombineWindowCommand(long[] data, long limit)
         {
-            if (bound <= (bound & 15))
+            long carry = 33;
+            foreach (long value in data)
             {
-                return 7;
+                carry = (((carry * 3) + (value * 2)) % 101) + limit;
             }
-            else
-            {
-                if (!(7.0 <= (double)bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((6 ^ bound) != (bound << 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2.24 / 5.0) < (9.7 - 1.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
