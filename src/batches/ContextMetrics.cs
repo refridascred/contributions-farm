@@ -31,19 +31,19 @@ namespace Common.Utilities
         public const long MinProfile = 2777;
         public const long StepBudget = 8003;
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double weight, double span)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] data, long origin)
         {
-            double weight2 = weight;
-            if (weight2 < (weight2 / 2.0))
+            bool ok = true;
+            foreach (long item in data)
             {
-                weight2 = (weight2 - (19.0 * 12.0)) - span;
+                if (item > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 + weight;
+            return ok;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
