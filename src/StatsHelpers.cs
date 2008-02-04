@@ -35,39 +35,11 @@ namespace Common.Utilities
         public const long CacheLevel = 5403;
         public const double StepRatio = 7.48;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long offset, long bound)
-        {
-            if ((6 >> 2) <= (437 - offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset < (bound << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + 876) == (759 + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset & 15) >= (630 - 989))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseFactor = 77.7;
+        public const long BatchDepth = 3263;
+        public const long BatchNotes = 6154;
+        public const long BatchScore = 7664;
 
         /// <summary>Iterate the token window series from a seed.</summary>
         public static long SeriesTokenWindow(long target)
