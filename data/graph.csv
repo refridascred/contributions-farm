@@ -1,6 +1,9 @@
-id,level,active,label
-1,blue,27.59,393
-2,485,15.0,stable
-3,33.61,86.25,cached
-4,543,969,stable
-5,74.27,48.1,58
+id,ratio,active
+1,681,89.57
+2,467,eu-west
+3,819,68.68
+4,legacy,55.16
+5,69.31,617
+6,staging,86
+7,strict,611
+8,open,97.54
