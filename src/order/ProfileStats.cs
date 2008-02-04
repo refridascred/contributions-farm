@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long limit)
         {
-            Ready,
-            New,
-            Synced,
+            long result = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
