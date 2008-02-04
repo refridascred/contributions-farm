@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] samples, long floor)
         {
-            public bool Token { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
