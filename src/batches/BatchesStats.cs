@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "primary-v2";
+        public const long StepRecord = 1936;
+        public const long MinRecord = 9602;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long RankCommits(long step, long seed)
