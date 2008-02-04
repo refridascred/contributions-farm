@@ -11,39 +11,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 6664;
         public const long RetryCache = 8972;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long origin, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long lane = origin ^ offset;
-            if (!((origin + lane) < offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin <= (17.0 / 6.0)) && ((origin + 86) > (1 & 255)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin ^ offset) < (lane - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (44 < lane)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public bool Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
