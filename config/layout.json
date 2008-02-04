@@ -1,7 +1,12 @@
 {
-  "idle_ttl_s": ["staging", "standard", "primary", "cached"],
-  "enabled": "primary",
-  "soft_delay": true,
-  "max_capacity": 78.22,
-  "idle_delay": ["standard", "fallback"]
+  "base_ratio_s": 38,
+  "flush_ratio": ["cached", "local"],
+  "burst_delay": 22.52,
+  "dry_run": "legacy",
+  "audit": 15.69,
+  "checks_ttl": {
+    "compress": 30,
+    "editor_timeout": 25.31,
+    "enabled": ["legacy", "cached", "staging"]
+  }
 }
