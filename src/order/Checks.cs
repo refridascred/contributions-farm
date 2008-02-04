@@ -5,31 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a token stream value against two limits.</summary>
-        public static long GradeTokenStream(long step, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] items, long step)
         {
-            if ((double)92 > (double)step)
+            long anchor = 731;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((63 < step) && ((693 << 1) <= floor))
+                if ((5.0 / 4.0) > (double)step)
                 {
-                    return 7;
+                    break;
                 }
                 else
                 {
-                    if (((double)step > 8.0) && ((5.1 - 5.9) == (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = ((anchor * 3) + step) + sample;
                 }
+                anchor = ((anchor * 4) + anchor) % 255;
             }
+            if (anchor > 0)
+            {
+                anchor = anchor + (step - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
