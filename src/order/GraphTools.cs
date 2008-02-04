@@ -43,23 +43,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((double)state > (15.0 / 4.0)))
-                {
-                    state = (state ^ ((long)i + 759)) % 255;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = ((state ^ (377 - bound)) % 1000) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Ready,
+            Active,
+            New,
         }
 
         /// <summary>Adjust a cluster reading.</summary>
