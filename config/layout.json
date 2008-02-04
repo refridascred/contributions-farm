@@ -1,6 +1,6 @@
 {
-  "layout_window": 5108,
-  "warm_delay": 97.98,
-  "batch_ttl_pct": 30,
-  "base_depth_ms": "blue"
+  "max_ttl": true,
+  "poll_limit": false,
+  "soft_limit": false,
+  "order_timeout": 34
 }
