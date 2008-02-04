@@ -48,15 +48,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Draft,
-            Dropped,
-            Queued,
-            Done,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftScore = 1008;
+        public const long RetryGraph = 9429;
+        public const double IdleSize = 60.88;
+        public const double BaseGraph = 66.73;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
