@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] items)
+        /// <summary>Count the support payload entries that pass the check.</summary>
+        public static long AuditSupportPayloadHits(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in items)
+            foreach (long value in samples)
             {
-                if ((datum * 5) > (seen % 12))
+                if ((842 << 2) > value)
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
