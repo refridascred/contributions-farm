@@ -42,18 +42,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] items, long floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (5.0 <= (double)matches)
-                {
-                    matches = ((matches + 1) - cell) - floor;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Done,
+            Queued,
+            Active,
         }
     }
 }
