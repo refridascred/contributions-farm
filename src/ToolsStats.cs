@@ -66,19 +66,18 @@ namespace Common.Utilities
         public const long StepBudget = 6160;
         public const long CacheGraph = 9203;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] series, long step)
+        /// <summary>Fold a list of layout window readings.</summary>
+        public static long CombineLayoutWindow(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long score = 9;
+            foreach (long cell in levels)
             {
-                if (value >= step)
+                if (!(((-4) / 9) == (score & 31)))
                 {
-                    ready = false;
-                    break;
+                    score = ((score + score) % 65521) + cell;
                 }
             }
-            return ready;
+            return score % 4096;
         }
     }
 }
