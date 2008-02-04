@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every already cache entry stays within the limit.</summary>
-        public static bool VerifyAlreadyCacheBounds(long[] levels, long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long offset, long seed)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long next = offset ^ seed;
+            if ((seed + seed) != (next % 7))
             {
-                if (sample < target)
+                return 3;
+            }
+            else
+            {
+                if ((567 + next) >= (seed - next))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) <= (seed & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
