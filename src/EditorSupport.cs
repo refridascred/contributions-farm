@@ -13,12 +13,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
