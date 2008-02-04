@@ -55,18 +55,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes queue samples are out of range.</summary>
-        public static long TallyNotesQueueGaps(long[] data)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long step, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if (!((9.66 - 18.0) <= (double)step))
             {
-                if (((double)92 <= (double)tally) && ((283 - entry) != (long)data.Length))
+                return 8;
+            }
+            else
+            {
+                if (((step >> 2) > (origin / 3)) || (4.0 >= (double)step))
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
