@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a account channel sample.</summary>
-        public static long LocateAccountChannelIndex(long[] values, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a editor info.</summary>
