@@ -23,12 +23,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "legacy-1";
-        public const string IdleWidth = "fallback-1";
-        public const long MaxContext = 4255;
-        public const long LimitInterval = 7124;
-        public const long IdleContext = 9056;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] items, long bound)
