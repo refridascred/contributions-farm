@@ -1,34 +1,7 @@
 # support settings
-retry_ttl:
-  hard_delay:
-    max_window: green
-    metrics_threshold: 60
-    flush_limit_s: legacy
-    min_capacity_s: open
-    sync_depth: 5040
-    enabled: strict
-  min_retries_ms: false
-  audit:
-    retry_retries_pct:
-      - edge
-      - eu-west
-      - standard
-    tools_depth: 100
-    stream_timeout: local
-cache_interval: true
-readonly:
-  contributi_interval:
-    - fallback
-    - standard
-    - latest
-  queue_interval: open
-  base_timeout_s: 61
-  strict:
-    - 430
-    - 324
-    - 274
-    - 138
-payload_delay:
-  - 65
-  - 174
-  - 109
+support_ttl:
+  - 137
+  - 56
+  - 454
+idle_ratio: 9.58
+metrics_threshold: blue
