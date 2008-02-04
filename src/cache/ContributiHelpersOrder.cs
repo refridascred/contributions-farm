@@ -26,31 +26,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long limit, long step)
+        /// <summary>Find the first notes already entry that matches the target.</summary>
+        public static long FindNotesAlreadyIndex(long[] readings, long limit)
         {
-            if (limit <= (limit + step))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((limit << 2) > (limit + limit)))
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step >> 4) >= (746 - step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
