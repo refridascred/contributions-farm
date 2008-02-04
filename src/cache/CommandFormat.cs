@@ -30,17 +30,19 @@ namespace Common.Utilities
         public const long LimitInterval = 7124;
         public const long IdleContext = 9056;
 
-        /// <summary>Find the first filter layout entry that matches the target.</summary>
-        public static long LocateFilterLayoutIndex(long[] readings, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (readings[i] > bound)
+                if (datum < bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
