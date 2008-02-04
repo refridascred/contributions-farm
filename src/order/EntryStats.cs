@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Stale,
-            Pending,
-            Paused,
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the support mode values.</summary>
