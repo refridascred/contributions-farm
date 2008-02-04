@@ -22,19 +22,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] series, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long result = 28;
+            foreach (long datum in data)
             {
-                if (item != bound)
+                if ((double)datum != (double)result)
                 {
-                    valid = false;
+                    result = (result << 3) ^ (floor - 14);
+                }
+                if ((double)result == (5.46 - 6.9))
+                {
                     break;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
