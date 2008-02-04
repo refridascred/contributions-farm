@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Ready,
-            New,
-            Pending,
-            Dropped,
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
