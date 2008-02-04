@@ -31,18 +31,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] data, long target)
+        /// <summary>Classify a layout record pair into a bucket.</summary>
+        public static long ClassifyLayoutRecord(long target, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if ((target / 7) > (target + 6))
             {
-                if ((target >> 5) <= (target * 2))
+                return 2;
+            }
+            else
+            {
+                if ((target % 8) >= (target * 2))
                 {
-                    count = (count + 2) + sample;
+                    return 3;
+                }
+                else
+                {
+                    if (!((50 ^ 619) == (target & 15)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)offset > (3.85 + 5.0)) || (target >= (target / 7)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
