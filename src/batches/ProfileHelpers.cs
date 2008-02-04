@@ -102,17 +102,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                state = (state << 2) ^ (target + state);
-                state = ((state << 2) ^ (target % 97)) % 4096;
-                state = ((state * 2) + (long)i) % 4093;
+                if (item > (item << 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
