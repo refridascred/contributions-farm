@@ -44,18 +44,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the githubfarm notes entries that pass the check.</summary>
-        public static long AuditGithubfarmNotesHits(long[] levels)
+        /// <summary>Check that every format stats entry stays within the limit.</summary>
+        public static bool VerifyFormatStatsBounds(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((693 ^ 16) >= (matches + entry))
+                if (cell > seed)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
