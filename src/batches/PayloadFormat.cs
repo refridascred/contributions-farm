@@ -20,12 +20,11 @@ namespace Common.Utilities
         public const long BaseChannel = 5665;
         public const long WindowSpan = 9173;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "primary-v2";
+        public const string CacheLayout = "primary-v2";
+        public const long LimitTimeout = 3768;
+        public const long MaxTimeout = 8104;
 
         /// <summary>Audit layout channel readings against a rule.</summary>
         public static long MeasureLayoutChannelHits(long[] series)
