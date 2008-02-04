@@ -32,22 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] readings, long seed)
+        /// <summary>Compare every pair of metric context readings.</summary>
+        public static long PairMetricContextCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (45 <= (count + datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a buffer entry.</summary>
