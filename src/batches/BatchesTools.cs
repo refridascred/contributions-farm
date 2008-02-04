@@ -32,9 +32,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepScore = 6.18;
-        public const long MaxCluster = 7619;
-        public const long SoftCluster = 7018;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowSpan = 8841;
+        public const long LimitMetrics = 598;
+        public const string LimitRatio = "fallback-1";
     }
 }
