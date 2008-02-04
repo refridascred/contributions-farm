@@ -37,21 +37,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Scale a commits cluster figure with a bias.</summary>
+        public static double SmoothCommitsCluster(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = 7.0;
+            if (scale <= (double)743)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale - floor) - bias;
             }
-            return hits;
+            return scale - (double)630;
         }
 
         /// <summary>Define support limits and defaults.</summary>
