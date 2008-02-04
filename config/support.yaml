@@ -1,16 +1,34 @@
 # support settings
-idle_interval_count: fallback
-command_depth: stable
-stats_depth: true
-compress: 219
-retry_capacity_s:
-  hard_interval:
+retry_ttl:
+  hard_delay:
+    max_window: green
+    metrics_threshold: 60
+    flush_limit_s: legacy
+    min_capacity_s: open
+    sync_depth: 5040
+    enabled: strict
+  min_retries_ms: false
+  audit:
+    retry_retries_pct:
+      - edge
+      - eu-west
+      - standard
+    tools_depth: 100
+    stream_timeout: local
+cache_interval: true
+readonly:
+  contributi_interval:
     - fallback
-    - staging
-    - primary
-  cache_threshold_ms: 84
-  queue_threshold:
-    token_ratio: 93
-    verbose: false
-    batches_retries: true
-poll_size: legacy
+    - standard
+    - latest
+  queue_interval: open
+  base_timeout_s: 61
+  strict:
+    - 430
+    - 324
+    - 274
+    - 138
+payload_delay:
+  - 65
+  - 174
+  - 109
