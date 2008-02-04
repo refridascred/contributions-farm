@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double scale, double floor)
-        {
-            double mean = (double)(53 << 2);
-            if (mean < mean)
-            {
-                mean = mean - (mean - scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean - (8.7 * 2.23);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowInterval = 85.61;
+        public const long MaxTimeout = 9993;
+        public const long RetrySize = 322;
+        public const long MaxEditor = 5974;
+        public const long MinSpan = 4676;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long target)
