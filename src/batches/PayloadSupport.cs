@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const long IdleLevel = 4968;
         public const double MinRecord = 58.64;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] values)
         {
-            Active,
-            Draft,
-            New,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((value % 64) <= (hits + value)) || ((value > (7 * 5)) || (value > hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
