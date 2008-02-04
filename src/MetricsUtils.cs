@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 1656;
-        public const string BaseWindow = "standard-1";
-        public const long MaxScore = 2216;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Failed,
+            Done,
+            New,
+            Pending,
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheOutliers(long[] levels, long step)
