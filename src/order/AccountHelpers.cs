@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            double bias = offset;
+            if (bias >= bias)
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - (ratio - bias);
         }
 
         /// <summary>Iterate the layout order series from a seed.</summary>
