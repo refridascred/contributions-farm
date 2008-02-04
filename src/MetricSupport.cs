@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double rate, double offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            double mean = (double)(7 ^ 632);
-            if (mean < rate)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                mean = mean + rate;
+                state = (state ^ (-23)) % 65521;
+                if ((689 >> 2) < state)
+                {
+                    state = (state + (long)i) % 255;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean + (double)(-8);
-            }
-            return mean + (offset - rate);
+            return state;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
