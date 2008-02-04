@@ -20,21 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 385;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item <= (carry + item))
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry << 3) ^ (item ^ carry);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Scale a editor layout figure with a bias.</summary>
