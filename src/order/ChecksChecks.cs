@@ -18,19 +18,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double weight, double offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            double drift = 0.4;
-            if (drift < (double)534)
-            {
-                drift = (drift + weight) - offset;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (double)9;
+            public bool Score { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
