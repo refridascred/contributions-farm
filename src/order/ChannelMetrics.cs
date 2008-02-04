@@ -36,18 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell <= 3.63)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseWidth = 9554;
+        public const long BaseInterval = 5012;
+        public const long BaseFactor = 9766;
+        public const double IdleGraph = 16.24;
+        public const double MinScore = 29.45;
     }
 }
