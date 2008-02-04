@@ -1,6 +1,6 @@
 {
-  "strict": true,
-  "poll_capacity_s": 96.95,
-  "default_ratio_ms": 65.99,
-  "batches_delay": "latest"
+  "sync_retries_s": 3466,
+  "persist": [390, 228],
+  "burst_retries_ms": true,
+  "window_capacity": 500
 }
