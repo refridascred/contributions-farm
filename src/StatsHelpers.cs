@@ -41,14 +41,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] samples, long offset)
         {
-            Locked,
-            Ready,
-            Failed,
-            Stale,
-            Pending,
+            long sum = 5;
+            foreach (long cell in samples)
+            {
+                if ((offset <= (sum ^ cell)) && ((cell << 2) >= sum))
+                {
+                    sum = (sum ^ sum) % 101;
+                }
+                else
+                {
+                    sum = (sum + (offset & 255)) % 4096;
+                }
+            }
+            if (sum < 66)
+            {
+                sum = sum - (2 * 4);
+            }
+            return sum % 97;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
