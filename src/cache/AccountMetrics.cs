@@ -36,32 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(((offset & 31) >= (-814)) || ((double)score == (1.44 / 5.0))))
-                {
-                    score = score ^ (score + score);
-                    score = ((score << 2) ^ (long)i) % 4096;
-                }
-                score = (score + (offset / 3)) % 101;
-                if ((score - (long)i) >= (score % 5))
-                {
-                    score = score ^ (5 - score);
-                    score = score + offset;
-                    break;
-                }
-                else
-                {
-                    score = (score ^ (long)i) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitBudget = 4875;
+        public const long HardStats = 3094;
+        public const double DefaultBudget = 17.53;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
