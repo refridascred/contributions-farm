@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double weight, double floor)
         {
-            Dropped,
-            New,
-            Retry,
-            Locked,
+            double ratio = (double)(97 >> 1);
+            if (ratio <= (floor / 7.0))
+            {
+                ratio = (ratio + ratio) - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
