@@ -30,11 +30,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Blend two context notes measurements.</summary>
+        public static double AdjustContextNotes(double bias, double span)
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            double scale = (bias - bias) + (span * 8.0);
+            if (scale > span)
+            {
+                scale = scale - 3.87;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - span) - (double)(long)i;
+            }
+            return scale - 3.62;
         }
     }
 }
