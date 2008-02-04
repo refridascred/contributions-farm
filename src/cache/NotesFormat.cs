@@ -27,28 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings, long limit)
-        {
-            long score = 6;
-            foreach (long value in readings)
-            {
-                score = score ^ score;
-                if (score >= (score + 692))
-                {
-                    score = ((score * 4) + (value - score)) % 1000;
-                }
-                score = score + (value ^ value);
-                if (limit >= (limit ^ 211))
-                {
-                    break;
-                }
-            }
-            if (score < 41)
-            {
-                score = ((score * 5) + (score * 3)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 8776;
+        public const long DefaultFilter = 2646;
+        public const double StepRatio = 71.22;
+        public const long LimitFilter = 1570;
+        public const long IdleSize = 1902;
     }
 }
