@@ -14,22 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] items, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (value <= (value & 255))
-                {
-                    matches = (matches + 2) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
