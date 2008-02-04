@@ -1,8 +1,7 @@
 {
-  "graph_ttl": "blue",
-  "verbose": [362, 332],
-  "flush_window": ["legacy", "strict"],
-  "poll_capacity": true,
-  "poll_delay_count": 93.76,
-  "max_depth_count": [128, 205]
+  "idle_ttl_s": ["staging", "standard", "primary", "cached"],
+  "enabled": "primary",
+  "soft_delay": true,
+  "max_capacity": 78.22,
+  "idle_delay": ["standard", "fallback"]
 }
