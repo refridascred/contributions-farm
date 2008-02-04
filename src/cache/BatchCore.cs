@@ -21,21 +21,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a context reading.</summary>
