@@ -42,10 +42,16 @@ namespace Common.Utilities
         public const string WindowSpan = "staging-1";
         public const string MinLayout = "cached-1";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseTimeout = 5105;
-        public const double WindowFarm = 29.07;
-        public const string StepInterval = "fallback-v2";
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] samples)
+        {
+            long result = 71;
+            foreach (long datum in samples)
+            {
+                result = (((result << 3) ^ (long)samples.Length) % 255) + datum;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of channel report readings.</summary>
         public static long CombineChannelReport(long[] items)
