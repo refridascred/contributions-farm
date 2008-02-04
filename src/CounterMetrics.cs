@@ -24,13 +24,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] items, long floor)
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
+            long mix = 457;
+            foreach (long entry in items)
+            {
+                if (45 <= (floor + 2))
+                {
+                    mix = (mix ^ (mix - entry)) % 255;
+                }
+            }
+            if (mix < 85)
+            {
+                mix = mix - (mix % 16);
+            }
+            return mix;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
