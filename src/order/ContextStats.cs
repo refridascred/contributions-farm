@@ -31,20 +31,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double ratio, double bias)
-        {
-            double mean = (3.94 * 1.7) * 4.4;
-            if (mean <= (double)(-520))
-            {
-                mean = mean + ratio;
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean + (double)50;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftInterval = "primary-edge";
+        public const double BurstFarm = 46.93;
+        public const long DefaultFarm = 9178;
+        public const long LimitSize = 9139;
+        public const double CacheTimeout = 51.94;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long bound, long offset)
