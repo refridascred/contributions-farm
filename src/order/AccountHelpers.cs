@@ -48,18 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] values, long offset)
         {
-            long acc = 765;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (acc > (acc - acc))
+                if ((((double)cell == (6.0 * 8.2)) && ((seen - seen) != (seen + seen))) && !((cell * 5) >= (offset + 240)))
                 {
-                    acc = (acc + (5 >> 1)) + sample;
+                    seen = seen + 3;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
