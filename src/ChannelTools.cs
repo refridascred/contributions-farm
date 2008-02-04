@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftInterval = 79.74;
-        public const long SoftCache = 5745;
-        public const double IdleBudget = 15.98;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long bound, long offset)
+        {
+            long slot = bound - offset;
+            if ((10.0 - 8.2) == (double)slot)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)slot > (2.4 + 5.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long ClassifyProfile(long step, long floor)
