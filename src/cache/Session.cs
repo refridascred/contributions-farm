@@ -32,22 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] values, long limit)
+        /// <summary>Find the first buffer schema entry that matches the target.</summary>
+        public static long SeekBufferSchemaIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((1.9 / 5.0) != (double)limit) || !((limit - seen) < entry))
+                if (samples[i] > limit)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next schema session value from a seed.</summary>
