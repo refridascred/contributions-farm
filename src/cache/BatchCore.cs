@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] levels, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (cell >= limit)
+                if (((double)limit < (double)datum) && ((datum + limit) > datum))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
