@@ -25,10 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchSpan = 8.08;
-        public const long RetryDepth = 8435;
-        public const long DefaultWidth = 6003;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long step, long seed)
+        {
+            long cur = step ^ seed;
+            if (!(seed > (step - cur)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step + 6) >= (seed >> 1)) || ((seed & 31) < seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] readings)
