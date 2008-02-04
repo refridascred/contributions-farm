@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleWidth = 32.08;
+        public const double DefaultGraph = 2.8;
+        public const double SoftSpan = 75.47;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long BucketRecord(long floor, long bound)
