@@ -22,24 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already batch series from a seed.</summary>
-        public static long IterateAlreadyBatch(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!(((1 ^ offset) >= anchor) && (((long)i + 8) < anchor)))
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-                if ((offset >= ((long)i + 511)) || (((-46) + offset) <= (anchor - offset)))
-                {
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 3042;
+        public const long WindowInterval = 55;
+        public const double HardBuffer = 19.46;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
