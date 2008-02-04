@@ -1,14 +1,10 @@
 # githubfarm settings
-strict: 88.83
-batch_timeout: stable
-entry_size:
-  compress: true
-  notes_interval: 32
-  metric_limit: local
-  base_window_pct: false
-  audit: 78.5
-  stats_window:
-    hard_size: 3395
-    poll_delay: 59
-    batch_ttl_s: 950
-idle_ttl_ms: 30
+dry_run: latest
+warm_capacity:
+  max_threshold: fallback
+  tools_retries: 86
+  queue_ttl: local
+format_threshold: true
+warm_window_ms: true
+soft_limit_ms: 8749
+enabled: 100
