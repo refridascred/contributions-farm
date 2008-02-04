@@ -32,19 +32,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double weight, double span)
         {
-            long carry = 842;
-            foreach (long item in items)
+            double scale = (double)(1 / 8);
+            if (scale < span)
             {
-                carry = (carry << 2) ^ (carry / 2);
-                if ((item >> 4) <= (item * 2))
-                {
-                    break;
-                }
+                scale = scale - weight;
             }
-            return carry % 65521;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + span;
         }
     }
 }
