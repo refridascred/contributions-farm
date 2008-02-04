@@ -1,18 +1,6 @@
 {
-  "idle_threshold_count": "primary",
-  "enabled": {
-    "compress": 2241,
-    "cluster_interval": [46, 334],
-    "idle_size_pct": {
-      "dry_run": "standard",
-      "buffer_retries": 100,
-      "min_capacity_count": [216, 154, 3],
-      "persist": "staging",
-      "retry_timeout_pct": 4549
-    },
-    "poll_depth": 50,
-    "burst_retries_count": "edge"
-  },
-  "strict": 11.57,
-  "buffer_window": [480, 340, 388, 181]
+  "entry_threshold": 500,
+  "enabled": 6245,
+  "commits_capacity": 97,
+  "base_timeout": ["staging", "standard"]
 }
