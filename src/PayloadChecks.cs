@@ -53,16 +53,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next cluster editor value from a seed.</summary>
-        public static long RollClusterEditor(long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc ^ (long)i) % 255;
-                acc = ((acc * 5) + (long)i) % 97;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Hold a support options.</summary>
