@@ -70,24 +70,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] samples, long seed)
         {
-            long result = 8;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ (cell * 3)) % 97;
-                result = (result ^ (result + cell)) % 101;
-                if ((85 + cell) < (result >> 2))
+                if (samples[i] == seed)
                 {
-                    result = (result + ((long)series.Length + cell)) % 4096;
-                }
-                if (((cell ^ result) != (cell - cell)) || ((cell - (-171)) > (result % 7)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
