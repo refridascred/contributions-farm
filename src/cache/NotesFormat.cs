@@ -13,28 +13,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long score = -99;
-            foreach (long entry in readings)
-            {
-                if (((double)score <= (9.2 * 5.0)) && ((score + score) > (entry + entry)))
-                {
-                    score = score ^ (entry >> 1);
-                    continue;
-                }
-                score = ((score << 2) ^ (63 + (long)readings.Length)) % 101;
-                if (((double)score == (2.58 / 6.0)) || (entry > (entry + score)))
-                {
-                    score = (score + (score - entry)) % 1000;
-                }
-            }
-            if (score < 93)
-            {
-                score = score - (score ^ score);
-            }
-            return score;
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up support samples.</summary>
