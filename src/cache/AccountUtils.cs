@@ -22,21 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = (total << 3) ^ (long)i;
+                if ((seed % 16) >= seed)
                 {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 2) ^ (long)i;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
