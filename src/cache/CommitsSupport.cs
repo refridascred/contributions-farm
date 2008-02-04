@@ -16,11 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 9493;
-        public const long MaxWidth = 9495;
-        public const long BatchScore = 6442;
-        public const long HardAlready = 5437;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphGaps(long[] series)
