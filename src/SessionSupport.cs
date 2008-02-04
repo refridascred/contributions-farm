@@ -16,11 +16,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 1893;
-        public const long BatchCount = 6395;
-        public const long BurstRatio = 4564;
-        public const double MaxAccount = 51.28;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadBounds(long[] values, long floor)
