@@ -42,21 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Project the next batch stats value.</summary>
