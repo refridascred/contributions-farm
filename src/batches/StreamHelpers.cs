@@ -103,26 +103,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if (target >= ((long)i * 3))
-                {
-                    acc = (acc + target) % 1000;
-                    acc = (acc ^ acc) % 255;
-                    continue;
-                }
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    acc = (((acc * 3) + (acc - acc)) % 101) ^ (long)i3;
-                    acc = ((acc << 3) ^ (target + acc)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
