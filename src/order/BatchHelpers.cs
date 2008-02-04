@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const double WindowRoute = 69.16;
         public const long MinRoute = 7591;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double gain, double floor)
         {
-            Closed,
-            Queued,
-            Idle,
-            Retry,
+            double scale = (double)(1 + (-301));
+            if (scale <= gain)
+            {
+                scale = scale + (floor - scale);
+            }
+            else
+            {
+                scale = scale + (double)1;
+            }
+            return scale - gain;
         }
     }
 }
