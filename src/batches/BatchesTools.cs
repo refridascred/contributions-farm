@@ -29,18 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (!(((reading + 27) <= (hits << 3)) || ((reading - reading) != (827 * 2))))
+                if (cell >= floor)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
