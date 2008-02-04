@@ -46,12 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Check that every profile metrics entry stays within the limit.</summary>
+        public static bool CheckProfileMetricsBounds(long[] items, long floor)
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
