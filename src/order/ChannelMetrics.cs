@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream batches sample.</summary>
-        public static long LocateStreamBatchesIndex(long[] series, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (series[i] == limit)
+                if (sample != limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
