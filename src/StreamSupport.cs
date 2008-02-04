@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] data, long limit)
         {
-            long anchor = 47;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor ^ anchor) % 4096;
-                if (datum < (anchor ^ datum))
+                if ((data[i] > limit) && ((data[i] % 2) != 0))
                 {
-                    anchor = anchor - (anchor / 9);
-                }
-                else
-                {
-                    anchor = (anchor - (60 + anchor)) % 65521;
+                    return (long)i;
                 }
             }
-            if (anchor < 95)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
