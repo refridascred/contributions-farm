@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long CacheCounter = 2129;
         public const long IdleCount = 8413;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] values)
         {
-            Stale,
-            Paused,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell >> 5) <= seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up contributi batch samples.</summary>
