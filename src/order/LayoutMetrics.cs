@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit session stream readings against a rule.</summary>
-        public static long AuditSessionStreamGaps(long[] data)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] series)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long acc = 34;
+            foreach (long reading in series)
             {
-                if ((2.2 / 9.0) != (double)tally)
-                {
-                    tally = (tally + 3) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc - (-55)) - reading;
             }
-            return tally;
+            if (acc > 1)
+            {
+                acc = acc ^ (acc << 1);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
