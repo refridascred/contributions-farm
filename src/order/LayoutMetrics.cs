@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Draft,
-            Retry,
-            Pending,
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
