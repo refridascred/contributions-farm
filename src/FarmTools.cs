@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long BurstSession = 5914;
         public const long BatchSession = 9793;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long mix = 7;
-            foreach (long reading in samples)
-            {
-                if (((double)71 >= (double)reading) && ((82 + mix) < reading))
-                {
-                    mix = (mix + reading) % 1000;
-                }
-            }
-            return mix % 4096;
+            Queued,
+            Paused,
+            Dropped,
+            Draft,
         }
     }
 }
