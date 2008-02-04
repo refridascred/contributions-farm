@@ -20,24 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long origin, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] series, long bound)
         {
-            if (11.0 < (double)offset)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((6.6 / 8.0) >= (double)origin) && ((offset - 75) <= (origin + 9)))
+                if ((bound << 2) > bound)
                 {
-                    return 1;
+                    matches = (matches + 2) + sample;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
