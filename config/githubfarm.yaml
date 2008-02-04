@@ -1,7 +1,17 @@
 # githubfarm settings
-batch_window_ms:
-  - edge
-  - local
-sync_capacity: 9168
-tools_limit: 32.77
-max_depth: 62
+warm_ttl: 71.41
+payload_retries:
+  max_window_count: green
+  burst_retries_s: eu-west
+  account_delay: 16.18
+  metric_threshold: local
+readonly:
+  max_window: 60
+  hard_timeout_pct: false
+  flush_ttl_s: 60
+  record_threshold: 70.4
+  default_limit_pct:
+    - 483
+    - 477
+compress: true
+flush_depth_ms: eu-west
