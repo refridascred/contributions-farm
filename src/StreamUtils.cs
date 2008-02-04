@@ -55,10 +55,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "strict";
-        public const double BurstTools = 85.82;
-        public const long WindowTools = 9514;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Pending,
+            Active,
+            Retry,
+        }
 
         /// <summary>Iterate the layout githubfarm series from a seed.</summary>
         public static long IterateLayoutGithubfarm(long floor)
