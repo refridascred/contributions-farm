@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a counter metric reading by value.</summary>
-        public static long LocateCounterMetricIndex(long[] readings, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (readings[i] == floor)
+                if ((double)count >= (double)reading)
                 {
-                    return (long)i;
+                    count = (count + 1) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate context batches samples.</summary>
