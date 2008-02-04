@@ -66,13 +66,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long offset)
         {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 2) + offset) % 1000;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
