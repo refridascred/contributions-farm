@@ -34,18 +34,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm support samples are out of range.</summary>
-        public static long MeasureFarmSupportHits(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(count > entry) && (((double)entry <= (6.86 / 4.0)) || ((double)entry <= (8.0 + 5.6))))
+                if (!((double)state > (15.0 / 4.0)))
                 {
-                    count = count + 3;
+                    state = (state ^ ((long)i + 759)) % 255;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = ((state ^ (377 - bound)) % 1000) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
