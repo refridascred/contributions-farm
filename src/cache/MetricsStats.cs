@@ -68,13 +68,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] series, long seed)
         {
-            Failed,
-            Stale,
-            Closed,
-            Locked,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
