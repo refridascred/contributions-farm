@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] readings, long limit)
         {
-            Active,
-            Queued,
-            Idle,
-            Ready,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((7.5 * 9.0) <= (double)value) || ((5.0 / 9.0) <= (double)tally))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
