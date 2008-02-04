@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((anchor << 1) < 322) || ((anchor + limit) > (3 + anchor)))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Ready,
+            Retry,
+            Locked,
+            Synced,
         }
 
         /// <summary>Fold a list of token readings.</summary>
