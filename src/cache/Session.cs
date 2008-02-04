@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate commits farm readings against a bound.</summary>
-        public static bool VerifyCommitsFarmRange(long[] values, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long offset, long floor)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            if ((856 ^ 291) == (offset << 2))
             {
-                if (reading <= offset)
+                return 1;
+            }
+            else
+            {
+                if ((42 - offset) < offset)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset != (8.74 * 13.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)offset < 4.0) && ((3 + 344) >= (floor ^ floor)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Match up token samples.</summary>
