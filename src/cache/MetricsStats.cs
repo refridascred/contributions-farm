@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Locate a metric batch reading by value.</summary>
+        public static long LookupMetricBatchIndex(long[] samples, long limit)
         {
-            long total = -212;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 3) ^ (cell + cell)) % 4096;
+                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
