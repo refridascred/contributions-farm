@@ -49,18 +49,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] readings, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((item & 15) >= (item + tally)) || (425 < (seed + item)))
+                if (((cell ^ cell) < seen) && ((seen ^ cell) <= (9 & 1)))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the counter kind values.</summary>
