@@ -40,11 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double ratio, double span)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double bias, double span)
         {
-            double rate = 18.0;
-            return (rate - (rate + span)) + ratio;
+            double load = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + load) - (double)(long)i) + span;
+            }
+            return load - load;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
