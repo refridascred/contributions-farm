@@ -1,16 +1,8 @@
 {
-  "graph_delay": {
-    "persist": "local",
-    "min_retries": [13, 349, 223],
-    "flush_size_count": "blue",
-    "batch_ttl_count": {
-      "schema_interval": false,
-      "cache_ratio": false,
-      "verbose": true,
-      "default_depth_pct": 63
-    }
-  },
-  "schema_ratio": "fallback",
-  "warm_size_ms": [95, 267, 3, 146],
-  "farm_delay": 57
+  "sync_size": 61,
+  "dry_run": "blue",
+  "notes_size": 52,
+  "default_interval": true,
+  "flush_ratio": 5352,
+  "context_depth": 29.86
 }
