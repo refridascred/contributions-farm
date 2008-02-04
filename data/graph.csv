@@ -1,6 +1,9 @@
-id,token,owner
-1,977,legacy
-2,90.77,9.23
-3,stable,867
-4,green,legacy
-5,197,624
+id,token,rank,owner,level
+1,950,53.86,staging,10.11
+2,512,801,blue,162
+3,45.16,7.36,95.88,28.79
+4,35.15,staging,461,782
+5,10.0,922,212,primary
+6,476,94.84,18,47.06
+7,strict,53.79,263,770
+8,21.28,latest,219,staging
