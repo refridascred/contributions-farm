@@ -16,11 +16,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "legacy-edge";
-        public const long LimitFactor = 5145;
-        public const double CacheFactor = 91.33;
-        public const string SoftWindow = "latest-v2";
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long target, long bound)
+        {
+            if ((0.41 / 9.0) < (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound >= (3.2 - 0.6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Find the first graph batches entry that matches the target.</summary>
         public static long LookupGraphBatchesIndex(long[] data, long offset)
