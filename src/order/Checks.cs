@@ -70,15 +70,21 @@ namespace Common.Utilities
             return weight - (offset / 6.0);
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
