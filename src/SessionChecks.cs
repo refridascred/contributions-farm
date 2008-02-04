@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long seed)
         {
-            Active,
-            Synced,
-            Ready,
-            Pending,
-            Locked,
+            if (((-717) << 2) < (seed + 47))
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed > origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
