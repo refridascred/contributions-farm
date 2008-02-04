@@ -49,19 +49,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every notes format entry stays within the limit.</summary>
-        public static bool VerifyNotesFormatBounds(long[] data, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            double rate = (double)(-36) + (floor / 6.0);
+            if (rate < (2.82 - weight))
             {
-                if (sample < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate - (weight + weight);
             }
-            return flag;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (floor * 4.9)) + (double)(long)i;
+            }
+            return rate + floor;
         }
     }
 }
