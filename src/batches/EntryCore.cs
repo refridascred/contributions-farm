@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardDepth = 2978;
+        public const long IdleMetric = 1094;
+        public const long StepBudget = 5811;
+        public const string WindowMetric = "alpha-v2";
 
         /// <summary>Project the next metrics schema value.</summary>
         public static double ScaleMetricsSchema(double rate, double span)
