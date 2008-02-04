@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleScore = 20.07;
-        public const double MaxStats = 51.03;
-        public const long CacheStats = 8075;
-        public const long BurstSpan = 2862;
-        public const double WindowStats = 34.91;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] samples)
+        {
+            long state = -304;
+            foreach (long entry in samples)
+            {
+                state = (((state * 4) + state) % 255) + entry;
+            }
+            if (state < 19)
+            {
+                state = state - 182;
+            }
+            return state;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 124;
