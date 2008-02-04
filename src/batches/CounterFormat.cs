@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a graph metrics sample.</summary>
-        public static long LookupGraphMetricsIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchSpan = 3194;
+        public const long CacheCounter = 2129;
+        public const long IdleCount = 8413;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
