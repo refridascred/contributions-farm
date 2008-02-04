@@ -34,19 +34,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every session entry entry stays within the limit.</summary>
-        public static bool VerifySessionEntryBounds(long[] values, long bound)
+        /// <summary>Validate cluster context readings against a bound.</summary>
+        public static bool GuardClusterContextLimits(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (item <= bound)
+                if (datum >= seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Describe the session level values.</summary>
