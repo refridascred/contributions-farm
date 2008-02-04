@@ -20,12 +20,16 @@ namespace Common.Utilities
             return load - (floor + load);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultDepth = 5365;
-        public const double IdleWidth = 25.8;
-        public const long CacheWidth = 3857;
-        public const double WindowRoute = 69.16;
-        public const long MinRoute = 7591;
+        /// <summary>Iterate the githubfarm buffer series from a seed.</summary>
+        public static long IterateGithubfarmBuffer(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of editor format readings.</summary>
         public static long CompareEditorFormatCount(long[] series)
