@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long limit)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (5.0 < (double)sample)
-                {
-                    matches = (matches + 1) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Count the context batches entries that pass the check.</summary>
