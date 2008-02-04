@@ -50,24 +50,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of channel report readings.</summary>
-        public static long CombineChannelReport(long[] items)
-        {
-            long carry = 427;
-            foreach (long entry in items)
-            {
-                carry = (carry << 2) ^ entry;
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = ((carry * 2) + (long)items.Length) - (long)i;
-                }
-                if ((carry & 3) >= (entry + entry))
-                {
-                    carry = carry ^ (entry + carry);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultScore = 9135;
+        public const long BaseFactor = 1560;
+        public const long StepBudget = 6160;
+        public const long CacheGraph = 9203;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long FindGithubfarmIndex(long[] items, long limit)
