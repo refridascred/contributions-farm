@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Project the next report stream value.</summary>
