@@ -41,11 +41,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] data, long step)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((793 - (-38)) == (value - value))
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
         }
     }
 }
