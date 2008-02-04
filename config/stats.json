@@ -1,5 +1,12 @@
 {
-  "burst_capacity_s": ["standard", "local", "latest", "stable"],
-  "burst_window_s": "eu-west",
-  "compress": [497, 229]
+  "burst_capacity_pct": {
+    "sync_delay": true,
+    "idle_delay_s": false,
+    "base_window": ["primary", "strict"],
+    "entry_timeout": "cached"
+  },
+  "cache_size_count": 60,
+  "dry_run": 37.54,
+  "schema_size": "open",
+  "token_retries": [285, 458, 334]
 }
