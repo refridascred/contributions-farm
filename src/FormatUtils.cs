@@ -60,31 +60,11 @@ namespace Common.Utilities
         public const long MaxFactor = 7490;
         public const string HardAlready = "primary-1";
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long origin, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            if (((1.3 - 14.0) <= (double)origin) && ((floor + origin) <= origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor > (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((628 + floor) <= (origin >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public double Score { get; set; }
         }
     }
 }
