@@ -1,5 +1,6 @@
 {
-  "metrics_depth": 91,
-  "default_retries_s": 76.25,
-  "default_threshold": ["standard", "stable", "green", "fallback"]
+  "audit": "standard",
+  "default_retries_ms": 100,
+  "retry_delay": "green",
+  "retry_delay_ms": 64.43
 }
