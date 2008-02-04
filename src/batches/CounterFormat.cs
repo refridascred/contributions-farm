@@ -13,13 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
+            Stale,
+            Paused,
             Retry,
-            Draft,
-            Idle,
-            Done,
+            Pending,
         }
 
         /// <summary>Define support limits and defaults.</summary>
