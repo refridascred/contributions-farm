@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Validate cluster context readings against a bound.</summary>
