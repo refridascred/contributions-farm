@@ -28,13 +28,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardDepth = "legacy-v2";
+        public const double MaxCommits = 8.36;
+        public const double LimitCommits = 80.11;
+        public const long IdleRatio = 4463;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsRange(long[] samples, long step)
