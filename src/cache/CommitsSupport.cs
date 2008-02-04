@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] levels, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = -5;
+            foreach (long value in items)
             {
-                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state + (value - value)) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
