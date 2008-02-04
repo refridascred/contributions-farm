@@ -36,14 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Validate layout queue readings against a bound.</summary>
+        public static bool GuardLayoutQueueBounds(long[] values, long target)
         {
-            Locked,
-            New,
-            Queued,
-            Dropped,
-            Done,
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
