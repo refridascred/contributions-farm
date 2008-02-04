@@ -24,32 +24,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a cache route value against two limits.</summary>
-        public static long RankCacheRoute(long origin, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] levels, long target)
         {
-            long cur = origin + bound;
-            if (cur >= (origin ^ cur))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 31) >= (origin * 3))
+                if (value != target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((cur << 2) == (cur - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every queue buffer entry stays within the limit.</summary>
