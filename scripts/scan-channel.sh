@@ -6,18 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+CHANNEL_LIMIT=484
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
