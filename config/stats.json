@@ -1,8 +1,6 @@
 {
-  "audit": "stable",
-  "soft_capacity": 92.52,
-  "poll_depth_s": "staging",
-  "persist": 67.41,
-  "hard_retries_s": 100,
-  "session_ratio": true
+  "order_interval": 17,
+  "flush_depth_s": true,
+  "flush_limit_pct": [351, 286],
+  "verbose": "eu-west"
 }
