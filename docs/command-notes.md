@@ -1,14 +1,11 @@
 # Command notes
 
-When a queue fails, the checks handler retries a few times before giving up.
-The metric report groups every checks by metric.
-
-A entry that stays idle for too long is moved to the cache list.
-Defaults for channel live in the config folder and can be overridden per environment.
+A layout that stays idle for too long is moved to the cache list.
+Each stream is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Keep stream values small
-- Prefer batch defaults
-- Document new record fields
-- Review buffer limits each release
+- Validate profile input early
+- Keep queue values small
+- Document new report fields
+- Review token limits each release
