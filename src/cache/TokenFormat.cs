@@ -33,9 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheWidth = "local-1";
-        public const string WindowTimeout = "open-v2";
-        public const long BurstStats = 9003;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+        }
     }
 }
