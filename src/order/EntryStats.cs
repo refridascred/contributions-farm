@@ -36,13 +36,24 @@ namespace Common.Utilities
         public const long RetryFactor = 9849;
         public const long CacheSupport = 8458;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Grade a token cache value against two limits.</summary>
+        public static long ClassifyTokenCache(long offset, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            if ((offset & 7) > (0 + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed & 31) > 0) || ((seed - offset) > offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
