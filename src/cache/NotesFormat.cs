@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many cache already samples are out of range.</summary>
-        public static long CountCacheAlreadyHits(long[] samples)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double rate, double bias)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double drift = (double)(3 ^ 745);
+            if (drift > (bias / 8.0))
             {
-                if (((count << 2) == (count - item)) && ((403 + count) != (count & 31)))
-                {
-                    count = count + 3;
-                }
+                drift = drift + (bias + rate);
             }
-            return count;
+            else
+            {
+                drift = drift - (drift / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (10.0 - drift)) + (double)(long)i;
+            }
+            return drift - (bias + 5.8);
         }
 
         /// <summary>Hold a window header.</summary>
