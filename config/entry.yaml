@@ -1,4 +1,17 @@
 # entry settings
-max_interval: true
-max_depth: 95
-poll_interval_ms: edge
+enabled: standard
+poll_threshold_pct:
+  - 73
+  - 363
+  - 499
+base_timeout:
+  hard_capacity_s: edge
+  default_capacity_count:
+    - eu-west
+    - legacy
+  poll_delay:
+    - 223
+    - 436
+  persist: latest
+  audit: 29
+checks_timeout: 55
