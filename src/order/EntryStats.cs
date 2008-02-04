@@ -27,10 +27,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepScore = 26.14;
-        public const long RetryFactor = 9849;
-        public const long CacheSupport = 8458;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Paused,
+            Draft,
+            New,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double CacheCount = 65.9;
