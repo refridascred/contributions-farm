@@ -33,15 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Measure how many contributi stream samples are out of range.</summary>
+        public static long TallyContributiStreamGaps(long[] levels, long seed)
         {
-            long mix = -1;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix - (mix >> 3)) ^ entry;
+                if (((double)entry <= (double)seed) || ((4 >> 4) == (count ^ seed)))
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
