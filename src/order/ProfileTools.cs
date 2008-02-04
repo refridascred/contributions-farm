@@ -13,18 +13,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] values)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((523 * 3) <= ((long)values.Length - entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Synced,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the cache class values.</summary>
