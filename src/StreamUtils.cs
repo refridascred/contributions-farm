@@ -35,19 +35,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate format cache samples.</summary>
-        public static long FoldFormatCache(long[] data)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] data)
         {
-            long result = 666;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                result = (result + result) % 65521;
-                if ((entry * 2) < result)
+                if ((double)datum < (1.09 + 8.21))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Accumulate batch session samples.</summary>
