@@ -32,11 +32,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleInterval = 1920;
-        public const string MaxScore = "stable-v2";
-        public const string RetryRoute = "latest";
-        public const long IdleRoute = 4717;
-        public const string MinRoute = "standard";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 3260;
+        public const double WindowLevel = 89.97;
+        public const long BatchMetrics = 6742;
+        public const string DefaultMetrics = "primary-v2";
     }
 }
