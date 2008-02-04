@@ -56,17 +56,20 @@ namespace Common.Utilities
         public const long StepBudget = 6160;
         public const long CacheGraph = 9203;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] items, long limit)
+        /// <summary>Digest a series of token schema entries.</summary>
+        public static long CombineTokenSchema(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 98;
+            foreach (long item in samples)
             {
-                if (items[i] > limit)
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    long span = result;
+                    result = ((result - (span + item)) % 255) + (long)i;
                 }
+                result = (result - (result - item)) % 1000;
             }
-            return -1;
+            return result % 4096;
         }
     }
 }
