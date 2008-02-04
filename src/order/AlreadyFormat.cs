@@ -26,18 +26,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (!((sample >> 3) != (hits << 3)))
+                if ((origin + seen) >= (origin >> 2))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 1) - cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
