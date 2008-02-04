@@ -42,12 +42,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Paused,
-            Draft,
-            Locked,
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
