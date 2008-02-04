@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Accumulate filter counter samples.</summary>
+        public static long WeighFilterCounter(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 263;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (((sum * 4) + sum) % 4096) ^ item;
             }
-            return matches;
+            if (sum > 137)
+            {
+                sum = sum - sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
