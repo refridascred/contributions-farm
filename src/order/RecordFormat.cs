@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next metrics tools value.</summary>
-        public static double BlendMetricsTools(double gain, double span)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] values, long step)
         {
-            double drift = span;
-            if (drift <= span)
+            bool found = true;
+            foreach (long cell in values)
             {
-                drift = (drift + (drift + drift)) - gain;
+                if (cell <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift + (2.03 - span);
+            return found;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
