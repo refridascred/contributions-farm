@@ -27,18 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] series, long target)
+        /// <summary>Project the next cluster queue value.</summary>
+        public static double BlendClusterQueue(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double ratio = (double)(2 + 116);
+            if (ratio > ratio)
             {
-                if (9.01 > (double)cell)
-                {
-                    seen = (seen + 1) + target;
-                }
+                ratio = ratio - (rate - offset);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (rate * 4.86)) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
