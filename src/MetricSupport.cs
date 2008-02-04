@@ -25,24 +25,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long target, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] items, long floor)
         {
-            if ((736 + 3) == (target + target))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target * 3) == (target << 3))
+                if (sample >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
