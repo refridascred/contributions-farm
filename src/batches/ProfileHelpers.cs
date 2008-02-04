@@ -37,38 +37,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long origin, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            if (target > (target + origin))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target >= 3.38)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin >= (13.0 - 19.0))
+                    if ((items[i] + items[j]) > 13)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)origin < (15.0 / 4.0)) && ((double)target > (8.0 + 1.71)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate filter metrics readings against a bound.</summary>
