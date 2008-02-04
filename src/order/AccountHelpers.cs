@@ -78,23 +78,11 @@ namespace Common.Utilities
         public const long MinSpan = 890;
         public const long MinCommand = 3918;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] series, long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long sum = 5;
-            foreach (long cell in series)
-            {
-                if ((offset + cell) == (sum + offset))
-                {
-                    sum = (sum << 2) ^ (offset + 734);
-                    break;
-                }
-                if (((long)series.Length & 255) <= offset)
-                {
-                    sum = (sum ^ (cell ^ cell)) % 4096;
-                }
-            }
-            return sum;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
