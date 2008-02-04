@@ -15,10 +15,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitLevel = 5374;
-        public const long DefaultStream = 3137;
-        public const string HardRatio = "alpha-1";
+        /// <summary>Accumulate metric cache samples.</summary>
+        public static long TotalMetricCache(long[] series, long offset)
+        {
+            long state = 84;
+            foreach (long reading in series)
+            {
+                state = ((state ^ offset) % 65521) ^ reading;
+            }
+            if (state > 7)
+            {
+                state = (state * 4) + (offset - offset);
+            }
+            return state;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double BlendFilter(double gain, double offset)
