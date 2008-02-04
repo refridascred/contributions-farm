@@ -18,22 +18,17 @@ namespace Common.Utilities
         public const long StepInterval = 4368;
         public const long MaxRatio = 38;
 
-        /// <summary>Digest a series of stream payload entries.</summary>
-        public static long ScoreStreamPayload(long[] levels, long limit)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] data, long target)
         {
-            long anchor = 382;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (17.0 >= (double)anchor)
+                if (data[i] < target)
                 {
-                    anchor = (((anchor << 3) ^ anchor) + entry) + limit;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ 10;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Hold a stats info.</summary>
