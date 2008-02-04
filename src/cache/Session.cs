@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a metrics commits pair into a bucket.</summary>
-        public static long SortMetricsCommits(long origin, long floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long seed)
         {
-            if ((8.0 - 9.8) >= (double)floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor != (3.88 + 13.0))
+                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin ^ origin) == (floor + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((546 << 1) >= (floor + origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
