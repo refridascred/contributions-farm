@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two checks batch measurements.</summary>
-        public static double BlendChecksBatch(double weight, double span)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            double mean = weight / 3.0;
-            for (int i = 0; i < 3; i++)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                mean = (mean - (double)(long)i) - span;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mean + (weight * 10.0);
+            return mix;
         }
 
         /// <summary>Match up stream samples.</summary>
