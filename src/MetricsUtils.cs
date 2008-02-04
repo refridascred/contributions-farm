@@ -13,21 +13,26 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Fold a list of cache profile readings.</summary>
+        public static long WeighCacheProfile(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 25;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item - item) == (result / 5))
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + (bound + bound)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (5 ^ item)) % 65521;
                 }
             }
-            return hits;
+            if (result < 4)
+            {
+                result = (result ^ bound) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a already options.</summary>
