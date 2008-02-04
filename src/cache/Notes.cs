@@ -26,22 +26,19 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] values, long seed)
         {
-            long carry = -976;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((764 * 5) >= entry)
+                if (value >= seed)
                 {
-                    carry = (carry ^ (entry & 255)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (carry < 10)
-            {
-                carry = carry + carry;
-            }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
