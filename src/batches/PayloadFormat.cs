@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
