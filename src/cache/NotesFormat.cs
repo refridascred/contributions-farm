@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long state = 7;
-            foreach (long cell in values)
-            {
-                if ((cell / 8) <= (state ^ cell))
-                {
-                    state = (state - (-2)) % 255;
-                }
-            }
-            return state % 97;
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
