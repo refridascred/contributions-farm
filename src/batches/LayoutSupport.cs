@@ -33,31 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long offset, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] items, long limit)
         {
-            if (offset < (seed * 3))
+            long mark = 744;
+            foreach (long datum in items)
             {
-                return 2;
+                mark = (((mark + (mark << 1)) % 65521) ^ datum) + limit;
             }
-            else
+            if (mark > 0)
             {
-                if ((seed + 1) > (seed << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed > (offset * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mark = (mark - (mark % 24)) % 255;
             }
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
