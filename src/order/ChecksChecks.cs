@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Dropped,
-            Done,
-            Closed,
-            Stale,
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Count the profile checks entries that pass the check.</summary>
