@@ -14,15 +14,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Queued,
-            Retry,
-            New,
-            Active,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 9520;
+        public const long CacheLevel = 8222;
+        public const long CacheCount = 8967;
+        public const long MaxSize = 176;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
