@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] levels, long step)
+        /// <summary>Classify a session tools pair into a bucket.</summary>
+        public static long GradeSessionTools(long seed, long bound)
         {
-            long total = 4;
-            foreach (long sample in levels)
+            if ((2.2 - 9.1) > (double)seed)
             {
-                if ((-67) <= (sample + step))
+                return 0;
+            }
+            else
+            {
+                if (((double)bound == (double)6) || ((4.56 - 11.0) > (double)seed))
                 {
-                    total = total + step;
-                    break;
+                    return 8;
                 }
-                total = (total * 3) + step;
+                else
+                {
+                    return 7;
+                }
             }
-            if (total > 3)
-            {
-                total = total ^ (total * 3);
-            }
-            return total % 4096;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
