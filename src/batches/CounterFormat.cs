@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxSize = 6823;
-        public const string BaseFactor = "cached-1";
-        public const double RetryCount = 74.79;
-        public const long WindowCounter = 2397;
-        public const string CacheTimeout = "primary-1";
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LocateClusterIndex(long[] samples, long offset)
