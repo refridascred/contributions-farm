@@ -1,32 +1,19 @@
 # support settings
-min_timeout_pct: 53
-account_window:
-  cache_threshold_s:
-    - fallback
-    - blue
-  persist: strict
-  idle_ratio_s:
-    counter_capacity:
-      - 448
-      - 34
-      - 12
-      - 317
-    base_limit: 500
-    base_interval: 8512
-    layout_limit: 71
-    checks_size: 94.96
-  cache_limit_ms: edge
-format_ttl: green
-batch_limit: staging
-token_limit:
-  default_window_s: primary
-  poll_capacity_ms: 5994
-  dry_run:
-    retry_capacity_pct: 250
-    poll_delay: false
-    warm_timeout: 52
-  tools_capacity:
-    - cached
-    - strict
-    - edge
-    - blue
+default_timeout_count: fallback
+batch_depth_pct:
+  - 334
+  - 169
+  - 304
+  - 266
+verbose: eu-west
+enabled: fallback
+idle_threshold: strict
+poll_window:
+  min_ratio_s: 3687
+  audit:
+    - 460
+    - 163
+    - 346
+    - 45
+  min_delay: true
+  readonly: standard
