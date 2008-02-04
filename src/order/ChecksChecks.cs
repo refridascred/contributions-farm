@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double rate, double bias)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double mean = rate * 6.9;
-            return (mean + (double)514) + bias;
+            Dropped,
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
