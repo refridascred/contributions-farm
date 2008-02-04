@@ -13,20 +13,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitScore = 9600;
+        public const double BaseSpan = 51.63;
+        public const double HardInterval = 18.93;
+        public const long CacheSize = 1432;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
