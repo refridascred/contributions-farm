@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
         {
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
+            long mix = step;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = mix ^ mix;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
