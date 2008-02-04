@@ -21,20 +21,31 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the buffer farm series from a seed.</summary>
-        public static long SeriesBufferFarm(long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long floor, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
+            if ((floor <= (target << 3)) || (target >= floor))
             {
-                sum = sum - 32;
-                if (!((long)i >= sum))
-                {
-                    sum = (sum << 2) ^ (bound - (long)i);
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((45 * 4) < (target + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (55 <= (floor + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate commits samples.</summary>
