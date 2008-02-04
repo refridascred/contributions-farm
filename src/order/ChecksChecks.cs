@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long MaxScore = 1398;
         public const string LimitSession = "latest-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleScore = "primary-v2";
-        public const double StepAlready = 23.57;
-        public const long BaseAlready = 8679;
-        public const long DefaultAlready = 9693;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long RollChannel(long offset)
