@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] series, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstReport = 61.66;
+        public const long MinLevel = 2025;
+        public const string BatchReport = "standard-1";
+        public const long MaxReport = 7937;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 8436;
