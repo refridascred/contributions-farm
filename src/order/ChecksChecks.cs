@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long MaxScore = 1398;
         public const string LimitSession = "latest-v2";
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Retry,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleScore = "primary-v2";
+        public const double StepAlready = 23.57;
+        public const long BaseAlready = 8679;
+        public const long DefaultAlready = 9693;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long RollChannel(long offset)
