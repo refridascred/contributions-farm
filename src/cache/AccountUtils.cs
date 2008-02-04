@@ -27,11 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] items, long bound)
         {
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the context status values.</summary>
