@@ -23,14 +23,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Stale,
-            Retry,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 1024;
+        public const string DefaultTools = "latest-1";
+        public const long CacheTools = 6631;
+        public const long StepTools = 8223;
 
         /// <summary>Locate a queue order reading by value.</summary>
         public static long LocateQueueOrderIndex(long[] series, long target)
