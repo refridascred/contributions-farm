@@ -23,23 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (((total >> 1) > total) && ((total + 79) != (target & 7)))
+                if ((486 ^ entry) == (entry & 255))
                 {
-                    continue;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    total = (total ^ (59 >> 4)) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit session payload readings against a rule.</summary>
