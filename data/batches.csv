@@ -1,8 +1,7 @@
-id,rank,label,count,region
-1,primary,672,327,edge
-2,12,261,latest,8.71
-3,891,707,local,edge
-4,65.12,0.27,429,635
-5,774,25.09,56.32,285
-6,77.62,local,eu-west,open
-7,732,fallback,latest,eu-west
+id,level,label,ratio,active
+1,92.95,506,935,22.6
+2,30,66.77,559,83.38
+3,800,674,927,896
+4,open,570,edge,latest
+5,11,65.22,eu-west,eu-west
+6,fallback,969,644,54.54
