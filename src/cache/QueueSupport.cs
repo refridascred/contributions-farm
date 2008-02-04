@@ -12,16 +12,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double gain, double span)
-        {
-            double drift = span;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (gain * 2.38)) + (double)(long)i;
-            }
-            return drift - span;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitLevel = 5374;
+        public const long DefaultStream = 3137;
+        public const string HardRatio = "alpha-1";
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
