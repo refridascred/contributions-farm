@@ -69,12 +69,13 @@ namespace Common.Utilities
         public const long HardNotes = 8741;
         public const long RetryScore = 8054;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public double Label { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
