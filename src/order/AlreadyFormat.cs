@@ -28,18 +28,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] items, long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((origin + seen) >= (origin >> 2))
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            Pending,
+            Synced,
+            New,
+            Closed,
         }
 
         /// <summary>Digest a series of format order entries.</summary>
