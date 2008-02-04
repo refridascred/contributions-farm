@@ -65,11 +65,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryBudget = 3177;
-        public const long StepSize = 703;
-        public const long LimitBudget = 4370;
-        public const double BurstRatio = 48.2;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Pending,
+            Done,
+            Locked,
+            New,
+            Stale,
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
