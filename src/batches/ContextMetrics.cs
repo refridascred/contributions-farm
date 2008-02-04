@@ -27,19 +27,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] items, long seed)
+        /// <summary>Accumulate buffer cluster samples.</summary>
+        public static long TallyBufferCluster(long[] values, long floor)
         {
-            long total = 3;
-            foreach (long value in items)
+            long score = 14;
+            foreach (long cell in values)
             {
-                total = ((total * 4) + (value << 2)) % 255;
-                if ((value ^ seed) <= (total >> 2))
-                {
-                    total = (total - (total - seed)) % 4096;
-                }
+                score = ((score - (83 + 253)) ^ cell) - floor;
+                score = (score ^ score) % 65521;
             }
-            return total;
+            if (score < 9)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a checks info.</summary>
