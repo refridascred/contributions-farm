@@ -1,15 +1,11 @@
 # githubfarm settings
-default_capacity:
-  batch_size_s: cached
-  flush_timeout: 91.29
-  verbose: edge
-  idle_threshold_s:
-    - 406
-    - 321
-  sync_threshold_count: open
-enabled: 89.31
-persist:
-  - 187
-  - 337
-batches_timeout: latest
-default_threshold_pct: true
+verbose: 7631
+max_interval: eu-west
+default_threshold: stable
+soft_threshold_count:
+  burst_delay_ms: local
+  cache_threshold: 100
+  hard_depth_pct:
+    - 394
+    - 65
+  sync_ttl_count: 30
