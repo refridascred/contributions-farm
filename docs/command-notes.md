@@ -1,11 +1,11 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Run the session check before changing any batches limits.
-Keep session and record names short and lowercase.
+The window helpers are pure functions, so they are safe to call from any thread.
+When a schema fails, the filter handler retries a few times before giving up.
+The context report groups every stream by format.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Review checks limits each release
-- Log every report change
+- Document new checks fields
+- Prefer contributi defaults
+- Validate tools input early
