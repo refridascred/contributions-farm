@@ -49,22 +49,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (((cell ^ cell) < seen) && ((seen ^ cell) <= (9 & 1)))
+                if (cell >= floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
