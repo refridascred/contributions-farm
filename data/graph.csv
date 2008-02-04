@@ -1,8 +1,8 @@
-id,owner,state,label
-1,365,49.33,57
-2,cached,262,fallback
-3,local,379,9.5
-4,open,7.45,657
-5,54.94,standard,347
-6,61,green,609
-7,20.34,467,50.17
+id,owner,count,state,label
+1,116,51.42,legacy,latest
+2,124,strict,76.18,62
+3,31.24,0.32,82.46,89
+4,691,415,31.31,480
+5,460,695,511,636
+6,legacy,stable,28.32,34.93
+7,blue,76.34,53,807
