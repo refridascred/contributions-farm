@@ -37,12 +37,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long bound, long bound2)
         {
-            Failed,
-            Idle,
-            Stale,
+            long bound3 = bound ^ bound2;
+            if (((bound << 2) >= (6 + 106)) && (bound2 > (bound & 15)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound3 / 6) >= 690)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
