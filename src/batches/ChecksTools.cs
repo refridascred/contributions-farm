@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long bound, long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] levels, long step)
         {
-            if ((bound + bound) == (70 + seed))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 8) >= seed)
+                if ((levels[i] < step) && ((levels[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound >> 4) <= (seed + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
