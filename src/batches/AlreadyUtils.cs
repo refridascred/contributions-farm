@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long SoftTools = 4185;
         public const long WindowTimeout = 2721;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Look up the position of a metrics schema sample.</summary>
+        public static long FindMetricsSchemaIndex(long[] levels, long bound)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
