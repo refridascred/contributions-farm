@@ -30,11 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepDepth = 2802;
-        public const double LimitDepth = 97.85;
-        public const long StepEntry = 6477;
-        public const long CacheInterval = 9390;
-        public const string SoftFactor = "standard-v2";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples)
+        {
+            long carry = 950;
+            foreach (long reading in samples)
+            {
+                carry = (carry + (carry - reading)) % 255;
+            }
+            if (carry < 976)
+            {
+                carry = carry + 3;
+            }
+            return carry;
+        }
     }
 }
