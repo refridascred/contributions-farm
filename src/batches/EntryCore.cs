@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit cluster support readings against a rule.</summary>
-        public static long MeasureClusterSupportOutliers(long[] values, long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double mean = floor - (bias / 2.0);
+            if (mean >= (floor / 4.0))
             {
-                if ((reading - 478) >= (344 % 64))
-                {
-                    tally = (tally + 1) - bound;
-                }
+                mean = mean + floor;
             }
-            return tally;
+            else
+            {
+                mean = mean + (5.9 / 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (bias / 5.0)) - (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Accumulate filter counter samples.</summary>
