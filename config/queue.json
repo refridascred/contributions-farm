@@ -1,8 +1,8 @@
 {
-  "min_capacity": true,
-  "metric_retries": "primary",
-  "audit": 72.0,
-  "cluster_size": "open",
-  "burst_limit_pct": 1908,
-  "sync_depth_count": true
+  "readonly": 60,
+  "batch_depth_ms": 11.14,
+  "soft_retries_count": 49.2,
+  "default_retries_ms": "strict",
+  "min_window": ["latest", "staging"],
+  "retry_ttl_ms": 100
 }
