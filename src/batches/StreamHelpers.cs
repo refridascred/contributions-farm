@@ -62,21 +62,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of contributi report readings.</summary>
-        public static long CompareContributiReportCount(long[] readings)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = offset;
+            if (ratio >= 6.0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (ratio - 15.0) - scale;
             }
-            return hits;
+            return ratio - (double)41;
         }
 
         /// <summary>Combine report values into a single score.</summary>
