@@ -25,13 +25,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Accumulate format stream samples.</summary>
+        public static long TotalFormatStream(long[] values, long target)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            long sum = 2;
+            foreach (long cell in values)
+            {
+                if ((cell >> 2) >= (sum - 140))
+                {
+                    sum = ((sum ^ (cell >> 5)) % 1000) + target;
+                }
+                if ((0.01 * 0.79) >= (double)cell)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
