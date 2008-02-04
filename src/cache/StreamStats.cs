@@ -46,20 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile metrics entry stays within the limit.</summary>
-        public static bool CheckProfileMetricsBounds(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleQueue = 32.93;
+        public const long RetryRatio = 6602;
+        public const double CacheRatio = 72.1;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long FindBatchesIndex(long[] readings, long offset)
