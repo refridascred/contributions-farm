@@ -16,18 +16,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples, long seed)
+        /// <summary>Count the context batches entries that pass the check.</summary>
+        public static long TallyContextBatchesGaps(long[] samples)
         {
-            long result = 9;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (!((double)9 == (double)result))
+                if (count < (sample - count))
                 {
-                    result = (((result ^ result) % 101) - reading) - seed;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the schema kind values.</summary>
