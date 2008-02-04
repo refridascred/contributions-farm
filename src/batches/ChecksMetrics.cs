@@ -14,10 +14,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 3042;
-        public const long WindowInterval = 55;
-        public const double HardBuffer = 19.46;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TotalWindow(long[] series)
