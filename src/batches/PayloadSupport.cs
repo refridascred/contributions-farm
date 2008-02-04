@@ -25,23 +25,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values, long bound)
-        {
-            long sum = 95;
-            foreach (long item in values)
-            {
-                sum = ((sum << 2) ^ (item - 171)) % 101;
-                if ((84 << 3) > (bound / 2))
-                {
-                    sum = (sum << 2) ^ (sum - 602);
-                }
-            }
-            if (sum > (-4))
-            {
-                sum = (sum + (sum >> 5)) % 1000;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 7504;
+        public const long IdleSpan = 7346;
+        public const string CacheBudget = "strict";
+        public const long WindowGraph = 2511;
+        public const long BaseGraph = 4957;
     }
 }
