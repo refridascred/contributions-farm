@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] values, long bound)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!((9.39 + 0.8) == (double)bound))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
