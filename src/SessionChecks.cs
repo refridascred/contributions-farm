@@ -12,14 +12,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleTimeout = 7609;
+        public const string DefaultRoute = "fallback-v2";
+        public const long BurstInterval = 1706;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamHits(long[] readings)
