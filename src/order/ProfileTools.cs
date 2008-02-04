@@ -37,11 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            Retry,
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
