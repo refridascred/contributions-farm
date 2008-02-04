@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the counter queue entries that pass the check.</summary>
-        public static long CountCounterQueueHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((8.0 / 5.0) <= (3.5 / 5.0))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 4739;
+        public const long HardSpan = 9649;
+        public const long SoftInterval = 9393;
+        public const double HardTimeout = 97.73;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 2023;
