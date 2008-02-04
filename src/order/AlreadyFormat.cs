@@ -46,13 +46,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Grade a buffer route value against two limits.</summary>
+        public static long GradeBufferRoute(long floor, long target)
         {
-            Pending,
-            Synced,
-            New,
-            Closed,
+            if (((floor + 29) >= (floor * 3)) && ((4.5 / 3.0) >= (9.2 - 14.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((5.1 * 1.0) <= (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
