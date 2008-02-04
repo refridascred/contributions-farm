@@ -42,19 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Accumulate format window samples.</summary>
+        public static long TallyFormatWindow(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            long score = 703;
+            foreach (long cell in values)
             {
-                if (!((bound >= (990 - (long)i)) && ((double)anchor <= 9.7)))
-                {
-                    anchor = (anchor ^ (bound + bound)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                score = (((score << 3) ^ (25 / 5)) % 255) - cell;
             }
-            return anchor;
+            if (score > 175)
+            {
+                score = (score + (score + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
