@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long LimitMetrics = 8297;
         public const string WindowBudget = "fallback";
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
