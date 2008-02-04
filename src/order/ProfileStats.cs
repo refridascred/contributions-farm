@@ -17,17 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] data, long limit)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit buffer cluster readings against a rule.</summary>
