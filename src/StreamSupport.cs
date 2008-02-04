@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double bias, double bias2)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long step, long bound)
         {
-            double scale = (double)(8 ^ 147);
-            if (scale <= scale)
+            long delta = step ^ bound;
+            if ((double)bound > (2.4 / 8.0))
             {
-                scale = ((scale + (double)891) - bias) + bias2;
+                return 8;
             }
-            return scale - (scale - scale);
+            else
+            {
+                if (((4 >> 5) < (step + bound)) && ((2.5 + 4.04) == (double)bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)delta <= (2.46 / 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
