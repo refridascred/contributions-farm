@@ -22,19 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double gain, double offset)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            double ratio = gain + (gain - gain);
-            if (ratio < (offset * 0.07))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (double)902;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + 13.0) + (double)(long)i;
-            }
-            return ratio - (gain - gain);
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
