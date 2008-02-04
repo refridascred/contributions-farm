@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a order contributi figure with a bias.</summary>
-        public static double ScaleOrderContributi(double rate, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] levels, long offset)
         {
-            double gain = (16.0 / 3.0) / 4.0;
-            if (gain >= rate)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                gain = gain - (rate - 4.8);
+                if ((item & 7) > (seen - 410))
+                {
+                    seen = (seen + 1) - offset;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain - rate;
+            return seen;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
