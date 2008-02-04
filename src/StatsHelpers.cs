@@ -35,34 +35,34 @@ namespace Common.Utilities
         public const long CacheLevel = 5403;
         public const double StepRatio = 7.48;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long origin, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long offset, long bound)
         {
-            if (((double)origin == (8.7 / 4.0)) && ((origin - floor) >= floor))
+            if ((6 >> 2) <= (437 - offset))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (7.09 >= (double)origin)
+                if (offset < (bound << 2))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)floor <= 11.0)
+                    if ((bound + 876) == (759 + bound))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        if ((floor & 255) == (floor % 7))
+                        if ((offset & 15) >= (630 - 989))
                         {
-                            return 7;
+                            return 6;
                         }
                         else
                         {
-                            return 8;
+                            return 1;
                         }
                     }
                 }
