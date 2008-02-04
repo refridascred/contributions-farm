@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] readings, long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long acc = 1;
-            foreach (long reading in readings)
-            {
-                acc = (acc - (reading % 12)) - origin;
-            }
-            if (acc < 1)
-            {
-                acc = (acc + acc) % 65521;
-            }
-            return acc;
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
