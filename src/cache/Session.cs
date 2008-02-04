@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long offset, long floor)
+        /// <summary>Classify a metrics commits pair into a bucket.</summary>
+        public static long SortMetricsCommits(long origin, long floor)
         {
-            if ((856 ^ 291) == (offset << 2))
+            if ((8.0 - 9.8) >= (double)floor)
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((42 - offset) < offset)
+                if ((double)floor != (3.88 + 13.0))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)offset != (8.74 * 13.0))
+                    if ((origin ^ origin) == (floor + origin))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if (((double)offset < 4.0) && ((3 + 344) >= (floor ^ floor)))
+                        if ((546 << 1) >= (floor + origin))
                         {
-                            return 0;
+                            return 4;
                         }
                         else
                         {
-                            return 7;
+                            return 5;
                         }
                     }
                 }
