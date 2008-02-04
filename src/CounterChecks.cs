@@ -16,20 +16,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] data, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (((limit ^ limit) != (2 >> 4)) || ((limit / 3) >= (total + total)))
+                if (sample < target)
                 {
-                    total = ((total * 3) + ((long)i - total)) % 101;
+                    ready = false;
+                    break;
                 }
-                total = (total + ((long)i % 8)) % 97;
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
