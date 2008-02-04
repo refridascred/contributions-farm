@@ -43,20 +43,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] levels, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long total = 87;
-            foreach (long entry in levels)
-            {
-                total = total ^ (seed + total);
-                total = total ^ (entry + 3);
-            }
-            if (total > (-99))
-            {
-                total = ((total * 3) + 979) % 1000;
-            }
-            return total;
+            Paused,
+            Dropped,
+            Failed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
