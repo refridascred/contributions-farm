@@ -20,31 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long step, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] values, long bound)
         {
-            if ((double)step >= (double)floor)
+            long state = 8;
+            foreach (long reading in values)
             {
-                return 7;
+                state = (state + reading) + bound;
             }
-            else
-            {
-                if (floor < (step - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor < (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
