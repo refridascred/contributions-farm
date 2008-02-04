@@ -1,7 +1,16 @@
 {
-  "strict": 70,
-  "default_timeout_count": 97,
-  "readonly": 87.06,
-  "flush_ttl_ms": "open",
-  "flush_window_ms": 77.31
+  "cache_timeout": 60,
+  "audit": [278, 313],
+  "sync_window_ms": [324, 406, 397],
+  "hard_depth_pct": {
+    "compress": {
+      "tools_window": true,
+      "batch_window": 60,
+      "warm_threshold_pct": 3870
+    },
+    "burst_ratio_ms": 93.34,
+    "dry_run": "stable"
+  },
+  "verbose": "legacy",
+  "flush_delay_count": true
 }
