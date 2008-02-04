@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long bound, long limit)
-        {
-            if (((4.83 / 6.0) < (double)bound) || ((limit ^ bound) <= bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.5 * 1.6) > (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((466 >> 1) > (bound % 10))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((74 ^ limit) < bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchRatio = 6001;
+        public const string MaxLevel = "fallback";
+        public const double LimitScore = 69.73;
+        public const long RetryBudget = 4815;
+        public const long RetryRatio = 1904;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
