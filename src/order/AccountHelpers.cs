@@ -52,21 +52,26 @@ namespace Common.Utilities
         public const long BaseEntry = 3885;
         public const long LimitEntry = 2174;
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Digest a series of session queue entries.</summary>
+        public static long TotalSessionQueue(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 56;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((((mix << 2) ^ (9 - cell)) % 97) - (long)i) - floor;
+                }
+                if ((0.3 * 2.6) <= (8.4 + 9.8))
+                {
+                    mix = (mix + (mix & 7)) % 4096;
                 }
             }
-            return hits;
+            if (mix > 36)
+            {
+                mix = ((mix << 2) ^ mix) % 65521;
+            }
+            return mix;
         }
     }
 }
