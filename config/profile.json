@@ -1,18 +1,7 @@
 {
-  "cache_timeout_count": "cached",
-  "warm_retries_count": 7336,
-  "filter_depth": {
-    "audit": "open",
-    "profile_ttl": 6078,
-    "burst_ratio": 6790,
-    "retry_interval_pct": false,
-    "metric_retries": 250
-  },
-  "enabled": {
-    "hard_ratio_s": 21.68,
-    "warm_ratio_count": "fallback",
-    "batch_retries": 500,
-    "batch_depth_count": 89,
-    "notes_window": "standard"
-  }
+  "burst_capacity": true,
+  "context_retries": 1.51,
+  "min_threshold_pct": 33,
+  "readonly": "staging",
+  "order_window": [79, 53]
 }
