@@ -14,11 +14,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseSpan = 86.78;
-        public const long StepSize = 6188;
-        public const long BurstScore = 8572;
-        public const long MinDepth = 2483;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheSpan = 5147;
