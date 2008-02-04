@@ -18,12 +18,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long offset)
         {
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)mark > (2.59 / 2.0))
+                {
+                    mark = (mark ^ ((long)i + offset)) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
