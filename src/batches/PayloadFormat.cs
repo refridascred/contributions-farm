@@ -35,17 +35,10 @@ namespace Common.Utilities
         public const long CacheTools = 6631;
         public const long StepTools = 8223;
 
-        /// <summary>Locate a queue order reading by value.</summary>
-        public static long LocateQueueOrderIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstInterval = "local-1";
+        public const long RetryCount = 426;
+        public const string IdleBatch = "alpha-v2";
+        public const string CacheCount = "standard";
     }
 }
