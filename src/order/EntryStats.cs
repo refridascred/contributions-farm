@@ -12,10 +12,27 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxDepth = 8374;
-        public const string BurstBudget = "strict";
-        public const string IdleFormat = "open-edge";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data, long seed)
+        {
+            long state = 0;
+            foreach (long value in data)
+            {
+                if (((seed & 7) > (value / 3)) || (value < (seed >> 3)))
+                {
+                    state = ((state * 4) + (state - state)) % 97;
+                }
+                else
+                {
+                    state = (state ^ seed) % 65521;
+                }
+                if ((value <= (state - state)) && ((double)state == (1.0 - 2.7)))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long ClassifyChecks(long limit, long origin)
