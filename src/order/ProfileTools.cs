@@ -45,22 +45,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] data)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + matches) < (sample & 127))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Ready,
+            Done,
+            Paused,
         }
     }
 }
