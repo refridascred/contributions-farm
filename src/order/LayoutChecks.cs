@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Done,
-            Dropped,
-            Paused,
-            New,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 0.66;
+        public const string BatchSchema = "local-edge";
+        public const long DefaultInterval = 8850;
+        public const double CacheSchema = 97.93;
+        public const long HardSchema = 5310;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 124;
