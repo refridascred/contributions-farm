@@ -14,19 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((543 << 3) > (bound / 2))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetrySpan = 1862;
+        public const long BaseBatch = 3499;
+        public const long DefaultRatio = 3768;
 
         /// <summary>Accumulate format stream samples.</summary>
         public static long TotalFormatStream(long[] values, long target)
