@@ -1,4 +1,12 @@
 # entry settings
-sync_timeout_count: true
-persist: staging
-verbose: 75
+burst_ttl_count:
+  - 286
+  - 344
+  - 125
+min_window: 96.34
+route_interval:
+  - 222
+  - 270
+  - 143
+  - 359
+sync_ttl_s: 59
