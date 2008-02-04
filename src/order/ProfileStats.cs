@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double load = (double)17 + (8.9 / 9.0);
-            if (load < floor)
-            {
-                load = load + (gain * 2.7);
-            }
-            return load - (double)(-1);
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
