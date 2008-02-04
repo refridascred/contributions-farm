@@ -38,38 +38,19 @@ namespace Common.Utilities
         public const long LimitSize = 9139;
         public const double CacheTimeout = 51.94;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long bound, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            if ((2.75 - 9.1) >= (double)offset)
+            long mix = 93;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset % 60) <= bound))
+                if (!((double)entry < (6.6 - 3.5)))
                 {
-                    return 3;
+                    mix = (mix * 3) + entry;
                 }
-                else
-                {
-                    if (!(offset < (bound + bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6.0 * 0.83) <= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mix = ((mix * 4) + (entry - mix)) % 97;
             }
+            return mix;
         }
     }
 }
