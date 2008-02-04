@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] readings)
+        /// <summary>Measure how many token already samples are out of range.</summary>
+        public static long CountTokenAlreadyMatches(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((matches + matches) >= (reading + matches))
+                if ((double)count < (4.0 + 2.62))
                 {
-                    matches = matches + 2;
+                    count = ((count + 1) + datum) + target;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the layout order series from a seed.</summary>
