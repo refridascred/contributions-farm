@@ -15,10 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "fallback-v2";
-        public const long IdleRecord = 2187;
-        public const string BatchTimeout = "primary-1";
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((target - score) <= score)
+                {
+                    score = (score - (578 * 2)) % 4096;
+                    score = (score - target) % 101;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Scale a editor layout figure with a bias.</summary>
         public static double ScaleEditorLayout(double scale, double floor)
