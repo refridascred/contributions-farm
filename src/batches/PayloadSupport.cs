@@ -20,18 +20,14 @@ namespace Common.Utilities
         public const long IdleLevel = 4968;
         public const double MinRecord = 58.64;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] readings)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (5.0 < (double)(long)readings.Length)
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            New,
+            Closed,
+            Failed,
         }
     }
 }
