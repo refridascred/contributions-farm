@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long offset, long step)
-        {
-            if (((double)offset <= (2.27 / 7.0)) && ((step / 9) < (offset >> 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((offset * 2) <= 58))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (step / 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step / 8) < offset) || ((step & 3) >= (1 + 104)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultScore = 5246;
+        public const string IdleGithubfarm = "standard-edge";
+        public const double RetryWidth = 60.26;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsHits(long[] values, long bound)
