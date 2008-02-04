@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Adjust a report already reading.</summary>
+        public static double ScaleReportAlready(double ratio, double span)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
+            double scale = 5.0;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (((scale + (double)759) + (double)(long)i) + ratio) + span;
+            }
+            return scale + (double)834;
         }
 
         /// <summary>Combine tools batch values into a single score.</summary>
