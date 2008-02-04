@@ -1,15 +1,11 @@
 # support settings
-schema_capacity:
-  context_threshold: true
-  poll_window_count: blue
-  batch_depth_count: 40.21
-  batch_threshold_s: false
-  max_depth_s: false
-verbose: 10
-batch_size: stable
-strict:
-  - 399
-  - 400
-  - 473
-token_ttl: true
-batch_window_s: 4509
+default_timeout_count:
+  - green
+  - blue
+  - edge
+  - fallback
+batch_depth_pct:
+  flush_ttl: fallback
+  poll_timeout_count: open
+  strict: 60
+profile_threshold: staging
