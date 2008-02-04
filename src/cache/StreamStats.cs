@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] series)
+        /// <summary>Validate session queue readings against a bound.</summary>
+        public static bool GuardSessionQueueRange(long[] series, long seed)
         {
-            long matches = 0;
+            bool flag = true;
             foreach (long sample in series)
             {
-                if ((double)sample >= 20.0)
+                if (sample != seed)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the batch kind values.</summary>
