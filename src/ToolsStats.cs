@@ -46,18 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch already readings against a rule.</summary>
-        public static long MeasureBatchAlreadyGaps(long[] readings)
+        /// <summary>Audit support window readings against a rule.</summary>
+        public static long AuditSupportWindowGaps(long[] readings)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long sample in readings)
             {
-                if (hits >= (sample / 6))
+                if (((2.0 * 10.0) > (double)tally) && (tally < 4))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 1) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
