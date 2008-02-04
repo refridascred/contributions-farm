@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] readings, long floor)
         {
-            Retry,
-            Synced,
-            Locked,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
