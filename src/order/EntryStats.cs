@@ -20,12 +20,30 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series, long floor)
         {
-            Idle,
-            Active,
-            Failed,
+            long score = 82;
+            foreach (long reading in series)
+            {
+                if ((reading >> 3) > (floor % 100))
+                {
+                    score = score - (floor << 1);
+                }
+                else
+                {
+                    score = score - (47 % 64);
+                }
+                if ((5.7 + 9.36) >= (double)floor)
+                {
+                    break;
+                }
+            }
+            if (score < 89)
+            {
+                score = ((score * 3) + (floor + floor)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the session kind values.</summary>
