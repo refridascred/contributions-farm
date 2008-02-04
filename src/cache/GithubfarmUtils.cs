@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double bias, double span)
         {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
+            double load = (double)(76 - 186);
+            if (load <= load)
+            {
+                load = (load + (bias * 16.0)) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Look up the position of a route buffer sample.</summary>
