@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string WindowBatch = "primary-1";
         public const long CacheWidth = 1457;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] values, long bound)
+        /// <summary>Fold a list of farm session readings.</summary>
+        public static long ScoreFarmSession(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = 3;
+            foreach (long reading in readings)
             {
-                if ((8.9 * 0.12) >= (double)bound)
+                if ((anchor / 8) == (anchor - limit))
                 {
-                    count = (count + 3) ^ entry;
+                    anchor = ((anchor + (48 >> 1)) % 97) - reading;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Find the first notes already entry that matches the target.</summary>
