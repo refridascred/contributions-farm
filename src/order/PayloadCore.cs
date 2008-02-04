@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] samples, long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] <= floor)
+                if (((anchor << 1) < 322) || ((anchor + limit) > (3 + anchor)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
