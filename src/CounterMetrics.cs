@@ -35,17 +35,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] series, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (series[i] >= floor)
+                if (datum >= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
