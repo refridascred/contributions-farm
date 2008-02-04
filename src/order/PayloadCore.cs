@@ -32,14 +32,38 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long floor, long bound)
         {
-            New,
-            Ready,
-            Active,
-            Stale,
-            Paused,
+            if (!(bound < (797 + floor)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound < (floor + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - floor) > (bound * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor < (bound & 31))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter entry.</summary>
