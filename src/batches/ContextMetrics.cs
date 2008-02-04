@@ -54,19 +54,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] levels, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long anchor = 33;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor ^ (limit & 31)) % 4096) + value;
-            }
-            if (anchor > (-708))
-            {
-                anchor = anchor + (anchor / 9);
-            }
-            return anchor;
+            Paused,
+            Stale,
+            Retry,
+            Queued,
+            Failed,
         }
     }
 }
