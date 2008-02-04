@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a cluster contributi sample.</summary>
-        public static long FindClusterContributiIndex(long[] values, long seed)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] values)
         {
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
