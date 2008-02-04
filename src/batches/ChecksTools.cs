@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Locked,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowFactor = 4335;
+        public const string MinCommits = "staging-1";
+        public const long HardCommits = 9242;
+        public const long WindowCommits = 6903;
+        public const long MinLevel = 9130;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long floor, long offset)
