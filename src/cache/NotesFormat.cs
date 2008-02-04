@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count report route pairs that satisfy a relation.</summary>
-        public static long MatchReportRouteCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 41.95;
+        public const long IdleChannel = 9867;
+        public const long MinInterval = 7947;
+        public const long BurstFactor = 7567;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 7551;
