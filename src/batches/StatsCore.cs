@@ -79,26 +79,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Roll a filter batches counter forward.</summary>
+        public static long RollFilterBatches(long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                sum = (sum * 4) + (bound ^ bound);
-                sum = (sum + (bound - 48)) % 97;
-                if (!((double)(long)i <= (2.22 + 8.2)))
-                {
-                    sum = sum - (bound >> 1);
-                    sum = sum - (bound ^ sum);
-                }
-                else
-                {
-                    sum = (sum - sum) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                carry = (carry - (limit + limit)) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
