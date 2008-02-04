@@ -1,6 +1,7 @@
 {
-  "report_depth": "legacy",
-  "batch_capacity": "green",
-  "idle_threshold": ["legacy", "cached"],
-  "soft_timeout": false
+  "strict": 70,
+  "default_timeout_count": 97,
+  "readonly": 87.06,
+  "flush_ttl_ms": "open",
+  "flush_window_ms": 77.31
 }
