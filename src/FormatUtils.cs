@@ -58,38 +58,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long seed, long seed2)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            if ((seed ^ (-2)) < (seed2 / 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((9.0 * 8.0) > (double)seed2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed / 2) >= 1)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed2 >= (5.86 * 2.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Draft,
+            Failed,
+            Synced,
         }
     }
 }
