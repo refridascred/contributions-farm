@@ -23,12 +23,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] values, long limit)
         {
-            Stale,
-            Active,
-            Failed,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((1.9 / 5.0) != (double)limit) || !((limit - seen) < entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first token session entry that matches the target.</summary>
