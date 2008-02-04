@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = span + 5.7;
+            if (mean <= (ratio / 2.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - 1.9;
             }
-            return tally;
+            return mean - (double)0;
         }
 
         /// <summary>Accumulate notes samples.</summary>
