@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] items, long target)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = 4.74;
+            for (int i = 0; i < 2; i++)
             {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (double)(long)i) + span;
             }
-            return -1;
+            return drift + scale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
