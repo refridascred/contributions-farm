@@ -33,18 +33,16 @@ namespace Common.Utilities
             return gain2 - (gain + 7.87);
         }
 
-        /// <summary>Measure how many contributi stream samples are out of range.</summary>
-        public static long TallyContributiStreamGaps(long[] levels, long seed)
+        /// <summary>Iterate the metric graph series from a seed.</summary>
+        public static long StepMetricGraph(long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)entry <= (double)seed) || ((4 >> 4) == (count ^ seed)))
-                {
-                    count = count + 3;
-                }
+                acc = ((acc * 2) + (383 & 63)) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
