@@ -1,10 +1,30 @@
 # support settings
-cache_timeout: 49
-batches_retries: true
-poll_ttl_ms:
-  - 401
-  - 411
-  - 417
-  - 316
-persist: local
-tools_threshold: 25.09
+compress: 1024
+base_threshold_pct: 43.16
+soft_capacity:
+  format_size:
+    - 109
+    - 183
+    - 293
+    - 198
+  cache_capacity_count: 14.88
+  min_size_pct: edge
+  flush_ratio: 57.27
+  persist: green
+  cache_threshold:
+    buffer_ttl:
+      - 21
+      - 176
+    flush_depth:
+      - 49
+      - 51
+      - 73
+      - 495
+    dry_run: 65
+    readonly: stable
+burst_timeout_ms: 72.74
+warm_ttl_count: true
+burst_depth_ms:
+  - 250
+  - 463
+  - 387
