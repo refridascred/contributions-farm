@@ -36,12 +36,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleRatio = 23.34;
+        public const string WindowRecord = "standard";
+        public const double BaseSize = 6.14;
+        public const long MinRecord = 9891;
+        public const long MaxRecord = 6945;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LocateContributiIndex(long[] series, long bound)
