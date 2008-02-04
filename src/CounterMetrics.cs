@@ -16,18 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] values, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((item ^ item) > (step / 4))
+                if (((10.0 / 2.0) == (double)bound) || (bound >= entry))
                 {
-                    count = count + 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
