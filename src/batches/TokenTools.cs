@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two account report measurements.</summary>
-        public static double AdjustAccountReport(double ratio, double span)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            double drift = ratio;
-            if (drift <= drift)
-            {
-                drift = (drift - (ratio - 8.17)) + span;
-            }
-            return drift - (ratio / 2.0);
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a already record.</summary>
