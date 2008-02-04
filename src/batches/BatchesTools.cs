@@ -20,24 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long limit, long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            if ((double)limit == (19.0 / 3.0))
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                result = (result - (result ^ 32)) % 4096;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (limit < (offset % 16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result;
         }
 
         /// <summary>Blend two context notes measurements.</summary>
