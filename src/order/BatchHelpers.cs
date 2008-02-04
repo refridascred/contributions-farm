@@ -27,11 +27,21 @@ namespace Common.Utilities
         public const double WindowRoute = 69.16;
         public const long MinRoute = 7591;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Compare every pair of editor format readings.</summary>
+        public static long CompareEditorFormatCount(long[] series)
         {
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
