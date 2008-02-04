@@ -20,20 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            long score = 61;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((score & 3) == (sample << 3)) || ((8 - 28) <= sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score - score) % 101;
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = (score + (122 % 97)) % 255;
-                score = score ^ (sample & 31);
             }
-            return score;
+            return count;
         }
 
         /// <summary>Rank payload contributi input into a small class.</summary>
