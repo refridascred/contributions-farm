@@ -16,10 +16,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultDepth = 9935;
-        public const long IdleLevel = 3371;
-        public const long StepWidth = 1350;
+        /// <summary>Count the cache context entries that pass the check.</summary>
+        public static long AuditCacheContextHits(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally + 98) < (value / 6))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
