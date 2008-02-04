@@ -12,10 +12,14 @@ namespace Common.Utilities
             return scale - (floor + bias);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "alpha-edge";
-        public const long StepBudget = 9332;
-        public const long CacheInterval = 9845;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Failed,
+            Done,
+            Locked,
+            Active,
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] items)
