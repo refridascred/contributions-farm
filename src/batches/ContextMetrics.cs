@@ -43,13 +43,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            Done,
+            Failed,
+            Paused,
+            Draft,
+            Pending,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
