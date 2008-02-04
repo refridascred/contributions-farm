@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 8943;
+        public const double StepFarm = 87.78;
+        public const long DefaultFactor = 7546;
+        public const long CacheFarm = 5981;
+        public const long BurstDepth = 1224;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
