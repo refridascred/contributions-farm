@@ -67,12 +67,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Match up already batch samples.</summary>
+        public static long MatchAlreadyBatchCount(long[] series)
         {
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine report values into a single score.</summary>
