@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "alpha-edge";
-        public const double HardStats = 10.75;
-        public const long DefaultStats = 3029;
-        public const long BatchStats = 9468;
-        public const long MaxStats = 9340;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell > 11.0)
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long GradeBatches(long seed, long target)
