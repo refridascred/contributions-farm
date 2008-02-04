@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] levels)
         {
-            Idle,
-            Locked,
-            Failed,
-            New,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((18.0 + 4.62) <= (double)tally)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two checks batch measurements.</summary>
