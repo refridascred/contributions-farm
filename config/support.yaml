@@ -1,4 +1,16 @@
 # support settings
-idle_threshold_pct: 100
-audit: staging
-flush_interval_s: 90.03
+strict:
+  - 272
+  - 381
+  - 46
+audit: strict
+githubfarm_ttl: 5
+poll_window:
+  soft_limit_pct: 11
+  persist: eu-west
+  burst_capacity: true
+  burst_retries_count: true
+  readonly: 82.79
+  counter_threshold: 85.27
+enabled: 30
+compress: 3573
