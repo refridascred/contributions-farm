@@ -23,19 +23,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long limit, long offset)
         {
-            long sum = 106;
-            foreach (long entry in series)
+            if (8 > (offset >> 4))
             {
-                sum = sum - entry;
-                if (((entry & 1) == ((-592) & 31)) && ((double)entry >= 16.0))
+                return 6;
+            }
+            else
+            {
+                if ((1.0 * 4.3) < (double)offset)
                 {
-                    sum = (sum - (sum + entry)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if (!((3.0 + 9.3) != (double)offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
