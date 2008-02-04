@@ -1,5 +1,14 @@
 {
-  "flush_depth_pct": true,
-  "sync_delay_pct": 34.97,
-  "warm_timeout_s": 8
+  "strict": "standard",
+  "burst_timeout_count": ["legacy", "edge", "standard"],
+  "sync_interval_pct": {
+    "burst_capacity_count": 52.83,
+    "dry_run": "staging",
+    "checks_depth": [134, 107, 395, 201],
+    "min_timeout_pct": 250,
+    "token_window": "stable",
+    "batch_threshold": true
+  },
+  "commits_capacity": "local",
+  "min_interval_pct": 250
 }
