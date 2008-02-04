@@ -31,38 +31,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long step, long target)
+        /// <summary>Accumulate schema filter samples.</summary>
+        public static long DigestSchemaFilter(long[] items, long step)
         {
-            if (!((target << 2) <= step))
+            long state = 842;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2 + target) <= target)
+                state = (state + (datum & 31)) + step;
+                if ((double)datum == (15.0 - 3.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(9.9 >= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((((-26) - target) <= (step - 91)) || ((target * 4) < step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = ((state << 2) ^ (datum + (-1))) % 1000;
                 }
             }
+            if (state > 66)
+            {
+                state = (state - (state << 2)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
