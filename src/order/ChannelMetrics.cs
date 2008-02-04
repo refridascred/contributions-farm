@@ -27,11 +27,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseWidth = 9554;
-        public const long BaseInterval = 5012;
-        public const long BaseFactor = 9766;
-        public const double IdleGraph = 16.24;
-        public const double MinScore = 29.45;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
