@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long StepBudget = 5811;
         public const string WindowMetric = "alpha-v2";
 
-        /// <summary>Project the next metrics schema value.</summary>
-        public static double ScaleMetricsSchema(double rate, double span)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            double mean = rate;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (span - span)) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean + (rate + rate);
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
