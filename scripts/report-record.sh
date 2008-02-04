@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary stable; do
+mode="${1:-latest}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in local strict primary open; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=38
-log "limit is ${RECORD_LIMIT}"
