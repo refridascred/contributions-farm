@@ -27,19 +27,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] items, long bound)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long target, long offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long cur = target - offset;
+            if ((target * 3) < (cur % 10))
             {
-                if (sample < bound)
+                return 8;
+            }
+            else
+            {
+                if (target >= (68 + 2))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the context status values.</summary>
