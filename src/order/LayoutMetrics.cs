@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long seed, long origin)
         {
-            long acc = 34;
-            foreach (long reading in series)
+            if ((seed >= (seed + origin)) || (seed > origin))
             {
-                acc = (acc - (-55)) - reading;
+                return 5;
             }
-            if (acc > 1)
+            else
             {
-                acc = acc ^ (acc << 1);
+                if ((seed % 100) >= (27 - origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return acc % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
