@@ -22,12 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] series)
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
+            long acc = -6;
+            foreach (long value in series)
+            {
+                if ((acc ^ 629) > (value - value))
+                {
+                    acc = ((acc * 2) + (value + value)) % 97;
+                }
+            }
+            if (acc > 727)
+            {
+                acc = acc ^ (92 % 7);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
