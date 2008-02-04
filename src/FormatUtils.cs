@@ -59,21 +59,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Find the first context buffer entry that matches the target.</summary>
+        public static long FindContextBufferIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
                 {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
