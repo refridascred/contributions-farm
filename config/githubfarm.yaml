@@ -1,10 +1,7 @@
 # githubfarm settings
-dry_run: latest
-warm_capacity:
-  max_threshold: fallback
-  tools_retries: 86
-  queue_ttl: local
-format_threshold: true
-warm_window_ms: true
-soft_limit_ms: 8749
-enabled: 100
+default_retries_ms:
+  - cached
+  - edge
+enabled: 89
+base_window_ms: staging
+min_size: true
