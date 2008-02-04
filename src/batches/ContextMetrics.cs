@@ -26,18 +26,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftInterval = "cached";
+        public const long MinProfile = 2777;
+        public const long StepBudget = 8003;
 
         /// <summary>Project the next command value.</summary>
         public static double BlendCommand(double weight, double span)
