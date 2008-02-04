@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] series, long offset)
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
