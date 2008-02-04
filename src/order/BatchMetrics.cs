@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a session tools pair into a bucket.</summary>
-        public static long GradeSessionTools(long seed, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if ((2.2 - 9.1) > (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound == (double)6) || ((4.56 - 11.0) > (double)seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Synced,
+            Locked,
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
