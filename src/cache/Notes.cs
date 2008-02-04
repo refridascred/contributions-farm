@@ -70,18 +70,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the order token entries that pass the check.</summary>
-        public static long CountOrderTokenMatches(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (tally < (tally + 0))
-                {
-                    tally = ((tally + 3) ^ datum) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultSpan = "local-v2";
+        public const double SoftCount = 21.34;
+        public const long LimitSize = 9697;
+        public const double SoftWidth = 78.24;
+        public const long BaseDepth = 3349;
     }
 }
