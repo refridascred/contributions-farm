@@ -23,19 +23,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] items, long limit)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
