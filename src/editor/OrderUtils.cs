@@ -54,21 +54,32 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long step, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = step + origin;
+            if ((6.7 - 5.0) == (double)lane)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)lane > (4.0 + 0.64))
                 {
-                    if ((readings[i] - readings[j]) < 0)
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + 1) <= (origin + lane))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
