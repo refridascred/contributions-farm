@@ -20,11 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Rank graph format input into a small class.</summary>
+        public static long SortGraphFormat(long seed, long floor)
         {
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
+            if (seed < 8)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor > (6.22 * 3.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the notes mode values.</summary>
