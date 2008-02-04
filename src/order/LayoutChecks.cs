@@ -20,13 +20,19 @@ namespace Common.Utilities
         public const double BaseBudget = 48.36;
         public const double BaseChecks = 8.24;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] series, long origin)
         {
-            Draft,
-            Active,
-            Dropped,
-            Stale,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a batches record.</summary>
