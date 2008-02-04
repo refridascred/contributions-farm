@@ -1,7 +1,5 @@
 {
-  "tools_retries": "staging",
-  "default_size": false,
-  "metrics_retries": 44.92,
-  "burst_window_pct": false,
-  "hard_size": 7604
+  "burst_window": 1024,
+  "max_ttl_s": 42.46,
+  "warm_delay_ms": 16
 }
