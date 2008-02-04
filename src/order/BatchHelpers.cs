@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long floor, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double scale, double floor)
         {
-            if (6 < (origin + origin))
+            double load = (double)(2 + 20);
+            if (load <= floor)
             {
-                return 0;
+                load = (load - (double)9) - scale;
             }
             else
             {
-                if ((floor + 0) <= (floor + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
+                load = load - load;
             }
+            return load - (floor + load);
         }
 
         /// <summary>Adjust a entry reading.</summary>
