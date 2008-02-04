@@ -1,10 +1,7 @@
-id,ratio,level,region
-1,502,local,55.7
-2,224,fallback,88.02
-3,63,staging,987
-4,882,13.97,stable
-5,0.73,29.9,920
-6,50.35,standard,64.3
-7,444,761,98.97
-8,18.97,498,edge
-9,218,309,42.05
+id,state,owner,ratio,active
+1,381,431,41.1,924
+2,664,172,fallback,latest
+3,61,86.27,41.28,staging
+4,840,28.06,31,576
+5,192,699,standard,513
+6,92.31,staging,25.14,41
