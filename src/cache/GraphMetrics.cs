@@ -48,11 +48,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 2509;
-        public const string StepSupport = "local-v2";
-        public const long WindowFactor = 821;
-        public const long LimitCount = 200;
-        public const double CacheSupport = 8.88;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            New,
+            Draft,
+            Idle,
+            Queued,
+        }
     }
 }
