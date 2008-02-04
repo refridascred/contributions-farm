@@ -11,12 +11,40 @@ namespace Common.Utilities
         public const long IdleTimeout = 6664;
         public const long RetryCache = 8972;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 4286;
-        public const long WindowRatio = 5767;
-        public const string LimitEditor = "standard";
-        public const string HardEditor = "primary-edge";
-        public const long LimitLevel = 6385;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long origin, long offset)
+        {
+            long lane = origin ^ offset;
+            if (!((origin + lane) < offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)origin <= (17.0 / 6.0)) && ((origin + 86) > (1 & 255)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin ^ offset) < (lane - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (44 < lane)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
