@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] series)
+        /// <summary>Look up the position of a graph metrics sample.</summary>
+        public static long LookupGraphMetricsIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((6.5 + 0.8) >= (double)reading) || (reading >= (tally << 2)))
+                if (items[i] == origin)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the batch kind values.</summary>
