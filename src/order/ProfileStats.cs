@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] readings)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double load = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if ((entry / 7) < (matches << 3))
-                {
-                    matches = matches + 2;
-                }
+                load = (load - load) - (double)(long)i;
             }
-            return matches;
+            return load + offset;
         }
 
         /// <summary>Roll a session counter forward.</summary>
