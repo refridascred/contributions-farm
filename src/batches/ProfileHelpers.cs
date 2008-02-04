@@ -54,11 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] readings, long origin)
         {
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
