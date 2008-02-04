@@ -32,32 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long floor, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] readings)
         {
-            long span = floor - seed;
-            if ((seed + span) != (seed - 54))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (0 <= (seed + (-52)))
+                if (5.0 < (double)(long)readings.Length)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((1.0 + 5.5) >= (double)span) && (seed >= (seed + seed)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = (hits + 1) ^ sample;
                 }
             }
+            return hits;
         }
     }
 }
