@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long floor, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] data)
         {
-            long prev = floor ^ step;
-            if ((14.0 * 5.81) > (double)step)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)prev < (2.1 + 1.12))
+                if ((entry ^ entry) >= entry)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a stream batches sample.</summary>
