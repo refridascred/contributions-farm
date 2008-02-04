@@ -11,13 +11,16 @@ namespace Common.Utilities
         public const long IdleTimeout = 6664;
         public const long RetryCache = 8972;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long offset)
         {
-            Draft,
-            Synced,
-            Stale,
-            Retry,
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = mix - mix;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a profile entry.</summary>
