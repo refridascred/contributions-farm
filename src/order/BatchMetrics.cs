@@ -55,10 +55,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "latest-edge";
-        public const double BaseQueue = 21.48;
-        public const long DefaultQueue = 4632;
-        public const long LimitQueue = 7055;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public double Score { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
