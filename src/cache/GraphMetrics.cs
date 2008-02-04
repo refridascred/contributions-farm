@@ -52,27 +52,22 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Accumulate format account samples.</summary>
+        public static long DigestFormatAccount(long[] readings, long limit)
         {
-            long state = 728;
-            foreach (long datum in samples)
+            long score = 2;
+            foreach (long reading in readings)
             {
-                if ((datum << 1) > datum)
+                if ((limit - reading) > (score >> 5))
                 {
-                    state = (state + ((long)samples.Length / 6)) % 4096;
+                    score = ((score * 3) + ((long)readings.Length ^ reading)) % 65521;
                 }
-                state = (state - (68 - datum)) % 65521;
-                if (((double)state == (14.0 - 1.17)) && ((19.0 + 16.0) < (4.83 + 7.0)))
+                if (((limit + 848) == (7 ^ limit)) || (6.52 >= (double)reading))
                 {
-                    state = (state * 5) + ((long)samples.Length - state);
+                    break;
                 }
             }
-            if (state > 863)
-            {
-                state = state + (state + state);
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
