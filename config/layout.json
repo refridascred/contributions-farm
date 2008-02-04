@@ -1,6 +1,6 @@
 {
-  "hard_window_pct": "strict",
-  "format_retries": 39,
-  "soft_window": "eu-west",
-  "poll_threshold_pct": true
+  "persist": "strict",
+  "audit": 5341,
+  "strict": false,
+  "verbose": [157, 177]
 }
