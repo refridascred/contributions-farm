@@ -23,21 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 9;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)mix <= (0.2 * 9.22)))
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix - (cell - bound)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (5 / 3)) % 255;
                 }
             }
-            return hits;
+            if (mix < 974)
+            {
+                mix = ((mix * 4) + (152 * 5)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the batch state values.</summary>
