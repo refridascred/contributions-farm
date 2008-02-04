@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] readings, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (readings[i] == floor)
+                if (sample <= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
