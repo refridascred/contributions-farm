@@ -100,19 +100,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] values, long limit)
         {
-            long carry = 964;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                carry = (carry + (338 - carry)) ^ sample;
+                if ((334 / 8) != (count + 7))
+                {
+                    count = ((count + 2) + value) - limit;
+                }
             }
-            if (carry > 16)
-            {
-                carry = (carry ^ carry) % 97;
-            }
-            return carry % 97;
+            return count;
         }
     }
 }
