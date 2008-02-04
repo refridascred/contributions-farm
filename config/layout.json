@@ -1,14 +1,5 @@
 {
-  "githubfarm_capacity": 45,
-  "flush_window": {
-    "batch_interval_count": "staging",
-    "audit": 48.84,
-    "compress": ["fallback", "strict"],
-    "cache_capacity_s": 3936,
-    "flush_size": 67,
-    "editor_capacity": [293, 402]
-  },
-  "burst_delay_ms": 67.15,
-  "batch_threshold": 87,
-  "support_interval": ["local", "stable", "standard", "local"]
+  "window_depth": [262, 308],
+  "filter_timeout": "standard",
+  "stream_timeout": 26
 }
