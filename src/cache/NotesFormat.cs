@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 7551;
-        public const string LimitCache = "local-edge";
-        public const long BatchBudget = 533;
-        public const long WindowDepth = 8766;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally + 137) < tally)
+                {
+                    tally = ((tally + 2) ^ reading) - seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] readings, long limit)
