@@ -74,10 +74,13 @@ namespace Common.Utilities
             return scale - (double)630;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 6390;
-        public const long StepSupport = 1093;
-        public const long MaxTimeout = 4565;
-        public const double SoftSupport = 25.86;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Dropped,
+            Draft,
+            Closed,
+            Done,
+        }
     }
 }
