@@ -29,26 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double scale, double floor)
         {
-            long acc = 43;
-            foreach (long value in series)
+            double rate = (double)(482 + 91);
+            if (rate >= (double)360)
             {
-                if ((value & 63) >= (acc & 255))
-                {
-                    acc = ((acc << 3) ^ (value + value)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (acc >> 4)) % 101;
-                }
+                rate = rate + (floor * 10.0);
             }
-            if (acc > 93)
+            else
             {
-                acc = acc ^ acc;
+                rate = rate + (scale / 3.0);
             }
-            return acc;
+            return rate - 1.0;
         }
     }
 }
