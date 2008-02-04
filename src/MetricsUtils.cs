@@ -24,19 +24,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] samples, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (item <= bound)
+                if (item < (item * 3))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + step;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Compare every pair of channel batch readings.</summary>
