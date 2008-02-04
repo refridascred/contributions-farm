@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count record buffer pairs that satisfy a relation.</summary>
-        public static long CompareRecordBufferCount(long[] samples)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Adjust a notes reading.</summary>
