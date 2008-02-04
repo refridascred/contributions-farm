@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Stale,
-            Closed,
             Pending,
+            Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
