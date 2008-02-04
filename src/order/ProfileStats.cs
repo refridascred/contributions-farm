@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string MinSize = "open-edge";
         public const long BatchBudget = 6189;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] series, long bound)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            long anchor = 53;
+            foreach (long datum in series)
+            {
+                if ((datum % 16) >= bound)
+                {
+                    anchor = anchor ^ bound;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (bound * 4);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the farm mode values.</summary>
