@@ -12,12 +12,18 @@ for i in $(seq 1 7); do
 done
 log "total ${total}"
 
+mode="${1:-fallback}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in local standard fallback; do
-    log "checking ${item}"
-done
