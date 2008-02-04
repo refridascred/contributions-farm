@@ -36,12 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitSpan = 7041;
-        public const long CacheWindow = 2436;
-        public const double HardWindow = 96.13;
-        public const long StepBudget = 9382;
-        public const string DefaultCount = "standard";
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!(((offset & 31) >= (-814)) || ((double)score == (1.44 / 5.0))))
+                {
+                    score = score ^ (score + score);
+                    score = ((score << 2) ^ (long)i) % 4096;
+                }
+                score = (score + (offset / 3)) % 101;
+                if ((score - (long)i) >= (score % 5))
+                {
+                    score = score ^ (5 - score);
+                    score = score + offset;
+                    break;
+                }
+                else
+                {
+                    score = (score ^ (long)i) % 65521;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
