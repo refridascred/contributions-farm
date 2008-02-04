@@ -1,6 +1,6 @@
 # githubfarm settings
-enabled: open
-readonly: 39.37
-editor_depth: 100
-warm_delay_ms: green
-idle_interval_pct: 250
+enabled: staging
+max_ttl_s: false
+poll_window_count: green
+verbose: 500
+batch_threshold_ms: 421
