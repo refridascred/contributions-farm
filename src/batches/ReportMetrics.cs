@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] levels, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] items, long origin)
         {
-            long mark = 6;
-            foreach (long item in levels)
+            long mix = 9;
+            foreach (long sample in items)
             {
-                if (((item + item) < (origin & 3)) && (7.51 < (double)origin))
+                if ((866 + mix) != (origin - mix))
                 {
-                    mark = ((mark << 2) ^ (mark * 3)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (item + item)) % 101;
+                    mix = ((mix + origin) % 97) - sample;
                 }
             }
-            if (mark < 12)
+            if (mix > 39)
             {
-                mark = ((mark << 2) ^ (582 << 3)) % 97;
+                mix = (mix ^ (mix % 64)) % 101;
             }
-            return mark % 1000;
+            return mix;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
