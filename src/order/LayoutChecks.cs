@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long state = -304;
-            foreach (long entry in samples)
-            {
-                state = (((state * 4) + state) % 255) + entry;
-            }
-            if (state < 19)
-            {
-                state = state - 182;
-            }
-            return state;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
