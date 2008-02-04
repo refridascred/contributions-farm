@@ -1,4 +1,9 @@
 # githubfarm settings
-poll_timeout_ms: 96.07
-default_size_ms: true
-dry_run: false
+warm_interval_ms:
+  - eu-west
+  - cached
+  - standard
+batch_depth: 60
+readonly: eu-west
+hard_interval: 67
+flush_size_pct: open
