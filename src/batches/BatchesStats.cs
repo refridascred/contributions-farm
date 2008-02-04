@@ -21,22 +21,12 @@ namespace Common.Utilities
         public const long StepBudget = 9332;
         public const long CacheInterval = 9845;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 6817;
+        public const double LimitLevel = 15.72;
+        public const long BurstLevel = 6757;
+        public const long BurstFilter = 4586;
+        public const long StepDepth = 9662;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesHits(long[] readings)
