@@ -28,13 +28,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Look up the position of a context format sample.</summary>
+        public static long SeekContextFormatIndex(long[] items, long limit)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the window level values.</summary>
