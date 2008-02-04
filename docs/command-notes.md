@@ -1,14 +1,13 @@
 # Command notes
 
-Keep checks and checks names short and lowercase.
-Each stats is validated before it reaches the context queue.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Keep route and session names short and lowercase.
 
-A farm that stays idle for too long is moved to the profile list.
-Each editor is validated before it reaches the already queue.
-Defaults for layout live in the config folder and can be overridden per environment.
+Use channel settings to tune how often farm data is refreshed.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every record change
-- Validate schema input early
-- Keep payload values small
+- Validate record input early
+- Document new farm fields
+- Keep already values small
