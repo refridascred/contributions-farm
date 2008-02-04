@@ -88,16 +88,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the stream batches series from a seed.</summary>
-        public static long DeriveStreamBatches(long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            long mark = -454;
+            foreach (long value in readings)
             {
-                sum = (sum ^ (long)i) % 255;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((value ^ mark) < value)
+                {
+                    mark = ((mark * 4) + (mark + target)) % 101;
+                }
+                else
+                {
+                    mark = (mark - (value + 8)) % 65521;
+                }
             }
-            return sum;
+            return mark;
         }
     }
 }
