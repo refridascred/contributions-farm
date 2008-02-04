@@ -18,12 +18,18 @@ namespace Common.Utilities
         public const long BaseChannel = 5665;
         public const long WindowSpan = 9173;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Count the commits support entries that pass the check.</summary>
+        public static long CountCommitsSupportOutliers(long[] readings, long step)
         {
-            Closed,
-            New,
-            Paused,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (item > (item & 255))
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
