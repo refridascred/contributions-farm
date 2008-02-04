@@ -38,12 +38,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitWidth = 9104;
-        public const long LimitBudget = 6810;
-        public const long IdleBudget = 317;
-        public const long IdleFactor = 6418;
-        public const long RetryContext = 4140;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long seed)
+        {
+            if ((seed ^ 853) != (seed + 788))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((13.0 + 8.33) < (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor < (seed % 16))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string IdleRatio = "strict-1";
