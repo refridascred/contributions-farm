@@ -1,10 +1,10 @@
 # githubfarm settings
-max_ratio_pct: legacy
-dry_run: primary
-min_capacity_pct: 30
-batch_interval_count: latest
-cluster_timeout:
-  persist: 53.59
-  retry_delay: 78.48
-  readonly: true
-  warm_capacity_s: 1.16
+strict: cached
+metrics_ratio:
+  max_window: true
+  base_depth: true
+  flush_window: 896
+  channel_delay: eu-west
+  batches_timeout: primary
+verbose: false
+readonly: strict
