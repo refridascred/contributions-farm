@@ -1,9 +1,22 @@
 # githubfarm settings
-hard_depth_pct:
-  - primary
-  - open
-  - blue
-  - open
-retry_timeout_count: false
-verbose: 6860
-window_window: staging
+retry_ratio: false
+base_interval_s: false
+order_threshold:
+  max_timeout_s:
+    sync_capacity: 73
+    counter_limit: open
+    base_retries: true
+    hard_retries: staging
+    compress:
+      - 46
+      - 343
+    batch_interval: true
+  retry_limit_s: open
+  verbose:
+    cache_interval_s: 37
+    batch_retries: open
+    dry_run: true
+    window_ttl: 47
+  dry_run: true
+editor_depth: false
+contributi_threshold: eu-west
