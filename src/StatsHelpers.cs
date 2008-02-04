@@ -12,31 +12,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long limit, long offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long limit)
         {
-            if (8 > (offset >> 4))
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                sum = (sum + (28 + limit)) % 255;
+                sum = (sum << 3) ^ limit;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((1.0 * 4.3) < (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((3.0 + 9.3) != (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
