@@ -43,15 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double ratio = offset;
-            if (ratio >= 6.0)
-            {
-                ratio = (ratio - 15.0) - scale;
-            }
-            return ratio - (double)41;
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
