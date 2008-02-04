@@ -34,22 +34,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long anchor = 814;
-            foreach (long datum in values)
-            {
-                if ((anchor >> 2) != (8 ^ anchor))
-                {
-                    anchor = anchor + (anchor - datum);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor << 1)) % 101;
-                }
-            }
-            return anchor;
+            Pending,
+            Retry,
+            Queued,
+            Ready,
+            Locked,
         }
     }
 }
