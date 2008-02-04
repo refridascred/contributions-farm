@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double ratio, double span)
+        /// <summary>Locate a channel format reading by value.</summary>
+        public static long LookupChannelFormatIndex(long[] series, long step)
         {
-            double weight = ratio;
-            if (weight < weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - span;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight - (ratio / 2.0);
+            return -1;
         }
 
         /// <summary>Fold a list of cluster already readings.</summary>
