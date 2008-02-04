@@ -1,12 +1,15 @@
 {
-  "dry_run": {
-    "context_window": "stable",
-    "soft_ttl": "stable",
-    "enabled": true,
-    "cache_retries": true,
-    "dry_run": ["edge", "blue", "legacy", "fallback"],
-    "default_window": "edge"
+  "cache_limit_ms": "legacy",
+  "sync_window_ms": {
+    "hard_interval": {
+      "max_interval_count": false,
+      "retry_ratio": "stable",
+      "persist": "strict"
+    },
+    "route_interval": ["strict", "primary", "standard"],
+    "stats_ttl": false
   },
-  "enabled": 55.7,
-  "contributi_size": 63.18
+  "base_timeout": "legacy",
+  "burst_delay_ms": 5073,
+  "cache_interval_pct": 8081
 }
