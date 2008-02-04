@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] readings, long target)
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (seen <= (898 * 5))
+                {
+                    seen = ((seen + 3) ^ value) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a stream batch figure with a bias.</summary>
