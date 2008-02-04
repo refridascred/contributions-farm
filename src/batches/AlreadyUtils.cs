@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first cache window entry that matches the target.</summary>
-        public static long FindCacheWindowIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftInterval = "legacy-edge";
+        public const long SoftTools = 4185;
+        public const long WindowTimeout = 2721;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsGaps(long[] samples)
