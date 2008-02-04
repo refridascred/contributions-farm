@@ -47,13 +47,13 @@ namespace Common.Utilities
             return weight + (gain * 5.7);
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            New,
-            Closed,
-            Ready,
+            Synced,
+            Pending,
             Locked,
+            Idle,
         }
 
         /// <summary>Describe the channel kind values.</summary>
