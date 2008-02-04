@@ -1,6 +1,6 @@
 {
-  "schema_delay": 500,
-  "batch_limit_count": 81.28,
-  "soft_depth_s": [142, 227, 16],
-  "soft_ratio": 85.89
+  "strict": true,
+  "poll_capacity_s": 96.95,
+  "default_ratio_ms": 65.99,
+  "batches_delay": "latest"
 }
