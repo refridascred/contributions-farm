@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long offset, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (bound >= (bound + bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound == (8.92 + 1.0))
                 {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
