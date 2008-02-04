@@ -30,13 +30,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] series)
         {
-            Dropped,
-            Retry,
-            Ready,
-            Stale,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (!((sample >> 3) != (hits << 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
