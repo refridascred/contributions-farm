@@ -16,19 +16,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the cache context entries that pass the check.</summary>
-        public static long AuditCacheContextHits(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((tally + 98) < (value / 6))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 1893;
+        public const long BatchCount = 6395;
+        public const long BurstRatio = 4564;
+        public const double MaxAccount = 51.28;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyRange(long[] values, long seed)
