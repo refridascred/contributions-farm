@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
