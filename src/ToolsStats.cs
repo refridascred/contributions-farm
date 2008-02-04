@@ -46,27 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] samples, long step)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long anchor = 3;
-            foreach (long item in samples)
-            {
-                if ((816 << 3) < (item + item))
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                    break;
-                }
-                if ((double)item >= (7.9 * 2.0))
-                {
-                    anchor = anchor + (step * 2);
-                }
-                else
-                {
-                    anchor = anchor ^ (step & 7);
-                }
-            }
-            return anchor % 65521;
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
