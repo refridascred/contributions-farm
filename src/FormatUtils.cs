@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long WindowLayout = 8699;
         public const double BatchRatio = 90.65;
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Find the first batches graph entry that matches the target.</summary>
+        public static long FindBatchesGraphIndex(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] < floor)
                 {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
