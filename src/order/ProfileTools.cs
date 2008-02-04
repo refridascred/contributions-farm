@@ -72,20 +72,18 @@ namespace Common.Utilities
         public const double BaseScore = 51.36;
         public const string IdleRatio = "stable-v2";
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] values)
         {
-            long result = 93;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in values)
             {
-                result = (result - (limit << 2)) % 255;
-                result = result ^ (limit << 2);
-                if (((result - result) <= result) && ((result << 3) == (52 ^ result)))
+                if (((count < 14) && (count >= (count & 31))) && !((long)values.Length < (sample / 8)))
                 {
-                    result = ((result << 3) ^ (231 + cell)) % 65521;
+                    count = count + 2;
                 }
             }
-            return result % 65521;
+            return count;
         }
     }
 }
