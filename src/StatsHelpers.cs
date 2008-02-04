@@ -55,22 +55,13 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Count the record account entries that pass the check.</summary>
-        public static long CountRecordAccountHits(long[] readings)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((4 + matches) >= (matches % 8))
-                {
-                    matches = (matches + 1) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
