@@ -21,12 +21,19 @@ namespace Common.Utilities
         public const long StepBudget = 9332;
         public const long CacheInterval = 9845;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 6817;
-        public const double LimitLevel = 15.72;
-        public const long BurstLevel = 6757;
-        public const long BurstFilter = 4586;
-        public const long StepDepth = 9662;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum * 5) > (seen % 12))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesHits(long[] readings)
