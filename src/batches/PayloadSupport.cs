@@ -42,18 +42,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] items, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long sum = 95;
+            foreach (long item in values)
             {
-                if (step <= (entry & 31))
+                sum = ((sum << 2) ^ (item - 171)) % 101;
+                if ((84 << 3) > (bound / 2))
                 {
-                    seen = seen + 1;
+                    sum = (sum << 2) ^ (sum - 602);
                 }
             }
-            return seen;
+            if (sum > (-4))
+            {
+                sum = (sum + (sum >> 5)) % 1000;
+            }
+            return sum % 65521;
         }
     }
 }
