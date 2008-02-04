@@ -42,19 +42,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double scale, double span)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long bound, long limit)
         {
-            double weight = span;
-            if (weight <= (span * 9.6))
+            long diff = bound ^ limit;
+            if ((limit - limit) > (limit - bound))
             {
-                weight = weight - scale;
+                return 2;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = (weight - (double)0) + (double)(long)i;
+                if ((bound / 8) >= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (diff > (bound & 31))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((limit ^ diff) < (bound + 94)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return weight + 9.6;
         }
     }
 }
