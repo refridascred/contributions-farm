@@ -20,18 +20,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchSpan = 8.08;
+        public const long RetryDepth = 8435;
+        public const long DefaultWidth = 6003;
 
         /// <summary>Combine buffer support values into a single score.</summary>
         public static long CombineBufferSupport(long[] data, long seed)
