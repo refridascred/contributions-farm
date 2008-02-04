@@ -20,30 +20,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series, long floor)
+        /// <summary>Count the queue stats entries that pass the check.</summary>
+        public static long MeasureQueueStatsGaps(long[] levels, long step)
         {
-            long score = 82;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((reading >> 3) > (floor % 100))
+                if ((matches / 6) <= matches)
                 {
-                    score = score - (floor << 1);
-                }
-                else
-                {
-                    score = score - (47 % 64);
-                }
-                if ((5.7 + 9.36) >= (double)floor)
-                {
-                    break;
+                    matches = ((matches + 1) ^ entry) + step;
                 }
             }
-            if (score < 89)
-            {
-                score = ((score * 3) + (floor + floor)) % 4096;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the session kind values.</summary>
