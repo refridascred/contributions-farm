@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] samples, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((double)count >= (double)reading)
+                if (datum < offset)
                 {
-                    count = (count + 1) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Accumulate context batches samples.</summary>
