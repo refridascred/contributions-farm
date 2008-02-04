@@ -1,7 +1,4 @@
 # entry settings
-strict: 65.27
-poll_limit_pct: 4220
-cache_capacity_pct: fallback
-layout_delay: 7946
-soft_retries: 2938
-githubfarm_limit: primary
+entry_ttl: 37.14
+poll_threshold_pct: 9039
+batch_capacity_count: local
