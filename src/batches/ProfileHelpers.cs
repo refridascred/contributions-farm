@@ -67,39 +67,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long bound, long seed)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long diff = bound + seed;
-            if ((495 > (seed ^ seed)) && ((4.2 * 1.45) <= (double)diff))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((diff << 3) >= (seed - diff))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (4.75 < (double)diff)
+                    if ((items[i] - items[j]) == 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)diff > 14.0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up filter samples.</summary>
