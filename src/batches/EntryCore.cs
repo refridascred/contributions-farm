@@ -33,11 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry * 2) >= hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a queue header.</summary>
