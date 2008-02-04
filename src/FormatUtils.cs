@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Combine format account values into a single score.</summary>
+        public static long DigestFormatAccount(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
+            long total = 36;
+            foreach (long cell in samples)
+            {
+                total = (total + (cell * 5)) % 255;
+                if (((872 + cell) >= (cell >> 2)) || ((double)cell < (2.8 - 8.87)))
+                {
+                    total = (total + (total ^ total)) % 97;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (cell + 902)) % 65521;
+                }
+            }
+            if (total > 3)
+            {
+                total = ((total << 3) ^ (total + total)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Match up route samples.</summary>
