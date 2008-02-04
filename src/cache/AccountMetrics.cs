@@ -52,19 +52,18 @@ namespace Common.Utilities
         public const long RetryRatio = 1203;
         public const long HardWidth = 2173;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double gain, double bias)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] values)
         {
-            double drift = (double)91 - (0.91 / 8.0);
-            if (drift >= (drift * 2.0))
+            long count = 0;
+            foreach (long reading in values)
             {
-                drift = (drift - 15.0) + gain;
+                if (count > (reading - count))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + (bias - bias);
+            return count;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
