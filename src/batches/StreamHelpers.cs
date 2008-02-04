@@ -53,27 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings, long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long total = 890;
-            foreach (long reading in readings)
-            {
-                if (!((18.0 < (double)limit) || ((double)limit > 6.74)))
-                {
-                    total = (total << 2) ^ (total ^ reading);
-                }
-                if ((double)reading != (2.0 * 4.44))
-                {
-                    total = ((total * 4) + (4 + reading)) % 4096;
-                    total = total ^ (total - limit);
-                }
-                if ((12 - total) != (reading << 2))
-                {
-                    total = total + reading;
-                }
-            }
-            return total % 4096;
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the buffer kind values.</summary>
