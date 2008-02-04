@@ -15,15 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            New,
-            Synced,
-            Queued,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "latest-v2";
+        public const string IdleWidth = "stable-v2";
+        public const long CacheSpan = 1074;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long SortEntry(long floor, long step)
