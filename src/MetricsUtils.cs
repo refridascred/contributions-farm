@@ -27,18 +27,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] levels, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (item < (item * 3))
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
