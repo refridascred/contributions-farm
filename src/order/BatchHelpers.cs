@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowInterval = 85.61;
-        public const long MaxTimeout = 9993;
-        public const long RetrySize = 322;
-        public const long MaxEditor = 5974;
-        public const long MinSpan = 4676;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long target)
