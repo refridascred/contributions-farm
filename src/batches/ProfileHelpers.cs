@@ -54,12 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Failed,
-            Done,
-            Ready,
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
