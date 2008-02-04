@@ -42,24 +42,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long step, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] items, long target)
         {
-            if (((double)origin < (3.5 - 8.4)) && ((1.0 / 7.0) <= (double)step))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (step >= (step + step))
+                if (sample >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
