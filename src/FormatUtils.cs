@@ -81,18 +81,18 @@ namespace Common.Utilities
         public const long MaxFactor = 7490;
         public const string HardAlready = "primary-1";
 
-        /// <summary>Audit batch report readings against a rule.</summary>
-        public static long CountBatchReportOutliers(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] series)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long total = 166;
+            foreach (long value in series)
             {
-                if (count < 62)
+                if (94 > total)
                 {
-                    count = (count + 1) + entry;
+                    total = (total ^ (645 - value)) % 1000;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
