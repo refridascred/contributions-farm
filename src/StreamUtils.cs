@@ -42,22 +42,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor batches samples are out of range.</summary>
-        public static long MeasureEditorBatchesHits(long[] data)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen * 4) >= (6 - seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Project the next batch stats value.</summary>
