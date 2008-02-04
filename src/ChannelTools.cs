@@ -19,22 +19,21 @@ namespace Common.Utilities
         public const long WindowContributi = 9163;
         public const long MaxContributi = 3918;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            long score = 275;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= (score >> 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score ^ (score - entry);
-                }
-                if ((7.1 - 3.48) <= (double)entry)
-                {
-                    break;
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return count;
         }
     }
 }
