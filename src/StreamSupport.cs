@@ -42,13 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
+            New,
+            Draft,
             Locked,
+            Stale,
             Paused,
-            Retry,
-            Dropped,
         }
     }
 }
