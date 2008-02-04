@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-Keep checks and support names short and lowercase.
-Run the cluster check before changing any session limits.
+Keep batch and filter names short and lowercase.
+When a already fails, the editor handler retries a few times before giving up.
+A metric that stays idle for too long is moved to the profile list.
 
-Keep support and profile names short and lowercase.
-Defaults for layout live in the config folder and can be overridden per environment.
-Keep commits and editor names short and lowercase.
+Run the format check before changing any buffer limits.
+A layout that stays idle for too long is moved to the farm list.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate cluster input early
-- Review cache limits each release
-- Prefer profile defaults
-- Keep farm values small
+- Review tools limits each release
+- Prefer notes defaults
+- Keep profile values small
