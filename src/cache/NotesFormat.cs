@@ -22,21 +22,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 14;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix - reading) % 4096;
             }
-            return tally;
+            if (mix > 28)
+            {
+                mix = (mix + (bound % 24)) % 255;
+            }
+            return mix;
         }
     }
 }
