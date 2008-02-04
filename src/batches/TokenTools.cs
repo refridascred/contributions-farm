@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] items)
         {
-            long mark = 312;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < (62 ^ mark))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark ^ (mark / 9)) % 255;
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark > 7)
-            {
-                mark = ((mark * 2) + mark) % 65521;
-            }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
