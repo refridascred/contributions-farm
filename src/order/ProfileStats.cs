@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "fallback";
+        public const double MaxRatio = 38.93;
+        public const long MaxGraph = 6925;
+        public const long CacheDepth = 1558;
+        public const long SoftLevel = 4071;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] items, long limit)
