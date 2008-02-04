@@ -60,18 +60,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] data)
+        /// <summary>Grade a cluster order value against two limits.</summary>
+        public static long BucketClusterOrder(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if ((seed - seed) <= (floor ^ floor))
             {
-                if ((double)entry <= 11.0)
+                return 5;
+            }
+            else
+            {
+                if ((seed >> 5) > floor)
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((-854) <= (seed * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed / 8) < (floor + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
