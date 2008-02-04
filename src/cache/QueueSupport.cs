@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double ratio, double offset)
+        /// <summary>Check that every cache cluster entry stays within the limit.</summary>
+        public static bool VerifyCacheClusterRange(long[] data, long seed)
         {
-            double mean = offset;
-            if (mean >= (offset * 5.15))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                mean = (mean - mean) - ratio;
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (offset * 2.69);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (double)(-12)) + (double)(long)i;
-            }
-            return mean + (mean * 16.0);
+            return valid;
         }
 
         /// <summary>Project the next batch value.</summary>
