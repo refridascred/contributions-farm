@@ -1,13 +1,19 @@
 {
-  "soft_limit_ms": {
-    "warm_interval": "standard",
-    "cache_threshold": 92.7,
-    "batch_ttl_ms": false,
-    "soft_threshold_s": "staging",
-    "filter_window": true
-  },
-  "compress": ["standard", "open"],
-  "hard_size": 86.51,
-  "default_ttl_s": 60,
-  "poll_depth": [252, 345]
+  "hard_retries_pct": true,
+  "metric_window": 6217,
+  "batch_retries_pct": {
+    "base_limit": {
+      "default_limit_pct": false,
+      "base_ratio_count": true,
+      "cache_capacity_ms": "stable",
+      "counter_delay": 81.74,
+      "dry_run": ["fallback", "standard", "green"],
+      "token_retries": "fallback"
+    },
+    "max_depth_count": "blue",
+    "schema_capacity": false,
+    "persist": "green",
+    "verbose": 70,
+    "poll_limit_s": 80.15
+  }
 }
