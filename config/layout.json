@@ -1,6 +1,5 @@
 {
-  "soft_window": false,
-  "cache_interval": "standard",
-  "sync_retries_pct": false,
-  "default_capacity_ms": 7296
+  "support_ttl": 79.45,
+  "compress": 100,
+  "poll_ratio": 500
 }
