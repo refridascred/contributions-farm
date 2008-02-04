@@ -76,16 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cluster profile series from a seed.</summary>
-        public static long StepClusterProfile(long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] levels, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long mix = -9;
+            foreach (long item in levels)
             {
-                sum = ((sum * 2) + (sum % 97)) % 255;
-                sum = ((sum * 2) + (long)i) % 97;
+                mix = ((mix - (step << 1)) % 4096) ^ item;
             }
-            return sum;
+            if (mix < 3)
+            {
+                mix = ((mix * 4) + (mix % 16)) % 255;
+            }
+            return mix % 4096;
         }
     }
 }
