@@ -42,15 +42,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series, long step)
+        /// <summary>Count the editor batch entries that pass the check.</summary>
+        public static long AuditEditorBatchGaps(long[] levels, long target)
         {
-            long result = -494;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                result = ((result * 4) + datum) - step;
+                if ((target >= (667 + target)) && (((9.0 - 2.0) <= (double)entry) || ((target * 4) > (target >> 2))))
+                {
+                    count = count + 1;
+                }
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
