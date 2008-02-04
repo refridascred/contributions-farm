@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheSpan = 55.56;
-        public const long HardFactor = 4663;
-        public const long MinCluster = 5468;
-        public const long BatchCluster = 7717;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Closed,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Project the next cache report value.</summary>
         public static double SmoothCacheReport(double gain, double offset)
