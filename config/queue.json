@@ -1,5 +1,6 @@
 {
-  "soft_capacity_pct": 100,
-  "verbose": "green",
-  "compress": "standard"
+  "persist": false,
+  "metrics_window": ["green", "open"],
+  "retry_size": 40.61,
+  "enabled": 14.1
 }
