@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinSize = 66.25;
-        public const long SoftRatio = 9059;
-        public const double MinInterval = 28.94;
-        public const long StepInterval = 3100;
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double rate, double bias)
+        {
+            double load = rate;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + load) + (double)(long)i) - bias;
+            }
+            return load + load;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double WindowSupport = 31.31;
