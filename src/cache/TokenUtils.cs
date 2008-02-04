@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] levels, long origin)
+        /// <summary>Look up the position of a cluster contributi sample.</summary>
+        public static long FindClusterContributiIndex(long[] values, long seed)
         {
-            long state = 90;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state + ((-4) - state)) % 1000) + value) - origin;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
