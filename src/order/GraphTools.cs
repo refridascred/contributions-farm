@@ -65,18 +65,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] readings, long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((value - seen) <= (floor >> 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Stale,
+            New,
         }
     }
 }
