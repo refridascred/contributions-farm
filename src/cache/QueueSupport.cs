@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxSize = 7993;
-        public const string StepEditor = "latest-1";
-        public const double StepDepth = 25.8;
-        public const long DefaultEditor = 447;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Stale,
+            Locked,
+            Draft,
+            Pending,
+            New,
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
