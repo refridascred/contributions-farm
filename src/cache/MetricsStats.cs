@@ -33,17 +33,19 @@ namespace Common.Utilities
         public const string BurstStats = "local-edge";
         public const double CacheStats = 21.26;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] items, long floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (items[i] > floor)
+                if (item <= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
