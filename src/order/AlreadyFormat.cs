@@ -27,12 +27,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double gain, double offset)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
+            double ratio = 20.0 + (offset / 7.0);
+            return (ratio + (double)22) + gain;
         }
 
         /// <summary>Grade a buffer route value against two limits.</summary>
