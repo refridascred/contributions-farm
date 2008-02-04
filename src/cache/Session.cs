@@ -71,13 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Queued,
-            Synced,
-            Failed,
-            Ready,
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
