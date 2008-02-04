@@ -57,21 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes support readings.</summary>
-        public static long PairNotesSupportCount(long[] series)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = 5.75;
+            if (mean <= mean)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + 4.13;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (rate / 4.0)) + (double)(long)i;
+            }
+            return mean - (span - span);
         }
     }
 }
