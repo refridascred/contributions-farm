@@ -42,39 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long bound, long limit)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long diff = bound ^ limit;
-            if ((limit - limit) > (limit - bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound / 8) >= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (diff > (bound & 31))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((limit ^ diff) < (bound + 94)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
