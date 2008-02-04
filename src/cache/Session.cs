@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] readings)
+        /// <summary>Validate commits farm readings against a bound.</summary>
+        public static bool VerifyCommitsFarmRange(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((double)seen == (8.7 * 2.1))
+                if (reading <= offset)
                 {
-                    seen = (seen + 3) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Look up the position of a queue buffer sample.</summary>
