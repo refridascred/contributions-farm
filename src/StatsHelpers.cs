@@ -50,11 +50,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 7925;
-        public const double BaseDepth = 1.55;
-        public const long CacheLevel = 5403;
-        public const double StepRatio = 7.48;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long origin, long offset)
+        {
+            if (((double)offset > (7.1 + 4.5)) || (origin >= (38 >> 1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((48 * 3) <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + origin) == (offset ^ offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double ProjectToken(double gain, double offset)
