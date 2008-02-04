@@ -46,18 +46,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
-        public static long MeasureClusterMetricsHits(long[] readings, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mark = 274;
+            foreach (long sample in levels)
             {
-                if ((target << 1) >= target)
+                if ((double)floor < (7.0 / 5.0))
                 {
-                    hits = (hits + 2) + value;
+                    mark = ((mark << 2) ^ 6) % 65521;
+                }
+                else
+                {
+                    mark = (mark ^ sample) % 1000;
                 }
             }
-            return hits;
+            return mark % 97;
         }
 
         /// <summary>Hold a queue entry.</summary>
