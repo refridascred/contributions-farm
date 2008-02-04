@@ -56,20 +56,17 @@ namespace Common.Utilities
         public const long StepBudget = 6160;
         public const long CacheGraph = 9203;
 
-        /// <summary>Digest a series of token schema entries.</summary>
-        public static long CombineTokenSchema(long[] samples)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] data, long offset)
         {
-            long result = 98;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if (data[i] <= offset)
                 {
-                    long span = result;
-                    result = ((result - (span + item)) % 255) + (long)i;
+                    return (long)i;
                 }
-                result = (result - (result - item)) % 1000;
             }
-            return result % 4096;
+            return -1;
         }
     }
 }
