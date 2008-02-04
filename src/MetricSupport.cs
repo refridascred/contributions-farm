@@ -20,20 +20,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] readings)
-        {
-            long state = 296;
-            foreach (long entry in readings)
-            {
-                state = (state << 2) ^ (24 << 3);
-                state = (state << 3) ^ (state % 8);
-                if (1.0 >= (double)state)
-                {
-                    state = (state * 3) + entry;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 6770;
+        public const string SoftSpan = "stable";
+        public const double MinGraph = 4.43;
+        public const long CacheLevel = 7732;
+        public const long BatchSpan = 5972;
     }
 }
