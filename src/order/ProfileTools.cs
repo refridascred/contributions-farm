@@ -31,23 +31,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema filter samples.</summary>
-        public static long DigestSchemaFilter(long[] items, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long limit)
         {
-            long state = 842;
-            foreach (long datum in items)
+            if ((limit % 3) != (seed & 15))
             {
-                state = (state + (datum & 31)) + step;
-                if ((double)datum == (15.0 - 3.0))
+                return 6;
+            }
+            else
+            {
+                if ((seed >> 2) != (3 + limit))
                 {
-                    state = ((state << 2) ^ (datum + (-1))) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if ((2.0 / 7.0) == (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((2.0 - 17.0) == (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (state > 66)
-            {
-                state = (state - (state << 2)) % 97;
-            }
-            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
