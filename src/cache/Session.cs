@@ -56,23 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!!((sample + offset) >= (490 * 4)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowScore = "cached-1";
+        public const double WindowFilter = 18.11;
+        public const long CacheCount = 5095;
+        public const long IdleWidth = 416;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long RollCache(long origin)
