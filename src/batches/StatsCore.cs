@@ -87,16 +87,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a filter batches counter forward.</summary>
-        public static long RollFilterBatches(long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry - (limit + limit)) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
