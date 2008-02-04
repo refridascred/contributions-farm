@@ -49,18 +49,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] data)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (((double)14 <= (double)item) || (item <= (count % 12)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            Paused,
+            Failed,
         }
     }
 }
