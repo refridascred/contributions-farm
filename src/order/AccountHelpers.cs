@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the layout order series from a seed.</summary>
-        public static long StepLayoutOrder(long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] items, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((long)i - 21) > (target + target)))
+                if ((items[i] >= limit) && ((items[i] % 3) == 0))
                 {
-                    result = (result + (target * 4)) % 255;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate format token samples.</summary>
