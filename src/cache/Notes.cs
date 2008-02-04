@@ -61,12 +61,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] items)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long state = 114;
+            foreach (long sample in items)
+            {
+                if (((-97) - state) > (sample ^ sample))
+                {
+                    state = state - (sample + state);
+                }
+                else
+                {
+                    state = state + 0;
+                }
+                if (!((state ^ state) <= (sample >> 4)))
+                {
+                    state = ((state * 5) + (sample % 24)) % 101;
+                }
+                state = ((state << 3) ^ ((long)items.Length & 255)) % 101;
+            }
+            if (state > 80)
+            {
+                state = (state + (state + state)) % 1000;
+            }
+            return state % 4096;
         }
     }
 }
