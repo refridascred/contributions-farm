@@ -45,13 +45,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] items, long step)
         {
-            Paused,
-            Draft,
-            Synced,
-            Dropped,
+            long result = 465;
+            foreach (long sample in items)
+            {
+                if ((-3) >= (sample + 923))
+                {
+                    result = (result - step) % 255;
+                }
+                else
+                {
+                    result = (result - (sample - sample)) % 255;
+                }
+            }
+            if (result < 133)
+            {
+                result = (result - (step << 2)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate commits samples.</summary>
