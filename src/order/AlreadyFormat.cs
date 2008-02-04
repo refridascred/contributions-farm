@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] data, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] data)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long state = 5;
+            foreach (long sample in data)
             {
-                if ((count / 9) != (reading + count))
+                state = ((state << 3) ^ 3) % 255;
+                if (((-956) + (long)data.Length) == (885 ^ sample))
                 {
-                    count = (count + 2) + bound;
+                    state = (state << 2) ^ (state + sample);
                 }
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Hold a token snapshot.</summary>
