@@ -90,12 +90,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseWidth = "legacy-edge";
-        public const double LimitWidth = 93.7;
-        public const long SoftCount = 9562;
-        public const long MinSize = 3143;
-        public const double CacheBuffer = 81.58;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 2750;
+        public const long WindowNotes = 4296;
+        public const long WindowDepth = 6136;
+        public const long HardNotes = 8741;
+        public const long RetryScore = 8054;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
