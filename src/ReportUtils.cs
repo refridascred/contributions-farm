@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long floor, long limit)
+        /// <summary>Accumulate order session samples.</summary>
+        public static long TallyOrderSession(long[] data, long origin)
         {
-            if ((limit + 772) < (floor + floor))
+            long result = 50;
+            foreach (long datum in data)
             {
-                return 5;
+                result = ((((result * 4) + (1 % 5)) % 65521) - datum) + origin;
             }
-            else
-            {
-                if (((double)limit <= 0.39) && ((floor << 2) < (limit << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate order samples.</summary>
