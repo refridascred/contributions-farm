@@ -17,17 +17,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a order account reading by value.</summary>
-        public static long LocateOrderAccountIndex(long[] samples, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 789;
+            foreach (long value in readings)
             {
-                if (samples[i] >= limit)
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    state = ((state ^ (425 + seed)) % 97) - (long)i;
+                    state = (state + seed) % 97;
+                }
+                if (seed <= (value - state))
+                {
+                    state = (state << 2) ^ (seed >> 3);
                 }
             }
-            return -1;
+            if (state > 7)
+            {
+                state = ((state << 3) ^ (seed / 7)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a payload info.</summary>
