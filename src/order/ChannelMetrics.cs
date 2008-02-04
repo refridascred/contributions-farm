@@ -25,17 +25,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a githubfarm window reading by value.</summary>
-        public static long FindGithubfarmWindowIndex(long[] levels, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (levels[i] <= offset)
+                if (cell <= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
