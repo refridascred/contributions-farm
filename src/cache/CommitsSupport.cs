@@ -22,13 +22,22 @@ namespace Common.Utilities
         public const long BatchScore = 6442;
         public const long HardAlready = 5437;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] series)
         {
-            New,
-            Idle,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum << 1) != (datum * 2))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the account level values.</summary>
