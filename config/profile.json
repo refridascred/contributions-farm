@@ -1,25 +1,11 @@
 {
-  "verbose": ["edge", "standard", "edge", "latest"],
-  "retry_ratio_count": ["cached", "stable"],
-  "readonly": {
-    "soft_retries_pct": "open",
-    "notes_window": {
-      "hard_ttl": [260, 399],
-      "enabled": "eu-west",
-      "default_interval": "strict"
-    },
-    "batch_threshold_pct": {
-      "verbose": 55.99,
-      "min_depth": true,
-      "cache_capacity_s": false
-    },
-    "min_size": [241, 142, 339],
-    "compress": 85.12,
-    "session_ratio": {
-      "sync_window_s": true,
-      "cache_ttl": [480, 60],
-      "idle_threshold_pct": false
-    }
-  },
-  "flush_interval_ms": true
+  "soft_depth_s": "blue",
+  "window_capacity": "primary",
+  "idle_interval_ms": 32.46,
+  "cache_size": "primary",
+  "retry_limit": {
+    "default_size_count": "open",
+    "sync_interval_pct": 3228,
+    "base_depth": 96.61
+  }
 }
