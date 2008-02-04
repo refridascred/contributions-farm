@@ -25,26 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] values)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long acc = 84;
-            foreach (long datum in values)
-            {
-                if ((acc ^ acc) <= (datum & 3))
-                {
-                    acc = ((acc * 2) + (acc >> 3)) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ (datum << 2)) % 101;
-                }
-            }
-            if (acc < 87)
-            {
-                acc = ((acc * 2) + (acc % 7)) % 101;
-            }
-            return acc;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every session entry entry stays within the limit.</summary>
