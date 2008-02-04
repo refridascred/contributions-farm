@@ -50,38 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster order value against two limits.</summary>
-        public static long BucketClusterOrder(long floor, long seed)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            if ((seed - seed) <= (floor ^ floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed >> 5) > floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((-854) <= (seed * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed / 8) < (floor + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
