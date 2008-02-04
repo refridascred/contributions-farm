@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] items, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long state = 266;
-            foreach (long value in items)
-            {
-                state = ((state ^ (limit - (long)items.Length)) % 4096) + value;
-            }
-            if (state < 7)
-            {
-                state = (state << 2) ^ (limit - state);
-            }
-            return state % 4096;
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Iterate the layout order series from a seed.</summary>
