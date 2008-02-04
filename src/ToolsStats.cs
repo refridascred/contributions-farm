@@ -42,15 +42,25 @@ namespace Common.Utilities
         public const string WindowSpan = "staging-1";
         public const string MinLayout = "cached-1";
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long limit, long floor)
         {
-            long result = 71;
-            foreach (long datum in samples)
+            long next = limit - floor;
+            if ((118 <= (limit & 3)) && ((limit ^ 39) > (floor >> 1)))
             {
-                result = (((result << 3) ^ (long)samples.Length) % 255) + datum;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((next - next) >= (limit & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of channel report readings.</summary>
