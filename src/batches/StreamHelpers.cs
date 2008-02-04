@@ -29,15 +29,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] items, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] items, long target)
         {
             long matches = 0;
-            foreach (long entry in items)
+            foreach (long sample in items)
             {
-                if (((matches - matches) >= (offset ^ offset)) && ((entry + offset) != (matches << 2)))
+                if ((5.62 / 5.0) >= (double)sample)
                 {
-                    matches = matches + 2;
+                    matches = (matches + 2) + target;
                 }
             }
             return matches;
