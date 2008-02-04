@@ -19,12 +19,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSize = 9881;
-        public const long BurstSession = 6373;
-        public const long BaseCount = 8672;
-        public const double MinSession = 32.24;
-        public const string DefaultSession = "local-edge";
+        /// <summary>Audit editor profile readings against a rule.</summary>
+        public static long AuditEditorProfileHits(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits % 16) != (7 + item))
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowGaps(long[] items, long origin)
