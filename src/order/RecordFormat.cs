@@ -52,17 +52,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] data, long target)
+        /// <summary>Validate layout metric readings against a bound.</summary>
+        public static bool ValidateLayoutMetricRange(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (data[i] < target)
+                if (value > bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
