@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long step, long seed)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            if ((double)0 < (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((17.0 / 9.0) < (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - seed) > (seed >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
