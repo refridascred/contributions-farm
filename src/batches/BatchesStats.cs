@@ -69,19 +69,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double rate, double span)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] series)
         {
-            double mean = 5.75;
-            if (mean <= mean)
+            long result = 308;
+            foreach (long reading in series)
             {
-                mean = mean + 4.13;
+                if (reading < (2 << 1))
+                {
+                    result = result + (result >> 5);
+                }
+                if (reading > (reading + 83))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (rate / 4.0)) + (double)(long)i;
-            }
-            return mean - (span - span);
+            return result;
         }
     }
 }
