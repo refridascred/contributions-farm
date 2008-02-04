@@ -34,23 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] series, long offset)
         {
-            long anchor = 13;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long value in series)
             {
-                anchor = (anchor * 2) + datum;
-                if (((datum + anchor) == (anchor & 15)) || ((datum * 3) == (datum << 2)))
+                if (value <= offset)
                 {
-                    anchor = anchor ^ (-96);
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor > 74)
-            {
-                anchor = (anchor * 4) + (anchor / 6);
-            }
-            return anchor % 65521;
+            return stale;
         }
 
         /// <summary>Count the editor batch entries that pass the check.</summary>
