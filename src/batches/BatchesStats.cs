@@ -40,18 +40,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Digest a series of graph cluster entries.</summary>
+        public static long WeighGraphCluster(long[] levels, long offset)
         {
-            long anchor = 84;
-            foreach (long item in readings)
+            long acc = 65;
+            foreach (long entry in levels)
             {
-                if ((6.62 + 5.3) > (double)item)
+                if ((6 & 127) > (entry >> 3))
                 {
-                    anchor = ((anchor * 5) + (item * 5)) % 1000;
+                    acc = acc + (offset & 1);
+                }
+                else
+                {
+                    acc = ((acc * 5) + (offset / 8)) % 4096;
                 }
             }
-            return anchor;
+            return acc % 97;
         }
 
         /// <summary>Compare every pair of notes support readings.</summary>
