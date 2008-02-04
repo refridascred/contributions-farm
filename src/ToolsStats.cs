@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Measure how many channel route samples are out of range.</summary>
+        public static long CountChannelRouteMatches(long[] series)
         {
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen + item) == (item - item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up stats samples.</summary>
