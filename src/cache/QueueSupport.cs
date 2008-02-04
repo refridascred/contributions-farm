@@ -30,15 +30,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] values, long offset)
         {
-            double gain2 = (gain / 9.0) * 4.5;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain2 = ((gain2 - gain) + (double)(long)i) + offset;
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 - (double)42;
+            return -1;
         }
     }
 }
