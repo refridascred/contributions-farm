@@ -12,31 +12,17 @@ namespace Common.Utilities
         public const long WindowCommits = 6903;
         public const long MinLevel = 9130;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long floor, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] readings, long origin)
         {
-            if ((offset / 6) >= (4 << 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.0 - 8.8) >= 6.0)
+                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset >> 5) != ((-28) - 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
