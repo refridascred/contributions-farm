@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultCount = 6443;
-        public const long WindowEntry = 6973;
-        public const long BatchEntry = 1210;
-        public const double MinLevel = 49.3;
-        public const long SoftScore = 2646;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultInterval = "stable-1";
+        public const long DefaultStream = 3238;
+        public const double StepStream = 97.55;
+        public const string WindowLevel = "local-edge";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetrySpan = 1862;
