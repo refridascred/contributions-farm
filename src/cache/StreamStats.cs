@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long MinTools = 5934;
         public const long StepTools = 7092;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitSpan = 3812;
-        public const long IdleQueue = 1543;
-        public const string DefaultLevel = "local-edge";
-        public const long StepInterval = 4368;
-        public const long MaxRatio = 38;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long FindToolsIndex(long[] data, long target)
