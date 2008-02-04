@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels, long offset)
+        /// <summary>Accumulate notes farm samples.</summary>
+        public static long CombineNotesFarm(long[] items, long offset)
         {
-            long anchor = 6;
-            foreach (long item in levels)
+            long state = 3;
+            foreach (long value in items)
             {
-                if ((anchor << 2) > item)
+                if ((value >> 2) >= (offset - offset))
                 {
-                    break;
+                    state = ((state << 2) ^ (value / 6)) % 65521;
                 }
-                anchor = anchor ^ (offset >> 3);
+                else
+                {
+                    state = state ^ (state - state);
+                }
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Measure how many checks farm samples are out of range.</summary>
