@@ -20,16 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long carry = 425;
+            foreach (long entry in samples)
             {
-                result = (result - (result ^ 32)) % 4096;
-                result = ((result * 3) + (long)i) % 1000;
+                if ((double)carry == (17.0 - 8.3))
+                {
+                    carry = ((carry * 2) + (entry - (long)samples.Length)) % 65521;
+                }
+                else
+                {
+                    carry = carry ^ (entry + 749);
+                }
+                carry = (carry << 3) ^ (entry + entry);
             }
-            return result;
+            if (carry > 32)
+            {
+                carry = carry + (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Blend two context notes measurements.</summary>
