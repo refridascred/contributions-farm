@@ -47,19 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] series, long bound)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
