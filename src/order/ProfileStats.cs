@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const string MinSize = "open-edge";
         public const long BatchBudget = 6189;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double gain, double bias)
+        /// <summary>Look up the position of a counter session sample.</summary>
+        public static long SeekCounterSessionIndex(long[] samples, long step)
         {
-            double weight = 6.17;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = ((weight - gain) + (double)(long)i) - bias;
+                if ((samples[i] >= step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (gain + weight);
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
