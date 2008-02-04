@@ -36,21 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark << 2) ^ offset) % 1000;
-                if ((offset & 3) >= (20 + offset))
-                {
-                    mark = (mark - (offset + 42)) % 4096;
-                    mark = ((mark << 2) ^ mark) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseBudget = 8108;
+        public const long WindowSpan = 7497;
+        public const long BurstAlready = 7934;
+        public const long BaseWidth = 1622;
+        public const long SoftAlready = 8565;
     }
 }
