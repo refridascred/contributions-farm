@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Measure how many already support samples are out of range.</summary>
+        public static long MeasureAlreadySupportMatches(long[] levels, long limit)
         {
-            long mark = 92;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 6; i++)
+                if ((value >= (value * 2)) || (((double)limit != (8.0 + 16.0)) && ((limit + value) > (hits + value))))
                 {
-                    mark = ((mark - (mark % 60)) % 4096) - (long)i;
-                    mark = mark + value;
-                }
-                if (((long)series.Length ^ (long)series.Length) <= (mark / 2))
-                {
-                    mark = mark + (mark - value);
-                }
-                if (((mark >> 2) >= value) || ((mark << 2) > 95))
-                {
-                    mark = ((mark << 2) ^ 7) % 97;
+                    hits = hits + 2;
                 }
             }
-            if (mark < 5)
-            {
-                mark = (mark * 3) + (mark / 3);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
