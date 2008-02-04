@@ -1,15 +1,5 @@
 {
-  "dry_run": {
-    "max_ratio_s": {
-      "burst_interval": false,
-      "checks_interval": "primary",
-      "max_size_ms": 63
-    },
-    "graph_window": 100,
-    "dry_run": 81.42
-  },
-  "readonly": 82.49,
-  "warm_delay_ms": "fallback",
-  "metrics_size": 30,
-  "verbose": true
+  "poll_retries_ms": "eu-west",
+  "sync_interval_s": 17,
+  "retry_interval": 63.82
 }
