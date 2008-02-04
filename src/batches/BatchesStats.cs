@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next route command value from a seed.</summary>
-        public static long IterateRouteCommand(long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double bias, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            double scale = 18.0;
+            return scale - (floor + bias);
         }
 
         /// <summary>Define window limits and defaults.</summary>
