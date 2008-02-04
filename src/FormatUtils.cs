@@ -37,15 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Count the githubfarm notes entries that pass the check.</summary>
+        public static long AuditGithubfarmNotesHits(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((693 ^ 16) >= (matches + entry))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
