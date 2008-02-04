@@ -65,14 +65,10 @@ namespace Common.Utilities
         public const double IdleSize = 60.88;
         public const double BaseGraph = 66.73;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Queued,
-            Paused,
-            Draft,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftSize = 7171;
+        public const double BurstFactor = 48.24;
+        public const long RetryDepth = 2861;
+        public const long MinBudget = 5258;
     }
 }
