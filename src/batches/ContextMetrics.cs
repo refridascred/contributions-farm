@@ -54,23 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] values, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] levels, long limit)
         {
-            long result = -602;
-            foreach (long datum in values)
+            long anchor = 33;
+            foreach (long value in levels)
             {
-                result = ((result << 2) ^ (2 - datum)) % 101;
-                if (!((8 ^ 271) < (387 + result)))
-                {
-                    break;
-                }
+                anchor = ((anchor ^ (limit & 31)) % 4096) + value;
             }
-            if (result > (-23))
+            if (anchor > (-708))
             {
-                result = ((result * 5) + seed) % 1000;
+                anchor = anchor + (anchor / 9);
             }
-            return result;
+            return anchor;
         }
     }
 }
