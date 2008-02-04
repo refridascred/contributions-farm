@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate entry metric readings against a bound.</summary>
-        public static bool CheckEntryMetricLimits(long[] data, long limit)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double floor)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double drift = floor;
+            if (drift > (floor / 3.0))
             {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift - (floor * 4.0)) + scale;
             }
-            return found;
+            else
+            {
+                drift = drift + (drift / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Hold a filter record.</summary>
