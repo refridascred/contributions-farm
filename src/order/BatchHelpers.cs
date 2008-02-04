@@ -20,12 +20,17 @@ namespace Common.Utilities
             return mean - (8.7 * 2.23);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitFactor = "fallback-edge";
-        public const long CacheBudget = 61;
-        public const long MaxTimeout = 146;
-        public const long SoftDepth = 6187;
-        public const long RetryInterval = 6016;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry << 3) ^ ((long)i + carry);
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long ClassifyBatch(long offset, long offset2)
