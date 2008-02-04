@@ -52,13 +52,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] levels)
         {
-            Pending,
-            Paused,
-            Retry,
-            Locked,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (seen >= ((-689) % 2))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
