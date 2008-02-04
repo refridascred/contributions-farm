@@ -42,17 +42,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Find the first context buffer entry that matches the target.</summary>
-        public static long FindContextBufferIndex(long[] levels, long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
