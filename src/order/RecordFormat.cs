@@ -54,11 +54,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Derive the next stream record value from a seed.</summary>
+        public static long RollStreamRecord(long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)floor <= (7.0 * 7.4))
+                {
+                    carry = (carry ^ (floor % 100)) % 255;
+                    carry = ((carry << 3) ^ (long)i) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many route metric samples are out of range.</summary>
