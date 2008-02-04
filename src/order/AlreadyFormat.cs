@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 5288;
-        public const long LimitInterval = 8629;
-        public const double BaseMetric = 51.13;
-        public const long BaseSize = 1011;
-        public const long SoftSize = 8268;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] series)
+        {
+            long anchor = 183;
+            foreach (long entry in series)
+            {
+                if ((double)entry < 2.0)
+                {
+                    anchor = ((anchor << 2) ^ entry) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (entry + entry)) % 255;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
