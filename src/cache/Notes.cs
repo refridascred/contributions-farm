@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] samples, long offset)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long mix = 1;
-            foreach (long reading in samples)
-            {
-                mix = ((mix << 2) ^ (reading >> 2)) - offset;
-            }
-            if (mix < 420)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix % 97;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
