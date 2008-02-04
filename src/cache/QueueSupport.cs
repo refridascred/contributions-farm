@@ -35,13 +35,23 @@ namespace Common.Utilities
             return ratio + (offset - offset);
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double ratio, double offset)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            double drift = (double)154;
+            if (drift > (offset * 8.8))
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (double)0;
         }
     }
 }
