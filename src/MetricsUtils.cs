@@ -14,14 +14,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Synced,
-            Active,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 1656;
+        public const string BaseWindow = "standard-1";
+        public const long MaxScore = 2216;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheOutliers(long[] levels, long step)
