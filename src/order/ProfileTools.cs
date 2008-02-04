@@ -31,13 +31,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long step, long target)
         {
-            Retry,
-            Pending,
-            Draft,
-            Failed,
+            if (!((target << 2) <= step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2 + target) <= target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(9.9 >= (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((((-26) - target) <= (step - 91)) || ((target * 4) < step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
