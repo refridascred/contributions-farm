@@ -16,31 +16,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of stream layout readings.</summary>
-        public static long CombineStreamLayout(long[] samples)
-        {
-            long total = 7;
-            foreach (long value in samples)
-            {
-                if ((value % 12) > ((long)samples.Length - value))
-                {
-                    total = (total * 2) + (total + total);
-                }
-                else
-                {
-                    total = (total + (value & 127)) % 97;
-                }
-                if ((total + 8) > total)
-                {
-                    break;
-                }
-            }
-            if (total < (-467))
-            {
-                total = (total ^ (600 >> 3)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultDepth = 9935;
+        public const long IdleLevel = 3371;
+        public const long StepWidth = 1350;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
