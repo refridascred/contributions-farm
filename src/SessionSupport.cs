@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] readings, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] items)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long score = 775;
+            foreach (long sample in items)
             {
-                if ((((double)(long)readings.Length == (double)bound) || ((seen + 3) <= (bound / 8))) || (((item << 2) == (45 % 24)) || ((item / 9) >= seen)))
-                {
-                    seen = seen + 2;
-                }
+                score = (score ^ sample) % 255;
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Project the next record value.</summary>
