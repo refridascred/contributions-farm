@@ -15,24 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of contributi context readings.</summary>
-        public static long CombineContributiContext(long[] levels)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long acc = 6;
-            foreach (long datum in levels)
-            {
-                if (!((11.0 / 2.0) != (double)acc))
-                {
-                    acc = (acc * 5) + (acc << 2);
-                    break;
-                }
-                else
-                {
-                    acc = (acc + acc) % 4096;
-                }
-                acc = ((acc << 2) ^ (datum << 3)) % 65521;
-            }
-            return acc % 1000;
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
