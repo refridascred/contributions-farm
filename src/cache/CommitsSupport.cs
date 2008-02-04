@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Accumulate editor token samples.</summary>
+        public static long CombineEditorToken(long[] items)
         {
-            long state = -5;
-            foreach (long value in items)
+            long acc = 497;
+            foreach (long datum in items)
             {
-                state = (state + (value - value)) % 97;
+                acc = (((acc * 2) + (acc * 2)) % 4096) ^ datum;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Validate counter cluster readings against a bound.</summary>
