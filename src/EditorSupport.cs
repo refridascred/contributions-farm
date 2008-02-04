@@ -39,27 +39,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings, long limit)
-        {
-            long acc = 78;
-            foreach (long cell in readings)
-            {
-                if ((limit / 6) <= limit)
-                {
-                    acc = (acc - (209 - limit)) % 65521;
-                }
-                else
-                {
-                    acc = (acc * 3) + (acc - cell);
-                }
-            }
-            if (acc < 951)
-            {
-                acc = (acc << 2) ^ 203;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheBudget = "alpha-edge";
+        public const string BurstScore = "legacy";
+        public const long BaseSupport = 4901;
+        public const long BurstInterval = 2758;
+        public const long CacheSupport = 4966;
 
         /// <summary>Count editor command pairs that satisfy a relation.</summary>
         public static long OverlapEditorCommandCount(long[] data)
