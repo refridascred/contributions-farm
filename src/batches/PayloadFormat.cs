@@ -20,11 +20,20 @@ namespace Common.Utilities
         public const long CacheSize = 4473;
         public const long StepCluster = 4306;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 1024;
-        public const string DefaultTools = "latest-1";
-        public const long CacheTools = 6631;
-        public const long StepTools = 8223;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TotalSchema(long[] items, long limit)
