@@ -75,22 +75,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit queue counter readings against a rule.</summary>
-        public static long AuditQueueCounterHits(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long sum = -1;
+            foreach (long cell in data)
             {
-                if (!(tally < 47))
+                sum = (sum ^ (cell - cell)) % 4096;
+                if (!(sum >= (cell - sum)))
                 {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Iterate the stream batches series from a seed.</summary>
