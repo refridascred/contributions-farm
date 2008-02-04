@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double rate, double span)
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            double gain = 1.9;
+            if (gain > span)
+            {
+                gain = gain + (rate - rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (gain / 8.0)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Accumulate profile samples.</summary>
