@@ -1,9 +1,7 @@
 # entry settings
-checks_size: stable
-cache_timeout_s:
-  persist: true
-  soft_interval_count: true
-  sync_window_s: 1024
-  cache_ratio_s: latest
-base_ratio: 250
-support_threshold: 9942
+strict: 65.27
+poll_limit_pct: 4220
+cache_capacity_pct: fallback
+layout_delay: 7946
+soft_retries: 2938
+githubfarm_limit: primary
