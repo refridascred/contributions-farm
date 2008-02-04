@@ -28,22 +28,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((((long)values.Length + sample) > 640) && (((double)tally < (4.4 / 8.0)) || ((double)tally != (9.88 + 8.9))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 3758;
+        public const long BatchFilter = 3691;
+        public const long StepWidth = 1949;
+        public const long RetryFilter = 2617;
+        public const double BurstFilter = 16.9;
     }
 }
