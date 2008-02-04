@@ -57,13 +57,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Compare every pair of channel batch readings.</summary>
+        public static long CompareChannelBatchCount(long[] data)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
