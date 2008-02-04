@@ -78,16 +78,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 2) + offset) % 1000;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchRatio = 1504;
+        public const string HardInterval = "local-edge";
+        public const long CacheInterval = 4009;
     }
 }
