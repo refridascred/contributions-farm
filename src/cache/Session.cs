@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many report already samples are out of range.</summary>
-        public static long TallyReportAlreadyOutliers(long[] levels)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((277 + seen) > (datum / 9))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double ratio2 = (ratio / 7.0) * 3.35;
+            return (ratio2 - (double)2) + bias;
         }
 
         /// <summary>Rank payload contributi input into a small class.</summary>
