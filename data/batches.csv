@@ -1,9 +1,8 @@
-id,level,rank
-1,799,221
-2,79,27.34
-3,751,246
-4,fallback,665
-5,602,staging
-6,68.97,standard
-7,local,906
-8,66.15,eu-west
+id,count,token,region,score
+1,202,167,cached,staging
+2,legacy,394,staging,5
+3,87.02,746,stable,352
+4,57,34.26,eu-west,18.78
+5,521,standard,282,31.03
+6,49.85,88,274,821
+7,92.07,16,65.16,fallback
