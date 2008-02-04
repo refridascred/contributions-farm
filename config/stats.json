@@ -1,7 +1,7 @@
 {
-  "enabled": [153, 21, 307],
-  "tools_capacity": 10.81,
-  "sync_window": "green",
-  "base_size_ms": 18.69,
-  "compress": "staging"
+  "flush_retries": "legacy",
+  "window_size": "latest",
+  "sync_depth_ms": true,
+  "batch_depth": "legacy",
+  "strict": ["edge", "primary"]
 }
