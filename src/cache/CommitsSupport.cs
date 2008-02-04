@@ -42,18 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] levels, long bound)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            long score = 34;
-            foreach (long entry in levels)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((6.0 / 2.0) <= (double)entry)
+                if (!((bound >= (990 - (long)i)) && ((double)anchor <= 9.7)))
                 {
-                    score = (score ^ (entry << 2)) - bound;
+                    anchor = (anchor ^ (bound + bound)) % 255;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
