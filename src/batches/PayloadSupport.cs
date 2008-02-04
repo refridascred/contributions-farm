@@ -15,18 +15,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] data)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if (limit < (limit2 / 6))
             {
-                if ((double)datum < (double)seen)
+                return 2;
+            }
+            else
+            {
+                if (1.66 < (double)limit)
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (limit2 > limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
