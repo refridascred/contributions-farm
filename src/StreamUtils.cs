@@ -71,21 +71,11 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Compare every pair of graph cluster readings.</summary>
-        public static long PairGraphClusterCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstCount = 7232;
+        public const string BatchBudget = "legacy-edge";
+        public const string BaseTools = "local-edge";
+        public const double MinTools = 68.3;
+        public const long HardTools = 2781;
     }
 }
