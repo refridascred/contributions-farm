@@ -26,16 +26,12 @@ namespace Common.Utilities
             return gain2 - (gain + 7.87);
         }
 
-        /// <summary>Iterate the metric graph series from a seed.</summary>
-        public static long StepMetricGraph(long target)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 2) + (383 & 63)) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Define context limits and defaults.</summary>
