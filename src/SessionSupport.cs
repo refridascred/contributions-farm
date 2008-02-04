@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] items)
         {
-            Retry,
-            Ready,
-            Synced,
-            Idle,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample >> 3) == (tally + sample))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
