@@ -27,15 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a route cluster counter forward.</summary>
-        public static long DeriveRouteCluster(long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] series, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (9.01 > (double)cell)
+                {
+                    seen = (seen + 1) + target;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
