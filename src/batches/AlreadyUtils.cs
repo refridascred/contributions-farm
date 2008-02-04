@@ -29,38 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a layout record pair into a bucket.</summary>
-        public static long ClassifyLayoutRecord(long target, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long floor)
         {
-            if ((target / 7) > (target + 6))
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
+                sum = ((sum * 5) + ((long)i - sum)) % 255;
+                sum = sum ^ (878 + sum);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((target % 8) >= (target * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((50 ^ 619) == (target & 15)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)offset > (3.85 + 5.0)) || (target >= (target / 7)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
