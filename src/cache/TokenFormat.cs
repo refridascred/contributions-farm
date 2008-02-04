@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((offset ^ value) <= (value ^ seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cache mode values.</summary>
