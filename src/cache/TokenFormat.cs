@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] series, long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading - 9) < offset)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
