@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
