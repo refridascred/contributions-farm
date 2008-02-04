@@ -30,31 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long step)
+        /// <summary>Audit buffer cluster readings against a rule.</summary>
+        public static long CountBufferClusterOutliers(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((((long)i - 84) <= (anchor & 1)) || ((1.05 * 0.7) <= (double)step))
+                if ((817 & 63) == (value - tally))
                 {
-                    anchor = (anchor * 2) + 330;
-                    anchor = anchor + ((long)i % 3);
-                    continue;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    anchor = anchor + (anchor + step);
-                    anchor = ((anchor * 4) + (687 + step)) % 1000;
-                }
-                if ((double)step > (9.0 / 9.0))
-                {
-                    anchor = (anchor + (step % 3)) % 255;
-                }
-                anchor = ((anchor * 2) + step) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
