@@ -52,17 +52,25 @@ namespace Common.Utilities
         public const long BaseEntry = 3885;
         public const long LimitEntry = 2174;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] items, long seed)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (items[i] < seed)
+                if (((8 + 6) <= (offset - carry)) || (offset > (offset / 6)))
                 {
-                    return (long)i;
+                    carry = carry - offset;
+                    carry = (carry ^ ((long)i - carry)) % 65521;
                 }
+                if (((offset * 2) != (4 - offset)) && ((double)offset != (5.89 + 6.1)))
+                {
+                    carry = (carry - (carry * 4)) % 101;
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
