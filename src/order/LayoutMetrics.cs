@@ -13,24 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long offset, long target)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            if ((5.13 * 1.39) == (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((54 - 282) == (offset + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Retry,
+            Paused,
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the batch state values.</summary>
