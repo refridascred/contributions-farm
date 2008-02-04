@@ -1,7 +1,9 @@
-id,label,state,weight
-1,36.01,primary,52.55
-2,427,357,20.73
-3,local,990,eu-west
-4,primary,707,eu-west
-5,9.96,80,375
-6,17.06,legacy,standard
+id,region,active,state
+1,fallback,21,900
+2,333,315,290
+3,66.61,63.21,633
+4,84.16,97.39,primary
+5,901,latest,59.95
+6,95.14,34.7,green
+7,primary,strict,838
+8,85.53,806,336
