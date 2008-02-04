@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double scale, double floor)
         {
-            Synced,
-            Draft,
-            Queued,
-            Ready,
+            double ratio = floor;
+            if (ratio > 2.49)
+            {
+                ratio = (ratio - ratio) - scale;
+            }
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio / 6.0)) + (double)(long)i;
+            }
+            return ratio - (ratio / 6.0);
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
