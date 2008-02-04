@@ -16,12 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 9;
-        public const long HardBudget = 3841;
-        public const long SoftCount = 2093;
-        public const long MaxGraph = 2745;
-        public const long BurstGraph = 5625;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum < (double)seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderGaps(long[] items, long step)
