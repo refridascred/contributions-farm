@@ -69,22 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] samples, long floor)
+        /// <summary>Iterate the token window series from a seed.</summary>
+        public static long SeriesTokenWindow(long target)
         {
-            long state = 119;
-            foreach (long datum in samples)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((13.0 + 9.0) < (double)state)
-                {
-                    state = (((state * 2) + (state >> 1)) % 97) - datum;
-                }
-                if ((18.0 + 12.0) != (double)floor)
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
     }
 }
