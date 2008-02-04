@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support format readings against a rule.</summary>
-        public static long CountSupportFormatMatches(long[] data)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)hits >= 3.0)
-                {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
