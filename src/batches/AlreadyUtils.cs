@@ -43,18 +43,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already schema entries that pass the check.</summary>
-        public static long AuditAlreadySchemaOutliers(long[] readings, long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long span = seed - limit;
+            if ((limit + span) >= (span & 127))
             {
-                if ((cell + limit) <= (limit + cell))
+                return 1;
+            }
+            else
+            {
+                if ((seed - limit) <= (seed + limit))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - seed) >= (seed & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit >= (span * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a stats info.</summary>
