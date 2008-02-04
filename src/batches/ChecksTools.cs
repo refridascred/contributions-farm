@@ -46,17 +46,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] readings, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 1;
+            foreach (long cell in levels)
             {
-                if (readings[i] >= limit)
+                if ((8 > (floor >> 1)) || ((cell * 2) > (9 ^ 0)))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (cell >> 3)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor ^ anchor)) % 65521;
+                }
+                if ((floor << 2) > ((-600) / 6))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
     }
 }
