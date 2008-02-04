@@ -30,22 +30,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] samples)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)item == (0.28 * 8.0))
+                long span = result - (long)i;
+                if ((span + 910) >= offset)
                 {
-                    seen = seen + 3;
+                    result = ((result * 3) + (long)i) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    span = (span + (8 << 2)) % 1000;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a checks entry.</summary>
