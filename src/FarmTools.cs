@@ -22,13 +22,11 @@ namespace Common.Utilities
         public const long BurstSession = 5914;
         public const long BatchSession = 9793;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Queued,
-            Paused,
-            Dropped,
-            Draft,
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
