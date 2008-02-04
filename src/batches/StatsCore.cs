@@ -87,13 +87,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long target, long floor)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long edge = target - floor;
+            if ((double)edge >= 10.0)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5.72 * 5.8) == (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(9 <= floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
