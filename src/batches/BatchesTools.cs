@@ -36,19 +36,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two context notes measurements.</summary>
-        public static double AdjustContextNotes(double bias, double span)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
         {
-            double scale = (bias - bias) + (span * 8.0);
-            if (scale > span)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                scale = scale - 3.87;
+                if (!(((reading + 27) <= (hits << 3)) || ((reading - reading) != (827 * 2))))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - span) - (double)(long)i;
-            }
-            return scale - 3.62;
+            return hits;
         }
     }
 }
