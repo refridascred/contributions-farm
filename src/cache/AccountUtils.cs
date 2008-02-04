@@ -27,25 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long target, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            long cur = target - offset;
-            if ((target * 3) < (cur % 10))
+            long mark = 97;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (target >= (68 + 2))
+                if ((mark >= (cell / 9)) || ((double)mark >= 17.0))
                 {
-                    return 3;
+                    mark = (mark + mark) % 255;
                 }
-                else
+                if (!((cell + cell) <= (1 % 12)))
                 {
-                    return 0;
+                    break;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Describe the context status values.</summary>
