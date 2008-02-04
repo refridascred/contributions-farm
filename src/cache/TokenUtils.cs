@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] readings, long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if (!((81 * 4) <= seed2))
             {
-                if ((double)90 == (double)tally)
+                return 1;
+            }
+            else
+            {
+                if ((seed % 7) < seed)
                 {
-                    tally = ((tally + 2) + entry) - step;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
