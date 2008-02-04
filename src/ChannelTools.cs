@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double bias, double span)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            double weight = (double)112 + (6.2 + bias);
-            if (weight <= (double)4)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                weight = weight + (1.75 - span);
+                if (((origin - sum) <= sum) || (sum < (sum + sum)))
+                {
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return weight - (double)57;
+            return sum;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
