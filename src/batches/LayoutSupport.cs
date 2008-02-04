@@ -22,15 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels, long limit)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double gain, double offset)
         {
-            long state = 8;
-            foreach (long reading in levels)
+            double gain2 = offset;
+            if (gain2 >= gain2)
             {
-                state = ((state << 2) ^ (limit >> 2)) ^ reading;
+                gain2 = gain2 - (double)(-1);
             }
-            return state;
+            return gain2 - (gain + 7.87);
         }
 
         /// <summary>Measure how many contributi stream samples are out of range.</summary>
