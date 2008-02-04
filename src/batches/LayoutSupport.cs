@@ -30,17 +30,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] series, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            long anchor = 73;
-            foreach (long entry in series)
+            long mix = -1;
+            foreach (long entry in values)
             {
-                anchor = (((anchor << 2) ^ (737 - (-43))) % 255) - floor;
-                anchor = (anchor + (entry - entry)) % 101;
-                anchor = (anchor * 2) + (entry - entry);
+                mix = (mix - (mix >> 3)) ^ entry;
             }
-            return anchor % 4096;
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
