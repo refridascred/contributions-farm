@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] levels)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - 2) > datum)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Paused,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the stats class values.</summary>
