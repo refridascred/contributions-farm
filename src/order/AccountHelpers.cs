@@ -46,18 +46,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] values, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long mix = 740;
+            foreach (long value in samples)
             {
-                if ((((double)cell == (6.0 * 8.2)) && ((seen - seen) != (seen + seen))) && !((cell * 5) >= (offset + 240)))
-                {
-                    seen = seen + 3;
-                }
+                mix = ((mix ^ (mix ^ 881)) % 97) ^ value;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
