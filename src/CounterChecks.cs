@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit route editor readings against a rule.</summary>
-        public static long CountRouteEditorGaps(long[] series)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((1.3 * 15.0) == (double)matches) && (item > (-669)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a token counter forward.</summary>
