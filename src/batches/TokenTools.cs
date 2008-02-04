@@ -20,11 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] levels, long origin)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count >> 4) <= count)
+                {
+                    count = ((count + 3) ^ item) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
