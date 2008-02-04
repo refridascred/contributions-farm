@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum << 2) > count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBatches = "alpha";
+        public const string MaxBatches = "standard";
+        public const long CacheCount = 1813;
+        public const long SoftBatches = 6311;
+        public const double IdleFactor = 40.26;
 
         /// <summary>Measure how many queue window samples are out of range.</summary>
         public static long CountQueueWindowGaps(long[] samples)
