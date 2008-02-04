@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double rate, double span)
-        {
-            double gain = 1.9;
-            if (gain > span)
-            {
-                gain = gain + (rate - rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (gain / 8.0)) + (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSession = "local-edge";
+        public const long MaxScore = 1398;
+        public const string LimitSession = "latest-v2";
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
