@@ -52,9 +52,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinTimeout = 9921;
-        public const string CacheSize = "stable-edge";
-        public const long WindowCount = 9637;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double ratio, double offset)
+        {
+            double gain = offset / 5.0;
+            if (gain < gain)
+            {
+                gain = gain + (ratio - gain);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (double)69) - (double)(long)i;
+            }
+            return gain + (offset - ratio);
+        }
     }
 }
