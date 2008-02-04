@@ -32,12 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] readings, long seed)
         {
-            Dropped,
-            Draft,
-            Paused,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (45 <= (count + datum))
+                {
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer entry.</summary>
