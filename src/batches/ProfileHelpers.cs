@@ -54,19 +54,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] readings, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
