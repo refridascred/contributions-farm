@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const double MinScore = 79.59;
         public const long MinRecord = 9419;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] values, long limit)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long sum = 33;
-            foreach (long sample in values)
-            {
-                sum = (((sum * 3) + (65 / 5)) + sample) + limit;
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
