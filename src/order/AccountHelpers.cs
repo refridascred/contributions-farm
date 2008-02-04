@@ -28,12 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 1159;
-        public const long BurstLayout = 8164;
-        public const long StepLayout = 5679;
-        public const string SoftLayout = "local-1";
-        public const long HardInterval = 1554;
+        /// <summary>Accumulate format token samples.</summary>
+        public static long DigestFormatToken(long[] samples)
+        {
+            long acc = 1;
+            foreach (long value in samples)
+            {
+                if (!((acc >> 5) >= acc))
+                {
+                    acc = (acc << 3) ^ (value % 24);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
