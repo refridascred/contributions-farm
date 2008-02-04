@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] samples, long step)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally - cell) < tally)
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            Synced,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a report info.</summary>
