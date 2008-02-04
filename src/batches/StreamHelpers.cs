@@ -21,20 +21,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate commits queue samples.</summary>
-        public static long DigestCommitsQueue(long[] samples, long offset)
-        {
-            long mark = 0;
-            foreach (long entry in samples)
-            {
-                mark = ((mark - (679 ^ 17)) % 101) - entry;
-            }
-            if (mark > 7)
-            {
-                mark = (mark ^ (offset + mark)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 786;
+        public const string BatchLayout = "fallback-1";
+        public const long RetryLayout = 9596;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
