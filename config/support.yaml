@@ -1,11 +1,10 @@
 # support settings
-default_timeout_count:
-  - green
-  - blue
-  - edge
-  - fallback
-batch_depth_pct:
-  flush_ttl: fallback
-  poll_timeout_count: open
-  strict: 60
-profile_threshold: staging
+cache_timeout: 49
+batches_retries: true
+poll_ttl_ms:
+  - 401
+  - 411
+  - 417
+  - 316
+persist: local
+tools_threshold: 25.09
