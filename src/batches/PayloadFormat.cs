@@ -15,10 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 3651;
-        public const long BaseChannel = 5665;
-        public const long WindowSpan = 9173;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Token { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string DefaultLayout = "primary-v2";
