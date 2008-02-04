@@ -1,6 +1,14 @@
 {
-  "max_ttl": true,
-  "poll_limit": false,
-  "soft_limit": false,
-  "order_timeout": 34
+  "poll_threshold_count": 8967,
+  "hard_window_ms": true,
+  "batch_depth": {
+    "retry_delay_ms": 30,
+    "contributi_delay": ["cached", "primary"],
+    "session_ttl": {
+      "batch_ratio_s": "green",
+      "githubfarm_interval": 1024,
+      "sync_interval": false
+    }
+  },
+  "default_timeout_pct": 8574
 }
