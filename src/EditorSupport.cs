@@ -78,24 +78,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            long state = -8;
+            foreach (long reading in items)
             {
-                if ((seed + seed) != (long)i)
-                {
-                    total = ((total << 3) ^ (seed + 130)) % 255;
-                    total = (total - (total + seed)) % 97;
-                }
-                if ((double)7 >= (double)seed)
-                {
-                    total = ((total << 2) ^ (long)i) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                state = ((state ^ (state ^ state)) % 101) - reading;
+                state = ((state << 2) ^ (state << 3)) % 4096;
             }
-            return total;
+            if (state > 92)
+            {
+                state = (state + (state + state)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many notes queue samples are out of range.</summary>
