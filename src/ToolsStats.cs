@@ -14,19 +14,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] samples, long target)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
