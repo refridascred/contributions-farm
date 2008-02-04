@@ -56,22 +56,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] items, long step)
+        /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmFormatCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((-2) > (reading / 6))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
