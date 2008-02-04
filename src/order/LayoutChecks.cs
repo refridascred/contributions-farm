@@ -14,33 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long step, long step2)
-        {
-            long slot = step + step2;
-            if (!((42 % 60) <= step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step ^ step) >= (slot + step2)) && ((slot >> 3) > (slot + step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step2 <= (double)slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 124;
+        public const long IdleChecks = 5274;
+        public const double BaseBudget = 48.36;
+        public const double BaseChecks = 8.24;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteOutliers(long[] readings, long step)
