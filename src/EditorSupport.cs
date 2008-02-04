@@ -21,24 +21,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long floor, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] samples, long step)
         {
-            if ((double)bound >= (0.24 - 5.55))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - floor) <= (43 - floor))
+                if (sample > (matches + 8))
                 {
-                    return 4;
+                    matches = (matches + 3) - step;
                 }
                 else
                 {
-                    return 6;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
