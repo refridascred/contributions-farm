@@ -26,12 +26,10 @@ namespace Common.Utilities
         public const string BatchReport = "standard-1";
         public const long MaxReport = 7937;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 8436;
-        public const long WindowStats = 3453;
-        public const long RetryStats = 7265;
-        public const double BatchScore = 53.74;
-        public const double SoftCount = 54.98;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "standard-v2";
+        public const string RetryOrder = "open";
+        public const double MaxOrder = 93.16;
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long BucketLayout(long origin, long floor)
