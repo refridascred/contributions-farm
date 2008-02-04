@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultScore = 5246;
-        public const string IdleGithubfarm = "standard-edge";
-        public const double RetryWidth = 60.26;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryDepth = 3736;
+        public const long RetryFactor = 258;
+        public const double MinScore = 79.59;
+        public const long MinRecord = 9419;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] values, long limit)
