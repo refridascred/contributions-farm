@@ -1,4 +1,43 @@
 # support settings
-profile_delay: true
-idle_ratio_pct: 8978
-sync_retries_count: 80
+farm_timeout:
+  default_ttl: 7023
+  persist:
+    soft_capacity_pct:
+      - primary
+      - green
+    flush_size_pct: 20.87
+    idle_retries_pct: 13
+    enabled:
+      - standard
+      - local
+    max_delay_count: true
+    cache_capacity_count: 92.9
+  warm_threshold_ms:
+    stream_interval: 46.52
+    flush_delay_ms:
+      - local
+      - staging
+      - edge
+      - latest
+    max_timeout: 57.47
+    cache_threshold: 1787
+    default_timeout_s:
+      - legacy
+      - primary
+      - legacy
+    soft_timeout_s: false
+  warm_threshold:
+    burst_depth_pct: 31.55
+    idle_delay: latest
+    account_window: 97.58
+    persist: latest
+  burst_depth:
+    - 191
+    - 264
+    - 308
+    - 172
+hard_ttl_s: 42
+default_ttl_ms: 100
+checks_interval: 96
+retry_ratio: 100
+verbose: 5.78
