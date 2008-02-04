@@ -29,22 +29,25 @@ namespace Common.Utilities
         public const long BatchStats = 9468;
         public const long MaxStats = 9340;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] readings, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long seed, long target)
         {
-            long total = 77;
-            foreach (long cell in readings)
+            long gap = seed + target;
+            if (((target >> 1) < seed) || ((gap >> 2) >= (target / 6)))
             {
-                if (((cell << 2) >= (origin + cell)) || ((total / 2) < (total / 9)))
+                return 1;
+            }
+            else
+            {
+                if (!((6.1 - 3.83) != (double)gap))
                 {
-                    total = (total + cell) % 97;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (total > 1)
-            {
-                total = (total + (origin >> 3)) % 101;
-            }
-            return total;
         }
 
         /// <summary>Describe the record phase values.</summary>
