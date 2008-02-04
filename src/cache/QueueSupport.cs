@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Closed,
-            Ready,
+            Queued,
             Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Project the next cache report value.</summary>
