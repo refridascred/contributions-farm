@@ -28,22 +28,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit window already readings against a rule.</summary>
-        public static long TallyWindowAlreadyMatches(long[] readings)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((81 + tally) < 1)
-                {
-                    tally = (tally + 1) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Ready,
+            Stale,
         }
     }
 }
