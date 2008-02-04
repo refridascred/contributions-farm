@@ -1,5 +1,13 @@
 # entry settings
-flush_size: 250
-soft_interval_ms: 100
-hard_ttl: 1589
-default_limit: true
+batch_capacity:
+  poll_limit_count: legacy
+  burst_ratio_ms: local
+  hard_limit: 7831
+metric_delay: 1.25
+sync_retries: standard
+verbose:
+  verbose: 79
+  contributi_size: 3158
+  poll_timeout_count: 33
+  max_size: local
+  graph_timeout: edge
