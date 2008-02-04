@@ -17,13 +17,15 @@ namespace Common.Utilities
         public const long DefaultStream = 3137;
         public const string HardRatio = "alpha-1";
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double offset)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
+            double gain2 = (gain / 9.0) * 4.5;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = ((gain2 - gain) + (double)(long)i) + offset;
+            }
+            return gain2 - (double)42;
         }
     }
 }
