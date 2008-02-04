@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] readings, long bound)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] >= bound)
+                if ((data[i] <= step) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
