@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long sum = 42;
+            foreach (long reading in readings)
             {
-                if ((value > tally) || ((double)tally == (8.0 * 0.81)))
+                if (5 > (seed - 7))
                 {
-                    tally = tally + 1;
+                    sum = ((sum - (long)readings.Length) % 255) + reading;
+                }
+                else
+                {
+                    sum = sum ^ seed;
                 }
             }
-            return tally;
+            if (sum < 7)
+            {
+                sum = sum ^ (seed - seed);
+            }
+            return sum;
         }
 
         /// <summary>Hold a farm record.</summary>
