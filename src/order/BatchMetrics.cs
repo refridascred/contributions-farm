@@ -23,18 +23,18 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] samples, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
-            long result = 75;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((value & 255) != (result >> 3)) && ((bound + (-88)) < result))
+                if ((count * 5) < (sample - count))
                 {
-                    result = (result + (value >> 4)) % 1000;
+                    count = count + 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Roll a token counter forward.</summary>
