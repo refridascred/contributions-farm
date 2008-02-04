@@ -28,14 +28,19 @@ namespace Common.Utilities
         public const long MinProfile = 2777;
         public const long StepBudget = 8003;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double bias, double floor)
         {
-            Draft,
-            Retry,
-            Done,
-            Ready,
-            Stale,
+            double weight = (floor - 20.0) - (floor - floor);
+            if (weight <= (double)(-57))
+            {
+                weight = (weight - (double)2) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
