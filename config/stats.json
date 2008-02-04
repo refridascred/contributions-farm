@@ -1,8 +1,8 @@
 {
-  "hard_retries": "latest",
-  "idle_capacity_pct": "edge",
-  "hard_retries_count": "blue",
-  "retry_size": ["staging", "fallback", "staging"],
-  "base_ttl_ms": 83.57,
-  "burst_delay_ms": 34.87
+  "retry_interval": 40.14,
+  "max_retries_s": 26.0,
+  "strict": "staging",
+  "batches_ratio": "eu-west",
+  "max_limit_pct": false,
+  "readonly": "latest"
 }
