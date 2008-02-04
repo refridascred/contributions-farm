@@ -43,19 +43,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples, long offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long mix = -2;
-            foreach (long reading in samples)
-            {
-                mix = ((mix << 3) ^ (reading - mix)) - offset;
-                if (((double)mix > 8.04) || ((reading << 2) < mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
