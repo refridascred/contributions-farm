@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] items, long limit)
         {
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two format measurements.</summary>
