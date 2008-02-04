@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] data, long floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] <= floor)
+                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
