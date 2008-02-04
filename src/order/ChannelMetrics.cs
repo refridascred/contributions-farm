@@ -40,18 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] readings, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (entry < floor)
+                if ((double)cell <= 3.63)
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
