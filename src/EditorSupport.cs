@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] samples)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum >= (5.9 * 6.97))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
