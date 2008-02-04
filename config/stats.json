@@ -1,16 +1,8 @@
 {
-  "base_timeout_count": {
-    "buffer_depth": "edge",
-    "readonly": 80.94,
-    "enabled": "cached",
-    "base_ratio_count": "staging"
-  },
-  "batch_ratio_count": {
-    "idle_retries": false,
-    "layout_depth": 21.12,
-    "flush_capacity_ms": ["strict", "open"],
-    "poll_delay_pct": true
-  },
-  "hard_delay": 54,
-  "burst_size_pct": 4202
+  "hard_retries": "latest",
+  "idle_capacity_pct": "edge",
+  "hard_retries_count": "blue",
+  "retry_size": ["staging", "fallback", "staging"],
+  "base_ttl_ms": 83.57,
+  "burst_delay_ms": 34.87
 }
