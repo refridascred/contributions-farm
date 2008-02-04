@@ -22,24 +22,19 @@ namespace Common.Utilities
         public const long BurstRatio = 4564;
         public const double MaxAccount = 51.28;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long bound, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] values, long floor)
         {
-            if ((5.7 * 18.0) == (double)bound)
+            bool ok = true;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound < (bound << 3))
+                if (value <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
