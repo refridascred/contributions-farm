@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "local";
-        public const long SoftDepth = 8147;
-        public const long BaseRatio = 9250;
-        public const long BurstBudget = 5623;
-        public const double MaxSpan = 89.52;
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a order account reading by value.</summary>
         public static long LocateOrderAccountIndex(long[] samples, long limit)
