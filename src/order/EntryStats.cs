@@ -12,11 +12,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 1433;
-        public const long CacheProfile = 2259;
-        public const long StepInterval = 514;
-        public const long HardProfile = 3709;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Stale,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
