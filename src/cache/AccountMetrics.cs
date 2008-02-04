@@ -51,10 +51,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 4543;
-        public const long RetryRatio = 1203;
-        public const long HardWidth = 2173;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double SoftMetrics = 69.81;
