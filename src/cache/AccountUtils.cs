@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long floor, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] samples, long step)
         {
-            long span = floor - bound;
-            if (span >= (bound >> 5))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 5) <= floor)
+                if ((tally - cell) < tally)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor ^ bound) >= (floor - 328))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((span & 63) >= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 3) + step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a report info.</summary>
