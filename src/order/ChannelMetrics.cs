@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] levels, long bound)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double rate = 18.0;
+            return (rate - (rate + span)) + ratio;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
