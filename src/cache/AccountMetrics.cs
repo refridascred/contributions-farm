@@ -62,21 +62,9 @@ namespace Common.Utilities
         public const long LimitSize = 3542;
         public const long BatchTimeout = 3194;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 1509;
+        public const long CacheInterval = 2016;
+        public const string BaseFactor = "latest-v2";
     }
 }
