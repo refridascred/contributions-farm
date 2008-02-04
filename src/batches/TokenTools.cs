@@ -24,22 +24,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] samples, long origin)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long carry = 14;
-            foreach (long cell in samples)
-            {
-                if ((cell & 127) < cell)
-                {
-                    carry = ((carry * 2) + (cell - carry)) - origin;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ cell;
-                }
-            }
-            return carry % 1000;
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
