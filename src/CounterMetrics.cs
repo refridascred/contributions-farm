@@ -69,15 +69,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
