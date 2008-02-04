@@ -15,19 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] series)
-        {
-            long carry = 385;
-            foreach (long item in series)
-            {
-                if (item <= (carry + item))
-                {
-                    carry = (carry << 3) ^ (item ^ carry);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "fallback-v2";
+        public const long IdleRecord = 2187;
+        public const string BatchTimeout = "primary-1";
 
         /// <summary>Scale a editor layout figure with a bias.</summary>
         public static double ScaleEditorLayout(double scale, double floor)
