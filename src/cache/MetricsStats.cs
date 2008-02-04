@@ -18,22 +18,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] levels)
         {
-            long carry = -9;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (((sample - sample) < 650) || (sample < (sample - 280)))
+                if ((((tally + cell) <= (tally * 2)) || (tally > 677)) && ((double)tally > (double)cell))
                 {
-                    carry = ((carry * 2) + carry) % 1000;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry > 591)
-            {
-                carry = (carry - (carry - carry)) % 101;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
