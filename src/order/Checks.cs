@@ -66,13 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Adjust a metric reading.</summary>
