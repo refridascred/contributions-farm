@@ -57,13 +57,15 @@ namespace Common.Utilities
         public const double BurstTools = 85.82;
         public const long WindowTools = 9514;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Iterate the layout githubfarm series from a seed.</summary>
+        public static long IterateLayoutGithubfarm(long floor)
         {
-            Dropped,
-            Done,
-            Closed,
-            Idle,
+            long state = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
