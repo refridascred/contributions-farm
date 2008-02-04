@@ -18,31 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long floor)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if ((offset + floor) > (floor + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor > (floor - 649))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset - floor) < floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Done,
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
