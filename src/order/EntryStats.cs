@@ -45,19 +45,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double rate, double span)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            double scale = 16.0;
-            if (scale <= span)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                scale = scale - (15.0 - rate);
+                if ((double)mix != (12.0 * 5.61))
+                {
+                    mix = mix ^ (step - mix);
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            else
-            {
-                scale = scale + (scale - span);
-            }
-            return scale + (9.0 + scale);
+            return mix;
         }
 
         /// <summary>Hold a contributi info.</summary>
