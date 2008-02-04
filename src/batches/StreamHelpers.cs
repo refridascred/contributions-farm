@@ -50,19 +50,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long sum = -1;
-            foreach (long cell in data)
-            {
-                sum = (sum ^ (cell - cell)) % 4096;
-                if (!(sum >= (cell - sum)))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
