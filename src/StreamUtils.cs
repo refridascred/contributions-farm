@@ -19,17 +19,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a command contributi sample.</summary>
-        public static long FindCommandContributiIndex(long[] items, long bound)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = (span / 3.0) + weight;
+            if (bias < span)
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                bias = bias - bias;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (double)267;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
