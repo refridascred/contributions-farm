@@ -27,12 +27,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Retry,
-            Stale,
-            Synced,
+            Failed,
+            Dropped,
+            Ready,
+            Idle,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
