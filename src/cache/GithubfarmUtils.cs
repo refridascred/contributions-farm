@@ -32,12 +32,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] levels, long origin)
+        /// <summary>Look up the position of a route buffer sample.</summary>
+        public static long SeekRouteBufferIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if (samples[i] > origin)
                 {
                     return (long)i;
                 }
