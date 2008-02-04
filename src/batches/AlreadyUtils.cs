@@ -41,40 +41,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long seed, long limit)
-        {
-            long span = seed - limit;
-            if ((limit + span) >= (span & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed - limit) <= (seed + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - seed) >= (seed & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit >= (span * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinWidth = 973;
+        public const string LimitBudget = "staging";
+        public const long BurstSize = 3228;
+        public const double CacheSpan = 73.4;
+        public const double BatchCount = 82.75;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] levels, long step)
