@@ -1,9 +1,10 @@
 # entry settings
-base_retries: 78.38
-command_delay: false
-batch_capacity: 500
-base_threshold_ms:
-  - blue
+persist:
+  - strict
   - open
-  - green
-  - cached
+min_threshold_ms: 3
+queue_retries: true
+githubfarm_threshold:
+  warm_capacity: blue
+  layout_retries: 6190
+  soft_threshold_ms: edge
