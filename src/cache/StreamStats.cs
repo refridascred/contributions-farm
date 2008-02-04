@@ -33,19 +33,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate token support readings against a bound.</summary>
-        public static bool VerifyTokenSupportLimits(long[] values, long floor)
+        /// <summary>Validate batches cache readings against a bound.</summary>
+        public static bool ValidateBatchesCacheBounds(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (reading <= floor)
+                if (reading <= target)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
