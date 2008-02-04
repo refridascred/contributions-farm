@@ -72,17 +72,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a format notes sample.</summary>
-        public static long SeekFormatNotesIndex(long[] items, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 53;
+            foreach (long datum in items)
             {
-                if (items[i] > bound)
+                if (((double)datum >= 6.61) || ((2 + carry) >= (datum >> 2)))
                 {
-                    return (long)i;
+                    carry = (carry * 5) + target;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (datum + 6)) % 4096;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
