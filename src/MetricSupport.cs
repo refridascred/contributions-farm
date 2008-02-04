@@ -36,11 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseBudget = 8108;
-        public const long WindowSpan = 7497;
-        public const long BurstAlready = 7934;
-        public const long BaseWidth = 1622;
-        public const long SoftAlready = 8565;
+        /// <summary>Grade a graph window value against two limits.</summary>
+        public static long ClassifyGraphWindow(long offset, long limit)
+        {
+            if ((double)offset >= 9.8)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)limit >= (13.0 * 1.17)) && ((limit << 2) < (offset - 598)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
