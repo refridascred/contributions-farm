@@ -17,38 +17,14 @@ namespace Common.Utilities
         public const string MinLevel = "legacy-1";
         public const double BurstFactor = 90.03;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long seed, long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            if (3.43 <= (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(seed <= (29 + seed)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((seed & 63) == (limit ^ seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (427 > seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
