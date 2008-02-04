@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] series, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] data)
         {
-            long state = 75;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((double)cell != (6.76 - 7.65))
+                if (((value + matches) < (value / 3)) && (matches <= (value - matches)))
                 {
-                    state = ((state * 5) + (state ^ 4)) % 97;
-                }
-                else
-                {
-                    state = (state * 2) + (origin % 5);
+                    matches = matches + 3;
                 }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Hold a stats record.</summary>
