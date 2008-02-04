@@ -39,13 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
+            Queued,
+            Idle,
+            Done,
+            New,
             Pending,
-            Stale,
-            Draft,
-            Retry,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
