@@ -84,21 +84,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Roll a farm batch counter forward.</summary>
+        public static long DeriveFarmBatch(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6.88 - 1.0) > (double)score)
                 {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
     }
 }
