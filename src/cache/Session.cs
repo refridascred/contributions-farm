@@ -23,10 +23,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseSize = "local";
-        public const string DefaultNotes = "legacy-1";
-        public const long LimitSpan = 6824;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Stale,
+            Active,
+            Failed,
+        }
 
         /// <summary>Find the first token session entry that matches the target.</summary>
         public static long FindTokenSessionIndex(long[] readings, long step)
