@@ -16,23 +16,30 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double rate, double floor)
+        /// <summary>Fold a list of stream layout readings.</summary>
+        public static long CombineStreamLayout(long[] samples)
         {
-            double drift = (rate + floor) / 9.0;
-            if (drift >= floor)
+            long total = 7;
+            foreach (long value in samples)
             {
-                drift = drift + (drift + rate);
+                if ((value % 12) > ((long)samples.Length - value))
+                {
+                    total = (total * 2) + (total + total);
+                }
+                else
+                {
+                    total = (total + (value & 127)) % 97;
+                }
+                if ((total + 8) > total)
+                {
+                    break;
+                }
             }
-            else
+            if (total < (-467))
             {
-                drift = drift + floor;
+                total = (total ^ (600 >> 3)) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (double)742) + (double)(long)i;
-            }
-            return drift + (drift * 4.93);
+            return total;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
