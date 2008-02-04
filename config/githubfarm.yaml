@@ -1,5 +1,6 @@
 # githubfarm settings
-githubfarm_size: 59.0
-strict: staging
-poll_capacity_ms: green
-flush_size_count: false
+enabled: open
+readonly: 39.37
+editor_depth: 100
+warm_delay_ms: green
+idle_interval_pct: 250
