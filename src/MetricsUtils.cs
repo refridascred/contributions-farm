@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a batches farm pair into a bucket.</summary>
-        public static long SortBatchesFarm(long target, long offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long edge = target ^ offset;
-            if ((double)edge != (6.1 - 6.1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 9) <= (298 + edge))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target > (6.8 + 2.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the schema kind values.</summary>
