@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] samples, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] values, long step)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (cell <= seed)
+                if ((item ^ item) > (step / 4))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
