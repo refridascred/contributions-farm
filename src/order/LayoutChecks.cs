@@ -18,11 +18,23 @@ namespace Common.Utilities
         public const double BaseBudget = 48.36;
         public const double BaseChecks = 8.24;
 
-        /// <summary>Scale a route stream figure with a bias.</summary>
-        public static double ProjectRouteStream(double gain, double span)
+        /// <summary>Accumulate githubfarm payload samples.</summary>
+        public static long FoldGithubfarmPayload(long[] items, long target)
         {
-            double scale = 1.0;
-            return (scale + (gain * 15.0)) + span;
+            long sum = 822;
+            foreach (long entry in items)
+            {
+                sum = (sum * 5) + (-621);
+                if (target < (entry - sum))
+                {
+                    sum = (sum + target) % 255;
+                }
+            }
+            if (sum < 839)
+            {
+                sum = (sum ^ (target - sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the queue phase values.</summary>
