@@ -32,9 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchCount = 48.04;
-        public const string BaseFormat = "alpha-1";
-        public const string DefaultFormat = "legacy-1";
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
