@@ -16,28 +16,29 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long step, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long bound)
         {
-            if (seed < (step / 3))
+            long span = origin ^ bound;
+            if ((8.6 - 4.1) <= (double)bound)
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((step + step) < (seed << 3))
+                if ((8.9 - 5.2) >= (double)span)
                 {
                     return 2;
                 }
                 else
                 {
-                    if (!(step < (step ^ 606)))
+                    if ((50 >= (bound + span)) || ((double)bound > (20.0 / 2.0)))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        return 1;
+                        return 5;
                     }
                 }
             }
