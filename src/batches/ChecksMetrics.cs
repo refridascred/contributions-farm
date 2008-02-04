@@ -16,11 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] items, long seed)
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (reading >= ((-6) << 1))
+                {
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
