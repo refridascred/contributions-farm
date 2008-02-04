@@ -1,7 +1,12 @@
 {
-  "batch_ttl": ["eu-west", "standard", "staging"],
-  "readonly": "strict",
-  "checks_ratio": 60,
-  "window_depth": 58,
-  "max_ttl": true
+  "idle_timeout_ms": 35.43,
+  "default_retries_pct": {
+    "flush_retries_count": false,
+    "min_ratio_pct": 2283,
+    "record_limit": 2728,
+    "strict": false,
+    "min_delay_ms": false,
+    "verbose": 30
+  },
+  "persist": 25.87
 }
