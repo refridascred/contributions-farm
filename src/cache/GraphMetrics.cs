@@ -49,11 +49,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 8962;
-        public const long SoftBudget = 298;
-        public const long StepToken = 5912;
-        public const long BaseToken = 5979;
-        public const long MinDepth = 3950;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 2509;
+        public const string StepSupport = "local-v2";
+        public const long WindowFactor = 821;
+        public const long LimitCount = 200;
+        public const double CacheSupport = 8.88;
     }
 }
