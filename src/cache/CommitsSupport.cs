@@ -31,28 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Measure how many cache metric samples are out of range.</summary>
+        public static long TallyCacheMetricOutliers(long[] samples)
         {
-            long sum = 22;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (sum >= (cell << 1))
+                if (!((double)(long)samples.Length >= (double)sample))
                 {
-                    sum = (sum + cell) % 1000;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    sum = (sum << 2) ^ (cell & 15);
-                }
-                sum = ((sum * 5) + (cell - 853)) % 255;
-                sum = (sum + sum) % 97;
             }
-            if (sum < 9)
-            {
-                sum = ((sum * 4) + (sum - sum)) % 97;
-            }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
