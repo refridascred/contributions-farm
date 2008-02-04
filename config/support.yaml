@@ -1,7 +1,6 @@
 # support settings
-poll_delay: edge
-readonly:
-  - 146
-  - 353
-  - 352
-default_depth: primary
+batch_size: 52.91
+commits_interval: 33
+burst_size:
+  - strict
+  - cached
