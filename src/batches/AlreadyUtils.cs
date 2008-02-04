@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long SoftTools = 4185;
         public const long WindowTimeout = 2721;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Done,
-            Active,
-            Failed,
-            Closed,
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
