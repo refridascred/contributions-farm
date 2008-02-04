@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Accumulate metric checks samples.</summary>
+        public static long FoldMetricChecks(long[] readings, long bound)
         {
-            long score = 775;
-            foreach (long sample in items)
+            long score = 1;
+            foreach (long value in readings)
             {
-                score = (score ^ sample) % 255;
+                score = (((score ^ (score << 2)) % 255) - value) + bound;
             }
-            return score % 97;
+            return score;
         }
 
         /// <summary>Hold a profile summary.</summary>
