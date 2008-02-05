@@ -18,32 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long origin, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] readings)
         {
-            long lane = origin + offset;
-            if ((origin - origin) <= (4 * 3))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset % 8) == (lane ^ origin)) || ((lane - lane) == (83 / 2)))
+                if ((tally - (long)readings.Length) < (tally + item))
                 {
-                    return 4;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (lane < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the farm class values.</summary>
