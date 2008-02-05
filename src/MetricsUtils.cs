@@ -13,18 +13,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] readings, long step)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (36 >= item)
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
+            Locked,
+            Closed,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a record options.</summary>
