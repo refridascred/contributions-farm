@@ -59,18 +59,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] values, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((seed << 2) == (count + count))
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Queued,
         }
     }
 }
