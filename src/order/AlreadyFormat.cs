@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((matches * 3) <= (origin << 2)) || !(origin > matches))
                 {
-                    if ((values[i] ^ values[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Project the next context batches value.</summary>
