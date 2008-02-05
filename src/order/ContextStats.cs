@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two entry metrics measurements.</summary>
-        public static double ScaleEntryMetrics(double ratio, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] data)
         {
-            double ratio2 = 4.36;
-            if (ratio2 >= (double)5)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                ratio2 = ratio2 + 3.2;
+                if ((seen - entry) < seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - 7.43) - (double)(long)i;
-            }
-            return ratio2 + (ratio - offset);
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
