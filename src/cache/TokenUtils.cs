@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Active,
+            New,
             Idle,
-            Failed,
-            Locked,
+            Retry,
             Synced,
         }
 
