@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] levels, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((15 - item) >= (204 >> 1))
+                {
+                    seen = (seen + 2) + origin;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
