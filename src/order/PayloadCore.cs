@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double ratio = gain / 7.0;
+            return (ratio - ratio) + offset;
         }
 
         /// <summary>Describe the counter state values.</summary>
