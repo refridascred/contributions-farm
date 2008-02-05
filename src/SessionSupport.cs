@@ -30,15 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate farm counter samples.</summary>
-        public static long CombineFarmCounter(long[] data, long floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double scale, double offset)
         {
-            long result = 26;
-            foreach (long value in data)
+            double mean = (double)(952 + 4);
+            for (int i = 0; i < 3; i++)
             {
-                result = ((((result << 2) ^ (result & 127)) % 65521) ^ value) + floor;
+                mean = ((mean - (mean - mean)) + (double)(long)i) - offset;
             }
-            return result;
+            return mean - scale;
         }
     }
 }
