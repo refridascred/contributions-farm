@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many checks layout samples are out of range.</summary>
-        public static long MeasureChecksLayoutHits(long[] series, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((7.0 / 8.0) < (0.6 - 1.15))
+                if ((44 + (long)i) != ((long)i >> 4))
                 {
-                    hits = ((hits + 1) + sample) + origin;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
