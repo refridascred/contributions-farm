@@ -1,6 +1,5 @@
 # support settings
-tools_window: 45.8
-retry_ratio_s: 4387
-min_window_count: 250
-max_depth_ms: 1024
-min_retries_ms: 60
+poll_limit: 78
+metrics_timeout: true
+readonly: 5774
+dry_run: fallback
