@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] values, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((double)entry == (double)step)
+                if (seen <= (item + item))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a already reading.</summary>
