@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheScore = "primary-v2";
+        public const string MaxReport = "fallback-edge";
+        public const long BurstReport = 4412;
+        public const double BatchReport = 12.32;
+        public const long BaseReport = 1925;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long SeekQueueIndex(long[] readings, long target)
