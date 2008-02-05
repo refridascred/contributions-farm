@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (5 > seen)
-                {
-                    seen = ((seen + 2) + cell) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 2339;
+        public const long SoftCount = 1277;
+        public const long BurstChecks = 3405;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
