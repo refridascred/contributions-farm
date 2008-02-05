@@ -1,15 +1,5 @@
 # entry settings
-batch_delay: 5045
-hard_ttl_pct: 77.31
-hard_timeout_ms:
-  - 303
-  - 118
-  - 484
-  - 110
-filter_ratio: 27.73
-idle_ttl_ms: eu-west
-readonly:
-  - 438
-  - 172
-  - 151
-  - 72
+min_window_s: false
+farm_capacity: green
+persist: 60
+contributi_threshold: fallback
