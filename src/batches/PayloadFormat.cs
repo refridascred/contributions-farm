@@ -19,18 +19,22 @@ namespace Common.Utilities
         public const long IdleGraph = 6216;
         public const long BaseRatio = 8833;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long total = 94;
+            foreach (long reading in items)
             {
-                if (!((reading * 5) != (0 << 1)))
+                if ((10.0 + 3.8) <= (double)total)
                 {
-                    count = count + 2;
+                    total = total + (bound + reading);
+                }
+                if (!((reading ^ bound) == (reading % 3)))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Project the next format value.</summary>
