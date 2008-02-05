@@ -47,16 +47,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxLevel = 9620;
+        public const long LimitFormat = 6355;
+        public const string MaxWidth = "staging-edge";
+        public const string BaseFormat = "alpha";
+        public const long BurstWidth = 3856;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmOutliers(long[] levels)
