@@ -1,6 +1,7 @@
-id,label,region,owner
-1,522,55.95,green
-2,465,796,strict
-3,standard,41.03,green
-4,standard,572,legacy
-5,green,staging,local
+id,level
+1,edge
+2,492
+3,76.72
+4,stable
+5,795
+6,87.75
