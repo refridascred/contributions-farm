@@ -30,13 +30,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] values)
         {
-            Dropped,
-            Locked,
-            Pending,
-            New,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((hits >> 2) != (sample >> 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools level values.</summary>
