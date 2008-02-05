@@ -1,9 +1,19 @@
 # githubfarm settings
-soft_delay: false
-account_retries:
-  - 363
-  - 18
-  - 160
-  - 256
-default_window: legacy
-min_timeout: stable
+soft_retries: stable
+hard_capacity_ms:
+  - 123
+  - 218
+  - 420
+  - 147
+enabled: local
+batch_depth_ms: 3
+format_interval:
+  flush_window_count: open
+  soft_timeout: 500
+  audit: staging
+  readonly: 37
+  default_ttl_pct: true
+poll_ratio:
+  - cached
+  - cached
+  - green
