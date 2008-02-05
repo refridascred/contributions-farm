@@ -1,7 +1,6 @@
-id,state,count
-1,55.21,local
-2,670,436
-3,staging,585
-4,cached,local
-5,702,907
-6,630,41.68
+id,rank,ratio,active,count
+1,primary,19.22,blue,11.98
+2,237,748,196,86.71
+3,blue,local,677,cached
+4,707,66.02,stable,340
+5,925,933,strict,20.32
