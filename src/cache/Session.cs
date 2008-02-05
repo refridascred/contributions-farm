@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const long HardSize = 7562;
         public const long RetrySupport = 1784;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitScore = "local-v2";
-        public const string StepFactor = "local-1";
-        public const double BurstAlready = 42.24;
-        public const long MinAlready = 2283;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchSpan = "staging-v2";
+        public const long SoftScore = 2398;
+        public const long StepDepth = 8400;
+        public const long CacheNotes = 4093;
+        public const string WindowNotes = "primary-1";
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] samples)
