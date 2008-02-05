@@ -22,15 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double bias, double bias2)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] values)
         {
-            double load = bias;
-            if (load <= bias)
+            long sum = 2;
+            foreach (long item in values)
             {
-                load = (load + bias) - bias2;
+                sum = ((sum + (sum ^ sum)) % 255) - item;
             }
-            return load - (bias + bias);
+            return sum % 1000;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
