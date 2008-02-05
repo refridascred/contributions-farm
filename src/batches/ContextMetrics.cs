@@ -33,10 +33,27 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "latest-edge";
-        public const double StepWindow = 81.07;
-        public const long CacheInterval = 671;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] samples, long bound)
+        {
+            long carry = 46;
+            foreach (long value in samples)
+            {
+                if ((8 + value) == (carry + carry))
+                {
+                    carry = (carry + value) % 4096;
+                }
+                else
+                {
+                    carry = carry - (195 + value);
+                }
+            }
+            if (carry < 97)
+            {
+                carry = (carry + (carry + bound)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowAccount = 239;
