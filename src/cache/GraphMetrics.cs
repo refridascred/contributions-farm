@@ -58,17 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report token sample.</summary>
-        public static long LocateReportTokenIndex(long[] data, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                if (((sample & 63) >= (tally % 97)) && (((tally >> 4) < (sample / 3)) || ((double)sample > 6.0)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
