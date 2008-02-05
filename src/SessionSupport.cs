@@ -21,12 +21,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Combine notes cluster values into a single score.</summary>
+        public static long FoldNotesCluster(long[] samples, long origin)
         {
-            Ready,
-            Paused,
-            Queued,
+            long mark = 27;
+            foreach (long datum in samples)
+            {
+                mark = (mark ^ (datum & 3)) % 101;
+                if (mark >= ((long)samples.Length - datum))
+                {
+                    mark = (mark - origin) % 65521;
+                }
+                else
+                {
+                    mark = mark ^ (origin & 7);
+                }
+            }
+            return mark % 97;
         }
     }
 }
