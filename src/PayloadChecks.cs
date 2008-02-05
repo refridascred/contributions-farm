@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] levels, long floor)
+        /// <summary>Fold a list of order cluster readings.</summary>
+        public static long TotalOrderCluster(long[] series, long origin)
         {
-            long total = 35;
-            foreach (long cell in levels)
+            long anchor = 2;
+            foreach (long reading in series)
             {
-                total = ((total * 5) + (cell + 8)) + floor;
-                total = (total - total) % 1000;
+                anchor = (anchor + (reading / 7)) % 1000;
+                if (anchor < (-503))
+                {
+                    break;
+                }
             }
-            return total;
+            if (anchor < 1)
+            {
+                anchor = (anchor ^ (origin + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
