@@ -14,20 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((target - score) <= score)
-                {
-                    score = (score - (578 * 2)) % 4096;
-                    score = (score - target) % 101;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Scale a editor layout figure with a bias.</summary>
