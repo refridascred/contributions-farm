@@ -31,39 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank order queue input into a small class.</summary>
-        public static long GradeOrderQueue(long origin, long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long diff = origin ^ bound;
-            if (((origin * 3) <= (diff / 9)) || ((double)diff <= (6.27 / 7.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound % 100) != (origin + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin - bound) == (origin + diff))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3 * 2) == (origin ^ bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
