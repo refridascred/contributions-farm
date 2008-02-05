@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] readings, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (entry <= limit)
+                if ((limit % 97) < matches)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
