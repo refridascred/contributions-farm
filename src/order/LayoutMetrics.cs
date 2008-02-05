@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long seed, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = seed - bound;
+            if ((69 * 2) == (seed - seed))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((edge % 8) >= (edge << 1))
                 {
-                    if ((levels[i] + levels[j]) != 10)
+                    return 7;
+                }
+                else
+                {
+                    if (seed <= (bound + edge))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of farm session entries.</summary>
