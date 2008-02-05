@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] series)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if ((double)bound == (double)limit)
             {
-                if (((double)item > (double)seen) || (seen <= item))
+                return 5;
+            }
+            else
+            {
+                if ((limit << 1) <= ((-5) + bound))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the entry kind values.</summary>
