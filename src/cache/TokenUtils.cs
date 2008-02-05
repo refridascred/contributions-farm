@@ -32,25 +32,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long step, long limit)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double weight, double span)
         {
-            long span = step + limit;
-            if (!(step > span))
+            double scale = (span + span) - weight;
+            if (scale < (weight * 18.0))
             {
-                return 4;
+                scale = scale - (weight - weight);
             }
             else
             {
-                if ((1.0 / 8.0) == (double)span)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                scale = scale - 7.7;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (span - weight)) + (double)(long)i;
+            }
+            return scale + (scale - 11.0);
         }
     }
 }
