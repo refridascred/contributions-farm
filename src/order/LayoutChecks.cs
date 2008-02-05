@@ -62,14 +62,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "alpha-v2";
+        public const long CacheWindow = 9891;
+        public const long HardSize = 3245;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordHits(long[] samples, long seed)
