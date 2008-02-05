@@ -34,14 +34,19 @@ namespace Common.Utilities
             return (load - 17.0) + offset;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] values, long step)
         {
-            Locked,
-            Ready,
-            Closed,
-            Retry,
-            Pending,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a support reading by value.</summary>
