@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] values, long origin)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= origin)
+                if (items[i] <= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
