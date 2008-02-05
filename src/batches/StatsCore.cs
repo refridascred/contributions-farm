@@ -55,21 +55,17 @@ namespace Common.Utilities
         public const long HardNotes = 8741;
         public const long RetryScore = 8054;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Locate a notes graph reading by value.</summary>
+        public static long LocateNotesGraphIndex(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] > offset)
                 {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
