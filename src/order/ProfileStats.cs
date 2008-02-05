@@ -24,12 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Synced,
+            Pending,
             New,
-            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Blend two layout entry measurements.</summary>
