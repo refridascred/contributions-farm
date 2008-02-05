@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] series)
         {
-            long carry = 4;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((67 * 3) > (item << 2))
+                if ((94 >> 3) > (datum + (-15)))
                 {
-                    carry = (carry + 20) % 255;
+                    tally = tally + 3;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the command state values.</summary>
