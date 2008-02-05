@@ -12,17 +12,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a entry cluster reading by value.</summary>
-        public static long LookupEntryClusterIndex(long[] readings, long floor)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a commits entry.</summary>
