@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepScore = "legacy-1";
-        public const long RetryBudget = 3372;
-        public const double RetryFilter = 52.64;
-        public const long StepLevel = 2085;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double gain, double floor)
+        {
+            double gain2 = (floor - gain) + 8.83;
+            if (gain2 < floor)
+            {
+                gain2 = gain2 + 0.95;
+            }
+            return gain2 + (gain / 6.0);
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
