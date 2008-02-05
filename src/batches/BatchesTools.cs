@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 2178;
-        public const double MinRoute = 36.46;
-        public const long BurstLevel = 6679;
-        public const double HardFactor = 51.97;
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long RollBuffer(long offset)
