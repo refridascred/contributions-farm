@@ -41,17 +41,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 69;
+            foreach (long sample in readings)
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                sum = (sum - (47 >> 5)) + limit;
+                sum = (sum + (sample - sample)) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a schema info.</summary>
