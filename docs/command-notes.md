@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-When a commits fails, the commits handler retries a few times before giving up.
-Defaults for tools live in the config folder and can be overridden per environment.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Keep metrics and counter names short and lowercase.
 
-A context that stays idle for too long is moved to the format list.
-The payload helpers are pure functions, so they are safe to call from any thread.
+Keep schema and githubfarm names short and lowercase.
+Each farm is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Prefer account defaults
-- Validate account input early
-- Review window limits each release
+- Validate notes input early
+- Document new stats fields
+- Log every support change
+- Keep support values small
