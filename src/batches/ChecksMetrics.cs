@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] data)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)item == (double)item)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Compare every pair of session readings.</summary>
