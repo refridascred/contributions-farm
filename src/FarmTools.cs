@@ -30,18 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] samples, long offset)
+        /// <summary>Count the order command entries that pass the check.</summary>
+        public static long MeasureOrderCommandHits(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (offset > (item / 5))
+                if (1.64 <= (double)datum)
                 {
-                    seen = seen + 3;
+                    count = (count + 1) - seed;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
