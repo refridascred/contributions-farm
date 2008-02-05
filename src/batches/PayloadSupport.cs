@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a checks session figure with a bias.</summary>
-        public static double SmoothChecksSession(double weight, double offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] series)
         {
-            double mean = (double)2 - (8.3 / 5.0);
-            if (mean >= weight)
+            long total = 13;
+            foreach (long item in series)
             {
-                mean = mean + (weight * 4.1);
+                if ((total / 6) < (total & 31))
+                {
+                    total = ((total + (total / 7)) % 65521) ^ item;
+                }
             }
-            return mean - offset;
+            if (total > 492)
+            {
+                total = ((total * 5) + (total - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
