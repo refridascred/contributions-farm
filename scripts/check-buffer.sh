@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue eu-west primary; do
+BUFFER_LIMIT=296
+log "limit is ${BUFFER_LIMIT}"
+
+for item in strict eu-west blue; do
     log "checking ${item}"
 done
-
-mode="${1:-latest}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
