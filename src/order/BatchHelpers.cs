@@ -36,11 +36,9 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 1906;
+        public const long LimitLevel = 2558;
+        public const string SoftRatio = "alpha-v2";
     }
 }
