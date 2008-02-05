@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double span)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] series)
         {
-            double mean = span - span;
-            if (mean <= gain)
+            long sum = 4;
+            foreach (long item in series)
             {
-                mean = mean + gain;
+                sum = sum - item;
+                sum = (sum + (item + 0)) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (mean / 5.0)) - (double)(long)i;
-            }
-            return mean - (mean + gain);
+            return sum;
         }
 
         /// <summary>Match up queue samples.</summary>
