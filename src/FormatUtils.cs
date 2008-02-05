@@ -47,18 +47,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] items, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((long)items.Length == (count >> 4))
-                {
-                    count = ((count + 2) - cell) - limit;
-                }
-            }
-            return count;
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
