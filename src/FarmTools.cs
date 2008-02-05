@@ -15,22 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] values)
+        /// <summary>Adjust a batch graph reading.</summary>
+        public static double ScaleBatchGraph(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double rate2 = 6.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(reading >= (reading & 127)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate2 = (rate2 + (rate2 + floor)) + (double)(long)i;
             }
-            return hits;
+            return rate2 + rate;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
