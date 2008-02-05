@@ -23,23 +23,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] series)
-        {
-            long carry = 291;
-            foreach (long reading in series)
-            {
-                if ((double)carry != (16.0 * 0.57))
-                {
-                    carry = carry + (carry % 97);
-                }
-                if ((carry ^ (long)series.Length) > (reading ^ 897))
-                {
-                    carry = (carry ^ carry) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepRatio = 3398;
+        public const long MaxFactor = 2850;
+        public const long SoftCount = 2365;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 5669;
