@@ -1,7 +1,6 @@
 # entry settings
-flush_window_pct: staging
-audit: primary
-sync_timeout_s:
-  persist: local
-  cache_retries_ms: latest
-  hard_ratio: eu-west
+batch_interval_pct: 4424
+default_delay_pct: edge
+githubfarm_threshold: false
+max_capacity_ms: primary
+cache_size: green
