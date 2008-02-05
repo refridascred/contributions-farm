@@ -75,26 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long seed, long floor)
-        {
-            long delta = seed - floor;
-            if (!((8.7 / 6.0) < (double)seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((delta * 4) >= (seed ^ floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardSize = 40.96;
+        public const long HardRatio = 9318;
+        public const long LimitWindow = 2261;
+        public const string MaxSpan = "open-1";
+        public const long BaseBudget = 6604;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiLimits(long[] samples, long seed)
