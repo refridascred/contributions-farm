@@ -13,11 +13,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinSpan = 9416;
-        public const long MaxWidth = 6987;
-        public const long IdleLevel = 1606;
-        public const double IdleMetrics = 65.99;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Iterate the layout record series from a seed.</summary>
         public static long DeriveLayoutRecord(long offset)
