@@ -29,13 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] readings)
         {
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell / 6) != (seen & 255))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
