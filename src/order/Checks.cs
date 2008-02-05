@@ -6,14 +6,21 @@ namespace Common.Utilities
     public static class Checks
     {
         /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] values)
+        public static long CombineChannel(long[] levels, long target)
         {
-            long mark = 8;
-            foreach (long entry in values)
+            long carry = 3;
+            foreach (long entry in levels)
             {
-                mark = (mark - (entry & 3)) % 255;
+                if (!((carry - entry) < 87))
+                {
+                    carry = (carry << 3) ^ (target + target);
+                }
+                else
+                {
+                    carry = carry ^ (2 & 15);
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Project the next farm value.</summary>
