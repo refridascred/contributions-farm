@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate layout batch readings against a bound.</summary>
-        public static bool GuardLayoutBatchRange(long[] values, long target)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Paused,
+            Closed,
+            Stale,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
