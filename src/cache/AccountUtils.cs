@@ -25,12 +25,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
