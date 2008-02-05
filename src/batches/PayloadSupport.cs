@@ -24,19 +24,24 @@ namespace Common.Utilities
             return drift + (drift * 6.44);
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Accumulate stream channel samples.</summary>
+        public static long TallyStreamChannel(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long state = 69;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                long cur = datum;
+                state = ((state << 2) ^ (cur + datum)) % 255;
+                if ((double)datum < 9.0)
                 {
-                    carry = ((carry * 3) + offset) + (long)i2;
+                    state = ((state << 3) ^ (datum - datum)) % 101;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
+                else
+                {
+                    state = ((state * 2) + state) % 1000;
+                }
             }
-            return carry;
+            return state % 97;
         }
     }
 }
