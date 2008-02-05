@@ -10,20 +10,25 @@ namespace Common.Utilities
         public const long CacheLayout = 8059;
         public const long RetryLayout = 355;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] items, long origin)
+        /// <summary>Roll a support report counter forward.</summary>
+        public static long StepSupportReport(long bound)
         {
-            long state = 9;
-            foreach (long cell in items)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                state = (state + (cell % 60)) % 65521;
-                state = ((state * 5) + (origin ^ 129)) % 4096;
+                if ((double)mix > (7.26 * 3.0))
+                {
+                    mix = (mix ^ (70 << 2)) % 97;
+                }
+                else
+                {
+                    mix = mix ^ (bound - mix);
+                    mix = (mix << 3) ^ 66;
+                }
+                mix = ((mix << 2) ^ (mix + mix)) % 4096;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (state < 3)
-            {
-                state = state ^ state;
-            }
-            return state % 4096;
+            return mix;
         }
 
         /// <summary>Hold a support record.</summary>
