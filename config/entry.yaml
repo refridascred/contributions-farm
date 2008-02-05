@@ -1,9 +1,4 @@
 # entry settings
-base_depth_count:
-  - 279
-  - 425
-  - 282
-burst_ratio_ms: local
-base_window_pct: staging
-flush_timeout: false
-cache_timeout: 27.21
+session_interval: staging
+soft_window: 90
+strict: false
