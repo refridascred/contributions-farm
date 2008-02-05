@@ -19,17 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long bound)
+        /// <summary>Measure how many commits token samples are out of range.</summary>
+        public static long MeasureCommitsTokenOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
+                if (((double)reading == (double)tally) || (((reading << 3) < offset) || ((double)offset <= (10.0 - 3.0))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the batch status values.</summary>
