@@ -13,19 +13,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] values, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long value in values)
+            double drift = weight;
+            if (drift < weight)
             {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (drift - (double)79) - floor;
             }
-            return valid;
+            return drift + (drift * 6.44);
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
