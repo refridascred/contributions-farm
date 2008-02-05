@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double scale, double offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double rate = (double)(8 & 255);
-            if (rate >= (offset / 3.0))
-            {
-                rate = (rate - 8.48) - scale;
-            }
-            else
-            {
-                rate = rate - (double)756;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (rate + rate)) + (double)(long)i;
-            }
-            return rate + 14.0;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the route state values.</summary>
