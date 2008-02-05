@@ -13,12 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] data, long offset)
         {
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a command entry.</summary>
