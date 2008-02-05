@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two counter context measurements.</summary>
-        public static double SmoothCounterContext(double scale, double floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] values, long seed)
         {
-            double drift = (floor - floor) / 4.0;
-            return (drift - (drift / 4.0)) + scale;
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!(value <= (seed >> 2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
