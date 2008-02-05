@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepScore = "legacy-1";
+        public const long RetryBudget = 3372;
+        public const double RetryFilter = 52.64;
+        public const long StepLevel = 2085;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
