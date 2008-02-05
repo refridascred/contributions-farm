@@ -13,11 +13,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseDepth = 6728;
-        public const long StepGraph = 7359;
-        public const long IdleGraph = 6216;
-        public const long BaseRatio = 8833;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double bias, double offset)
+        {
+            double mean = offset;
+            if (mean >= offset)
+            {
+                mean = (mean + (double)353) + bias;
+            }
+            return mean + 1.59;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] items, long bound)
