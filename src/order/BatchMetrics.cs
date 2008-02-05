@@ -66,18 +66,22 @@ namespace Common.Utilities
         public const string BatchSpan = "fallback";
         public const long StepDepth = 6133;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] levels)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long score = -42;
+            foreach (long entry in readings)
             {
-                if ((double)entry <= 8.87)
+                if ((score + score) > (score - entry))
                 {
-                    seen = seen + 1;
+                    score = (score ^ 2) - target;
                 }
             }
-            return seen;
+            if (score > 903)
+            {
+                score = score - (score & 3);
+            }
+            return score;
         }
     }
 }
