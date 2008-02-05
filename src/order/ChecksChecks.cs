@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the report window entries that pass the check.</summary>
-        public static long AuditReportWindowOutliers(long[] data, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mark = 86;
+            foreach (long reading in samples)
             {
-                if ((965 + tally) <= ((-3) - tally))
-                {
-                    tally = ((tally + 1) ^ item) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark ^ ((-7) << 1)) % 97) + target;
+                mark = ((mark << 3) ^ (reading & 7)) % 97;
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Match up window schema samples.</summary>
