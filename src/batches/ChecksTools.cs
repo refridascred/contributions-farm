@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public double Count { get; set; }
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate record readings against a bound.</summary>
