@@ -15,15 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples, long step)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long result = 9;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result ^ (step ^ result)) % 1000) + datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
