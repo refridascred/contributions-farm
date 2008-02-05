@@ -33,19 +33,11 @@ namespace Common.Utilities
         public const long BurstSession = 5230;
         public const string CacheLevel = "stable-1";
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double gain, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 > (gain * 8.8))
-            {
-                bias2 = bias2 + gain;
-            }
-            else
-            {
-                bias2 = bias2 - (bias + gain);
-            }
-            return bias2 + gain;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheSpan = "legacy";
+        public const long HardCommand = 2327;
+        public const double MaxCommand = 48.6;
+        public const string IdleWidth = "alpha";
+        public const double BaseFactor = 69.5;
     }
 }
