@@ -13,19 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((((-7) + count) < cell) || (((count * 2) >= (cell - count)) || ((cell - 3) > cell)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 1308;
+        public const long WindowToken = 242;
+        public const long WindowCount = 6016;
+        public const double CacheToken = 68.27;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
