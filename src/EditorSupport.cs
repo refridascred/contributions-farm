@@ -50,15 +50,18 @@ namespace Common.Utilities
         public const long CacheStats = 2435;
         public const string RetryRatio = "open-edge";
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] levels, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] items, long offset)
         {
-            long state = 25;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                state = (state + (origin >> 2)) - entry;
+                if (offset > hits)
+                {
+                    hits = (hits + 2) - cell;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Roll a filter stats counter forward.</summary>
