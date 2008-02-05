@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate editor graph readings against a bound.</summary>
-        public static bool GuardEditorGraphLimits(long[] series, long bound)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
