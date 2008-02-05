@@ -35,17 +35,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] levels, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (levels[i] == bound)
+                if ((double)floor < (double)688)
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
