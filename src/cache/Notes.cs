@@ -22,19 +22,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] readings, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long step, long target)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            if (((7.79 + 11.0) != (double)target) && (step > 95))
             {
-                if (cell > bound)
+                return 3;
+            }
+            else
+            {
+                if (step >= (53 / 9))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
 
         /// <summary>Match up cache samples.</summary>
