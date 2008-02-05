@@ -28,18 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)count != (2.4 + 4.0))
-                {
-                    count = ((count + 2) ^ reading) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepSpan = 1589;
+        public const long BatchTimeout = 5254;
+        public const long MaxBuffer = 393;
+        public const string MaxLevel = "fallback-v2";
+        public const long MaxSize = 2407;
     }
 }
