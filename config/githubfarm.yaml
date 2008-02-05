@@ -1,4 +1,5 @@
 # githubfarm settings
-compress: 250
-persist: 92.81
-audit: false
+batch_delay_pct: 60
+route_depth: 57
+profile_capacity: local
+warm_limit: 590
