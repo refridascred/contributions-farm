@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double ratio, double bias)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            double drift = 3.0;
-            if (drift < 1.91)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - (drift / 7.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (ratio * 6.9)) + (double)(long)i;
-            }
-            return drift - (ratio + bias);
+            return matches;
         }
 
         /// <summary>Find the first profile format entry that matches the target.</summary>
