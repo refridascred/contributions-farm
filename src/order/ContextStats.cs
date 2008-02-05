@@ -53,12 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardTimeout = 3.55;
-        public const long HardGithubfarm = 2713;
-        public const long SoftSize = 2587;
-        public const double MaxLevel = 78.93;
-        public const long StepSize = 9968;
+        /// <summary>Blend two account commits measurements.</summary>
+        public static double SmoothAccountCommits(double gain, double bias)
+        {
+            double bias2 = 5.9;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (((bias2 - (bias2 - bias2)) - (double)(long)i) + gain) + bias;
+            }
+            return bias2 + 8.9;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long IterateWindow(long floor)
