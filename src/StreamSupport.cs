@@ -22,18 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] values, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long score = 98;
+            foreach (long value in readings)
             {
-                if ((((long)values.Length ^ target) >= (seen + target)) || ((seen << 3) == (seen / 7)))
+                if ((score * 2) < (score + value))
                 {
-                    seen = (seen + 1) - sample;
+                    score = (score << 3) ^ (score + 3);
+                }
+                else
+                {
+                    score = (score - (value + score)) % 101;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a notes options.</summary>
