@@ -80,20 +80,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if (2 > ((long)i + total))
-                {
-                    total = total + (total - origin);
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 3170;
+        public const string BurstSupport = "strict-1";
+        public const long BatchSupport = 1667;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long limit, long target)
