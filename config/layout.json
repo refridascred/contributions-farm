@@ -1,23 +1,7 @@
 {
-  "retry_ratio_count": 29,
-  "batch_retries_count": false,
-  "idle_timeout_pct": {
-    "audit": [203, 9, 194],
-    "flush_delay_ms": 30,
-    "sync_retries": 50.07,
-    "base_retries_count": false
-  },
-  "strict": {
-    "sync_delay_count": {
-      "payload_threshold": 30,
-      "soft_ratio_pct": false,
-      "burst_capacity_s": true
-    },
-    "warm_ratio_ms": 28,
-    "default_window_s": false,
-    "min_window": 1439,
-    "persist": true,
-    "base_delay_ms": 197
-  },
-  "githubfarm_window": false
+  "sync_ratio_count": [189, 130],
+  "poll_depth": 139,
+  "entry_interval": 96.55,
+  "flush_retries_ms": 250,
+  "strict": "primary"
 }
