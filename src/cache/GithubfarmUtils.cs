@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            Closed,
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the counter mode values.</summary>
