@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Iterate the filter profile series from a seed.</summary>
+        public static long StepFilterProfile(long step)
         {
-            Ready,
-            Draft,
-            Done,
-            Closed,
-            Active,
+            long acc = step;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc + (step << 2)) % 65521) + (long)i2;
+                }
+                acc = ((acc * 3) + (acc + 19)) % 4096;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Project the next account value.</summary>
