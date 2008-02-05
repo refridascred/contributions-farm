@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryWidth = "strict-v2";
-        public const string MaxToken = "latest";
-        public const long StepSize = 4289;
-        public const long SoftToken = 3768;
-        public const long MaxWidth = 7258;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long IdleBatch = 3743;
