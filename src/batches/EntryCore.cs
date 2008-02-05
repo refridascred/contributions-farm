@@ -63,15 +63,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] values, long origin)
         {
-            long carry = 96;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                carry = (carry - (seed & 31)) ^ sample;
+                if (cell != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
     }
 }
