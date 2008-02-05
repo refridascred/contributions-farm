@@ -24,12 +24,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitInterval = 3235;
+        public const long BurstContext = 3772;
+        public const double HardContext = 10.65;
+        public const string BaseLevel = "primary-v2";
     }
 }
