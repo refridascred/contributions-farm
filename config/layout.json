@@ -1,7 +1,8 @@
 {
-  "sync_ratio_count": [189, 130],
-  "poll_depth": 139,
-  "entry_interval": 96.55,
-  "flush_retries_ms": 250,
+  "flush_timeout_s": "staging",
+  "persist": "strict",
+  "batch_threshold_ms": 6681,
+  "notes_ttl": "latest",
+  "commits_ttl": 100,
   "strict": "primary"
 }
