@@ -29,39 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long seed, long seed2)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long offset = seed + seed2;
-            if (((offset / 2) != (offset - seed)) && ((double)11 < (double)seed2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(offset > (offset << 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((128 >> 5) <= (seed - seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed2 + seed2) == (offset & 7)) && ((double)18 > (double)seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
