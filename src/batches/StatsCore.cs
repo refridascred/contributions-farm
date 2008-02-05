@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
