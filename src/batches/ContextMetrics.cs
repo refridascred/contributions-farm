@@ -57,11 +57,10 @@ namespace Common.Utilities
         public const long CacheAccount = 4352;
         public const long MaxLevel = 3727;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 66.89;
+        public const long LimitDepth = 3097;
+        public const long DefaultLevel = 1877;
+        public const long RetryWidth = 1066;
     }
 }
