@@ -19,24 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long origin)
+        /// <summary>Blend two farm window measurements.</summary>
+        public static double SmoothFarmWindow(double gain, double floor)
         {
-            if ((origin ^ origin) >= (target + target))
+            double load = (double)(686 & 7);
+            if (load < gain)
             {
-                return 0;
+                load = (load + gain) - floor;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((origin - target) > (origin & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                load = (load + (load / 5.0)) - (double)(long)i;
             }
+            return load + load;
         }
 
         /// <summary>Derive the next editor channel value from a seed.</summary>
