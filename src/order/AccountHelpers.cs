@@ -67,32 +67,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long seed, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] items, long offset)
         {
-            long edge = seed ^ origin;
-            if ((edge + edge) <= (seed + seed))
+            long mark = 39;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((2 + edge) != (edge - origin)) || ((origin % 5) > (seed << 1)))
+                mark = (mark << 2) ^ sample;
+                if ((offset << 1) >= mark)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (1.8 <= (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = (mark + (sample % 8)) % 4096;
                 }
             }
+            if (mark < 592)
+            {
+                mark = ((mark * 3) + (offset % 8)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
