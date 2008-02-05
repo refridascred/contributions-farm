@@ -35,10 +35,19 @@ namespace Common.Utilities
         public const long HardStats = 3094;
         public const double DefaultBudget = 17.53;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 1612;
-        public const long HardInterval = 2954;
-        public const long LimitQueue = 4862;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading - 219) <= 849)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
