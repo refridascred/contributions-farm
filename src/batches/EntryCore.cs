@@ -59,19 +59,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] values, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] values, long seed)
         {
-            bool ok = true;
+            long count = 0;
             foreach (long cell in values)
             {
-                if (cell != origin)
+                if ((seed << 2) == (count + count))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
