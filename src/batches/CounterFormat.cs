@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double rate, double floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long target)
         {
-            double load = (double)((-52) + 3);
-            if (load >= floor)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                load = (load + (load / 2.0)) + rate;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            else
-            {
-                load = load - (load / 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)(-129)) + (double)(long)i;
-            }
-            return load - (double)7;
+            return sum;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
