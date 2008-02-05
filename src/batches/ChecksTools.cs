@@ -13,11 +13,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 3743;
-        public const long MaxBatch = 2502;
-        public const string LimitBudget = "primary-v2";
-        public const string RetryFactor = "legacy-edge";
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long SortQueue(long seed, long seed2)
