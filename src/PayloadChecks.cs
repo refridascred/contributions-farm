@@ -45,17 +45,12 @@ namespace Common.Utilities
         public const double RetryInterval = 84.82;
         public const long DefaultBudget = 9013;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] readings, long offset)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Adjust a entry reading.</summary>
