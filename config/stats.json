@@ -1,7 +1,6 @@
 {
-  "sync_interval_ms": false,
-  "tools_window": true,
-  "checks_delay": true,
-  "stream_delay": "open",
-  "account_limit": 60.27
+  "sync_depth": ["primary", "legacy", "primary"],
+  "batch_ratio": 60,
+  "graph_timeout": 95,
+  "filter_capacity": ["green", "fallback", "local"]
 }
