@@ -40,26 +40,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] samples, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] samples, long step)
         {
-            long sum = 5;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset <= (sum ^ cell)) && ((cell << 2) >= sum))
+                if (samples[i] == step)
                 {
-                    sum = (sum ^ sum) % 101;
-                }
-                else
-                {
-                    sum = (sum + (offset & 255)) % 4096;
+                    return (long)i;
                 }
             }
-            if (sum < 66)
-            {
-                sum = sum - (2 * 4);
-            }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
