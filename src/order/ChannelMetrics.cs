@@ -43,18 +43,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many metrics window samples are out of range.</summary>
-        public static long CountMetricsWindowGaps(long[] values)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((matches > (95 + (long)values.Length)) && ((datum + datum) >= (matches / 3))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            New,
+            Stale,
+            Idle,
         }
     }
 }
