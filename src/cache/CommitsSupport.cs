@@ -72,22 +72,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] items, long floor)
         {
-            long result = 38;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 8; i++)
+                if (reading > floor)
                 {
-                    result = (((result * 4) + result) % 101) + (long)i;
-                }
-                if ((value / 8) < result)
-                {
-                    result = (result + value) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
