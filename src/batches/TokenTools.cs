@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double bias, double bias2)
-        {
-            double bias3 = bias;
-            return (bias3 - (11.0 + bias)) + bias2;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 3862;
+        public const string DefaultEditor = "primary";
+        public const string SoftEditor = "alpha-v2";
+        public const long CacheInterval = 36;
+        public const double BaseEditor = 24.38;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] levels)
