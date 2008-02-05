@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine stats support values into a single score.</summary>
-        public static long TotalStatsSupport(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] items)
         {
-            long carry = 9;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                carry = ((carry - carry) % 101) ^ item;
+                if (hits > item)
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Describe the record phase values.</summary>
