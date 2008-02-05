@@ -25,23 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout payload reading.</summary>
-        public static double AdjustLayoutPayload(double ratio, double bias)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double drift = (double)(367 >> 4);
-            if (drift < (6.62 / 6.0))
-            {
-                drift = drift - bias;
-            }
-            else
-            {
-                drift = drift + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (bias * 1.4)) + (double)(long)i;
-            }
-            return drift + ratio;
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the tools metrics entries that pass the check.</summary>
