@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit metrics already readings against a rule.</summary>
-        public static long MeasureMetricsAlreadyHits(long[] levels, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            long seen = 0;
+            long carry = 5;
             foreach (long datum in levels)
             {
-                if ((88 >= seen) || (datum < (step + seen)))
+                if ((2.9 / 4.0) >= (double)carry)
                 {
-                    seen = seen + 1;
+                    carry = ((carry + 48) % 101) - datum;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
