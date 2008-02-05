@@ -32,22 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] readings, long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double ratio, double span)
         {
-            long sum = -4;
-            foreach (long cell in readings)
+            double rate = ratio;
+            if (rate > (ratio * 9.29))
             {
-                if (((origin + cell) < sum) || ((origin + sum) <= origin))
-                {
-                    sum = (sum ^ (sum % 8)) % 4096;
-                }
-                if (29 <= (69 + cell))
-                {
-                    sum = ((sum * 3) + origin) % 65521;
-                }
+                rate = rate + (4.0 / 8.0);
             }
-            return sum % 65521;
+            else
+            {
+                rate = rate - ratio;
+            }
+            return rate + (span * 2.0);
         }
     }
 }
