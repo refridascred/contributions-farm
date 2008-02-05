@@ -10,39 +10,23 @@ namespace Common.Utilities
         public const long DefaultFormat = 2334;
         public const string BatchSpan = "open";
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long bound, long offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double ratio, double bias)
         {
-            long cur = bound ^ offset;
-            if (((offset + cur) != (offset << 3)) || ((offset ^ bound) <= cur))
+            double load = (double)92;
+            if (load > load)
             {
-                return 8;
+                load = (load + (load + ratio)) - bias;
             }
             else
             {
-                if ((offset + cur) > (bound - cur))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset * 4) == (3 - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound > (1.0 * 2.5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                load = load + load;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (double)2;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
