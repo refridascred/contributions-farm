@@ -1,18 +1,11 @@
 # githubfarm settings
-soft_capacity_s: stable
-verbose:
-  retry_limit_ms: 17.62
-  batch_ttl_s: strict
-  enabled:
-    soft_timeout: blue
-    audit:
-      - eu-west
-      - latest
-      - staging
-      - staging
-    warm_size_pct: legacy
-    persist: 8311
-    enabled: true
-    contributi_ratio: local
-  default_capacity_s: 55.6
-cluster_ttl: 45.41
+compress: 250
+min_interval_s: 44
+persist:
+  - 483
+  - 103
+  - 388
+  - 461
+poll_timeout_ms: edge
+hard_limit_pct: false
+queue_delay: 4991
