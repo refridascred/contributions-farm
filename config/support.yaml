@@ -1,7 +1,7 @@
 # support settings
-verbose: 89
-persist: 100
-flush_size_pct:
-  - edge
-  - strict
-  - green
+tools_timeout: true
+entry_ttl:
+  - 300
+  - 47
+burst_size: false
+retry_timeout: eu-west
