@@ -23,13 +23,14 @@ namespace Common.Utilities
             return drift + (bias - rate);
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
+            Dropped,
+            Paused,
+            Idle,
+            Done,
+            Active,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
