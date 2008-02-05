@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] data, long floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)matches <= (4.3 + 5.3))
-                {
-                    matches = ((matches + 3) + datum) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
