@@ -59,13 +59,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            Pending,
-            Idle,
-            Locked,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
