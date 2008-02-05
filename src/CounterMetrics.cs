@@ -67,31 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long limit, long target)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            if ((limit < (limit ^ limit)) || ((27 ^ target) > (4 + target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit << 2) == (target + target)) && (limit < (target % 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit << 2) != (65 - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
