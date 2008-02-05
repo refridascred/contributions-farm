@@ -44,18 +44,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] series, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((double)entry >= (3.5 / 3.0))
+                if (!(tally > (tally / 5)) || (((long)series.Length != (1 - tally)) && ((value - value) > (4 + tally))))
                 {
-                    matches = (matches + 2) + step;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a record options.</summary>
