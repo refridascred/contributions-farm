@@ -20,21 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 8;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = (carry + value) % 97;
+                carry = (carry * 4) + (carry - 6);
+                if (carry >= value)
                 {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry * 2) + (value ^ value);
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
