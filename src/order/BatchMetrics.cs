@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long CacheContributi = 6620;
         public const long BatchContributi = 795;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] series)
         {
-            long total = 31;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total - ((long)series.Length % 100)) % 1000) ^ cell;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
