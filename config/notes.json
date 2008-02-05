@@ -1,11 +1,12 @@
 {
-  "hard_threshold_count": {
-    "idle_window_s": 63,
-    "readonly": ["fallback", "fallback", "fallback"],
-    "strict": 100
+  "hard_retries_s": "stable",
+  "strict": 18.74,
+  "flush_retries": [184, 12],
+  "cluster_threshold": "legacy",
+  "session_timeout": {
+    "enabled": 22,
+    "hard_retries_ms": "latest",
+    "soft_window_s": 52
   },
-  "persist": 23,
-  "readonly": 33,
-  "batch_interval_count": false,
-  "batch_depth_ms": "local"
+  "warm_ratio_pct": false
 }
