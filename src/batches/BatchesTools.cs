@@ -30,18 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] levels, long step)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally >= (entry + entry)) && ((double)422 > (double)entry))
+                if (levels[i] >= step)
                 {
-                    tally = (tally + 2) + step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
