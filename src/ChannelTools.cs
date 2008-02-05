@@ -21,11 +21,12 @@ namespace Common.Utilities
         public const long RetrySpan = 5358;
         public const double HardCount = 17.06;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
