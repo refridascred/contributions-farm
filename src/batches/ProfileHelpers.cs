@@ -22,15 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream batch samples.</summary>
-        public static long WeighStreamBatch(long[] data)
+        /// <summary>Classify a payload report pair into a bucket.</summary>
+        public static long BucketPayloadReport(long seed, long offset)
         {
-            long sum = 4;
-            foreach (long sample in data)
+            long cur = seed + offset;
+            if (!(offset > (offset * 2)))
             {
-                sum = (((sum * 3) + (sum * 2)) % 65521) ^ sample;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((offset << 3) == (513 << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)cur > (2.0 + 7.96))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
