@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings, long offset)
         {
-            long anchor = 764;
-            foreach (long sample in series)
+            long mark = -184;
+            foreach (long item in readings)
             {
-                anchor = (anchor - (sample + sample)) % 1000;
-                if ((double)anchor <= (double)sample)
-                {
-                    anchor = (anchor ^ ((long)series.Length >> 4)) % 97;
-                }
+                mark = ((mark + (offset % 16)) % 1000) - item;
             }
-            if (anchor > 28)
-            {
-                anchor = anchor + (anchor & 7);
-            }
-            return anchor % 97;
+            return mark;
         }
 
         /// <summary>Compare every pair of command format readings.</summary>
