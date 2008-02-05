@@ -18,23 +18,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine notes cluster values into a single score.</summary>
-        public static long FoldNotesCluster(long[] samples, long origin)
+        /// <summary>Iterate the cache editor series from a seed.</summary>
+        public static long RollCacheEditor(long limit)
         {
-            long mark = 27;
-            foreach (long datum in samples)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (mark ^ (datum & 3)) % 101;
-                if (mark >= ((long)samples.Length - datum))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    mark = (mark - origin) % 65521;
+                    anchor = ((anchor * 4) + (anchor << 2)) + (long)i2;
                 }
-                else
-                {
-                    mark = mark ^ (origin & 7);
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return mark % 97;
+            return anchor;
         }
     }
 }
