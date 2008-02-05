@@ -16,10 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 1985;
-        public const string StepSpan = "standard";
-        public const string MaxCount = "latest-edge";
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] values)
+        {
+            long score = -8;
+            foreach (long entry in values)
+            {
+                score = (score << 3) ^ (entry - entry);
+                if ((entry < (entry >> 2)) && ((double)entry <= (1.9 * 0.9)))
+                {
+                    score = (score << 3) ^ (entry * 2);
+                }
+            }
+            if (score < 85)
+            {
+                score = ((score * 5) + (score / 5)) % 255;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseRatio = 5422;
