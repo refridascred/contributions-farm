@@ -33,15 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Grade a context stream value against two limits.</summary>
+        public static long BucketContextStream(long offset, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            if (!((origin & 63) == (origin % 7)))
             {
-                result = ((result * 5) + (long)i) % 97;
+                return 2;
             }
-            return result;
+            else
+            {
+                if (((-60) ^ 5) != (origin << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset ^ origin) <= offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
