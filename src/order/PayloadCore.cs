@@ -14,13 +14,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long step, long limit)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long cur = step + limit;
+            if ((limit + 99) < limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((12.0 * 1.9) == (double)cur)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (25 > (step * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
