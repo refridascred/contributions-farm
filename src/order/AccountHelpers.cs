@@ -33,19 +33,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] values, long floor)
+        /// <summary>Iterate the farm support series from a seed.</summary>
+        public static long SeriesFarmSupport(long origin)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry != floor)
+                if ((origin & 3) >= 8)
                 {
-                    ready = false;
+                    score = (score - (7 - (long)i)) % 97;
                     break;
                 }
+                else
+                {
+                    score = ((score * 2) + (origin & 7)) % 65521;
+                }
+                if ((881 * 2) != (963 - score))
+                {
+                    score = ((score << 3) ^ (98 + (long)i)) % 4096;
+                    score = (score * 4) + ((-12) - origin);
+                }
+                score = (score + origin) % 1000;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Hold a layout record.</summary>
