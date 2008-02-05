@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell + seen) >= cell)
                 {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
