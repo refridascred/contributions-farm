@@ -25,24 +25,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((8 ^ seed) <= seed)
+                if ((double)tally < (11.0 + 5.0))
                 {
-                    sum = ((sum << 2) ^ ((long)i << 3)) % 1000;
-                    sum = ((sum * 4) + (seed + sum)) % 1000;
+                    tally = (tally + 3) - entry;
                 }
                 else
                 {
-                    sum = (sum + sum) % 101;
+                    tally = tally - 1;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
