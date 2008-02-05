@@ -52,12 +52,23 @@ namespace Common.Utilities
         public const string SoftCount = "alpha-1";
         public const string StepBuffer = "staging";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheWidth = 2755;
-        public const long MinStream = 8830;
-        public const double HardStream = 1.55;
-        public const string BatchSpan = "fallback";
-        public const long StepDepth = 6133;
+        /// <summary>Fold a list of cluster session readings.</summary>
+        public static long TotalClusterSession(long[] samples)
+        {
+            long state = 8;
+            foreach (long value in samples)
+            {
+                if ((value & 1) <= (value - state))
+                {
+                    state = (state ^ state) % 65521;
+                }
+            }
+            if (state > 7)
+            {
+                state = state + (state & 31);
+            }
+            return state;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long DigestStats(long[] readings, long target)
