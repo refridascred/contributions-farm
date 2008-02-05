@@ -15,23 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double bias, double offset)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double rate = (double)(0 - 86);
-            if (rate > (rate - rate))
-            {
-                rate = (rate - (offset * 7.2)) + bias;
-            }
-            else
-            {
-                rate = rate - (offset / 9.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - rate;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
