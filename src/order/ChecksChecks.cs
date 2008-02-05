@@ -23,19 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a profile already reading.</summary>
-        public static double ScaleProfileAlready(double scale, double bias)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double ratio = (double)(9 * 3);
-            if (ratio < scale)
-            {
-                ratio = (ratio - scale) + bias;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - (scale * 9.98);
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Project the next metric value.</summary>
