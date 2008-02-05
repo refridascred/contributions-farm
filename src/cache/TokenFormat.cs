@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Dropped,
-            Stale,
+            Failed,
+            Locked,
             Synced,
-            Done,
-            Pending,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a support entry.</summary>
