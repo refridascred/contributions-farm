@@ -1,8 +1,22 @@
 # entry settings
-githubfarm_timeout: 250
-notes_depth: local
-payload_window: 4007
-audit: legacy
-hard_interval_pct:
-  - 331
-  - 278
+idle_ttl_count: 38.46
+format_ratio: false
+window_ttl: strict
+enabled: open
+window_threshold:
+  - 296
+  - 345
+  - 313
+poll_ratio_count:
+  compress:
+    max_delay_count: local
+    burst_threshold_ms: edge
+    soft_timeout_count: 85.08
+    cluster_window: fallback
+    cache_ratio_s: 30
+  farm_ratio: 19.68
+  verbose:
+    - green
+    - green
+    - primary
+  warm_threshold_s: 1024
