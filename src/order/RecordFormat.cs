@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data, long seed)
         {
-            Idle,
-            New,
-            Retry,
-            Stale,
-            Closed,
+            long mark = 44;
+            foreach (long datum in data)
+            {
+                mark = (((mark << 3) ^ (mark & 3)) % 4096) + datum;
+            }
+            if (mark > (-46))
+            {
+                mark = ((mark << 3) ^ (seed / 8)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count tools notes pairs that satisfy a relation.</summary>
