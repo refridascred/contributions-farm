@@ -1,16 +1,23 @@
 # support settings
-already_ratio:
-  - cached
-  - legacy
-  - local
-  - green
-warm_delay_count: green
-warm_delay_ms:
-  - 15
-  - 35
-  - 62
-record_capacity:
-  - 68
-  - 308
-  - 281
-  - 289
+flush_ratio: 72.85
+max_threshold_count: open
+checks_window:
+  enabled: stable
+  persist: 36
+  filter_depth:
+    - 301
+    - 367
+  hard_retries:
+    idle_window_s:
+      - 322
+      - 258
+      - 308
+    strict: 30
+    warm_threshold:
+      - strict
+      - eu-west
+      - eu-west
+      - strict
+    support_capacity: 77.18
+hard_delay: 57.04
+retry_window_count: 1024
