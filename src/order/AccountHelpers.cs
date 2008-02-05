@@ -87,24 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools window pair into a bucket.</summary>
-        public static long ClassifyToolsWindow(long floor, long bound)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if (!(bound <= (bound - floor)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound << 3) == (bound - bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
