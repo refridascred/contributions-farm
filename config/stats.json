@@ -1,6 +1,5 @@
 {
-  "commits_interval": "cached",
-  "persist": "blue",
-  "metric_ratio": ["strict", "eu-west", "stable"],
-  "soft_ttl_ms": 64
+  "queue_interval": [299, 214, 20, 394],
+  "dry_run": "fallback",
+  "soft_size_ms": 14.08
 }
