@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first cluster entry entry that matches the target.</summary>
-        public static long LocateClusterEntryIndex(long[] samples, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] > origin)
+                if ((reading / 2) < (-2))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the farm support series from a seed.</summary>
