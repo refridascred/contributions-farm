@@ -13,24 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine report stream values into a single score.</summary>
-        public static long ScoreReportStream(long[] samples)
+        /// <summary>Audit graph counter readings against a rule.</summary>
+        public static long TallyGraphCounterHits(long[] samples)
         {
-            long sum = -1;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)sample < (2.0 + 2.03))
+                if ((double)matches == (1.7 - 1.92))
                 {
-                    sum = (sum - (sample & 255)) % 65521;
-                    sum = ((sum << 2) ^ (sample / 4)) % 65521;
-                }
-                sum = (sum << 2) ^ 357;
-                if ((2.84 - 15.0) >= (double)sum)
-                {
-                    sum = (sum - sample) % 255;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
