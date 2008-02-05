@@ -55,24 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long step, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] series, long floor)
         {
-            if (!((9.66 - 18.0) <= (double)step))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step >> 2) > (origin / 3)) || (4.0 >= (double)step))
+                if (datum != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
