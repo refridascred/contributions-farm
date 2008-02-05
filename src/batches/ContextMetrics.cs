@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            long state = 50;
-            foreach (long reading in levels)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                state = (state ^ (reading >> 1)) % 101;
-                state = (state - (reading ^ 13)) % 65521;
-                if (3.0 > (double)state)
-                {
-                    state = ((state * 4) + reading) % 101;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state << 2)) % 4096;
-                }
+                score = ((score * 4) + (3 + score)) % 101;
+                score = ((score * 2) + (seed >> 5)) % 4096;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Audit graph counter readings against a rule.</summary>
