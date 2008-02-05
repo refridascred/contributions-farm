@@ -31,13 +31,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long target, long seed)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Synced,
+            long edge = target ^ seed;
+            if ((target * 4) < (seed ^ seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((96 ^ target) > edge)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target > (target ^ edge)) || ((1.11 - 18.0) > (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up already buffer samples.</summary>
