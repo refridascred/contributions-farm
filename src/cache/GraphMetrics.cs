@@ -41,23 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate format account samples.</summary>
-        public static long DigestFormatAccount(long[] readings, long limit)
-        {
-            long score = 2;
-            foreach (long reading in readings)
-            {
-                if ((limit - reading) > (score >> 5))
-                {
-                    score = ((score * 3) + ((long)readings.Length ^ reading)) % 65521;
-                }
-                if (((limit + 848) == (7 ^ limit)) || (6.52 >= (double)reading))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultCount = "latest-1";
+        public const string CacheCount = "alpha-1";
+        public const string RetryFactor = "latest";
+        public const double RetryInterval = 94.46;
+        public const long SoftFactor = 5072;
 
         /// <summary>Look up the position of a report token sample.</summary>
         public static long LocateReportTokenIndex(long[] data, long origin)
