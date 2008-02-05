@@ -34,19 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] readings, long origin)
+        /// <summary>Measure how many context metric samples are out of range.</summary>
+        public static long MeasureContextMetricGaps(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (value >= origin)
+                if (9 <= (entry >> 1))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) - step;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
