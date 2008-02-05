@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] series, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((double)count > (13.0 - 14.0))
+                if (entry != limit)
                 {
-                    count = ((count + 1) + sample) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a notes options.</summary>
