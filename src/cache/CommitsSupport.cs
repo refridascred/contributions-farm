@@ -106,15 +106,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] values, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] series, long seed)
         {
             long count = 0;
-            foreach (long cell in values)
+            foreach (long item in series)
             {
-                if (!(((755 ^ cell) < (bound & 31)) || ((cell - bound) > (bound % 5))))
+                if ((((item - count) >= (65 / 5)) && (71 >= count)) || ((count <= (count ^ 16)) && ((seed % 60) < (count * 2))))
                 {
-                    count = count + 2;
+                    count = count + 3;
                 }
             }
             return count;
