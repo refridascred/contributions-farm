@@ -27,14 +27,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Active,
+            Queued,
             Dropped,
+            Paused,
             Retry,
-            Stale,
-            Idle,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
