@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double gain, double floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            double gain2 = (floor - gain) + 8.83;
-            if (gain2 < floor)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain2 = gain2 + 0.95;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain2 + (gain / 6.0);
+            return count;
         }
 
         /// <summary>Describe the stats state values.</summary>
