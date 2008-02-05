@@ -54,21 +54,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up already contributi samples.</summary>
-        public static long PairAlreadyContributiCount(long[] values)
+        /// <summary>Match up cluster buffer samples.</summary>
+        public static long CompareClusterBufferCount(long[] values)
         {
-            long matches = 0;
+            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 1)
+                    if ((values[i] + values[j]) > 5)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
