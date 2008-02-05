@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long score = 665;
-            foreach (long reading in readings)
-            {
-                if (!((reading + score) > (reading & 255)))
-                {
-                    score = score + (899 >> 3);
-                    continue;
-                }
-                if (!((score % 60) <= score))
-                {
-                    score = (score << 3) ^ (253 - score);
-                }
-                else
-                {
-                    score = (score * 2) + (reading * 5);
-                }
-            }
-            if (score < 228)
-            {
-                score = score + (score * 5);
-            }
-            return score;
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
