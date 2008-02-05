@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const string RetrySupport = "latest-v2";
         public const long MaxSupport = 1797;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] series, long bound)
         {
-            Pending,
-            Active,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
