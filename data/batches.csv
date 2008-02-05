@@ -1,7 +1,8 @@
-id,level,ratio,active,owner
-1,latest,local,28.07,legacy
-2,stable,22.76,38.07,primary
-3,945,open,410,45.68
-4,latest,886,edge,edge
-5,428,388,501,140
-6,42.09,45.18,9.55,647
+id,count,label
+1,729,591
+2,576,85.53
+3,primary,primary
+4,20.82,stable
+5,743,30.39
+6,latest,eu-west
+7,323,cached
