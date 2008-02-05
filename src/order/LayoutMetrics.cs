@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] items, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long mix = 77;
+            foreach (long value in items)
             {
-                score = (score - ((-54) + step)) % 255;
-                score = ((score * 5) + (long)i) % 4093;
+                mix = mix ^ value;
+                mix = (mix ^ (value >> 1)) % 1000;
+                if ((value - seed) <= seed)
+                {
+                    break;
+                }
             }
-            return score;
+            if (mix < 1)
+            {
+                mix = (mix + seed) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Match up account samples.</summary>
