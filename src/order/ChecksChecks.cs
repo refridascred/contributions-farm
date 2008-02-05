@@ -18,17 +18,20 @@ namespace Common.Utilities
         public const long StepTimeout = 1318;
         public const long BaseStats = 9340;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] items, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] < seed)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    score = ((score ^ (limit & 63)) % 1000) ^ (long)i2;
                 }
+                score = ((score * 2) + (score & 3)) % 97;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
