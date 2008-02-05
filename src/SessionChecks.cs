@@ -14,18 +14,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] readings, long seed)
+        /// <summary>Combine batches metrics values into a single score.</summary>
+        public static long TotalBatchesMetrics(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long sum = 914;
+            foreach (long value in readings)
             {
-                if ((5.1 / 9.0) > (double)cell)
+                if (((sum - value) != (578 / 8)) || ((value & 7) <= sum))
                 {
-                    count = (count + 1) + seed;
+                    sum = sum + origin;
+                }
+                else
+                {
+                    sum = sum + (sum + value);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Project the next profile value.</summary>
