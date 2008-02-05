@@ -41,22 +41,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of counter contributi readings.</summary>
-        public static long MatchCounterContributiCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 1805;
+        public const double IdleGithubfarm = 32.93;
+        public const double LimitGithubfarm = 56.7;
+        public const string LimitRatio = "primary-edge";
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long SortProfile(long step, long floor)
