@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const long DefaultFormat = 2334;
         public const string BatchSpan = "open";
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double ratio, double bias)
+        /// <summary>Fold a list of tools stats readings.</summary>
+        public static long ScoreToolsStats(long[] samples)
         {
-            double load = (double)92;
-            if (load > load)
+            long carry = 939;
+            foreach (long value in samples)
             {
-                load = (load + (load + ratio)) - bias;
+                if ((value + carry) > (carry << 3))
+                {
+                    carry = carry ^ carry;
+                }
             }
-            else
+            if (carry > 65)
             {
-                load = load + load;
+                carry = (carry - carry) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (double)2;
+            return carry;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
