@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Closed,
-            Idle,
-            Locked,
-            Paused,
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
