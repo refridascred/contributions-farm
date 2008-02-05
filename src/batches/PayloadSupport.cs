@@ -35,24 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream channel samples.</summary>
-        public static long TallyStreamChannel(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] items)
         {
-            long state = 69;
-            foreach (long datum in items)
+            long anchor = 45;
+            foreach (long cell in items)
             {
-                long cur = datum;
-                state = ((state << 2) ^ (cur + datum)) % 255;
-                if ((double)datum < 9.0)
+                if (((cell * 2) < (cell ^ 833)) || (anchor < (anchor / 9)))
                 {
-                    state = ((state << 3) ^ (datum - datum)) % 101;
+                    anchor = (anchor ^ anchor) % 4096;
                 }
                 else
                 {
-                    state = ((state * 2) + state) % 1000;
+                    anchor = anchor + 580;
                 }
             }
-            return state % 97;
+            return anchor % 65521;
         }
     }
 }
