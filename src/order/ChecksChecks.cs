@@ -32,19 +32,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] items, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long result = -240;
+            foreach (long sample in samples)
             {
-                if (reading > seed)
+                if ((1.3 * 7.7) < (double)sample)
                 {
-                    valid = false;
-                    break;
+                    result = ((result * 2) + (result & 3)) + bound;
+                }
+                else
+                {
+                    result = result - (sample << 1);
                 }
             }
-            return valid;
+            return result;
         }
     }
 }
