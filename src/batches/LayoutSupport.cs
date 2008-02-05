@@ -56,20 +56,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((((long)i % 60) > (0 + target)) && ((9.9 - 1.7) != (double)carry))
-                {
-                    carry = (carry * 4) + (target + (long)i);
-                    carry = carry ^ (target >> 2);
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 4445;
+        public const long StepProfile = 2591;
+        public const long RetryProfile = 7802;
+        public const long IdleProfile = 2924;
     }
 }
