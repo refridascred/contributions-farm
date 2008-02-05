@@ -56,13 +56,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] levels)
         {
-            Active,
-            Retry,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (9.0 >= (double)entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
