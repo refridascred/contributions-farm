@@ -54,22 +54,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] levels, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] levels, long target)
         {
-            long mark = 274;
-            foreach (long sample in levels)
+            long acc = 5;
+            foreach (long entry in levels)
             {
-                if ((double)floor < (7.0 / 5.0))
+                if ((double)entry != (0.94 - 12.0))
                 {
-                    mark = ((mark << 2) ^ 6) % 65521;
-                }
-                else
-                {
-                    mark = (mark ^ sample) % 1000;
+                    acc = (acc ^ (acc + (-5))) - target;
                 }
             }
-            return mark % 97;
+            return acc % 1000;
         }
 
         /// <summary>Accumulate batch layout samples.</summary>
