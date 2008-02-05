@@ -62,22 +62,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many session report samples are out of range.</summary>
-        public static long AuditSessionReportOutliers(long[] series, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((0.9 + 18.0) > (double)value) || (4.4 > (double)seen))
+                if (series[i] == seed)
                 {
-                    seen = (seen + 3) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
