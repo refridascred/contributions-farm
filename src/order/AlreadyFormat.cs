@@ -56,20 +56,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] data, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long total = 10;
-            foreach (long entry in data)
-            {
-                total = ((((total << 2) ^ (total / 6)) % 4096) ^ entry) + origin;
-                total = total ^ total;
-            }
-            if (total > (-56))
-            {
-                total = ((total * 5) + (total << 2)) % 97;
-            }
-            return total;
+            Idle,
+            Stale,
+            Draft,
+            Closed,
         }
     }
 }
