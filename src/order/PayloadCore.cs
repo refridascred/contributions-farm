@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            Idle,
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a window stats.</summary>
