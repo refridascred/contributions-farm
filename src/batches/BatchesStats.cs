@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            long mark = 727;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark ^ (value % 7)) % 101;
-                if (value >= (mark ^ mark))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = mark - (value ^ value);
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
