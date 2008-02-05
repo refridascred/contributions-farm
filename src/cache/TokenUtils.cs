@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Closed,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultWidth = 1289;
+        public const long SoftContributi = 4334;
+        public const long StepContributi = 95;
+        public const long CacheContributi = 5311;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenBounds(long[] data, long floor)
