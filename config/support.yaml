@@ -1,5 +1,4 @@
 # support settings
-poll_limit: 78
-metrics_timeout: true
-readonly: 5774
-dry_run: fallback
+persist: false
+warm_interval: latest
+base_delay_pct: 56.54
