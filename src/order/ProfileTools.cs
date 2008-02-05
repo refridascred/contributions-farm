@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Draft,
-            Ready,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftBudget = "alpha-edge";
+        public const long MinLevel = 3703;
+        public const string IdleTimeout = "cached-v2";
+        public const long MinBudget = 3812;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowInterval = 8469;
