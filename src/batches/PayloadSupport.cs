@@ -15,19 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] data, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long mix = 19;
+            foreach (long value in samples)
             {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = mix + value;
             }
-            return valid;
+            return mix % 4096;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
