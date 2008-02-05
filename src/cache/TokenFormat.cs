@@ -22,31 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long origin, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            if ((double)step != (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step >= (double)4)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin > (origin * 2)) || ((origin + origin) >= (origin % 16)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the tools class values.</summary>
