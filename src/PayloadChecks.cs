@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 29.93;
-        public const long BurstRecord = 6859;
-        public const long SoftRecord = 3912;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
