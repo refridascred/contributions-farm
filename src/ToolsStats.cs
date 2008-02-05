@@ -54,19 +54,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] data)
         {
-            long sum = 2;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                sum = sum + (reading ^ reading);
-                if ((6.17 * 8.3) == (double)reading)
+                if ((16.0 / 8.0) != (double)item)
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
