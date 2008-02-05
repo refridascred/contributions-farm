@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Closed,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 2178;
+        public const double MinRoute = 36.46;
+        public const long BurstLevel = 6679;
+        public const double HardFactor = 51.97;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long RollBuffer(long offset)
