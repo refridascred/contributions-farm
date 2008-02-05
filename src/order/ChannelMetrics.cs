@@ -19,12 +19,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepCommits = "cached-edge";
-        public const long IdleCommits = 2932;
-        public const long WindowCommits = 933;
-        public const long MaxCommits = 3726;
-        public const long SoftScore = 2338;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 5) + 682) % 4096;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Audit batch metrics readings against a rule.</summary>
         public static long TallyBatchMetricsMatches(long[] values)
