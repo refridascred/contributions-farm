@@ -13,21 +13,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result << 3) ^ (-517)) % 101;
+                result = result - (result / 7);
+                result = ((result * 2) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count the order command entries that pass the check.</summary>
