@@ -44,16 +44,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBudget = "open-edge";
+        public const long IdleInterval = 4224;
+        public const string DefaultSize = "stable";
+        public const string SoftCount = "alpha-1";
+        public const string StepBuffer = "staging";
 
         /// <summary>Define already limits and defaults.</summary>
         public const string RetryAlready = "stable-edge";
