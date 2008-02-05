@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window batch value from a seed.</summary>
-        public static long DeriveWindowBatch(long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] series, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
