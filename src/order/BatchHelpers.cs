@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of editor profile readings.</summary>
+        public static long TallyEditorProfile(long[] readings, long origin)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long score = 272;
+            foreach (long reading in readings)
+            {
+                score = ((score + (score + score)) - reading) + origin;
+            }
+            if (score < 69)
+            {
+                score = ((score * 3) + (score / 7)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
