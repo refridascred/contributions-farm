@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchRatio = 35.17;
+        public const string BatchSize = "fallback-1";
+        public const long IdleScore = 780;
 
         /// <summary>Adjust a already reading.</summary>
         public static double ProjectAlready(double bias, double bias2)
