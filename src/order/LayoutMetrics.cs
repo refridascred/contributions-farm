@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const string SoftScore = "cached-1";
         public const long RetryContext = 1312;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            Active,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
