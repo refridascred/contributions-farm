@@ -28,11 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 2339;
-        public const long RetryLevel = 2452;
-        public const long DefaultTools = 5310;
-        public const double StepScore = 97.32;
-        public const double BurstSpan = 84.78;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
