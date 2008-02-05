@@ -40,17 +40,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] series, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (series[i] == step)
+                if ((long)items.Length == (count >> 4))
                 {
-                    return (long)i;
+                    count = ((count + 2) - cell) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a counter reading.</summary>
