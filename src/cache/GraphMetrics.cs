@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series, long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long anchor = 365;
-            foreach (long entry in series)
-            {
-                if ((1.2 * 1.4) > (double)anchor)
-                {
-                    anchor = (anchor - (entry + anchor)) - origin;
-                }
-            }
-            if (anchor < 90)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            Pending,
+            Dropped,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
