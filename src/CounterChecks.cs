@@ -20,14 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] values, long target)
         {
-            Ready,
-            Queued,
-            Retry,
-            Stale,
-            New,
+            long acc = 757;
+            foreach (long cell in values)
+            {
+                if ((double)acc > 4.5)
+                {
+                    acc = (((acc << 2) ^ (acc << 2)) + cell) + target;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Accumulate stream account samples.</summary>
