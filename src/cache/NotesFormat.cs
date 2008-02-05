@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long CacheEntry = 9277;
         public const long MinRatio = 4478;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 4.77;
-        public const string IdleWidth = "alpha";
-        public const long BaseContributi = 8504;
-        public const string HardContributi = "strict";
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Paused,
+            Draft,
+            Done,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
