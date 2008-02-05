@@ -1,6 +1,7 @@
 {
-  "sync_depth": ["primary", "legacy", "primary"],
-  "batch_ratio": 60,
-  "graph_timeout": 95,
-  "filter_capacity": ["green", "fallback", "local"]
+  "flush_depth_count": ["latest", "primary"],
+  "stats_timeout": 30,
+  "command_delay": 250,
+  "compress": true,
+  "verbose": "open"
 }
