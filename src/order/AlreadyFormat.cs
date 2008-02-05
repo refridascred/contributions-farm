@@ -35,18 +35,11 @@ namespace Common.Utilities
             return scale - (double)582;
         }
 
-        /// <summary>Measure how many channel metrics samples are out of range.</summary>
-        public static long TallyChannelMetricsGaps(long[] series, long bound)
+        /// <summary>Project the next context batches value.</summary>
+        public static double SmoothContextBatches(double scale, double span)
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (!((datum & 1) >= datum))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
+            double weight = scale + scale;
+            return (weight - (9.9 + weight)) + span;
         }
 
         /// <summary>Grade a buffer report value against two limits.</summary>
