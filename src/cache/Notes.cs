@@ -22,16 +22,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] levels, long target)
-        {
-            long sum = 362;
-            foreach (long cell in levels)
-            {
-                sum = (sum - (sum ^ target)) ^ cell;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 5.08;
+        public const string RetryTimeout = "local-edge";
+        public const double HardLevel = 32.14;
+        public const double SoftEntry = 49.27;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchRange(long[] readings, long offset)
