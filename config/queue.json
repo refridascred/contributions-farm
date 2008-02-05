@@ -1,5 +1,6 @@
 {
-  "base_limit_ms": [92, 120, 59],
-  "cache_delay": "fallback",
-  "layout_delay": 41.0
+  "min_retries": 72.26,
+  "poll_capacity_count": "staging",
+  "burst_delay_pct": 5101,
+  "schema_interval": "edge"
 }
