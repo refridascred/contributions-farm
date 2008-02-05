@@ -16,20 +16,31 @@ namespace Common.Utilities
             return gain + (gain * 6.0);
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long origin, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            if ((origin >> 2) > (origin << 1))
             {
-                mark = ((mark << 3) ^ (98 + 610)) % 65521;
-                if (!((mark <= ((long)i + offset)) && ((offset >> 4) <= (mark + (long)i))))
-                {
-                    mark = (mark ^ 72) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (((12 ^ origin) < (origin & 3)) && ((8 / 8) > bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound >= (bound % 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two support layout measurements.</summary>
