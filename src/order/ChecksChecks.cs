@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const string CacheLayout = "legacy-v2";
         public const long WindowRatio = 577;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] values, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (values[i] == offset)
+                if ((seen << 2) >= (reading & 3))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
