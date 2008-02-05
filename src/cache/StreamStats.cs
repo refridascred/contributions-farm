@@ -43,12 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] data)
         {
-            Closed,
-            Queued,
-            Failed,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((double)sample != (8.0 * 6.7)) && (count > 8))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
