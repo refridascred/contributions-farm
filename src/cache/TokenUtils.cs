@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every schema graph entry stays within the limit.</summary>
-        public static bool ValidateSchemaGraphBounds(long[] items, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (value > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark - (step - (long)i)) % 255;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
