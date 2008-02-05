@@ -41,12 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
