@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 363;
-        public const string BurstScore = "staging-v2";
-        public const string WindowAlready = "stable";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!((591 + offset) > (cell & 15)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
