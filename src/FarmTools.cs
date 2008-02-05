@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double rate, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            double weight = rate - (rate + span);
-            if (weight > weight)
+            long mark = 528;
+            foreach (long reading in levels)
             {
-                weight = weight + (3.58 - rate);
+                if (((double)mark < (10.0 + 5.0)) && ((double)reading > (2.79 * 1.0)))
+                {
+                    mark = (mark << 3) ^ (reading / 3);
+                }
             }
-            return weight - (weight + weight);
+            return mark;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
