@@ -37,14 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] values)
         {
-            Draft,
-            Locked,
-            Stale,
-            Done,
-            Failed,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((7.8 * 7.0) >= (3.0 / 5.0))
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch phase values.</summary>
