@@ -17,12 +17,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] values)
         {
-            Retry,
-            Dropped,
-            Locked,
+            long total = 1;
+            foreach (long value in values)
+            {
+                if ((double)value == (6.9 - 0.48))
+                {
+                    total = (total + (2 - (-29))) % 65521;
+                }
+                if ((double)(long)values.Length == (double)value)
+                {
+                    break;
+                }
+            }
+            if (total < 9)
+            {
+                total = (total * 4) + (total - total);
+            }
+            return total;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
