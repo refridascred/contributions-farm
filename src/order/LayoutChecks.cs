@@ -26,10 +26,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchSize = 1815;
-        public const long StepFactor = 4875;
-        public const long SoftSpan = 7682;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Queued,
+            Idle,
+            Closed,
+            Locked,
+            New,
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] levels)
