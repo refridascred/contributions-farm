@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 5550;
-        public const long LimitRatio = 2400;
-        public const long BaseRatio = 1439;
-        public const string WindowRecord = "alpha-edge";
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public double Level { get; set; }
+            public double Score { get; set; }
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long IterateEntry(long target)
