@@ -1,6 +1,9 @@
-id,owner,rank,level,ratio
-1,61.52,cached,1.13,96.61
-2,29.35,legacy,local,staging
-3,primary,legacy,23.58,325
-4,20.72,20.02,506,open
-5,588,legacy,staging,30.06
+id,token,level,owner
+1,89,317,legacy
+2,legacy,99,89.75
+3,175,staging,174
+4,primary,cached,blue
+5,694,staging,956
+6,543,895,66.44
+7,primary,56.12,6.71
+8,open,940,latest
