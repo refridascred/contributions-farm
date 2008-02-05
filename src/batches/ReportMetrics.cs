@@ -12,24 +12,39 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Grade a order cluster value against two limits.</summary>
+        public static long BucketOrderCluster(long origin, long step)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long offset = origin - step;
+            if (((origin / 9) < (step * 2)) && (0 > (step >> 2)))
             {
-                if ((bound >> 4) < (mark / 9))
+                return 1;
+            }
+            else
+            {
+                if (offset <= (step >> 5))
                 {
-                    mark = mark + (bound & 31);
+                    return 7;
                 }
                 else
                 {
-                    mark = (mark - ((long)i + 2)) % 101;
+                    if ((3.38 - 0.28) >= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)offset <= (4.1 / 8.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                mark = ((mark << 2) ^ (2 & 7)) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
         }
 
         /// <summary>Describe the batch status values.</summary>
