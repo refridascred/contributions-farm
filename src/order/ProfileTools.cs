@@ -47,12 +47,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 8557;
-        public const double StepSpan = 89.6;
-        public const long HardContext = 3375;
-        public const double HardDepth = 16.17;
-        public const double LimitContext = 26.76;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Done,
+            Queued,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long RollTools(long bound)
