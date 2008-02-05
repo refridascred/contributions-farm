@@ -70,19 +70,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] series, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
