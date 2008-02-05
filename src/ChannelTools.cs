@@ -26,11 +26,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double rate, double bias)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long seed, long target)
         {
-            double weight = bias;
-            return weight - rate;
+            long span = seed - target;
+            if ((target >> 1) > span)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed > 8.9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
