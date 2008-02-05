@@ -27,12 +27,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
+            Stale,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
