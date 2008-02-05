@@ -30,22 +30,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long origin)
         {
-            long state = 6;
-            foreach (long cell in readings)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (77 <= cell)
-                {
-                    state = ((state * 3) + (state / 5)) % 101;
-                }
-                if ((cell + state) == ((-565) & 255))
-                {
-                    break;
-                }
+                acc = acc + (acc + origin);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return state % 1000;
+            return acc;
         }
     }
 }
