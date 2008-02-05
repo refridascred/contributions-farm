@@ -23,19 +23,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample == (3.1 * 8.45))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheCount = 995;
+        public const long CacheSession = 8478;
+        public const string HardBudget = "latest-1";
 
         /// <summary>Combine session context values into a single score.</summary>
         public static long DigestSessionContext(long[] items)
