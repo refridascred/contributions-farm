@@ -1,10 +1,7 @@
-id,level,label
-1,standard,legacy
-2,legacy,strict
-3,598,640
-4,64.06,57.55
-5,967,769
-6,573,eu-west
-7,eu-west,684
-8,252,75.49
-9,stable,edge
+id,count,owner
+1,106,55.91
+2,edge,33.49
+3,350,55
+4,47.63,922
+5,299,47.02
+6,843,staging
