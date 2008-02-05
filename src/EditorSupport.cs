@@ -64,19 +64,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double weight, double floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double load = (double)(83 & 15);
-            if (load < weight)
-            {
-                load = load + (floor * 5.44);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (weight - weight)) + (double)(long)i;
-            }
-            return load + (double)90;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
