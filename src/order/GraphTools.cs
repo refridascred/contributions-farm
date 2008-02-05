@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] series, long limit)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] readings, long bound)
         {
-            long mark = 7;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry == (14.0 + 7.5))
+                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
                 {
-                    mark = ((mark + 90) % 65521) - limit;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
