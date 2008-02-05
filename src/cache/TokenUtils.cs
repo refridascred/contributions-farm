@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] values, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long total = 8;
+            foreach (long item in values)
             {
-                mark = (mark - (step - (long)i)) % 255;
-                mark = ((mark * 4) + (long)i) % 65521;
+                for (int i = 0; i < 3; i++)
+                {
+                    total = ((((total + ((-8) + 2)) % 1000) ^ (long)i) ^ item) - offset;
+                }
+                total = (total * 4) + (total & 3);
             }
-            return mark;
+            return total % 97;
         }
 
         /// <summary>Fold a list of session readings.</summary>
