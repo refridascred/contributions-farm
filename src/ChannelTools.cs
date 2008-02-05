@@ -16,15 +16,17 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
