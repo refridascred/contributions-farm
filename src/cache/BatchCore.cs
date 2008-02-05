@@ -18,18 +18,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] series, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long score = 999;
-            foreach (long entry in series)
-            {
-                if (((score + score) != (entry + (long)series.Length)) || ((double)757 <= (double)bound))
-                {
-                    score = score - (entry << 2);
-                }
-            }
-            return score % 97;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
