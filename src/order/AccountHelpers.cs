@@ -82,27 +82,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long seed, long origin)
         {
-            long result = -214;
-            foreach (long datum in readings)
+            long edge = seed ^ origin;
+            if ((edge + edge) <= (seed + seed))
             {
-                result = (result << 3) ^ (datum / 3);
-                if (result < (datum >> 4))
+                return 3;
+            }
+            else
+            {
+                if (((2 + edge) != (edge - origin)) || ((origin % 5) > (seed << 1)))
                 {
-                    result = result - (datum % 16);
+                    return 8;
                 }
                 else
                 {
-                    result = result ^ (result * 3);
+                    if (1.8 <= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (result > 98)
-            {
-                result = (result - result) % 101;
-            }
-            return result;
         }
 
         /// <summary>Combine command values into a single score.</summary>
