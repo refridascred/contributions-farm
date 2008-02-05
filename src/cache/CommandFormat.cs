@@ -15,12 +15,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double bias, double offset)
         {
-            public bool Token { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            double rate = (double)(0 - 86);
+            if (rate > (rate - rate))
+            {
+                rate = (rate - (offset * 7.2)) + bias;
+            }
+            else
+            {
+                rate = rate - (offset / 9.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
