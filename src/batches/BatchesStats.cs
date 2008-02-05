@@ -64,21 +64,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                long next = (bound - bound) + (score >> 1);
+                score = score + (42 + score);
+                if (!(((long)i - score) >= ((long)i ^ next)))
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    score = score + bound;
+                    next = ((next << 3) ^ (bound ^ next)) % 4096;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
     }
 }
