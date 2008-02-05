@@ -36,19 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double span)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double rate, double floor)
         {
-            double drift = bias;
-            if (drift <= 8.0)
+            double weight = (double)3 / 3.0;
+            if (weight >= weight)
             {
-                drift = (drift + bias) - span;
+                weight = ((weight + 5.0) - rate) - floor;
             }
-            else
-            {
-                drift = drift + (double)20;
-            }
-            return drift + (6.5 / 2.0);
+            return weight + (weight + weight);
         }
 
         /// <summary>Classify a channel record pair into a bucket.</summary>
