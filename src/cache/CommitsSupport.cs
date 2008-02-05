@@ -57,26 +57,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] items, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] items)
         {
-            long sum = 94;
-            foreach (long reading in items)
+            long result = 38;
+            foreach (long value in items)
             {
-                if ((810 + reading) != (72 % 64))
+                for (int i = 0; i < 8; i++)
                 {
-                    sum = (sum * 2) + sum;
+                    result = (((result * 4) + result) % 101) + (long)i;
                 }
-                else
+                if ((value / 8) < result)
                 {
-                    sum = (sum + bound) % 97;
+                    result = (result + value) % 1000;
                 }
             }
-            if (sum < 19)
-            {
-                sum = sum - (sum ^ bound);
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
