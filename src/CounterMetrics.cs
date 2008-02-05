@@ -57,23 +57,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric payload figure with a bias.</summary>
-        public static double AdjustMetricPayload(double bias, double span)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
         {
-            double ratio = (bias + bias) / 3.0;
-            if (ratio <= span)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                ratio = ratio + (bias / 5.0);
+                mix = (mix ^ ((-2) >> 3)) % 65521;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                ratio = ratio + (double)609;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (7.6 * 5.1);
+            return mix;
         }
     }
 }
