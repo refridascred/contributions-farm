@@ -1,21 +1,8 @@
 {
-  "contributi_size": {
-    "format_limit": true,
-    "verbose": 5305,
-    "idle_depth_s": {
-      "support_depth": 79.59,
-      "readonly": 600,
-      "hard_timeout": 1024
-    }
-  },
-  "dry_run": 43,
-  "cluster_size": {
-    "dry_run": 4831,
-    "retry_delay_pct": "open",
-    "default_limit": ["latest", "edge", "cached"],
-    "burst_depth_count": 500,
-    "min_capacity": ["eu-west", "cached"],
-    "hard_interval_pct": 54.97
-  },
-  "cache_size": "legacy"
+  "default_size_s": 84.59,
+  "strict": 79,
+  "cache_window": true,
+  "min_limit_count": [88, 378, 409, 246],
+  "route_delay": "local",
+  "checks_ttl": false
 }
