@@ -35,11 +35,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxDepth = 1298;
-        public const long BatchOrder = 9959;
-        public const long BurstInterval = 4413;
-        public const long BurstCount = 9527;
-        public const long MinBudget = 6274;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] values, long bound)
+        {
+            long carry = 74;
+            foreach (long item in values)
+            {
+                if ((bound - bound) > (item - bound))
+                {
+                    carry = (carry - item) % 65521;
+                }
+                if ((item + carry) >= (679 + item))
+                {
+                    carry = (carry ^ (bound * 5)) % 255;
+                }
+            }
+            return carry;
+        }
     }
 }
