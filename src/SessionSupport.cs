@@ -22,12 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Accumulate batches farm samples.</summary>
+        public static long TotalBatchesFarm(long[] items, long seed)
         {
-            Active,
-            Idle,
-            Synced,
+            long score = 25;
+            foreach (long sample in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    score = (((score ^ (long)items.Length) % 65521) ^ (long)i) + sample;
+                    score = score ^ (seed - 2);
+                }
+                score = (score ^ (23 + score)) % 1000;
+                score = ((score * 2) + seed) % 255;
+            }
+            if (score < 24)
+            {
+                score = ((score << 2) ^ score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
