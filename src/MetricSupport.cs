@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long BaseContributi = 5855;
         public const long MinBudget = 4530;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] levels, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Roll a notes commits counter forward.</summary>
