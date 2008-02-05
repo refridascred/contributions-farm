@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] values, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long total = 331;
+            foreach (long reading in data)
             {
-                if (entry != limit)
+                if (((0.11 * 5.1) >= (double)total) && ((double)reading != (9.46 + 1.61)))
                 {
-                    found = false;
-                    break;
+                    total = total + (total + reading);
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Audit graph counter readings against a rule.</summary>
