@@ -53,17 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] samples, long seed)
+        /// <summary>Count the already profile entries that pass the check.</summary>
+        public static long CountAlreadyProfileGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
+                if (((reading & 3) < (matches * 2)) || (matches < (86 + matches)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a command entry.</summary>
