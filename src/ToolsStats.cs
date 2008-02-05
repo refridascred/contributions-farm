@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] values, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (cell <= floor)
+                if (value >= offset)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Count command schema pairs that satisfy a relation.</summary>
