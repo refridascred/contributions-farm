@@ -22,10 +22,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstDepth = 9988;
-        public const string MaxFactor = "primary-v2";
-        public const string IdleTimeout = "standard-1";
+        /// <summary>Derive the next token order value from a seed.</summary>
+        public static long StepTokenOrder(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = (sum + (long)i) % 255;
+                sum = ((sum * 3) + (sum - sum)) % 4096;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] readings)
