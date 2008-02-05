@@ -56,15 +56,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Classify a tools window pair into a bucket.</summary>
+        public static long ClassifyToolsWindow(long floor, long bound)
         {
-            long mix = 740;
-            foreach (long value in samples)
+            if (!(bound <= (bound - floor)))
             {
-                mix = ((mix ^ (mix ^ 881)) % 97) ^ value;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((bound << 3) == (bound - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
