@@ -29,11 +29,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 4704;
-        public const long BatchWindow = 6454;
-        public const long HardBudget = 3049;
-        public const long BatchInterval = 5988;
+        /// <summary>Combine profile stream values into a single score.</summary>
+        public static long DigestProfileStream(long[] series, long bound)
+        {
+            long result = 9;
+            foreach (long entry in series)
+            {
+                result = ((result << 2) ^ (entry & 7)) + bound;
+            }
+            return result;
+        }
 
         /// <summary>Count the checks schema entries that pass the check.</summary>
         public static long TallyChecksSchemaGaps(long[] levels, long offset)
