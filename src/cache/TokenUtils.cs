@@ -37,19 +37,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] levels, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long step, long limit)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long span = step + limit;
+            if (!(step > span))
             {
-                if (cell <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((1.0 / 8.0) == (double)span)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
     }
 }
