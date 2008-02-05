@@ -31,18 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] items, long limit)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mark = 943;
-            foreach (long item in items)
-            {
-                if (limit > 73)
-                {
-                    mark = (mark - (item + mark)) % 65521;
-                }
-            }
-            return mark;
+            Ready,
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Match up already buffer samples.</summary>
