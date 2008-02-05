@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long WindowCount = 6016;
         public const double CacheToken = 68.27;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] series)
         {
-            Paused,
-            Dropped,
-            Active,
+            long carry = 12;
+            foreach (long item in series)
+            {
+                if (item <= (34 % 10))
+                {
+                    carry = carry + (carry + carry);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
