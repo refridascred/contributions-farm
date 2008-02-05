@@ -14,16 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double weight, double floor)
-        {
-            double weight2 = (double)(397 + 849);
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (((weight2 - 16.0) + (double)(long)i) + weight) + floor;
-            }
-            return weight2 + (weight2 * 6.2);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowInterval = 8469;
+        public const long SoftCache = 6260;
+        public const string LimitCache = "standard";
+        public const double MinCache = 62.33;
+        public const long HardFactor = 7115;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long HardWidth = 6732;
