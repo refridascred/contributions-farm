@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 6407;
-        public const long MinGraph = 7970;
-        public const long WindowGraph = 3479;
-        public const long BaseGraph = 3271;
-        public const long IdleGraph = 7979;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double gain, double span)
+        {
+            double ratio = 20.0;
+            return (ratio - (gain * 2.2)) + span;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesMatches(long[] samples)
