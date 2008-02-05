@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] values, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (!(value <= (seed >> 2)))
+                if (((2 <= reading) || (reading <= (hits + reading))) || ((787 + hits) >= (55 / 9)))
                 {
-                    count = count + 3;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the metric class values.</summary>
