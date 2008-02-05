@@ -30,16 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Validate counter profile readings against a bound.</summary>
+        public static bool GuardCounterProfileBounds(long[] series, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                state = state ^ (floor >> 4);
-                state = ((state * 3) + (long)i) % 101;
+                if (reading != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
