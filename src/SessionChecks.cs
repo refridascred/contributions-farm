@@ -14,22 +14,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine batches metrics values into a single score.</summary>
-        public static long TotalBatchesMetrics(long[] readings, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] readings)
         {
-            long sum = 914;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((sum - value) != (578 / 8)) || ((value & 7) <= sum))
+                if ((double)sample >= 7.8)
                 {
-                    sum = sum + origin;
-                }
-                else
-                {
-                    sum = sum + (sum + value);
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
