@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a tools farm pair into a bucket.</summary>
-        public static long BucketToolsFarm(long offset, long floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] data, long limit)
         {
-            if ((offset - offset) >= (offset - floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + 8) <= floor)
+                if (data[i] <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (offset <= (offset + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + floor) < (30 >> 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a support metric sample.</summary>
