@@ -1,20 +1,8 @@
 {
-  "default_ratio_count": {
-    "persist": "cached",
-    "cache_depth_ms": "latest",
-    "readonly": ["green", "standard"],
-    "report_threshold": {
-      "strict": false,
-      "persist": false,
-      "min_depth": "open",
-      "idle_ttl_ms": 80,
-      "poll_window_ms": "open"
-    },
-    "min_capacity_s": true
-  },
-  "retry_interval_count": 100,
-  "batch_ttl": "staging",
-  "sync_ttl_s": "fallback",
-  "batch_ratio_pct": "open",
-  "base_capacity_ms": 19
+  "base_window_ms": ["cached", "blue"],
+  "strict": "staging",
+  "warm_delay": 65.31,
+  "persist": false,
+  "flush_ttl": "eu-west",
+  "support_delay": true
 }
