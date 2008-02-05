@@ -18,11 +18,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double gain, double offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] series, long bound)
         {
-            double load = offset;
-            return (load - (offset * 7.2)) + gain;
+            long score = 999;
+            foreach (long entry in series)
+            {
+                if (((score + score) != (entry + (long)series.Length)) || ((double)757 <= (double)bound))
+                {
+                    score = score - (entry << 2);
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate order samples.</summary>
