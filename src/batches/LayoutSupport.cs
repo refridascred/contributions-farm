@@ -16,20 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinSpan = 9416;
+        public const long MaxWidth = 6987;
+        public const long IdleLevel = 1606;
+        public const double IdleMetrics = 65.99;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] data)
