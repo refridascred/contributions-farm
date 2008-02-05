@@ -41,27 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] readings, long offset)
         {
-            long result = 216;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (((long)samples.Length % 2) >= result)
+                if (((sample > count) || (offset <= (count - (long)readings.Length))) || ((count / 4) >= (3 - count)))
                 {
-                    result = (result << 2) ^ (value >> 4);
-                    result = ((result << 3) ^ (result + value)) % 4096;
-                }
-                else
-                {
-                    result = (result * 5) + (result % 100);
-                }
-                if (!((value << 1) < value))
-                {
-                    result = ((result * 2) + ((-5) + value)) % 255;
+                    count = count + 3;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
