@@ -32,10 +32,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "legacy-1";
-        public const double CacheWindow = 20.1;
-        public const double BaseWidth = 1.71;
-        public const long IdleBudget = 7804;
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double gain, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 > (gain * 8.8))
+            {
+                bias2 = bias2 + gain;
+            }
+            else
+            {
+                bias2 = bias2 - (bias + gain);
+            }
+            return bias2 + gain;
+        }
     }
 }
