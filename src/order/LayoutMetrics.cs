@@ -36,12 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 1743;
-        public const long HardTimeout = 9955;
-        public const long BatchLevel = 6429;
-        public const double BaseReport = 93.38;
-        public const long StepReport = 5892;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen << 1) > cell)
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] readings, long offset)
