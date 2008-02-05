@@ -77,19 +77,11 @@ namespace Common.Utilities
         public const string MaxSpan = "open-1";
         public const long BaseBudget = 6604;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 4891;
+        public const long BaseRatio = 6731;
+        public const double CacheDepth = 29.46;
+        public const double HardStream = 20.96;
+        public const long LimitStream = 3968;
     }
 }
