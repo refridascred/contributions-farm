@@ -20,31 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] values, long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long anchor = 359;
-            foreach (long reading in values)
-            {
-                if (((16.0 - 9.2) == (double)reading) && ((step / 3) >= (anchor / 6)))
-                {
-                    anchor = (anchor - (7 + anchor)) % 1000;
-                }
-                anchor = (anchor - (32 % 2)) % 65521;
-                if (!(491 <= (step & 31)))
-                {
-                    anchor = (anchor + step) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (reading >> 5)) % 255;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = ((anchor * 5) + (anchor - step)) % 101;
-            }
-            return anchor;
+            Ready,
+            Synced,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
