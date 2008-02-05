@@ -57,19 +57,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchRoute = 75.65;
+        public const long RetryRoute = 4201;
+        public const long MinRoute = 1673;
+        public const string SoftRoute = "strict-1";
+        public const long StepSpan = 5499;
     }
 }
