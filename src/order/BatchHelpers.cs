@@ -31,18 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many tools format samples are out of range.</summary>
-        public static long AuditToolsFormatMatches(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (entry <= (seen - seen))
+                if (((sample + matches) != (sample >> 3)) && (sample >= (sample + 57)))
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
