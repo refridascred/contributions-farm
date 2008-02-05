@@ -54,18 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] series, long offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)cell >= (5.0 / 9.0)) || ((offset ^ cell) == (497 / 9)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
