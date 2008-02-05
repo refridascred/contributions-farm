@@ -48,32 +48,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank command notes input into a small class.</summary>
-        public static long RankCommandNotes(long step, long target)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            long next = step ^ target;
-            if (!((target << 2) >= (step % 97)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((step << 1) <= next))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (next >= (step % 2))
+                    if ((readings[i] + readings[j]) < 10)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
