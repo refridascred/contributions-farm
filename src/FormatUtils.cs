@@ -47,12 +47,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] series, long bound)
         {
-            Failed,
-            Done,
-            Stale,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (sample > bound)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
