@@ -32,16 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor channel value from a seed.</summary>
-        public static long SeriesEditorChannel(long offset)
+        /// <summary>Derive the next window batch value from a seed.</summary>
+        public static long DeriveWindowBatch(long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (carry - (67 / 2)) % 255;
-                carry = ((carry * 2) + (long)i) % 4093;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
