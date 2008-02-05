@@ -19,17 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] items, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (items[i] < bound)
+                if (value > floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Digest a series of token entries.</summary>
