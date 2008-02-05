@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double weight, double offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double ratio = weight;
-            if (ratio >= offset)
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio + (weight / 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio - (double)863;
+            Paused,
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
