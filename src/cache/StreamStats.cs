@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] values, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((tally & 255) < tally)
+                if (cell <= bound)
                 {
-                    tally = ((tally + 3) + datum) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
