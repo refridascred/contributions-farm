@@ -62,12 +62,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long floor)
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public double Total { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((2 << 1) != (floor >> 1))
+                {
+                    anchor = ((anchor << 2) ^ floor) % 1000;
+                    anchor = (anchor + anchor) % 255;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = ((anchor * 2) + anchor) ^ (long)i2;
+                }
+                anchor = ((anchor * 2) + (floor ^ floor)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
