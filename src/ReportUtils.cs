@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] readings)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((limit / 2) >= 8)
             {
-                if ((matches <= (matches / 7)) || ((matches + item) > (matches & 1)))
+                return 6;
+            }
+            else
+            {
+                if ((offset & 15) <= (offset ^ 4))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset % 16) > (offset % 97))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit >= (offset - limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the checks kind values.</summary>
