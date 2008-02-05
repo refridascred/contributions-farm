@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowContext = 37.69;
-        public const long BurstContext = 8795;
-        public const long HardCount = 7424;
-        public const long BatchContext = 8541;
+        /// <summary>Accumulate already checks samples.</summary>
+        public static long WeighAlreadyChecks(long[] values, long origin)
+        {
+            long mark = -4;
+            foreach (long item in values)
+            {
+                mark = (mark - (item - mark)) - origin;
+            }
+            if (mark > 2)
+            {
+                mark = (mark ^ (mark & 255)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Validate context stats readings against a bound.</summary>
         public static bool ValidateContextStatsLimits(long[] data, long origin)
