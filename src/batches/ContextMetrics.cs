@@ -19,18 +19,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit graph counter readings against a rule.</summary>
-        public static long TallyGraphCounterHits(long[] samples)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            if ((origin ^ origin) >= (target + target))
             {
-                if ((double)matches == (1.7 - 1.92))
+                return 0;
+            }
+            else
+            {
+                if ((origin - target) > (origin & 7))
                 {
-                    matches = (matches + 1) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next editor channel value from a seed.</summary>
