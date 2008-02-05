@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long offset, long floor)
         {
-            Synced,
-            Done,
-            Draft,
-            Paused,
+            long diff = offset + floor;
+            if (((offset & 255) == (diff + floor)) || ((diff << 1) != (diff % 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((71 * 3) >= (diff + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a report info.</summary>
