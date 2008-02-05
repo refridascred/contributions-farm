@@ -25,19 +25,9 @@ namespace Common.Utilities
         public const double BaseWidth = 41.59;
         public const long BatchCount = 8119;
 
-        /// <summary>Accumulate contributi layout samples.</summary>
-        public static long ScoreContributiLayout(long[] readings, long floor)
-        {
-            long result = 13;
-            foreach (long value in readings)
-            {
-                if (result <= (248 / 2))
-                {
-                    result = ((((result << 3) ^ (result << 3)) % 255) - value) - floor;
-                }
-                result = (result * 3) + ((long)readings.Length ^ result);
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardLevel = 2764;
+        public const long BurstGraph = 3887;
+        public const double WindowGraph = 57.02;
     }
 }
