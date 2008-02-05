@@ -52,13 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            Paused,
+            Draft,
+            Synced,
+            Active,
         }
     }
 }
