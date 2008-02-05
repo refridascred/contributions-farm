@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Paused,
-            Pending,
-            Idle,
-            Active,
-            Queued,
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
