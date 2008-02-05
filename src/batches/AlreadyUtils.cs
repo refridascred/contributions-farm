@@ -27,19 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] items, long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
