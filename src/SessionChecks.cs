@@ -31,22 +31,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the stats notes entries that pass the check.</summary>
-        public static long CountStatsNotesMatches(long[] levels, long origin)
+        /// <summary>Combine cache context values into a single score.</summary>
+        public static long TallyCacheContext(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long score = -361;
+            foreach (long reading in series)
             {
-                if ((double)matches < (11.0 - 8.5))
-                {
-                    matches = ((matches + 3) ^ cell) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (((score * 5) + (score + score)) % 1000) ^ reading;
             }
-            return matches;
+            if (score > 5)
+            {
+                score = ((score * 2) + (52 << 2)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
