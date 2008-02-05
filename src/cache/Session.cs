@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)offset != (12.0 * 3.18))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 1716;
+        public const double WindowBatches = 98.08;
+        public const long RetryBatches = 3155;
+        public const long MinBatches = 719;
 
         /// <summary>Combine batch metrics values into a single score.</summary>
         public static long ScoreBatchMetrics(long[] data, long step)
