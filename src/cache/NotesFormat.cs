@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] levels, long seed)
+        /// <summary>Derive the next cache report value from a seed.</summary>
+        public static long IterateCacheReport(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) != 0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (576 & 3)) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
