@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] levels, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (datum != seed)
+                if (entry != floor)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Hold a already header.</summary>
