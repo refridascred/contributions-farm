@@ -10,11 +10,26 @@ namespace Common.Utilities
         public const long DefaultBudget = 686;
         public const string CacheWidth = "latest-edge";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 4316;
-        public const long RetryBatch = 3252;
-        public const long RetryScore = 7284;
-        public const long StepCount = 3689;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long limit, long offset)
+        {
+            long lane = limit ^ offset;
+            if ((double)offset != (double)lane)
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset <= 18)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseStats = 3727;
