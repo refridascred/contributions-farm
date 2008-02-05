@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches tools reading.</summary>
-        public static double ScaleBatchesTools(double weight, double floor)
-        {
-            double gain = floor - floor;
-            if (gain <= (gain / 5.0))
-            {
-                gain = gain - (gain + weight);
-            }
-            else
-            {
-                gain = gain + weight;
-            }
-            return gain + floor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 930;
+        public const long MaxContext = 9787;
+        public const string MinContext = "primary-1";
+        public const string CacheSpan = "latest-edge";
+        public const long BurstContext = 8607;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
