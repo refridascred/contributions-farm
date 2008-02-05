@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count report already pairs that satisfy a relation.</summary>
-        public static long MatchReportAlreadyCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 92.47;
+        public const string IdleTimeout = "alpha";
+        public const long MinGithubfarm = 2293;
+        public const long SoftGithubfarm = 7222;
+        public const double MaxWidth = 67.36;
 
         /// <summary>Accumulate order samples.</summary>
         public static long WeighOrder(long[] series)
