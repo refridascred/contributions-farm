@@ -1,26 +1,5 @@
 {
-  "compress": "primary",
-  "cluster_retries": {
-    "burst_interval_s": "open",
-    "warm_limit_pct": {
-      "cache_limit": [166, 1, 108],
-      "window_size": true,
-      "sync_timeout_ms": 97.65,
-      "verbose": 94
-    },
-    "cache_ttl": 4027
-  },
-  "metric_capacity": "staging",
-  "warm_size_pct": {
-    "poll_timeout": "primary",
-    "sync_window_ms": 250,
-    "route_window": {
-      "readonly": 33,
-      "burst_timeout_pct": "blue",
-      "default_size_pct": 68.37
-    },
-    "flush_window_s": "edge",
-    "soft_window_count": 82,
-    "tools_timeout": 19
-  }
+  "base_limit_ms": [92, 120, 59],
+  "cache_delay": "fallback",
+  "layout_delay": 41.0
 }
