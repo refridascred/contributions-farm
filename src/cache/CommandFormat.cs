@@ -22,10 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinWidth = 2853;
-        public const long MaxSize = 9771;
-        public const double HardBudget = 12.28;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public bool Token { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] readings, long target)
