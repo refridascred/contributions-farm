@@ -18,12 +18,23 @@ namespace Common.Utilities
         public const double MinCache = 62.33;
         public const long HardFactor = 7115;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardWidth = 6732;
-        public const long LimitEditor = 4112;
-        public const long RetryWidth = 2641;
-        public const long BaseLevel = 1944;
-        public const long StepEditor = 9398;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] data)
+        {
+            long sum = 8;
+            foreach (long datum in data)
+            {
+                if (2.0 < (double)sum)
+                {
+                    sum = sum ^ datum;
+                }
+                if (((9 / 3) != (datum << 3)) || ((datum ^ sum) != (datum - datum)))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double scale, double span)
