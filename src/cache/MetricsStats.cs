@@ -16,10 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 6610;
-        public const long MinRoute = 2317;
-        public const long HardRoute = 3542;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Idle,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseRatio = 5422;
