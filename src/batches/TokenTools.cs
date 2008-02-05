@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchRatio = 35.17;
-        public const string BatchSize = "fallback-1";
-        public const long IdleScore = 780;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry == (double)step)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a already reading.</summary>
         public static double ProjectAlready(double bias, double bias2)
