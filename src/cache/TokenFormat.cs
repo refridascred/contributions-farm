@@ -35,22 +35,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] items, long origin)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double rate, double bias)
         {
-            long total = 64;
-            foreach (long reading in items)
+            double bias2 = (double)(0 % 16);
+            if (bias2 < bias2)
             {
-                if ((total > reading) && (origin > (reading + reading)))
-                {
-                    total = (total + (total & 31)) % 101;
-                }
+                bias2 = ((bias2 - bias2) - rate) + bias;
             }
-            if (total > 3)
-            {
-                total = (total - total) % 101;
-            }
-            return total % 4096;
+            return bias2 - bias2;
         }
     }
 }
