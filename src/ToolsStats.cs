@@ -66,17 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] levels, long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 7.0;
+            if (ratio > (ratio * 18.0))
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (double)70) + gain;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (ratio + bias);
+            }
+            return ratio + (double)710;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
