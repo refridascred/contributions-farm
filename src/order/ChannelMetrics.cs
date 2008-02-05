@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long step)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Paused,
+            Done,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
