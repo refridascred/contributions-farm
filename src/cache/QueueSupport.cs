@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 73.71;
-        public const long BatchSize = 1998;
-        public const long BatchBudget = 3578;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double gain, double offset)
+        {
+            double scale = offset;
+            if (scale >= (scale - scale))
+            {
+                scale = scale + (double)0;
+            }
+            else
+            {
+                scale = scale + (gain / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (offset / 8.0)) + (double)(long)i;
+            }
+            return scale + 1.2;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long SeriesStats(long limit)
