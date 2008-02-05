@@ -45,22 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] items, long floor)
+        /// <summary>Count the cluster route entries that pass the check.</summary>
+        public static long MeasureClusterRouteHits(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((floor << 3) < floor)
+                if ((5.64 < (double)hits) && (((sample + sample) < 78) && ((7.9 - 5.13) >= (double)hits)))
                 {
-                    matches = (matches + 1) - datum;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
