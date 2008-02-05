@@ -1,7 +1,10 @@
-id,owner,count,state,region
-1,190,legacy,251,legacy
-2,60.48,local,blue,938
-3,277,fallback,984,881
-4,50.0,stable,48.9,891
-5,edge,standard,50.54,26.4
-6,stable,348,315,36.13
+id,count,level,ratio
+1,166,608,standard
+2,405,805,standard
+3,green,662,689
+4,open,staging,77.75
+5,local,669,466
+6,286,57,621
+7,977,14,standard
+8,850,staging,green
+9,25.48,505,latest
