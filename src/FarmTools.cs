@@ -31,15 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double gain, double bias)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double rate, double span)
         {
-            double scale = (double)(7 + 29);
-            if (scale >= (11.0 - bias))
+            double weight = rate - (rate + span);
+            if (weight > weight)
             {
-                scale = scale - gain;
+                weight = weight + (3.58 - rate);
             }
-            return scale - (bias + gain);
+            return weight - (weight + weight);
         }
 
         /// <summary>Count the order command entries that pass the check.</summary>
