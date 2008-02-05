@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count command schema pairs that satisfy a relation.</summary>
-        public static long PairCommandSchemaCount(long[] levels)
+        /// <summary>Count the support cluster entries that pass the check.</summary>
+        public static long TallySupportClusterHits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((datum - datum) > (datum + datum)))
                 {
-                    if ((levels[i] - levels[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
