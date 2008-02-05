@@ -110,27 +110,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] levels, long origin)
         {
-            long sum = 910;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 2; i++)
+                if (((double)(-68) > (double)origin) || (origin < (seen + origin)))
                 {
-                    sum = ((sum - reading) % 97) ^ (long)i;
-                    sum = ((sum << 2) ^ (reading >> 5)) % 255;
+                    seen = (seen + 3) + entry;
                 }
-                if ((5.1 + 2.52) < (double)sum)
+                else
                 {
-                    sum = sum ^ (reading << 2);
+                    seen = seen - 1;
                 }
             }
-            if (sum < 2)
-            {
-                sum = (sum - (sum / 4)) % 4096;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
