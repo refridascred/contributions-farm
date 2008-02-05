@@ -41,18 +41,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] data)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)sample != (8.0 * 6.7)) && (count > 8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] + items[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
