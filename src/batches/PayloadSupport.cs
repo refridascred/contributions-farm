@@ -37,22 +37,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long seed)
         {
-            long anchor = 45;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (((cell * 2) < (cell ^ 833)) || (anchor < (anchor / 9)))
+                if (datum != seed)
                 {
-                    anchor = (anchor ^ anchor) % 4096;
-                }
-                else
-                {
-                    anchor = anchor + 580;
+                    found = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return found;
         }
     }
 }
