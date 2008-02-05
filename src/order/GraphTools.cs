@@ -34,18 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] data)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((0.16 - 6.3) != (double)matches)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Match up commits samples.</summary>
