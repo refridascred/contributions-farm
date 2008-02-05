@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
+            Failed,
+            Active,
             New,
-            Ready,
-            Queued,
-            Closed,
         }
 
         /// <summary>Hold a route entry.</summary>
