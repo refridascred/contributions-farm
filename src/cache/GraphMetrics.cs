@@ -51,19 +51,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] samples)
         {
             long tally = 0;
-            foreach (long sample in series)
+            foreach (long datum in samples)
             {
-                if (((sample & 63) >= (tally % 97)) && (((tally >> 4) < (sample / 3)) || ((double)sample > 6.0)))
+                if ((39 / 9) >= (datum + datum))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
