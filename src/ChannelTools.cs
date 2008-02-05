@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long bound)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-81) + mark) <= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark - (mark + bound)) % 65521;
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark - bound) % 4096;
-                    mark = mark + mark;
-                }
-                mark = (mark ^ (10 << 3)) % 97;
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
