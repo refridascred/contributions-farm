@@ -14,17 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] series, long step)
+        /// <summary>Check that every already graph entry stays within the limit.</summary>
+        public static bool ValidateAlreadyGraphBounds(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (series[i] == step)
+                if (item < offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
