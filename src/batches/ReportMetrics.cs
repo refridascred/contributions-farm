@@ -14,17 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] values, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (values[i] <= seed)
+                if (reading <= (floor + seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the batch status values.</summary>
