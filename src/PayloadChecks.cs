@@ -33,25 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long seed, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long gap = seed + target;
-            if (((target >> 1) < seed) || ((gap >> 2) >= (target / 6)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((6.1 - 3.83) != (double)gap))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Synced,
+            Active,
+            Closed,
+            Queued,
+            Done,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
