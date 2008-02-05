@@ -1,18 +1,5 @@
 {
-  "record_ttl": "latest",
-  "batch_depth_count": ["edge", "primary", "fallback", "strict"],
-  "warm_interval_count": {
-    "filter_threshold": "standard",
-    "soft_delay_count": 28.48,
-    "format_interval": 30,
-    "warm_window_count": 1835,
-    "burst_window": false,
-    "session_threshold": [111, 50]
-  },
-  "warm_capacity": {
-    "persist": [401, 398, 391],
-    "record_timeout": "eu-west",
-    "min_threshold_ms": 37.52,
-    "githubfarm_limit": false
-  }
+  "batch_limit_count": "legacy",
+  "strict": "staging",
+  "audit": true
 }
