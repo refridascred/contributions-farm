@@ -20,23 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] data)
-        {
-            long state = -7;
-            foreach (long reading in data)
-            {
-                if ((double)state <= (double)reading)
-                {
-                    state = (state * 2) + 3;
-                }
-                else
-                {
-                    state = (state - (state + state)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardTimeout = 9752;
+        public const long CacheDepth = 9432;
+        public const string MaxBudget = "strict-1";
+        public const string BurstRatio = "strict-1";
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
