@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next farm order value from a seed.</summary>
-        public static long DeriveFarmOrder(long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the filter level values.</summary>
