@@ -12,39 +12,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a order cluster value against two limits.</summary>
-        public static long BucketOrderCluster(long origin, long step)
+        /// <summary>Find the first batches cluster entry that matches the target.</summary>
+        public static long FindBatchesClusterIndex(long[] levels, long limit)
         {
-            long offset = origin - step;
-            if (((origin / 9) < (step * 2)) && (0 > (step >> 2)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (step >> 5))
+                if (levels[i] == limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.38 - 0.28) >= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)offset <= (4.1 / 8.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
