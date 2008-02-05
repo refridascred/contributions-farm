@@ -1,23 +1,11 @@
 # entry settings
-editor_threshold: legacy
-burst_depth: fallback
-warm_retries: 30
+max_limit: true
 enabled:
+  - green
+  - fallback
   - latest
-  - strict
-  - open
-min_window:
-  - primary
-  - standard
-strict:
-  retry_size:
-    retry_timeout_ms: 428
-    burst_window_count: 85.32
-    hard_timeout_ms: false
-    channel_retries:
-      - green
-      - edge
-      - latest
-  sync_ttl_count: fallback
-  cache_window_pct: strict
-  format_ratio: 22
+  - green
+retry_threshold: open
+compress: true
+burst_retries: 3736
+audit: 30
