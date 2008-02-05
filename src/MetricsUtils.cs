@@ -23,12 +23,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryWidth = 68.91;
-        public const long StepScore = 5642;
-        public const double BatchTimeout = 0.32;
-        public const long MinMetrics = 3519;
-        public const string MaxMetrics = "stable-v2";
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] series, long origin)
