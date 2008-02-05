@@ -20,18 +20,11 @@ namespace Common.Utilities
             return gain - (double)(-30);
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] values, long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((floor / 3) != (floor ^ value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
