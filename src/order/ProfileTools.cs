@@ -25,18 +25,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long target, long bound)
         {
-            long mix = 784;
-            foreach (long item in series)
+            if (((bound << 3) < target) || ((double)target > (1.03 / 4.0)))
             {
-                if (item >= (132 ^ mix))
+                return 5;
+            }
+            else
+            {
+                if ((target >= bound) && ((target % 3) > bound))
                 {
-                    mix = (mix + (5 + item)) % 255;
+                    return 6;
+                }
+                else
+                {
+                    if ((target + target) >= (bound + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Describe the window state values.</summary>
