@@ -40,12 +40,14 @@ namespace Common.Utilities
             return weight + 19.0;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
+            Done,
+            Closed,
+            Queued,
+            Failed,
+            New,
         }
     }
 }
