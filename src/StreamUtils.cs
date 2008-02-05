@@ -25,22 +25,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] values, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long mix = 714;
-            foreach (long value in values)
-            {
-                if ((mix - value) >= (bound ^ mix))
-                {
-                    mix = (mix ^ (mix % 97)) % 101;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = ((mix << 2) ^ (long)values.Length) % 255;
-            }
-            return mix % 97;
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
