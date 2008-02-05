@@ -42,18 +42,15 @@ namespace Common.Utilities
             return mean - (scale + floor);
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] samples, long floor)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double gain, double span)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double gain2 = gain;
+            if (gain2 <= (span * 6.01))
             {
-                if ((floor + item) < (floor ^ floor))
-                {
-                    seen = seen + 2;
-                }
+                gain2 = gain2 + (gain2 - 7.4);
             }
-            return seen;
+            return gain2 - (gain2 + gain);
         }
     }
 }
