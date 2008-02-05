@@ -62,19 +62,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] data, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long anchor = 78;
+            foreach (long value in samples)
             {
-                if (sample < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor - (52 % 10)) % 4096) ^ value;
             }
-            return ready;
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many support editor samples are out of range.</summary>
