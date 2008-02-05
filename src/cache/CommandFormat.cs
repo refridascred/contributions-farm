@@ -61,16 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
-            {
-                score = score ^ (target >> 3);
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Pending,
+            Locked,
+            Ready,
         }
     }
 }
