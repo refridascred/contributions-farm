@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleTimeout = 3814;
-        public const string CacheSpan = "latest-1";
-        public const long DefaultGraph = 5093;
-        public const long BurstGraph = 3689;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
