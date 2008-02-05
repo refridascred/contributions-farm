@@ -56,18 +56,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (9.0 >= (double)entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstDepth = 6912;
+        public const string BatchRecord = "alpha-edge";
+        public const long MinSize = 3010;
+        public const double IdleRecord = 26.38;
+        public const long RetryRatio = 8261;
     }
 }
