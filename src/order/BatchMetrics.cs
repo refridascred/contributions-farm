@@ -41,16 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc + (limit / 3)) % 97;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Count the already profile entries that pass the check.</summary>
