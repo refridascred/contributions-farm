@@ -59,23 +59,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double bias, double floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double rate = bias;
-            if (rate > 5.27)
-            {
-                rate = rate + (1.3 + rate);
-            }
-            else
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - 5.96;
+            Active,
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Fold a list of order readings.</summary>
