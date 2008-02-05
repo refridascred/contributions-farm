@@ -20,17 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] levels, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
