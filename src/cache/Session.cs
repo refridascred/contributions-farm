@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long CacheCount = 5095;
         public const long IdleWidth = 416;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] values, long bound)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] samples, long bound)
         {
-            long score = 119;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score ^ (datum + 68)) % 4096;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 176)
-            {
-                score = (score + (bound + score)) % 97;
-            }
-            return score;
+            return -1;
         }
     }
 }
