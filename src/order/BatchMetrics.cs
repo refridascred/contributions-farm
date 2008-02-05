@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum == (1.86 * 9.0))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 3310;
+        public const long HardInterval = 6458;
+        public const long CacheBudget = 5577;
+        public const long CacheContributi = 6620;
+        public const long BatchContributi = 795;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long DigestCluster(long[] series)
