@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Paused,
-            Ready,
-            Done,
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
