@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double gain, double offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] levels, long offset)
         {
-            double scale = offset;
-            if (scale >= (scale - scale))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                scale = scale + (double)0;
+                if ((3.64 / 6.0) <= (double)offset)
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            else
-            {
-                scale = scale + (gain / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (offset / 8.0)) + (double)(long)i;
-            }
-            return scale + 1.2;
+            return count;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
