@@ -73,23 +73,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long state = -7;
-            foreach (long sample in readings)
-            {
-                state = (state ^ (69 - state)) % 4096;
-                if (sample < (state + sample))
-                {
-                    state = ((state * 2) + 4) % 97;
-                }
-            }
-            if (state > 0)
-            {
-                state = state - (state & 1);
-            }
-            return state;
+            Idle,
+            Draft,
+            Closed,
+            Ready,
+            New,
         }
     }
 }
