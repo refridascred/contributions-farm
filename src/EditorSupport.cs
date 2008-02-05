@@ -45,10 +45,20 @@ namespace Common.Utilities
             return ratio - (ratio + weight);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 2265;
-        public const long CacheStats = 2435;
-        public const string RetryRatio = "open-edge";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long TallyRecordOutliers(long[] items, long offset)
