@@ -37,10 +37,31 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepLevel = 1699;
-        public const long LimitSpan = 3086;
-        public const long WindowBudget = 34;
-        public const long IdleEditor = 7625;
+        /// <summary>Rank profile token input into a small class.</summary>
+        public static long ClassifyProfileToken(long origin, long step)
+        {
+            if (!((origin + origin) < (-838)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin % 97) > 7)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (5.0 + 8.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
