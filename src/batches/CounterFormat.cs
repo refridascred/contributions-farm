@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] items, long target)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first buffer farm entry that matches the target.</summary>
