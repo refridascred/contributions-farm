@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
