@@ -34,16 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftWidth = 7605;
+        public const string BurstWidth = "legacy-edge";
+        public const long HardSize = 6564;
+        public const long SoftPayload = 6435;
+        public const string IdlePayload = "latest-edge";
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] items)
