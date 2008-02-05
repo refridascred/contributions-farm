@@ -16,19 +16,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)(long)i > (7.49 - 8.3))
-                {
-                    carry = ((carry * 3) + (offset - carry)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate payload samples.</summary>
