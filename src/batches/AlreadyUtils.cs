@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 751;
-        public const long HardInterval = 9052;
-        public const long StepLevel = 4408;
-        public const long LimitChecks = 5766;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] readings)
+        {
+            long acc = 436;
+            foreach (long entry in readings)
+            {
+                if (((acc + acc) < (2 >> 5)) && ((entry << 2) > (acc + entry)))
+                {
+                    acc = ((acc << 3) ^ (entry * 2)) % 1000;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double WindowStats = 89.69;
