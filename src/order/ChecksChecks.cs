@@ -25,13 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Adjust a layout payload reading.</summary>
+        public static double AdjustLayoutPayload(double ratio, double bias)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
+            double drift = (double)(367 >> 4);
+            if (drift < (6.62 / 6.0))
+            {
+                drift = drift - bias;
+            }
+            else
+            {
+                drift = drift + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (bias * 1.4)) + (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Count the tools metrics entries that pass the check.</summary>
