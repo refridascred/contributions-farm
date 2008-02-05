@@ -1,17 +1,7 @@
 {
-  "cache_delay": [429, 484],
-  "dry_run": {
-    "compress": 2779,
-    "min_capacity_pct": 18.79,
-    "soft_threshold": false,
-    "idle_ttl_count": {
-      "cache_depth_count": "staging",
-      "base_timeout_s": 58.03,
-      "buffer_ttl": 8.13
-    }
-  },
-  "max_ttl_count": "green",
-  "flush_window_ms": false,
-  "cache_depth_pct": 14.44,
-  "flush_timeout_ms": "stable"
+  "batch_limit_count": 72.43,
+  "cache_retries_ms": 30,
+  "strict": 250,
+  "report_threshold": false,
+  "readonly": 29
 }
