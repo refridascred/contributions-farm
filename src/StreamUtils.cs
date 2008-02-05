@@ -35,10 +35,26 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftLevel = "cached-edge";
-        public const long CacheSize = 3846;
-        public const long CacheBudget = 6664;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long step, long step2)
+        {
+            long bound = step - step2;
+            if ((double)bound == (3.8 / 4.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.21 > (double)step) && ((step2 + bound) <= (bound ^ step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricMatches(long[] values, long offset)
