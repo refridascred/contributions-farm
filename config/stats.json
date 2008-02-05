@@ -1,7 +1,5 @@
 {
-  "hard_size_count": "local",
-  "cache_depth_s": "fallback",
-  "cache_capacity": 70,
-  "channel_limit": 63,
-  "soft_capacity": ["staging", "staging", "legacy"]
+  "enabled": true,
+  "hard_delay_count": 10,
+  "dry_run": true
 }
