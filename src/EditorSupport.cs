@@ -16,13 +16,13 @@ namespace Common.Utilities
             return gain + (gain * 6.0);
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Stale,
-            Dropped,
-            Draft,
-            Paused,
+            Active,
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Blend two support layout measurements.</summary>
