@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] data, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (item >= offset)
+                if ((sample - sample) > 636)
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
