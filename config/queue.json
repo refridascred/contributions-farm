@@ -1,5 +1,8 @@
 {
-  "batch_limit_count": "legacy",
-  "strict": "staging",
-  "audit": true
+  "batch_capacity_ms": ["open", "latest", "eu-west"],
+  "enabled": 65.39,
+  "support_ratio": [229, 58, 15],
+  "notes_delay": false,
+  "compress": [29, 332, 240, 464],
+  "base_ttl_count": 62.15
 }
