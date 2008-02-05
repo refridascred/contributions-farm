@@ -37,17 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first buffer farm entry that matches the target.</summary>
-        public static long LocateBufferFarmIndex(long[] levels, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -1;
+            foreach (long value in items)
             {
-                if (levels[i] <= floor)
+                if ((value + 0) >= ((-4) >> 1))
                 {
-                    return (long)i;
+                    acc = (acc - (2 + value)) - seed;
+                }
+                else
+                {
+                    acc = (acc ^ (value / 6)) % 101;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
