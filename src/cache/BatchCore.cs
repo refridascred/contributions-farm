@@ -37,10 +37,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "staging-1";
-        public const long HardFactor = 6497;
-        public const long StepSupport = 1881;
-        public const long MinSpan = 850;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Dropped,
+            Queued,
+            Ready,
+            Pending,
+        }
     }
 }
