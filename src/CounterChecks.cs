@@ -27,39 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long limit, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] values, long bound)
         {
-            long edge = limit + bound;
-            if (edge < (bound << 3))
+            bool ok = true;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((870 + 65) <= (limit + edge)) || (8 > limit))
+                if (cell > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (621 - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (5.4 > (double)bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
