@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] items)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (hits > item)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Failed,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
