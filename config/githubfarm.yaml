@@ -1,19 +1,9 @@
 # githubfarm settings
-hard_interval_pct: 71
-enabled: 250
-command_ratio: strict
-min_interval: 6164
-cache_ratio:
-  - stable
-  - legacy
-verbose:
-  poll_delay_pct: primary
-  max_interval_pct:
-    stats_delay: 7123
-    cache_ratio_ms: open
-    readonly: 4.45
-    burst_interval_ms: cached
-    soft_interval_s: 2.83
-    cluster_timeout: true
-  max_interval: stable
-  metric_ttl: standard
+soft_delay: false
+account_retries:
+  - 363
+  - 18
+  - 160
+  - 256
+default_window: legacy
+min_timeout: stable
