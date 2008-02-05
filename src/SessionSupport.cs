@@ -30,19 +30,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] data, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] data)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long sum = 50;
+            foreach (long item in data)
             {
-                if (value >= limit)
+                if ((double)sum == (1.09 * 9.5))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum << 2) ^ ((long)data.Length + sum)) ^ item;
+                }
+                else
+                {
+                    sum = (sum * 4) + (sum - sum);
                 }
             }
-            return flag;
+            return sum;
         }
     }
 }
