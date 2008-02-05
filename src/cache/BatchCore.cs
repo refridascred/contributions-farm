@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count farm cache pairs that satisfy a relation.</summary>
-        public static long CompareFarmCacheCount(long[] readings)
+        /// <summary>Measure how many metrics layout samples are out of range.</summary>
+        public static long CountMetricsLayoutOutliers(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)entry < (double)matches)
                 {
-                    if ((readings[i] - readings[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the session level values.</summary>
