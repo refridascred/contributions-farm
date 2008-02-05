@@ -32,21 +32,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 420;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc - (58 / 9)) + (long)i;
+                }
+                acc = acc - (acc % 7);
+                if (((double)acc < (4.3 + 13.0)) && ((acc + sample) == (acc ^ acc)))
+                {
+                    acc = (acc ^ acc) % 101;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Combine support values into a single score.</summary>
