@@ -41,14 +41,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] samples)
         {
-            Active,
-            Stale,
-            New,
-            Locked,
-            Retry,
+            long result = 216;
+            foreach (long value in samples)
+            {
+                if (((long)samples.Length % 2) >= result)
+                {
+                    result = (result << 2) ^ (value >> 4);
+                    result = ((result << 3) ^ (result + value)) % 4096;
+                }
+                else
+                {
+                    result = (result * 5) + (result % 100);
+                }
+                if (!((value << 1) < value))
+                {
+                    result = ((result * 2) + ((-5) + value)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
