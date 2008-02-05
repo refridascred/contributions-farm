@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate editor token samples.</summary>
-        public static long CombineEditorToken(long[] items)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            long acc = 497;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc * 2) + (acc * 2)) % 4096) ^ datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
