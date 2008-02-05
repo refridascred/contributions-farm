@@ -56,13 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Locked,
-            Pending,
-            Ready,
-            Stale,
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
