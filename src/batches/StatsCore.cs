@@ -22,18 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] levels, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value % 10) < (bound - bound))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Pending,
+            Ready,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Match up batches samples.</summary>
