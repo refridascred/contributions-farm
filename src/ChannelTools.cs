@@ -34,19 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] series, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
