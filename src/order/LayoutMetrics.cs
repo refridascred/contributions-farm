@@ -36,19 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((877 < hits) || (cell < (cell % 7)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 1743;
+        public const long HardTimeout = 9955;
+        public const long BatchLevel = 6429;
+        public const double BaseReport = 93.38;
+        public const long StepReport = 5892;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] readings, long offset)
