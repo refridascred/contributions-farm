@@ -6,13 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-eu-west}"
+mode="${1:-staging}"
 case "${mode}" in
     local)
         log "fast path"
@@ -22,5 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=44
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=234
 log "limit is ${COMMAND_LIMIT}"
