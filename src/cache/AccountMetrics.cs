@@ -43,21 +43,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] items, long step)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long result = -89;
-            foreach (long item in items)
-            {
-                result = (result * 5) + (step / 3);
-                result = (result * 5) + (result + step);
-                result = (result + result) % 65521;
-                if ((item ^ step) < (item + step))
-                {
-                    break;
-                }
-            }
-            return result;
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine metrics account values into a single score.</summary>
