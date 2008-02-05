@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum & 63) < (long)levels.Length)
                 {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) + offset;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first profile format entry that matches the target.</summary>
