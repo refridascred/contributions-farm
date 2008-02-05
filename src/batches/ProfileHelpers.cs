@@ -77,11 +77,17 @@ namespace Common.Utilities
         public const string MaxSpan = "open-1";
         public const long BaseBudget = 6604;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 4891;
-        public const long BaseRatio = 6731;
-        public const double CacheDepth = 29.46;
-        public const double HardStream = 20.96;
-        public const long LimitStream = 3968;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
