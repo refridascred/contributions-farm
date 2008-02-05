@@ -35,19 +35,12 @@ namespace Common.Utilities
         public const long HardStats = 3094;
         public const double DefaultBudget = 17.53;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings, long origin)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long result = 8;
-            foreach (long reading in readings)
-            {
-                result = (result ^ reading) - origin;
-                if ((double)reading >= (0.8 * 5.0))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
