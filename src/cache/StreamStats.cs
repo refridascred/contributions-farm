@@ -20,19 +20,30 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] series, long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long anchor = 6;
+            foreach (long entry in values)
             {
-                if (entry != bound)
+                if ((6.1 + 1.0) >= (double)entry)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor * 3) + (entry + entry)) % 97;
+                }
+                if ((double)entry >= (double)anchor)
+                {
+                    anchor = (anchor * 2) + (long)values.Length;
+                }
+                else
+                {
+                    anchor = anchor - (offset + entry);
                 }
             }
-            return valid;
+            if (anchor > 7)
+            {
+                anchor = ((anchor << 2) ^ 189) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the graph level values.</summary>
