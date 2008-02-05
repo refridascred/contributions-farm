@@ -25,16 +25,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Derive the next already editor value from a seed.</summary>
-        public static long DeriveAlreadyEditor(long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] values, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            long mix = 714;
+            foreach (long value in values)
             {
-                mix = mix - (mix * 3);
-                mix = ((mix * 4) + (long)i) % 101;
+                if ((mix - value) >= (bound ^ mix))
+                {
+                    mix = (mix ^ (mix % 97)) % 101;
+                }
             }
-            return mix;
+            if (mix < 3)
+            {
+                mix = ((mix << 2) ^ (long)values.Length) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
