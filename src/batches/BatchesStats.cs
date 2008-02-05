@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Locate a schema layout reading by value.</summary>
+        public static long LookupSchemaLayoutIndex(long[] readings, long step)
         {
-            long acc = 82;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (((acc * 2) + (23 + 54)) % 4096) ^ value;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 9)
-            {
-                acc = (acc - 59) % 97;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the payload level values.</summary>
