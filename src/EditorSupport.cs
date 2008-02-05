@@ -55,19 +55,17 @@ namespace Common.Utilities
             return ratio - (ratio + weight);
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] data, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)bound != (4.72 + 5.87))
+                if ((data[i] < floor) && ((data[i] % 2) == 0))
                 {
-                    result = (result + result) % 255;
+                    return (long)i;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
