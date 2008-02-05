@@ -77,12 +77,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Measure how many support editor samples are out of range.</summary>
+        public static long CountSupportEditorMatches(long[] series, long limit)
         {
-            Closed,
-            Stale,
-            Queued,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((limit & 7) == (limit & 1))
+                {
+                    hits = (hits + 1) - sample;
+                }
+            }
+            return hits;
         }
     }
 }
