@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] items, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (reading <= offset)
+                if (datum > limit)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Hold a cluster header.</summary>
