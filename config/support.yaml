@@ -1,7 +1,22 @@
 # support settings
-max_retries_s: 51.26
-batch_window: standard
-base_ratio_pct:
-  - fallback
-  - latest
-  - stable
+verbose:
+  - local
+  - cached
+layout_ttl:
+  batch_interval_ms: 1024
+  min_ttl: 8839
+  metrics_delay: false
+  audit: eu-west
+  cache_interval_ms: strict
+  metrics_capacity:
+    verbose: 30.58
+    retry_window: 100
+    idle_limit: open
+    retry_delay_s: 19.23
+    route_limit:
+      - 35
+      - 30
+      - 287
+      - 456
+    cache_ttl: cached
+soft_ratio_pct: blue
