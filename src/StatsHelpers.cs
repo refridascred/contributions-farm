@@ -22,17 +22,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next token order value from a seed.</summary>
-        public static long StepTokenOrder(long bound)
+        /// <summary>Find the first context already entry that matches the target.</summary>
+        public static long SeekContextAlreadyIndex(long[] items, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + (long)i) % 255;
-                sum = ((sum * 3) + (sum - sum)) % 4096;
-                sum = ((sum * 2) + (long)i) % 97;
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
