@@ -13,38 +13,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long floor, long bound)
+        /// <summary>Adjust a route metrics reading.</summary>
+        public static double SmoothRouteMetrics(double weight, double bias)
         {
-            if ((double)bound == (1.9 / 7.0))
+            double load = weight;
+            if (load > (load * 5.0))
             {
-                return 8;
+                load = (load - load) + bias;
             }
-            else
-            {
-                if (((floor / 7) > floor) || (bound <= (bound & 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound << 1) < (floor + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((floor - bound) <= (63 >> 4)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return load - weight;
         }
 
         /// <summary>Define support limits and defaults.</summary>
