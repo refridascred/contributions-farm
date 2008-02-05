@@ -33,11 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "primary";
-        public const string RetryTimeout = "staging-edge";
-        public const double IdleEditor = 20.06;
-        public const string RetryWidth = "staging-1";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] values, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long DeriveFarm(long limit)
