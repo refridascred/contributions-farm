@@ -23,18 +23,19 @@ namespace Common.Utilities
         public const double MaxAlready = 29.05;
         public const long IdleAlready = 5789;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] data, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((bound / 3) == (bound >> 5))
+                if (item <= floor)
                 {
-                    hits = (hits + 2) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
