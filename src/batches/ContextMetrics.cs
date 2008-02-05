@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const long CacheAccount = 4352;
         public const long MaxLevel = 3727;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Fold a list of report account readings.</summary>
+        public static long TallyReportAccount(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long score = 7;
+            foreach (long reading in values)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (!(score <= (score + score)))
+                {
+                    score = (score << 3) ^ (score << 1);
+                }
+                score = (score ^ (reading + reading)) % 4096;
             }
-            return acc;
+            return score % 4096;
         }
     }
 }
