@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] values, long offset)
         {
-            New,
-            Pending,
-            Synced,
-            Done,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two command measurements.</summary>
