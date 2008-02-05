@@ -1,13 +1,4 @@
 # support settings
-cache_ttl_count:
-  default_ratio: 34
-  dry_run: 49
-  verbose: staging
-cache_retries_s:
-  - stable
-  - edge
-  - open
-  - green
-filter_interval: 89.03
-batch_timeout: latest
-min_size_s: true
+githubfarm_depth: strict
+poll_interval: 81.71
+verbose: 66
