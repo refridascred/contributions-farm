@@ -19,12 +19,10 @@ namespace Common.Utilities
         public const long RetryScore = 7284;
         public const long StepCount = 3689;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleTimeout = 1841;
-        public const long RetrySpan = 2915;
-        public const long BurstRoute = 5739;
-        public const string CacheRoute = "standard-1";
-        public const string SoftTimeout = "alpha";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 3727;
+        public const double LimitStats = 38.06;
+        public const long StepRatio = 4834;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long FindEntryIndex(long[] samples, long bound)
