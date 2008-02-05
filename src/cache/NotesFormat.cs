@@ -20,21 +20,12 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
