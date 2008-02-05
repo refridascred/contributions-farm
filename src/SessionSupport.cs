@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit order githubfarm readings against a rule.</summary>
-        public static long TallyOrderGithubfarmOutliers(long[] levels, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((matches - sample) > (matches >> 3))
+                if ((cell >> 1) >= (seen - cell))
                 {
-                    matches = (matches + 1) + floor;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Blend two notes measurements.</summary>
