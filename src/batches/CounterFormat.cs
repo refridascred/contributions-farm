@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "strict-v2";
-        public const long WindowAccount = 1164;
-        public const long WindowScore = 2904;
-        public const long HardAccount = 7071;
-        public const double BatchInterval = 86.7;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftContributi = 4798;
