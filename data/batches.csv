@@ -1,9 +1,6 @@
-id,count,label
-1,304,standard
-2,95.7,683
-3,608,primary
-4,394,blue
-5,34.78,staging
-6,edge,589
-7,79.8,25.4
-8,25.87,stable
+id,token,region,level,label
+1,edge,green,786,green
+2,eu-west,57.54,256,green
+3,local,74,14.81,31.58
+4,eu-west,317,626,51.36
+5,legacy,stable,724,42
