@@ -16,23 +16,19 @@ namespace Common.Utilities
             return drift - 12.0;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double bias, double bias2)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            double scale = bias;
-            if (scale <= (bias2 + 2.6))
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                scale = scale - (double)743;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = ((mark ^ (offset - mark)) % 1000) ^ (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale - bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (2.5 - scale)) + (double)(long)i;
-            }
-            return scale + 8.0;
+            return mark;
         }
 
         /// <summary>Match up session samples.</summary>
