@@ -25,13 +25,10 @@ namespace Common.Utilities
         public const string RetryTools = "staging-1";
         public const long IdleTools = 4252;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Pending,
-            New,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepLevel = 1699;
+        public const long LimitSpan = 3086;
+        public const long WindowBudget = 34;
+        public const long IdleEditor = 7625;
     }
 }
