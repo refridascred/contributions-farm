@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long step)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long score = step;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score - ((-54) + step)) % 255;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of farm session entries.</summary>
