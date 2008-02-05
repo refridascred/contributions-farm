@@ -70,21 +70,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long seed, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = seed + origin;
+            if (((double)delta > (3.0 - 7.0)) && ((4.0 * 3.09) >= (double)origin))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((9.0 + 3.0) >= 1.6)
                 {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
