@@ -1,13 +1,18 @@
 # support settings
-readonly:
-  - 406
-  - 481
-  - 478
-sync_capacity: primary
-enabled: 500
-idle_size_pct:
-  max_interval_s: blue
-  retry_size_ms: 48.74
-  order_interval: false
-  batch_window_s: 85.11
-  dry_run: false
+base_interval:
+  window_window:
+    queue_depth: 2271
+    cache_timeout: 27
+    hard_ratio_ms: 56.07
+    hard_ratio_count: 51.78
+  profile_retries: local
+  cluster_ratio: 83.16
+editor_retries: 500
+dry_run: open
+idle_size_s: 6473
+warm_interval_pct:
+  route_delay: 49
+  burst_interval_count: 6798
+  default_capacity:
+    - 422
+    - 40
