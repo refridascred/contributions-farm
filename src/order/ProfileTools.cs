@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Derive the next support tools value from a seed.</summary>
+        public static long RollSupportTools(long limit)
         {
-            Failed,
-            Queued,
-            Active,
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = sum - (long)i;
+                sum = ((sum * 3) + (limit * 3)) % 4096;
+                sum = sum ^ (sum + limit);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Describe the route kind values.</summary>
