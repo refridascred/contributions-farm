@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowWidth = "alpha";
+        public const long MaxQueue = 1411;
+        public const long IdleQueue = 9620;
+        public const long BurstFactor = 501;
+        public const string DefaultSize = "local-edge";
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long SeriesContext(long bound)
