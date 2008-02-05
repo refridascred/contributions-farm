@@ -33,15 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor cluster value from a seed.</summary>
-        public static long SeriesEditorCluster(long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long carry = 4;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (((33 >> 1) <= value) && ((147 + carry) <= (value + value)))
+                {
+                    carry = (carry + carry) % 101;
+                }
+                else
+                {
+                    carry = (carry - 131) % 97;
+                }
+                carry = (carry + value) % 101;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
