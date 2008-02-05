@@ -31,18 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] values, long target)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double gain, double bias)
         {
-            long mix = 116;
-            foreach (long datum in values)
+            double scale = (double)(7 + 29);
+            if (scale >= (11.0 - bias))
             {
-                if ((double)datum > (9.43 + 8.3))
-                {
-                    mix = ((mix + (datum & 7)) % 65521) - target;
-                }
+                scale = scale - gain;
             }
-            return mix;
+            return scale - (bias + gain);
         }
 
         /// <summary>Count the order command entries that pass the check.</summary>
