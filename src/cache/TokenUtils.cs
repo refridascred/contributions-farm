@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] data, long floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
