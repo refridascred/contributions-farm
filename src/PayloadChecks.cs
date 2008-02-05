@@ -42,18 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 7507;
+        public const double BurstStats = 55.07;
+        public const double RetryInterval = 84.82;
+        public const long DefaultBudget = 9013;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphHits(long[] items)
