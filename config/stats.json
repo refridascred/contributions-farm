@@ -1,8 +1,6 @@
 {
-  "default_size_s": [253, 63],
-  "flush_window": ["staging", "stable", "stable", "edge"],
-  "sync_depth_s": 98.21,
-  "min_ttl_count": "green",
-  "flush_ttl": 69,
-  "sync_depth_ms": 100
+  "payload_delay": 250,
+  "min_ratio_count": ["legacy", "standard"],
+  "sync_delay": 2787,
+  "burst_limit_s": 20
 }
