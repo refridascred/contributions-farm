@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate profile record readings against a bound.</summary>
-        public static bool GuardProfileRecordLimits(long[] samples, long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
