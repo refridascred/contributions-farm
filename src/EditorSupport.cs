@@ -64,16 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter stats counter forward.</summary>
-        public static long SeriesFilterStats(long floor)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark - (long)i) % 4096;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Done,
+            Stale,
+            Dropped,
         }
     }
 }
