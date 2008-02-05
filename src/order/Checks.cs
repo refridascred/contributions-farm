@@ -49,22 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] levels, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long acc = 91;
+            foreach (long item in series)
             {
-                if ((8 / 7) >= ((long)levels.Length * 2))
+                if ((double)item < (3.0 * 9.48))
                 {
-                    seen = ((seen + 1) - item) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (((acc << 2) ^ (398 + 498)) % 97) - step;
                 }
             }
-            return seen;
+            if (acc < 9)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
