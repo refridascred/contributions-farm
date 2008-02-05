@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Draft,
-            Synced,
-            Active,
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
