@@ -16,23 +16,12 @@ namespace Common.Utilities
             return mean + (mean - weight);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen + origin) > (seen + seen))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardSize = 2588;
+        public const double IdleCommits = 35.36;
+        public const double StepCommits = 66.72;
+        public const string SoftLevel = "stable-v2";
+        public const string MaxDepth = "latest";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseRatio = 5422;
