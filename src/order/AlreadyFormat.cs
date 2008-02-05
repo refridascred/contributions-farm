@@ -24,10 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardWidth = 9374;
-        public const double BatchInterval = 82.48;
-        public const double SoftTimeout = 66.7;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double scale, double offset)
