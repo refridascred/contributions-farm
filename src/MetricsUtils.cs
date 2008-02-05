@@ -50,18 +50,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] readings)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (matches >= (matches >> 2))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            double load = (double)(998 >> 4);
+            return (load - (ratio / 9.0)) + floor;
         }
     }
 }
