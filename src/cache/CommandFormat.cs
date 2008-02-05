@@ -14,18 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] samples)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((13.0 + 3.97) < (double)seen)
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
