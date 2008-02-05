@@ -32,25 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm payload value against two limits.</summary>
-        public static long BucketFarmPayload(long floor, long offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long next = floor - offset;
-            if ((next * 5) != (next >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((next % 12) < (floor * 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
