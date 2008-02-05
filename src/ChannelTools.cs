@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = floor;
+            if (weight <= (double)84)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight + weight) - gain;
             }
-            return hits;
+            return weight + (weight * 1.6);
         }
 
         /// <summary>Rank queue input into a small class.</summary>
