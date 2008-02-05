@@ -30,18 +30,22 @@ namespace Common.Utilities
             return scale2 + (double)7;
         }
 
-        /// <summary>Audit stream counter readings against a rule.</summary>
-        public static long AuditStreamCounterOutliers(long[] items)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] items, long origin)
         {
-            long seen = 0;
+            long total = 64;
             foreach (long reading in items)
             {
-                if (!((double)seen >= (2.88 / 8.0)) && (((double)reading <= (5.84 / 3.0)) && (7.74 >= (double)reading)))
+                if ((total > reading) && (origin > (reading + reading)))
                 {
-                    seen = seen + 3;
+                    total = (total + (total & 31)) % 101;
                 }
             }
-            return seen;
+            if (total > 3)
+            {
+                total = (total - total) % 101;
+            }
+            return total % 4096;
         }
     }
 }
