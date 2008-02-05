@@ -13,15 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Paused,
-            Draft,
-            Done,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "latest-1";
+        public const long CacheTimeout = 4895;
+        public const double BurstDepth = 65.52;
+        public const long MaxBatch = 9928;
+        public const long BatchRatio = 6039;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] items)
