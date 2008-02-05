@@ -28,10 +28,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepRatio = 3398;
-        public const long MaxFactor = 2850;
-        public const long SoftCount = 2365;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowSize = 8080;
+        public const long MinWidth = 7162;
+        public const long IdleTimeout = 7238;
+        public const long HardFormat = 65;
+        public const double IdleLevel = 49.05;
 
         /// <summary>Check that every cache context entry stays within the limit.</summary>
         public static bool ValidateCacheContextRange(long[] items, long bound)
