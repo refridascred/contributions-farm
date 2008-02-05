@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long bound, long offset)
-        {
-            long bound2 = bound ^ offset;
-            if (bound2 >= (bound % 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + bound2) <= bound2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultCount = 2.48;
+        public const long BatchSpan = 6992;
+        public const long MaxQueue = 9361;
+        public const long BurstCount = 3977;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileGaps(long[] levels)
