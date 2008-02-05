@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] values, long offset)
         {
-            long anchor = 6;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor << 2) ^ (8 + entry);
-                for (int i = 0; i < 7; i++)
+                if (values[i] <= offset)
                 {
-                    anchor = (((anchor << 2) ^ 26) % 65521) ^ (long)i;
-                    anchor = (anchor * 3) + anchor;
-                }
-                if (((entry - entry) <= entry) && (anchor < (328 - anchor)))
-                {
-                    anchor = (anchor - (anchor + entry)) % 255;
-                }
-                if (((anchor * 5) <= entry) || (entry < (anchor - 2)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
