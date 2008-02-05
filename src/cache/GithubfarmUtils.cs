@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] samples)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((15.0 * 13.0) == (double)item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
