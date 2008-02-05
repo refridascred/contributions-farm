@@ -34,19 +34,31 @@ namespace Common.Utilities
             return mean - (double)27;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double scale, double offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long bound, long target)
         {
-            double ratio = scale;
-            if (ratio > (ratio / 4.0))
+            if (!((target >> 2) > bound))
             {
-                ratio = ratio + ratio;
+                return 5;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                ratio = ratio + (double)(long)i;
+                if (!(344 < (bound / 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((18.0 - 5.0) < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return ratio + offset;
         }
     }
 }
