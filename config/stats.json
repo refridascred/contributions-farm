@@ -1,33 +1,47 @@
 {
-  "cluster_ttl": "local",
-  "sync_depth": "strict",
-  "retry_interval": ["legacy", "eu-west", "local"],
-  "window_ratio": {
-    "verbose": false,
-    "context_ttl": ["strict", "strict"],
-    "flush_limit_pct": false,
-    "strict": 85,
-    "farm_depth": "blue"
+  "entry_depth": {
+    "persist": ["cached", "strict", "eu-west", "green"],
+    "retry_size_count": "green",
+    "base_capacity_ms": ["stable", "eu-west"],
+    "audit": "fallback"
   },
-  "record_ttl": "cached",
-  "enabled": {
-    "soft_limit_s": {
-      "batch_limit_ms": "strict",
-      "min_capacity_count": 95.14,
-      "cache_window_ms": 94,
-      "soft_capacity_ms": 65.38
+  "format_limit": {
+    "batch_interval": {
+      "hard_size_ms": 500,
+      "cache_limit_ms": 9606,
+      "burst_threshold": 4
     },
-    "compress": true,
-    "dry_run": [392, 220, 344, 15],
-    "filter_depth": ["standard", "eu-west", "green", "open"],
-    "context_limit": 7702,
-    "verbose": {
-      "persist": ["staging", "strict", "latest"],
-      "verbose": true,
-      "format_interval": "stable",
-      "enabled": "fallback",
-      "commits_window": "standard",
-      "batch_retries_ms": 5241
+    "filter_timeout": ["stable", "blue"],
+    "soft_size_pct": [282, 332],
+    "enabled": {
+      "flush_interval": ["strict", "eu-west"],
+      "cache_delay": 31.54,
+      "base_limit_ms": 9352,
+      "stats_interval": "eu-west"
+    }
+  },
+  "metric_capacity": "primary",
+  "soft_ttl_ms": "stable",
+  "strict": false,
+  "compress": {
+    "audit": {
+      "checks_ttl": [39, 3],
+      "stats_retries": 54.99,
+      "notes_interval": "strict",
+      "readonly": false
+    },
+    "enabled": "standard",
+    "cache_limit": {
+      "hard_window": 25.68,
+      "batch_limit_pct": "cached",
+      "max_ratio_pct": ["fallback", "primary"]
+    },
+    "flush_window_s": "fallback",
+    "record_delay": "open",
+    "min_limit_count": {
+      "report_timeout": 46.74,
+      "layout_size": ["stable", "staging", "eu-west"],
+      "window_timeout": ["latest", "green", "primary", "strict"]
     }
   }
 }
