@@ -24,22 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] levels)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long state = 56;
-            foreach (long entry in levels)
-            {
-                if (entry <= (state - entry))
-                {
-                    state = (state << 3) ^ (state / 5);
-                }
-            }
-            if (state < 969)
-            {
-                state = state ^ state;
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
