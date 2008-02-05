@@ -28,17 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] items, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                if ((hits % 3) >= (hits >> 1))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate checks graph samples.</summary>
