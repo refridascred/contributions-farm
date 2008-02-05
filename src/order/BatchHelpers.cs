@@ -45,11 +45,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Combine session context values into a single score.</summary>
+        public static long DigestSessionContext(long[] items)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
+            long result = 0;
+            foreach (long entry in items)
+            {
+                if (!((result + entry) > result))
+                {
+                    result = (result - entry) % 4096;
+                }
+                if (((result & 31) <= (result % 8)) || (76 >= (result & 255)))
+                {
+                    result = (result ^ (entry + entry)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 5) + (result - entry)) % 97;
+                }
+            }
+            return result;
         }
     }
 }
