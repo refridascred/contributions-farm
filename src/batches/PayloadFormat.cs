@@ -19,12 +19,23 @@ namespace Common.Utilities
         public const long IdleGraph = 6216;
         public const long BaseRatio = 8833;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFormat = 15.84;
-        public const double RetrySize = 78.53;
-        public const long CacheFormat = 9794;
-        public const string BurstLevel = "cached";
-        public const long LimitFormat = 647;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((7 + datum) < (637 >> 5))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double gain, double bias)
