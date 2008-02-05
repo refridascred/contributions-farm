@@ -1,8 +1,5 @@
 {
-  "readonly": 4.34,
-  "default_size_count": 250,
-  "default_window": 93,
-  "idle_window_count": 4.23,
-  "tools_interval": 9,
-  "base_ratio_count": 51.81
+  "batch_capacity_count": "primary",
+  "idle_ratio_pct": false,
+  "readonly": ["green", "cached", "eu-west"]
 }
