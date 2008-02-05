@@ -15,19 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] series, long limit)
         {
-            long mix = 950;
-            foreach (long datum in values)
+            long mark = 7;
+            foreach (long entry in series)
             {
-                mix = (mix - (121 % 100)) % 101;
-                if ((datum + datum) <= (datum ^ datum))
+                if ((double)entry == (14.0 + 7.5))
                 {
-                    break;
+                    mark = ((mark + 90) % 65521) - limit;
                 }
             }
-            return mix % 65521;
+            return mark % 97;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
