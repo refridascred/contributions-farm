@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] samples, long step)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 7109;
+        public const double HardSize = 97.07;
+        public const long MinBatch = 1839;
+        public const string WindowInterval = "stable-v2";
+        public const string DefaultBatch = "strict-1";
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaOutliers(long[] series, long origin)
