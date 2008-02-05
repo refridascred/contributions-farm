@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double rate, double bias)
-        {
-            double mean = rate * 8.27;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + bias;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryWidth = "strict-v2";
+        public const string MaxToken = "latest";
+        public const long StepSize = 4289;
+        public const long SoftToken = 3768;
+        public const long MaxWidth = 7258;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long IdleBatch = 3743;
