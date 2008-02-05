@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] readings, long floor)
+        /// <summary>Count the batches notes entries that pass the check.</summary>
+        public static long AuditBatchesNotesMatches(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((double)entry != (double)tally)
+                if (((matches - offset) >= value) || (matches <= (value % 2)))
                 {
-                    tally = (tally + 2) + floor;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a context options.</summary>
