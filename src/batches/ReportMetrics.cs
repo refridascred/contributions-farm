@@ -20,25 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long limit, long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long delta = limit - origin;
-            if (((double)delta <= (0.4 + 0.09)) || ((double)origin != (double)delta))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + 536) <= delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
