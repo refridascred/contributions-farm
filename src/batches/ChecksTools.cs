@@ -48,19 +48,31 @@ namespace Common.Utilities
             return drift + (ratio / 5.0);
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double scale, double bias)
+        /// <summary>Rank route counter input into a small class.</summary>
+        public static long RankRouteCounter(long floor, long bound)
         {
-            double rate = bias;
-            if (rate >= (rate / 8.0))
+            if (((1.5 + 10.0) <= (double)bound) && ((floor >> 2) < 399))
             {
-                rate = rate - bias;
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                rate = (rate + scale) - (double)(long)i;
+                if ((bound > floor) && ((12.0 / 6.0) < (8.0 + 6.11)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(9.8 > (double)bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return rate - (double)(-798);
         }
     }
 }
