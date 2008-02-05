@@ -1,11 +1,25 @@
 # support settings
-stats_threshold: 59
-dry_run: green
-idle_size: 30
-max_capacity_count: staging
-sync_limit_ms: true
-record_retries:
-  - 282
-  - 482
-  - 314
-  - 147
+burst_ttl_pct: edge
+flush_threshold_ms:
+  hard_size_count:
+    record_interval: 29
+    window_ratio: legacy
+    retry_timeout_pct: false
+    contributi_timeout: 64
+    batches_delay: false
+  min_ttl_ms: local
+  base_size_count: false
+  stream_size:
+    - fallback
+    - green
+  soft_retries_ms: 250
+  stats_interval: false
+readonly: true
+contributi_window:
+  tools_threshold: false
+  min_capacity_pct: 79.3
+  audit: 1024
+  cache_ratio_pct: 9279
+  min_ttl: open
+  cache_timeout: 90.92
+batch_threshold_count: eu-west
