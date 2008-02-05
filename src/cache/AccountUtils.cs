@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every command cluster entry stays within the limit.</summary>
-        public static bool ValidateCommandClusterLimits(long[] items, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long score = 599;
+            foreach (long value in samples)
             {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score - score) % 4096) - value;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
