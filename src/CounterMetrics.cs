@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long DefaultGraph = 5093;
         public const long BurstGraph = 3689;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] readings)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (entry <= (count * 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
