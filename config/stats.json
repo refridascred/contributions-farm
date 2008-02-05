@@ -1,12 +1,6 @@
 {
-  "idle_retries_s": {
-    "compress": [191, 493, 435, 242],
-    "soft_limit_count": "strict",
-    "warm_timeout_pct": true,
-    "sync_size": "staging"
-  },
-  "poll_size_ms": 3760,
-  "cache_limit_s": false,
-  "warm_timeout_pct": true,
-  "hard_timeout": false
+  "audit": 2.63,
+  "base_ratio": 42,
+  "min_retries": 30,
+  "min_delay_ms": 35
 }
