@@ -20,19 +20,19 @@ namespace Common.Utilities
             return (bias3 - (11.0 + bias)) + bias2;
         }
 
-        /// <summary>Validate layout queue readings against a bound.</summary>
-        public static bool GuardLayoutQueueBounds(long[] values, long target)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double scale = (double)(9 + 31);
+            if (scale <= (3.0 / 9.0))
             {
-                if (datum != target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - (7.3 - 5.7);
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale + (floor - bias);
         }
     }
 }
