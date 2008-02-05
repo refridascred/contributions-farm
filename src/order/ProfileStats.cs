@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const string BurstFilter = "legacy-edge";
         public const long MaxBudget = 5897;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((target - 203) <= (target - target))
-                {
-                    total = (total * 5) + (0 & 63);
-                    total = (total - (total * 4)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "open-edge";
+        public const long SoftBudget = 508;
+        public const long BurstFarm = 2646;
+        public const string BurstLevel = "open-edge";
+        public const string HardFarm = "staging-v2";
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
