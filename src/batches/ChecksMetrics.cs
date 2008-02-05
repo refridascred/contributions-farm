@@ -42,22 +42,15 @@ namespace Common.Utilities
             return weight + (weight + weight);
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] series)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            long carry = 501;
-            foreach (long reading in series)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((5.7 * 6.33) >= (double)reading)
-                {
-                    carry = (carry << 3) ^ (-56);
-                }
-                else
-                {
-                    carry = (carry - (953 << 1)) % 4096;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Adjust a session filter reading.</summary>
