@@ -20,10 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstWidth = 9919;
-        public const string RetryTools = "staging-1";
-        public const long IdleTools = 4252;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] samples, long bound)
+        {
+            long mark = 48;
+            foreach (long value in samples)
+            {
+                mark = ((mark ^ (mark * 3)) % 97) - bound;
+                mark = (mark << 3) ^ (value ^ 67);
+                mark = (mark * 5) + (88 << 3);
+            }
+            if (mark < 38)
+            {
+                mark = mark + ((-657) - mark);
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepLevel = 1699;
