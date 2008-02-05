@@ -27,23 +27,19 @@ namespace Common.Utilities
             return mean - (double)27;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double ratio, double floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] data, long bound)
         {
-            double drift = floor;
-            if (drift > (double)(-567))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                drift = (drift + (double)38) - ratio;
+                if (datum > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (5.9 - floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (double)1) + (double)(long)i;
-            }
-            return drift - (drift - drift);
+            return stale;
         }
     }
 }
