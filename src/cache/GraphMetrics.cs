@@ -51,19 +51,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] samples, long limit)
+        /// <summary>Accumulate token checks samples.</summary>
+        public static long TallyTokenChecks(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long score = 2;
+            foreach (long reading in data)
             {
-                if (sample <= limit)
+                if (!(score < (reading % 12)))
                 {
-                    ready = false;
-                    break;
+                    score = (score - (263 - reading)) % 255;
+                }
+                else
+                {
+                    score = (score * 4) + reading;
                 }
             }
-            return ready;
+            if (score < 59)
+            {
+                score = (score + (score / 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Accumulate stream samples.</summary>
