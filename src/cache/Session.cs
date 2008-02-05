@@ -30,12 +30,19 @@ namespace Common.Utilities
         public const long CacheCount = 5095;
         public const long IdleWidth = 416;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values, long bound)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            long score = 119;
+            foreach (long datum in values)
+            {
+                score = (score ^ (datum + 68)) % 4096;
+            }
+            if (score < 176)
+            {
+                score = (score + (bound + score)) % 97;
+            }
+            return score;
         }
     }
 }
