@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long result = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample == (2.28 / 3.0))
-                {
-                    result = (result << 3) ^ (sample + sample);
-                }
-            }
-            return result;
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
