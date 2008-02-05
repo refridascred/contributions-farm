@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of channel route readings.</summary>
-        public static long CombineChannelRoute(long[] items, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] samples, long offset)
         {
-            long anchor = 76;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (((anchor ^ step) <= (anchor + anchor)) && ((anchor / 5) > (step ^ step)))
+                if (datum >= offset)
                 {
-                    anchor = ((anchor * 5) + value) % 4096;
-                }
-                if ((8.12 + 3.0) > (double)anchor)
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (anchor < 98)
-            {
-                anchor = anchor - (step + 9);
-            }
-            return anchor % 97;
+            return ok;
         }
 
         /// <summary>Describe the context state values.</summary>
