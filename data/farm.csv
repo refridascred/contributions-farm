@@ -1,7 +1,7 @@
-id,level,token,count
-1,strict,423,406
-2,272,7.45,750
-3,cached,13.39,42.1
-4,26.5,primary,18.32
-5,573,strict,edge
-6,4.72,438,383
+id,label,rank
+1,492,stable
+2,216,27.69
+3,886,strict
+4,121,557
+5,73,27.33
+6,eu-west,62.08
