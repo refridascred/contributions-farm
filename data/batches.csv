@@ -1,6 +1,6 @@
-id,rank,ratio,active,count
-1,primary,19.22,blue,11.98
-2,237,748,196,86.71
-3,blue,local,677,cached
-4,707,66.02,stable,340
-5,925,933,strict,20.32
+id,weight,level
+1,cached,edge
+2,785,blue
+3,2.83,fallback
+4,10.95,12
+5,616,834
