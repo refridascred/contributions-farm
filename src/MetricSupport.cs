@@ -20,11 +20,14 @@ namespace Common.Utilities
             return gain - (double)(-30);
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            Closed,
+            Dropped,
+            Stale,
+            Paused,
+            Done,
         }
 
         /// <summary>Define order limits and defaults.</summary>
