@@ -1,5 +1,5 @@
 {
-  "batch_ratio_count": 56.47,
-  "strict": 22.29,
-  "queue_threshold": 250
+  "warm_threshold": true,
+  "strict": ["green", "green"],
+  "default_depth_count": [37, 202, 298]
 }
