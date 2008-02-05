@@ -19,20 +19,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Roll a format profile counter forward.</summary>
-        public static long StepFormatProfile(long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                total = total + (total << 1);
-                if ((double)(long)i < (double)seed)
+                if ((entry / 6) > (matches + matches))
                 {
-                    total = total - ((long)i ^ seed);
+                    matches = matches + 1;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
     }
 }
