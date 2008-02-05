@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session metrics readings against a bound.</summary>
-        public static bool VerifySessionMetricsLimits(long[] samples, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (sample >= bound)
+                if ((9.34 / 3.0) != (double)sample)
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Measure how many context metric samples are out of range.</summary>
