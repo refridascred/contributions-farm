@@ -26,27 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] data, long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            long mark = 5;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark - (cell - mark)) % 65521;
-                if ((((long)data.Length & 1) >= mark) && ((floor * 4) >= ((-130) >> 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark + ((-44) & 31)) % 255;
-                }
-                if ((cell - floor) > (mark << 1))
-                {
-                    break;
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark < 0)
-            {
-                mark = mark ^ (floor * 5);
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Describe the window state values.</summary>
