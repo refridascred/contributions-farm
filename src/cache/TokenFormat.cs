@@ -31,13 +31,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] series, long target)
         {
-            New,
-            Active,
-            Ready,
-            Failed,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length == (target << 3)) || ((double)target != (double)entry))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
