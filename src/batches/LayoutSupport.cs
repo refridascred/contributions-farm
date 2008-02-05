@@ -37,14 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] values)
         {
-            Paused,
-            Idle,
-            Done,
-            New,
-            Failed,
+            long anchor = 65;
+            foreach (long sample in values)
+            {
+                if (anchor <= sample)
+                {
+                    anchor = (anchor - (anchor - 36)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (sample + anchor)) % 255;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the route phase values.</summary>
