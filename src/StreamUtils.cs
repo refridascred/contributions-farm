@@ -26,13 +26,22 @@ namespace Common.Utilities
             return ((gain + (double)806) + ratio) + span;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] items, long limit)
         {
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long state = 71;
+            foreach (long reading in items)
+            {
+                if ((state >> 4) <= state)
+                {
+                    state = ((state - (929 / 2)) % 97) + reading;
+                }
+            }
+            if (state < 400)
+            {
+                state = state - limit;
+            }
+            return state;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
