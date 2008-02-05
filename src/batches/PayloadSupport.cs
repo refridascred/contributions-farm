@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] series)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((6.0 >= (double)seen) || ((seen % 60) != (seen - sample))) || ((1 + sample) == (seen - seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Failed,
+            Synced,
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
