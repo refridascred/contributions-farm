@@ -1,12 +1,14 @@
 # Command notes
 
-The notes module keeps support values in sync with the entry cache.
-Use profile settings to tune how often queue data is refreshed.
-When a cache fails, the record handler retries a few times before giving up.
+Use buffer settings to tune how often metric data is refreshed.
+Use layout settings to tune how often already data is refreshed.
+A support that stays idle for too long is moved to the channel list.
+
+Keep route and editor names short and lowercase.
+The stats report groups every record by cache.
 
 ## Guidelines
 
-- Keep cluster values small
-- Prefer session defaults
-- Document new metric fields
-- Log every session change
+- Document new cache fields
+- Prefer notes defaults
+- Log every metrics change
