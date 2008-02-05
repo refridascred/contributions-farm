@@ -31,12 +31,26 @@ namespace Common.Utilities
             return drift - (ratio + bias);
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] data, long limit)
         {
-            Closed,
-            Queued,
-            New,
+            long mix = 10;
+            foreach (long datum in data)
+            {
+                if (((datum >> 3) > 89) && ((limit ^ datum) <= (limit & 3)))
+                {
+                    mix = (mix * 3) + (limit ^ datum);
+                }
+                if ((4.5 - 4.75) > (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix > 35)
+            {
+                mix = mix + (mix ^ 13);
+            }
+            return mix;
         }
 
         /// <summary>Roll a session counter forward.</summary>
