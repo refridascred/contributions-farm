@@ -66,22 +66,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double mean = (double)(902 - 262);
+            if (mean < (mean - bias))
             {
-                if ((7.8 * 7.0) >= (3.0 / 5.0))
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - (offset - 2.76);
             }
-            return matches;
+            else
+            {
+                mean = mean + (bias * 9.02);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + 2.97) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the batch phase values.</summary>
