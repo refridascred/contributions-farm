@@ -13,11 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 8918;
-        public const double WindowFormat = 92.29;
-        public const long CacheFormat = 5885;
-        public const string LimitFormat = "fallback-1";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxSize = 9226;
+        public const long StepTimeout = 1318;
+        public const long BaseStats = 9340;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long SeekMetricIndex(long[] items, long seed)
