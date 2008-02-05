@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] readings)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] items, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (count <= (count * 5))
+                if (sample < target)
                 {
-                    count = (count + 3) ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Accumulate context samples.</summary>
