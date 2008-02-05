@@ -29,21 +29,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] > target)
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the metrics status values.</summary>
