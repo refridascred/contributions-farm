@@ -1,5 +1,8 @@
 {
-  "soft_threshold_count": 55,
-  "base_ratio_s": 35.31,
-  "warm_window": 21.51
+  "hard_interval_count": false,
+  "strict": 7024,
+  "burst_ttl_pct": ["standard", "staging", "blue"],
+  "warm_threshold_ms": "staging",
+  "compress": 91,
+  "idle_depth_count": false
 }
