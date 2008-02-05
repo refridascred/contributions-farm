@@ -33,12 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
+            Done,
+            Dropped,
             Pending,
-            Retry,
-            Closed,
         }
     }
 }
