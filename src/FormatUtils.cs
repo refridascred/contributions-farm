@@ -60,19 +60,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double floor)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            double rate = bias - bias;
-            if (rate > 14.0)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (floor - floor);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - bias;
-            }
-            return rate - 20.0;
+            return tally;
         }
 
         /// <summary>Fold a list of order readings.</summary>
