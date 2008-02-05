@@ -14,22 +14,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] levels, long floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long anchor = 51;
-            foreach (long reading in levels)
-            {
-                if ((2 * 3) <= reading)
-                {
-                    anchor = ((anchor * 5) + floor) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + floor) % 1000;
-                }
-            }
-            return anchor % 97;
+            Draft,
+            Synced,
+            Paused,
+            Ready,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
