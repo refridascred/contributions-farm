@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many entry token samples are out of range.</summary>
-        public static long MeasureEntryTokenGaps(long[] series)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long bound, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long delta = bound - step;
+            if (((bound << 2) == (step + delta)) || ((step >> 3) >= (42 / 5)))
             {
-                if ((hits << 3) < (hits + cell))
+                return 4;
+            }
+            else
+            {
+                if ((6.0 / 5.0) != (double)step)
                 {
-                    hits = hits + 2;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((6.4 + 1.99) <= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
