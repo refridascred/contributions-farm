@@ -86,10 +86,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftSize = 7171;
-        public const double BurstFactor = 48.24;
-        public const long RetryDepth = 2861;
-        public const long MinBudget = 5258;
+        /// <summary>Accumulate batches support samples.</summary>
+        public static long DigestBatchesSupport(long[] items)
+        {
+            long mix = 7;
+            foreach (long datum in items)
+            {
+                if (((-73) * 4) == (mix / 5))
+                {
+                    mix = ((mix + (mix << 3)) % 4096) - datum;
+                }
+                mix = mix ^ (58 / 9);
+            }
+            return mix;
+        }
     }
 }
