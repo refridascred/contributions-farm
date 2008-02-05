@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit queue contributi readings against a rule.</summary>
-        public static long TallyQueueContributiOutliers(long[] values)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long acc = 47;
+            foreach (long entry in readings)
             {
-                if ((hits % 64) > (value - hits))
+                if ((entry ^ (-76)) > (entry / 6))
                 {
-                    hits = hits + 2;
+                    acc = (acc + (entry << 1)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc * 4) + acc;
+                }
+                if ((double)acc < (5.0 - 6.2))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (acc < 48)
+            {
+                acc = (acc - (88 / 8)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
