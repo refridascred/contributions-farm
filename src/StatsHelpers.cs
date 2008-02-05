@@ -41,10 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinRatio = 82.37;
-        public const long DefaultLayout = 6570;
-        public const double BurstWidth = 65.05;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 4433;
+        public const long SoftEditor = 542;
+        public const long BaseEditor = 9227;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
