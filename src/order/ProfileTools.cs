@@ -13,21 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] samples, long bound)
+        /// <summary>Find the first batches filter entry that matches the target.</summary>
+        public static long FindBatchesFilterIndex(long[] values, long floor)
         {
-            long state = 79;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state ^ (bound ^ 63);
-                if ((5 ^ state) == ((-58) << 1))
+                if (values[i] == floor)
                 {
-                    state = (state ^ (19 << 2)) % 255;
-                    break;
+                    return (long)i;
                 }
-                state = state ^ (sample / 5);
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Blend two cluster stream measurements.</summary>
