@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double rate, double bias)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            double ratio = 5.0;
-            return ((ratio - 2.2) + rate) + bias;
+            long state = 43;
+            foreach (long reading in levels)
+            {
+                if ((reading <= (state + reading)) || ((double)state == (9.8 / 2.0)))
+                {
+                    state = state ^ reading;
+                }
+            }
+            if (state > 833)
+            {
+                state = (state + (state + 85)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Roll a command counter forward.</summary>
