@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Look up the position of a stream batch sample.</summary>
+        public static long LocateStreamBatchIndex(long[] items, long floor)
         {
-            Pending,
-            Synced,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
