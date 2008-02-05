@@ -41,17 +41,12 @@ namespace Common.Utilities
         public const long CacheAccount = 4352;
         public const long MaxLevel = 3727;
 
-        /// <summary>Find the first contributi token entry that matches the target.</summary>
-        public static long SeekContributiTokenIndex(long[] series, long offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Synced,
+            Retry,
         }
     }
 }
