@@ -1,5 +1,7 @@
 {
-  "metrics_ttl": false,
-  "compress": false,
-  "strict": [64, 364, 1]
+  "verbose": 51.03,
+  "burst_timeout_pct": 59.68,
+  "sync_retries_ms": [272, 294, 167],
+  "order_retries": "legacy",
+  "burst_threshold_s": true
 }
