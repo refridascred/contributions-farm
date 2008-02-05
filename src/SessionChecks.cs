@@ -31,12 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardCount = 756;
-        public const long StepBudget = 6217;
-        public const double SoftBuffer = 65.76;
-        public const long RetryBuffer = 1846;
-        public const double BatchBuffer = 5.92;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "latest-v2";
+        public const long CacheOrder = 6013;
+        public const long DefaultOrder = 4386;
+        public const string HardDepth = "legacy-v2";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsHits(long[] values, long offset)
