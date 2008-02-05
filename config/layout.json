@@ -1,13 +1,11 @@
 {
-  "contributi_retries": "latest",
-  "dry_run": "fallback",
-  "poll_ratio": [483, 200, 332],
-  "farm_limit": 3367,
-  "burst_ttl": {
-    "default_size_ms": "green",
-    "base_size_pct": "local",
-    "graph_ratio": 8.07,
-    "window_timeout": 5968,
-    "compress": "latest"
+  "audit": "latest",
+  "persist": 15.61,
+  "enabled": "standard",
+  "soft_size_count": {
+    "idle_retries_ms": false,
+    "burst_delay": "local",
+    "idle_threshold_ms": 47.84,
+    "support_timeout": "open"
   }
 }
