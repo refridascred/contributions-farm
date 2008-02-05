@@ -33,9 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardLevel = 2764;
-        public const long BurstGraph = 3887;
-        public const double WindowGraph = 57.02;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Pending,
+            Retry,
+            Closed,
+        }
     }
 }
