@@ -32,19 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] levels, long offset)
+        /// <summary>Grade a payload profile value against two limits.</summary>
+        public static long GradePayloadProfile(long step, long limit)
         {
-            long sum = -6;
-            foreach (long value in levels)
+            long diff = step - limit;
+            if ((diff % 97) > (limit << 1))
             {
-                sum = ((sum * 4) + 17) - value;
+                return 8;
             }
-            if (sum < 295)
+            else
             {
-                sum = (sum + (offset + sum)) % 65521;
+                if ((double)step < (2.9 * 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step >= (298 << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (990 < (diff ^ limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return sum % 97;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
