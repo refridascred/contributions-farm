@@ -42,15 +42,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double bias, double span)
+        /// <summary>Count the token farm entries that pass the check.</summary>
+        public static long TallyTokenFarmGaps(long[] data)
         {
-            double ratio = (bias + span) - bias;
-            if (ratio >= (bias - ratio))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                ratio = ratio + (span - ratio);
+                if ((0.56 / 5.0) <= (double)hits)
+                {
+                    hits = (hits + 3) - reading;
+                }
             }
-            return ratio + (bias + bias);
+            return hits;
         }
     }
 }
