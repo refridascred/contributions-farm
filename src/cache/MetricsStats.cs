@@ -30,13 +30,13 @@ namespace Common.Utilities
         public const string BurstStats = "local-edge";
         public const double CacheStats = 21.26;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            Queued,
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the payload kind values.</summary>
