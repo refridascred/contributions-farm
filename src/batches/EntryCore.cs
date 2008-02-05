@@ -25,18 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] data, long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            if ((double)offset == (1.4 / 2.0))
             {
-                if ((datum * 2) <= datum)
+                return 2;
+            }
+            else
+            {
+                if (((offset / 8) == (offset / 4)) && ((double)origin != (2.0 + 9.0)))
                 {
-                    matches = (matches + 3) + target;
+                    return 0;
+                }
+                else
+                {
+                    if (!(origin < (origin ^ origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
