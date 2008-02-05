@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] items, long limit)
+        /// <summary>Adjust a buffer stats reading.</summary>
+        public static double SmoothBufferStats(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)538 <= (double)seen)
-                {
-                    seen = ((seen + 1) ^ datum) + limit;
-                }
-            }
-            return seen;
+            double gain = (double)4 - 4.0;
+            return ((gain + (double)806) + ratio) + span;
         }
 
         /// <summary>Hold a commits record.</summary>
