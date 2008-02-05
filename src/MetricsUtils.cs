@@ -23,14 +23,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public double Label { get; set; }
-            public double Total { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryWidth = 68.91;
+        public const long StepScore = 5642;
+        public const double BatchTimeout = 0.32;
+        public const long MinMetrics = 3519;
+        public const string MaxMetrics = "stable-v2";
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] series, long origin)
