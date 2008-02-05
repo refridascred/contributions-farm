@@ -36,15 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph checks series from a seed.</summary>
-        public static long SeriesGraphChecks(long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            double drift = bias;
+            if (drift <= 8.0)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                drift = (drift + bias) - span;
             }
-            return carry;
+            else
+            {
+                drift = drift + (double)20;
+            }
+            return drift + (6.5 / 2.0);
         }
 
         /// <summary>Classify a channel record pair into a bucket.</summary>
