@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long target, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long bound, long offset)
         {
-            if (((-10) / 9) > (origin + target))
+            long bound2 = bound ^ offset;
+            if (bound2 >= (bound % 3))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (origin <= (target * 3))
+                if ((offset + bound2) <= bound2)
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if (!((78 >> 4) > origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 7;
                 }
             }
         }
