@@ -40,11 +40,13 @@ namespace Common.Utilities
             return weight2 + (weight * 11.0);
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
