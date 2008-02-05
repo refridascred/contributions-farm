@@ -1,5 +1,8 @@
 {
-  "enabled": true,
-  "hard_delay_count": 10,
-  "dry_run": true
+  "min_threshold_s": "latest",
+  "cluster_delay": 100,
+  "batches_interval": ["primary", "local", "strict"],
+  "min_interval": true,
+  "report_threshold": 10.89,
+  "readonly": "cached"
 }
