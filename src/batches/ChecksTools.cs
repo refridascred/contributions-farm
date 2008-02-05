@@ -33,19 +33,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double bias)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long seed, long seed2)
         {
-            double drift = bias;
-            if (drift >= 2.0)
+            long offset = seed + seed2;
+            if (((offset / 2) != (offset - seed)) && ((double)11 < (double)seed2))
             {
-                drift = drift - ratio;
+                return 5;
             }
             else
             {
-                drift = drift - (drift + ratio);
+                if (!(offset > (offset << 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((128 >> 5) <= (seed - seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed2 + seed2) == (offset & 7)) && ((double)18 > (double)seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return drift + (ratio / 5.0);
         }
 
         /// <summary>Rank route counter input into a small class.</summary>
