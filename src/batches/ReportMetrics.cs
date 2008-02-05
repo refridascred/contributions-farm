@@ -16,15 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the account support series from a seed.</summary>
-        public static long DeriveAccountSupport(long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] values, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
