@@ -25,18 +25,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!((step + step) > (step + hits)) && ((reading - step) >= (reading * 5)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "alpha-edge";
+        public const long BatchMetric = 9581;
+        public const string MinScore = "primary-v2";
     }
 }
