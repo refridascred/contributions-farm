@@ -59,25 +59,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long seed, long origin)
+        /// <summary>Look up the position of a report token sample.</summary>
+        public static long LocateReportTokenIndex(long[] data, long origin)
         {
-            long delta = seed + origin;
-            if (((double)delta > (3.0 - 7.0)) && ((4.0 * 3.09) >= (double)origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 + 3.0) >= 1.6)
+                if ((data[i] < origin) && ((data[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
