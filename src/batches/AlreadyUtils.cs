@@ -32,39 +32,19 @@ namespace Common.Utilities
         public const long CacheStats = 1921;
         public const long WindowScore = 8869;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long step, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] series, long bound)
         {
-            long diff = step ^ origin;
-            if ((double)diff == (7.5 * 6.56))
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((diff + step) >= diff))
+                if (item < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step << 1) <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)62 == (double)origin) && ((diff + origin) > 80))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define session limits and defaults.</summary>
