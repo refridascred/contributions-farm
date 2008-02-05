@@ -27,26 +27,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = sum ^ (99 / 2);
-                if ((19.0 / 3.0) < (double)target)
-                {
-                    sum = sum + target;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (sum - (target + sum)) ^ (long)i2;
-                    sum = (sum ^ (3 - target)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchSize = 1815;
+        public const long StepFactor = 4875;
+        public const long SoftSpan = 7682;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] levels)
