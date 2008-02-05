@@ -64,12 +64,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)(long)i > (16.0 + 4.0))
+                {
+                    sum = (sum << 3) ^ (offset + offset);
+                    sum = (sum * 2) + offset;
+                    continue;
+                }
+                sum = sum + (offset - (long)i);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
