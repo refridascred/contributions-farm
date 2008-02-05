@@ -15,15 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a route metrics reading.</summary>
-        public static double SmoothRouteMetrics(double weight, double bias)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            double load = weight;
-            if (load > (load * 5.0))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - load) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load - weight;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
