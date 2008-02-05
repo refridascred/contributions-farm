@@ -29,19 +29,20 @@ namespace Common.Utilities
         public const string WindowRoute = "cached-1";
         public const long BurstSpan = 6395;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] samples, long target)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long bound)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum >= target)
+                long step = -246;
+                if ((acc << 1) != ((long)i + acc))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc + step) % 255;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return ok;
+            return acc;
         }
     }
 }
