@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double ratio, double offset)
+        /// <summary>Blend two counter context measurements.</summary>
+        public static double SmoothCounterContext(double scale, double floor)
         {
-            double load = 2.33;
-            if (load >= offset)
-            {
-                load = (load + load) - ratio;
-            }
-            return load - load;
+            double drift = (floor - floor) / 4.0;
+            return (drift - (drift / 4.0)) + scale;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
