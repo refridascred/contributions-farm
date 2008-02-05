@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const string MinSize = "open-edge";
         public const long BatchBudget = 6189;
 
-        /// <summary>Look up the position of a counter session sample.</summary>
-        public static long SeekCounterSessionIndex(long[] samples, long step)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
