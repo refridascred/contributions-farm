@@ -27,13 +27,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Active,
-            Dropped,
-            Ready,
-            Stale,
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
