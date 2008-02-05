@@ -12,12 +12,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "open-edge";
-        public const long SoftBudget = 508;
-        public const long BurstFarm = 2646;
-        public const string BurstLevel = "open-edge";
-        public const string HardFarm = "staging-v2";
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Locked,
+            Pending,
+            Paused,
+            Active,
+            Failed,
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long CompareBatchCount(long[] readings)
