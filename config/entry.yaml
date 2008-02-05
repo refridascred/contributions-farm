@@ -1,6 +1,15 @@
 # entry settings
-warm_capacity: false
-soft_interval_count: green
-filter_retries: local
-compress: local
-cache_timeout_s: 64
+batch_delay: 5045
+hard_ttl_pct: 77.31
+hard_timeout_ms:
+  - 303
+  - 118
+  - 484
+  - 110
+filter_ratio: 27.73
+idle_ttl_ms: eu-west
+readonly:
+  - 438
+  - 172
+  - 151
+  - 72
