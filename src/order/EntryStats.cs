@@ -34,12 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Paused,
-            Draft,
-            New,
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the checks schema entries that pass the check.</summary>
