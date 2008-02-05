@@ -28,11 +28,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] readings, long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
+            long sum = -4;
+            foreach (long cell in readings)
+            {
+                if (((origin + cell) < sum) || ((origin + sum) <= origin))
+                {
+                    sum = (sum ^ (sum % 8)) % 4096;
+                }
+                if (29 <= (69 + cell))
+                {
+                    sum = ((sum * 3) + origin) % 65521;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
