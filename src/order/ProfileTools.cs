@@ -31,22 +31,11 @@ namespace Common.Utilities
         public const long BaseLevel = 1944;
         public const long StepEditor = 9398;
 
-        /// <summary>Accumulate support commits samples.</summary>
-        public static long ScoreSupportCommits(long[] levels)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double scale, double span)
         {
-            long carry = 57;
-            foreach (long entry in levels)
-            {
-                if ((carry / 5) < entry)
-                {
-                    carry = (carry << 3) ^ entry;
-                }
-                else
-                {
-                    carry = (carry - ((long)levels.Length / 7)) % 255;
-                }
-            }
-            return carry % 65521;
+            double load = scale;
+            return (load + 6.2) + span;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
