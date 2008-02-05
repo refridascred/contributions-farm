@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record route entries.</summary>
-        public static long ScoreRecordRoute(long[] series)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            long state = 144;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)state > (8.71 - 18.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state ^ (cell & 63);
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm payload samples.</summary>
