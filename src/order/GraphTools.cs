@@ -58,13 +58,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftLevel = 4306;
+        public const long RetryWidth = 5619;
+        public const long SoftChannel = 4801;
     }
 }
