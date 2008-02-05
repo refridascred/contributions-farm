@@ -5,22 +5,35 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine route profile values into a single score.</summary>
-        public static long TallyRouteProfile(long[] items, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items)
         {
-            long acc = 55;
-            foreach (long datum in items)
+            long score = 1;
+            foreach (long sample in items)
             {
-                if ((step << 2) > (datum / 3))
+                if ((score % 5) >= score)
                 {
-                    acc = (acc - datum) % 101;
+                    score = (score - score) % 101;
+                    score = score + sample;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ (acc % 8)) % 4096;
+                    score = (score + (39 & 31)) % 65521;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    score = (((score * 3) + (6 / 6)) % 4096) ^ (long)i;
+                }
+                if ((sample + score) <= sample)
+                {
+                    score = ((score * 2) + (sample ^ sample)) % 4096;
                 }
             }
-            return acc;
+            if (score < 941)
+            {
+                score = (score - (score << 1)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
