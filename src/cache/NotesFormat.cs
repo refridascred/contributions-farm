@@ -13,17 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Locate a editor record reading by value.</summary>
-        public static long LocateEditorRecordIndex(long[] samples, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = span * 8.0;
+            if (weight >= bias)
             {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
+                weight = weight + span;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + 3.1) + (double)(long)i;
+            }
+            return weight + 19.0;
         }
 
         /// <summary>Hold a support info.</summary>
