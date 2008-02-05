@@ -25,22 +25,11 @@ namespace Common.Utilities
             return mean + 1.59;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] items, long bound)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long total = 94;
-            foreach (long reading in items)
-            {
-                if ((10.0 + 3.8) <= (double)total)
-                {
-                    total = total + (bound + reading);
-                }
-                if (!((reading ^ bound) == (reading % 3)))
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next format value.</summary>
