@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (((double)item > (double)seen) || (seen <= item))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the entry kind values.</summary>
