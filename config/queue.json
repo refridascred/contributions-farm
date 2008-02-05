@@ -1,7 +1,5 @@
 {
-  "hard_ratio": [237, 27],
-  "idle_ratio_count": ["blue", "open", "eu-west", "strict"],
-  "readonly": true,
-  "commits_retries": false,
-  "max_ttl": 9497
+  "soft_interval": true,
+  "burst_delay": [345, 79],
+  "warm_timeout": 60
 }
