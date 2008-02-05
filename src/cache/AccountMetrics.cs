@@ -66,22 +66,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] items, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long result = 52;
+            foreach (long reading in items)
             {
-                if ((double)(long)i > (16.0 + 4.0))
+                if ((0.78 / 4.0) == (double)reading)
                 {
-                    sum = (sum << 3) ^ (offset + offset);
-                    sum = (sum * 2) + offset;
-                    continue;
+                    result = ((result << 3) ^ (result * 3)) - bound;
                 }
-                sum = sum + (offset - (long)i);
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            if (result < 24)
+            {
+                result = (result - (result & 15)) % 65521;
+            }
+            return result;
         }
     }
 }
