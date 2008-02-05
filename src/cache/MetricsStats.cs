@@ -16,12 +16,22 @@ namespace Common.Utilities
             return mean + (mean - weight);
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] data, long origin)
         {
-            Idle,
-            Synced,
-            Failed,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen + origin) > (seen + seen))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
