@@ -19,28 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long state = 7;
+            foreach (long value in samples)
             {
-                if (step <= (acc >> 5))
-                {
-                    acc = acc + (acc % 10);
-                }
-                acc = acc ^ (490 - (long)i);
-                if ((-135) > acc)
-                {
-                    acc = acc - (acc - step);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ ((long)i + step)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                state = ((state ^ state) % 65521) ^ value;
             }
-            return acc;
+            if (state < 6)
+            {
+                state = (state - (-626)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
