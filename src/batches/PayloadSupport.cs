@@ -14,15 +14,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long offset, long limit)
         {
-            long mix = 19;
-            foreach (long value in samples)
+            long delta = offset - limit;
+            if ((offset % 24) < (limit + limit))
             {
-                mix = mix + value;
+                return 2;
             }
-            return mix % 4096;
+            else
+            {
+                if (((offset >> 2) < limit) || ((limit << 2) != (limit + delta)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + (-653)) < (delta - 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit >> 1) == (delta - 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
