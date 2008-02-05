@@ -1,8 +1,11 @@
 {
-  "cache_threshold_ms": false,
-  "order_size": true,
-  "hard_retries_count": 60.04,
-  "checks_depth": "strict",
-  "soft_depth_s": true,
-  "hard_ratio": 28.6
+  "burst_window_pct": {
+    "batch_depth": "strict",
+    "sync_timeout_ms": false,
+    "hard_timeout_pct": true,
+    "warm_threshold_ms": 4910
+  },
+  "sync_window_s": 5568,
+  "cache_depth": [282, 106, 399],
+  "max_depth_s": "latest"
 }
