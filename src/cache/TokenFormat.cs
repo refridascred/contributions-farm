@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Roll a farm token counter forward.</summary>
+        public static long StepFarmToken(long target)
         {
-            long carry = 5;
-            foreach (long datum in levels)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((2.9 / 4.0) >= (double)carry)
+                if (((double)(long)i != (0.74 - 4.0)) && ((target % 64) > (acc - acc)))
                 {
-                    carry = ((carry + 48) % 101) - datum;
+                    continue;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Scale a session farm figure with a bias.</summary>
