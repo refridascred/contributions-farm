@@ -52,14 +52,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Grade a buffer farm value against two limits.</summary>
+        public static long ClassifyBufferFarm(long origin, long limit)
         {
-            Locked,
-            Draft,
-            Pending,
-            Idle,
-            Ready,
+            long gap = origin ^ limit;
+            if ((origin / 9) > limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit % 100) >= gap) && ((gap >> 5) != (gap + gap)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + origin) == (limit ^ gap))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of record readings.</summary>
