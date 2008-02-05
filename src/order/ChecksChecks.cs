@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitScore = "alpha-v2";
-        public const string CacheLayout = "legacy-v2";
-        public const long WindowRatio = 577;
+        /// <summary>Rank cluster account input into a small class.</summary>
+        public static long BucketClusterAccount(long floor, long bound)
+        {
+            if (bound >= (bound / 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound / 4) <= (floor * 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ProjectBatch(double weight, double span)
