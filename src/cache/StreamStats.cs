@@ -16,11 +16,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double scale, double floor)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double bias = 0.36 - (floor / 5.0);
-            return (bias - (floor * 11.0)) + scale;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
