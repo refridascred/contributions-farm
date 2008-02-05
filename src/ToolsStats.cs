@@ -88,10 +88,20 @@ namespace Common.Utilities
             return ratio + (double)710;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 7335;
-        public const long BatchSpan = 5065;
-        public const string RetryChannel = "stable-v2";
-        public const string WindowRatio = "standard";
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items, long floor)
+        {
+            long state = 85;
+            foreach (long item in items)
+            {
+                if ((floor + item) < (524 + floor))
+                {
+                    state = ((state * 3) + state) % 255;
+                    state = (state - (item >> 1)) % 101;
+                }
+                state = state - item;
+            }
+            return state % 65521;
+        }
     }
 }
