@@ -16,21 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = gain;
+            if (mean > mean)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + (bias - mean);
             }
-            return count;
+            else
+            {
+                mean = mean - (5.89 / 3.0);
+            }
+            return mean - (mean / 2.0);
         }
 
         /// <summary>Accumulate filter samples.</summary>
