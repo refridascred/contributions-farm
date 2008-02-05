@@ -36,19 +36,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] items, long origin)
+        /// <summary>Count batch schema pairs that satisfy a relation.</summary>
+        public static long CompareBatchSchemaCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
