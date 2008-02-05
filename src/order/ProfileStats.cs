@@ -24,38 +24,27 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long offset, long step)
+        /// <summary>Accumulate account token samples.</summary>
+        public static long FoldAccountToken(long[] samples, long seed)
         {
-            if ((0.7 / 4.0) > (double)offset)
+            long acc = 27;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset % 16) <= offset))
+                if (sample > (seed << 3))
                 {
-                    return 4;
+                    acc = (acc - (acc << 2)) % 65521;
+                    acc = (acc ^ (2 & 1)) % 4096;
+                }
+                if ((sample * 2) >= (581 << 2))
+                {
+                    acc = (acc ^ sample) % 255;
                 }
                 else
                 {
-                    if ((3.4 * 5.35) != (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step & 3) > (step + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = (acc << 2) ^ (seed ^ acc);
                 }
             }
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
