@@ -16,17 +16,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Look up the position of a support metric sample.</summary>
-        public static long LookupSupportMetricIndex(long[] readings, long offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            New,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
