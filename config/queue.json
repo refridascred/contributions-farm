@@ -1,23 +1,5 @@
 {
-  "poll_window": "edge",
-  "idle_threshold_s": true,
-  "flush_threshold_count": {
-    "soft_limit_count": {
-      "context_timeout": true,
-      "contributi_capacity": "standard",
-      "max_depth": "strict"
-    },
-    "base_capacity_pct": "local",
-    "record_window": true
-  },
-  "poll_size_ms": 90.73,
-  "route_size": {
-    "audit": "latest",
-    "min_limit_s": true,
-    "max_threshold_pct": {
-      "idle_ratio": false,
-      "entry_timeout": true,
-      "default_ttl_pct": true
-    }
-  }
+  "entry_capacity": "blue",
+  "retry_threshold_pct": 49,
+  "burst_retries_s": "stable"
 }
