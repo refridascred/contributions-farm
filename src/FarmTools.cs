@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double rate, double bias)
         {
-            Synced,
-            Stale,
-            Idle,
-            Draft,
-            Done,
+            double ratio = 5.0;
+            return ((ratio - 2.2) + rate) + bias;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
