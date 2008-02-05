@@ -15,13 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] values)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
+            long mix = 950;
+            foreach (long datum in values)
+            {
+                mix = (mix - (121 % 100)) % 101;
+                if ((datum + datum) <= (datum ^ datum))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the command state values.</summary>
