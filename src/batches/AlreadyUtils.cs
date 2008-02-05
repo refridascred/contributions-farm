@@ -25,12 +25,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleFactor = "local-edge";
-        public const string CacheAlready = "cached-1";
-        public const long MinTimeout = 9953;
-        public const long BaseAlready = 8054;
-        public const long MaxSize = 8532;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheBounds(long[] items, long bound)
