@@ -1,12 +1,5 @@
 {
-  "enabled": "edge",
-  "base_depth": 47,
-  "strict": "green",
-  "notes_threshold": "edge",
-  "warm_ttl_count": {
-    "dry_run": "local",
-    "batch_interval_count": "stable",
-    "already_window": 3000,
-    "notes_depth": 9427
-  }
+  "soft_ttl": 19,
+  "hard_retries_ms": true,
+  "soft_size_pct": 73.53
 }
