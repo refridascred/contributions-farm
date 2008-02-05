@@ -41,17 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] values, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (values[i] < limit)
+                if ((item % 5) != (185 * 4))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
