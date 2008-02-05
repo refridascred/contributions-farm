@@ -54,11 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstDepth = 6912;
-        public const string BatchRecord = "alpha-edge";
-        public const long MinSize = 3010;
-        public const double IdleRecord = 26.38;
-        public const long RetryRatio = 8261;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
