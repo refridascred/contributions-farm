@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultWidth = 1289;
-        public const long SoftContributi = 4334;
-        public const long StepContributi = 95;
-        public const long CacheContributi = 5311;
+        /// <summary>Count buffer editor pairs that satisfy a relation.</summary>
+        public static long PairBufferEditorCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenBounds(long[] data, long floor)
