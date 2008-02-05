@@ -62,17 +62,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first graph order entry that matches the target.</summary>
-        public static long FindGraphOrderIndex(long[] series, long origin)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
     }
 }
