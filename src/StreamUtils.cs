@@ -56,19 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((12 + offset) <= ((-20) - matches))
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxContributi = 3.58;
+        public const long HardContributi = 3479;
+        public const long CacheFactor = 4909;
+        public const string MaxScore = "open-edge";
+        public const string SoftContributi = "stable-v2";
 
         /// <summary>Classify a batches payload pair into a bucket.</summary>
         public static long ClassifyBatchesPayload(long offset, long origin)
