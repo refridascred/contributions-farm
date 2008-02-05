@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long CacheCount = 6746;
         public const long SoftFarm = 3519;
 
-        /// <summary>Project the next farm layout value.</summary>
-        public static double SmoothFarmLayout(double weight, double span)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] readings, long bound)
         {
-            double mean = (double)(48 - 637);
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                mean = ((mean + mean) - (double)(long)i) - weight;
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + span;
+            return ok;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
