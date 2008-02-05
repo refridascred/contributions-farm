@@ -1,6 +1,8 @@
 {
-  "stats_timeout": 42.52,
-  "poll_threshold": 19,
-  "idle_interval_pct": true,
-  "min_size": 30
+  "record_timeout": "cached",
+  "channel_capacity": 31,
+  "batch_interval": "edge",
+  "persist": true,
+  "retry_window": 51.65,
+  "batch_limit": 1024
 }
