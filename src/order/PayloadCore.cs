@@ -46,32 +46,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long seed, long target)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] samples, long bound)
         {
-            long step = seed + target;
-            if (!((double)seed < (9.0 + 2.3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((2.2 * 2.2) > (double)step) || ((double)seed >= (13.0 - 1.09)))
+                if (samples[i] <= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + step) <= (seed + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
