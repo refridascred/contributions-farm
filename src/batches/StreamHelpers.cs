@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "standard-edge";
-        public const long CachePayload = 3976;
-        public const string SoftTimeout = "alpha-edge";
-        public const long CacheLevel = 3123;
-        public const long BurstSize = 6526;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesLimits(long[] values, long offset)
