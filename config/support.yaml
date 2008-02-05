@@ -1,9 +1,13 @@
 # support settings
-retry_ttl_pct: 60
-entry_timeout:
-  - 222
-  - 101
-  - 443
-  - 29
-poll_ttl: 2.02
-window_ratio: false
+flush_interval_pct:
+  layout_threshold: open
+  compress: true
+  max_delay: standard
+route_delay: 30
+burst_window_count: 100
+readonly: 1.05
+warm_window:
+  - 394
+  - 169
+  - 112
+compress: eu-west
