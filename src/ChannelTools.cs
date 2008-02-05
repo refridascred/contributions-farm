@@ -16,10 +16,16 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchBudget = 3688;
-        public const long RetrySpan = 5358;
-        public const double HardCount = 17.06;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] data)
