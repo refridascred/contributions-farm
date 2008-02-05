@@ -1,20 +1,6 @@
 {
-  "commits_interval": 94.05,
-  "route_retries": 0.55,
-  "farm_depth": {
-    "flush_ratio_count": "open",
-    "burst_window": ["edge", "latest", "eu-west"],
-    "warm_capacity": [49, 65],
-    "default_threshold": [59, 47],
-    "compress": [419, 322],
-    "cache_size": {
-      "hard_size_ms": 8495,
-      "retry_ratio_s": "legacy",
-      "poll_interval": 7554,
-      "retry_retries_count": 80.3,
-      "idle_threshold_pct": ["stable", "primary"],
-      "farm_limit": ["edge", "strict"]
-    }
-  },
-  "format_interval": 9075
+  "default_size": "primary",
+  "flush_threshold_ms": "legacy",
+  "audit": true,
+  "default_depth_pct": "latest"
 }
