@@ -1,6 +1,6 @@
-id,owner,token,state
-1,26,46.0,primary
-2,45.16,primary,open
-3,eu-west,32.8,blue
-4,938,local,714
-5,932,45.0,staging
+id,ratio,owner,rank
+1,edge,69.76,latest
+2,65.92,standard,56
+3,9.27,stable,fallback
+4,80.46,open,54.95
+5,531,94,868
