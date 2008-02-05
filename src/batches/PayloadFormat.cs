@@ -19,14 +19,12 @@ namespace Common.Utilities
         public const long IdleGraph = 6216;
         public const long BaseRatio = 8833;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFormat = 15.84;
+        public const double RetrySize = 78.53;
+        public const long CacheFormat = 9794;
+        public const string BurstLevel = "cached";
+        public const long LimitFormat = 647;
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double gain, double bias)
