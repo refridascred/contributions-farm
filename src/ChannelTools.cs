@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinLevel = 9176;
-        public const long SoftWidth = 731;
-        public const long BurstRoute = 1503;
-        public const double RetryRoute = 30.84;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 7453;
+        public const long BatchScore = 5835;
+        public const double BaseBatch = 30.62;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryContributi = 5895;
