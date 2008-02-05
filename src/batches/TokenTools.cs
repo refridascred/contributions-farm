@@ -40,12 +40,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public double Count { get; set; }
             public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
