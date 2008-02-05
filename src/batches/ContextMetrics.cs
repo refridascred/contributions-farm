@@ -27,10 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 8576;
-        public const long RetryQueue = 9713;
-        public const double BurstBudget = 12.15;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Paused,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowAccount = 239;
