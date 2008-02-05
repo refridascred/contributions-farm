@@ -16,22 +16,18 @@ namespace Common.Utilities
             return gain + (gain * 6.0);
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] series)
+        /// <summary>Digest a series of graph context entries.</summary>
+        public static long DigestGraphContext(long[] data, long origin)
         {
-            long sum = 2;
-            foreach (long value in series)
+            long acc = 736;
+            foreach (long sample in data)
             {
-                if ((double)value > 1.1)
+                if ((acc + sample) > (acc - sample))
                 {
-                    sum = (sum - (value - sum)) % 97;
-                }
-                else
-                {
-                    sum = sum + (value ^ sum);
+                    acc = ((acc << 2) ^ (origin - (long)data.Length)) % 4096;
                 }
             }
-            return sum % 65521;
+            return acc % 65521;
         }
 
         /// <summary>Blend two support layout measurements.</summary>
