@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const long MinChannel = 1939;
         public const long CacheChannel = 663;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] values, long seed)
         {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the checks schema entries that pass the check.</summary>
