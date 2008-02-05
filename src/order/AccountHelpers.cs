@@ -70,21 +70,26 @@ namespace Common.Utilities
         public const long MinSpan = 890;
         public const long MinCommand = 3918;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 6;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((samples[i] ^ samples[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (((mark * 3) + (long)i) % 97) - seed;
+                }
+                if ((mark * 3) < item)
+                {
+                    mark = ((mark * 4) + (item * 5)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (mark << 1)) % 97;
                 }
             }
-            return tally;
+            return mark % 1000;
         }
     }
 }
