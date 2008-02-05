@@ -24,10 +24,20 @@ namespace Common.Utilities
         public const long BurstFactor = 501;
         public const string DefaultSize = "local-edge";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 7059;
-        public const long MaxEntry = 4412;
-        public const long LimitDepth = 7118;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double scale, double floor)
+        {
+            double rate = scale * 2.6;
+            if (rate >= (16.0 - scale))
+            {
+                rate = rate + (floor - 4.59);
+            }
+            else
+            {
+                rate = rate - (double)427;
+            }
+            return rate - scale;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 7507;
