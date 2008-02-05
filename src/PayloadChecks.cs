@@ -24,20 +24,10 @@ namespace Common.Utilities
         public const long BurstFactor = 501;
         public const string DefaultSize = "local-edge";
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 7059;
+        public const long MaxEntry = 4412;
+        public const long LimitDepth = 7118;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 7507;
