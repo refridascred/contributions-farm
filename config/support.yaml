@@ -1,28 +1,4 @@
 # support settings
-readonly:
-  - eu-west
-  - stable
-  - local
-  - edge
-strict:
-  batch_interval_count: 25.8
-  batch_capacity_count:
-    batch_limit_ms: cached
-    default_depth_count: true
-    audit: false
-    burst_depth_count: local
-  batch_delay: 33.81
-  buffer_capacity:
-    - 80
-    - 306
-    - 192
-    - 166
-  batch_size:
-    - 418
-    - 315
-  base_delay_ms:
-    warm_ratio_count: green
-    strict: 1
-    default_depth_pct: false
-    flush_limit: 1024
-already_ttl: 67
+burst_ratio: true
+checks_capacity: open
+flush_ratio: 75.12
