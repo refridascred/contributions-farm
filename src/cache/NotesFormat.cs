@@ -13,11 +13,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double weight, double span)
+        /// <summary>Locate a editor record reading by value.</summary>
+        public static long LocateEditorRecordIndex(long[] samples, long step)
         {
-            double gain = span;
-            return gain + weight;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a support info.</summary>
