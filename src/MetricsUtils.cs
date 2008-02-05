@@ -50,11 +50,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double ratio, double floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            double load = (double)(998 >> 4);
-            return (load - (ratio / 9.0)) + floor;
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
