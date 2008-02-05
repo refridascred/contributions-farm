@@ -25,17 +25,22 @@ namespace Common.Utilities
         public const string DefaultRoute = "fallback-v2";
         public const long BurstInterval = 1706;
 
-        /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
-        public static long FindCacheGithubfarmIndex(long[] items, long target)
+        /// <summary>Digest a series of cache session entries.</summary>
+        public static long DigestCacheSession(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 339;
+            foreach (long cell in readings)
             {
-                if (items[i] == target)
+                if (((9 % 7) >= total) && (cell <= (total % 7)))
                 {
-                    return (long)i;
+                    total = (total ^ (9 & 7)) % 1000;
                 }
             }
-            return -1;
+            if (total < 51)
+            {
+                total = total - (total >> 4);
+            }
+            return total % 1000;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
