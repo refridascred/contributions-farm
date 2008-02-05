@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] values, long seed)
         {
-            long sum = 4;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                sum = sum - item;
-                sum = (sum + (item + 0)) % 1000;
+                if (seed >= (cell + 42))
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count tools notes pairs that satisfy a relation.</summary>
