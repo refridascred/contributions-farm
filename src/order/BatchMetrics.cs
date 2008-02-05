@@ -20,19 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate token window readings against a bound.</summary>
-        public static bool CheckTokenWindowBounds(long[] samples, long limit)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long bound)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Audit tools farm readings against a rule.</summary>
