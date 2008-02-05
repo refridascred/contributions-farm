@@ -50,15 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double gain, double bias)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double ratio, double offset)
         {
-            double ratio = (double)482;
-            for (int i = 0; i < 9; i++)
+            double load = 9.4;
+            if (load >= (offset + load))
             {
-                ratio = ((ratio + (ratio / 4.0)) + (double)(long)i) + gain;
+                load = load - (double)647;
             }
-            return ratio + bias;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load + (ratio * 1.7);
         }
     }
 }
