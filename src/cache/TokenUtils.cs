@@ -17,24 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank counter command input into a small class.</summary>
-        public static long GradeCounterCommand(long offset, long offset2)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] items, long seed)
         {
-            if ((double)offset2 == (double)offset)
+            long carry = 311;
+            foreach (long cell in items)
             {
-                return 7;
+                carry = ((carry ^ (seed / 9)) % 4096) + cell;
             }
-            else
+            if (carry < 1)
             {
-                if ((offset + offset) < (offset >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
+                carry = (carry - (-17)) % 101;
             }
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
