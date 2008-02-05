@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const string SoftScore = "cached-1";
         public const long RetryContext = 1312;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long origin)
         {
-            Active,
-            Ready,
-            Idle,
-            Dropped,
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Project the next order filter value.</summary>
