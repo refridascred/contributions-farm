@@ -43,18 +43,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm account entries that pass the check.</summary>
-        public static long AuditGithubfarmAccountHits(long[] readings, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long edge = offset - seed;
+            if (((double)offset == (3.4 - 0.4)) || ((edge - offset) < seed))
             {
-                if ((491 << 2) >= (hits << 1))
+                return 4;
+            }
+            else
+            {
+                if (offset >= (offset % 97))
                 {
-                    hits = ((hits + 3) - datum) + step;
+                    return 0;
+                }
+                else
+                {
+                    if (((5.1 / 5.0) != (double)offset) || ((double)offset > (3.4 * 6.91)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((932 & 63) != (offset * 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
