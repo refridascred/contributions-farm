@@ -20,16 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] series, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                sum = sum - (step ^ step);
-                sum = ((sum * 4) + (long)i) % 101;
+                if (entry != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Accumulate queue samples.</summary>
