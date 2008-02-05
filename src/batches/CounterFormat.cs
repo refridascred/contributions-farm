@@ -41,26 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] items, long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] values, long limit)
         {
-            long acc = -591;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((acc % 100) > (offset + 4)))
+                if (values[i] < limit)
                 {
-                    acc = acc - (datum / 7);
-                }
-                if ((acc / 6) >= acc)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc > 7)
-            {
-                acc = acc ^ (offset + acc);
-            }
-            return acc;
+            return -1;
         }
     }
 }
