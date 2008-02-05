@@ -27,17 +27,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] items, long step)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
