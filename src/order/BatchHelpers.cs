@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of editor profile readings.</summary>
-        public static long TallyEditorProfile(long[] readings, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            long score = 272;
-            foreach (long reading in readings)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score + (score + score)) - reading) + origin;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            if (score < 69)
-            {
-                score = ((score * 3) + (score / 7)) % 1000;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
