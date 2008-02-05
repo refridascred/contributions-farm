@@ -13,10 +13,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 7694;
-        public const long StepWidth = 8113;
-        public const double BurstNotes = 89.62;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double weight, double floor)
+        {
+            double weight2 = (double)(397 + 849);
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (((weight2 - 16.0) + (double)(long)i) + weight) + floor;
+            }
+            return weight2 + (weight2 * 6.2);
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long HardWidth = 6732;
