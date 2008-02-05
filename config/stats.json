@@ -1,6 +1,6 @@
 {
-  "payload_delay": 250,
-  "min_ratio_count": ["legacy", "standard"],
-  "sync_delay": 2787,
-  "burst_limit_s": 20
+  "commits_interval": "cached",
+  "persist": "blue",
+  "metric_ratio": ["strict", "eu-west", "stable"],
+  "soft_ttl_ms": 64
 }
