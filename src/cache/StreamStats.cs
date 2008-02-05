@@ -32,19 +32,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] values, long origin)
+        /// <summary>Digest a series of commits window entries.</summary>
+        public static long CombineCommitsWindow(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long total = 229;
+            foreach (long reading in series)
             {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total - (total - (long)series.Length)) + bound;
+                total = (total << 3) ^ (928 - reading);
+                total = total ^ reading;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Describe the route state values.</summary>
