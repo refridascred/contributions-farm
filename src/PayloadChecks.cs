@@ -33,14 +33,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            Synced,
-            Active,
-            Closed,
-            Queued,
-            Done,
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = ((anchor ^ (anchor ^ (long)i)) % 65521) - (long)i2;
+                    anchor = anchor + (bound << 2);
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
