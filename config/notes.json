@@ -1,7 +1,11 @@
 {
-  "retry_delay": 63,
-  "retry_delay_s": 55,
-  "stats_delay": 989,
-  "dry_run": [409, 95, 412, 470],
-  "retry_ratio_count": false
+  "flush_capacity_pct": "latest",
+  "metric_limit": "legacy",
+  "enabled": 500,
+  "base_retries_pct": "primary",
+  "idle_limit_ms": {
+    "retry_retries_s": "primary",
+    "retry_interval_s": "edge",
+    "audit": "strict"
+  }
 }
