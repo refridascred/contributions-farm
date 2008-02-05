@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Match up cache samples.</summary>
