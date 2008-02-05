@@ -53,19 +53,12 @@ namespace Common.Utilities
         public const long CacheInterval = 4440;
         public const long BatchFactor = 2597;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] data, long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Done,
+            Synced,
         }
     }
 }
