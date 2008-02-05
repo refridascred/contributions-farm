@@ -24,18 +24,15 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double ratio, double span)
         {
-            long score = 657;
-            foreach (long sample in data)
+            double rate = (double)(9 ^ 804);
+            if (rate > rate)
             {
-                if ((sample - score) == (sample + 97))
-                {
-                    score = ((score << 2) ^ score) % 1000;
-                }
+                rate = (rate - 6.1) - span;
             }
-            return score;
+            return rate - ratio;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
