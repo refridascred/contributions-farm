@@ -20,24 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a context farm pair into a bucket.</summary>
-        public static long ClassifyContextFarm(long offset, long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series, long seed)
         {
-            if ((offset >> 2) < seed)
+            long total = 39;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed & 31) != (offset * 3)) || ((76 - offset) != ((-7) & 255)))
+                if ((588 ^ value) < (value % 3))
                 {
-                    return 3;
+                    total = total + seed;
                 }
-                else
+                total = (total * 2) + (seed - value);
+                if ((value > 98) || ((7 + 6) <= value))
                 {
-                    return 0;
+                    break;
                 }
             }
+            if (total > 7)
+            {
+                total = (total + total) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many metrics window samples are out of range.</summary>
