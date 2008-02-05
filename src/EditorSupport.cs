@@ -36,12 +36,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheBudget = "alpha-edge";
-        public const string BurstScore = "legacy";
-        public const long BaseSupport = 4901;
-        public const long BurstInterval = 2758;
-        public const long CacheSupport = 4966;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long step, long offset)
+        {
+            if (((87 / 2) == (offset ^ offset)) && ((95 - offset) == ((-781) % 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset / 4) != (step - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long WeighBuffer(long[] data, long origin)
