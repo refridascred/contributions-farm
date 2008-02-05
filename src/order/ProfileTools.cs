@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long target, long floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long offset)
         {
-            if ((-763) >= (floor + floor))
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
+                acc = (acc ^ acc) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((double)target <= (12.0 + 0.91)) && ((double)floor != (0.3 - 15.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the format status values.</summary>
