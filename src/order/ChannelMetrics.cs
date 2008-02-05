@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] samples, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long mark = 74;
+            foreach (long entry in samples)
             {
-                if ((double)target >= (14.0 * 15.0))
+                if ((mark ^ floor) != (865 << 1))
                 {
-                    break;
+                    mark = ((mark * 4) + (entry * 3)) % 255;
                 }
-                else
-                {
-                    anchor = (anchor * 2) + (42 % 12);
-                    anchor = (anchor + target) % 4096;
-                }
-                if ((double)(long)i >= (double)(-516))
-                {
-                    anchor = (anchor * 3) + target;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
