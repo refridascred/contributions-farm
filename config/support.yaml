@@ -1,19 +1,9 @@
 # support settings
-dry_run: staging
-audit:
-  batch_retries_pct:
-    already_threshold: edge
-    soft_ttl: primary
-    profile_capacity: 33.23
-    flush_threshold_ms: fallback
-    poll_window_s: 10.23
-    burst_threshold:
-      - eu-west
-      - cached
-      - stable
-      - staging
-  burst_window: 68
-  metrics_delay:
-    - fallback
-    - open
-soft_limit_pct: local
+idle_interval_count:
+  - 264
+  - 220
+  - 40
+  - 225
+notes_retries: 4260
+editor_delay: false
+farm_window: true
