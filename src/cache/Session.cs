@@ -56,18 +56,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] values, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            long carry = 2;
+            foreach (long reading in values)
             {
-                sum = sum - (0 - sum);
-                sum = ((sum << 3) ^ ((long)i / 8)) % 65521;
-                sum = (sum + (target / 8)) % 255;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((6.0 / 3.0) == (double)carry)
+                {
+                    carry = (carry * 2) + (0 / 4);
+                }
+                if (carry <= reading)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (carry < 24)
+            {
+                carry = ((carry * 5) + (limit + carry)) % 255;
+            }
+            return carry;
         }
     }
 }
