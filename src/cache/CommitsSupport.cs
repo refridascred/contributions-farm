@@ -27,32 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long seed, long origin)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long lane = seed ^ origin;
-            if (((648 >> 3) > origin) || ((seed * 4) <= origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((lane - lane) != (893 >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin < (lane ^ origin)) || ((double)origin > (6.8 - 4.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
