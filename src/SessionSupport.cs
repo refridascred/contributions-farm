@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile contributi samples are out of range.</summary>
-        public static long MeasureProfileContributiHits(long[] samples)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((item / 4) <= (count * 3))
-                {
-                    count = count + 2;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
