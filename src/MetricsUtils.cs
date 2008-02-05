@@ -13,26 +13,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cache profile readings.</summary>
-        public static long WeighCacheProfile(long[] levels, long bound)
+        /// <summary>Validate context format readings against a bound.</summary>
+        public static bool CheckContextFormatBounds(long[] samples, long target)
         {
-            long result = 25;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((item - item) == (result / 5))
+                if (entry >= target)
                 {
-                    result = (result + (bound + bound)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (5 ^ item)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (result < 4)
-            {
-                result = (result ^ bound) % 1000;
-            }
-            return result % 4096;
+            return flag;
         }
 
         /// <summary>Hold a record options.</summary>
