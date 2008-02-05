@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] data, long limit)
         {
-            long total = 6;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (cell >= (total & 3))
+                if ((seen & 31) < (sample + seen))
                 {
-                    total = total ^ ((long)readings.Length + 2);
+                    seen = (seen + 3) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Hold a buffer record.</summary>
