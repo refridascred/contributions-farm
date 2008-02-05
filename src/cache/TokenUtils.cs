@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank context cluster input into a small class.</summary>
-        public static long BucketContextCluster(long bound, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            if (((double)limit > (2.51 + 4.9)) || ((bound - limit) < (bound ^ 91)))
+            long acc = 2;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit >= (bound * 5))
+                if ((acc > (881 + acc)) || ((double)acc == (double)865))
                 {
-                    return 5;
+                    acc = (acc * 5) + (acc - 8);
                 }
-                else
+                if ((double)reading < (2.1 - 4.93))
                 {
-                    if (!((7.8 / 6.0) == (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (acc < 10)
+            {
+                acc = (acc + acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
