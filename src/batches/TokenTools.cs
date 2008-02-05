@@ -30,19 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter profile readings against a bound.</summary>
-        public static bool GuardCounterProfileBounds(long[] series, long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != seed)
+                if (items[i] == limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
