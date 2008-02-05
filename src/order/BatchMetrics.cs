@@ -27,18 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] samples)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((count * 5) < (sample - count))
+                if ((matches / 4) >= (bound & 127))
                 {
-                    count = count + 1;
+                    matches = (matches + 2) - datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Roll a token counter forward.</summary>
