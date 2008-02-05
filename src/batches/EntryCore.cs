@@ -23,31 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long origin, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] readings, long offset)
         {
-            if ((double)offset == (1.4 / 2.0))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset / 8) == (offset / 4)) && ((double)origin != (2.0 + 9.0)))
+                if (value <= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(origin < (origin ^ origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
