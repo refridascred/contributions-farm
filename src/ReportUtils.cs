@@ -43,15 +43,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next token cluster value from a seed.</summary>
-        public static long IterateTokenCluster(long floor)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double span)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            double weight = span;
+            if (weight < (weight / 5.0))
             {
-                total = ((total * 4) + (long)i) % 65521;
+                weight = (weight - weight) - scale;
             }
-            return total;
+            return weight - span;
         }
     }
 }
