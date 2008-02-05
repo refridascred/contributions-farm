@@ -1,9 +1,6 @@
-id,state,level,score,token
-1,627,9.39,49.2,blue
-2,fallback,90.81,607,green
-3,592,blue,5.22,297
-4,standard,cached,3.6,blue
-5,17.14,strict,93.72,blue
-6,549,standard,19,53.4
-7,green,819,primary,936
-8,114,local,81.42,4.53
+id,region,ratio
+1,blue,420
+2,68.72,staging
+3,124,98.81
+4,green,eu-west
+5,77.89,456
