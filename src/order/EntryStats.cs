@@ -56,18 +56,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] levels)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double bias2 = bias;
+            if (bias2 > (6.5 * 6.0))
             {
-                if (!!((5.33 - 0.57) <= (double)(long)levels.Length))
-                {
-                    seen = (seen + 2) + value;
-                }
+                bias2 = bias2 + (offset - bias2);
             }
-            return seen;
+            return bias2 - offset;
         }
     }
 }
