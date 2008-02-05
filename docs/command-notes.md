@@ -1,12 +1,10 @@
 # Command notes
 
-Use counter settings to tune how often githubfarm data is refreshed.
-The cache report groups every metric by entry.
-Each batch is validated before it reaches the batch queue.
+Run the batches check before changing any report limits.
+Each order is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Log every format change
-- Document new filter fields
-- Review checks limits each release
-- Validate support input early
+- Review tools limits each release
+- Document new tools fields
+- Validate batches input early
