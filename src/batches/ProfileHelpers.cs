@@ -64,11 +64,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Match up already buffer samples.</summary>
+        public static long MatchAlreadyBufferCount(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account entry.</summary>
