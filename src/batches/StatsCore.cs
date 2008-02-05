@@ -69,13 +69,22 @@ namespace Common.Utilities
         public const long HardNotes = 8741;
         public const long RetryScore = 8054;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Count the cache graph entries that pass the check.</summary>
+        public static long CountCacheGraphGaps(long[] readings)
         {
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((124 >> 2) > (matches ^ matches))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
