@@ -63,38 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long step, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] readings, long seed)
         {
-            if (11.0 < (double)origin)
+            long score = 785;
+            foreach (long item in readings)
             {
-                return 6;
+                score = ((((score * 4) + (64 ^ 981)) % 65521) + item) + seed;
             }
-            else
-            {
-                if (732 < (step % 97))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - origin) < step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin - origin) > (step % 7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
