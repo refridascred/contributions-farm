@@ -1,19 +1,8 @@
 # support settings
-flush_ttl: latest
-sync_timeout:
-  warm_retries_s: stable
-  already_retries:
-    - strict
-    - standard
-    - legacy
-    - latest
-  context_depth: false
-  enabled:
-    - legacy
-    - fallback
-    - open
-  max_threshold_pct: true
-  compress: local
-default_timeout_ms: 84
-compress: false
-soft_ttl_s: cached
+cache_timeout_s:
+  - standard
+  - fallback
+readonly: strict
+enabled: legacy
+dry_run: false
+burst_size_count: 52.37
