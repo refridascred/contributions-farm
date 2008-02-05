@@ -1,5 +1,7 @@
 {
-  "token_depth": true,
-  "hard_depth_ms": 840,
-  "stats_timeout": 7016
+  "hard_ratio": [237, 27],
+  "idle_ratio_count": ["blue", "open", "eu-west", "strict"],
+  "readonly": true,
+  "commits_retries": false,
+  "max_ttl": 9497
 }
