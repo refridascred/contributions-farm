@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report cluster entries that pass the check.</summary>
-        public static long MeasureReportClusterHits(long[] items, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((double)reading <= (double)matches)
+                if ((13.0 + 3.97) < (double)seen)
                 {
-                    matches = (matches + 3) - target;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
