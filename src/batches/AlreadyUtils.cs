@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double scale, double span)
-        {
-            double ratio = 0.3;
-            if (ratio > (scale / 9.0))
-            {
-                ratio = (ratio + scale) - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + scale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 751;
+        public const long HardInterval = 9052;
+        public const long StepLevel = 4408;
+        public const long LimitChecks = 5766;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double WindowStats = 89.69;
