@@ -1,6 +1,10 @@
-id,weight,count,level,score
-1,637,166,edge,cached
-2,standard,primary,standard,60.77
-3,blue,716,91.97,255
-4,149,primary,6.95,530
-5,75.1,strict,63.38,eu-west
+id,rank,label
+1,722,89
+2,92.04,52.76
+3,868,eu-west
+4,361,518
+5,826,fallback
+6,220,612
+7,91.68,435
+8,357,368
+9,stable,890
