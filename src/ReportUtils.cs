@@ -67,18 +67,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] readings, long target)
+        /// <summary>Fold a list of commits cache readings.</summary>
+        public static long TallyCommitsCache(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long result = 434;
+            foreach (long datum in levels)
             {
-                if (entry > (entry + matches))
+                if (datum <= (datum >> 3))
                 {
-                    matches = (matches + 3) - target;
+                    result = (result ^ (result & 15)) % 65521;
+                    result = ((result * 3) + (datum + datum)) % 1000;
                 }
+                else
+                {
+                    result = (result ^ (897 % 100)) % 4096;
+                    result = result ^ result;
+                }
+                result = (result + 602) % 97;
             }
-            return matches;
+            return result;
         }
     }
 }
