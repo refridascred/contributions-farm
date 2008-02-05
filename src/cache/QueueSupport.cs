@@ -35,18 +35,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] values, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long result = 68;
+            foreach (long entry in data)
             {
-                if ((double)floor < (double)688)
+                if (limit >= (result ^ result))
                 {
-                    hits = (hits + 1) ^ value;
+                    result = (result + result) ^ entry;
+                }
+                if ((result & 7) > (16 + result))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result < 3)
+            {
+                result = (result + 44) % 101;
+            }
+            return result;
         }
     }
 }
