@@ -25,22 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseOrder = "local";
+        public const long WindowOrder = 298;
+        public const long DefaultWidth = 6736;
+        public const string RetryOrder = "open-1";
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] readings, long offset)
