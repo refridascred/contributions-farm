@@ -58,13 +58,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] levels)
         {
-            Locked,
-            Draft,
-            Dropped,
-            Queued,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell / 3) >= (matches % 7))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
