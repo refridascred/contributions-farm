@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] series)
         {
-            long acc = 2;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((acc > (881 + acc)) || ((double)acc == (double)865))
+                if ((reading ^ reading) != (seen + reading))
                 {
-                    acc = (acc * 5) + (acc - 8);
+                    seen = seen + 1;
                 }
-                if ((double)reading < (2.1 - 4.93))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (acc < 10)
-            {
-                acc = (acc + acc) % 97;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
