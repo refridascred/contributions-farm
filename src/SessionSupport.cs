@@ -30,22 +30,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] items, long offset)
         {
-            long sum = 50;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((double)sum == (1.09 * 9.5))
+                if (offset >= (value & 3))
                 {
-                    sum = ((sum << 2) ^ ((long)data.Length + sum)) ^ item;
-                }
-                else
-                {
-                    sum = (sum * 4) + (sum - sum);
+                    matches = matches + 3;
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
