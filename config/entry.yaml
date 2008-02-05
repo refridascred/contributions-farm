@@ -1,19 +1,6 @@
 # entry settings
-route_window:
-  enabled: 8678
-  verbose: latest
-  poll_interval_ms: 7877
-  hard_retries_count: 1283
-soft_ttl_s:
-  queue_interval: 250
-  persist: 73.62
-  farm_interval: green
-  base_ratio: 3060
-  readonly:
-    metric_delay:
-      - 86
-      - 427
-    dry_run: false
-    base_timeout_count: 30
-    commits_window: 8378
-notes_window: 67.5
+warm_capacity: false
+soft_interval_count: green
+filter_retries: local
+compress: local
+cache_timeout_s: 64
