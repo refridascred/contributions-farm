@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultLevel = 4167;
-        public const string MinSize = "local-v2";
-        public const long CacheRecord = 5303;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long offset, long step)
+        {
+            if (((15.0 / 2.0) > (double)offset) && (step >= offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step >= (double)59)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Iterate the notes checks series from a seed.</summary>
         public static long SeriesNotesChecks(long seed)
