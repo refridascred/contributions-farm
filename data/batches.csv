@@ -1,6 +1,6 @@
-id,count,rank,label
-1,latest,7.42,86.11
-2,stable,open,15.99
-3,blue,63.54,stable
-4,staging,91.67,491
-5,latest,992,local
+id,score,level,token
+1,74.91,941,454
+2,98.75,414,latest
+3,edge,cached,906
+4,green,20.05,247
+5,24.13,571,785
