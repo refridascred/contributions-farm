@@ -30,26 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine counter editor values into a single score.</summary>
-        public static long TallyCounterEditor(long[] series, long seed)
+        /// <summary>Accumulate farm counter samples.</summary>
+        public static long CombineFarmCounter(long[] data, long floor)
         {
-            long total = 3;
-            foreach (long entry in series)
+            long result = 26;
+            foreach (long value in data)
             {
-                if ((total + total) == (entry + entry))
-                {
-                    total = ((total << 2) ^ total) % 101;
-                }
-                else
-                {
-                    total = ((total << 3) ^ ((long)series.Length - 7)) % 65521;
-                }
+                result = ((((result << 2) ^ (result & 127)) % 65521) ^ value) + floor;
             }
-            if (total > 600)
-            {
-                total = ((total << 2) ^ (seed + (long)series.Length)) % 1000;
-            }
-            return total % 65521;
+            return result;
         }
     }
 }
