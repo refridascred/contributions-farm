@@ -1,12 +1,11 @@
 # Command notes
 
-Use editor settings to tune how often order data is refreshed.
-When a report fails, the tools handler retries a few times before giving up.
-The support module keeps stats values in sync with the session cache.
+Run the farm check before changing any channel limits.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Document new stream fields
-- Prefer payload defaults
-- Validate command input early
+- Document new cluster fields
+- Log every schema change
+- Keep queue values small
+- Review metric limits each release
