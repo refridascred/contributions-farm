@@ -1,5 +1,14 @@
 {
-  "warm_depth_count": 46.13,
-  "default_capacity_pct": 55.83,
-  "sync_window_pct": 78.44
+  "compress": "eu-west",
+  "burst_delay_s": {
+    "max_delay": "fallback",
+    "compress": 250,
+    "dry_run": [351, 460],
+    "context_delay": ["open", "staging", "fallback", "stable"],
+    "soft_size": false
+  },
+  "sync_limit_count": 23.28,
+  "max_window": 13.99,
+  "flush_depth_count": ["local", "blue", "open"],
+  "flush_ttl": 30
 }
