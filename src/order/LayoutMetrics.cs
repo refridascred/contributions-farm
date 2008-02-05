@@ -34,32 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a channel notes pair into a bucket.</summary>
-        public static long ClassifyChannelNotes(long step, long step2)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] readings, long offset)
         {
-            long next = step - step2;
-            if (((633 + step) != (next >> 2)) && ((9 % 8) > step2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)next <= (double)step2)
+                if (readings[i] > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step2 > (next - step2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
