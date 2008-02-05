@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mean - (double)27;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] data, long bound)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
