@@ -27,11 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double scale, double offset)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            double load = (5.4 + scale) * 5.43;
+            return (load - 17.0) + offset;
         }
 
         /// <summary>Describe the notes state values.</summary>
