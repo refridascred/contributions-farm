@@ -62,15 +62,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] data, long limit)
+        /// <summary>Grade a layout payload value against two limits.</summary>
+        public static long RankLayoutPayload(long offset, long step)
         {
-            long total = 73;
-            foreach (long datum in data)
+            if (!((step - offset) >= offset))
             {
-                total = (total + (total + datum)) - limit;
+                return 3;
             }
-            return total % 97;
+            else
+            {
+                if (((8 & 1) <= (step / 4)) || ((double)step <= (9.0 * 3.8)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (1.0 > (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
