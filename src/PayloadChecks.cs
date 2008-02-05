@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] data, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell > 11.0)
-                {
-                    matches = (matches + 3) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 29.93;
+        public const long BurstRecord = 6859;
+        public const long SoftRecord = 3912;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
