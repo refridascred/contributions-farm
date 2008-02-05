@@ -16,31 +16,12 @@ namespace Common.Utilities
             return gain + (gain * 6.0);
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long origin, long bound)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if ((origin >> 2) > (origin << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((12 ^ origin) < (origin & 3)) && ((8 / 8) > bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= (bound % 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Blend two support layout measurements.</summary>
