@@ -54,13 +54,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading & 127) > (seen - 8))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the route status values.</summary>
