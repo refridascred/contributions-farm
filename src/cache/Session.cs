@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 81.25;
-        public const long CacheSize = 3369;
-        public const string SoftSize = "latest-edge";
-        public const string CacheFilter = "latest";
-        public const long IdleFilter = 3716;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)offset != (12.0 * 3.18))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
