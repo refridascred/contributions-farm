@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long HardAccount = 7071;
         public const double BatchInterval = 86.7;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 4798;
+        public const long LimitScore = 6971;
+        public const double BurstContributi = 44.8;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] levels, long bound)
