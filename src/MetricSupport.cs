@@ -39,9 +39,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "staging";
-        public const long CacheSession = 1367;
-        public const long HardRatio = 1850;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long seed, long floor)
+        {
+            long edge = seed - floor;
+            if ((double)floor >= (double)edge)
+            {
+                return 4;
+            }
+            else
+            {
+                if (edge <= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor == (4.3 + 5.6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor > (edge + (-564)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
