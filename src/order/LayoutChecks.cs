@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((2.26 / 4.0) < (double)count)
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowTimeout = 5041;
+        public const double IdleFactor = 98.94;
+        public const long RetryCommand = 4248;
+        public const long StepCommand = 259;
+        public const long MinCommand = 1163;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandLimits(long[] items, long origin)
