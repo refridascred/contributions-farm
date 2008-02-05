@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Validate profile record readings against a bound.</summary>
+        public static bool GuardProfileRecordLimits(long[] samples, long floor)
         {
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
