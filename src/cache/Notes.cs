@@ -58,25 +58,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long seed, long offset)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long delta = seed - offset;
-            if ((delta >> 1) <= (delta % 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5.0 - 14.0) == (double)delta)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Done,
+            New,
+            Paused,
+            Ready,
+            Active,
         }
     }
 }
