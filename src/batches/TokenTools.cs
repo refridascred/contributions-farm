@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] data, long offset)
         {
-            Ready,
-            Failed,
-            Done,
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a already reading.</summary>
