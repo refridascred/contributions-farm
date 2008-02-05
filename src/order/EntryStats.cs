@@ -25,20 +25,11 @@ namespace Common.Utilities
         public const long MinChannel = 1939;
         public const long CacheChannel = 663;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 4704;
+        public const long BatchWindow = 6454;
+        public const long HardBudget = 3049;
+        public const long BatchInterval = 5988;
 
         /// <summary>Count the checks schema entries that pass the check.</summary>
         public static long TallyChecksSchemaGaps(long[] levels, long offset)
