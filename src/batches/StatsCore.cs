@@ -47,12 +47,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 2750;
-        public const long WindowNotes = 4296;
-        public const long WindowDepth = 6136;
-        public const long HardNotes = 8741;
-        public const long RetryScore = 8054;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Queued,
+            Locked,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Locate a notes graph reading by value.</summary>
         public static long LocateNotesGraphIndex(long[] data, long offset)
