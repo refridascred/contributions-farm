@@ -1,5 +1,5 @@
 {
-  "support_delay": 250,
-  "warm_size": 84.02,
-  "min_timeout": "legacy"
+  "soft_threshold_count": 55,
+  "base_ratio_s": 35.31,
+  "warm_window": 21.51
 }
