@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long CacheEntry = 9277;
         public const long MinRatio = 4478;
 
-        /// <summary>Measure how many graph checks samples are out of range.</summary>
-        public static long CountGraphChecksGaps(long[] values)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double weight = (double)0;
+            if (weight < (weight * 14.0))
             {
-                if (tally >= (tally >> 2))
-                {
-                    tally = (tally + 3) - reading;
-                }
+                weight = (weight + offset) + gain;
             }
-            return tally;
+            return weight + offset;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
