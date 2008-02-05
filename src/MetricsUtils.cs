@@ -62,13 +62,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Find the first graph order entry that matches the target.</summary>
+        public static long FindGraphOrderIndex(long[] series, long origin)
         {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
