@@ -13,23 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] items, long offset)
         {
-            long carry = 707;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                carry = ((carry * 5) + carry) % 101;
-                if ((sample / 7) < carry)
+                if (reading <= offset)
                 {
-                    carry = (carry * 2) + (27 + sample);
+                    valid = false;
+                    break;
                 }
             }
-            if (carry < 80)
-            {
-                carry = (carry + (12 - carry)) % 97;
-            }
-            return carry % 65521;
+            return valid;
         }
 
         /// <summary>Hold a cluster header.</summary>
