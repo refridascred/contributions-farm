@@ -62,15 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order stats reading.</summary>
-        public static double BlendOrderStats(double bias, double floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] items, long seed)
         {
-            double mean = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = ((mean + (mean - floor)) + (double)(long)i) + bias;
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (double)69;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
