@@ -1,11 +1,5 @@
 {
-  "batch_limit": 250,
-  "max_retries_pct": 6386,
-  "soft_ttl_pct": {
-    "warm_size_count": 67,
-    "enabled": true,
-    "verbose": ["blue", "latest", "edge", "legacy"],
-    "warm_size_s": true,
-    "metrics_retries": "cached"
-  }
+  "enabled": 893,
+  "audit": "cached",
+  "default_retries_ms": "strict"
 }
