@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] samples, long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            double mean = (double)(323 + 5);
+            if (mean >= 0.31)
             {
-                if (reading != target)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean - bias) - offset;
             }
-            return ok;
+            else
+            {
+                mean = mean - (mean - mean);
+            }
+            return mean - (double)27;
         }
 
         /// <summary>Project the next command value.</summary>
