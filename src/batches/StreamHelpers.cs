@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double weight, double bias)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] series, long step)
         {
-            double drift = weight / 7.0;
-            return (drift + (double)7) + bias;
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the tools level values.</summary>
