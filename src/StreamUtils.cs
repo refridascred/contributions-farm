@@ -19,12 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a buffer stats reading.</summary>
-        public static double SmoothBufferStats(double ratio, double span)
-        {
-            double gain = (double)4 - 4.0;
-            return ((gain + (double)806) + ratio) + span;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 3880;
+        public const double BaseDepth = 66.1;
+        public const long LimitTimeout = 241;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long ScoreWindow(long[] items, long limit)
