@@ -101,10 +101,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftGraph = "alpha-1";
-        public const long MaxGraph = 8569;
-        public const string HardGraph = "strict-edge";
-        public const long MinBudget = 9897;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!(((755 ^ cell) < (bound & 31)) || ((cell - bound) > (bound % 5))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
