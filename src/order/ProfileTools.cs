@@ -49,11 +49,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 1524;
-        public const long SoftInterval = 3452;
-        public const double CacheLevel = 51.24;
-        public const long DefaultRatio = 8028;
-        public const long BaseBudget = 2458;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long offset, long seed)
+        {
+            if ((seed - 307) < offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed % 8) > (seed + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
