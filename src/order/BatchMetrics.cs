@@ -51,19 +51,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the already profile entries that pass the check.</summary>
-        public static long CountAlreadyProfileGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading & 3) < (matches * 2)) || (matches < (86 + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "stable-edge";
+        public const long MaxAlready = 4549;
+        public const long StepAlready = 6280;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
