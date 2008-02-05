@@ -29,18 +29,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
-        public static long AuditTokenGithubfarmOutliers(long[] readings)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits >> 5) < (hits + hits))
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
+            Pending,
+            Idle,
+            Closed,
         }
 
         /// <summary>Match up notes payload samples.</summary>
