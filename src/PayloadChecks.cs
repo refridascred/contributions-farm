@@ -55,12 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 6311;
-        public const long MaxGithubfarm = 336;
-        public const double BaseSize = 90.66;
-        public const string MaxDepth = "latest-edge";
-        public const string LimitGithubfarm = "stable";
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen + cell) > (seen / 8))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double AdjustEntry(double scale, double floor)
