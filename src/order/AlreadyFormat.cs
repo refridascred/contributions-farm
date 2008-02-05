@@ -24,17 +24,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] readings, long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long offset2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = offset - offset2;
+            if (((offset / 5) >= (74 % 10)) && ((5.9 - 4.36) >= (double)offset2))
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((step & 255) < (offset ^ offset2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a schema reading.</summary>
