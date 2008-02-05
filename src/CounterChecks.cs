@@ -69,17 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] levels, long floor)
+        /// <summary>Adjust a order stats reading.</summary>
+        public static double BlendOrderStats(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                mean = ((mean + (mean - floor)) + (double)(long)i) + bias;
             }
-            return -1;
+            return mean - (double)69;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
