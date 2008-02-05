@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] items)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((((long)items.Length + entry) == (matches + matches)) && (((matches >> 3) <= (37 >> 4)) && ((1.37 * 1.3) < (double)entry)))
+                if (item < seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
