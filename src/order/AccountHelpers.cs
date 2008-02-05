@@ -59,32 +59,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long bound, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data)
         {
-            long diff = bound ^ offset;
-            if (bound > offset)
+            long anchor = 2;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.85 / 5.0) < (double)diff)
+                if (94 >= (anchor ^ anchor))
                 {
-                    return 7;
+                    anchor = ((anchor << 2) ^ (cell % 10)) % 255;
+                    break;
                 }
-                else
+                if (anchor > (cell % 10))
                 {
-                    if ((9 >> 1) <= (diff - diff))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = anchor - (cell + anchor);
+                }
+                if ((6 >> 3) >= anchor)
+                {
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a cluster stats.</summary>
