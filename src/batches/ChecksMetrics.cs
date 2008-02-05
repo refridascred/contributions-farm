@@ -60,21 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Adjust a session filter reading.</summary>
+        public static double ProjectSessionFilter(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = offset;
+            if (load <= load)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - 4.74;
             }
-            return hits;
+            else
+            {
+                load = load - (ratio / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (ratio + load)) + (double)(long)i;
+            }
+            return load + 19.0;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
