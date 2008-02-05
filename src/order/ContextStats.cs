@@ -53,15 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account commits measurements.</summary>
-        public static double SmoothAccountCommits(double gain, double bias)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            double bias2 = 5.9;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (((bias2 - (bias2 - bias2)) - (double)(long)i) + gain) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias2 + 8.9;
+            return count;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
