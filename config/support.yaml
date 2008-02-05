@@ -1,7 +1,19 @@
 # support settings
-tools_timeout: true
-entry_ttl:
-  - 300
-  - 47
-burst_size: false
-retry_timeout: eu-west
+dry_run: staging
+audit:
+  batch_retries_pct:
+    already_threshold: edge
+    soft_ttl: primary
+    profile_capacity: 33.23
+    flush_threshold_ms: fallback
+    poll_window_s: 10.23
+    burst_threshold:
+      - eu-west
+      - cached
+      - stable
+      - staging
+  burst_window: 68
+  metrics_delay:
+    - fallback
+    - open
+soft_limit_pct: local
