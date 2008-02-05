@@ -72,16 +72,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Project the next graph support value.</summary>
+        public static double AdjustGraphSupport(double rate, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum ^ (sum & 7)) % 4096;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            double mean = (double)140 - (double)275;
+            return ((mean - 3.21) + rate) + offset;
         }
     }
 }
