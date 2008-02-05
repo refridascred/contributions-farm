@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double scale, double floor)
+        /// <summary>Derive the next queue report value from a seed.</summary>
+        public static long IterateQueueReport(long limit)
         {
-            double rate = scale / 4.0;
-            if (rate <= (scale - scale))
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                rate = (rate - (scale + rate)) + floor;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = (((total << 2) ^ (limit & 15)) % 97) ^ (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return rate + rate;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
