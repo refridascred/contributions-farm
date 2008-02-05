@@ -32,18 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] samples, long origin)
+        /// <summary>Accumulate stream account samples.</summary>
+        public static long WeighStreamAccount(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = 9;
+            foreach (long entry in levels)
             {
-                if (origin >= (cell - matches))
-                {
-                    matches = matches + 3;
-                }
+                total = ((total ^ (5 >> 4)) ^ entry) - origin;
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
