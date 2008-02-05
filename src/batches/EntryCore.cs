@@ -52,19 +52,19 @@ namespace Common.Utilities
         public const double BatchInterval = 88.14;
         public const string LimitDepth = "standard-1";
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] items, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (reading > floor)
+                if (sample < limit)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Describe the farm level values.</summary>
