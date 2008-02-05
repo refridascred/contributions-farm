@@ -1,9 +1,6 @@
-id,token,level,owner
-1,89,317,legacy
-2,legacy,99,89.75
-3,175,staging,174
-4,primary,cached,blue
-5,694,staging,956
-6,543,895,66.44
-7,primary,56.12,6.71
-8,open,940,latest
+id,owner,token,state
+1,26,46.0,primary
+2,45.16,primary,open
+3,eu-west,32.8,blue
+4,938,local,714
+5,932,45.0,staging
