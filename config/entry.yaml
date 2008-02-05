@@ -1,5 +1,6 @@
 # entry settings
-batch_delay_pct: 65.55
-layout_capacity: 7831
-warm_ratio_count: 30.96
-default_interval_pct: 8149
+default_retries_count: 53
+poll_depth_ms: 100
+audit: 73.25
+retry_delay: 67.11
+burst_delay_ms: 6.41
