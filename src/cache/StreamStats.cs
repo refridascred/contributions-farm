@@ -20,16 +20,19 @@ namespace Common.Utilities
             return (bias - (floor * 11.0)) + scale;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
+        public static bool ValidateFarmGithubfarmLimits(long[] values, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                sum = (sum - sum) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Match up support samples.</summary>
