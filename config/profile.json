@@ -1,6 +1,18 @@
 {
-  "default_capacity": 7.42,
-  "default_timeout_s": 24.76,
-  "verbose": false,
-  "payload_ttl": [227, 362]
+  "warm_delay": {
+    "soft_size": "staging",
+    "default_window": "local",
+    "soft_retries_pct": {
+      "record_interval": 53,
+      "warm_retries_count": "eu-west",
+      "burst_limit_pct": 3.79,
+      "cache_ratio": ["cached", "green"],
+      "enabled": "latest"
+    },
+    "warm_size": 35
+  },
+  "base_timeout_pct": 3627,
+  "warm_size": 26.39,
+  "soft_ttl_count": "primary",
+  "poll_ratio_s": true
 }
