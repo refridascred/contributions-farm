@@ -56,19 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format window samples.</summary>
-        public static long TallyFormatWindow(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] readings, long seed)
         {
-            long score = 703;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                score = (((score << 3) ^ (25 / 5)) % 255) - cell;
+                if (tally >= datum)
+                {
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score > 175)
-            {
-                score = (score + (score + score)) % 97;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
