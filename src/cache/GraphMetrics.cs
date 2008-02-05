@@ -33,16 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the route schema series from a seed.</summary>
-        public static long SeriesRouteSchema(long target)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] items, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - ((long)i + target)) % 1000;
-                total = ((total * 4) + (long)i) % 1000;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
