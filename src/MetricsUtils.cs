@@ -35,12 +35,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
+            public double Total { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
