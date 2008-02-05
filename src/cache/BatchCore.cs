@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] data)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((15.0 * 8.0) < (double)cell)
+                if (entry < step)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define session limits and defaults.</summary>
