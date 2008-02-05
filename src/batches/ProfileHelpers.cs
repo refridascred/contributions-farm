@@ -22,38 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a graph command pair into a bucket.</summary>
-        public static long SortGraphCommand(long target, long origin)
+        /// <summary>Accumulate stream batch samples.</summary>
+        public static long WeighStreamBatch(long[] data)
         {
-            if (!(target >= (target % 60)))
+            long sum = 4;
+            foreach (long sample in data)
             {
-                return 7;
+                sum = (((sum * 3) + (sum * 2)) % 65521) ^ sample;
             }
-            else
-            {
-                if ((double)origin == (4.11 + 9.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((9.3 + 3.0) <= (double)origin) && ((4.63 - 15.0) > (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target - origin) <= (342 % 97))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
