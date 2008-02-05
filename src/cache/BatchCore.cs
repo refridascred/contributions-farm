@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                score = (score ^ (origin + (long)i)) % 97;
-                score = ((score * 5) + (long)i) % 97;
+                if ((15.0 * 8.0) < (double)cell)
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
