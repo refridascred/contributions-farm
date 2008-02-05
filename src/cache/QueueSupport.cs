@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] levels, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((3.64 / 6.0) <= (double)offset)
+                if (entry <= limit)
                 {
-                    count = (count + 3) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a layout info.</summary>
