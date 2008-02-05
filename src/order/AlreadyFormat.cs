@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] levels, long offset)
-        {
-            long score = 630;
-            foreach (long item in levels)
-            {
-                score = score - score;
-                if ((item + item) <= (-51))
-                {
-                    score = ((score << 2) ^ ((long)levels.Length << 1)) % 1000;
-                }
-                else
-                {
-                    score = ((score << 3) ^ offset) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleScore = 9.39;
+        public const double StepCount = 34.85;
+        public const long BurstDepth = 1843;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long ClassifyChannel(long offset, long offset2)
