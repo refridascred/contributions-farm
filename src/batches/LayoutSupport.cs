@@ -31,18 +31,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleFactor = "alpha-1";
+        public const long HardLevel = 7234;
+        public const long IdleQueue = 1503;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
