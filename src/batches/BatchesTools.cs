@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowDepth = 8221;
-        public const long StepSupport = 5764;
-        public const string CacheSupport = "cached-edge";
-        public const string MinSupport = "alpha-edge";
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double gain, double floor)
+        {
+            double ratio = (gain + floor) * 7.49;
+            if (ratio <= 8.0)
+            {
+                ratio = ratio - gain;
+            }
+            else
+            {
+                ratio = ratio - (double)158;
+            }
+            return ratio - floor;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorLimits(long[] data, long offset)
