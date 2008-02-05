@@ -24,19 +24,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the cache editor series from a seed.</summary>
-        public static long RollCacheEditor(long limit)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] data, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (data[i] < step)
                 {
-                    anchor = ((anchor * 4) + (anchor << 2)) + (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
     }
 }
