@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchFactor = "alpha";
-        public const double CacheLevel = 75.36;
-        public const long MinLevel = 6434;
-        public const long StepInterval = 5400;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Queued,
+            Retry,
+            New,
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long MatchStreamCount(long[] data)
