@@ -31,17 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] values, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long mix = 116;
+            foreach (long datum in values)
             {
-                result = ((result << 3) ^ (-517)) % 101;
-                result = result - (result / 7);
-                result = ((result * 2) + (long)i) % 97;
+                if ((double)datum > (9.43 + 8.3))
+                {
+                    mix = ((mix + (datum & 7)) % 65521) - target;
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Count the order command entries that pass the check.</summary>
