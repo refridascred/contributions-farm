@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
