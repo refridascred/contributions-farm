@@ -37,16 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Accumulate token cluster samples.</summary>
+        public static long DigestTokenCluster(long[] series, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
+            long carry = -72;
+            foreach (long cell in series)
             {
-                anchor = anchor + (seed - (long)i);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if ((2.0 < (double)seed) && ((double)seed >= 4.5))
+                {
+                    carry = ((carry * 5) + ((long)series.Length ^ 643)) - cell;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry << 3)) % 65521;
+                }
             }
-            return anchor;
+            return carry % 97;
         }
 
         /// <summary>Match up format samples.</summary>
