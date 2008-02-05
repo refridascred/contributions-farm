@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double bias, double offset)
+        /// <summary>Derive the next stats account value from a seed.</summary>
+        public static long RollStatsAccount(long floor)
         {
-            double gain = offset;
-            if (gain < (gain * 8.8))
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                gain = (gain + (8.0 / 5.0)) - bias;
+                acc = (acc + (floor >> 2)) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (double)(-930);
+            return acc;
         }
 
         /// <summary>Describe the filter class values.</summary>
