@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] values)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long offset = bound ^ seed;
+            if ((offset & 63) < (seed >> 1))
             {
-                if ((hits + hits) != (136 ^ hits))
+                return 1;
+            }
+            else
+            {
+                if (!((1.3 / 4.0) > (double)bound))
                 {
-                    hits = (hits + 1) + entry;
+                    return 5;
+                }
+                else
+                {
+                    if (seed < (bound / 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5.59 - 20.0) == (double)bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the record editor series from a seed.</summary>
