@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] items, long limit)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long anchor = -9;
-            foreach (long entry in items)
-            {
-                anchor = ((anchor - (entry * 2)) % 4096) - limit;
-            }
-            return anchor;
+            New,
+            Active,
+            Idle,
+            Retry,
         }
 
         /// <summary>Locate a context reading by value.</summary>
