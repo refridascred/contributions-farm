@@ -1,5 +1,15 @@
 {
-  "retry_delay": 8587,
-  "queue_size": "edge",
-  "verbose": "standard"
+  "payload_ratio": 60,
+  "hard_timeout": 24.41,
+  "support_window": 250,
+  "default_capacity_ms": false,
+  "idle_threshold": 77.29,
+  "readonly": {
+    "schema_interval": 27.54,
+    "cache_timeout": 38.14,
+    "idle_delay": "blue",
+    "persist": 100,
+    "dry_run": 70,
+    "filter_size": 52.42
+  }
 }
