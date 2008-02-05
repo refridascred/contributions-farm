@@ -33,11 +33,13 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseBudget = 1707;
-        public const string MinFactor = "strict-edge";
-        public const string BaseSession = "alpha-1";
-        public const long WindowFactor = 6670;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Done,
+            Active,
+            Failed,
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
