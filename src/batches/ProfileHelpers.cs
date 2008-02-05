@@ -50,18 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] items)
+        /// <summary>Locate a command metric reading by value.</summary>
+        public static long SeekCommandMetricIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally + 658) < (datum + tally))
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
