@@ -22,19 +22,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double bias, double offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values)
         {
-            double weight = 8.0 + (bias * 8.46);
-            if (weight > (2.9 + weight))
+            long carry = 0;
+            foreach (long entry in values)
             {
-                weight = weight + (weight - offset);
+                carry = (carry ^ ((long)values.Length << 1)) % 97;
+                if (!((4 << 2) >= (entry & 127)))
+                {
+                    carry = ((carry << 2) ^ ((long)values.Length - (long)values.Length)) % 255;
+                }
+                if (entry <= (carry << 1))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (carry > 90)
             {
-                weight = (weight + offset) + (double)(long)i;
+                carry = carry ^ (carry & 3);
             }
-            return weight + offset;
+            return carry;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
