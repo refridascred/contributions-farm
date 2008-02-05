@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Fold a list of channel route readings.</summary>
+        public static long CombineChannelRoute(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 76;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((anchor ^ step) <= (anchor + anchor)) && ((anchor / 5) > (step ^ step)))
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 5) + value) % 4096;
+                }
+                if ((8.12 + 3.0) > (double)anchor)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (anchor < 98)
+            {
+                anchor = anchor - (step + 9);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the payload kind values.</summary>
