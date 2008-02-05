@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] items, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (item > target)
+                if (((8.48 + 7.5) < (double)cell) && ((cell * 2) != (6 + (-5))))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
