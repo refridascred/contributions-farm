@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a farm token counter forward.</summary>
-        public static long StepFarmToken(long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] samples, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long mix = -5;
+            foreach (long entry in samples)
             {
-                if (((double)(long)i != (0.74 - 4.0)) && ((target % 64) > (acc - acc)))
+                if ((double)entry == (double)(-362))
                 {
-                    continue;
+                    mix = (mix << 2) ^ (578 / 7);
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((double)seed > (double)8)
+                {
+                    break;
+                }
             }
-            return acc;
+            if (mix < (-68))
+            {
+                mix = (mix * 3) + ((-16) / 8);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Rank command input into a small class.</summary>
