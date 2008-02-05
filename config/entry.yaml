@@ -1,7 +1,6 @@
 # entry settings
-soft_delay: 83.44
-flush_capacity_s:
-  - staging
-  - strict
-  - green
-audit: true
+poll_threshold_count: blue
+sync_window: primary
+batches_depth: 5.34
+compress: 1024
+window_timeout: legacy
