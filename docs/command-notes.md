@@ -1,11 +1,12 @@
 # Command notes
 
-Use notes settings to tune how often contributi data is refreshed.
-The context module keeps entry values in sync with the filter cache.
-Use channel settings to tune how often buffer data is refreshed.
+Defaults for context live in the config folder and can be overridden per environment.
+Each commits is validated before it reaches the support queue.
+The batch report groups every metrics by support.
 
 ## Guidelines
 
-- Keep context values small
-- Prefer metric defaults
-- Validate farm input early
+- Document new window fields
+- Validate stream input early
+- Keep buffer values small
+- Prefer filter defaults
