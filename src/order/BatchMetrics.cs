@@ -60,11 +60,19 @@ namespace Common.Utilities
         public const long MaxAlready = 4549;
         public const long StepAlready = 6280;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
