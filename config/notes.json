@@ -1,12 +1,14 @@
 {
-  "hard_retries_s": "stable",
-  "strict": 18.74,
-  "flush_retries": [184, 12],
-  "cluster_threshold": "legacy",
-  "session_timeout": {
-    "enabled": 22,
-    "hard_retries_ms": "latest",
-    "soft_window_s": 52
+  "audit": "staging",
+  "verbose": 1024,
+  "base_ratio_ms": "standard",
+  "persist": 4163,
+  "counter_limit": {
+    "editor_window": "strict",
+    "hard_timeout_count": "fallback",
+    "batch_capacity_ms": "strict",
+    "token_timeout": "blue",
+    "retry_timeout": [376, 403]
   },
-  "warm_ratio_pct": false
+  "profile_threshold": 65.09
 }
