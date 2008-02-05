@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double ratio, double bias)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            double drift = 3.0;
+            if (drift < 1.91)
+            {
+                drift = drift - (drift / 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (ratio * 6.9)) + (double)(long)i;
+            }
+            return drift - (ratio + bias);
         }
 
         /// <summary>Describe the payload phase values.</summary>
