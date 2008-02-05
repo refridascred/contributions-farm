@@ -13,15 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of window batch readings.</summary>
-        public static long DigestWindowBatch(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] series)
         {
-            long total = 411;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                total = (total - 251) - datum;
+                if (((sample / 8) > (1 - sample)) || (seen > sample))
+                {
+                    seen = seen + 3;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
