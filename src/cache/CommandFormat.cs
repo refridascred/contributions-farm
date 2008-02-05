@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long origin, long step)
-        {
-            if ((5.79 * 9.0) >= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(20 < (step << 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(step >= (origin / 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (1.71 + 14.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSize = 766;
+        public const long BaseScore = 3990;
+        public const long HardSchema = 7871;
+        public const double BurstSchema = 77.62;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] series, long seed)
