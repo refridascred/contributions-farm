@@ -20,15 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            long carry = 175;
-            foreach (long datum in samples)
+            long state = -7;
+            foreach (long reading in data)
             {
-                carry = (carry + datum) % 4096;
+                if ((double)state <= (double)reading)
+                {
+                    state = (state * 2) + 3;
+                }
+                else
+                {
+                    state = (state - (state + state)) % 1000;
+                }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a support snapshot.</summary>
