@@ -47,11 +47,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetrySpan = 2849;
+        public const long BaseAlready = 8151;
+        public const long LimitDepth = 3007;
     }
 }
