@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Pending,
+            Retry,
+            Synced,
             New,
-            Draft,
-            Locked,
         }
 
         /// <summary>Audit batch counter readings against a rule.</summary>
