@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Stale,
-            New,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleWidth = "open";
+        public const long DefaultRecord = 8089;
+        public const string IdleCount = "cached-v2";
+        public const long SoftTimeout = 6844;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
