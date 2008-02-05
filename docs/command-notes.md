@@ -1,14 +1,12 @@
 # Command notes
 
-The metric report groups every cluster by contributi.
-Defaults for editor live in the config folder and can be overridden per environment.
-
-Defaults for queue live in the config folder and can be overridden per environment.
-Keep command and cluster names short and lowercase.
-A profile that stays idle for too long is moved to the githubfarm list.
+The notes module keeps support values in sync with the entry cache.
+Use profile settings to tune how often queue data is refreshed.
+When a cache fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batches limits each release
-- Log every record change
-- Prefer farm defaults
+- Keep cluster values small
+- Prefer session defaults
+- Document new metric fields
+- Log every session change
