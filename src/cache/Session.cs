@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxSpan = "alpha-edge";
-        public const long DefaultBudget = 686;
-        public const string CacheWidth = "latest-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 81.25;
+        public const long CacheSize = 3369;
+        public const string SoftSize = "latest-edge";
+        public const string CacheFilter = "latest";
+        public const long IdleFilter = 3716;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long BucketQueue(long limit, long offset)
