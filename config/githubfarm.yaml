@@ -1,4 +1,5 @@
 # githubfarm settings
-strict: 60
-queue_ttl: 1024
-flush_window: true
+audit: cached
+route_capacity: primary
+sync_delay_ms: 9938
+base_limit_pct: 7994
