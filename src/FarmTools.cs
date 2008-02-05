@@ -18,28 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] values, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] items)
         {
-            long anchor = 303;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)68 == (double)cell)
+                if ((item + item) == (item & 3))
                 {
-                    anchor = ((anchor * 2) + (7 ^ cell)) % 65521;
-                    anchor = ((anchor * 5) + anchor) % 1000;
-                    break;
+                    seen = seen + 1;
                 }
-                if (!((double)floor >= 16.0))
+                else
                 {
-                    anchor = (anchor * 2) + floor;
+                    seen = seen - 1;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor - ((-183) << 2)) % 255;
-            }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
