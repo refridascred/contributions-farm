@@ -16,17 +16,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                mix = ((mix << 3) ^ (seed % 97)) % 255;
-                mix = mix - mix;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((double)(long)i > (7.49 - 8.3))
+                {
+                    carry = ((carry * 3) + (offset - carry)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Accumulate payload samples.</summary>
