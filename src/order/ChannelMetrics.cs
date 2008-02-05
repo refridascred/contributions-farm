@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long target)
         {
-            Pending,
-            Paused,
-            Done,
+            long sum = target;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum - ((long)i << 3)) % 4096;
+                sum = sum - (target << 1);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (sum + ((long)i2 >> 2)) % 65521;
+                    sum = (sum << 3) ^ (sum ^ (long)i);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
