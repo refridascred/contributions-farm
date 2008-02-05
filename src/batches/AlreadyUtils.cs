@@ -42,18 +42,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] items)
+        /// <summary>Grade a entry buffer value against two limits.</summary>
+        public static long RankEntryBuffer(long target, long target2)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long step = target - target2;
+            if (3.68 >= (double)target)
             {
-                if ((item / 5) != (matches - 222))
+                return 4;
+            }
+            else
+            {
+                if ((target2 % 16) != (target ^ step))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a buffer report figure with a bias.</summary>
