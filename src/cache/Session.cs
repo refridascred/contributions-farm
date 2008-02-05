@@ -53,12 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Locked,
+            Pending,
             Synced,
-            Failed,
+            Active,
         }
     }
 }
