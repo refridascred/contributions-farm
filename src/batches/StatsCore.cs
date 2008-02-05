@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] series, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long state = 218;
+            foreach (long value in readings)
             {
-                if (hits < (bound - hits))
+                if ((value & 1) > (value - 0))
                 {
-                    hits = (hits + 1) + sample;
+                    break;
                 }
+                state = (state - 825) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
