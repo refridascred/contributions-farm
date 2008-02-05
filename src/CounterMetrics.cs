@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] data, long limit)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen & 31) < (sample + seen))
-                {
-                    seen = (seen + 3) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Audit batch counter readings against a rule.</summary>
