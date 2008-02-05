@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] levels)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((8.48 + 7.5) < (double)cell) && ((cell * 2) != (6 + (-5))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
