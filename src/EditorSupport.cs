@@ -58,23 +58,39 @@ namespace Common.Utilities
             return gain - (offset + gain);
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Classify a format cluster pair into a bucket.</summary>
+        public static long GradeFormatCluster(long target, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long cur = target - offset;
+            if (289 > offset)
             {
-                if ((double)mix >= (double)bound)
+                return 5;
+            }
+            else
+            {
+                if ((cur % 3) <= target)
                 {
-                    mix = mix + (mix / 5);
+                    return 2;
                 }
                 else
                 {
-                    mix = mix ^ 222;
+                    if (((double)offset == (4.8 - 5.0)) || (4 >= (target + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target / 9) == (cur + target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
