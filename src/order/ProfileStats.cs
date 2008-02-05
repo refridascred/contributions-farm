@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const string BurstLevel = "open-edge";
         public const string HardFarm = "staging-v2";
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit metric graph readings against a rule.</summary>
+        public static long CountMetricGraphHits(long[] values)
         {
-            Queued,
-            Pending,
-            Ready,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((9.27 - 7.4) > (0.9 - 7.8)) && (sample > (sample * 2)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the token farm entries that pass the check.</summary>
