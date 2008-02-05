@@ -28,17 +28,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] levels, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                if ((19.0 * 12.0) >= (double)state)
                 {
-                    return (long)i;
+                    state = (state ^ 66) % 101;
+                    state = state ^ (state << 1);
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Blend two booking measurements.</summary>
