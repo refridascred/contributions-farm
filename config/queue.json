@@ -1,7 +1,8 @@
 {
-  "poll_ttl_ms": [150, 428, 194],
-  "session_ratio": 55,
-  "warm_timeout_ms": true,
-  "default_capacity": "open",
-  "base_window_ms": 47.1
+  "report_interval": true,
+  "readonly": 81,
+  "cache_interval_pct": 250,
+  "metrics_window": true,
+  "order_retries": 8790,
+  "base_capacity": "local"
 }
