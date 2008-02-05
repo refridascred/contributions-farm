@@ -1,12 +1,8 @@
 {
-  "commits_size": 500,
-  "min_delay": 542,
-  "profile_threshold": {
-    "cache_depth": false,
-    "stream_ratio": 500,
-    "channel_limit": "green",
-    "soft_interval_ms": 1024,
-    "cluster_ratio": false
-  },
-  "base_ttl": 60
+  "readonly": 4.34,
+  "default_size_count": 250,
+  "default_window": 93,
+  "idle_window_count": 4.23,
+  "tools_interval": 9,
+  "base_ratio_count": 51.81
 }
