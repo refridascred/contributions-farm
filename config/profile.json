@@ -1,25 +1,5 @@
 {
-  "verbose": 6877,
-  "warm_threshold": {
-    "compress": "staging",
-    "default_limit_pct": 666,
-    "sync_retries": {
-      "warm_delay": 5085,
-      "burst_depth_ms": "fallback",
-      "report_interval": 71.08
-    },
-    "warm_threshold_count": [492, 484, 339],
-    "strict": 45.93,
-    "hard_threshold": 5
-  },
-  "enabled": 500,
-  "strict": {
-    "burst_retries_s": "primary",
-    "flush_limit": 100,
-    "base_size": "legacy",
-    "flush_interval_count": 52,
-    "default_timeout_ms": ["fallback", "local", "open"],
-    "hard_retries_s": "staging"
-  },
-  "cache_depth": 6556
+  "sync_limit": 8412,
+  "cache_threshold": 93,
+  "burst_ttl_pct": 500
 }
