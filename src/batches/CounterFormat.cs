@@ -37,18 +37,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] readings)
+        /// <summary>Find the first buffer farm entry that matches the target.</summary>
+        public static long LocateBufferFarmIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item % 5) != (185 * 4))
+                if (levels[i] <= floor)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
