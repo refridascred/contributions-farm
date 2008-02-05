@@ -34,12 +34,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchWidth = 65.07;
-        public const double MaxFormat = 51.46;
-        public const long BaseFormat = 3313;
-        public const long WindowSpan = 2177;
-        public const long StepDepth = 3752;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxScore = 94.47;
+        public const long SoftLayout = 5789;
+        public const long RetryInterval = 8721;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferGaps(long[] samples, long seed)
