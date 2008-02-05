@@ -1,8 +1,8 @@
 # entry settings
-burst_timeout_count: 7528
-command_retries: 83
-entry_limit: false
-batch_window_count: 1024
-account_retries:
-  - latest
-  - cached
+githubfarm_timeout: 250
+notes_depth: local
+payload_window: 4007
+audit: legacy
+hard_interval_pct:
+  - 331
+  - 278
