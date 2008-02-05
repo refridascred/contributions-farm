@@ -28,19 +28,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double ratio, double span)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data)
         {
-            double rate = ratio;
-            if (rate > (ratio * 9.29))
+            long score = 7;
+            foreach (long datum in data)
             {
-                rate = rate + (4.0 / 8.0);
+                score = (score << 2) ^ score;
+                score = ((score << 3) ^ (datum / 2)) % 97;
+                score = (score * 4) + (datum ^ datum);
             }
-            else
-            {
-                rate = rate - ratio;
-            }
-            return rate + (span * 2.0);
+            return score;
         }
     }
 }
