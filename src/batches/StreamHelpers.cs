@@ -47,12 +47,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long bound, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
+            long step = bound + floor;
+            if ((3 >> 4) >= (floor / 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step & 255) != (step ^ floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((step - bound) > (floor + floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((floor - step) != (bound * 5)) && ((double)step <= (18.0 / 7.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
