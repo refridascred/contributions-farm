@@ -16,11 +16,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] data, long limit)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (cell > limit)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cluster class values.</summary>
