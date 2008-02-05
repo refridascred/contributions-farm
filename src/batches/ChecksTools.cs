@@ -46,19 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] readings, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] levels)
         {
-            long state = 3;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                state = ((state ^ (state & 1)) + value) + limit;
+                if ((-184) < (cell - 18))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (state < (-702))
-            {
-                state = (state - state) % 4096;
-            }
-            return state;
+            return matches;
         }
     }
 }
