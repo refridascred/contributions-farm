@@ -1,19 +1,10 @@
 # githubfarm settings
-soft_retries: stable
-hard_capacity_ms:
-  - 123
-  - 218
-  - 420
-  - 147
-enabled: local
-batch_depth_ms: 3
-format_interval:
-  flush_window_count: open
-  soft_timeout: 500
-  audit: staging
-  readonly: 37
-  default_ttl_pct: true
-poll_ratio:
-  - cached
-  - cached
-  - green
+metrics_timeout: 73
+enabled:
+  burst_capacity_s: 6
+  filter_ratio: eu-west
+  base_limit:
+    max_window_ms: 12
+    batches_threshold: false
+    farm_delay: 87
+sync_capacity_count: 7747
