@@ -6,17 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard cached; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+BUFFER_LIMIT=399
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-blue}"
+mode="${1:-local}"
 case "${mode}" in
     primary)
         log "fast path"
