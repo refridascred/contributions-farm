@@ -24,15 +24,13 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double ratio, double span)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            double rate = (double)(9 ^ 804);
-            if (rate > rate)
-            {
-                rate = (rate - 6.1) - span;
-            }
-            return rate - ratio;
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
