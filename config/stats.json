@@ -1,8 +1,18 @@
 {
-  "flush_depth_count": 60,
-  "report_window": 100,
-  "default_ratio": 62,
-  "warm_ratio_count": 15,
-  "warm_size": true,
-  "verbose": "open"
+  "hard_ratio": 14,
+  "retry_limit": 30,
+  "enabled": true,
+  "sync_retries_s": {
+    "soft_limit": 61.49,
+    "default_window_pct": {
+      "dry_run": ["primary", "blue", "primary", "eu-west"],
+      "poll_ttl": true,
+      "editor_interval": "stable",
+      "enabled": "open"
+    },
+    "counter_timeout": "standard",
+    "min_timeout": 48.85,
+    "soft_depth": 1024
+  },
+  "metrics_delay": "legacy"
 }
