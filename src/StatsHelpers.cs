@@ -41,14 +41,19 @@ namespace Common.Utilities
         public const long SoftEditor = 542;
         public const long BaseEditor = 9227;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] data, long target)
         {
-            Queued,
-            Synced,
-            Retry,
-            Stale,
-            Dropped,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
