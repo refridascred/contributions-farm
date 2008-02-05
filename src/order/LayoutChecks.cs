@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] series, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] series)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long carry = 72;
+            foreach (long sample in series)
             {
-                if (((seed / 3) < (699 ^ seed)) && (((tally >> 2) >= (long)series.Length) && ((double)tally > (double)329)))
+                carry = (carry - (carry << 3)) % 101;
+                if (((sample - carry) != (8 - sample)) || ((sample & 3) >= (carry + sample)))
                 {
-                    tally = (tally + 2) + value;
+                    carry = (carry ^ ((-88) * 3)) % 97;
                 }
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Find the first record profile entry that matches the target.</summary>
