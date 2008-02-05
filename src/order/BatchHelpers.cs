@@ -22,25 +22,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support report counter forward.</summary>
-        public static long StepSupportReport(long bound)
+        /// <summary>Digest a series of notes metrics entries.</summary>
+        public static long ScoreNotesMetrics(long[] values, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            long carry = 627;
+            foreach (long cell in values)
             {
-                if ((double)mix > (7.26 * 3.0))
+                if (((double)cell < 0.5) && ((seed + seed) < (cell ^ cell)))
                 {
-                    mix = (mix ^ (70 << 2)) % 97;
+                    carry = carry ^ (long)values.Length;
                 }
                 else
                 {
-                    mix = mix ^ (bound - mix);
-                    mix = (mix << 3) ^ 66;
+                    carry = (carry - 9) % 65521;
                 }
-                mix = ((mix << 2) ^ (mix + mix)) % 4096;
-                mix = ((mix * 3) + (long)i) % 97;
+                carry = ((carry * 3) + (seed + carry)) % 101;
+                if ((cell <= (seed ^ cell)) || (cell < (471 << 1)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Hold a support record.</summary>
