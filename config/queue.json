@@ -1,6 +1,5 @@
 {
-  "default_limit_ms": "cached",
-  "batch_depth_s": [215, 500, 393],
-  "dry_run": 157,
-  "account_timeout": false
+  "stream_retries": 98.98,
+  "base_retries": "standard",
+  "soft_limit": 100
 }
