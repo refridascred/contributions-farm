@@ -16,22 +16,11 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Iterate the record editor series from a seed.</summary>
-        public static long RollRecordEditor(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!(total >= (offset + total)))
-                {
-                    total = (total ^ (total >> 4)) % 97;
-                    total = (total - total) % 101;
-                }
-                total = (total * 5) + (total & 63);
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 3743;
+        public const long MaxBatch = 2502;
+        public const string LimitBudget = "primary-v2";
+        public const string RetryFactor = "legacy-edge";
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long SortQueue(long seed, long seed2)
