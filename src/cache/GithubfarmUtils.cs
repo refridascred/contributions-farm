@@ -20,19 +20,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count >> 3) == (entry - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryInterval = "fallback-v2";
+        public const double WindowInterval = 35.97;
+        public const long MaxRoute = 2934;
+        public const string WindowRoute = "cached-1";
+        public const long BurstSpan = 6395;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileBounds(long[] samples, long target)
