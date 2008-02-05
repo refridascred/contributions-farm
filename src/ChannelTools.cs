@@ -23,15 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next contributi profile value.</summary>
-        public static double BlendContributiProfile(double weight, double span)
+        /// <summary>Iterate the farm metric series from a seed.</summary>
+        public static long RollFarmMetric(long origin)
         {
-            double load = (double)(-443) / 8.0;
-            if (load > (double)(-810))
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                load = ((load + (10.0 * 8.6)) + weight) + span;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return load - load;
+            return anchor;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
