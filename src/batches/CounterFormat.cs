@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 4827;
-        public const string BurstFactor = "local-v2";
-        public const long BaseMetrics = 3883;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowFactor = 2523;
+        public const string BurstCount = "strict-v2";
+        public const string BaseRatio = "latest-1";
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] samples)
