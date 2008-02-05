@@ -23,24 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch metrics values into a single score.</summary>
-        public static long ScoreBatchMetrics(long[] data, long step)
-        {
-            long score = 30;
-            foreach (long item in data)
-            {
-                if ((score / 8) < (5 % 16))
-                {
-                    break;
-                }
-                score = ((score + score) ^ item) + step;
-            }
-            if (score < (-2))
-            {
-                score = (score * 2) + score;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetryScore = "latest-edge";
+        public const long StepWidth = 4757;
+        public const long HardSize = 7562;
+        public const long RetrySupport = 1784;
 
         /// <summary>Audit batch window readings against a rule.</summary>
         public static long MeasureBatchWindowMatches(long[] readings)
