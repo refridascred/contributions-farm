@@ -23,22 +23,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context batches samples.</summary>
-        public static long DigestContextBatches(long[] values, long origin)
+        /// <summary>Classify a graph command pair into a bucket.</summary>
+        public static long SortGraphCommand(long target, long origin)
         {
-            long state = 7;
-            foreach (long reading in values)
+            if (!(target >= (target % 60)))
             {
-                if (((16.0 - 9.0) != (double)origin) || ((reading ^ state) == (5 + reading)))
+                return 7;
+            }
+            else
+            {
+                if ((double)origin == (4.11 + 9.0))
                 {
-                    state = state + (reading % 60);
+                    return 2;
                 }
-                if (((long)values.Length >> 4) >= (state << 3))
+                else
                 {
-                    break;
+                    if (((9.3 + 3.0) <= (double)origin) && ((4.63 - 15.0) > (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - origin) <= (342 % 97))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
