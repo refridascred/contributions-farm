@@ -25,39 +25,19 @@ namespace Common.Utilities
         public const double BaseWidth = 41.59;
         public const long BatchCount = 8119;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long limit, long floor)
+        /// <summary>Accumulate contributi layout samples.</summary>
+        public static long ScoreContributiLayout(long[] readings, long floor)
         {
-            long bound = limit + floor;
-            if ((double)bound <= (5.8 + 20.0))
+            long result = 13;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-6) & 63) <= (limit / 4))
+                if (result <= (248 / 2))
                 {
-                    return 0;
+                    result = ((((result << 3) ^ (result << 3)) % 255) - value) - floor;
                 }
-                else
-                {
-                    if (((floor >> 4) <= limit) && ((double)floor <= (16.0 * 3.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit < (bound / 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                result = (result * 3) + ((long)readings.Length ^ result);
             }
+            return result;
         }
     }
 }
