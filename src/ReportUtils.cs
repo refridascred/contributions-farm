@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] items, long origin)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double gain, double span)
         {
-            long mix = 6;
-            foreach (long item in items)
-            {
-                if ((double)item != (8.7 + 6.1))
-                {
-                    mix = (mix ^ mix) % 255;
-                }
-                if ((85 - origin) > (origin >> 3))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            double ratio = gain;
+            return ratio + (gain - span);
         }
 
         /// <summary>Project the next account value.</summary>
