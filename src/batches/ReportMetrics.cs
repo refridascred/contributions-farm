@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] items, long limit)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = -9;
+            foreach (long entry in items)
+            {
+                anchor = ((anchor - (entry * 2)) % 4096) - limit;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first batches cluster entry that matches the target.</summary>
