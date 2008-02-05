@@ -1,17 +1,8 @@
 {
-  "min_ttl": {
-    "cache_capacity": false,
-    "burst_threshold_s": "blue",
-    "cache_ratio_ms": 2414,
-    "default_depth_count": "fallback",
-    "metrics_retries": "primary",
-    "warm_threshold": "edge"
-  },
-  "min_size": 44,
-  "strict": "standard",
-  "profile_timeout": {
-    "burst_ratio_pct": false,
-    "command_interval": 250,
-    "base_limit": "stable"
-  }
+  "default_size_s": [253, 63],
+  "flush_window": ["staging", "stable", "stable", "edge"],
+  "sync_depth_s": 98.21,
+  "min_ttl_count": "green",
+  "flush_ttl": 69,
+  "sync_depth_ms": 100
 }
