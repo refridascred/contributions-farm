@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long mix = 753;
+            foreach (long entry in samples)
+            {
+                mix = (mix + (mix << 3)) % 65521;
+                if (!((entry * 2) >= entry))
+                {
+                    mix = (mix + (entry + entry)) % 255;
+                }
+                mix = ((mix * 4) + (entry - entry)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
