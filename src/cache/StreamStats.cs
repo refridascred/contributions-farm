@@ -20,19 +20,12 @@ namespace Common.Utilities
             return (bias - (floor * 11.0)) + scale;
         }
 
-        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
-        public static bool ValidateFarmGithubfarmLimits(long[] values, long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Match up support samples.</summary>
