@@ -27,23 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] items, long bound)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long acc = 584;
-            foreach (long datum in items)
-            {
-                if (((acc % 8) <= acc) || (18 >= bound))
-                {
-                    acc = (((acc << 3) ^ (bound + 631)) % 4096) - datum;
-                    continue;
-                }
-                if ((acc >> 5) != (acc & 1))
-                {
-                    acc = acc - (acc & 7);
-                }
-            }
-            return acc % 4096;
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
