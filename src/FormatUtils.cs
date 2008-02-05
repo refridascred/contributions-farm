@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Done,
-            Idle,
-            Locked,
-            Active,
-            Pending,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 4550;
+        public const long SoftGraph = 8616;
+        public const long MinLevel = 6076;
+        public const string BurstSize = "legacy-1";
+        public const double BurstCount = 26.72;
 
         /// <summary>Check that every payload filter entry stays within the limit.</summary>
         public static bool VerifyPayloadFilterLimits(long[] data, long offset)
