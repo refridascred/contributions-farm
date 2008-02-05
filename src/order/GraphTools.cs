@@ -62,13 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
             Locked,
-            Done,
-            Closed,
-            Stale,
+            Idle,
+            Queued,
         }
     }
 }
