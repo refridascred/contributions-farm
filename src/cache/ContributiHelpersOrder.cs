@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "fallback-v2";
-        public const double DefaultCluster = 75.16;
-        public const long BurstScore = 7688;
-        public const long HardLevel = 3332;
-        public const string BaseSize = "strict-edge";
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 5) + (sum >> 3)) % 97;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] items, long bound)
