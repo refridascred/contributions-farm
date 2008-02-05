@@ -1,25 +1,5 @@
 # entry settings
-max_delay_s:
-  batch_retries_s: open
-  max_depth_s:
-    order_limit: stable
-    flush_delay: true
-    idle_limit: 500
-    profile_limit: 56.53
-    audit: 71.59
-    window_threshold:
-      - edge
-      - fallback
-  soft_threshold_ms:
-    - staging
-    - primary
-  counter_size: 42.08
-cache_ratio_pct: 4010
-contributi_timeout: 32.76
-metrics_ttl: green
-batch_retries:
-  idle_timeout: 57
-  audit: 4793
-  verbose: 60
-  readonly: 75.67
-max_depth_pct: 100
+flush_retries: 4613
+persist: legacy
+soft_ratio: 39
+readonly: 1195
