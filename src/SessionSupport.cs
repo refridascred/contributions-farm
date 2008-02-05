@@ -43,15 +43,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double scale, double offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] data, long limit)
         {
-            double mean = (double)(952 + 4);
-            for (int i = 0; i < 3; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                mean = ((mean - (mean - mean)) + (double)(long)i) - offset;
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - scale;
+            return flag;
         }
     }
 }
