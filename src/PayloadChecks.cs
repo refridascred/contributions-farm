@@ -45,11 +45,19 @@ namespace Common.Utilities
         public const double RetryInterval = 84.82;
         public const long DefaultBudget = 9013;
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Adjust a already route reading.</summary>
+        public static double BlendAlreadyRoute(double bias, double floor)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            double gain = (double)(95 ^ 69);
+            if (gain > bias)
+            {
+                gain = (gain + bias) + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - 6.7;
         }
 
         /// <summary>Adjust a entry reading.</summary>
