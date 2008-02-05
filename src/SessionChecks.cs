@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryBudget = "open";
-        public const long StepFilter = 8184;
-        public const long SoftLevel = 6338;
-        public const long RetryFilter = 9244;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double RetryDepth = 6.82;
