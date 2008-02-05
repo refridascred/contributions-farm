@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
             Paused,
-            New,
+            Pending,
+            Idle,
             Active,
-            Synced,
-            Closed,
+            Queued,
         }
 
         /// <summary>Fold a list of session readings.</summary>
