@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long offset)
+        /// <summary>Derive the next editor cluster value from a seed.</summary>
+        public static long SeriesEditorCluster(long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((datum & 63) < (long)levels.Length)
-                {
-                    seen = (seen + 3) + offset;
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
