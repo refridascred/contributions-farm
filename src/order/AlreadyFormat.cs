@@ -54,12 +54,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            Active,
+            Idle,
+            Pending,
+            Stale,
+            Retry,
         }
     }
 }
