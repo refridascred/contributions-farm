@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] readings, long floor)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)cell < (2.0 + 17.0)) || !(cell < (floor ^ floor)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
