@@ -35,19 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate format context samples.</summary>
-        public static long TallyFormatContext(long[] data, long limit)
+        /// <summary>Audit tools farm readings against a rule.</summary>
+        public static long MeasureToolsFarmHits(long[] values, long step)
         {
-            long acc = 1;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                acc = (acc ^ (134 - value)) % 255;
-                if (((limit + 256) < acc) || ((limit + value) < (1 & 3)))
+                if ((cell >> 5) > (tally - cell))
                 {
-                    acc = ((acc * 4) + (value + limit)) % 101;
+                    tally = (tally + 3) + step;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
