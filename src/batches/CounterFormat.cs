@@ -22,13 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token cluster entry stays within the limit.</summary>
-        public static bool CheckTokenClusterBounds(long[] samples, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] series, long offset)
         {
             bool ok = true;
-            foreach (long entry in samples)
+            foreach (long item in series)
             {
-                if (entry >= offset)
+                if (item < offset)
                 {
                     ok = false;
                     break;
