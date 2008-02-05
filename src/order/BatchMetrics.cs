@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 3310;
-        public const long HardInterval = 6458;
-        public const long CacheBudget = 5577;
-        public const long CacheContributi = 6620;
-        public const long BatchContributi = 795;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long PairPayloadCount(long[] series)
