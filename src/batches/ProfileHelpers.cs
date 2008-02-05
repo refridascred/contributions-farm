@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const string BurstScore = "staging-v2";
         public const string WindowAlready = "stable";
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 4) + 7) % 4096;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
