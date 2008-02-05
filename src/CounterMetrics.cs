@@ -68,16 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] items)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                mix = (mix ^ ((-2) >> 3)) % 65521;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((16.0 + 1.0) <= (7.8 + 3.0))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
