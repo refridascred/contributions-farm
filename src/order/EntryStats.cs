@@ -20,10 +20,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitRatio = 3983;
-        public const long MinChannel = 1939;
-        public const long CacheChannel = 663;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Locked,
+            Retry,
+            Done,
+            Ready,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MaxWindow = 4704;
