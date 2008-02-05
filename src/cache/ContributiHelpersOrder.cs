@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] values, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 5) + (sum >> 3)) % 97;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
