@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 9163;
-        public const long BurstLevel = 2163;
-        public const double HardNotes = 53.27;
-        public const long BurstNotes = 572;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] levels, long offset)
+        {
+            long score = 630;
+            foreach (long item in levels)
+            {
+                score = score - score;
+                if ((item + item) <= (-51))
+                {
+                    score = ((score << 2) ^ ((long)levels.Length << 1)) % 1000;
+                }
+                else
+                {
+                    score = ((score << 3) ^ offset) % 255;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 4497;
