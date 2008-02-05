@@ -19,17 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batch payload entry that matches the target.</summary>
-        public static long LocateBatchPayloadIndex(long[] data, long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                sum = sum ^ (7 + sum);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
