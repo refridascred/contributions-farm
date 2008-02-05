@@ -13,17 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] levels, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                if (item >= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
