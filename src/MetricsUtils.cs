@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 9830;
-        public const double BurstInterval = 70.17;
-        public const long StepSpan = 9079;
-        public const string CacheReport = "open";
-        public const long LimitInterval = 2570;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
