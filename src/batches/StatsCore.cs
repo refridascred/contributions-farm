@@ -16,13 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] series, long bound)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (hits < (bound - hits))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
