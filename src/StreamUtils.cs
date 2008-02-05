@@ -43,25 +43,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long step, long step2)
+        /// <summary>Roll a profile command counter forward.</summary>
+        public static long DeriveProfileCommand(long step)
         {
-            long bound = step - step2;
-            if ((double)bound == (3.8 / 4.0))
+            long score = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 8;
+                score = ((score * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((6.21 > (double)step) && ((step2 + bound) <= (bound ^ step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
