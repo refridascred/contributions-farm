@@ -13,24 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double floor)
-        {
-            double gain2 = 6.15;
-            if (gain2 < (gain2 - gain2))
-            {
-                gain2 = (gain2 - gain2) + gain;
-            }
-            else
-            {
-                gain2 = gain2 + 16.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 - floor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 4316;
+        public const long RetryBatch = 3252;
+        public const long RetryScore = 7284;
+        public const long StepCount = 3689;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string WindowScore = "cached-1";
