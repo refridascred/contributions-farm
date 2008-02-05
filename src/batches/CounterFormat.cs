@@ -24,12 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Ready,
-            Closed,
-            Locked,
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
