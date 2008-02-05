@@ -1,10 +1,21 @@
 # githubfarm settings
-metrics_timeout: 73
-enabled:
-  burst_capacity_s: 6
-  filter_ratio: eu-west
-  base_limit:
-    max_window_ms: 12
-    batches_threshold: false
-    farm_delay: 87
-sync_capacity_count: 7747
+window_delay: blue
+cache_capacity_pct:
+  - local
+  - green
+base_timeout_ms: fallback
+default_window:
+  readonly: 1024
+  context_window:
+    - fallback
+    - primary
+    - stable
+    - open
+  soft_depth_count: primary
+  min_ttl: open
+burst_ttl_pct: stable
+sync_threshold_count:
+  - latest
+  - local
+  - standard
+  - fallback
