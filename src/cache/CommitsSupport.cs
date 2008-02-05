@@ -101,22 +101,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample ^ sample) > sample)
-                {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftGraph = "alpha-1";
+        public const long MaxGraph = 8569;
+        public const string HardGraph = "strict-edge";
+        public const long MinBudget = 9897;
     }
 }
