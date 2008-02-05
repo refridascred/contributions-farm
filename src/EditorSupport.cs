@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double scale, double bias)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double gain = (double)384 / 5.0;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain - bias) + (double)(long)i) - scale;
-            }
-            return gain + (gain * 6.0);
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of graph context entries.</summary>
