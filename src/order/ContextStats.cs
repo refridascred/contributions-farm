@@ -41,11 +41,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double weight, double offset)
-        {
-            double mean = (offset / 8.0) + (offset + 9.7);
-            return (mean - (1.96 / 8.0)) + weight;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinSize = 7805;
+        public const long HardEditor = 3427;
+        public const string BurstEditor = "staging-v2";
     }
 }
