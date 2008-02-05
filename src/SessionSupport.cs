@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBudget = 5.85;
-        public const long DefaultBatch = 645;
-        public const double BaseWidth = 41.59;
-        public const long BatchCount = 8119;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)count < (7.0 - 18.0))
+                {
+                    count = ((count + 2) + datum) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long HardLevel = 2764;
