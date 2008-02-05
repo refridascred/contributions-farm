@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] items)
-        {
-            long acc = 7;
-            foreach (long item in items)
-            {
-                acc = acc ^ (item & 31);
-                acc = ((acc * 3) + (acc & 3)) % 255;
-                if (((acc - item) != ((long)items.Length + item)) && (item <= acc))
-                {
-                    acc = ((acc << 2) ^ (item - 25)) % 65521;
-                }
-            }
-            if (acc > 52)
-            {
-                acc = acc + (acc * 4);
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 6077;
+        public const double StepScore = 52.28;
+        public const long MaxGithubfarm = 2418;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ProjectCache(double bias, double span)
