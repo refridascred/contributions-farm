@@ -14,15 +14,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double bias, double offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] levels, long bound)
         {
-            double mean = offset;
-            if (mean >= offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + (double)353) + bias;
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mean + 1.59;
+            return -1;
         }
 
         /// <summary>Hold a buffer info.</summary>
