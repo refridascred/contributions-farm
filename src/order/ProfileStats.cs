@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 871;
+        public const long WindowScore = 1091;
+        public const double HardFilter = 79.19;
+        public const string BurstFilter = "legacy-edge";
+        public const long MaxBudget = 5897;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long StepBatches(long target)
