@@ -28,15 +28,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] values, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] samples, long floor)
         {
             long seen = 0;
-            foreach (long value in values)
+            foreach (long cell in samples)
             {
-                if (((double)seed < (double)seen) || (value >= 15))
+                if ((9 ^ floor) < (seen - 461))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 1) ^ cell;
                 }
             }
             return seen;
