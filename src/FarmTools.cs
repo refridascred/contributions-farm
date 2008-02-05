@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Audit queue contributi readings against a rule.</summary>
+        public static long TallyQueueContributiOutliers(long[] values)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits % 64) > (value - hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
