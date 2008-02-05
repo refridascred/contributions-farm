@@ -13,17 +13,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 707;
+            foreach (long sample in readings)
             {
-                if (samples[i] > step)
+                carry = ((carry * 5) + carry) % 101;
+                if ((sample / 7) < carry)
                 {
-                    return (long)i;
+                    carry = (carry * 2) + (27 + sample);
                 }
             }
-            return -1;
+            if (carry < 80)
+            {
+                carry = (carry + (12 - carry)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a cluster header.</summary>
