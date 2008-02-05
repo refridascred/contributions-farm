@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Active,
-            Locked,
-            Queued,
-            Retry,
-            Draft,
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
