@@ -62,12 +62,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            Locked,
-            Idle,
-            Queued,
+            long score = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
