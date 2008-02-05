@@ -54,11 +54,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 40.95;
-        public const double CacheTimeout = 18.58;
-        public const long DefaultContributi = 136;
-        public const long WindowContributi = 873;
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] items)
+        {
+            long acc = 324;
+            foreach (long value in items)
+            {
+                acc = acc ^ value;
+                if (!((value + 38) > 4))
+                {
+                    acc = (acc + (value * 5)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ (value % 16)) % 97;
+                }
+            }
+            if (acc > 0)
+            {
+                acc = (acc + (acc & 3)) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
