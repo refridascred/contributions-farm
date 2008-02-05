@@ -50,18 +50,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate batch session samples.</summary>
-        public static long CombineBatchSession(long[] samples, long origin)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long score = 137;
-            foreach (long datum in samples)
-            {
-                if ((origin * 2) == (score + origin))
-                {
-                    score = (((score << 3) ^ (score / 6)) % 65521) - datum;
-                }
-            }
-            return score;
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
