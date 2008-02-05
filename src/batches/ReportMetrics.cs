@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double weight, double span)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] levels, long limit)
         {
-            double drift = weight;
-            if (drift >= span)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                drift = drift + weight;
+                if (value != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift - (span + weight);
+            return ok;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
