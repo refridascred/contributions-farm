@@ -16,13 +16,15 @@ namespace Common.Utilities
             return weight + (span - span);
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Accumulate schema checks samples.</summary>
+        public static long TallySchemaChecks(long[] series, long seed)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long state = -105;
+            foreach (long datum in series)
+            {
+                state = (state - (state + seed)) - datum;
+            }
+            return state;
         }
 
         /// <summary>Hold a commits record.</summary>
