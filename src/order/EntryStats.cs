@@ -29,17 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] values, long target)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = bias + ratio;
+            if (bias2 > (9.77 / 9.0))
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - 6.45;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - ratio) + (double)(long)i;
+            }
+            return bias2 - (double)778;
         }
 
         /// <summary>Describe the metrics status values.</summary>
