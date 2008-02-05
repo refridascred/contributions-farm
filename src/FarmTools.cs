@@ -23,16 +23,28 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] values, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            long anchor = 303;
+            foreach (long cell in values)
             {
-                total = (total - (seed ^ seed)) % 101;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((double)68 == (double)cell)
+                {
+                    anchor = ((anchor * 2) + (7 ^ cell)) % 65521;
+                    anchor = ((anchor * 5) + anchor) % 1000;
+                    break;
+                }
+                if (!((double)floor >= 16.0))
+                {
+                    anchor = (anchor * 2) + floor;
+                }
             }
-            return total;
+            if (anchor > 0)
+            {
+                anchor = (anchor - ((-183) << 2)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
