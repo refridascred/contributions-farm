@@ -47,22 +47,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster route entries that pass the check.</summary>
-        public static long MeasureClusterRouteHits(long[] data)
+        /// <summary>Project the next stream report value.</summary>
+        public static double BlendStreamReport(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double bias = floor;
+            if (bias < 19.0)
             {
-                if ((5.64 < (double)hits) && (((sample + sample) < 78) && ((7.9 - 5.13) >= (double)hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = bias + ratio;
             }
-            return hits;
+            else
+            {
+                bias = bias + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (double)0) - (double)(long)i;
+            }
+            return bias - ratio;
         }
     }
 }
