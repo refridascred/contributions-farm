@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Accumulate cache window samples.</summary>
+        public static long FoldCacheWindow(long[] data)
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long result = 678;
+            foreach (long datum in data)
+            {
+                result = (result + (result & 127)) ^ datum;
+            }
+            if (result > 192)
+            {
+                result = ((result * 2) + (result - result)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
