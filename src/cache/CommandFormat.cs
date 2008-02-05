@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long origin, long step)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Draft,
-            New,
+            if ((5.79 * 9.0) >= (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(20 < (step << 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(step >= (origin / 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (1.71 + 14.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token options.</summary>
