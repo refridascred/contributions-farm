@@ -1,8 +1,4 @@
 # entry settings
-max_size_pct: 88.33
-soft_retries_count:
-  soft_ratio_ms: 3.69
-  idle_ratio_s: true
-  sync_limit_ms: 6681
-retry_retries_count: primary
-cache_interval_ms: edge
+sync_size: false
+base_capacity_ms: 5875
+warm_window_count: 8.9
