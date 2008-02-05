@@ -1,5 +1,5 @@
 {
-  "stats_ratio": false,
-  "farm_timeout": 1024,
-  "stream_window": [454, 308]
+  "token_depth": true,
+  "hard_depth_ms": 840,
+  "stats_timeout": 7016
 }
