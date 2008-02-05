@@ -13,14 +13,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long origin)
         {
-            Active,
-            Ready,
-            Stale,
-            Synced,
-            Idle,
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = (mix * 4) + ((long)i2 >> 5);
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Rank order queue input into a small class.</summary>
