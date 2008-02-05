@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double rate, double offset)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            double ratio = (rate - rate) * 8.23;
+            if (ratio >= (offset - offset))
+            {
+                ratio = ratio - (double)4;
+            }
+            else
+            {
+                ratio = ratio + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (offset / 8.0);
         }
 
         /// <summary>Describe the filter state values.</summary>
