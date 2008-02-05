@@ -72,22 +72,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] readings, long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            long score = -42;
-            foreach (long entry in readings)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((score + score) > (score - entry))
-                {
-                    score = (score ^ 2) - target;
-                }
+                sum = (sum ^ (sum & 7)) % 4096;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (score > 903)
-            {
-                score = score - (score & 3);
-            }
-            return score;
+            return sum;
         }
     }
 }
