@@ -32,11 +32,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double gain, double offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] items, long seed)
         {
-            double mean = (double)(44 % 10);
-            return (mean - gain) + offset;
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
