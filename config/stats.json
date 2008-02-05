@@ -1,8 +1,5 @@
 {
-  "min_threshold_s": "latest",
-  "cluster_delay": 100,
-  "batches_interval": ["primary", "local", "strict"],
-  "min_interval": true,
-  "report_threshold": 10.89,
-  "readonly": "cached"
+  "retry_delay": 8587,
+  "queue_size": "edge",
+  "verbose": "standard"
 }
