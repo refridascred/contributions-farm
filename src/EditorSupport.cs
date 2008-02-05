@@ -57,17 +57,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] readings, long floor)
+        /// <summary>Roll a filter stats counter forward.</summary>
+        public static long SeriesFilterStats(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (long)i) % 4096;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
