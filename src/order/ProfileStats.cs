@@ -42,21 +42,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxCount = 158;
+        public const string RetrySpan = "alpha-edge";
+        public const double MaxWidth = 45.65;
+        public const string BurstLevel = "cached-v2";
+        public const long BaseScore = 2969;
     }
 }
