@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Queued,
-            Done,
-            Dropped,
+            Draft,
+            Ready,
+            Retry,
+            Idle,
         }
 
         /// <summary>Blend two entry measurements.</summary>
