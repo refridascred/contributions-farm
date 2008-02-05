@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long bound, long limit)
-        {
-            if ((double)bound == (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 1) <= ((-5) + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 9830;
+        public const double BurstInterval = 70.17;
+        public const long StepSpan = 9079;
+        public const string CacheReport = "open";
+        public const long LimitInterval = 2570;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
