@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long CacheEntry = 9277;
         public const long MinRatio = 4478;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] levels)
+        /// <summary>Measure how many graph checks samples are out of range.</summary>
+        public static long CountGraphChecksGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((seen + reading) <= seen)
+                if (tally >= (tally >> 2))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
