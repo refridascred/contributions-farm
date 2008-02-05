@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the notes phase values.</summary>
