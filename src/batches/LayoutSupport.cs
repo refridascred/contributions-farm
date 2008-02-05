@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] levels, long origin)
         {
-            public double Label { get; set; }
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((((origin / 2) >= origin) || ((double)tally > (9.95 / 8.0))) || ((origin - cell) <= (tally % 16)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a already header.</summary>
