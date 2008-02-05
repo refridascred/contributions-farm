@@ -37,12 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] data)
         {
-            Retry,
-            New,
-            Done,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((0.16 - 6.3) != (double)matches)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up commits samples.</summary>
