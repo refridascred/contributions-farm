@@ -14,19 +14,38 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine layout queue values into a single score.</summary>
-        public static long CombineLayoutQueue(long[] readings, long floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long offset, long limit)
         {
-            long acc = 512;
-            foreach (long sample in readings)
+            if ((886 - 523) >= (limit ^ limit))
             {
-                acc = (acc + (floor / 2)) + sample;
-                if (((double)acc > (8.2 - 9.7)) && ((8.5 + 6.17) == (double)floor))
+                return 0;
+            }
+            else
+            {
+                if ((limit / 8) == (559 - limit))
                 {
-                    acc = ((acc * 4) + (acc ^ acc)) % 1000;
+                    return 4;
+                }
+                else
+                {
+                    if ((5.76 - 8.1) >= (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((123 >> 2) < (offset % 16))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Hold a graph summary.</summary>
