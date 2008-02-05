@@ -14,12 +14,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            New,
+            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a route record.</summary>
