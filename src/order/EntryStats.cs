@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] samples, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] levels, long offset)
         {
-            long score = 7;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                score = ((score ^ (cell + cell)) % 4096) - floor;
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score % 97;
+            return ok;
         }
 
         /// <summary>Hold a cluster options.</summary>
