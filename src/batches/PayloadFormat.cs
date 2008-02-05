@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const double BaseLayout = 4.88;
         public const string BurstSpan = "legacy-1";
 
-        /// <summary>Compare every pair of githubfarm counter readings.</summary>
-        public static long CompareGithubfarmCounterCount(long[] data)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
