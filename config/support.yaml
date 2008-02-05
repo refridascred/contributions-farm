@@ -1,13 +1,6 @@
 # support settings
-flush_interval_pct:
-  layout_threshold: open
-  compress: true
-  max_delay: standard
-route_delay: 30
-burst_window_count: 100
-readonly: 1.05
-warm_window:
-  - 394
-  - 169
-  - 112
-compress: eu-west
+flush_limit: true
+base_interval_count: true
+soft_timeout: 27.43
+audit: 100
+cache_size: staging
